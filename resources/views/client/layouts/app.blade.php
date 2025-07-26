@@ -906,7 +906,7 @@ searchInputs[i].value = '';
         maximumSelectionSize: 6,
         containerCssClass: ":all:"
     });
-    console.log(localStorage.getItem('city'));
+   
     if(localStorage.getItem('city')){
         $('.cityList').val(localStorage.getItem('city'));
     }else{
@@ -916,7 +916,7 @@ searchInputs[i].value = '';
         jsonpCallback: "callback",
         dataType: "jsonp",
         success: function(location) {
-        console.log(location.city.toLowerCase());
+      
         localStorage.setItem('city',location.city.toLowerCase())
         $('.cityList').val(localStorage.getItem('city'));
         }

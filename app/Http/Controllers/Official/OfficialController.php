@@ -181,7 +181,7 @@ class OfficialController extends Controller
 				// Additional headers
 			
 				$headers .= 'From: quickdials <care@quickdials.in>'. "\r\n";
-			$to="care@quickdials.in". "\r\n";
+			$to="care@quickdials.com". "\r\n";
 			//	$to="care@quickdials.in". "\r\n";
 				$subject="New Enquiry". "\r\n";
 			//	$message=view('site.send_enquiry_mail_thanks');
@@ -314,7 +314,7 @@ class OfficialController extends Controller
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 0in 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email ID :</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-          info@quickdials.in</span><u></u><u></u></p>
+          info@quickdials.com</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -379,7 +379,7 @@ class OfficialController extends Controller
 				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
 				// Additional headers
 				//	$headers .= 'From: enquiry@quickdials.in' . "\r\n";
-				$headers .= 'From: quickdials <care@quickdials.in>';
+				$headers .= 'From: quickdials <care@quickdials.com>';
 				//$headers .= "CC: info@gmail.com\r\n";
 				$to=$lead->email;
 				$subject="Thanks for quickdials Enquiry";

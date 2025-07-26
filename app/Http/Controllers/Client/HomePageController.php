@@ -176,114 +176,7 @@ class HomePageController extends Controller
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();	
 			 
-			 
-	
-			 
-			 
-			$headers  = 'MIME-Version: 1.0' . "\r\n";
-			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$headers .= 'From: enquiry <leads@enquiry.co.in>';
-		 
-	    	$subject="Student Enquiry - ".$course_name;
-	    	if(!empty($request->input('demo_date'))){
-				$demo_date ='<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Date:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('demo_date').'</span><u></u><u></u></p>
-			</td>
-			</tr>';
-				
-			}else{
-				
-				$demo_date="";
-			}
-			
-			if(!empty($request->input('experience'))){
-				$experience ='<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Experience:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('experience').'</span><u></u><u></u></p>
-			</td>
-			</tr>';
-				
-			}else{
-				
-				$experience="";
-			}
-			
-	    	
-			$message=' <tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Name:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-			'.$request->input('name').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-			'.$request->input('email').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Mobile:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">'.'+'.$request->input('code').'-'.ltrim($request->input('phone'), '0').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Course:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$course_name.'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			'.$demo_date.'
-			'.$experience.'
-			 
-				<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Country and Code:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$geo_country.' ('.$geo_countryCode.')</span><u></u><u></u></p>
-			</td>
-			</tr>
-				<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Type of Lead:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$type_lead.'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">From Session:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('from_title').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">From Page:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('from').'</span><u></u><u></u></p>
-			</td>
-			</tr>';
-			
-			 $stdemail="";
-			 $codemail="";
-			 $coordinator="";
-         
-          
-        
-           //to = array( "quickdialswebsite@gmail.com");
-          
-         /* $to = array( "info@quickdials.co.in");
- 		     Mail::send('mails.send_lead_inquiry', ['msg'=>$message], function ($m) use ($message,$request,$subject,$stdemail,$codemail,$to) {
-				$m->from('leads@quickdials.co.in', $request->input('name'));
-				$m->to($to, "")->subject($subject);	
-			});   
-      */
-		/*	if(!empty($request->input('email'))){
-			$headers  = 'MIME-Version: 1.0' . "\r\n";
-			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$headers .= 'From: quickdials <leads@quickdials.co.in>';
-			$stdemail=$request->input('email');
-	    	$std_message=$request->input('name');
-			$subject_stud=$request->input('name') .": Thanks for your Enquiry";	
- 		    Mail::send('mails.mailer', ['name'=>$std_message], function ($m) use ($std_message,$request,$subject_stud,$stdemail) {
-				$m->from('leads@quickdials.co.in', 'Croma Campus');
-				$m->to($stdemail, "")->subject($subject_stud);				
-			});  
-			}
-		*/
-			
+			 	leadassignWithoutZoneCounsellor($lead);		
 			
 			return response()->json([
 				'statusCode'=>1,
@@ -386,94 +279,10 @@ class HomePageController extends Controller
 			
 				$followUp = new LeadFollowUp;
 					$followUp->status = Status::where('name','LIKE','New Lead')->first()->id;				 
-					$followUp->remark = $request->input('remark');
-			 
-					$followUp->lead_id = $lead->id;
-				 
+					$followUp->remark = $request->input('remark');			 
+					$followUp->lead_id = $lead->id;				 
 					$followUp->save();	
-		 
-			 
-			$headers  = 'MIME-Version: 1.0' . "\r\n";
-			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$headers .= 'From: enquiry <leads@enquiry.co.in>';
-		 
-	    	$subject="Student Enquiry - ".$course_name;
-	    	if(!empty($request->input('demo_date'))){
-				$demo_date ='<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Date:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('demo_date').'</span><u></u><u></u></p>
-			</td>
-			</tr>';
-				
-			}else{
-				
-				$demo_date="";
-			}
-			
-			if(!empty($request->input('experience'))){
-				$experience ='<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Experience:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('experience').'</span><u></u><u></u></p>
-			</td>
-			</tr>';
-				
-			}else{
-				
-				$experience="";
-			}
-			
-	    	
-			$message=' <tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Name:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-			'.$request->input('name').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-			'.$request->input('email').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Mobile:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">'.'+'.$request->input('code').'-'.ltrim($request->input('phone'), '0').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Course:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$course_name.'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			'.$demo_date.'
-			'.$experience.'
-			 
-				<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Country and Code:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">  </span><u></u><u></u></p>
-			</td>
-			</tr>
-				<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Type of Lead:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> </span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">From Session:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('from_title').'</span><u></u><u></u></p>
-			</td>
-			</tr>
-			<tr>
-			<td style="padding:0in 0in 7.5pt 0in">
-			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">From Page:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('from').'</span><u></u><u></u></p>
-			</td>
-			</tr>';
-			
-			 $stdemail="";
-			 $codemail="";
-			 $coordinator="";
-         
-          
+		 	leadassignWithoutZoneCounsellor($lead); 
         
             
          
@@ -635,92 +444,7 @@ public function saveTwoEnquiry(Request $request){
 					$followUp->lead_id = $lead->id;
 				 
 					$followUp->save();	
-		 
-			 
-// 			$headers  = 'MIME-Version: 1.0' . "\r\n";
-// 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-// 			$headers .= 'From: enquiry <leads@enquiry.co.in>';
-		 
-// 	    	$subject="Student Enquiry - ".$request->input('name');
-// 	    	if(!empty($request->input('demo_date'))){
-// 				$demo_date ='<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Date:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('demo_date').'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>';
-				
-// 			}else{
-				
-// 				$demo_date="";
-// 			}
-			
-// 			if(!empty($request->input('experience'))){
-// 				$experience ='<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Experience:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('experience').'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>';
-				
-// 			}else{
-				
-// 				$experience="";
-// 			}
-			
-	    	
-// 			$message=' <tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Name:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-// 			'.$request->input('name').'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>
-// 			<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-// 			'.$request->input('email').'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>
-// 			<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Mobile:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">'.'+'.$request->input('code').'-'.ltrim($request->input('phone'), '0').'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>
-// 			<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Course:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$course_name.'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>
-// 			'.$demo_date.'
-// 			'.$experience.'
-			 
-// 				<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Country and Code:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$geo_country.' ('.$geo_countryCode.')</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>
-// 				<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Type of Lead:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$type_lead.'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>
-// 			<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">From Session:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('from_title').'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>
-// 			<tr>
-// 			<td style="padding:0in 0in 7.5pt 0in">
-// 			<p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">From Page:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('from').'</span><u></u><u></u></p>
-// 			</td>
-// 			</tr>';
-			
-			 $stdemail="";
-			 $codemail="";
-			 $coordinator="";
-         
-          
-        
-            
-         
+		 	leadassignWithoutZoneCounsellor($lead); 
 			
 			return response()->json([
 				'statusCode'=>1,
@@ -806,6 +530,7 @@ public function saveTwoEnquiry(Request $request){
 					$followUp->lead_id = $lead->id;
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();		
+					
 				 //Cookie::queue("showPopup", "yes", "60");
 					return response()->json(['status'=>1,'msg'=>'Lead added successfully'],200);
 				}
@@ -870,15 +595,7 @@ public function saveTwoEnquiry(Request $request){
 					$followUp->lead_id = $lead->id;
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();		
-				 //Cookie::queue("showPopup", "yes", "60");
-				/*$template = 'emails.sendlead';	 
-				$client="Institute";
-			 $check=  Mail::send($template, ['client'=>$client,'lead'=>$lead,'city'=>$city,'cityname'=>$cityname], function ($m) use ($client,$lead) {    
-         
-            $m->from('info@quickdials.in', 'quickdials');             
-            //$client->email
-            $m->to('info@quickdials.in', $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
-        });	  */
+				 	leadassignWithoutZoneCounsellor($lead);
 										 
 				 	
 					

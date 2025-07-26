@@ -468,7 +468,7 @@ class LeadController extends Controller
 					$followUp->lead_id = $lead->id;
 					$followUp->remark_by =Auth::user()->id;
 					$followUp->save();				
-					 
+					leadassignWithoutZoneCounsellor($lead);
 					Cookie::queue("showPopup", "yes", "60");
 				 
 
@@ -2486,8 +2486,12 @@ class LeadController extends Controller
 							}
 							else if($keyword->category=='Category 3'){
 								$coinsAmt = $keywordSellCount->cat3_price;
+							}else if($keyword->category=='Category 4'){
+								$coinsAmt = $keywordSellCount->cat4_price;
+							}else if($keyword->category=='Category 5'){
+								$coinsAmt = $keywordSellCount->cat5_price;
 							}else{
-								$coinsAmt = 0;
+								$coinsAmt = '130';
 							}
 							
 							

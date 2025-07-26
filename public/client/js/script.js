@@ -264,7 +264,7 @@ var homeController = (function(){
 			$(':input[type="submit"]').prop('disabled', false);
 			} });*/  
 			
-			//alert(data);
+		 
 			$.ajax({
 					url:"/client/lead/saveEnquiry",
 					type:"POST",
