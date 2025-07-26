@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-Quick India- Training in {{$client->business_name}}
+Quick Dials- Training in {{$client->business_name}}
 @endsection 
 @section('keyword')
-Quick India- Training in {{$client->business_name}}
+Quick Dials- Training in {{$client->business_name}}
 @endsection
 @section('description')
-Quick India- Training in {{$client->business_name}}
+Quick Dials- Training in {{$client->business_name}}
 @endsection
 @section('content')	
 
@@ -873,7 +873,7 @@ Quick India- Training in {{$client->business_name}}
 														Please provide your <span class="orng" style="font-weight:normal">"Name", "Mobile", "Email" &amp; "Comment"</span> to submit your<br>review and rating.<br><br><br>
 														<strong>
 														Thanks,<br>
-														Quick India- Team<br>
+														Quick Dials- Team<br>
 														</strong>
 													</div>
 													<!--div class="modal-footer">

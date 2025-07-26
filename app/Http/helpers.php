@@ -7,7 +7,7 @@
 // SENDING SMS AND IT'S CONFIGURATION
 // **********************************
 function sendSMS($sendto, $message,$tempid=null){
-	$username = 't1quickindiasms';
+	$username = 't1quickdialssms';
 	$password = '42308595';
 	$sender = 'CCAMPS';
 	$sendto = $sendto;
@@ -33,7 +33,7 @@ function sendSMS($sendto, $message,$tempid=null){
 // SENDING SMS AND IT'S CONFIGURATION
 // **********************************
 function sendSMSoldd($sendto, $message){
-	$username = 't1quickindiasms';
+	$username = 't1quickdialssms';
 	$password = '42308595';
 	$sender = 'LEADEG';
 	$sendto = $sendto;

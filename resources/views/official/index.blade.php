@@ -1,6 +1,6 @@
 @extends('client.layouts.app')
 @section('title')
-     Quick India  
+     Quick Dials  
 @endsection
 @section('content')
 
@@ -11,7 +11,7 @@
   <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
-        <img src="{{asset('public/official/img/slider/Quick India.jpg')}}" alt="" title="#slider-direction-1" />        
+        <img src="{{asset('public/official/img/slider/Quick Dials.jpg')}}" alt="" title="#slider-direction-1" />        
       </div>
 
       <!-- direction 1 -->
@@ -40,7 +40,7 @@
 				  
                 <!-- layer 2 -->
                 <div class="layer-1-2 wow" data-wow-duration="2s" data-wow-delay=".1s">
-                  <h1 class="title2">Quick India is the best place to get certified institutions to enhance interpersonal skills.</h1>
+                  <h1 class="title2">Quick Dials is the best place to get certified institutions to enhance interpersonal skills.</h1>
                   
                 </div>
 				
@@ -49,7 +49,7 @@
                   <a class="ready-btn page-scroll" href="jacascript:void(0)" data-toggle="modal" data-target="#inquiry">Get Connected</a>&nbsp;&nbsp;
                   
                 </div>
-                <div class="plan-demo-btns" style="margin-top: 40px"> <a href="https://Quick India/" target="_black" class="header-plans-btn" style="color:#fff !important"> <i class="fa fa-forward"></i> See certified institutions<i class="fa fa-backward"></i></a><div class="clearfix"></div></div>
+                <div class="plan-demo-btns" style="margin-top: 40px"> <a href="https://Quick Dials/" target="_black" class="header-plans-btn" style="color:#fff !important"> <i class="fa fa-forward"></i> See certified institutions<i class="fa fa-backward"></i></a><div class="clearfix"></div></div>
               </div>
             </div>
           </div>
@@ -81,8 +81,8 @@
               <div class="services-details">
                 <div class="single-services">                   
                   <p>
-                    Quick India is one of the most promising start-ups in India in 2023. Start-up offering B2C model as match-making admission solution to students and Professionals, Quick India is unique platform which connects education seekers with education providers with excellent career counselling.</p>
-<p> Quick India is an extensive search engine for the students, parents, Professionals and education industry players who are seeking information on education sector in India.One can rely on Quick India for getting most relevant data on Institutes, colleges and universities. </p>
+                    Quick Dials is one of the most promising start-ups in India in 2023. Start-up offering B2C model as match-making admission solution to students and Professionals, Quick Dials is unique platform which connects education seekers with education providers with excellent career counselling.</p>
+<p> Quick Dials is an extensive search engine for the students, parents, Professionals and education industry players who are seeking information on education sector in India.One can rely on Quick Dials for getting most relevant data on Institutes, colleges and universities. </p>
 					 
                 </div>
               </div>
@@ -106,7 +106,7 @@
                   <h6><strong>Vision</strong></h6>
 				  <article>
 						<?php
-							$comment = "Quick India has been created for fulfil a vision of quality education along with education with the help of certified Institutions. In Modern era we wanted to uniform educational societies with the help of technologies for better Nation built-up";
+							$comment = "Quick Dials has been created for fulfil a vision of quality education along with education with the help of certified Institutions. In Modern era we wanted to uniform educational societies with the help of technologies for better Nation built-up";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -138,8 +138,8 @@
                   <h6><strong>USP’s</strong></h6>
 				<article>
 						<?php
-							$comment = "Quick India first technology driven education start-up of India providing match making solution for students education needs in all sectors.
-					Quick India have extensive In-house personalized counselling to understand student’s need and help him make the most informed decision.";
+							$comment = "Quick Dials first technology driven education start-up of India providing match making solution for students education needs in all sectors.
+					Quick Dials have extensive In-house personalized counselling to understand student’s need and help him make the most informed decision.";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -171,10 +171,10 @@
                   <a class="services-icon" href="javascript:void(0)">
 											<i class="fa fa-trophy"></i>
 										</a>
-                  <h6><strong>Quick India For Institutions</strong></h6>
+                  <h6><strong>Quick Dials For Institutions</strong></h6>
 				     <article>
 						<?php
-							$comment = "Quick India provides a non-conventional platform which focuses on delivering quality leads and highly motivated candidates.Our extensive In-house one-one personalized counselling providing an edge to the clients looking for highly specific and active database.";
+							$comment = "Quick Dials provides a non-conventional platform which focuses on delivering quality leads and highly motivated candidates.Our extensive In-house one-one personalized counselling providing an edge to the clients looking for highly specific and active database.";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -206,10 +206,10 @@
                   <a class="services-icon" href="javascript:void(0)">
 											<i class="fa fa-user"></i>
 										</a>
-                  <h6><strong>Quick India For Students</strong></h6>
+                  <h6><strong>Quick Dials For Students</strong></h6>
 				     <article>
 						<?php
-							$comment = "Students can use Quick India as one stop destination to search about their Coaching Institutes, IT Training Centres, Overseas Education consultant`s available courses, College admission process and lots more interactive tools to simplify the process of finding alma-mater. The website has the repository of more than 1,000 Institutes, Coaching Centres, School, colleges and 10,000 courses categorized in different streams like IT Training, Civil Services, Entrance Exam Preparation, Management, Engineering, Medical, Arts, Distance Education and much more. One can classify Education needs on the basis of location, Reviews and Certification. Quick India Certified Business Partners are assuring to students Quality Education, Campus Placement, Best Faculty, Fees Refund assurance.";
+							$comment = "Students can use Quick Dials as one stop destination to search about their Coaching Institutes, IT Training Centres, Overseas Education consultant`s available courses, College admission process and lots more interactive tools to simplify the process of finding alma-mater. The website has the repository of more than 1,000 Institutes, Coaching Centres, School, colleges and 10,000 courses categorized in different streams like IT Training, Civil Services, Entrance Exam Preparation, Management, Engineering, Medical, Arts, Distance Education and much more. One can classify Education needs on the basis of location, Reviews and Certification. Quick Dials Certified Business Partners are assuring to students Quality Education, Campus Placement, Best Faculty, Fees Refund assurance.";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -263,14 +263,14 @@
                 <div class="panel-heading">
                   <h4 class="check-title">
 											<a data-toggle="collapse" class="active" data-parent="#accordion" href="#check1">
-                                                <span class="acc-icons"></span>Why should I create a business profile on Quick India?.
+                                                <span class="acc-icons"></span>Why should I create a business profile on Quick Dials?.
 											</a>
 										</h4>
                 </div>
                 <div id="check1" class="panel-collapse collapse in">
                   <div class="panel-body">
                     <p>
-                     Quick India offers a non-conventional platform dedicated to delivering high-quality leads and connecting educational institutions with motivated candidates. Our in-house personalized counseling further enhances our service, providing a competitive edge to clients seeking access to a highly specific and active database of prospective students.
+                     Quick Dials offers a non-conventional platform dedicated to delivering high-quality leads and connecting educational institutions with motivated candidates. Our in-house personalized counseling further enhances our service, providing a competitive edge to clients seeking access to a highly specific and active database of prospective students.
                     </p>
                   </div>
                 </div>
@@ -287,7 +287,7 @@
                 <div id="check2" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                      Connect from our expert customer support at help@quickindia.com 
+                      Connect from our expert customer support at help@quickdials.com 
                     </p>
                   </div>
                 </div>
@@ -304,7 +304,7 @@
                 <div id="check3" class="panel-collapse collapse ">
                   <div class="panel-body">
                     <p>
-                       Quick India offers extensive on-site and on-web support, subject to a few terms & conditions.
+                       Quick Dials offers extensive on-site and on-web support, subject to a few terms & conditions.
                     </p>
                   </div>
                 </div>
@@ -321,7 +321,7 @@
                 <div id="check4" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                      Quick India offers the best pricing in its class, providing a sufficient number of users under a single license.
+                      Quick Dials offers the best pricing in its class, providing a sufficient number of users under a single license.
                     </p>
                   </div>
                 </div>
@@ -463,9 +463,9 @@
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="wellcome-text subscribe-form">
               <div class="well-text text-center">
-                <h2>Welcome To Quick India</h2>
+                <h2>Welcome To Quick Dials</h2>
                 <p>
-                  Quick India is the best place to track and crack your leads to generate and grow your business.
+                  Quick Dials is the best place to track and crack your leads to generate and grow your business.
                 </p>
 				<div id="sendsubscribe">Your subscribe has been sent. Thank you!</div>
               <div id="errorsubscribe"></div>
@@ -506,7 +506,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
           <div class="suscribe-text text-center">
-            <h3>Welcome to Quick India</h3>
+            <h3>Welcome to Quick Dials</h3>
             <a class="sus-btn" href="javascript:void(0)" data-toggle="modal" data-target="#inquiry">Get A quote</a>
           </div>
         </div>

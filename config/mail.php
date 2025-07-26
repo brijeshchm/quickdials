@@ -41,10 +41,10 @@ return [
             'transport' => 'smtp',
             'scheme' => env('MAIL_SCHEME'),
             'url' => env('MAIL_URL'),
-            'host' => 'mail.quickindia.in',
+            'host' => 'mail.quickdials.in',
             'port' =>  25,
-            'username' => 'info@quickindia.in',
-            'password' => 'quickindia@#$%',
+            'username' => 'info@quickdials.in',
+            'password' => 'quickdials@#$%',
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
@@ -111,7 +111,7 @@ return [
     */
 
     'from' => [
-        'address' => 'info@quickindia.in',
+        'address' => 'info@quickdials.in',
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 

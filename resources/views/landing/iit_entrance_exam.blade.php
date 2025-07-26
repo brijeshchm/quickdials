@@ -164,7 +164,7 @@ sub {
 	background-position:center top;
 	min-height:656px;
 	position:relative;
-	background-image: url(../landing/img/quickindia_banner.jpg);
+	background-image: url(../landing/img/quickdials_banner.jpg);
 	background-repeat: no-repeat;
 	background-size: 100% 678px;
 }
@@ -1234,7 +1234,7 @@ required{
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>About quickindia</h2>
+            <h2>About quickdials</h2>
           </div>
         </div>
       </div>
@@ -1244,7 +1244,7 @@ required{
           <div class="well-left">
             <div class="single-well">
               <a href="javascript:void(0);">
-								  <img src="{{asset('landing/img/about_quickindia.jpg')}}" alt="">
+								  <img src="{{asset('landing/img/about_quickdials.jpg')}}" alt="">
 								</a>
             </div>
           </div>
@@ -1254,9 +1254,9 @@ required{
           <div class="well-middle">
             <div class="single-well">          
               <p>
-                quickindia.com is one of the most promising start-ups in India in 2019. Start-up offering B2C model as match-making admission solution to students and Professionals, quickindia.com is unique platform which connects education seekers with education providers with excellent career counselling.</p>
+                quickdials.com is one of the most promising start-ups in India in 2019. Start-up offering B2C model as match-making admission solution to students and Professionals, quickdials.com is unique platform which connects education seekers with education providers with excellent career counselling.</p>
 <p>
-quickindia.com is an extensive search engine for the students, parents, Professionals and education industry players who are seeking information on education sector in India.One can rely on quickindia.com for getting most relevant data on Institutes, colleges and universities.
+quickdials.com is an extensive search engine for the students, parents, Professionals and education industry players who are seeking information on education sector in India.One can rely on quickdials.com for getting most relevant data on Institutes, colleges and universities.
               </p>
               <ul>
                 <li>
@@ -1266,7 +1266,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                   <i class="fa fa-check"></i> Free Career counselling
                 </li>
                 <li>
-                  <i class="fa fa-check"></i> quickindia For Institutions
+                  <i class="fa fa-check"></i> quickdials For Institutions
                 </li>                
               </ul>
             </div>
@@ -1297,14 +1297,14 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                 <div class="panel-heading">
                   <h4 class="check-title">
 											<a data-toggle="collapse" class="active" data-parent="#accordion" href="#check1">
-                                                <span class="acc-icons"></span> What is quickindia?
+                                                <span class="acc-icons"></span> What is quickdials?
 											</a>
 										</h4>
                 </div>
                 <div id="check1" class="panel-collapse collapse in">
                   <div class="panel-body">
                     <p>
-                      quickindia is an extensive search engine for the students, parents, and Professionals, quickindia Only Deals In Education Sector, and helps students to grab their right opportunity.
+                      quickdials is an extensive search engine for the students, parents, and Professionals, quickdials Only Deals In Education Sector, and helps students to grab their right opportunity.
                     </p>
                   </div>
                 </div>
@@ -1314,14 +1314,14 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                 <div class="panel-heading">
                   <h4 class="check-title">
 											<a data-toggle="collapse" data-parent="#accordion" href="#check2">
-                                                <span class="acc-icons"></span>Why choose quickindia?
+                                                <span class="acc-icons"></span>Why choose quickdials?
 											</a>
 										</h4>
                 </div>
                 <div id="check2" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                      quickindia is an extensive search engine for the students, parents, and Professionals, here you can find Best Certified Entrance Exams Coaching institutes and compare which institutes are best for you, and which institutes are fulfilling your all requirements.
+                      quickdials is an extensive search engine for the students, parents, and Professionals, here you can find Best Certified Entrance Exams Coaching institutes and compare which institutes are best for you, and which institutes are fulfilling your all requirements.
                     </p>
                   </div>
                 </div>
@@ -1416,7 +1416,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                 <div id="check7" class="panel-collapse collapse ">
                   <div class="panel-body">
                     <p>
-                      In case you miss your classes due to some unavoidable situations, you need not worry quickindia assures that you are able to make up for the loss and we may get you arranged separate class in the extra time for those topics else you may attend the same in other batches as well.
+                      In case you miss your classes due to some unavoidable situations, you need not worry quickdials assures that you are able to make up for the loss and we may get you arranged separate class in the extra time for those topics else you may attend the same in other batches as well.
                     </p>
                   </div>
                 </div>
@@ -1433,7 +1433,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                 <div id="check8" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                    For More Info & any Queries, you can Contact Us on 9876543210 or reach out to us via e-mail @ Info@quickindia.com, or drop a quick Enquiry Our Expert counseling team Will Contact you Soon.
+                    For More Info & any Queries, you can Contact Us on 9876543210 or reach out to us via e-mail @ Info@quickdials.com, or drop a quick Enquiry Our Expert counseling team Will Contact you Soon.
                     </p>
                   </div>
                 </div>
@@ -1468,7 +1468,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                 <div class="single-testi">
                   <div class="testi-text">
                     <p>
-                      It was a dream come true when I ranked 4 in CLAT. I get admission Through quickindia, They provide me best institutes, They have very good teachers Faculty. We had doubt classes, practice sessions and revision classes to ensure that we engross all the topics completely. Overall quickindia is the excellent service provider to recommend others
+                      It was a dream come true when I ranked 4 in CLAT. I get admission Through quickdials, They provide me best institutes, They have very good teachers Faculty. We had doubt classes, practice sessions and revision classes to ensure that we engross all the topics completely. Overall quickdials is the excellent service provider to recommend others
                     </p>
                     <h6>Akash Gupta</h6>
                   </div>
@@ -1477,7 +1477,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                 <div class="single-testi">
                   <div class="testi-text">
                     <p>
-                      I had a wonderful experience at quickindia. I get best institute and All teachers and staff provided me an extremely friendly environment and gave me all the precious knowledge and information required to clear the examination. And with their precious help I managed to clear all my examinations with a very good score. Thanks quickindia for shaping my career and giving me the right guidance.
+                      I had a wonderful experience at quickdials. I get best institute and All teachers and staff provided me an extremely friendly environment and gave me all the precious knowledge and information required to clear the examination. And with their precious help I managed to clear all my examinations with a very good score. Thanks quickdials for shaping my career and giving me the right guidance.
                     </p>
                     <h6>Rajesh Chaudhary</h6>
                   </div>
@@ -1486,7 +1486,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                 <div class="single-testi">
                   <div class="testi-text">
                     <p>
-                      I chose to get admission through quickindia, I got admission in the best IAS Academy and all my classes’ selection activity ended at a beautiful destination. Regular practical knowledge disburses by renowned experienced professors helped me scale up my understanding of the subjects. The personal attention of professors not only refurbished my knowledge structure but also deepen the foundation. Experience of this Service provided by quickindia was beyond my expectations.
+                      I chose to get admission through quickdials, I got admission in the best IAS Academy and all my classes’ selection activity ended at a beautiful destination. Regular practical knowledge disburses by renowned experienced professors helped me scale up my understanding of the subjects. The personal attention of professors not only refurbished my knowledge structure but also deepen the foundation. Experience of this Service provided by quickdials was beyond my expectations.
                     </p>
                     <h6>Sweta Jha</h6>
                   </div>
@@ -1495,7 +1495,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
 				<div class="single-testi">
                   <div class="testi-text">
                     <p>
-                      The whole faculty & staff members make the IIT JEE preparation a fun-oriented & self- introspecting journey. The study materials and nurturing with the friendly atmosphere helps a lot for the aspirants like me in this arduous path. Thanks a lot to quickindia Team for guiding me and provide me the best institute.
+                      The whole faculty & staff members make the IIT JEE preparation a fun-oriented & self- introspecting journey. The study materials and nurturing with the friendly atmosphere helps a lot for the aspirants like me in this arduous path. Thanks a lot to quickdials Team for guiding me and provide me the best institute.
                     </p>
                     <h6>Ravi Kumar</h6>
                   </div>
@@ -1521,7 +1521,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
                         <li><span><img src="<?php echo asset('client/images/icon-1.png'); ?>"></span>Thousands of students fill this form to get best deals for the preparation of entrance exams.</li>
                         <li><span><img src="<?php echo asset('client/images/icon-2.png'); ?>"></span>Only certified Institutes will contact you with best deals with Full details.</li>
                         <li><span><img src="<?php echo asset('client/images/icon-3.png'); ?>"></span>We Tried to fulfilled your requirements as soon as possible.</li>
-                        <li><span><img src="<?php echo asset('client/images/icon-1.png'); ?>"></span>G-21, Third Floor, Sector-3, Noida, 201301, Email:- info@quickindia, Phone:-7011310265, Website:- www.quickindia.com</li>
+                        <li><span><img src="<?php echo asset('client/images/icon-1.png'); ?>"></span>G-21, Third Floor, Sector-3, Noida, 201301, Email:- info@quickdials, Phone:-7011310265, Website:- www.quickdials.com</li>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 formrightBlock">
@@ -1594,7 +1594,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
 	
         <a href="javascript:void(0);" class="connectedclosebtn">&nbsp;</a>
 		 <h4>Need Expert Advice ?</h4>
-        <div class="jbt"> Fill this form to Grab the best Deals on <span class="orng">quickindia</span></div>
+        <div class="jbt"> Fill this form to Grab the best Deals on <span class="orng">quickdials</span></div>
         <div class="popup">
             <form class="lead_form_popup" action="{{url('/client/lead/add-lead')}}" method="POST">
                 <aside>	              
@@ -1704,7 +1704,7 @@ quickindia.com is an extensive search engine for the students, parents, Professi
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="copyright text-center">
               <p>
-                &copy; Copyright <strong>quickindia</strong>. All Rights Reserved
+                &copy; Copyright <strong>quickdials</strong>. All Rights Reserved
               </p>
             </div>
             

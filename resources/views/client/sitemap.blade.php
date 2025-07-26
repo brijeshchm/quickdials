@@ -1,17 +1,17 @@
  
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
-<loc>https://www.quickindia.in/</loc>
+<loc>https://www.quickdials.in/</loc>
 <lastmod>2025-05-09T09:59:21+00:00</lastmod>
 <priority>1.00</priority>
 </url>
 <url>
-<loc>https://www.quickindia.in/about-us/</loc>
+<loc>https://www.quickdials.in/about-us/</loc>
 <lastmod>2025-05-09T09:59:21+00:00</lastmod>
 <priority>0.80</priority>
 </url>
 <url>
-<loc>https://www.quickindia.in/business-owners/</loc>
+<loc>https://www.quickdials.in/business-owners/</loc>
 <lastmod>2025-05-09T09:59:21+00:00</lastmod>
 <priority>0.80</priority>
 </url>

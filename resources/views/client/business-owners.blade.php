@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-Quick India- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education
 @endsection 
 @section('keyword')
-Quick India- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education
 @endsection
 @section('description')
-Quick India- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education
 @endsection
 @section('content')	
 
@@ -467,16 +467,16 @@ display: block;
 <div class="" >
  <div class="growthbusiness">
   <div class="blog-title text-center">
-            <h3>How Quick India help You to Grow your Business</h3>  			
+            <h3>How Quick Dials help You to Grow your Business</h3>  			
             </div>
 			 
       <div class="col-md-12">    
             
      <div class="col-md-6">           
-     <h3> <a href="javascript:void(0)">How Quick India help You to Grow your Business?</a></h3>
-     <p>Education is the main root of developing your life into a stable place to help you grow and to achieve success in the future. Quick India a growing education consultancy provider understand the growth. A company builds to help in providing the basic need of every individual related to education.</p>
-		<h3> <a href="javascript:void(0)">What is Quick India?</a></h3>
-		<p>Quick India is an extensive search engine for the students, parents, and professionals, those who are seeking an education platform for giving growth to their career and to build their future. We only deal with the education sector and helps students and professionals to grab the right opportunity at the right time, we have associated with a number of institutes, colleges and universities to help them provide the right candidate and to help them to grow their business.</p>
+     <h3> <a href="javascript:void(0)">How Quick Dials help You to Grow your Business?</a></h3>
+     <p>Education is the main root of developing your life into a stable place to help you grow and to achieve success in the future. Quick Dials a growing education consultancy provider understand the growth. A company builds to help in providing the basic need of every individual related to education.</p>
+		<h3> <a href="javascript:void(0)">What is Quick Dials?</a></h3>
+		<p>Quick Dials is an extensive search engine for the students, parents, and professionals, those who are seeking an education platform for giving growth to their career and to build their future. We only deal with the education sector and helps students and professionals to grab the right opportunity at the right time, we have associated with a number of institutes, colleges and universities to help them provide the right candidate and to help them to grow their business.</p>
 
   <h3> <a href="javascript:void(0)"> Benefits you will get after associating with us:</a></h3>
                
@@ -492,7 +492,7 @@ display: block;
 	</div>
             
        <div class="col-md-6">
-                 <h3> <a href="javascript:void(0)">Why choose Quick India for growing your business?</a></h3>
+                 <h3> <a href="javascript:void(0)">Why choose Quick Dials for growing your business?</a></h3>
                
 <p>There are a few aspects that make us different from others and the aim directed towards helping the users and the client to get the best opportunity because:</p>
 <ul><li>The work module is very different from others.</li>
@@ -504,7 +504,7 @@ display: block;
 <li>	The leads provided by us are all verified twice by our expert counselors, in order to provide you genuine candidates.</li></ul>
 
 <h3> <a href="javascript:void(0)">contact Us :</a></h3>
-		<p>Contact: +91 70113 10265, Email: info@quickindia.in, Website: www.quickindia.in.</p>
+		<p>Contact: +91 70113 10265, Email: info@quickdials.in, Website: www.quickdials.in.</p>
 		<p>Other ways can be; by registering your business as a free listing, don’t worry, our marketing team is always happy to find you.</p>
 
 
@@ -551,7 +551,7 @@ display: block;
 <!-- Slide Section -->
 
 <!--Start New Section-->
-<h2 class="business-title text-center">Benefits of listing your business with Quick India</h2>
+<h2 class="business-title text-center">Benefits of listing your business with Quick Dials</h2>
 <div class="business-clientBlock">
 	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center">
 		<img class="img-responsive" src="<?php echo asset('client/images/business/group.png'); ?>" alt="Leads that Convert to Business" />
@@ -652,13 +652,13 @@ display: block;
                 <div class="panel-heading">
                   <h4 class="check-title">
 					<a data-toggle="collapse" class="" data-parent="#accordion" href="#check1">
-                        <span class="acc-icons"></span> What is Quick India?
+                        <span class="acc-icons"></span> What is Quick Dials?
 						</a></h4>
                 </div>
                 <div id="check1" class="panel-collapse collapse in">
                   <div class="panel-body">
                     <p>
-                     Quick India is an extensive search engine for the students, parents, and Professionals, Quick India Only Deals In Education Sector and helps students to grab their right opportunity, and helps business owners to grow their business.
+                     Quick Dials is an extensive search engine for the students, parents, and Professionals, Quick Dials Only Deals In Education Sector and helps students to grab their right opportunity, and helps business owners to grow their business.
                     </p>
                   </div>
                 </div>
@@ -668,7 +668,7 @@ display: block;
                 <div class="panel-heading">
                   <h4 class="check-title">
 					<a data-toggle="collapse" data-parent="#accordion" href="#check2">
-                        <span class="acc-icons"></span>Why choose Quick India for growing your business?
+                        <span class="acc-icons"></span>Why choose Quick Dials for growing your business?
 						</a></h4>
                 </div>
                 <div id="check2" class="panel-collapse collapse">
@@ -780,7 +780,7 @@ display: block;
                 <div id="check8" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                    For More Info & any Queries, you can Contact Us on +91 70113 10265 or reach out to us via e-mail @ info@quickindia.in, or list your business as free listing, our marketing team Will Contact you Soon.
+                    For More Info & any Queries, you can Contact Us on +91 70113 10265 or reach out to us via e-mail @ info@quickdials.in, or list your business as free listing, our marketing team Will Contact you Soon.
                     </p>
                   </div>
                 </div>

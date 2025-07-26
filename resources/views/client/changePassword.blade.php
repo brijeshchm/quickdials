@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-Quickindia- Local search, IT Training, Playschool, overseas education
+quickdials- Local search, IT Training, Playschool, overseas education
 @endsection 
 @section('keyword')
-Quickindia- Local search, IT Training, Playschool, overseas education
+quickdials- Local search, IT Training, Playschool, overseas education
 @endsection
 @section('description')
-Quickindia- Local search, IT Training, Playschool, overseas education
+quickdials- Local search, IT Training, Playschool, overseas education
 @endsection
 @section('content')	
 <div class="container">

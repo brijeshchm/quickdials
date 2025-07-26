@@ -335,7 +335,7 @@ $.ajaxSetup({
 				success: function(response) {
 					//$(this).reset();
 					if(response.status){
-						  window.location = "https://www.quickindia.in/coaching/thank";						  
+						  window.location = "https://www.quickdials.in/coaching/thank";						  
 						$this.find('.reset_lead_form').click();						
 						$('.connectedclosebtn').click();
 						$('.dealclosebtn').click();

@@ -12,7 +12,7 @@
                <div class="head-info-box">
                   <h4>Head Office</h4>
                   <p>
-                     <span>Quick India</span><br>
+                     <span>Quick Dials</span><br>
                      <span>Pillar No.33, NH-19, opposite flyover, Faridabad, New Delhi,<br>(India)<br></span><br>
                   </p>
                </div>
@@ -58,16 +58,16 @@
                <div class="Email-info-box">
                   <h4>Email</h4>
                   <p>
-                     <a href="mailto:info@quickindia.in">info@quickindia.in</a>							
+                     <a href="mailto:info@quickdials.in">info@quickdials.in</a>							
                   </p>
                   <p>
-                     <a href="mailto:hr@quickindia.in">hr@quickindia.in</a>							
+                     <a href="mailto:hr@quickdials.in">hr@quickdials.in</a>							
                   </p>
                   <p>
-                     <a href="mailto:admin@quickindia.in">admin@quickindia.in</a>							
+                     <a href="mailto:admin@quickdials.in">admin@quickdials.in</a>							
                   </p>
                   <p>
-                     <a href="mailto:feedback@quickindia.in">feedback@quickindia.in</a>							
+                     <a href="mailto:feedback@quickdials.in">feedback@quickdials.in</a>							
                   </p>
                </div>
             </div>
@@ -86,8 +86,8 @@
                   <div class="follow-sticker">
                      <h4 style="color:#FFF;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #aaa;">Follow Us</h4>
                      <ul class="list-inline">
-                        <li><a class="facebook" target="_blank" href="https://web.facebook.com/quickindia"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="twitter" target="_blank" href="https://twitter.com/quickindia"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="facebook" target="_blank" href="https://web.facebook.com/quickdials"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="twitter" target="_blank" href="https://twitter.com/quickdials"><i class="fa fa-twitter"></i></a></li>
                         <li><a class="linkedIn" target="_blank" href="https://in.linkedin.com/"><i class="fa fa-linkedin"></i></a></li>
                         <li><a class="youTube" target="_blank" href=""><i class="fa fa-google-plus"></i></a></li>
                      </ul>

@@ -1,13 +1,13 @@
 @extends('client.layouts.app')
 @section('title')
-QuickIndia | Your Career Path Begins Here
+quickdials | Your Career Path Begins Here
 @endsection 
 @section('keyword')
 Find Best It Training Centre near You, Find Best It Training Institute near You, Find Top 10 IT Training Institute near You, Find Best Entrance Exam Preparation Centre Near you, Top 10 Entrance Exam Centre Near you, Find Best Distance Education Centre Near You, Find Top 10 Distance Education Centre Near You, Find Best School And Colleges Near You, Find Top 10 school And College Near You, Get Education Loan, GET Free career Counselling, Find Best overseas education consultants Near you, Find Top 10 overseas education consultants Near you
 
 @endsection
 @section('description')
-Find Only Certified Training Institutes, Coaching Centers near you on QuickIndia and Get Free counseling, Free Demo Classes, and Get Placement Assistence.
+Find Only Certified Training Institutes, Coaching Centers near you on quickdials and Get Free counseling, Free Demo Classes, and Get Placement Assistence.
 @endsection
 @section('content')	
 
@@ -33,7 +33,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on QuickIndia
 	background-position:center top;
 	min-height:350px;
 	position:relative;
-	      background-image: url(../landingimage/Entrance-Exam-QuickIndia-Banner.jpg);
+	      background-image: url(../landingimage/Entrance-Exam-quickdials-Banner.jpg);
 }
 .landing::before{
     content: "";
@@ -336,7 +336,7 @@ margin-bottom: 15px;
 <div class="course-part">   
             
       <div class="image-left">
-		<img src="{{asset('landingimage/entrance-image-QuickIndia.jpg')}}" width="100%" title="Software Development Services" alt="Software Development Services">
+		<img src="{{asset('landingimage/entrance-image-quickdials.jpg')}}" width="100%" title="Software Development Services" alt="Software Development Services">
             </div>
             
        
@@ -395,7 +395,7 @@ margin-bottom: 15px;
                                 <div class="clearfix"></div>
                                 <!--button type="button" class="btn btn-primary submit-btn-2">Get Quotes</button-->
 								<input type="submit" class="btn btn-primary submit-btn-2" value="Get Quotes" />
-                                <a href="https://quickindia.in/privacy-policy" target="_blank" class="pull-right trmcondition">T&C Apply</a> </div>
+                                <a href="https://quickdials.in/privacy-policy" target="_blank" class="pull-right trmcondition">T&C Apply</a> </div>
                         </div>
                     </form>
                 </div>
@@ -598,7 +598,7 @@ margin-bottom: 15px;
 			<div class="col-md-6">
 			<div class="features-left">            
 
-			<h3> QuickIndia beneficial provide the IT Training</h3>
+			<h3> quickdials beneficial provide the IT Training</h3>
 			 
 		
 			<div class="single-well">   
@@ -617,19 +617,19 @@ margin-bottom: 15px;
 			<i class="fa fa-check"></i>High students placement institute with connected.
 			</li>
 			<li>
-			<i class="fa fa-check"></i>QuickIndia Lead provider Service Managment.
+			<i class="fa fa-check"></i>quickdials Lead provider Service Managment.
 			</li>
 			<li>
-			<i class="fa fa-check"></i>QuickIndia Marketing Executive Operater Manager.
+			<i class="fa fa-check"></i>quickdials Marketing Executive Operater Manager.
 			</li>
 			<li>
-			<i class="fa fa-check"></i>QuickIndia Marketing Executive Telesales and Telemarketing Manager.
+			<i class="fa fa-check"></i>quickdials Marketing Executive Telesales and Telemarketing Manager.
 			</li>
 			<li>
-			<i class="fa fa-check"></i>QuickIndia Business Development Executive  
+			<i class="fa fa-check"></i>quickdials Business Development Executive  
 			</li>
 			<li>
-			<i class="fa fa-check"></i>QuickIndia Provide Marketing   
+			<i class="fa fa-check"></i>quickdials Provide Marketing   
 			</li>
 
 
@@ -692,7 +692,7 @@ margin-bottom: 15px;
 	
         <a href="javascript:void(0);" class="connectedclosebtn">&nbsp;</a>
 		 <h4>Need Expert Advice sdsad ?</h4>
-        <div class="jbt"> Fill this form to Grab the best Deals on <span class="orng">QuickIndia</span></div>
+        <div class="jbt"> Fill this form to Grab the best Deals on <span class="orng">quickdials</span></div>
         <div class="popup">
             <form class="lead_form" action="{{url('/client/lead/add-lead')}}" method="POST">
                 <aside>	              

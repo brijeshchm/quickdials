@@ -205,9 +205,9 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 
     var currency_code_id = jQuery('form#razorpay-frm-payment').find('input#currency').val();
       var key_id = jQuery('form#razorpay-frm-payment').find('input#RAZOR_KEY_ID').val();
-    var store_name = 'Quick India Pvt Ltd';
+    var store_name = 'Quick Dials Pvt Ltd';
     var store_description = 'Package Pay';
-    var store_logo = 'https://quickindia.in/public/client/images/logo.png';
+    var store_logo = 'https://quickdials.in/public/client/images/logo.png';
     var email = jQuery('form#razorpay-frm-payment').find('input#billing-email').val();
     var phone = jQuery('form#razorpay-frm-payment').find('input#billing-phone').val();
     var coins = jQuery('form#razorpay-frm-payment').find('input#coins').val();

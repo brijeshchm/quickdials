@@ -47,7 +47,7 @@ return [
             'url' => env('DB_URL'),
             'host' => 'localhost',
             'port' => env('DB_PORT', '3306'),
-            'database' => 'quickrqw_quickindia',
+			'database' => 'quickrqw_quickindia',
             'username' => 'quickrqw_quickindia',
             'password' => 'quick@25#EDC&',
             'unix_socket' => env('DB_SOCKET', ''),

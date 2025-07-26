@@ -33,9 +33,9 @@ class EmailController extends Controller
 				$client="Students";
 			$check=  Mail::send($template, ['client'=>$client], function ($m) use ($client) {   
          
-            $m->from('info@quickindia.in', 'Quickindia');             
+            $m->from('info@quickdials.in', 'quickdials');             
             //$client->email
-            $m->to('infon@quickindia.in', '')->subject('Learning course');
+            $m->to('infon@quickdials.in', '')->subject('Learning course');
         });	 
 		if($check){
 			echo "Success";

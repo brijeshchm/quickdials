@@ -20,7 +20,7 @@
                                         <table class="m_-3031551356041827469MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100.0%">
                                             <tbody>
                                                 <tr style="height:3.75pt">
-                                                    <td style="background:#005DFF;padding:0in 0in 0in 0in;height:3.75pt"><p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:14.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#fff;font-weight: 900;">quickindia help of provide leads</span><u></u><u></u></p></td>
+                                                    <td style="background:#005DFF;padding:0in 0in 0in 0in;height:3.75pt"><p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:14.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#fff;font-weight: 900;">quickdials help of provide leads</span><u></u><u></u></p></td>
                                                    
                                                 </tr>
                                             </tbody>
@@ -30,15 +30,15 @@
                             </tr>
                             <tr style="height:60.0pt">
                                 <td width="55%" style="width:55.0%;border:none;padding:0in 7.5pt 0in 7.5pt;height:60.0pt">
-                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickindia.com" title="quickindia.com" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="https://quickindia.com/client/images/logo-blue.png" alt="quickindia.com" class="CToWUd"></span></a>
+                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickdials.com" title="quickdials.com" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="https://quickdials.com/client/images/logo-blue.png" alt="quickdials.com" class="CToWUd"></span></a>
                                         </span></p>
                                 </td>
                                  <td width="45%" style="border:none;padding:0in 7.5pt 0in 0in;height:60.0pt">
-									<p style="margin:0px 0px 0px 0px"><strong>quickindia Media Pvt Ltd</strong></p>
+									<p style="margin:0px 0px 0px 0px"><strong>quickdials Media Pvt Ltd</strong></p>
 									<p style="margin:0px 0px 0px 0px">G-21 Sector-3 Noida.</p>
 									<p style="margin:0px 0px 0px 0px">Phone :+91-7011310265</p>
-									<p style="margin:0px 0px 0px 0px">Email : info@quickindia.com</p>
-									<p style="margin:0px 0px 0px 0px;">Website : www.quickindia.com</p>
+									<p style="margin:0px 0px 0px 0px">Email : info@quickdials.com</p>
+									<p style="margin:0px 0px 0px 0px;">Website : www.quickdials.com</p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
                             </tr>
@@ -126,7 +126,7 @@
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 0in 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email ID :</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-          help@quickindia.com</span><u></u><u></u></p>
+          help@quickdials.com</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -157,7 +157,7 @@
                                                 <td style="padding:22.5pt 15.0pt 22.5pt 15.0pt">
                                                     <div>
                                                         <p class="MsoNormal" style="line-height:18.75pt"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Regards,<br>
-      quickindia Media Pvt. Ltd. </span><u></u><u></u></p>
+      quickdials Media Pvt. Ltd. </span><u></u><u></u></p>
                                                     </div>
                                                 </td>
                                             </tr>

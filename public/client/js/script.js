@@ -951,7 +951,7 @@ $.ajaxSetup(
 		// **********************
 		$('#commentform').submit(function(e){
 			e.preventDefault();
-			var msg = 'Please check if all the mandatory fields are filled as listed below:<br> <span class="orng" style="font-weight:normal">"Rating", "Name", "Mobile", "Email" &amp; "Comment"</span><br> to submit your<br>review and rating.<br><br><br><strong>Thanks,<br>Quick India Team<br></strong>';
+			var msg = 'Please check if all the mandatory fields are filled as listed below:<br> <span class="orng" style="font-weight:normal">"Rating", "Name", "Mobile", "Email" &amp; "Comment"</span><br> to submit your<br>review and rating.<br><br><br><strong>Thanks,<br>Quick Dials Team<br></strong>';
 			if(($('#commentform').find('[name="s_rating"]').length==1 && $('#commentform').find('[name="s_rating"]').val()=='')||($('#commentform').find('[name="comment_author"]').length==1 && $('#commentform').find('[name="comment_author"]').val()=='')||($('#commentform').find('[name="comment_author_phone"]').length==1 && $('#commentform').find('[name="comment_author_phone"]').val()=='')||($('#commentform').find('[name="comment_author_email"]').length==1 && $('#commentform').find('[name="comment_author_email"]').val()=='')||($('#commentform').find('[name="comment_content"]').length==1 && $('#commentform').find('[name="comment_content"]').val()=='')){
 				$('#myModal .modal-body').html(msg);
 				$('#myModal').modal();
@@ -1036,7 +1036,7 @@ $.ajaxSetup(
 			$('html, body').animate({
 				scrollTop: $("#wrt").offset().top-130
 			}, 1000);
-			var msg = 'Please provide your <span class="orng" style="font-weight:normal">"Name", "Mobile", "Email" &amp; "Comment"</span> to submit your<br>review and rating.<br><br><br><strong>Thanks,<br>Quick India Team<br></strong>';
+			var msg = 'Please provide your <span class="orng" style="font-weight:normal">"Name", "Mobile", "Email" &amp; "Comment"</span> to submit your<br>review and rating.<br><br><br><strong>Thanks,<br>Quick Dials Team<br></strong>';
 			if(($('#commentform').find('[name="s_rating"]').length==1 && $('#commentform').find('[name="s_rating"]').val()=='')||($('#commentform').find('[name="comment_author"]').length==1 && $('#commentform').find('[name="comment_author"]').val()=='')||($('#commentform').find('[name="comment_author_phone"]').length==1 && $('#commentform').find('[name="comment_author_phone"]').val()=='')||($('#commentform').find('[name="comment_author_email"]').length==1 && $('#commentform').find('[name="comment_author_email"]').val()=='')||($('#commentform').find('[name="comment_content"]').length==1 && $('#commentform').find('[name="comment_content"]').val()=='')){
 				$('#myModal .modal-body').html(msg);
 				$('#myModal').modal();

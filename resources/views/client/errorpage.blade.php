@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-Quick India-  Oops !Page Not Found
+Quick Dials-  Oops !Page Not Found
 @endsection 
 @section('keyword')
-Quick India- Oops !Page Not Found
+Quick Dials- Oops !Page Not Found
 @endsection
 @section('description')
-Quick India-  Oops !Page Not Found
+Quick Dials-  Oops !Page Not Found
 @endsection
 @section('content')	
 <div class="container">

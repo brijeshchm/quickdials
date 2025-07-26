@@ -2,18 +2,18 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-	<title>QuickIndia-Invoice_<?php echo date('d-m-Y H:i:s'); ?></title>
+	<title>quickdials-Invoice_<?php echo date('d-m-Y H:i:s'); ?></title>
 		<link href="<?php echo asset('public/admin/invoiceprintpdf.css'); ?>" rel="stylesheet">
 	</head>
 	<body>
 		<header>
 			<h1 contenteditable>E-Invoice</h1>
 			<address contenteditable>
-				<b style="font-size: 18px;">Quick India Service Pvt Ltd</b>
+				<b style="font-size: 18px;">Quick Dials Service Pvt Ltd</b>
 				<p> E-24, Sector-3 Noida, U.P India </p>
 				<p>Phone : 120-49999</p>
-				<p>Email : info@quickindia.in</p>
-				<p>Website : www.quickindia.in</p>
+				<p>Email : info@quickdials.in</p>
+				<p>Website : www.quickdials.in</p>
 				<img src="{{asset('/public/client/images/logo-blue.png')}}">
 			</address>
 			<table class="meta">

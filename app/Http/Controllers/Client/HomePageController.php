@@ -262,23 +262,23 @@ class HomePageController extends Controller
          
           
         
-           //to = array( "quickindiawebsite@gmail.com");
+           //to = array( "quickdialswebsite@gmail.com");
           
-         /* $to = array( "info@quickindia.co.in");
+         /* $to = array( "info@quickdials.co.in");
  		     Mail::send('mails.send_lead_inquiry', ['msg'=>$message], function ($m) use ($message,$request,$subject,$stdemail,$codemail,$to) {
-				$m->from('leads@quickindia.co.in', $request->input('name'));
+				$m->from('leads@quickdials.co.in', $request->input('name'));
 				$m->to($to, "")->subject($subject);	
 			});   
       */
 		/*	if(!empty($request->input('email'))){
 			$headers  = 'MIME-Version: 1.0' . "\r\n";
 			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-			$headers .= 'From: quickindia <leads@quickindia.co.in>';
+			$headers .= 'From: quickdials <leads@quickdials.co.in>';
 			$stdemail=$request->input('email');
 	    	$std_message=$request->input('name');
 			$subject_stud=$request->input('name') .": Thanks for your Enquiry";	
  		    Mail::send('mails.mailer', ['name'=>$std_message], function ($m) use ($std_message,$request,$subject_stud,$stdemail) {
-				$m->from('leads@quickindia.co.in', 'Croma Campus');
+				$m->from('leads@quickdials.co.in', 'Croma Campus');
 				$m->to($stdemail, "")->subject($subject_stud);				
 			});  
 			}
@@ -875,9 +875,9 @@ public function saveTwoEnquiry(Request $request){
 				$client="Institute";
 			 $check=  Mail::send($template, ['client'=>$client,'lead'=>$lead,'city'=>$city,'cityname'=>$cityname], function ($m) use ($client,$lead) {    
          
-            $m->from('info@quickindia.in', 'quickindia');             
+            $m->from('info@quickdials.in', 'quickdials');             
             //$client->email
-            $m->to('info@quickindia.in', $lead->name)->subject('quickindia Lead: '.$lead->kw_text)->cc('quickindia1@gmail.com');
+            $m->to('info@quickdials.in', $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
         });	  */
 										 
 				 	
@@ -1444,8 +1444,8 @@ public function saveTwoEnquiry(Request $request){
 		}
 		$email = $request->input('email');
         Mail::send('emails.newsletter', ['email'=>$email], function ($m) use($email) {
-            $m->from('newsletter@quickindia.in', 'quickindia');
-            $m->to('care@quickindia.in', 'quickindia')->subject('Newsletter Subscription');
+            $m->from('newsletter@quickdials.in', 'quickdials');
+            $m->to('care@quickdials.in', 'quickdials')->subject('Newsletter Subscription');
         });
 		
 		return response()->json(['status'=>1,'message'=>'Successfully subscribed to our newsletter']);

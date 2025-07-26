@@ -1,7 +1,7 @@
 
 @extends('client.layouts.app')
 @section('title')
-     FAQ's Quick India
+     FAQ's Quick Dials
 @endsection
 @section('content') 
 <div class="about-bg page-hearder-area">
@@ -28,14 +28,14 @@
                 <div class="panel-heading">
                   <h4 class="check-title">
 											<a data-toggle="collapse" class="active" data-parent="#accordion" href="#check1">
-                                                <span class="acc-icons"></span>Why should I create a business profile on Quick India?.
+                                                <span class="acc-icons"></span>Why should I create a business profile on Quick Dials?.
 											</a>
 										</h4>
                 </div>
                 <div id="check1" class="panel-collapse collapse in">
                   <div class="panel-body">
                     <p>
-                     Quick India offers a non-conventional platform dedicated to delivering high-quality leads and connecting educational institutions with motivated candidates. Our in-house personalized counseling further enhances our service, providing a competitive edge to clients seeking access to a highly specific and active database of prospective students.
+                     Quick Dials offers a non-conventional platform dedicated to delivering high-quality leads and connecting educational institutions with motivated candidates. Our in-house personalized counseling further enhances our service, providing a competitive edge to clients seeking access to a highly specific and active database of prospective students.
                     </p>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                 <div id="check2" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                      Connect from our expert customer support at help@quickindia.com 
+                      Connect from our expert customer support at help@quickdials.com 
                     </p>
                   </div>
                 </div>
@@ -69,7 +69,7 @@
                 <div id="check3" class="panel-collapse collapse ">
                   <div class="panel-body">
                     <p>
-                       Quick India offers extensive on-site and on-web support, subject to a few terms & conditions.
+                       Quick Dials offers extensive on-site and on-web support, subject to a few terms & conditions.
                     </p>
                   </div>
                 </div>
@@ -86,7 +86,7 @@
                 <div id="check4" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                      Quick India offers the best pricing in its class, providing a sufficient number of users under a single license.
+                      Quick Dials offers the best pricing in its class, providing a sufficient number of users under a single license.
                     </p>
                   </div>
                 </div>

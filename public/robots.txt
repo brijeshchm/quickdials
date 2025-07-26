@@ -2,5 +2,5 @@ User-agent: *
 User-agent:GoogleSearchBot
 user-agent:BingSearchBot
 user-agent:YahooSearchBot
-Disallow: /https://quickindia.in/
-Disallow: /https://quickindia.in
+Disallow: /https://quickdials.in/
+Disallow: /https://quickdials.in

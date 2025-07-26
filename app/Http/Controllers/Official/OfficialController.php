@@ -180,9 +180,9 @@ class OfficialController extends Controller
 				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 				// Additional headers
 			
-				$headers .= 'From: quickindia <care@quickindia.in>'. "\r\n";
-			$to="care@quickindia.in". "\r\n";
-			//	$to="care@quickindia.in". "\r\n";
+				$headers .= 'From: quickdials <care@quickdials.in>'. "\r\n";
+			$to="care@quickdials.in". "\r\n";
+			//	$to="care@quickdials.in". "\r\n";
 				$subject="New Enquiry". "\r\n";
 			//	$message=view('site.send_enquiry_mail_thanks');
 				
@@ -213,11 +213,11 @@ class OfficialController extends Controller
                             </tr>
                             <tr style="height:60.0pt">
                                 <td width="55%" style="width:55.0%;border:none;padding:0in 7.5pt 0in 7.5pt;height:60.0pt">
-                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickindia.in/" title="quickindia" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="http://quickindia.in/assets/images/logo.png" alt="quickindia" class="CToWUd" width="100px"></span></a>
+                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickdials.in/" title="quickdials" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="http://quickdials.in/assets/images/logo.png" alt="quickdials" class="CToWUd" width="100px"></span></a>
                                         </span><u></u><u></u></p>
                                 </td>
                                 <td width="45%" style="border:none;padding:0in 7.5pt 0in 0in;height:60.0pt">
-                                    <p class="MsoNormal" align="right" style="text-align:right;line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickindia.in/" title="quickindia" target="_blank"><span style="text-decoration:none"><img border="0" width="56%" height="auto" id="m_-3031551356041827469_x0000_i1026" src="http://quickindia.in/assets/images/ISO_9001_Logo.png" alt="ISO" class="CToWUd"></span></a>
+                                    <p class="MsoNormal" align="right" style="text-align:right;line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickdials.in/" title="quickdials" target="_blank"><span style="text-decoration:none"><img border="0" width="56%" height="auto" id="m_-3031551356041827469_x0000_i1026" src="http://quickdials.in/assets/images/ISO_9001_Logo.png" alt="ISO" class="CToWUd"></span></a>
                                         </span><u></u><u></u></p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
@@ -231,7 +231,7 @@ class OfficialController extends Controller
                                         <tbody>
                                             <tr>
                                                 <td style="background:#232222;padding:12.5pt 6.0pt 12.5pt 6.0pt">
-                                                    <p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:14.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:white">Enquiry From quickindia.</span><u></u><u></u></p>
+                                                    <p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:14.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:white">Enquiry From quickdials.</span><u></u><u></u></p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -302,7 +302,7 @@ class OfficialController extends Controller
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="padding:11.25pt 0in 11.25pt 0in">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact Details of quickindia:</span></strong><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact Details of quickdials:</span></strong><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -314,7 +314,7 @@ class OfficialController extends Controller
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 0in 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email ID :</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-          info@quickindia.in</span><u></u><u></u></p>
+          info@quickdials.in</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -345,7 +345,7 @@ class OfficialController extends Controller
                                                 <td style="padding:22.5pt 15.0pt 22.5pt 15.0pt">
                                                     <div>
                                                         <p class="MsoNormal" style="line-height:18.75pt"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Regards,<br>
-      quickindia (P) Ltd. </span><u></u><u></u></p>
+      quickdials (P) Ltd. </span><u></u><u></u></p>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -378,11 +378,11 @@ class OfficialController extends Controller
 					$headers  = 'MIME-Version: 1.0' . "\r\n";
 				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
 				// Additional headers
-				//	$headers .= 'From: enquiry@quickindia.in' . "\r\n";
-				$headers .= 'From: quickindia <care@quickindia.in>';
+				//	$headers .= 'From: enquiry@quickdials.in' . "\r\n";
+				$headers .= 'From: quickdials <care@quickdials.in>';
 				//$headers .= "CC: info@gmail.com\r\n";
 				$to=$lead->email;
-				$subject="Thanks for quickindia Enquiry";
+				$subject="Thanks for quickdials Enquiry";
 					$message ='<html>
 <body>
 <table class="m_-3031551356041827469MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100.0%">
@@ -410,11 +410,11 @@ class OfficialController extends Controller
                             </tr>
                             <tr style="height:60.0pt">
                                 <td width="55%" style="width:55.0%;border:none;padding:0in 7.5pt 0in 7.5pt;height:60.0pt">
-                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickindia.in/" title="quickindia" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="http://quickindia.in/assets/images/logo.png" alt="quickindia" class="CToWUd" width="100px"></span></a>
+                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickdials.in/" title="quickdials" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="http://quickdials.in/assets/images/logo.png" alt="quickdials" class="CToWUd" width="100px"></span></a>
                                         </span><u></u><u></u></p>
                                 </td>
                                 <td width="45%" style="border:none;padding:0in 7.5pt 0in 0in;height:60.0pt">
-                                    <p class="MsoNormal" align="right" style="text-align:right;line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickindia.in/" title="quickindia" target="_blank"><span style="text-decoration:none"><img border="0" width="56%" height="auto" id="m_-3031551356041827469_x0000_i1026" src="http://quickindia.in/assets/images/ISO_9001_Logo.png" alt="ISO" class="CToWUd" width="100px"></span></a>
+                                    <p class="MsoNormal" align="right" style="text-align:right;line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="http://quickdials.in/" title="quickdials" target="_blank"><span style="text-decoration:none"><img border="0" width="56%" height="auto" id="m_-3031551356041827469_x0000_i1026" src="http://quickdials.in/assets/images/ISO_9001_Logo.png" alt="ISO" class="CToWUd" width="100px"></span></a>
                                         </span><u></u><u></u></p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
@@ -454,7 +454,7 @@ class OfficialController extends Controller
 																			 
 																			<tr><td class="m_8854432245175541298sectionTitle" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;text-align:center;font-size:26px;padding:0px 10px 10px 10px">Helpline No.</td></tr>
 
-																			<tr><td class="m_-5925867924380956427sectionTitle" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;text-align:center;font-size:26px;padding:0px 10px 10px 10px"><strong>+91-9058-100-001</strong></td></tr>																 <tr><td class="m_-5925867924380956427button" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;padding:10px 5px 10px 5px;text-align:center;background-color:#ff6b6b;border-radius:4px"><a href="http://quickindia.in/" title="quickindia" style="color:#ffffff;text-decoration:none;display:block;text-transform:uppercase" target="_blank" data-saferedirecturl="">Visit Us</a></td></tr>
+																			<tr><td class="m_-5925867924380956427sectionTitle" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;text-align:center;font-size:26px;padding:0px 10px 10px 10px"><strong>+91-9058-100-001</strong></td></tr>																 <tr><td class="m_-5925867924380956427button" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;padding:10px 5px 10px 5px;text-align:center;background-color:#ff6b6b;border-radius:4px"><a href="http://quickdials.in/" title="quickdials" style="color:#ffffff;text-decoration:none;display:block;text-transform:uppercase" target="_blank" data-saferedirecturl="">Visit Us</a></td></tr>
 																			   
 																			<tr><td style="padding:18pt 0in 0in 0in;"></td></tr>
 																			
@@ -464,7 +464,7 @@ class OfficialController extends Controller
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="padding:11.25pt 0in 11.25pt 0in">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact Details of quickindia:</span></strong><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact Details of quickdials:</span></strong><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -476,7 +476,7 @@ class OfficialController extends Controller
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 0in 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email ID :</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-          info@quickindia.in</span><u></u><u></u></p>
+          info@quickdials.in</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -509,7 +509,7 @@ class OfficialController extends Controller
                                                 <td style="padding:22.5pt 15.0pt 22.5pt 15.0pt">
                                                     <div>
                                                         <p class="MsoNormal" style="line-height:18.75pt"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Regards,<br>
-      quickindia (P) Ltd. </span><u></u><u></u></p>
+      quickdials (P) Ltd. </span><u></u><u></u></p>
                                                     </div>
                                                 </td>
                                             </tr>

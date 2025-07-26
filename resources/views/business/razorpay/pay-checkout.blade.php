@@ -8,7 +8,7 @@ Find Best It Training Centre near You, Find Best It Training Institute near You,
  
 @endsection
 @section('description')
-Find Only Certified Training Institutes, Coaching Centers near you on QuickIndia and Get Free counseling, Free Demo Classes, and Get Placement Assistence.
+Find Only Certified Training Institutes, Coaching Centers near you on quickdials and Get Free counseling, Free Demo Classes, and Get Placement Assistence.
  
 @endsection
 @section('content')
@@ -249,8 +249,8 @@ document.getElementById("merchant_order_id").value = o;
 				<input type="hidden" name="furl" id="furl" value="http://localhost:8000/business/failed">  
 
 
-				<!--<input type="hidden" name="surl" id="surl" value="https://www.quickindia.in/business/success/"> 
-				<input type="hidden" name="furl" id="furl" value="https://www.quickindia.com/business/failed/">  -->
+				<!--<input type="hidden" name="surl" id="surl" value="https://www.quickdials.in/business/success/"> 
+				<input type="hidden" name="furl" id="furl" value="https://www.quickdials.com/business/failed/">  -->
 
 				<input type="hidden" class="form-control" id="amount1" placeholder="amount" value="<?php if($data->amt){ echo $data->amt; } ?>" readonly="readonly">
 				<input type="hidden" class="form-control" id="amount2" placeholder="amount" value="<?php if($data->amt){ echo $data->amt; } ?>" readonly="readonly">

@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-Quick India- Business Services
+Quick Dials- Business Services
 @endsection 
 @section('keyword')
-Quick India-  Business Services list 
+Quick Dials-  Business Services list 
 @endsection
 @section('description'),  
-Quick India- Business Services POPULAR CATEGORIES, B2B & BUSINESS SERVICES
+Quick Dials- Business Services POPULAR CATEGORIES, B2B & BUSINESS SERVICES
 @endsection
 
 

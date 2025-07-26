@@ -458,10 +458,10 @@ echo json_encode($json);
 						$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 						//	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 						// Additional headers
-						//	$headers .= 'From: enquiry@quickindia.in' . "\r\n";
-						$headers .= 'From: quickindia <enquiry@quickindia.in>';
+						//	$headers .= 'From: enquiry@quickdials.in' . "\r\n";
+						$headers .= 'From: quickdials <enquiry@quickdials.in>';
 					 
-						$to="brijesh.chauhan@quickindia.in";
+						$to="brijesh.chauhan@quickdials.in";
 						$subject="Payment- ".$data->name." | ".$data->course." | ".$request->input('mode')." | ".$data->amt." Amount" ;
 
 						$message =' <tr>
@@ -509,7 +509,7 @@ echo json_encode($json);
 						</tr>
 						 
 						';
-						//$to="quickindialeads@gmail.com";
+						//$to="quickdialsleads@gmail.com";
 
 
 						$stdemail="";
@@ -517,16 +517,16 @@ echo json_encode($json);
 						$coordinator="";
 
 						// echo "<pre>";print_r($_FILES);die;
-					//	$to="accounts@quickindia.in";
+					//	$to="accounts@quickdials.in";
 						Mail::send('mails.send_payment_inquiry', ['msg'=>$message], function ($m) use ($message,$request,$subject,$stdemail,$codemail,$data) {
-						$m->from('info@quickindia.in', $data->name);
+						$m->from('info@quickdials.in', $data->name);
 						if($request->file('photoimg')){ 
 						$m->attach($request->file('photoimg')->getRealPath(), [
 						'as' => $request->file('photoimg')->getClientOriginalName(), 
 						'mime' => $request->file('photoimg')->getMimeType()
 						]);
 						}
-						$m->to('quickindia.ashish@gmail.com', "")->subject($subject)->cc($data->email);				
+						$m->to('quickdials.ashish@gmail.com', "")->subject($subject)->cc($data->email);				
 						});  
 
  

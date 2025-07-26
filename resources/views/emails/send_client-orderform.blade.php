@@ -14,7 +14,7 @@
                                         <table class="m_-3031551356041827469MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100.0%">
                                             <tbody>
                                                 <tr style="height:3.75pt">
-                                                    <td style="background:#ddd;padding:0in 0in 0in 0in;height:3.75pt"><p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:14.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#000;font-weight: 900;">quickindia.com Order Details</span><u></u><u></u></p></td>
+                                                    <td style="background:#ddd;padding:0in 0in 0in 0in;height:3.75pt"><p class="MsoNormal" align="center" style="text-align:center"><span style="font-size:14.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#000;font-weight: 900;">quickdials.com Order Details</span><u></u><u></u></p></td>
                                                    
                                                 </tr>
                                             </tbody>
@@ -24,15 +24,15 @@
                             </tr>
                             <tr style="height:60.0pt">
                                 <td width="50%" style="width:55.0%;border:none;padding:0in 7.5pt 0in 7.5pt;height:68pt">
-                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickindia.com" title="quickindia.com" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="https://quickindia.com/client/images/logo-blue.png" width="80px" alt="quickindia.com" class="CToWUd"></span></a>
+                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickdials.com" title="quickdials.com" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="https://quickdials.com/client/images/logo-blue.png" width="80px" alt="quickdials.com" class="CToWUd"></span></a>
                                         </span></p>
                                 </td>
                                 <td width="45%" style="border:none;padding:0in 7.5pt 0in 0in;height:60.0pt">
-									<p style="margin:0px 0px 0px 0px"><strong>Quickindia Media Pvt Ltd</strong></p>
+									<p style="margin:0px 0px 0px 0px"><strong>quickdials Media Pvt Ltd</strong></p>
 									<p style="margin:0px 0px 0px 0px">E-24 Sector-3 Noida.</p>
 									<p style="margin:0px 0px 0px 0px">Phone :+91-7011310265</p>
-									<p style="margin:0px 0px 0px 0px">Email : info@quickindia.com</p>
-									<p style="margin:0px 0px 0px 0px;">Website : www.quickindia.com</p>
+									<p style="margin:0px 0px 0px 0px">Email : info@quickdials.com</p>
+									<p style="margin:0px 0px 0px 0px;">Website : www.quickdials.com</p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
                             </tr>
@@ -272,11 +272,11 @@
 																			
 																			<tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in">
-                                                                                    <p class="MsoNormal"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333;font-weight: 900;">Note:</span><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">You can check your balance value and the pending lead details while login your quickindia.com.
+                                                                                    <p class="MsoNormal"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333;font-weight: 900;">Note:</span><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">You can check your balance value and the pending lead details while login your quickdials.com.
 																					Apart from this No verbal and written commitment will not consider.</span><u></u><u></u></p>
 																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">This contract (which term includes this order form and terms expressly referred to herein) represent the entire agreement between the concerned parties and shall prevail over, exclude and supersede any other terms or conditions, oral or written.</p>
 																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Your Advertisement will be activated within 3 days of the payment clearance,</p>
-																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Should you have any queries, please contact us on our Toll free number 1800-000-000 or email to <a href="https://quickindia.com/official/contact#contact" target="_blank">help@quickindia.com.</a></p>
+																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Should you have any queries, please contact us on our Toll free number 1800-000-000 or email to <a href="https://quickdials.com/official/contact#contact" target="_blank">help@quickdials.com.</a></p>
 																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">This is an advertisement contract and the applicable rate of TDS is @ 2% only under section 194C. Kindly deduct TDS on the net amount only (Contract /Package value) excluding Tax portion.</p>
 																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Timings: Monday to Sunday: 24/7.</p>
 																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Please click below to refer the terms and conditions.</p>
@@ -284,7 +284,7 @@
                                                                             </tr>
 																			<tr>
                                                                                 <td style="padding:11.25pt 0in 11.25pt 0in">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="https://quickindia.com/official/privacy-policy" target="_blank">Terms & Condition :</a></span></strong><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="https://quickdials.com/official/privacy-policy" target="_blank">Terms & Condition :</a></span></strong><u></u><u></u></p>
 																					<p style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Looking forward to a long and fruitful association with you!</p>
 																					 
                                                                                 </td>
@@ -296,7 +296,7 @@
 																			<td style="padding:22.5pt 15.0pt 22.5pt 0.0pt">
 																			<div>
 																			<p style="margin:0px 0px 5px 0px">Sincerely,</p>
-																			<p class="MsoNormal" style="margin:0px 0px 0px 0px"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333;font-weight: 900;">Team quickindia Media Pvt. Ltd. </span></p>
+																			<p class="MsoNormal" style="margin:0px 0px 0px 0px"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333;font-weight: 900;">Team quickdials Media Pvt. Ltd. </span></p>
 																			<p style="margin:0px 0px 0px 0px">Regd Office: G-21, 3rd Floor Sector-3, Noida-201301, Uttar Pradesh.</p>
 
 																			</div>

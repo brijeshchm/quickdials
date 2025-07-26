@@ -1858,7 +1858,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 						 alert('Successfully Assigned Leads');		
 					var strdata = data.leadslist;					 
 						 $.ajax({
-					url:"https://www.quickindia.in/apiddd/lead/add/",
+					url:"https://www.quickdials.in/apiddd/lead/add/",
 					//url:"/apiddd/lead/add", //working
 					//url:"http://182.18.170.106:8084/api/lead",
 					type:"POST",

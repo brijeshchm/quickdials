@@ -21,7 +21,7 @@
       <div class="row">
           
        <div class="col-md-6 col-sm-6 col-xs-12">
-			<h4>Quick India have good opportunity of careers :-</h4>        
+			<h4>Quick Dials have good opportunity of careers :-</h4>        
 		<div class="well-middle">
             <div class="single-well">             
               
@@ -41,7 +41,7 @@
                   <i class="fa fa-check"></i>Management Direction.
                 </li>
 				<li>
-                  <i class="fa fa-check"></i>Quick India Lead provider Service Manager.
+                  <i class="fa fa-check"></i>Quick Dials Lead provider Service Manager.
                 </li>
 				<li>
                   <i class="fa fa-check"></i>Opening Marketing Executive Operater Manager.

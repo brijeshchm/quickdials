@@ -20,8 +20,8 @@
 <meta content="All, FOLLOW" name="BINGBots" />
 <meta content="All, FOLLOW" name="YAHOOBots" />
 <meta content="All, FOLLOW" name="GoogleBots" />
-<meta name="copyright" content="quickindia">
-<meta name="author" content="quickindia" />
+<meta name="copyright" content="quickdials">
+<meta name="author" content="quickdials" />
 <meta http-equiv="CACHE-CONTROL" content="PUBLIC" />
 <meta name="publisher" content="" />
 <meta name="identifier-URL" content="{{url('/')}}">
@@ -41,8 +41,8 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="@yield('title')" />
 <meta property="og:description" content="@yield('description')" />
-<meta property="og:url" content="https://quickindia.in/" />
-<meta property="og:site_name" content="quickindia" />
+<meta property="og:url" content="https://quickdials.in/" />
+<meta property="og:site_name" content="quickdials" />
 <meta property="fb:app_id" content="https://www.facebook.com/quickindofficial/" />
 <meta property="og:image" content="{{asset('client/images/quickind-logo-blue.png')}}" />
 <meta property="og:image:secure_url" content="{{asset('client/images/logo.png')}}" />
@@ -57,9 +57,9 @@
 <meta name="robots" content="ALL">
 <meta name="googlebot" content=" index, follow ">
 <meta name="bingbot" content=" index, follow " >
-<meta name="reply-to" content="info@quickindia.in">
+<meta name="reply-to" content="info@quickdials.in">
 <meta name="expires" content="never" >
-<link rel="alternate" href="https://quickindia.in/" hreflang="en-in" />
+<link rel="alternate" href="https://quickdials.in/" hreflang="en-in" />
 
 
 <!-- SCRIPT-SPINNER -->  
@@ -93,7 +93,7 @@
 {
   "@context": "http://schema.org",
   "@type": "Organization",
-  "url": "https://quickindia.in",
+  "url": "https://quickdials.in",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Noida",
@@ -102,14 +102,14 @@
     "streetAddress": ""
   },
   "description": "An Education Information Provider.",
-  "name": "QuickIndia",
+  "name": "quickdials",
   "contactPoint": [{
     "@type": "ContactPoint",
     "telephone": "+91-7011310265",
     "contactType": "Customer service"
   }],
-  "logo": "https://quickindia.in/public/client/images/quickind-logo-blue.png",
-  "sameAs": ["https://www.facebook.com/quickindiaofficial/"]
+  "logo": "https://quickdials.in/public/client/images/quickind-logo-blue.png",
+  "sameAs": ["https://www.facebook.com/quickdialsofficial/"]
 }
 </script>-->
 
@@ -135,7 +135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <div class="logo">
                 <h1 title="quickind">                  
-                    <a href="{{url('/')}}"><img src="<?php echo asset('client/images/logo.png'); ?>" alt="Quick india" class="img-responsive" /></a> 
+                    <a href="{{url('/')}}"><img src="<?php echo asset('client/images/logo.png'); ?>" alt="Quick Dials" class="img-responsive" /></a> 
                 </h1>
             </div>
      
@@ -435,7 +435,7 @@ searchInputs[i].value = '';
         <div class="container-fluid">
             <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12">
-        <h2>A Few Stats About <span> Quickindia </span></h2>
+        <h2>A Few Stats About <span> quickdials </span></h2>
         <ul class="seoabout_listing">
         <li>
         <div class="image"><i class="fa fa-calendar" aria-hidden="true"></i></div>
@@ -502,7 +502,7 @@ searchInputs[i].value = '';
 <li><a href="{{url('/careers')}}"  title="Careers">Careers</a></li>
 <li><a href="{{url('/contact-us')}}" title="Contact Us">Contact Us</a></li>
 <li><a href="{{url('blog')}}" title="Blog">Blog</a></li> 
-<li><a href="{{url('business-owners')}}" rel="nofollow" title="Advertise on quickindia">Advertise on Quickindia</a></li>
+<li><a href="{{url('business-owners')}}" rel="nofollow" title="Advertise on quickdials">Advertise on quickdials</a></li>
 <!--<li><a href="{{url('official/terms-conditions')}}" title="Terms & Conditions">Terms & Conditions</a></li>-->
 <li><a href="{{url('/privacy-policy')}}" title="Privacy Policy">Privacy Policy</a></li>
 <li><a href="{{url('/copyright-policy')}}" title="Copyright Policy">Copyright Policy</a></li>
@@ -523,12 +523,12 @@ searchInputs[i].value = '';
                             <h4 style="color:#FFF;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #aaa;">Follow Us</h4>
                            <ul class="list-inline">
                                 <li><a class="facebook"  href="https://www.facebook.com//" title="Like us on Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter"  href="https://twitter.com/quickindia" title="Follow us on Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="linkedIn"  href="https://www.linkedin.com/company/quickindia" title="Follow us on Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="twitter"  href="https://twitter.com/quickdials" title="Follow us on Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="linkedIn"  href="https://www.linkedin.com/company/quickdials" title="Follow us on Linkedin"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a class="youTube"  href="" title="Follow us on youTube"><i class="fa fa-youtube-play"></i></a></li>
-                                <li><a class="pinterest"  href="https://in.pinterest.com/quickindia/" title="Follow us on Pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a class="instagram"  href="https://www.instagram.com/quickindia/" title="Follow us on Instagram"><i class="fa fa-instagram"></i></a></li>
-                                <li><a class="quara"  href="https://www.quora.com/profile/quickindia" title="Follow us on Quara"><i class="fa fa-quora"></i></a></li>
+                                <li><a class="pinterest"  href="https://in.pinterest.com/quickdials/" title="Follow us on Pinterest"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a class="instagram"  href="https://www.instagram.com/quickdials/" title="Follow us on Instagram"><i class="fa fa-instagram"></i></a></li>
+                                <li><a class="quara"  href="https://www.quora.com/profile/quickdials" title="Follow us on Quara"><i class="fa fa-quora"></i></a></li>
                             </ul>
                         </div>
                     </div>

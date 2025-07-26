@@ -192,12 +192,12 @@
 	        
 	        
 	         <li>
-	            📧 Email: info@quickindia.com
+	            📧 Email: info@quickdials.com
 
 	        </li>
 	        
 	         <li>
-	            🌐 Website: www.quickindia.com
+	            🌐 Website: www.quickdials.com
 
 	        </li>
 	        

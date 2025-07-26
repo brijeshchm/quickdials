@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-A Local Search Engine for Businesses | Quick india
+A Local Search Engine for Businesses | Quick Dials
 @endsection 
 @section('keyword')
 Find Best It Training Centre near You, Find Best It Training Institute near You, Find Top 10 IT Training Institute near You, Find Best Entrance Exam Preparation Centre Near you, Top 10 Entrance Exam Centre Near you, Find Best Distance Education Centre Near You, Find Top 10 Distance Education Centre Near You, Find Best School And Colleges Near You, Find Top 10 school And College Near You, Get Education Loan, GET Free career Counselling, Find Best overseas education consultants Near you, Find Top 10 overseas education consultants Near you
 @endsection
 @section('description')
-Find Only Certified Training Institutes, Coaching Centers near you on QuickIndia and Get Free counseling, Free Demo Classes, and Get Placement Assistence.
+Find Only Certified Training Institutes, Coaching Centers near you on quickdials and Get Free counseling, Free Demo Classes, and Get Placement Assistence.
 @endsection
 @section('content')
 <div class="banner">
@@ -287,10 +287,10 @@ Find Only Certified Training Institutes, Coaching Centers near you on QuickIndia
             <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/rent-buy')}}" >Rent & Buy</a></span>
          </div>
          <div class="img-items">       
-         <div class="items"><a href="{{url('categories/sports-academy')}}" >
+         <div class="items"><a href="{{url('child/sports-academy')}}" >
             <img src="{{asset('img/sports.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url('categories/sports-academy')}}" >Sport Academy</a></span>
+            <span class="title-serv"><a href="{{url('child/sports-academy')}}" >Sport Academy</a></span>
          </div>
          <div class="img-items">   
          <div class="items"><a href="{{('/pg-hostels')}}" >

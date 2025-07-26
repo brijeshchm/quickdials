@@ -846,7 +846,7 @@ class LeadController extends Controller
 									$smsMessage .= "%0D%0AEmail: ".$lead->email;				 
 									}
 									$smsMessage .= "%0D%0AMob: ".$lead->mobile;
-									$smsMessage .= "%0D%0A QuickIndia Team";
+									$smsMessage .= "%0D%0A quickdials Team";
 									//sendSMS(trim($client->mobile),$smsMessage);
 									//sendSMS(trim($mobile),$smsMessage);
 									if(!empty($clientC->sec_mobile))	{																			 
@@ -857,9 +857,9 @@ class LeadController extends Controller
 									/* $template = 'emails.assignleadtoclient';
 									$clientname=$client->business_name;
 									$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-									$m->from('info@quickindia.in', 'QuickIndia');             
+									$m->from('info@quickdials.in', 'quickdials');             
 									//$client->email
-									$m->to('info@quicindia.in', $lead->name)->subject('QuickIndia Lead: '.$lead->kw_text)->cc('QuickIndia1@gmail.com');
+									$m->to('info@quicindia.in', $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
 									});	
  */
 
@@ -1311,7 +1311,7 @@ class LeadController extends Controller
 									}
 									
 									$smsMessage .= "%0D%0AMob: ".$lead->mobile;
-									$smsMessage .= "%0D%0A QuickIndia Team";
+									$smsMessage .= "%0D%0A quickdials Team";
 									//sendSMS(trim($client->mobile),$smsMessage);
 									//sendSMS(trim($mobile),$smsMessage);
 									if (!empty($clientC->sec_mobile)) {										 
@@ -1323,9 +1323,9 @@ class LeadController extends Controller
 									/* $template = 'emails.assignleadtoclient';
 									$clientname=$client->business_name;
 									$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-									$m->from('info@quickindia.in', 'QuickIndia');             
+									$m->from('info@quickdials.in', 'quickdials');             
 									//$client->email
-									$m->to('info@quickindia.in', $lead->name)->subject('QuickIndia Lead: '.$lead->kw_text)->cc('QuickIndia1@gmail.com');
+									$m->to('info@quickdials.in', $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
 									});	
                                     */
 
@@ -1714,7 +1714,7 @@ class LeadController extends Controller
 		$smsMessage .= "%0D%0AMob: ".getStarCodedStr($leadDetail->mobile,'number');
 		$smsMessage .= "%0D%0ACity: ".$leadDetail->city;
 		$smsMessage .= "%0D%0AArea: ".$leadDetail->area;
-		$smsMessage .= "%0D%0A- Quick india Team";
+		$smsMessage .= "%0D%0A- Quick Dials Team";
 		$smsMessage .= "%0D%0A%0D%0ATo get complete information, upgrade to paid account.";
 		 
 		sendSMS($client->mobile,$smsMessage);
@@ -1755,7 +1755,7 @@ class LeadController extends Controller
 			$smsMessage .= "%0D%0AEmail: ".$leadDetail->email;				 
 			}
 			$smsMessage .= "%0D%0AMob: ".$leadDetail->mobile;
-			$smsMessage .= "%0D%0A QuickIndia Team";
+			$smsMessage .= "%0D%0A quickdials Team";
 			//sendSMS(trim($client->mobile),$smsMessage);
 			//sendSMS(trim($mobile),$smsMessage);
 			if(!empty($client->sec_mobile))	{																			 
@@ -1766,9 +1766,9 @@ class LeadController extends Controller
 			/* $template = 'emails.assignleadtoclient';
 			$clientname=$client->business_name;
 			$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-			$m->from('info@quickindia.in', 'QuickIndia');             
+			$m->from('info@quickdials.in', 'quickdials');             
 			//$client->email
-			$m->to('info@quicindia.in', $lead->name)->subject('QuickIndia Lead: '.$lead->kw_text)->cc('QuickIndia1@gmail.com');
+			$m->to('info@quicindia.in', $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
 			});	
 			*/
 
@@ -1796,10 +1796,10 @@ class LeadController extends Controller
 
        $check=  Mail::send($template, ['client'=>$client,'lead'=>$lead], function ($m) use ($client,$lead) {    
          
-            $m->from('info@quickindia.in', 'QuickIndia');
+            $m->from('info@quickdials.in', 'quickdials');
             $email = "info@quicindia.in";
             //$client->email
-           // $m->to('info@quicindia.in', $client->first_name." ".$client->last_name)->subject('QuickIndia Lead: '.$lead->kw_text);
+           // $m->to('info@quicindia.in', $client->first_name." ".$client->last_name)->subject('quickdials Lead: '.$lead->kw_text);
         });
 		 
     }
@@ -2161,7 +2161,7 @@ class LeadController extends Controller
 							if(null!=$client->email || ''!=$client->email){
 								$this->sendLeadEmail($client,$leadDetail[0]);
 							}
-							/* $smsMessage = "Enquiry on Quick india:
+							/* $smsMessage = "Enquiry on Quick Dials:
 							%0D%0AName: ".$leadDetail[0]->name."
 							%0D%0ALooking For: ".$leadDetail[0]->kw_text."
 							%0D%0AIn City: ".$leadDetail[0]->city."
@@ -2170,7 +2170,7 @@ class LeadController extends Controller
 							%0D%0AArea: ".$leadDetail[0]->area."
 							%0D%0ARemark: ".$leadDetail[0]->remark."
 							%0D%0A--
-							%0D%0AQuick india"; */
+							%0D%0AQuick Dials"; */
 							$smsMessage = "Dear Institute,";
 							$smsMessage .= "%0D%0A%0D%0A";
 							$smsMessage .= $leadDetail[0]->name." enquired for ".$leadDetail[0]->kw_text." Training.";
@@ -2180,7 +2180,7 @@ class LeadController extends Controller
 							$smsMessage .= "%0D%0AMob: ".$leadDetail[0]->mobile;
 							$smsMessage .= "%0D%0ACity: ".$leadDetail[0]->city;
 							$smsMessage .= "%0D%0AArea: ".$leadDetail[0]->area;
-							$smsMessage .= "%0D%0A- Quick india Team";
+							$smsMessage .= "%0D%0A- Quick Dials Team";
 						//	sendSMS($client->mobile,$smsMessage);
 						//	if(!empty($client->sec_mobile))
 							//	sendSMS($client->sec_mobile,$smsMessage);
@@ -2471,7 +2471,7 @@ class LeadController extends Controller
 									'Email' =>$lead->email,					
 									'CityName' =>$lead->city_name,					  
 									'CourseName' =>$lead->kw_text,					
-									'SourceName' =>"QuickIndia"					
+									'SourceName' =>"quickdials"					
 									); 
 								
 								$keyword = Keyword::find($lead->kw_id);

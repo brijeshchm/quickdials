@@ -2,25 +2,25 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Quick India-Order_<?php echo date('d-m-Y H:i:s'); ?></title>
+		<title>Quick Dials-Order_<?php echo date('d-m-Y H:i:s'); ?></title>
 		<link rel="stylesheet" href="style.css">
 		<link href="<?php echo asset('admin/printstyle.css'); ?>" rel="stylesheet">
 	</head>
 	<body>
 		<header>
-			<h1>Quick india Order Details </h1>
+			<h1>Quick Dials Order Details </h1>
 				 
 	
 			<section>
-			<img src="https://quickindia.in/client/images/logo-blue.png">
+			<img src="https://quickdials.in/client/images/logo-blue.png">
 			</section>
 			<address>
 			
-				<b style="font-size: 18px;">Quick india Service Pvt Ltd</b>
+				<b style="font-size: 18px;">Quick Dials Service Pvt Ltd</b>
 				<p> Address:Pillar No.33, NH-19, opposite flyover, Faridabad, haryana </p>
 				<p>Phone : +91-7011310265</p>
-				<p>Email : info@quickindia.in</p>
-				<p>Website : www.quickindia.in</p>
+				<p>Email : info@quickdials.in</p>
+				<p>Website : www.quickdials.in</p>
 				<p>GST No : </p>
 				<p>TAN No : </p>
 				
@@ -216,21 +216,21 @@ The order form with the following details has been successfully created.</p>
 			
 		</article>
 			<article>
-		<strong>Note:</strong><p style="margin: -15px 0px 0px 52px;font-size: 12px;margin-bottom:4px;">You can check your balance value and the pending lead details while login your quickindia.in.</p>		
+		<strong>Note:</strong><p style="margin: -15px 0px 0px 52px;font-size: 12px;margin-bottom:4px;">You can check your balance value and the pending lead details while login your quickdials.in.</p>		
 		<p style="font-size: 12px;margin-bottom:6px;">Apart from this No verbal and written commitment will not consider.</p>
 		<p style="font-size: 12px;margin-bottom:6px;">This contract (which term includes this order form and terms expressly referred to herein) represent the entire agreement between the concerned parties and shall prevail over, exclude and supersede any other terms or conditions, oral or written.</p>
 		<p style="font-size: 12px;margin-bottom:6px;">Your Advertisement will be activated within 3 days of the payment clearance,</p>
-		<p style="font-size: 12px;margin-bottom:6px;">Should you have any queries, please contact us on our email to <a style="color: #005DFF;" href="https://www.quickindia.in/contact-us" target="_blank">help@quickindia.in.</a></p>
+		<p style="font-size: 12px;margin-bottom:6px;">Should you have any queries, please contact us on our email to <a style="color: #005DFF;" href="https://www.quickdials.in/contact-us" target="_blank">help@quickdials.in.</a></p>
 		
 		<p style="font-size: 12px;margin-bottom:6px;">This is an advertisement contract and the applicable rate of TDS is @ 2% only under section 194C. Kindly deduct TDS on the net amount only (Contract /Package value) excluding Tax portion.</p>
 		<p style="font-size: 12px;margin-bottom:6px;">Timings: Monday to Sunday: 24/7.</p>
 		<p style="font-size: 12px;margin-bottom:6px;">Please click below to refer the terms and conditions.</p>		
 		</article>
 		<article>
-		<strong><a href="https://www.quickindia.in/privacy-policy" target="_blank">Terms & Condition :</a></strong>
+		<strong><a href="https://www.quickdials.in/privacy-policy" target="_blank">Terms & Condition :</a></strong>
 		<p style="font-size: 12px;margin-bottom:6px;">Looking forward to a long and fruitful association with you!</p>
 		<p style="font-size: 12px;margin-bottom:6px;">Sincerely, </p>
-		<strong>Team Quick India Service Pvt. Ltd.</strong>
+		<strong>Team Quick Dials Service Pvt. Ltd.</strong>
 		<p style="font-size: 12px;margin-top:4px;">Regd Office: E-24, Sector-3, Noida-201301, Uttar Pradesh.</p>
 			</article>
 		<aside>

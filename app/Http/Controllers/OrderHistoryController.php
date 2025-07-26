@@ -383,9 +383,9 @@ class OrderHistoryController extends Controller
 								->get();
 								 								
 					Mail::send('emails.send_client-orderform',['client'=>$client,'order_number'=>$order_number,'total_amount'=>$total_amount,'paid_amount'=>$paid_amount,'gst_tax'=>$gst_tax,'tds_amount'=>$tds_amount,'payment_mode'=>$stud_payment_mode,'assignKeyword'=>$assignKeyword,'paid_amt_in_words'=>$paid_amt_in_words,'pay_mode_details'=>$pay_mode_details,'transactionid'=>$transactionid,'paymentupdate'=>$paymentupdate], function ($m) use ($client) {
-				$m->from('info@quickindia.in', 'quickindia');
-				$email = "info@quickindia.in";
-				$m->to("info@quickindia.in", $client->first_name." ".$client->last_name)->subject('quickindia Order Details')->cc('help@quickindia.in');
+				$m->from('info@quickdials.in', 'quickdials');
+				$email = "info@quickdials.in";
+				$m->to("info@quickdials.in", $client->first_name." ".$client->last_name)->subject('quickdials Order Details')->cc('help@quickdials.in');
 			}); */
 					
 					

@@ -2,19 +2,19 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-	<title>quickindia-Proforma-Invoice_<?php echo date('d-m-Y H:i:s'); ?></title>
+	<title>quickdials-Proforma-Invoice_<?php echo date('d-m-Y H:i:s'); ?></title>
 		<link href="<?php echo asset('admin/invoiceprintpdf.css'); ?>" rel="stylesheet">
 	</head>
 	<body>
 		<header>
 			<h1 contenteditable>Proforma Invoice</h1>
 			<address contenteditable>
-				<b style="font-size: 18px;">Quickindia Media Pvt Ltd</b>
+				<b style="font-size: 18px;">quickdials Media Pvt Ltd</b>
 				<p> G-21, Third Floor, Sector-3 Noida, U.P India </p>
 				<p>Phone : 120-4271088</p>
-				<p>Email : info@quickindia.in</p>
-				<p>Website : www.quickindia.in</p>
-				<img src="https://quickindia.in/client/images/logo-blue.png">
+				<p>Email : info@quickdials.in</p>
+				<p>Website : www.quickdials.in</p>
+				<img src="https://quickdials.in/client/images/logo-blue.png">
 			</address>
 			<table class="meta">
 				<tr>

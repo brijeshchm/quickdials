@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-  About quick india Quick India- Local search, IT Training, Playschool, overseas education
+  About Quick Dials Quick Dials- Local search, IT Training, Playschool, overseas education
 @endsection 
 @section('keyword')
-Quick India- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education
 @endsection
 @section('description')
-Quick India- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education
 @endsection
 @section('content')	
 
@@ -34,8 +34,8 @@ Quick India- Local search, IT Training, Playschool, overseas education
               <div class="services-details">
                 <div class="single-services">                   
                   <p>
-                    Quick India, one of the most promising start-ups lead generation in India in 2023, offers a B2C model as a match-making admission solution to students, professionals study and services. Their quickind.com, provide platform connects education seekers with education providers, coupled with excellent career counseling services.</p>
-<p>Quick India is an extensive search engine for students, parents, professionals, and education industry players seeking information on the education sector in India. Users can rely on quickind.com for the most relevant data on institutes, colleges, and universities. </p>
+                    Quick Dials, one of the most promising start-ups lead generation in India in 2023, offers a B2C model as a match-making admission solution to students, professionals study and services. Their quickind.com, provide platform connects education seekers with education providers, coupled with excellent career counseling services.</p>
+<p>Quick Dials is an extensive search engine for students, parents, professionals, and education industry players seeking information on the education sector in India. Users can rely on quickind.com for the most relevant data on institutes, colleges, and universities. </p>
 					 
                 </div>
                 </div>
@@ -60,7 +60,7 @@ Quick India- Local search, IT Training, Playschool, overseas education
                   <h6><strong>Vision</strong></h6>
 				  <article>
 						<?php
-							$comment = "Quick India has been created to fulfill a vision of providing quality education through certified institutions. In the modern era, we aim to unify educational societies with the help of technology to build a better nation.";
+							$comment = "Quick Dials has been created to fulfill a vision of providing quality education through certified institutions. In the modern era, we aim to unify educational societies with the help of technology to build a better nation.";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -92,8 +92,8 @@ Quick India- Local search, IT Training, Playschool, overseas education
                   <h6><strong>USP’s</strong></h6>
 				<article>
 						<?php
-							$comment = "Quick India is the first technology-driven education start-up in India, providing a match-making solution for students' educational needs across all sectors.
-					Quick India offers extensive in-house personalized counseling to understand each student's needs and help them make the most informed decisions.";
+							$comment = "Quick Dials is the first technology-driven education start-up in India, providing a match-making solution for students' educational needs across all sectors.
+					Quick Dials offers extensive in-house personalized counseling to understand each student's needs and help them make the most informed decisions.";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -125,10 +125,10 @@ Quick India- Local search, IT Training, Playschool, overseas education
                   <a class="services-icon" href="javascript:void(0)">
 											<i class="fa fa-trophy"></i>
 										</a>
-                  <h6><strong>Quick india  For Institutions</strong></h6>
+                  <h6><strong>Quick Dials  For Institutions</strong></h6>
 				     <article>
 						<?php
-							$comment = "Quick India provides a non-conventional platform that focuses on delivering quality leads and highly motivated candidates. Our extensive in-house one-on-one personalized counseling gives us an edge in offering a highly specific and active database to our clients.";
+							$comment = "Quick Dials provides a non-conventional platform that focuses on delivering quality leads and highly motivated candidates. Our extensive in-house one-on-one personalized counseling gives us an edge in offering a highly specific and active database to our clients.";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -160,14 +160,14 @@ Quick India- Local search, IT Training, Playschool, overseas education
                   <a class="services-icon" href="javascript:void(0)">
 											<i class="fa fa-user"></i>
 										</a>
-                  <h6><strong>Quick india  For Students</strong></h6>
+                  <h6><strong>Quick Dials  For Students</strong></h6>
 				     <article>
 						<?php
-							$comment = "Students can use Quick India as a one-stop destination to search for information on coaching institutes, IT training centers, overseas education consultants, available courses, college admission processes, and much more. The website offers interactive tools to simplify the process of finding the right alma mater.
+							$comment = "Students can use Quick Dials as a one-stop destination to search for information on coaching institutes, IT training centers, overseas education consultants, available courses, college admission processes, and much more. The website offers interactive tools to simplify the process of finding the right alma mater.
 
-Quick India has a repository of over 1,000 institutes, coaching centers, schools, colleges, and 10,000 courses categorized into different streams such as IT training, civil services, entrance exam preparation, management, engineering, medical, arts, distance education, and more. Users can classify their education needs based on location, reviews, and certification.
+Quick Dials has a repository of over 1,000 institutes, coaching centers, schools, colleges, and 10,000 courses categorized into different streams such as IT training, civil services, entrance exam preparation, management, engineering, medical, arts, distance education, and more. Users can classify their education needs based on location, reviews, and certification.
 
-Quick India's certified business partners ensure quality education, campus placements, top faculty, and fee refund assurance, providing students with a reliable and comprehensive platform for their educational needs.";
+Quick Dials's certified business partners ensure quality education, campus placements, top faculty, and fee refund assurance, providing students with a reliable and comprehensive platform for their educational needs.";
 							if(strlen($comment)>150){
 								$replacement = "<span style='display:none;'>";
 								$comment = substr_replace($comment,$replacement,150,0);
@@ -195,7 +195,7 @@ Quick India's certified business partners ensure quality education, campus place
         </div>
       </div>
 	    <div class="row text-center">
-	  <!--<div class=""><img alt="Lead Management Software" class="rotateInLeft" src="{{asset('public/site/img/home-Quick india .png')}}"></div>-->
+	  <!--<div class=""><img alt="Lead Management Software" class="rotateInLeft" src="{{asset('public/site/img/home-Quick Dials .png')}}"></div>-->
 	  
 	  </div>
 	  
@@ -212,7 +212,7 @@ Quick India's certified business partners ensure quality education, campus place
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline services-head text-center">
-            <h2>Quick India Application Features</h2>
+            <h2>Quick Dials Application Features</h2>
           </div>
         </div>
       </div>
@@ -227,8 +227,8 @@ Quick India's certified business partners ensure quality education, campus place
                   <a class="services-icon" href="javascript:void(0)">
 				<img alt="Lead Management Software" src="{{asset('/public/client/images/business/group.png')}}">
 										</a>
-                  <h4>Quick India: Leads Generation for Business</h4>
-                  <ol><li><p><strong>Quality Leads</strong>:</p><ul><li>Generate high-quality leads for educational institutions and service providers.</li><li>Connects institutions with highly motivated and suitable candidates.</li></ul></li><li><p><strong>Targeted Marketing</strong>:</p><ul><li>Reach specific demographics and target audiences based on location, interests, and educational needs.</li><li>Customized marketing campaigns to attract potential students.</li></ul></li><li><p><strong>Personalized Counselling</strong>:</p><ul><li>Extensive in-house one-on-one counseling helps in understanding the needs and preferences of potential students.</li><li>Provides educational institutions with detailed insights and qualified leads.</li></ul></li><li><p><strong>Interactive Platform</strong>:</p><ul><li>Use interactive tools and features to engage with potential students.</li><li>Facilitate direct communication between students and educational institutions.</li></ul></li><li><p><strong>Database Access</strong>:</p><ul><li>Access to a vast database of students looking for various courses and educational opportunities.</li><li>Detailed profiles and data to help institutions tailor their offerings.</li></ul></li><li><p><strong>Reviews and Ratings</strong>:</p><ul><li>Leverage user reviews and ratings to build credibility and attract more leads.</li><li>Positive feedback and testimonials can enhance reputation and lead generation.</li></ul></li><li><p><strong>Certified Partnerships</strong>:</p><ul><li>Being a Quick India Certified Business Partner boosts credibility and trust.</li><li>Assurance of quality education and services attracts more leads.</li></ul></li><li><p><strong>Analytics and Reporting</strong>:</p><ul><li>Detailed analytics and reporting tools to track the effectiveness of lead generation efforts.</li><li>Insights into student preferences and behavior to refine marketing strategies.</li></ul></li><li><p><strong>Location-Based Leads</strong>:</p><ul><li>Generate leads based on specific geographic locations to target local students.</li><li>Customize offerings to meet the needs of the local student population.</li></ul></li><li><p><strong>Engagement Tools</strong>:</p><ul><li>Use forums, discussion boards, and community features to engage with potential leads.</li><li>Foster a sense of community and belonging to attract more students.</li></ul></li><li><p><strong>Career Counselling Integration</strong>:</p><ul><li>Integrate career counseling services to attract students looking for career guidance.</li><li>Position your institution as a comprehensive solution for education and career planning.</li></ul></li> </ol>
+                  <h4>Quick Dials: Leads Generation for Business</h4>
+                  <ol><li><p><strong>Quality Leads</strong>:</p><ul><li>Generate high-quality leads for educational institutions and service providers.</li><li>Connects institutions with highly motivated and suitable candidates.</li></ul></li><li><p><strong>Targeted Marketing</strong>:</p><ul><li>Reach specific demographics and target audiences based on location, interests, and educational needs.</li><li>Customized marketing campaigns to attract potential students.</li></ul></li><li><p><strong>Personalized Counselling</strong>:</p><ul><li>Extensive in-house one-on-one counseling helps in understanding the needs and preferences of potential students.</li><li>Provides educational institutions with detailed insights and qualified leads.</li></ul></li><li><p><strong>Interactive Platform</strong>:</p><ul><li>Use interactive tools and features to engage with potential students.</li><li>Facilitate direct communication between students and educational institutions.</li></ul></li><li><p><strong>Database Access</strong>:</p><ul><li>Access to a vast database of students looking for various courses and educational opportunities.</li><li>Detailed profiles and data to help institutions tailor their offerings.</li></ul></li><li><p><strong>Reviews and Ratings</strong>:</p><ul><li>Leverage user reviews and ratings to build credibility and attract more leads.</li><li>Positive feedback and testimonials can enhance reputation and lead generation.</li></ul></li><li><p><strong>Certified Partnerships</strong>:</p><ul><li>Being a Quick Dials Certified Business Partner boosts credibility and trust.</li><li>Assurance of quality education and services attracts more leads.</li></ul></li><li><p><strong>Analytics and Reporting</strong>:</p><ul><li>Detailed analytics and reporting tools to track the effectiveness of lead generation efforts.</li><li>Insights into student preferences and behavior to refine marketing strategies.</li></ul></li><li><p><strong>Location-Based Leads</strong>:</p><ul><li>Generate leads based on specific geographic locations to target local students.</li><li>Customize offerings to meet the needs of the local student population.</li></ul></li><li><p><strong>Engagement Tools</strong>:</p><ul><li>Use forums, discussion boards, and community features to engage with potential leads.</li><li>Foster a sense of community and belonging to attract more students.</li></ul></li><li><p><strong>Career Counselling Integration</strong>:</p><ul><li>Integrate career counseling services to attract students looking for career guidance.</li><li>Position your institution as a comprehensive solution for education and career planning.</li></ul></li> </ol>
                    
                 </div>
               </div>
@@ -288,9 +288,9 @@ Quick India's certified business partners ensure quality education, campus place
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="wellcome-text subscribe-form">
               <div class="well-text text-center">
-                <h2>Welcome To Quick india </h2>
+                <h2>Welcome To Quick Dials </h2>
                 <p>
-                  Quick india  is the best place to track and crack your leads to generate and grow your business.
+                  Quick Dials  is the best place to track and crack your leads to generate and grow your business.
                 </p>
 				<div id="sendsubscribe">Your subscribe has been sent. Thank you!</div>
               <div id="errorsubscribe"></div>

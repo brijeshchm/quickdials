@@ -896,7 +896,7 @@ required{
 	
         <a href="javascript:void(0);" class="connectedclosebtn">&nbsp;</a>
 		 <h4>Need Expert Advice ?</h4>
-        <div class="jbt"> Fill this form to Grab the best Deals on <span class="orng">quickindia</span></div>
+        <div class="jbt"> Fill this form to Grab the best Deals on <span class="orng">quickdials</span></div>
         <div class="popup">
             <form class="lead_form_popup" action="{{url('/client/lead/add-lead')}}" method="POST">
                 <aside>	              
@@ -1006,7 +1006,7 @@ required{
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="copyright text-center">
               <p>
-                &copy; Copyright <strong>quickindia</strong>. All Rights Reserved
+                &copy; Copyright <strong>quickdials</strong>. All Rights Reserved
               </p>
             </div>
             

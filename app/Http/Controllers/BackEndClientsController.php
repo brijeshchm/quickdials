@@ -229,15 +229,15 @@ class BackEndClientsController extends Controller
 				$client->save(); 
 				$client = Client::find($clientID);
 				//$this->sendUandP($client,$usr,$pass);
-				$smsMessage = "Thanks for registering with quickindia.
+				$smsMessage = "Thanks for registering with quickdials.
 				%0D%0ALogin %26 Update your profile to get more leads to grow your business.
 				%0D%0A%0D%0ABusiness Name:".$client->business_name."
-				%0D%0AURL:www.quickindia.in
+				%0D%0AURL:www.quickdials.in
 				%0D%0AUID:".$client->username."
 				%0D%0APassword:".$pass."
 				%0D%0A--
 				%0D%0ARegards
-				%0D%0Aquickindia Team";
+				%0D%0Aquickdials Team";
 			//	sendSMS($client->mobile,$smsMessage);
 				$this->success_msg .= 'Business registered successfully!';
 				$request->session()->flash('success_msg', $this->success_msg);
@@ -1740,8 +1740,8 @@ class BackEndClientsController extends Controller
 		$mailStatus = 1;
 		try{
 			Mail::send('emails.register', ['client'=>$client,'usr'=>$usr,'pass'=>$pass], function ($m) use ($client) {
-				$m->from('info@quickindia.in', 'Quickindia');
-				$m->to($client->email, $client->first_name." ".$client->last_name)->subject('Quickindia Login Credentials')->cc('help@quickindia.in');
+				$m->from('info@quickdials.in', 'quickdials');
+				$m->to($client->email, $client->first_name." ".$client->last_name)->subject('quickdials Login Credentials')->cc('help@quickdials.in');
 			});
 		}catch(\Exception $e){
 			$mailStatus = 0;
@@ -1922,15 +1922,15 @@ class BackEndClientsController extends Controller
 			$pass = rand(000001,999999);
 			$client->password = bcrypt($pass);
 			if($client->save()){
-				$smsMessage = "Thanks for registering with Quickindia.
+				$smsMessage = "Thanks for registering with quickdials.
 				%0D%0ALogin %26 Update your profile to get more leads to grow your business.
 				%0D%0A%0D%0ABusiness Name:".$client->business_name."
-				%0D%0AURL:www.quickindia.in
+				%0D%0AURL:www.quickdials.in
 				%0D%0AUID:".$client->username."
 				%0D%0APassword:".$pass."
 				%0D%0A--
 				%0D%0ARegards
-				%0D%0AQuickindia Team";			 
+				%0D%0Aquickdials Team";			 
 				sendSMS($client->mobile,$smsMessage);
 				$mailStatus = $this->sendUandP($client,$id,$pass);
 				return response()->json(['status'=>1,'username'=>$client->username,'password'=>$pass,'mailStatus'=>$mailStatus]);
@@ -2554,9 +2554,9 @@ class BackEndClientsController extends Controller
 								->get();
 								 								
 					Mail::send('emails.send_client-orderform',['client'=>$client,'order_number'=>$order_number,'total_amount'=>$total_amount,'paid_amount'=>$paid_amount,'gst_tax'=>$gst_tax,'tds_amount'=>$tds_amount,'payment_mode'=>$stud_payment_mode,'assignKeyword'=>$assignKeyword,'paid_amt_in_words'=>$paid_amt_in_words,'pay_mode_details'=>$pay_mode_details,'transactionid'=>$transactionid,'paymentupdate'=>$paymentupdate], function ($m) use ($client) {
-				$m->from('info@quickindia.in', 'Quickindia');
-				$email = "info@quickindia.in";
-				$m->to("info@quickindia.in", $client->first_name." ".$client->last_name)->subject('Quickindia Order Details')->cc('help@quickindia.in');
+				$m->from('info@quickdials.in', 'quickdials');
+				$email = "info@quickdials.in";
+				$m->to("info@quickdials.in", $client->first_name." ".$client->last_name)->subject('quickdials Order Details')->cc('help@quickdials.in');
 			}); */
 					
 					

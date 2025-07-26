@@ -1,6 +1,6 @@
 @extends('business.layouts.app')
 @section('title')
-Quick India | Help
+Quick Dials | Help
 @endsection 
 @section('keyword')
 Find Best It Training Centre near You, Find Best It Training Institute near You, Find Top 10 IT Training Institute near You, Find Best Entrance Exam Preparation Centre Near you, Top 10 Entrance Exam Centre Near you, Find Best Distance Education Centre Near You, Find Top 10 Distance Education Centre Near You, Find Best School And Colleges Near You, Find Top 10 school And College Near You, Get Education Loan, GET Free career Counselling, Find Best overseas education consultants Near you, Find Top 10 overseas education consultants Near you
@@ -42,7 +42,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
               <div class="info-box card">
                 <i class="bi bi-envelope"></i>
                 <h3>Email Us</h3>
-                <p>info@quickindia.in<br>help@quickindia.in</p>
+                <p>info@quickdials.in<br>help@quickdials.in</p>
               </div>
             </div>
             <div class="col-lg-6">

@@ -16,7 +16,7 @@
 								</li>
 								<li class="d-flex flex-row align-items-start justify-content-start">
 								<div class="feature_title"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i><span>Email:-</span></div>
-								<div class="feature_text ml-auto"><p>info@quickindia.in</p></div>
+								<div class="feature_text ml-auto"><p>info@quickdials.in</p></div>
 								</li>
 								</ul>
 								

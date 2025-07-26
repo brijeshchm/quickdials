@@ -53,7 +53,7 @@
 				 
                 <!-- Brand -->
                 <a class="navbar-brand page-scroll sticky-logo" href="{{url('')}}">
-                  <h1><img src="{{ asset('/public/client/images/logo.png') }}" style="width: 183px;margin-top: -27px; border: none;border-radius: 50px;" ><!--<div class="logo-text">Quick India</div>--></h1>
+                  <h1><img src="{{ asset('/public/client/images/logo.png') }}" style="width: 183px;margin-top: -27px; border: none;border-radius: 50px;" ><!--<div class="logo-text">Quick Dials</div>--></h1>
                   <!-- Uncomment below if you prefer to use an image logo -->
                  
 					</a>
@@ -125,7 +125,7 @@
 
 <li><a href="{{url('/contact-us')}}" title="Contact Us">Contact Us</a></li>
 <li><a href="{{url('blog')}}" title="Blog">Blog</a></li> 
-<li><a href="{{url('business-owners')}}" rel="nofollow" title="Advertise on Quick india">Advertise on Quick India</a></li>
+<li><a href="{{url('business-owners')}}" rel="nofollow" title="Advertise on Quick Dials">Advertise on Quick Dials</a></li>
 <!--<li><a href="{{url('official/terms-conditions')}}" title="Terms & Conditions">Terms & Conditions</a></li>-->
 <li><a href="{{url('/privacy-policy')}}" title="Privacy Policy">Privacy Policy</a></li>
 <li><a href="{{url('/copyright-policy')}}" title="Copyright Policy">Copyright Policy</a></li>
@@ -147,14 +147,14 @@
           <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="copyright">
               <p>
-                &copy; Copyright <strong>Quick India</strong>. All Rights Reserved
+                &copy; Copyright <strong>Quick Dials</strong>. All Rights Reserved
               </p>
             </div>
             </div>
 			  <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="credits">
             
-              Developer & Designed by <a href="https://www.quickindia.com/">Quick India</a>
+              Developer & Designed by <a href="https://www.quickdials.com/">Quick Dials</a>
             </div>
           </div>
         </div>

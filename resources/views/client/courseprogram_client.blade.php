@@ -7,14 +7,14 @@ $key = preg_replace('/in {{city}}/i','',$part_id->meta_title);
 echo trim($key);  ?>
 @else
 
-Quick India- {!!$part_id->parent_category or ""!!} Training in {{Request::segment(1)}} 
+Quick Dials- {!!$part_id->parent_category or ""!!} Training in {{Request::segment(1)}} 
 @endif  
 @endsection 
 @section('keyword')
 <?php if(!empty($part_id->meta_keywords)){
 $msg = preg_replace('/in {{city}}/i',' ',$part_id->meta_keywords);
 echo trim($msg); }else{ ?>
-Quick India- {!!$part_id->parent_category or ""!!} Training in {{Request::segment(1)}} 
+Quick Dials- {!!$part_id->parent_category or ""!!} Training in {{Request::segment(1)}} 
 
 <?php  } ?>
 @endsection
@@ -23,7 +23,7 @@ Quick India- {!!$part_id->parent_category or ""!!} Training in {{Request::segmen
 $descrip = preg_replace('/{{city}}/i',' ',$part_id->meta_description);
 echo trim($descrip); }else{ ?> 
 
-Quick India- {!!$part_id->parent_category!!} Training in {{Request::segment(1)}} 
+Quick Dials- {!!$part_id->parent_category!!} Training in {{Request::segment(1)}} 
 
 <?php  } ?>
 @endsection

@@ -177,8 +177,8 @@ class AuthController extends Controller
 					$request->session()->put('client.id', $client->id);
                     $otp = mt_rand(100000, 999999);
                     $request->session()->put('client.otp', $otp);
-                    //$message = "{$otp} is QuickIndia Portal Verification Code for {$request->session()->get('client.mobile')}.";
-                   // $message = "{$otp} is Lead Portal Verification Code for {$request->session()->get('client.mobile')} Quickindia";
+                    //$message = "{$otp} is quickdials Portal Verification Code for {$request->session()->get('client.mobile')}.";
+                   // $message = "{$otp} is Lead Portal Verification Code for {$request->session()->get('client.mobile')} quickdials";
                     $templateId ='1707161786775524106';
 		 
 				 //sendSMS($request->session()->get('client.mobile'),$message,$templateId);
@@ -187,10 +187,10 @@ class AuthController extends Controller
 		 
 		 	 
 			 
-			$message = "{$otp} is QuickIndia Verification Code for {$request->session()->get('client.email')} .";
-			$subject = "{$otp} is QuickIndia Verification Code";
+			$message = "{$otp} is quickdials Verification Code for {$request->session()->get('client.email')} .";
+			$subject = "{$otp} is quickdials Verification Code";
 			Mail::send('emails.sendotp_to_email', ['msg'=>$message], function ($m) use ($message,$request,$subject) {
-				$m->from('info@quickindia.in', 'Login OTP');
+				$m->from('info@quickdials.in', 'Login OTP');
 				$m->to($request->input('email'), "")->subject($subject);
 			});	
 		 

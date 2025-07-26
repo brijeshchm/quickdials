@@ -69,7 +69,7 @@
 <li><a href="{{url('official/careers')}}" title="Careers">Careers</a></li>
 <li><a href="{{url('official/contact')}}" title="Contact Us">Contact Us</a></li>
 <li><a href="{{url('official/media')}}" title="Media">Media</a></li> 
-<li><a href="{{url('official/advertise')}}" rel="nofollow" title="Advertise on Quickindia">Advertise on Quickindia</a></li>
+<li><a href="{{url('official/advertise')}}" rel="nofollow" title="Advertise on quickdials">Advertise on quickdials</a></li>
 <li><a href="{{url('official/terms-conditions')}}" title="Terms & Conditions">Terms & Conditions</a></li>
 <li><a href="{{url('official/privacy-policy')}}" target="_blank" title="Privacy Policy">Privacy Policy</a></li>
 <li><a href="{{url('official/copyright-policy')}}" target="_blank" title="Copyright Policy">Copyright Policy</a></li>
@@ -91,7 +91,7 @@
                         <div class="head-info-box">
                             <h4>Head Office</h4>
                             <p>
-                                <span>Quickindia</span><br>
+                                <span>quickdials</span><br>
                                 <span>J - 1302, Sector-74,<br>Noida -201301 (India)<br></span><br>
                             </p>
                         </div>
@@ -133,7 +133,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div class="Email-info-box">
-                            <h4>Email</h4>                          <a href="mailto:info@quickindia">care@quickindia.in</a>                          <a href="mailto:hr@quickindia">info@quickindia.in</a>                            <a href="mailto:admin@quickindia">complaint@quickindia.in</a>                            <a href="mailto:feedback@quickindia">feedback@quickindia.in</a>
+                            <h4>Email</h4>                          <a href="mailto:info@quickdials">care@quickdials.in</a>                          <a href="mailto:hr@quickdials">info@quickdials.in</a>                            <a href="mailto:admin@quickdials">complaint@quickdials.in</a>                            <a href="mailto:feedback@quickdials">feedback@quickdials.in</a>
                         </div>
                     </div>
                 </div>
@@ -147,9 +147,9 @@
                         <div class="follow-sticker">
                             <h4 style="color:#FFF;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #aaa;">Follow Us</h4>
                             <ul class="list-inline">
-                                <li><a class="facebook" target="_blank" href="https://www.facebook.com/QuickindiaOfficial" title="Like us on Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" target="_blank" href="https://twitter.com/QuickindiaOfficial" title="Follow us on Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="linkedIn" target="_blank" href="https://www.linkedin.com/company/Quickindiaofficial" title="Follow us on Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="facebook" target="_blank" href="https://www.facebook.com/quickdialsOfficial" title="Like us on Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" target="_blank" href="https://twitter.com/quickdialsOfficial" title="Follow us on Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="linkedIn" target="_blank" href="https://www.linkedin.com/company/quickdialsofficial" title="Follow us on Linkedin"><i class="fa fa-linkedin"></i></a></li>
                                 <li><a class="youTube" target="_blank" href=""><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>

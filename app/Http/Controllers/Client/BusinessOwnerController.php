@@ -477,8 +477,8 @@ class BusinessOwnerController extends Controller
     public function sendUandP($client,$usr,$pass)
     {
         Mail::send('emails.register', ['client'=>$client,'usr'=>$usr,'pass'=>$pass], function ($m) use ($client) {
-            $m->from('care@quickindia.in', 'Quick india');
-            $m->to($client->email, $client->first_name." ".$client->last_name)->subject('Quick india Login Credentials')->cc('clients@quickindia.in');
+            $m->from('care@quickdials.in', 'Quick Dials');
+            $m->to($client->email, $client->first_name." ".$client->last_name)->subject('Quick Dials Login Credentials')->cc('clients@quickdials.in');
         });
     }
 

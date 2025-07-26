@@ -25,11 +25,11 @@
                             </tr>
                             <tr style="height:60.0pt">
                                 <td width="55%" style="width:55.0%;border:none;padding:0in 7.5pt 0in 7.5pt;height:60.0pt">
-                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickindia" title="Quick India" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="http://Quick India.com/public/assets/images/logo.png" alt="Quick India" class="CToWUd"></span></a>
+                                    <p class="MsoNormal" style="line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickdials" title="Quick Dials" target="_blank"><span style="text-decoration:none"><img border="0" id="m_-3031551356041827469_x0000_i1025" src="http://Quick Dials.com/public/assets/images/logo.png" alt="Quick Dials" class="CToWUd"></span></a>
                                         </span><u></u><u></u></p>
                                 </td>
                                 <td width="45%" style="border:none;padding:0in 7.5pt 0in 0in;height:60.0pt">
-                                    <p class="MsoNormal" align="right" style="text-align:right;line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickindia" title="Quick India" target="_blank"><span style="text-decoration:none"><img border="0" width="56%" height="auto" id="m_-3031551356041827469_x0000_i1026" src="http://Quick India.com/public/assets/images/ISO_9001_Logo.png" alt="ISO" class="CToWUd" width="100px"></span></a>
+                                    <p class="MsoNormal" align="right" style="text-align:right;line-height:0%"><span style="font-size:1.0pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"><a href="quickdials" title="Quick Dials" target="_blank"><span style="text-decoration:none"><img border="0" width="56%" height="auto" id="m_-3031551356041827469_x0000_i1026" src="http://Quick Dials.com/public/assets/images/ISO_9001_Logo.png" alt="ISO" class="CToWUd" width="100px"></span></a>
                                         </span><u></u><u></u></p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
@@ -67,7 +67,7 @@
 																			 
 																			<tr><td class="m_8854432245175541298sectionTitle" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;text-align:center;font-size:26px;padding:0px 10px 10px 10px">Helpline No.</td></tr>
 
-																			<tr><td class="m_-5925867924380956427sectionTitle" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;text-align:center;font-size:26px;padding:0px 10px 10px 10px"><strong>+91- </strong></td></tr>																 <tr><td class="m_-5925867924380956427button" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;padding:10px 5px 10px 5px;text-align:center;background-color:#ff6b6b;border-radius:4px"><a href="http://Quick India.com/" title="kvch" style="color:#ffffff;text-decoration:none;display:block;text-transform:uppercase" target="_blank" data-saferedirecturl="">Visit Us</a></td></tr>
+																			<tr><td class="m_-5925867924380956427sectionTitle" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;text-align:center;font-size:26px;padding:0px 10px 10px 10px"><strong>+91- </strong></td></tr>																 <tr><td class="m_-5925867924380956427button" style="font-family:sans-serif;color:#313a42;border-collapse:collapse;padding:10px 5px 10px 5px;text-align:center;background-color:#ff6b6b;border-radius:4px"><a href="http://Quick Dials.com/" title="kvch" style="color:#ffffff;text-decoration:none;display:block;text-transform:uppercase" target="_blank" data-saferedirecturl="">Visit Us</a></td></tr>
 																			   
 																			<tr><td style="padding:18pt 0in 0in 0in;"></td></tr>
 																			
@@ -77,7 +77,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="padding:11.25pt 0in 11.25pt 0in">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact Details of Quick India:</span></strong><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact Details of Quick Dials:</span></strong><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -89,7 +89,7 @@
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 0in 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email ID :</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-          info@Quick India.com</span><u></u><u></u></p>
+          info@Quick Dials.com</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
@@ -122,7 +122,7 @@
                                                 <td style="padding:22.5pt 15.0pt 22.5pt 15.0pt">
                                                     <div>
                                                         <p class="MsoNormal" style="line-height:18.75pt"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Regards,<br>
-      Quick India (P) Ltd. </span><u></u><u></u></p>
+      Quick Dials (P) Ltd. </span><u></u><u></u></p>
                                                     </div>
                                                 </td>
                                             </tr>

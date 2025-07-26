@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link href="{{asset('/client/images/quickind-logo-blue.png')}}" rel="icon">
 	<meta name="csrf-token" content="<?php echo csrf_token(); ?>">
-    <title>Quick india</title>
+    <title>Quick Dials</title>
 	 <!-- SCRIPT-ANGULAR-JS -->
     <script src="<?php echo asset('admin/node_modules/angular/angular.min.js') ?>"></script>
     <!-- Bootstrap Core CSS -->
