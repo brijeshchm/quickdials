@@ -94,7 +94,7 @@ Quick Dials- Business Services POPULAR CATEGORIES, B2B & BUSINESS SERVICES
                             if(!empty($childCategories)){
                                 foreach($childCategories as $child){
                             ?>
-                        <li><a href="{{url($child->child_slug)}}" tabindex="0" target="_blank">{{$child->child_category}}</a></li> 
+                        <li><a href="{{url('child/'.$child->child_slug)}}" tabindex="0" target="_blank">{{$child->child_category}}</a></li> 
                                       <?php } } ?>  
                         </ul>
                     </div>

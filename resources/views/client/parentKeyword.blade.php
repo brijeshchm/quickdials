@@ -517,7 +517,7 @@ color: #fff;
 			<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 			<div itemprop="text">
 			<?php  if(!empty($keyword->faqa4)){
-			$faqa4 = preg_replace('/{{city}}/i',ucfirst(Request::segment(1)),$keyword->faqa4);
+			$faqa4 = preg_replace('/{{city}}/i',ucwords(str_replace("-", " ", Request::segment(1))),$keyword->faqa4);
 			echo trim($faqa4); } ?>
 			 
 			</div>
@@ -532,7 +532,7 @@ color: #fff;
 			<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 			<div itemprop="text">
 			<?php  if(!empty($keyword->faqa5)){
-			$faqa5 = preg_replace('/{{city}}/i',ucfirst(Request::segment(1)),$keyword->faqa5);
+			$faqa5 = preg_replace('/{{city}}/i',ucwords(str_replace("-", " ", Request::segment(1))),$keyword->faqa5);
 			echo trim($faqa5); } ?>
 		 
 			</div>

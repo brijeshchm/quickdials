@@ -410,7 +410,7 @@ color: #fff;
                             <input type="text" placeholder="Your Name" class=" form-control city-form" id="name" name="name">
                     <input type="hidden" name="lead_form" value="1" />
                 	<input type="hidden" name="kw_text" id="kw_text" value="<?php  if(!empty($keyword->keyword)){ $key = preg_replace('/{{city}}/i',ucfirst($city),$keyword->keyword); echo trim($key); } ?>" />
-                	<input type="hidden" name="city_id" id="city_id" class="city" value="none" />
+                	<input type="hidden" name="city_id" id="city_id" class="city" value="" />
                 	
                         </div>
                     </div>
@@ -469,7 +469,7 @@ color: #fff;
 		 
 		</div>
 		@endif
-		
+		 
 		@if(!empty($keyword))
 	  <?php   $kwdsList = App\Models\Keyword::where('child_category_id',$keyword->child_category_id)
 			   ->where('parent_category_id',$keyword->parent_category_id)
@@ -489,7 +489,7 @@ color: #fff;
 	   <h5>Find Services Related to <?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> </h5>
 	   	<ul class="row">
 	   	    
-	   	    <?php  //echo "<pre>";print_r($kwdsList); ?>		
+	   	 	
 		@if(!empty($kwdsList))
 			@foreach($kwdsList as $keywords)
 			

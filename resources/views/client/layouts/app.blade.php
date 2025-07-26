@@ -338,18 +338,18 @@ searchInputs[i].value = '';
             <li><a title="Property" href="{{url('home-construction/property-dealer')}}" tabindex="0"  >Property Dealer</a></li> | 
             <li><a title="Rentals" href="{{url('Rentals')}}" tabindex="0" >Rental Property</a></li> |
             <li><a title="PG" href="{{url('pg-hostels')}}" tabindex="0" >PG & Hostel</a></li> |
-            <li><a title="Computer Courses & Training" href="{{url('computer-courses-training')}}" tabindex="0" >Computer Courses & Training</a></li> |
+            <li><a title="Computer Courses & Training" href="{{url('categories/computer-courses')}}" tabindex="0" >Computer Courses & Training</a></li> |
             
             <li><a title="Study Abroad" href="{{url('study-abroad')}}" tabindex="0" >Study Abroad</a></li> |
-            <li><a title="Home Services" href="{{url('home-services')}}" tabindex="0" >Home Services</a></li> |
+            <li><a title="Home Services" href="home-services" tabindex="0" class="keystore">Home Services</a></li> |
             <li><a title="Parties, Special Occasions &amp; Wedding" href="{{url('wedding-organizers')}}" tabindex="0" >Parties, Special Occasions &amp; Wedding</a></li> |
             <li><a title="Electric Services" href="{{url('delhi/categories/electric-services')}}" tabindex="0" >Electric Services</a></li> | 
             <li><a title="Government Exam" href="{{url('delhi/categories/entrance-exams-coaching')}}" tabindex="0" >Government Exam</a></li> |
             <li><a title="Electric Services" href="{{url('web-designers')}}" tabindex="0" >Web Designers</a></li> |
             <li><a title="Medical" href="{{url('medical')}}" tabindex="0" >Medical</a></li> |
-            <li><a title="Carpenters" href="{{url('carpenters')}}" tabindex="0" >Carpenters</a></li> |
-            <li><a title="Health & Wellness" href="{{url('health-wellness')}}" tabindex="0" >Health & Wellness</a></li> |
-            <li><a title="Yoga" href="{{url('yoga')}}" tabindex="0" >Yoga</a></li> |
+            <li><a title="Carpenters" href="carpenters" tabindex="0" class="keystore">Carpenters</a></li> |
+            <li><a title="Health & Wellness" href="health-wellness" tabindex="0" class="keystore">Health & Wellness</a></li> |
+            <li><a title="Yoga" href="{{url('child/yoga-classes')}}" tabindex="0" >Yoga</a></li> |
             <li><a title="tax Consultants" href="{{url('tax-consultants')}}" tabindex="0" >CA & TAX Consultants</a></li> 
            
             </ul>
@@ -358,18 +358,18 @@ searchInputs[i].value = '';
             <ul> 
             <li><a title="Patient Care Service" href="{{url('patient-care-services')}}" tabindex="0" >Patient Care Service</a></li> |
             <li><a title="Home Appliances Repair &amp; Services" href="{{url('home-appliances-repair-services')}}" tabindex="0" >Home Appliances Repair &amp; Services</a></li> |
-            <li><a title="Packers and Movers" href="{{url('packers-movers')}}" tabindex="0" >Packers and Movers</a></li> |
+            <li><a title="Packers and Movers" href="packers-movers" tabindex="0" class="keystore">Packers and Movers</a></li> |
             <li><a title="AC Services" href="{{url('ac-repair-services')}}" tabindex="0" >AC Services</a></li> |
-            <li><a title="Cleaning Services" href="{{url('cleaning-services')}}" tabindex="0" >Cleaning Services</a></li> |
+            <li><a title="Cleaning Services" href="cleaning-services" tabindex="0" class="keystore">Cleaning Services</a></li> |
             
-            <li><a title="Security Guards" href="{{url('security-guards-services')}}" tabindex="0" >Security Guards</a></li> |
+            <li><a title="Security Guards" href="security-guards-services" tabindex="0" class="keystore">Security Guards</a></li> |
              <li><a title="Architects" href="{{url('architects')}}" tabindex="0" >Architects</a></li> |
-            <li><a title="Building Consultants &amp; Contractors" href="{{url('building-consultants-contractors')}}" tabindex="0" >Builders &amp; Contractors</a></li> | 
-            <li><a title="Interior Designers &amp; Decorators" href="{{url('interior-designers-decorators')}}" tabindex="0" >Interior Designers &amp; Decorators</a></li> |
-            <li><a title="Housekeeping Services" href="{{url('housekeeping-services')}}" tabindex="0" >Housekeeping Services</a></li> |
-            <li><a title="Painting Contractors" href="{{url('painting-contractors')}}" tabindex="0" >Painting Contractors</a></li> |
-            <li><a title="Modular Kitchen Dealers" href="{{url('modular-kitchen-dealers')}}" tabindex="0" >Modular Kitchen Dealers</a></li> | 
-            <li><a title="Waterproofing Contractors" href="{{url('waterproofing-contractors')}}" tabindex="0" >Waterproofing Contractors</a></li> 
+            <li><a title="Building Consultants &amp; Contractors" href="building-consultants-contractors" tabindex="0" class="keystore">Builders &amp; Contractors</a></li> | 
+            <li><a title="Interior Designers &amp; Decorators" href="interior-designers-decorators" tabindex="0" class="keystore">Interior Designers &amp; Decorators</a></li> |
+            <li><a title="Housekeeping Services" href="housekeeping-services" tabindex="0" class="keystore">Housekeeping Services</a></li> |
+            <li><a title="Painting Contractors" href="painting-contractors" tabindex="0" class="keystore">Painting Contractors</a></li> |
+            <li><a title="Modular Kitchen Dealers" href="modular-kitchen-dealers" tabindex="0" class="keystore">Modular Kitchen Dealers</a></li> | 
+            <li><a title="Waterproofing Contractors" href="waterproofing-contractors" tabindex="0" class="keystore">Waterproofing Contractors</a></li> 
            
             </ul>
             </div>

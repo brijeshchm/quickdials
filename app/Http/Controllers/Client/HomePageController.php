@@ -964,7 +964,7 @@ public function saveTwoEnquiry(Request $request){
         $parentCategories = DB::table('keyword')
         ->join('parent_category','keyword.parent_category_id','=','parent_category.id')
         ->join('child_category','keyword.child_category_id','=','child_category.id')
-        ->select('keyword.*','parent_category.*','child_category.*','parent_category.id as key_id','parent_category.faqq1','parent_category.faqa1','parent_category.faqq2','parent_category.faqa2','parent_category.faqq3','parent_category.faqa3','parent_category.faqq4','parent_category.faqa4','parent_category.faqq5','parent_category.faqa5','parent_category.meta_title','parent_category.meta_description','parent_category.meta_keywords','parent_category.top_description','parent_category.bottom_description','parent_category.ratingvalue','parent_category.ratingcount')
+        ->select('keyword.*','parent_category.*','child_category.*','parent_category.id as key_id','parent_category.faqq1','parent_category.faqa1','parent_category.faqq2','parent_category.faqa2','parent_category.faqq3','parent_category.faqa3','parent_category.faqq4','parent_category.faqa4','parent_category.faqq5','parent_category.faqa5','parent_category.meta_title','parent_category.meta_description','parent_category.meta_keywords','parent_category.top_description','parent_category.bottom_description','parent_category.ratingvalue','parent_category.ratingcount','keyword.child_category_id')
         ->groupBy('child_category.child_slug')	
         ->where('parent_category.parent_slug',$city)->first();
        
@@ -972,7 +972,7 @@ public function saveTwoEnquiry(Request $request){
            $keywordlist = DB::table('keyword')
         ->join('parent_category','keyword.parent_category_id','=','parent_category.id')
         ->join('child_category','keyword.child_category_id','=','child_category.id')
-        ->select('keyword.*','parent_category.*','child_category.*','keyword.id as key_id','keyword.faqq1','keyword.faqa1','keyword.faqq2','keyword.faqa2','keyword.faqq3','keyword.faqa3','keyword.faqq4','keyword.faqa4','keyword.faqq5','keyword.faqa5','keyword.meta_title','keyword.meta_description','keyword.meta_keywords','keyword.top_description','keyword.bottom_description','keyword.ratingvalue','keyword.ratingcount')
+        ->select('keyword.*','parent_category.*','child_category.*','keyword.id as key_id','keyword.faqq1','keyword.faqa1','keyword.faqq2','keyword.faqa2','keyword.faqq3','keyword.faqa3','keyword.faqq4','keyword.faqa4','keyword.faqq5','keyword.faqa5','keyword.meta_title','keyword.meta_description','keyword.meta_keywords','keyword.top_description','keyword.bottom_description','keyword.ratingvalue','keyword.ratingcount','keyword.child_category_id')
         ->groupBy('child_category.child_slug')	
         ->where('parent_category.parent_slug',$city)->get();
         
@@ -1003,7 +1003,7 @@ public function saveTwoEnquiry(Request $request){
 		         $childCategories = DB::table('keyword')
         ->join('parent_category','keyword.parent_category_id','=','parent_category.id')
         ->join('child_category','keyword.child_category_id','=','child_category.id')
-        ->select('keyword.*','parent_category.*','child_category.*','child_category.id as key_id','child_category.faqq1','child_category.faqa1','child_category.faqq2','child_category.faqa2','child_category.faqq3','child_category.faqa3','child_category.faqq4','child_category.faqa4','parent_category.faqq5','child_category.faqa5','child_category.meta_title','child_category.meta_description','child_category.meta_keywords','child_category.top_description','parent_category.bottom_description','child_category.ratingvalue','child_category.ratingcount')
+        ->select('keyword.*','parent_category.*','child_category.*','child_category.id as key_id','child_category.faqq1','child_category.faqa1','child_category.faqq2','child_category.faqa2','child_category.faqq3','child_category.faqa3','child_category.faqq4','child_category.faqa4','parent_category.faqq5','child_category.faqa5','child_category.meta_title','child_category.meta_description','child_category.meta_keywords','child_category.top_description','parent_category.bottom_description','child_category.ratingvalue','child_category.ratingcount','keyword.child_category_id')
         ->where('child_category.child_slug',$city)->first();
 		       
 		       if(!empty($childCategories)){
@@ -1033,17 +1033,60 @@ public function saveTwoEnquiry(Request $request){
                     $keyword = DB::table('keyword')
                     ->join('parent_category','keyword.parent_category_id','=','parent_category.id')
                     ->join('child_category','keyword.child_category_id','=','child_category.id')
-                    ->select('keyword.*','parent_category.*','child_category.*','keyword.id as key_id','keyword.faqq1','keyword.faqa1','keyword.faqq2','keyword.faqa2','keyword.faqq3','keyword.faqa3','keyword.faqq4','keyword.faqa4','keyword.faqq5','keyword.faqa5','keyword.meta_title','keyword.meta_description','keyword.meta_keywords','keyword.top_description','keyword.bottom_description','keyword.ratingvalue','keyword.ratingcount')
+                    ->select('keyword.*','parent_category.*','child_category.*','keyword.id as key_id','keyword.faqq1','keyword.faqa1','keyword.faqq2','keyword.faqa2','keyword.faqq3','keyword.faqa3','keyword.faqq4','keyword.faqa4','keyword.faqq5','keyword.faqa5','keyword.meta_title','keyword.meta_description','keyword.meta_keywords','keyword.top_description','keyword.bottom_description','keyword.ratingvalue','keyword.ratingcount','keyword.child_category_id')
                     ->where('keyword','LIKE',ucwords(str_replace("-"," ",$city)))->first();
                     if(!empty($keyword)){
                     $keyword = $keyword;
+
+			 
                     }else{
-                    
+                      
                    
-                    $keyword = DB::table('child_category')
-                    ->select('child_category.*')
-                      ->where('child_category.child_category','LIKE',ucwords(str_replace("-"," ",$city)))->first();
-                    if(!empty($keyword) && count($keyword)>0  ){
+                    // $keyword = DB::table('child_category')
+                    // ->select('child_category.*')
+                    //   ->where('child_category.child_category','LIKE',ucwords(str_replace("-"," ",$city)))->first();
+ 
+				// 	$keyword = DB::table('keyword')                
+                //     ->join('child_category','keyword.child_category_id','=','child_category.id')
+                //     ->select('keyword.*','parent_category.*','child_category.*','keyword.id as key_id','keyword.faqq1','keyword.faqa1','keyword.faqq2','keyword.faqa2','keyword.faqq3','keyword.faqa3','keyword.faqq4','keyword.faqa4','keyword.faqq5','keyword.faqa5','keyword.meta_title','keyword.meta_description','keyword.meta_keywords','keyword.top_description','keyword.bottom_description','keyword.ratingvalue','keyword.ratingcount','keyword.child_category_id')
+                //    ->where('keyword.child_slug',$city)
+				// 	->first();
+ 
+
+				$keyword = DB::table('keyword')
+					->join('child_category', 'keyword.child_category_id', '=', 'child_category.id')
+					->join('parent_category', 'child_category.parent_category_id', '=', 'parent_category.id') // Added join for parent_category
+					->select(
+						'keyword.*',
+						'child_category.*',
+						'parent_category.*',
+						'keyword.id as key_id',
+						'keyword.faqq1',
+						'keyword.faqa1',
+						'keyword.faqq2',
+						'keyword.faqa2',
+						'keyword.faqq3',
+						'keyword.faqa3',
+						'keyword.faqq4',
+						'keyword.faqa4',
+						'keyword.faqq5',
+						'keyword.faqa5',
+						'keyword.meta_title',
+						'keyword.meta_description',
+						'keyword.meta_keywords',
+						'keyword.top_description',
+						'keyword.bottom_description',
+						'keyword.ratingvalue',
+						'keyword.ratingcount',
+						'keyword.child_category_id',
+						'child_category.child_slug'
+					)
+					->where('keyword.child_slug', str_replace('-', '', $city)) // Remove hyphen from $city
+					->first();
+
+ 
+					  dd($keyword);die;
+                    if(!empty($keyword)){
                         $keyword = $keyword;
                     }else{
                         

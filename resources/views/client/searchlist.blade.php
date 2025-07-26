@@ -120,80 +120,15 @@ if(!empty($keyword) || !empty($clientsList)  ){ ?>
 	 	 			
 		
 			 @if(!empty($keyword))
-			<a href="{{url(strtolower(str_replace(' ','-',$city)).'/categories/'.$keyword->parent_slug.'/'.$keyword->child_slug)}}" title="<?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?>"><?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?></a> / <?php if(!empty($keyword->keyword)){  echo $keyword->keyword; }  ?> in  <?php echo $city; ?> 
+			<a href="{{url(strtolower(str_replace(' ','-',$city)).'/categories/'.$keyword->parent_slug.'/'.$keyword->child_slug)}}" title="<?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?>"><?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?></a> / <?php if(!empty($keyword->keyword)){  echo $keyword->keyword; }  ?> in <?php echo $city; ?> 
 			 
 			 @endif
 			 
 			 </div>
 			 </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 removeRightSpace"><a href="javascript:void(0)" class="btn btn-primary submit-btn open-popup">Enquiry Now </a> <a href="javascript:void(0)" class="btn btn-primary submit-btn stopprocess">Minimize</a></div>
-            <div class="col-xs-12 col-sm-12 col-md-12 form-proceed spacer formDiv">
-                <div class="col-xs-12 col-sm-7 col-md-7 border-line formleftBlock">
-                    <div class="heading-txt">
-                        <p class="heading-txt-1">Tell us your need, we will connect you with service experts </p>
-                    </div>
-                    <form class="formaling lead_form" action="{{url('/client/lead/add-lead')}}" method="POST">
-                        {{ csrf_field() }} 
-                        <div class="fieldblock">
-                            <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">City*</span></div>
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-								<input type="hidden" name="lead_form" value="" />
-								<select class="dropdown-arrow dropdown-arrow-inverse city-form city" name="city_id" id="exampleSelect1">
-									<option value="">Select City</option>
-									@if(!empty($cities))
-										@foreach($cities as $cityes)
-											<option value="{{strtolower($city->city)}}">{{$cityes->city}}</option>
-										@endforeach
-									@endif
-								</select>
-                            </div>
-                        </div>
-                        <div class="fieldblock">
-                            <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">Training you are interested in</span></div>
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <input type="text" placeholder="type text" class="form-control city-form home-search" name="kw_text" autocomplete="off">
-								<div class="ajax-suggest ajax-suggest-lead-ajax" style="display: none;"><ul></ul></div>
-                            </div>
-                        </div>
-                        <div class="fieldblock">
-                            <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">Mobile*</span></div>
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <input type="text" placeholder="+91" class="form-control city-form" name="mobile">
-                            </div>
-                        </div>
-                        <div class="fieldblock">
-                            <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">Your Name*</span></div>
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <input type="text" placeholder="Your Name" class=" form-control city-form" name="name">
-                            </div>
-                        </div>
-                        <div class="fieldblock">
-                            <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">Email*</span></div>
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <input type="text" placeholder="Email" class="form-control city-form" name="email">
-                            </div>
-                        </div>
-                        <div class="fieldblock">
-                            <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">tell us more</span></div>
-                            <div class="col-xs-8 col-sm-8 col-md-8">
-                                <textarea class="form-control city-form" id="exampleTextarea" rows="3" placeholder="Provide any specific details for your need" name="remark"></textarea>
-                                <div class="clearfix"></div>                                
-								<input type="submit" class="btn btn-primary submit-btn-2" value="Get Quotes" />
-								<input type="reset" class="reset_lead_form hide" value="reset" />
-                                <a href="javascript:void(0);" class="pull-right trmcondition">T&C Apply</a> </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-xs-12 col-sm-5 col-md-5 formrightBlock">
-                    <div class="heading-txt-2"><span>Why Fill This Form?</span></div>
-                    <ul class="whyChoose">
-                        <li><span><img src="<?php echo asset('client/images/icon-1.png'); ?>" title="Thousands of customers" alt="Thousands of customers"></span>Thousands of customers fill this for to get best deals from training institutes.</li>
-                        <li><span><img src="<?php echo asset('client/images/icon-2.png'); ?>" title="Thousands of customers" alt="Thousands of customers"></span>1000+ Institutes contact our customers with best deals after getting details from this form.</li>
-                        <li><span><img src="<?php echo asset('client/images/icon-3.png'); ?>" title="Thousands of customers" alt="Thousands of customers"></span>Customer’s requirement gets fulfilled with best offers instantly.</li>
-                    </ul>
-                </div>
-            </div>
+           
+            
 
         </div>
 		@if(isset($keyword) && null!=$keyword->top_description)
@@ -718,15 +653,15 @@ color: #fff;
 		@if(!empty($keyword->bottom_description))
 		<div class="container"> 		 
 		<div class="category-description">  
-		<h2>Top <?php  if(!empty($keyword->keyword)){ $key = preg_replace('/{{city}}/i',ucfirst($city),$keyword->keyword); echo trim($key); } ?> in <?php echo ucfirst(Request::segment(1)); ?></h2>
+		<h2>Top <?php  if(!empty($keyword->keyword)){ $key = preg_replace('/{{city}}/i',ucwords(str_replace("-", "", $city)),$keyword->keyword); echo trim($key); } ?> in <?php echo ucwords(str_replace("-", " ", Request::segment(1))); ?></h2>
 		
 		<p title="<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}">
 		
-		<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}
+		<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{ucwords(str_replace("-", " ", Request::segment(1)))}}
 		</p>
 		<p>
 		<?php  if(!empty($keyword->bottom_description)){
-		$keydescription = preg_replace('/{{city}}/i',ucfirst(Request::segment(1)),$keyword->bottom_description);
+		$keydescription = preg_replace('/{{city}}/i',ucwords(str_replace("-", " ", Request::segment(1))),$keyword->bottom_description);
 		echo trim($keydescription); } ?></p>	 
 		</div>
 		
@@ -739,7 +674,7 @@ color: #fff;
 	 @if(!empty($keyword))
 	  <?php   $kwdsList = App\Models\Keyword::where('child_category_id',$keyword->child_category_id)
 			   ->where('parent_category_id',$keyword->parent_category_id)
-			   ->select('keyword')
+			   ->select('keyword','icon')
 			   ->distinct()
 			   ->get(); 			  
 			   
@@ -752,7 +687,9 @@ color: #fff;
 	   <div class="course-program">
 	    
 	   <h5>Find Services Related to <?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> </h5>
-	   	<ul class="row">		
+	   	<ul class="row">	
+			
+	 
 		@if(!empty($kwdsList))
 		<?php $i = 0; $x = 5; ?>
 			@foreach($kwdsList as $keyword)
@@ -764,11 +701,11 @@ color: #fff;
             if (!empty($data)) {
             ?>
             
-            <img src="{{asset(''.$data['src'])}}" alt="{{ $data['name'] }}">
+            <img src="{{asset(''.$data['src'])}}" alt="{{ $data['name'] }}" width="25">
             
             <?php  }   } ?>
 	       
-	       <a href="{{url(strtolower(Request::segment(1)))}}/<?php echo generate_slug($keyword->keyword) ?>" title="<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}">{{$keyword->keyword}}</a></li>
+	       <a href="{{url(strtolower(Request::segment(1)))}}/<?php echo generate_slug($keyword->keyword) ?>" title="<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}" >{{$keyword->keyword}}</a></li>
 	   
 	   @endforeach
 	   @endif
