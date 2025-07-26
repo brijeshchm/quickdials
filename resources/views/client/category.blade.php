@@ -586,11 +586,9 @@ echo trim($descrip); } ?>
              
          }
          .side-row-form {
-            margin-top: 10px;
-            
+            margin-top: 10px;            
             text-align: center;
-            display: grid
-        ;
+            display: grid;
         }
          </style>
         <div class="side-row-form ">
@@ -612,8 +610,7 @@ echo trim($descrip); } ?>
 			<?php if(!empty($part_id->faqq1)){ ?>
 			<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 			<h5 itemprop="name"><strong><?php  if(!empty($part_id->faqq1)){
-			echo $part_id->faqq1;
-		  } ?>?</strong></h5>
+			echo $part_id->faqq1;  } ?>?</strong></h5>
 			<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: block;">
 			<div itemprop="text">
 			<?php  if(!empty($part_id->faqa1)){
@@ -694,28 +691,20 @@ echo trim($descrip); } ?>
 		
 		 
 		</div>
-		@endif
+		@endif  
 	 
-	   
-	   
-	   
-	 
-        <div class="clearfix"></div>
+      
     </div>
     
        	  
 <div class="inquiry-popup"></div>
 
     <div class="bestDealpopup"> 
-		<?php 	
-
-		$value = Cookie::get('showPopup');	 
-	//	if(Auth::guard('clients')->check() || ($value =="yes"))
-			?>
+		 
         <a href="javascript:void(0);" class="dealclosebtn">&nbsp;</a> 
 
 	   <h4>Need Expert Advice ?</h4>
-        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php if($part_id->parent_category){ echo $part_id->parent_category; } ." in "; ?></span>"</div>
+        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php if($part_id->parent_category){ echo $part_id->parent_category; } ?>" in "; ?></span>"</div>
         <div class="bdc">
              
             <form class="form-inline" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
