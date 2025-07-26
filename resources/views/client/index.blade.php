@@ -41,13 +41,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
        
 </style>
 
-         <?php  
-            $location =    (unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$_SERVER['REMOTE_ADDR']))); 
-            $locationCity =  $location['geoplugin_city'];
-            if(!$locationCity){
-            $locationCity ="delhi";
-            }
-            ?>
+          
          <form action="/searchlist" method="GET" class="search-form" autocomplete="off">
              <input type="text" class="col-md-4 col-sm-4 location city cityList" name="city" id="locationBtn" >
             <div class="city-result">
@@ -116,18 +110,18 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      	foreach($mainMenu['child'] as $subMenuItem){
                      	$i++;
                      	if($i=='1'){
-                              $subMenu['list_one'] .= "<li><a href='".url(strtolower($locationCity).'/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."'   >$subMenuItem->child_category</a></li>"; 
+                              $subMenu['list_one'] .= "<li><a href='".url('/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."'   >$subMenuItem->child_category</a></li>"; 
                      
                      	}
                      	if($i=='2'){
                      	    
-                     		$subMenu['list_two'] .= "<li><a href='".url(strtolower($locationCity).'/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."' >$subMenuItem->child_category</a></li>";
+                     		$subMenu['list_two'] .= "<li><a href='".url('/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."' >$subMenuItem->child_category</a></li>";
                      	}
                      	if($i=='3'){
-                     		$subMenu['list_three'] .= "<li><a href='".url(strtolower($locationCity).'/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."' >$subMenuItem->child_category</a></li>";
+                     		$subMenu['list_three'] .= "<li><a href='".url('/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."' >$subMenuItem->child_category</a></li>";
                      	}
                      	if($i=='4'){
-                     		$subMenu['list_four'] .= "<li><a href='".url(strtolower($locationCity).'/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."' >$subMenuItem->child_category</a></li>";
+                     		$subMenu['list_four'] .= "<li><a href='".url('/categories/'.$mainMenu['parent'][0]->parent_slug.'/'.$subMenuItem->child_slug)."' title='".$subMenuItem->child_category."' >$subMenuItem->child_category</a></li>";
                      		$i=0;
                      	}
                      }
@@ -275,16 +269,16 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                 <a href="{{url('restaurants')}}" class="keystore">Restaurants</a></span>
          </div>
          <div class="img-items">          
-         <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/distance-education')}}" >
+         <div class="items"><a href="{{url('/categories/distance-education')}}" >
             <img src="{{asset('img/Education.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/distance-education')}}" >Education</a></span>
+            <span class="title-serv"><a href="{{url('/categories/distance-education')}}" >Education</a></span>
          </div>
          <div class="img-items">         
-         <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/rent-buy')}}" >
+         <div class="items"><a href="{{url('/categories/rent-buy')}}" >
             <img src="{{asset('img/Rent-buy.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/rent-buy')}}" >Rent & Buy</a></span>
+            <span class="title-serv"><a href="{{url('/categories/rent-buy')}}" >Rent & Buy</a></span>
          </div>
          <div class="img-items">       
          <div class="items"><a href="{{url('child/sports-academy')}}" >
@@ -298,60 +292,60 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
              </div>
             <span class="title-serv"><a href="{{url('/pg-hostels')}}" >PG/Hostels</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/dentists')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/dentists')}}" >
             <img src="{{asset('img/Dentists.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/dentists')}}" >Dentists</a></span>
+            <span class="title-serv"><a href="{{url('/dentists')}}" >Dentists</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/medical')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/categories/medical')}}" >
             <img src="{{asset('img/Medical.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/medical')}}" >Medical</a></span>
+            <span class="title-serv"><a href="{{url('/categories/medical')}}" >Medical</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/real-estate-agent')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/real-estate-agent')}}" >
             <img src="{{asset('img/real-state.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/real-estate-agent')}}" >Real State</a></span>
+            <span class="title-serv"><a href="{{url('/real-estate-agent')}}" >Real State</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/loan')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/categories/loan')}}" >
             <img src="{{asset('img/Loan.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/loan')}}" >Loan</a></span>
+            <span class="title-serv"><a href="{{url('/categories/loan')}}" >Loan</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/carpenters')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/carpenters')}}" >
             <img src="{{asset('img/Carpenters.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/carpenters')}}" >Carpenters</a></span>
+            <span class="title-serv"><a href="{{url('/carpenters')}}" >Carpenters</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/health-wellness')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/health-wellness')}}" >
             <img src="{{asset('img/health-wellness.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/health-wellness')}}" >Health & Wellness</a></span>
+            <span class="title-serv"><a href="{{url('/health-wellness')}}" >Health & Wellness</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/dancing')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/categories/dancing')}}" >
             <img src="{{asset('img/Dancing.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/dancing')}}" >Dance Academy</a></span>
+            <span class="title-serv"><a href="{{url('/categories/dancing')}}" >Dance Academy</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/yoga')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/categories/yoga')}}" >
             <img src="{{asset('img/Yoga.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/yoga')}}" >Yoga</a></span>
+            <span class="title-serv"><a href="{{url('/categories/yoga')}}" >Yoga</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/income-tax-consultants')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/income-tax-consultants')}}" >
             <img src="{{asset('img/tax-consultants.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/income-tax-consultants')}}" >Tax Consultants</a></span>
+            <span class="title-serv"><a href="{{url('/income-tax-consultants')}}" >Tax Consultants</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/security-system')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/categories/security-system')}}" >
             <img src="{{asset('img/CCTV-security.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/security-system')}}" >CCTV Security</a></span>
+            <span class="title-serv"><a href="{{url('/categories/security-system')}}" >CCTV Security</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/web-technologies')}}" >
+         <div class="img-items">             <div class="items"><a href="{{url('/categories/web-technologies')}}" >
             <img src="{{asset('images/Web-Designers.png')}}"></a>
              </div>
-            <span class="title-serv"><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/web-technologies')}}" >Web Designers</a></span>
+            <span class="title-serv"><a href="{{url('/categories/web-technologies')}}" >Web Designers</a></span>
          </div>
          <div class="img-items">             <div class="items"><a href="{{url('job-training')}}" >
             <img src="{{asset('img/Jobs.png')}}"></a>
@@ -468,61 +462,61 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       <div class="popular-list">
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/computer-courses')}}" title="IT Training" tabindex="0">
+               <figure><a href="{{url('/categories/computer-courses')}}" title="IT Training" tabindex="0">
                   <img class="" src="popular/IT-Training.jpg" alt="IT-Training" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/computer-courses')}}"   tabindex="0"> <span>IT Training</span> </a></h3>
+                  <h3><a href="{{url('/categories/computer-courses')}}"   tabindex="0"> <span>IT Training</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/entrance-exams-coaching')}}" title="Entrance exam" tabindex="0">
+               <figure><a href="{{url('/categories/entrance-exams-coaching')}}" title="Entrance exam" tabindex="0">
                   <img class="" src="popular/Entrance-Exam.jpg" alt="Entrance-Exam" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/entrance-exams-coaching')}}"   tabindex="0"> <span>Entrance exam </span> </a></h3>
+                  <h3><a href="{{url('/categories/entrance-exams-coaching')}}"   tabindex="0"> <span>Entrance exam </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/packers-movers')}}"   tabindex="0" title="Packers & Movers" tabindex="0">
+               <figure><a href="{{url('/categories/packers-movers')}}"   tabindex="0" title="Packers & Movers" tabindex="0">
                   <img class="" src="popular/Packers-Movers.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/packers-movers')}}"   tabindex="0"> <span>Packers & Movers</span> </a></h3>
+                  <h3><a href="{{url('/categories/packers-movers')}}"   tabindex="0"> <span>Packers & Movers</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/interior-designer')}}" title="Interior Design" tabindex="0">
+               <figure><a href="{{url('/categories/interior-designer')}}" title="Interior Design" tabindex="0">
                   <img class="" src="popular/Interior-design.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/interior-designer')}}"   tabindex="0"> <span>Interior Design</span> </a></h3>
+                  <h3><a href="{{url('/categories/interior-designer')}}"   tabindex="0"> <span>Interior Design</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/real-estate-agent')}}" title="Estate Agents" tabindex="0">
+               <figure><a href="{{url('/real-estate-agent')}}" title="Estate Agents" tabindex="0">
                   <img class="" src="popular/real-estate-agent.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/real-estate-agent')}}"   tabindex="0"> <span>Real Estate Agents</span> </a></h3>
+                  <h3><a href="{{url('/real-estate-agent')}}"   tabindex="0"> <span>Real Estate Agents</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/carpenters')}}" title="Carpenters" tabindex="0">
+               <figure><a href="{{url('/carpenters')}}" title="Carpenters" tabindex="0">
                   <img class="" src="popular/carpenter.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/carpenters')}}"   tabindex="0"> <span>Carpenters</span> </a></h3>
+                  <h3><a href="{{url('/carpenters')}}"   tabindex="0"> <span>Carpenters</span> </a></h3>
                </div>
             </div>
          </div>
@@ -536,41 +530,41 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       <div class="popular-list">
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/ac-service')}}" title="AC Service" tabindex="0">
+               <figure><a href="{{url('/ac-service')}}" title="AC Service" tabindex="0">
                   <img class="" src="popular/AC-Service.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/ac-service')}}"   tabindex="0"> <span>AC Service</span> </a></h3>
+                  <h3><a href="{{url('/ac-service')}}"   tabindex="0"> <span>AC Service</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/car-service')}}" title="Car Services" tabindex="0">
+               <figure><a href="{{url('/car-service')}}" title="Car Services" tabindex="0">
                   <img class="" src="popular/car-services.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/car-service')}}"   tabindex="0"> <span>Car Services</span> </a></h3>
+                  <h3><a href="{{url('/car-service')}}"   tabindex="0"> <span>Car Services</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/laundry-service')}}" title="Laundry Services" tabindex="0">
+               <figure><a href="{{url('/laundry-service')}}" title="Laundry Services" tabindex="0">
                   <img class="" src="popular/washing-machines.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/laundry-service')}}"   tabindex="0"> <span>Laundry Services</span> </a></h3>
+                  <h3><a href="{{url('/laundry-service')}}"   tabindex="0"> <span>Laundry Services</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/electricity-service')}}" title="Electricity Services" tabindex="0">
+               <figure><a href="{{url('/electricity-service')}}" title="Electricity Services" tabindex="0">
                   <img class="" src="popular/Electricity-Services.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/electricity-service')}}"   tabindex="0"> <span>Electrician Services</span> </a></h3>
+                  <h3><a href="{{url('/electricity-service')}}"   tabindex="0"> <span>Electrician Services</span> </a></h3>
                </div>
             </div>
          </div>
@@ -586,11 +580,11 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/clinical-research-training')}}" title="Fitness Services" tabindex="0">
+               <figure><a href="{{url('/categories/clinical-research-training')}}" title="Fitness Services" tabindex="0">
                   <img class="" src="popular/Fitness-Services.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/clinical-research-training')}}"   tabindex="0"> <span>Health & Fitness</span> </a></h3>
+                  <h3><a href="{{url('/categories/clinical-research-training')}}"   tabindex="0"> <span>Health & Fitness</span> </a></h3>
                </div>
             </div>
          </div>
@@ -614,11 +608,11 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/banquet-halls')}}" title="Banquet Halls" tabindex="0">
+               <figure><a href="{{url('/banquet-halls')}}" title="Banquet Halls" tabindex="0">
                   <img class="" src="popular/Banquet-Halls.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/banquet-halls')}}"   tabindex="0"> <span>Banquet Halls </span> </a></h3>
+                  <h3><a href="{{url('/banquet-halls')}}"   tabindex="0"> <span>Banquet Halls </span> </a></h3>
                </div>
             </div>
          </div>
@@ -672,61 +666,61 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       <div class="popular-list">
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/entrance-exams-coaching')}}" title="Air Force & Navy / SSR / MR" tabindex="0">
+               <figure><a href="{{url('/categories/entrance-exams-coaching')}}" title="Air Force & Navy / SSR / MR" tabindex="0">
                   <img class="" src="popular/air-force-navy.jpg"  alt="Air Force & Navy / SSR / MR" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/entrance-exams-coaching')}}"   tabindex="0"> <span>Air Force & Navy / SSR / MR </span> </a></h3>
+                  <h3><a href="{{url('/categories/entrance-exams-coaching')}}"   tabindex="0"> <span>Air Force & Navy / SSR / MR </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/entrance-exams-coaching')}}" title="UPSC & IAS" tabindex="0">
+               <figure><a href="{{url('/categories/entrance-exams-coaching')}}" title="UPSC & IAS" tabindex="0">
                   <img class="" src="popular/UPSC-IAS.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/categories/entrance-exams-coaching')}}"   tabindex="0"> <span>UPSC & IAS</span> </a></h3>
+                  <h3><a href="{{url('/categories/entrance-exams-coaching')}}"   tabindex="0"> <span>UPSC & IAS</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/ssc-cgl')}}" title="SSC CGL JEE" tabindex="0">
+               <figure><a href="{{url('/ssc-cgl')}}" title="SSC CGL JEE" tabindex="0">
                   <img class="" src="popular/SSC-CGL-JEE.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/ssc-cgl')}}"   tabindex="0"> <span>SSC CGL JEE </span> </a></h3>
+                  <h3><a href="{{url('/ssc-cgl')}}"   tabindex="0"> <span>SSC CGL JEE </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/rrb-ntpc-coaching')}}" title="NTPC & RRB Railway" tabindex="0">
+               <figure><a href="{{url('/rrb-ntpc-coaching')}}" title="NTPC & RRB Railway" tabindex="0">
                   <img class="" src="popular/NTPC-RRB-Railway.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/rrb-ntpc-coaching')}}"   tabindex="0"> <span>NTPC & RRB Railway </span> </a></h3>
+                  <h3><a href="{{url('/rrb-ntpc-coaching')}}"   tabindex="0"> <span>NTPC & RRB Railway </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/cat-coaching')}}" title="CAT" tabindex="0">
+               <figure><a href="{{url('/cat-coaching')}}" title="CAT" tabindex="0">
                   <img class="" src="popular/CAT-exam.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/cat-coaching')}}"   tabindex="0"> <span>CAT/NEET</span> </a></h3>
+                  <h3><a href="{{url('/cat-coaching')}}"   tabindex="0"> <span>CAT/NEET</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/ctet-coaching')}}" title="CTET Super TET" tabindex="0">
+               <figure><a href="{{url('/ctet-coaching')}}" title="CTET Super TET" tabindex="0">
                   <img class="" src="popular/CTET-Super-TET.jpg"  alt="" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url(strtolower(str_replace(" ","-",$locationCity)).'/ctet-coaching')}}"   tabindex="0"> <span>CTET Super TET</span> </a></h3>
+                  <h3><a href="{{url('/ctet-coaching')}}"   tabindex="0"> <span>CTET Super TET</span> </a></h3>
                </div>
             </div>
          </div>
@@ -744,10 +738,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                <div class="">
                   <div class="course-list">
                      <?php $i = 0; $x = 0; ?>
-                     <?php  $city = strtolower(str_replace(" ","-",$locationCity));
-                        if(!$city){
-                            $city = "delhi";
-                        }
+                     <?php   
+                            $city = "delhi";               
                         
                         
                         ?>
@@ -755,7 +747,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      @foreach($subcategory as $category)
                       <div class="crs-img-items">
                      <div class="course-items">
-                        <a href="{{url(strtolower($city).'/categories/'.$category->parent_slug.'/'.$category->child_slug)}}" title="<?php if(!empty($category->child_category)){  echo $category->child_category; } ?>" > 
+                        <a href="{{url('/categories/'.$category->parent_slug.'/'.$category->child_slug)}}" title="<?php if(!empty($category->child_category)){  echo $category->child_category; } ?>" > 
                         <?php  if(!empty($category->pc_icon)){
                            $vicons= unserialize($category->pc_icon); ?> 
                         <img src="{{asset($vicons['pc_icon']['src'])}}" width="100">	 <?php 
@@ -764,7 +756,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                         <?php  } ?>
                         </a>
                         </div>
-                        <span class="course-title"><a href="{{url(strtolower($city).'/categories/'.$category->parent_slug.'/'.$category->child_slug)}}" ><?php if(!empty($category->child_category)){  echo substr($category->child_category,0,16); } ?></a></span>
+                        <span class="course-title"><a href="{{url('/categories/'.$category->parent_slug.'/'.$category->child_slug)}}" ><?php if(!empty($category->child_category)){  echo substr($category->child_category,0,16); } ?></a></span>
                      </div>
                      @endforeach
                      @endif
@@ -791,7 +783,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      @if( $entrance->child_slug != 'hotel-management-entrance-exam-coaching')
                       <div class="crs-items">
                      <div class="course-items">
-                        <a href="{{url(strtolower($city).'/categories/'.$entrance->parent_slug.'/'.$entrance->child_slug)}}" title="<?php if(!empty($entrance->child_category)){  echo $entrance->child_category; } ?>" >
+                        <a href="{{url('/categories/'.$entrance->parent_slug.'/'.$entrance->child_slug)}}" title="<?php if(!empty($entrance->child_category)){  echo $entrance->child_category; } ?>" >
                         <?php  if(!empty($entrance->pc_icon)){
                            $enicons= unserialize($entrance->pc_icon); ?> 
                         <img src="{{asset($enicons['pc_icon']['src'])}}" width="100">	 <?php 
@@ -800,7 +792,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                         <?php  } ?>
                         </a>
                         </div>
-                        <span class="course-title"><a href="{{url(strtolower($city).'/categories/'.$entrance->parent_slug.'/'.$entrance->child_slug)}}" title="<?php if(!empty($entrance->child_category)){  echo $entrance->child_category; } ?>" ><?php if(!empty($entrance->child_category)){  echo substr($entrance->child_category,0,16); } ?></a></span>
+                        <span class="course-title"><a href="{{url('/categories/'.$entrance->parent_slug.'/'.$entrance->child_slug)}}" title="<?php if(!empty($entrance->child_category)){  echo $entrance->child_category; } ?>" ><?php if(!empty($entrance->child_category)){  echo substr($entrance->child_category,0,16); } ?></a></span>
                      </div>
                      @endif
                      @endforeach
@@ -822,17 +814,15 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                <div class="">
                   <div class="course-list">
                      <?php   $x = 9; ?>
-                     <?php  $city = strtolower(str_replace(" ","-",$locationCity));
-                        if(!$city){
-                            $city ="delhi";
-                        }
+                     <?php  
+                           $city ="delhi";                         
                         ?>
                      @if(!empty($studyAbroad))
                      @foreach($studyAbroad as $study)
                      @if($study->child_slug !='overseas-journalism-education-consultants' && $study->child_slug !='overseas-engineering-education-consultant')
                       <div class="crs-items">
                      <div class="course-items">
-                        <a href="{{url(strtolower($city).'/categories/'.$study->parent_slug.'/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" >
+                        <a href="{{url('/categories/'.$study->parent_slug.'/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" >
                         <?php  if(!empty($study->pc_icon)){
                            $abicons= unserialize($study->pc_icon); ?> 
                         <img src="{{asset(''.$abicons['pc_icon']['src'])}}" width="100">	 <?php 
@@ -841,7 +831,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                         <?php  } ?>
                         </a>
                         </div>
-                        <span class="course-title"><a href="{{url(strtolower($city).'/categories/'.$study->parent_slug.'/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" ><?php if(!empty($study->child_category)){  echo substr($study->child_category,0,16); } ?></a></span>
+                        <span class="course-title"><a href="{{url('/categories/'.$study->parent_slug.'/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" ><?php if(!empty($study->child_category)){  echo substr($study->child_category,0,16); } ?></a></span>
                      </div>
                      @endif
                      @endforeach

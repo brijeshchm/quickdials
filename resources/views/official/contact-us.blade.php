@@ -7,110 +7,8 @@
 <div class="about-bg page-hearder-area">
     <div class="official-overly"></div> 
   </div>   
-   
-  
-   <script>
-   
-   
-    // const apiKey = '3ad5f90d651b46f6877197d1c64b2129';
-     
-
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(function(position) {
-    //     const {latitude,longitude} = position.coords;
-    //     console.log(latitude);
-    //     console.log(longitude);
-    //     const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
-
-    //     fetch(url)
-    //       .then(response => response.json())
-    //       .then(data => {
-    //         console.log(data.results[0].components);
-    //          // const city = data.results[0].components.city || data.results[0].components.town || data.results[0].components.village;
-    //         //  document.getElementById('location').innerText += `\nCity: ${city}`;
-    //          // console.log(data.results[0].components.city);
-    //           document.querySelector('.state').textContent= data.results[0].components.state;
-    //           document.querySelector('.cityss').textContent= data.results[0].components._normalized_city;
-            
-    //       })
-    //       .catch(error => {
-    //       // console.log(error);
-    //         //document.getElementById('location').innerText += '\nError in geocoding.';
-    //       });
-    //   }, function(error) {
-        
-    //   });
-    // }  
     
-    
-//   if (navigator.geolocation) {
-   
-//   navigator.geolocation.getCurrentPosition(function(position) {
-     
-//     const {latitude,longitude} = position.coords;
-   
-//     console.log("Latitude: " + latitude + ", Longitude: " + longitude);
-//   }, function(error) {
-     
-     
-//   });
-// } 
-   </script>
- 
-
-				
-  
-  <?php 
-  
- 
-
-
-
-//   $lat = '27.61 N';
-//   $long = '75.13 E';
-  
-  	
-
-
-  
-//  $location =    ((file_get_contents('https://geolocation-db.com/jsonp'))); 
-
-
-// echo "<pre>";print_r($location);
-// die;
-// $location = (unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$_SERVER['REMOTE_ADDR']))); 
-//       echo "<pre>";print_r($location);
-//                         $ip = $_SERVER['REMOTE_ADDR'];
-// $details = json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip={$_SERVER['REMOTE_ADDR']}"));
-// echo "<pre>";print_r($details->geoplugin_city);
-                        // echo $locationCity;
-// echo $_SERVER['HTTP_X_FORWARDED_FOR'];
-//                         $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=106.208.154.135"));
-//                       echo "<pre>";print_r($location);die;
-                       
-                       
-// $json     = file_get_contents("http://ipinfo.io/".$_SERVER['REMOTE_ADDR']."/geo");
-
-//   echo "<pre>";print_r($json);die;
-// $json     = json_decode($json, true);
-// $country  = $json['country'];
-// $region   = $json['region'];
-// $city     = $json['city'];
-
-
-// $ip = $_SERVER['REMOTE_ADDR'];
-// $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-// echo $details->city; // -> "Mountain View"
-
-
-
-// echo $city;
-
-                        ?>
-                        
-                       <!--<div>  State: <span class="state"></span></div>
-                       <div>  City: <span class="cityss"></span></div>-->
-    <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
   <div id="contact" class="about-area area-padding">
       <div class="contact-inner area-padding">
       <div class="contact-overly"></div>
@@ -118,43 +16,7 @@
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="section-headline text-center">
-              <h2>Contact us</h2>
-              
-              <?php
-
-// $url = "https://geolocation-db.com/jsonp/";
-// $response = file_get_contents($url);
-// $json_data = str_replace('callback(', '', $response);
-// $json_data = rtrim($json_data, ')');
-// $data = json_decode($json_data, true);
-
-
-
-
-// $url = "https://geolocation-db.com/jsonp/";
-
-// // Initialize cURL session
-// $ch = curl_init();
-
-// // Set cURL options
-// curl_setopt($ch, CURLOPT_URL, $url);
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// // Execute cURL request and fetch the response
-// $response = curl_exec($ch);
-
-// // Close cURL session
-// curl_close($ch);
-
-// // Strip the JSONP callback function from the response
-// $json_data = str_replace('callback(', '', $response);
-// $json_data = rtrim($json_data, ')');
-
-// // Decode the JSON response
-// $data = json_decode($json_data, true);
-// echo "<pre>";print_r($data);
-
-?>
+              <h2>Contact us</h2>              
             </div>
           </div>
         </div>

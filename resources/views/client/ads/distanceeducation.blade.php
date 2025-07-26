@@ -623,7 +623,7 @@ margin-bottom: 15px;
 		 <h4>Need Expert Advice ?</h4>
         <div class="jbt"> Fill this form to Grab the best Deals on <span class="orng">quickdials</span></div>
         <div class="popup">
-            <form class="lead_form" action="{{asset('/developer/lead')}}" method="POST">
+           <form class="form-inline" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
                 <aside>	              
 						 
 						<label>Your name<span>*</span></label>

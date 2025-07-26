@@ -21,12 +21,7 @@ echo trim($descrip); } ?>
 @endsection
 @section('content')	
 
-<?php $location =  json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip={$_SERVER['REMOTE_ADDR']}")); 
-
-//echo "<pre>";print_r($location);die;
-
  
-?>
 	<style>
 		.inner-client-div .grid-info h3{
 			height:auto;
@@ -714,13 +709,13 @@ echo trim($descrip); } ?>
     <div class="bestDealpopup"> 
 		<?php 	
 
-$value = Cookie::get('showPopup');	 
+		$value = Cookie::get('showPopup');	 
 	//	if(Auth::guard('clients')->check() || ($value =="yes"))
 			?>
         <a href="javascript:void(0);" class="dealclosebtn">&nbsp;</a> 
 
 	   <h4>Need Expert Advice ?</h4>
-        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php echo $part_id->parent_category." in "; ?><?php echo strtolower($location->geoplugin_city);  ?></span>"</div>
+        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php if($part_id->parent_category){ echo $part_id->parent_category; } ." in "; ?></span>"</div>
         <div class="bdc">
              
             <form class="form-inline" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
@@ -729,7 +724,7 @@ $value = Cookie::get('showPopup');
                     <p><label for="yn">Your Name <span>*</span></label>
 						<input type="hidden" name="lead_form" value="1" />
 						<input type="hidden" name="kw_text" value="<?php echo $part_id->parent_category; ?>" />
-						<input type="hidden" name="city_id" class="city" value="<?php echo strtolower($location->geoplugin_city);  ?>" />
+						<input type="hidden" name="city_id" class="cityList" value="" />
                         <input class="jinp" type="text" placeholder="Enter Full Name" name="name" value="">
                     </p>
                     <p>

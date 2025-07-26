@@ -694,7 +694,7 @@ color: #fff;
 		  <h4>Need Expert Advice ?</h4>
         <div class="jbt"> Fill this form and get best deals from "<span class="orng">@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif</span>"</div>
         <div class="bdc">
-            <form class="lead_form" action="{{url('/developer/lead')}}" method="POST">
+            <form class="form-inline" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
                 <aside>
 				{{ csrf_field()}}
                     <p><label for="yn">Your Name <span>*</span></label>

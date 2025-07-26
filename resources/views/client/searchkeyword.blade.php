@@ -758,9 +758,7 @@ color: #fff;
         <div class="jbt"> Fill this form and get best deals from "<span class="orng">@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif</span>"</div>
         <div class="bdc">
             
-            <?php $location = (unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$_SERVER['REMOTE_ADDR']))); 
-    
-        ?>
+            
             <form class="lead_form" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
                 <aside>
 				{{ csrf_field()}}
@@ -769,7 +767,7 @@ color: #fff;
 						<input type="hidden" name="kw_text" value="@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif" />
 						
 						
-						<input type="hidden" name="city_id" value="<?php if(!empty($location['geoplugin_city'])){ echo $location['geoplugin_city']; } ?>" />
+						<input type="hidden" name="city_id" class="cityList" value="" />
                         <input class="jinp" type="text" placeholder="Enter Full Name" name="name" value="">
                     </p>
                     <p>
@@ -784,7 +782,7 @@ color: #fff;
                         <label class="moblab">&nbsp;</label>
 						<input class="jbtn" type="submit" value="Submit" />
 						<input type="reset" class="reset_lead_form hide" value="reset" />
-                        <!--button type="button" class="jbtn">Submit</button-->
+                        
                     </p>
                 </aside>
             </form>
