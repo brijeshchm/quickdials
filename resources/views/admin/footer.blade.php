@@ -114,8 +114,8 @@
 	</script>
 	<script src="<?php echo asset('admin/vendor/matchHeight/jquery.matchHeight-min.js'); ?>"></script>
     <script src="<?php echo asset('admin/dist/js/script.js'); ?>"></script>
-	        <script src="{{asset('admin/ckeditor/ckeditor.js')}}" type="text/javascript"></script>
-	<script type="text/javascript">
+ <!-- <script src="{{asset('admin/ckeditor/ckeditor.js')}}" type="text/javascript"></script> -->
+	<!-- <script type="text/javascript">
  
 		
 		
@@ -129,7 +129,7 @@
 		};
 		tinymce.init(_config);
 		
-	</script>
+	</script> -->
 	<script>
 	 $(".select2-single-city").select2({
         theme: "bootstrap",
@@ -149,7 +149,7 @@
                 return {
                     results: $.map(data.cities, function(obj) {
                         return {
-                            id: obj.id,
+                            id: obj.city,
                             text: obj.city
                         };
                     })

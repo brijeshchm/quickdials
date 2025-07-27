@@ -270,8 +270,7 @@ class CitiesController extends Controller
 			}else{
 				$cities = Citieslists::select('id','city')->get();
 				
-			//	$cities = Citieslists::select('id','city')->whereIn('city',  array('Noida', 'Delhi','Gurgaon','Faridabad','Ghaziabad','Mumbai','Ahmedabad','Bangalore','lucknow'))->get();
-			}
+			 	}
 			
 			//echo "<pre>";print_r($cities);die;
 			return response()->json(['status'=>1,'cities'=>$cities]);

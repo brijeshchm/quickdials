@@ -525,13 +525,13 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 			cities = [...new Set(cities)];
 			localStorage.setItem('cityData', JSON.stringify(cities));
 
-     
-			let keywords = localStorage.getItem('keywordData');			 
-			keywords = keywords ? JSON.parse(keywords) : [];
-			keywords.push(searchKW);
-			keywords = [...new Set(keywords)];
-			localStorage.setItem('keywordData', JSON.stringify(keywords));
-
+     		if(searchKW){
+				let keywords = localStorage.getItem('keywordData');			 
+				keywords = keywords ? JSON.parse(keywords) : [];
+				keywords.push(searchKW);
+				keywords = [...new Set(keywords)];
+				localStorage.setItem('keywordData', JSON.stringify(keywords));
+	 		}
 
 			var message = '';
 			if(searchKW==''){
@@ -600,44 +600,45 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
         });
 		
 		// SEARCHING KEYDOWN	 
-		$(".home-search").on('keydown',function(evt){	
+		// $(".home-search").on('keydown',function(evt){	
 			
-			if($(this).closest('form').find('.ajax-suggest ul>li').length>0){
-				if($(this).closest('form').find('.ajax-suggest ul li.active').length>0){
-					if(evt.keyCode == '38'){
+		// 	if($(this).closest('form').find('.ajax-suggest ul>li').length>0){
+		// 		if($(this).closest('form').find('.ajax-suggest ul li.active').length>0){
+		// 			if(evt.keyCode == '38'){
 					 
-						if($(this).closest('form').find('.ajax-suggest ul li.active').is(':first-child')){
-							$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active');
-							$(this).closest('form').find('.ajax-suggest ul>li').last().addClass('active');
-						}else{
-							$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active').prev().addClass('active');
-						}
-					}
-					if(evt.keyCode == '40'){
+		// 				if($(this).closest('form').find('.ajax-suggest ul li.active').is(':first-child')){
+		// 					$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active');
+		// 					$(this).closest('form').find('.ajax-suggest ul>li').last().addClass('active');
+		// 				}else{
+		// 					$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active').prev().addClass('active');
+		// 				}
+		// 			}
+		// 			if(evt.keyCode == '40'){
 					 
-						if($(this).closest('form').find('.ajax-suggest ul li.active').is(':last-child')){
-							$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active');
-							$(this).closest('form').find('.ajax-suggest ul>li').first().addClass('active');
-						}else{
-							$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active').next().addClass('active');
-						}
-					}
-				}else{
-					$(this).closest('form').find('.ajax-suggest ul>li').first().addClass('active');
-				}
-			}
-		});
+		// 				if($(this).closest('form').find('.ajax-suggest ul li.active').is(':last-child')){
+		// 					$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active');
+		// 					$(this).closest('form').find('.ajax-suggest ul>li').first().addClass('active');
+		// 				}else{
+		// 					$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active').next().addClass('active');
+		// 				}
+		// 			}
+		// 		}else{
+		// 			$(this).closest('form').find('.ajax-suggest ul>li').first().addClass('active');
+		// 		}
+		// 	}
+		// });
 		
 		// SEARCHING ENGINE		 
 		$(".home-search").on('keyup',function(evt){
-			 
-			if(evt.keyCode == '38'||evt.keyCode == '40'){
-				$(this).val($('.ajax-suggest ul li.active>a').text());
-				return;
-			}
+			 console.log(evt.keyCode);
+			// if(evt.keyCode == '38'||evt.keyCode == '40'){
+			// 	$(this).val($('.ajax-suggest ul li.active>a').text());
+			// 	return;
+			// }
 			var key = $(this).val();
+			console.log(key);
 			var yearly_subs_form = $(this).closest('form');			 
-			if(key!=""){
+			if(key.length >0){
 				$(this).closest('form').find(".ajax-suggest").show();
 				$(this).closest('form').find(".ajax-suggest ul").html("<li><a href='#'>Loading...</a><li>");
 				var $this = $(this);
@@ -660,8 +661,7 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 				});	
 			}else{
 				 
-				var keywordsData = JSON.parse(localStorage.getItem('keywordData'));		
-			 
+				var keywordsData = JSON.parse(localStorage.getItem('keywordData'));					 
 				let html = '';
 				if(keywordsData){ 					
 					keywordsData.forEach(q => {
@@ -676,7 +676,7 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 		
 		$(".cityList").on('keyup',function(evt){
 			 var key = $(this).val();
-			 console.log(key);
+			  
 		if(key.length >0)
     	{   
         	 

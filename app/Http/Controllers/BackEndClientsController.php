@@ -182,9 +182,9 @@ class BackEndClientsController extends Controller
 					->select(DB::raw('business_slug'))
 					->where('business_slug', 'like', '%'.$business_slug.'%')
 					->orderBy('id','desc')
-					->get();
+					->first();
 				if(!empty($slugExists)){
-					$business_slug = $slugExists[0]->business_slug;
+					$business_slug = $slugExists->business_slug;
 					$business_slug = explode("-",$business_slug);
 					$end = end($business_slug);
 					reset($business_slug);
@@ -232,7 +232,7 @@ class BackEndClientsController extends Controller
 				$smsMessage = "Thanks for registering with quickdials.
 				%0D%0ALogin %26 Update your profile to get more leads to grow your business.
 				%0D%0A%0D%0ABusiness Name:".$client->business_name."
-				%0D%0AURL:www.quickdials.in
+				%0D%0AURL:www.quickdials.com
 				%0D%0AUID:".$client->username."
 				%0D%0APassword:".$pass."
 				%0D%0A--
@@ -474,9 +474,6 @@ class BackEndClientsController extends Controller
 								->select('assigned_kwds.*','citylists.city','parent_category.parent_category','child_category.child_category','keyword.keyword')
 								->where('assigned_kwds.id',$assignedKWDS->id)
 								->get();
-				 
-					
-					
 					
 					
 					
@@ -503,7 +500,7 @@ class BackEndClientsController extends Controller
 			// EXPORT LEADS LIST
 			// *****************
 			if($request->has('lead-export')){
-				$client = Client::withTrashed()->where('username',$id)->first();
+				$client = Client::withTrashed()->where('id',$id)->first();
 				$clientID = $client->id;			 
 				$assignedKWDS = DB::table('leads')
 						   ->join('assigned_leads','leads.id','=','assigned_leads.lead_id')
@@ -581,22 +578,14 @@ class BackEndClientsController extends Controller
      */
     public function editSaveClientLocation(Request $request, $id)
     {
+		//echo"<pre>";print_r($_POST);die;
 		if($request->ajax()){ 
 		try{
- 
-			if(!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('client_update') )){
-				 $status = false;
-				 $msg = 'Unauthorised Permission';
-				 $code = 400;
-			} 
-			if (!is_null($id)) {
-		 
-				if($request->has('location_info')){
-	
+ 	
 				$validator = Validator::make($request->all(),[					
 					'business_name' => 'required',
-					'city' => 'required|regex:/[a-zA-z ]+$/',
-					'state' => 'required|regex:/[a-zA-z ()]+$/',
+					'city' => 'required',
+					'state' => 'required',
 					'country' => 'required|regex:/[a-zA-z ]+$/',				 	
 				
 				]);
@@ -606,7 +595,8 @@ class BackEndClientsController extends Controller
 						$errorsBag = $validator->getMessageBag()->toArray();
 						return response()->json(['status'=>1,'errors'=>$errorsBag],400);
 				}
-					$client = Client::withTrashed()->where('username',$id)->first();
+			 
+					$client = Client::withTrashed()->where('id',$id)->first();
 
 					if ($request->user()->current_user_can('administrator')) {	 
 						$client->business_name = $request->input('business_name');
@@ -616,9 +606,9 @@ class BackEndClientsController extends Controller
 						->select(DB::raw('business_slug'))
 						->where('business_slug', 'like', '%'.$business_slug.'%')
 						->orderBy('id','desc')
-						->get();
+						->first();
 					if (!empty($slugExists)){
-						$business_slug = $slugExists[0]->business_slug;
+						$business_slug = $slugExists->business_slug;
 						$business_slug = explode("-",$business_slug);
 						$end = end($business_slug);
 						reset($business_slug);
@@ -635,10 +625,15 @@ class BackEndClientsController extends Controller
 					}
 					$client->address = $request->input('address');
 					$client->landmark = $request->input('landmark');
+					$citydetails = Citieslists::where('city',$request->input('city'))->first();
+					if($citydetails){
+						$client->city_id = $citydetails->id;
+					}
 					$client->city = $request->input('city');
+
 					$client->state = $request->input('state');
 					$client->country = $request->input('country');
-					
+				 
 					if($client->save()){						
 						$status= true;
 						$msg = 'Location Information Updated Successfully';
@@ -648,9 +643,9 @@ class BackEndClientsController extends Controller
 						$msg = 'Location Information Not Updated';
 						$code = 400;					
 					}					
-				}   
+				    
 			 
-		}
+		 
 			}catch(Exception $e){
 				$status= false;
 				$msg = $e->getMessage();
@@ -682,7 +677,7 @@ class BackEndClientsController extends Controller
 				// UPDATE CONTACT INFORMATION
 				// **************************
 				if($request->has('contact_info')){
-					$client = Client::withTrashed()->where('username',$id)->first();
+					$client = Client::withTrashed()->where('id',$id)->first();
 					 
 					$validator = Validator::make($request->all(),[					
 					'contact_person' => 'regex:/^[a-zA-Z ]*$/',
@@ -798,12 +793,22 @@ class BackEndClientsController extends Controller
 			 			
 		 
 			 
-					$client = Client::withTrashed()->where('username',$id)->first();					 
-					$validator = Validator::make($request->all(),[					
-						'year_of_estb' => 'required',
-						'image' => 'mimes:jpeg,jpg,png|max:2048',
-						'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319'							
+					$client = Client::withTrashed()->where('id',$id)->first();					 
+					// $validator = Validator::make($request->all(),[					
+					// 	'year_of_estb' => 'required',
+					// 	'image' => 'mimes:jpeg,jpg,png|max:2048',
+					// 	'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319'							
 				 
+					// ]);
+
+
+					$validator = Validator::make($request->all(), [
+					'image' => 'mimes:jpeg,jpg,png|max:448|dimensions:min_width=40,min_height=35,max_width=300,max_height=150',
+					'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319',
+					'year_of_estb' => 'required',
+					],[
+					'profile_pic.dimensions' => 'Please upload Banner of given size -> [Minimum Height:319px] &amp; [Minimum Width:1137px].',
+					'image.dimensions' => 'Please upload profile logo of given size -> .[Maximum Height:150px] &amp; [Maximum Width:300px]'
 					]);
 				if ($validator->fails()) {
 						$errorsBag = $validator->getMessageBag()->toArray();
@@ -814,9 +819,9 @@ class BackEndClientsController extends Controller
 				 
 				$client->business_intro = $request->input('business_intro');				 
 				$client->year_of_estb = $request->input('year_of_estb');
-				$client->certifications = (!empty($request->input('certifications')))?serialize(explode(',',$request->input('certifications'))):"";
+				$client->certifications = $request->input('certifications');
 				
-				//$file = $request->file('logo');
+			 
 				// LOGO Pictures
 				// *************
 				if ($request->hasFile('image')) {
@@ -3197,7 +3202,7 @@ class BackEndClientsController extends Controller
 				 $code = 400;
 			} 
 		$client_username = $id;
-		$client = Client::where('username',$client_username)->first();
+		$client = Client::where('id',$id)->first();
 		 
 
 		$validator = Validator::make($request->all(),[					
@@ -3217,17 +3222,35 @@ class BackEndClientsController extends Controller
 		
 		
 		$assignedZone = new AssignedZone;
-		$assignedZone->zone_id = $request->input('zone_id');
+		
 		$city = Citieslists::where('city',$request->input('city_id'))->first();
 		 
 		$assignedZone->city_id = $city->id;
+		if($request->input('zone_id') == "Other"){
+			$checkZone = Zone::where('zone',$request->input('other'))->first();
+				if(empty($checkZone)){
+					$zone = New Zone;
+					$zone->city_id = $city->id;
+					$zone->zone = ucfirst($request->input('other'));
+					$zone->save();
+					$zone_id = $zone->id;
+				}else{
+					$zone_id = $checkZone->id;
+				}
+
+			}else{
+				$zone_id = $request->input('zone_id');
+			}
+			$assignedZone->zone_id = $zone_id;
+ 
+
 		$assignedZone->client_id = $client->id;
 		if($assignedZone->save()){
 			$areas = DB::table('areas');
 			$areas = $areas->where('areas.zone_id','=',$assignedZone->zone_id);
 			$areas = $areas->select('areas.id','areas.area');
 			$areas = $areas->get();
-			if(count($areas)>0){
+			if(!empty($areas)){
 				foreach($areas as $area){
 					$assigneddArea = new AssigneddArea;
 					$assigneddArea->assigned_zone_id = $assignedZone->id;

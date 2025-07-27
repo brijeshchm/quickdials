@@ -1170,16 +1170,18 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 					type:"POST",
 					data:data,
 					success:function(data,textStatus,jqXHR){					
-					 
-						if(data.statusCode){
+					 console.log(data);
+						if(data.status){
 							 
-							mainSpinner.stop();
-							
+							mainSpinner.stop();							
+						
+							dataTableAssignedZones.ajax.reload(null,false);
 							$('.alert').addClass('hide');
 							$('.alert-success').removeClass('hide').html(data.msg);
 							$this.find('button[type="reset"]').click();
-							dataTableAssignedZones.ajax.reload(null,false);
-
+							setInterval(function() {
+							$("#messagemodel").modal("hide");
+							}, 1000);
 						}else{
 							mainSpinner.stop();
 							alert(data.msg);
@@ -3190,13 +3192,14 @@ var CategoryController = (function(){
 	
 	
 
-	
+	 
 var ClientController = (function(){
 		return {
 			checked_Ids:[],		
 			editSaveClientLocation:function(THIS,id){	
 			  var $this = $(THIS);
-			var form = new FormData(THIS);				 
+			var form = new FormData(THIS);	
+			 
 				$.ajax({
 					url:"/developer/clients/editSaveClientLocation/"+id,
 					type:"POST",					   
@@ -3213,7 +3216,7 @@ var ClientController = (function(){
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 							removeValidationErrors($this);
-							window.location.href ="/developer/clients/update/"+id;
+					 
 						}else{
 							$('#messagemodel .modal-title').text("Course Content");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
@@ -3223,8 +3226,7 @@ var ClientController = (function(){
 						}
 					},
 					error:function(jqXHR, textStatus, errorThrown){					     			
-						var response = JSON.parse(jqXHR.responseText);
-						console.log(response);
+						var response = JSON.parse(jqXHR.responseText);					 
 						if(response.status){ 
 							showValidationErrors($this,response.errors);						 
 						}else{
@@ -3257,7 +3259,11 @@ var ClientController = (function(){
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 							removeValidationErrors($this);
-							window.location.href ="/developer/clients/update/"+id;
+							 
+							setInterval(function() {
+							$("#messagemodel").modal("hide");
+							}, 1000);
+							//window.location.reload();
 						}else{
 							$('#messagemodel .modal-title').text("Course Content");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
@@ -3303,7 +3309,10 @@ var ClientController = (function(){
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 							removeValidationErrors($this);
-							window.location.href ="/developer/clients/update/"+id;
+						setInterval(function() {
+						$("#messagemodel").modal("hide");
+						}, 1000);
+							//window.location.reload();
 						}else{
 							$('#messagemodel .modal-title').text("Course Content");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
@@ -3347,7 +3356,7 @@ var ClientController = (function(){
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 							removeValidationErrors($this);
-							window.location.href ="/developer/clients/update/"+id;
+							 
 						}else{
 							$('#messagemodel .modal-title').text("Course Content");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
@@ -5563,11 +5572,14 @@ $(document).ready(function(){
 						$('.alert').addClass('hide');
 						$('.alert-success').removeClass('hide').html(data.data.message);
 						var payload = data.data.payload;
+						var $html = "";
 						if(payload.length>0){
-							var $html = "<option value=''>Select Zone</option>";
+							var $html = "<option value=''>Select Zone</option><option value='Other'>Other</option>";
+						 
 							for(var i in payload){
 								$html += "<option value='"+payload[i].id+"'>"+payload[i].zone+"</option>";
 							}
+						 
 							$('*[name="zone_id"]').html($html);
 						}					
 					}else{
@@ -5636,6 +5648,13 @@ $(document).ready(function(){
 				$('*[name="area_id"]').html("");
 				return;
 			}
+
+			if(val == 'Other'){
+			$(".show_otherInput").html('<input class="form-control" value="" name="other" style="   margin-top: 20px;">');
+			}else{
+				$(".show_otherInput").html('');
+			}
+
 			mainSpinner.start();
 			$.ajax({
 				"url":"/developer/area/get-areas/"+val,

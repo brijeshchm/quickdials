@@ -161,7 +161,7 @@
         <div class="form-container">
 			<h4>Location Information</h4>
 		 
-			<form class="form-horizontal" autocomplete="off" action="" onsubmit="return ClientController.editSaveClientLocation(this,<?php echo (isset($client->username)? $client->username:""); ?>)" enctype="multipart/form-data" method="POST">
+			<form class="location-information" autocomplete="off"  method="POST" onsubmit="return ClientController.editSaveClientLocation(this,<?php echo (isset($client->id)? $client->id:""); ?>)" >
 					{{csrf_field()}}
 			 
 					<div class="form-group col-md-6">
@@ -169,9 +169,9 @@
 						<label>Business Name: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>				
 																	
 						<?php if(Auth::user()->role == 'update_business_name' || Auth::user()->role == 'administrator'): ?>
-							<input type="text" class="form-control" name="business_name" value="{{ $client->business_name}}">
+							<input type="text" class="form-control" name="business_name" value="{{ old('business_name',(isset($client)) ? $client->business_name:"")}}">
 							<?php else: ?>
-							<input type="text" class="form-control" name="business_name" value="{{ $client->business_name}}" readonly>
+							<input type="text" class="form-control" name="business_name" value="{{ old('business_name',(isset($client)) ? $client->business_name:"")}}" readonly>
 						
 							<?php endif; ?> 
 						</div>
@@ -181,7 +181,7 @@
 						<div class="col-md-12"> 
 						<label>Landmark: </label>
 						
-							<input type="text" class="form-control" name="landmark" value="{{ $client->landmark}}">
+							<input type="text" class="form-control" name="landmark" value="{{ old('landmark',(isset($client)) ? $client->landmark:"")}}">
 						</div>
 					</div>
 
@@ -228,20 +228,20 @@
 							<div class="col-md-12"> 
 						<label>Country:</label>
 					
-							<input type="text" class="form-control" name="country" value="{{ $client->country}}">
+							<input type="text" class="form-control" name="country" value="{{ old('country',(isset($client)) ? $client->country:"")}}">
 						</div>
 					</div>
 					<div class="form-group col-md-12">
 						<div class="col-sm-12"> 
 						<label>Address: </label>
 						
-							<textarea class="form-control" name="address" rows="4" id="address">{{ $client->address}}</textarea>
+							<textarea class="form-control" name="address" rows="4" id="address">{{ old('address',(isset($client)) ? $client->address:"")}}</textarea>
 						</div>
 					</div>
 					<input type="hidden" name="location_info" value="location_info" >
 					<div class="form-group"> 
 						<div class="col-sm-offset-2 col-sm-4 text-right">
-							<input type="submit" value="SAVE" class="btn btn-warning">
+							<input type="submit" name="submit" value="SAVE" class="btn btn-warning">
 						</div>
 					</div>
 				</form>
@@ -255,59 +255,59 @@
         <div class="form-container">
             <h4>Contact Information</h4>
            
-			<form class="form-horizontal"  action="" onsubmit="return ClientController.ediSaveContactInfo(this,<?php echo (isset($client->username)? $client->username:""); ?>)" method="POST">
+			<form class="form-horizontal"  action="" onsubmit="return ClientController.ediSaveContactInfo(this,<?php echo (isset($client->id)? $client->id:""); ?>)" method="POST">
 				{{csrf_field()}}
 				<div class="form-group col-md-6">
 					<div class="col-md-12">
 					<label>First Name: </label>
-						<input type="text" class="form-control" name="first_name" value="{{ $client->first_name }}" placeholder="Enter First Name">
+						<input type="text" class="form-control" name="first_name" value="{{ old('first_name',(isset($client)) ? $client->first_name:"")}}" placeholder="Enter First Name">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					<div class="col-md-12"> 
 					<label>Last Name: </label>
-					<input type="text" class="form-control" name="last_name" value="{{ $client->last_name }}" placeholder="Enter Last Name">
+					<input type="text" class="form-control" name="last_name" value="{{ old('last_name',(isset($client)) ? $client->last_name:"")}}" placeholder="Enter Last Name">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					<label>Primary Mobile No: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					
-						<input type="text" class="form-control" name="mobile" value="{{ $client->mobile }}" placeholder="Enter Primary Number">
+						<input type="text" class="form-control" name="mobile" value="{{ old('mobile',(isset($client)) ? $client->mobile:"")}}" placeholder="Enter Primary Number">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					<label>Secondary Mobile No: </label>
 					
-						<input type="text" class="form-control" name="sec_mobile" value="{{ $client->sec_mobile}}" placeholder="Enter Secondary No">
+						<input type="text" class="form-control" name="sec_mobile" value="{{ old('sec_mobile',(isset($client)) ? $client->sec_mobile:"")}}" placeholder="Enter Secondary No">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					<label>Landline No: </label>
 					
-					 <input type="text" class="form-control" name="landline" value="{{ $client->landline}}" placeholder="Enter Landline no"> 
+					 <input type="text" class="form-control" name="landline" value="{{ old('landline',(isset($client)) ? $client->landline:"")}}" placeholder="Enter Landline no"> 
 					</div>
 				</div>			 
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					<label>Toll Free No: </label>
 					
-						<input type="text" class="form-control" name="tollfree" value="{{ $client->tollfree}}" placeholder="Enter Toll Free no">
+						<input type="text" class="form-control" name="tollfree" value="{{ old('tollfree',(isset($client)) ? $client->tollfree:"")}}" placeholder="Enter Toll Free no">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					<label>Email: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					 
-						<input type="text" class="form-control" name="email" value="{{ $client->email}}" placeholder="Enter Email id">
+						<input type="text" class="form-control" name="email" value="{{ old('email',(isset($client)) ? $client->email:"")}}" placeholder="Enter Email id">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					<label>Website: </label>					 
-						<input type="text" class="form-control" name="website" value="{{ $client->website}}" placeholder="Enter Website">
+						<input type="text" class="form-control" name="website" value="{{ old('website',(isset($client)) ? $client->website:"")}}" placeholder="Enter Website">
 					</div>
 				</div>
 				<div class="form-group"> 
@@ -350,9 +350,8 @@
 				</form>
 
 					<div class="row">
-					<form method="POST" action="#" id="assignedZone" onsubmit="return assignedZoneController.submit(this,<?php echo (isset($client->username)? $client->username:""); ?>)">
-									{{ csrf_field() }}
-								
+					<form method="POST" action="#" id="assignedZone" onsubmit="return assignedZoneController.submit(this,<?php echo (isset($client->id)? $client->id:""); ?>)">
+					{{ csrf_field() }}					
 				
 					<div class="form-group">
 						<div class="col-md-4">
@@ -366,6 +365,12 @@
 					<div class="form-group">
 						<label for="">Zone:</label>
 						<select name="zone_id" class="form-control"></select>
+					  
+					</div>
+					</div>
+					<div class="col-md-4">
+					<div class="form-group">
+						<div class="show_otherInput"></div>
 					  
 					</div>
 					</div>
@@ -386,7 +391,7 @@
 					<table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-zones">
 					<thead>
 					<tr>
-					<!--th>Area</th-->
+					
 					<th>Zone</th>
 					<th>City</th>
 					<th>Action</th>
@@ -403,28 +408,29 @@
     <div class="section-content" id="uploadProfile">
         <div class="form-container">
             <h4>Company Logo</h4>
-           	<form class="form-horizontal" autocomplete="off" action="" onsubmit="return ClientController.editSaveClientProfileLogo(this,<?php echo (isset($client->username)? $client->username:""); ?>)" enctype="multipart/form-data" method="POST"> 
+           	<form class="form-horizontal" autocomplete="off" action="" onsubmit="return ClientController.editSaveClientProfileLogo(this,<?php echo (isset($client->id)? $client->id:""); ?>)" enctype="multipart/form-data" method="POST"> 
 			<div class="form-group">
 			<div class="col-md-12">
-					<textarea class="form-control" rows="5" name="business_intro" placeholder="Enter Business Introduction Here...">{{ $client->business_intro }}</textarea>
+					<label for="year_of_estb">Enter Business Introduction:</label>
+					<textarea class="form-control" rows="5" name="business_intro" placeholder="Enter Business Introduction Here...">{{ old('business_intro',(isset($client)) ? $client->business_intro:"")}}</textarea>
 				</div>
 			</div>
 		 
 			
 			<div class="form-group">
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<label for="year_of_estb">Year of Establishment:</label>
-					<input type="text" class="form-control" id="year_of_estb" name="year_of_estb" placeholder="Select Date (YYYY)" value="{{ $client->year_of_estb or "" }}">
+					<input type="text" class="form-control" id="year_of_estb" name="year_of_estb" placeholder="Select Date (YYYY)" value="{{ old('year_of_estb',(isset($client)) ? $client->year_of_estb:"")}}">
 				</div>
 			</div>
 			<div class="form-group"> 
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<label for="certifications">Certifications:</label>
-					<input type="text" class="form-control" id="certifications" name="certifications" value="<?php echo (empty($client->certifications))?"":implode(',',unserialize($client->certifications)); ?>" placeholder="Comma separated certifications">
+					<input type="text" class="form-control" id="certifications" name="certifications" value="{{ old('certifications',(isset($client)) ? $client->certifications:"")}}" placeholder="Comma separated certifications">
 				</div>
 			</div>
 			<div class="form-group"> 
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<label for="logo">Upload Logo:</label>					
 					<?php
 						if(!empty($client->logo)){
@@ -440,14 +446,14 @@
 				<a href="{{url('developer/clients/update/profileLogo/logoDel/'.$client->username)}}" class="btn btn-danger btn-sm" title="Remove my profile image" width="100"><i class="fa fa-trash"></i></a>
 						<?php   }else{ ?>
 							
-								<input type="file" class="form-control" id="logo" name="image" accept=".png,.jpeg,jpg">
+								<input type="file" class="form-control" id="logo" name="image" accept=".png,.jpeg,.jpg,.webp">
 							
 							<?php  	}  ?>
 						
 				</div>
 				</div>
 				<div class="form-group"> 
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<label for="">Upload Profile Pic:</label>
 				
 					<?php
@@ -462,7 +468,7 @@
 					<?php if(!empty($profile_pic['thumbnail'])){ ?><img src="{{asset('/'.$profile_pic['thumbnail']['src'])}}" width="100"><?php  } ?>
 						<a href="{{url('developer/clients/update/profileLogo/profilePicDel/'.$client->username)}}" class="btn btn-danger btn-sm" title="Remove my profile image" width="100"><i class="fa fa-trash"></i></a>
 					<?php  }else{ ?>
-								<input type="file" class="form-control" id="profile_pic" name="profile_pic" accept=".png,.jpeg,jpg">
+								<input type="file" class="form-control" id="profile_pic" name="profile_pic" accept=".png,.jpeg,.jpg,.webp">
 								
 					
 					<?php  } ?>
@@ -496,7 +502,7 @@
 						$picture[$i]['large']['name'] = '';
 					}
 				endif; ?>
-					<form class="form-horizontal" enctype="multipart/form-data" onsubmit="return ClientController.uploadClientGalleryPics(this,<?php echo (isset($client->username)? $client->username:""); ?>)" method="POST" >
+					<form class="form-horizontal" enctype="multipart/form-data" onsubmit="return ClientController.uploadClientGalleryPics(this,<?php echo (isset($client->id)? $client->id:""); ?>)" method="POST" >
 						{{csrf_field()}}
 					<div class="form-group">
 					<?php for($i=0;$i<12;$i++): ?>
@@ -899,7 +905,7 @@
 					<label class="col-sm-2">Package Name <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					
 					<div class="col-md-4"> 								 
-					<input type="text" name="package_name" class="form-control" value="{{$client->client_type}}" placeholder="Package Name"> 
+					<input type="text" name="package_name" class="form-control" value="{{ old('client_type',(isset($client)) ? $client->client_type:"")}}" placeholder="Package Name"> 
 					</div>
 					</div>				 
 					<div class="form-group">
