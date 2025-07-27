@@ -747,7 +747,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      @foreach($subcategory as $category)
                       <div class="crs-img-items">
                      <div class="course-items">
-                        <a href="{{url('/categories/'.$category->parent_slug.'/'.$category->child_slug)}}" title="<?php if(!empty($category->child_category)){  echo $category->child_category; } ?>" > 
+                        <!-- <a href="{{url('/categories/'.$category->parent_slug.'/'.$category->child_slug)}}" title="<?php if(!empty($category->child_category)){  echo $category->child_category; } ?>" >  -->
+                        <a href="{{url('/child/'.$category->child_slug)}}" title="<?php if(!empty($category->child_category)){  echo $category->child_category; } ?>" > 
                         <?php  if(!empty($category->pc_icon)){
                            $vicons= unserialize($category->pc_icon); ?> 
                         <img src="{{asset($vicons['pc_icon']['src'])}}" width="100">	 <?php 
@@ -783,7 +784,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      @if( $entrance->child_slug != 'hotel-management-entrance-exam-coaching')
                       <div class="crs-items">
                      <div class="course-items">
-                        <a href="{{url('/categories/'.$entrance->parent_slug.'/'.$entrance->child_slug)}}" title="<?php if(!empty($entrance->child_category)){  echo $entrance->child_category; } ?>" >
+                        <a href="{{url('/child/'.$entrance->child_slug)}}" title="<?php if(!empty($entrance->child_category)){  echo $entrance->child_category; } ?>" >
                         <?php  if(!empty($entrance->pc_icon)){
                            $enicons= unserialize($entrance->pc_icon); ?> 
                         <img src="{{asset($enicons['pc_icon']['src'])}}" width="100">	 <?php 
@@ -822,7 +823,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      @if($study->child_slug !='overseas-journalism-education-consultants' && $study->child_slug !='overseas-engineering-education-consultant')
                       <div class="crs-items">
                      <div class="course-items">
-                        <a href="{{url('/categories/'.$study->parent_slug.'/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" >
+                        <a href="{{url('/child/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" >
                         <?php  if(!empty($study->pc_icon)){
                            $abicons= unserialize($study->pc_icon); ?> 
                         <img src="{{asset(''.$abicons['pc_icon']['src'])}}" width="100">	 <?php 
