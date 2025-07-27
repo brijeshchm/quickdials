@@ -3,18 +3,18 @@
 	<head>
 		<meta charset="utf-8">
 	<title>quickdials-Invoice_<?php echo date('d-m-Y H:i:s'); ?></title>
-		<link href="<?php echo asset('public/admin/invoiceprintpdf.css'); ?>" rel="stylesheet">
+		<link href="<?php echo asset('admin/invoiceprintpdf.css'); ?>" rel="stylesheet">
 	</head>
 	<body>
 		<header>
 			<h1 contenteditable>E-Invoice</h1>
 			<address contenteditable>
-				<b style="font-size: 18px;">Quick Dials Service Pvt Ltd</b>
-				<p> E-24, Sector-3 Noida, U.P India </p>
+				<b style="font-size: 18px;">Quick Dials Pvt Ltd</b>
+				<p> G-13, Sector-3 Noida, U.P India </p>
 				<p>Phone : 120-49999</p>
-				<p>Email : info@quickdials.in</p>
-				<p>Website : www.quickdials.in</p>
-				<img src="{{asset('/public/client/images/logo-blue.png')}}">
+				<p>Email : info@quickdials.com</p>
+				<p>Website : www.quickdials.com</p>
+				<img src="{{asset('/client/images/logo-blue.png')}}">
 			</address>
 			<table class="meta">
 				<tr>
@@ -179,7 +179,7 @@
 			 
 		</article>
 		<aside>
-			<h1><span ><b style="font-weight: 700;">Regd. Office:</b>E-24, Sector-3, Noida,Pin Code-201301 (UP), India.</span></h1>
+			<h1><span ><b style="font-weight: 700;">Regd. Office:</b>G-13, Sector-3, Noida,Pin Code-201301 (UP), India.</span></h1>
 			<div class="thank" style="text-align:center">
 				Thank You ! 
 				 

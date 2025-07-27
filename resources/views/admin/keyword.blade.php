@@ -308,17 +308,7 @@ foreach($keywords as $keyword){
 							</div>
 							<div class="modal-body">
 								{{ csrf_field() }}
-								<input type="hidden" name="id">
-
-								<!--<div class="col-md-3">
-									<label>Select City:</label>
-									<select name="city_id" id="update_city_id" class="form-control select2-single" style="width:100%">
-										<?php foreach($cities as $city): ?>
-										<option value="<?php echo $city->id; ?>"><?php echo ucfirst($city->city); ?></option>
-										<?php endforeach; ?>
-									</select>
-								</div>-->
-								
+								<input type="hidden" name="id">								
 								<div class="col-md-3 keyv">
 									<label>Select Parent Category:</label>
 									<select name="parent_category_id" id="update_parent_category_id" class="form-control select2-single" style="width:100%">
@@ -345,6 +335,8 @@ foreach($keywords as $keyword){
 										<option value="Category 1">Category 1</option>
 										<option value="Category 2">Category 2</option>
 										<option value="Category 3">Category 3</option>
+										<option value="Category 4">Category 4</option>
+										<option value="Category 5">Category 5</option>
 										<option value="Category X">Category X</option>
 									</select>
 								</div>

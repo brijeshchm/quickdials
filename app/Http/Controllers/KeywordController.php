@@ -894,20 +894,7 @@ class KeywordController extends Controller
 			if(!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('edit_keyword'))){
 			return view('errors.unauthorised');
 		}
-		if($request->session()->has('keywordToUpdate')){
-
-			/* $validator = Validator::make($request->all(), [
-			'keyword' => 'required|max:255|unique:keyword,keyword,'.$request->input('id')
-				
-			]);
-			//dd($validator->getMessageBag());
-
-			if ($validator->fails()) {
-				return redirect("developer/keyword")
-							->withErrors($validator)
-							->withInput();
-			}
-			 */
+		if($request->session()->has('keywordToUpdate')){	 
 			
 			$validator = Validator::make($request->all(),[
 			'keyword' => 'required|max:255|unique:keyword,keyword,'.$request->input('id'),
@@ -977,11 +964,7 @@ class KeywordController extends Controller
 					$keyword->king_price = $request->input('king_price');
 					$keyword->preferred_price = $request->input('preferred_price');
 				}
-				/* if($keyword->save()){				
-				$this->success_msg .= 'Keyword updated succesfully!';
-				$request->session()->flash('success_msg', $this->success_msg);
-				}
-				 */
+				 
 				 
                
                 

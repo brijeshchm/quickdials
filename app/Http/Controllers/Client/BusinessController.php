@@ -851,11 +851,21 @@ class BusinessController extends Controller
     { 
         $clientID = auth()->guard('clients')->user()->id;
     	$client = Client::find($clientID);
+		$coinsLeads = DB::table('assigned_leads')
+		->join('leads','leads.id','=','assigned_leads.lead_id')		 
+		->leftjoin('citylists','leads.city_id','=','citylists.id')		 
+		->leftjoin('keyword','assigned_leads.kw_id','=','keyword.id')	 
+		 	 
+		->select('leads.*','assigned_leads.client_id','assigned_leads.lead_id','assigned_leads.created_at as created','assigned_leads.coins','assigned_leads.scrapLead')
+
+		->orderBy('assigned_leads.created_at','desc')	 
+		->where('assigned_leads.client_id',$clientID)->get();
+
         $search = [];
 		if($request->has('search')){
 			$search = $request->input('search');
 		}
-        return view('business.coins-history',['search'=>$search,'client'=>$client]);
+        return view('business.coins-history',['search'=>$search,'client'=>$client,'coinsLeads'=>$coinsLeads]);
     }
     
     
