@@ -9,7 +9,8 @@ Quick Dials- Local search, IT Training, Playschool, overseas education
 Quick Dials- Local search, IT Training, Playschool, overseas education
 @endsection
 @section('content')	
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"  />
 <?php
 $authClient = 0;
  
@@ -136,19 +137,19 @@ display: block;
   will-change: transform;
   background: #ffffff;
   width: 125px;
-  height: 125px;
+  height: 150px;
 }
 .banimghdr{
     margin-top: 5px;
 }
 </style>
-<div class="business-banner">
+<div class="business-banner" id="signup">
 <div class="container">
 <div class="row">
 
 
 <div class="col-sm-4 col-md-4 col-xs-12">
-<div class="business-quickrequestfotm">
+<div class="business-quickrequestfotm" >
 <h1 class="hide">Business Owners</h1>
 <h2>List Your Business </h2>
 <?php if(count($errors)>0): ?>
@@ -196,7 +197,7 @@ display: block;
  <div class="banner-steps banner-stepsInternalEven" ><div class="bstep1">
      
      <img class="banimgInt" style="height: 37px; width: 37px;" src="{{asset('images/buyer.png')}}" alt=""> 
-     <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">1.2</span> K +</figcaption><figcaption class="banimgDir" style="display: none;"> Grow your Business </figcaption><p class="banimgInt">Grow Client</p>
+     <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">{{$clients}}</span>  +</figcaption><figcaption class="banimgDir" style="display: none;"> Grow your Business </figcaption><p class="banimgInt">Grow Client</p>
      
      <p class="banimgDir" style="display: none;">Sell to buyers anytime, anywhere</p></div>
      
@@ -208,26 +209,26 @@ display: block;
        
        <div class="bstep1"><img class="banimgInt" style="width: 37px;" src="{{asset('images/prodnserv.png')}}" alt=""> 
        
-       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">11.3</span> crore+</figcaption><p class="banimgInt">Products &amp; Services</p>
+       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">11.3</span> K+</figcaption><p class="banimgInt">Products &amp; Services</p>
        </div>
        </div>
        
        <div class="banner-steps banner-stepsInternalEven" ><div class="bstep1">
      
      <img class="banimgInt" style="height: 37px; width: 37px;" src="{{asset('images/prodnserv.png')}}" alt=""> 
-     <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">1.2</span> K +</figcaption><figcaption class="banimgDir" style="display: none;"> Grow your Business </figcaption><p class="banimgInt">Grow Client</p>
+     <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">{{ $keyword }}</span>  +</figcaption><figcaption class="banimgDir" style="display: none;"> Grow your Business </figcaption><p class="banimgInt">Keyword</p>
      
      <p class="banimgDir" style="display: none;">Sell to buyers anytime, anywhere</p></div>
      
      <div class="bstep1">
          <img style="width: 47px;" class="banimgInt" src="{{asset('images/prodnserv.png')}}" alt="">
          
-       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">81</span> lakh+</figcaption>
-       <p class="banimgInt">Suppliers</p></div>
+       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">21</span>+</figcaption>
+       <p class="banimgInt">Store</p></div>
        
        <div class="bstep1"><img class="banimgInt" style="width: 37px;" src="{{asset('images/prodnserv.png')}}" alt=""> 
        
-       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">11.3</span> crore+</figcaption><p class="banimgInt">Products &amp; Services</p></div>
+       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">11.3</span> K+</figcaption><p class="banimgInt">Platform</p></div>
        </div>
        
        
@@ -425,10 +426,1684 @@ display: block;
             }
         }
     </style>
+    <style>
+      /* Base Styles */
+:root {
+    /* Light Theme */
+    --primary: #3b82f6;
+    --primary-dark: #1e40af;
+    --secondary: #1e3a8a;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --white: #ffffff;
+    --off-white: #f9fafb;
+    --gray-light: #f3f4f6;
+    --gray: #e5e7eb;
+    --background: #ffffff;
+    --section-light-bg: #f9fafb;
+    --section-dark-bg: #f3f4f6;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: rgba(0, 0, 0, 0.1);
+    --footer-bg: #1a202c;
+    --footer-text: #a0aec0;
+    --header-bg: #ffffff;
+    --header-shadow: rgba(0, 0, 0, 0.1);
+    --logo-text: #1e3a8a;
+}
+
+.dark-theme {
+    /* Dark Theme */
+    --primary: #60a5fa;
+    --primary-dark: #3b82f6;
+    --secondary: #4b5eAA;
+    --text-dark: #e5e7eb;
+    --text-light: #9ca3af;
+    --white: #1f2937;
+    --off-white: #374151;
+    --gray-light: #4b5563;
+    --gray: #6b7280;
+    --background: #111827;
+    --section-light-bg: #1f2937;
+    --section-dark-bg: #374151;
+    --card-bg: #293444;
+    --card-shadow: rgba(255, 254, 254, 0.05);
+    --card-shadow-hover: rgba(255, 255, 255, 0.1);
+    --footer-bg: #0f172a;
+    --footer-text: #d1d5db;
+    --header-bg: #1f2937;
+    --header-shadow: rgba(255, 255, 255, 0.3);
+    --logo-text: #e5e7eb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--background);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 10px var(--header-shadow);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--logo-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo i {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cta-button {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25);
+}
+
+.cta-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
+
+.cta-button.outline {
+    background-color: transparent;
+    color: var(--off-white);
+}
+
+.cta-button.outline:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.theme-toggle:hover {
+    color: var(--primary);
+    transform: rotate(15deg);
+}
+
+.theme-toggle i {
+    transition: transform 0.3s ease;
+}
+
+.dark-theme .theme-toggle i.fa-sun {
+    display: none;
+}
+
+.dark-theme .theme-toggle i.fa-moon {
+    display: inline;
+}
+
+.theme-toggle i.fa-moon {
+    display: none;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--white);
+    padding: 10rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 60%;
+    height: 70%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 80%;
+    height: 70%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;    
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.hero-cta {
+    display: inline-flex;
+    gap: 1rem;
+}
+
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.floating-element {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+.floating-element:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    top: 15%;
+    left: 10%;
+    animation-duration: 25s;
+}
+
+.floating-element:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    top: 20%;
+    right: 20%;
+    animation-duration: 18s;
+    animation-delay: 2s;
+}
+
+.floating-element:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    bottom: 30%;
+    left: 30%;
+    animation-duration: 20s;
+    animation-delay: 1s;
+}
+
+.floating-element:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    bottom: 20%;
+    right: 10%;
+    animation-duration: 22s;
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(10px, 20px) rotate(90deg);
+    }
+
+    50% {
+        transform: translate(20px, 0px) rotate(180deg);
+    }
+
+    75% {
+        transform: translate(10px, -20px) rotate(270deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Section Styles */
+section {
+    padding: 6rem 0;
+}
+
+section.light {
+    background-color: var(--section-light-bg);
+}
+
+section.dark {
+    background-color: var(--section-dark-bg);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--primary);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Features Section */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px var(--card-shadow);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 58, 138, 0.1));
+    z-index: -1;
+    transition: height 0.4s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--card-shadow-hover);
+}
+
+.feature-card:hover::before {
+    height: 100%;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: rotateY(360deg);
+    background-color: var(--primary-dark);
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.feature-description {
+    color: var(--text-light);
+}
+
+/* How It Works Section */
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    position: relative;
+}
+
+.step-connector {
+    position: absolute;
+    top: 50px;
+    left: calc(16.67% + 25px);
+    width: calc(100% - 33.33% - 50px);
+    height: 3px;
+    background-color: var(--primary);
+    z-index: 0;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.step:hover .step-number {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.3);
+}
+
+.step-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.step-description {
+    color: var(--text-light);
+}
+
+/* Pricing Section */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px var(--card-shadow);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    z-index: -1;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: height 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--card-shadow-hover);
+}
+
+.pricing-card:hover::before {
+    height: 100px;
+}
+
+.pricing-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-card:hover .pricing-title {
+    color: var(--white);
+}
+
+.pricing-description {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    min-height: 80px;
+}
+
+.pricing-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+/* Testimonials Section */
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.testimonial-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--card-shadow-hover);
+}
+
+.testimonial-text {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.testimonial-text::before {
+    content: '\201C';
+    position: absolute;
+    top: -10px;
+    left: -5px;
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--gray);
+    overflow: hidden;
+}
+
+.testimonial-info h4 {
+    font-weight: 600;
+}
+
+.testimonial-info p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--white);
+    text-align: center;
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before,
+.cta-section::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cta-section::before {
+    top: -150px;
+    right: -100px;
+}
+
+.cta-section::after {
+    bottom: -150px;
+    left: -100px;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.cta-description {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+/* Footer */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 4rem 0 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-column h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary);
+}
+
+.footer-column p {
+    color: var(--footer-text);
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: var(--footer-text);
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-links a i {
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--footer-text);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 1;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-left {
+    opacity: 1;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-right {
+    opacity: 1;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scale-in.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Benefits Section */
+.benefits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.benefit-icon {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover .benefit-icon {
+    background-color: var(--primary);
+    color: var(--white);
+    transform: rotateY(180deg);
+}
+
+.benefit-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.benefit-description {
+    color: var(--text-light);
+}
+
+/* Stats Section */
+.stats-section {
+    background: linear-gradient(rgba(30, 58, 138, 0.9), rgba(30, 58, 138, 0.9)), url('https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--white);
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.stat-item {
+    padding: 1.5rem;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, #ffffff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Use Cases Section */
+.use-cases-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.use-case-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.use-case-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--card-shadow-hover);
+}
+
+.use-case-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.use-case-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4));
+}
+
+.use-case-content {
+    padding: 2rem;
+}
+
+.use-case-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.use-case-description {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+/* FAQ Section */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    background-color: var(--card-bg);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    color: var(--primary);
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    color: var(--text-light);
+}
+
+.faq-item.active .faq-question {
+    color: var(--primary);
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    max-height: 1000px;
+}
+
+/* Team Section */
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--card-shadow-hover);
+}
+
+.team-photo {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.team-photo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.team-member:hover .team-photo::before {
+    opacity: 1;
+}
+
+.team-social {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    transition: bottom 0.3s ease;
+    z-index: 1;
+}
+
+.team-member:hover .team-social {
+    bottom: 0;
+}
+
+.team-social-link {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: var(--white);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.team-social-link:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+.team-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.team-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.team-position {
+    color: var(--primary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.team-bio {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Blog Section */
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--card-shadow-hover);
+}
+
+.blog-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.blog-content {
+    padding: 2rem;
+}
+
+.blog-date {
+    color: var(--primary);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+.blog-card:hover .blog-title {
+    color: var(--primary);
+}
+
+.blog-excerpt {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.blog-link {
+    color: var(--primary);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+}
+
+.blog-link:hover {
+    gap: 0.8rem;
+}
+
+/* Contact Form Section */
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.contact-text h4 {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.contact-text p {
+    color: var(--text-light);
+}
+
+.contact-form {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+/* Partners Section */
+.partners-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.partner-logo {
+    max-width: 150px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .step-connector {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: var(--card-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        z-index: 1001;
+    }
+
+    .mobile-menu-btn.active i::before {
+        content: '\f00d';
+    }
+
+    .theme-toggle {
+        margin: 1rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .cta-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .feature-card,
+    .pricing-card,
+    .testimonial-card {
+        padding: 1.5rem;
+    }
+    .pricing-card:hover::before {
+    height: 80px;
+}
+}
+    </style>
 
  
  
 
+
+
+
+
+
+
+ <section class="hero" id="home">
+      <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+      </div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="fade-in">List Your Business for FREE on QuickDials</h1>
+          <p class="fade-in" style="transition-delay: 0.2s">
+           India’s Local Search Engine – Reach {{$clients}} + Buyers and Skyrocket Your Business Growth
+
+          </p>
+          <div class="hero-cta fade-in" style="transition-delay: 0.4s">
+            <a href="#signup" class="cta-button">Try for Free</a>
+            <a href="#learnmore" class="cta-button outline">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="light" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title fade-in">
+            Powerful Features for Your Business
+          </h2>
+          <p class="section-subtitle fade-in">
+            Discover how Lead can transform your workforce management with
+            these powerful tools.
+          </p>
+        </div>
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card fade-in-left">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="feature-title">Real-Time Tracking</h3>
+            <p class="feature-description">
+              Monitor employee activity with live session tracking, screenshot
+              capture, and popup code responses.
+            </p>
+          </div>
+          <!-- Feature 2 -->
+          <div class="feature-card fade-in" style="transition-delay: 0.2s">
+            <div class="feature-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3 class="feature-title">Project Management</h3>
+            <p class="feature-description">
+              Create, assign, and track projects with progress charts and budget
+              alerts.
+            </p>
+          </div>
+          <!-- Feature 3 -->
+          <div
+            class="feature-card fade-in-right"
+            style="transition-delay: 0.4s"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <h3 class="feature-title">Flexible Billing</h3>
+            <p class="feature-description">
+              Pay per minute or per storage, with customizable invoices and
+              secure payments.
+            </p>
+          </div>
+          <!-- Feature 4 -->
+          <div class="feature-card fade-in-left" style="transition-delay: 0.2s">
+            <div class="feature-icon">
+              <i class="fas fa-bell"></i>
+            </div>
+            <h3 class="feature-title">Smart Notifications</h3>
+            <p class="feature-description">
+              Get instant alerts for important events, milestones, and potential
+              issues.
+            </p>
+          </div>
+          <!-- Feature 5 -->
+          <div class="feature-card fade-in" style="transition-delay: 0.4s">
+            <div class="feature-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3 class="feature-title">Detailed Reports</h3>
+            <p class="feature-description">
+              Generate comprehensive reports on productivity, time usage, and
+              project progress.
+            </p>
+          </div>
+          <!-- Feature 6 -->
+          <div
+            class="feature-card fade-in-right"
+            style="transition-delay: 0.6s"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-lock"></i>
+            </div>
+            <h3 class="feature-title">Secure Access</h3>
+            <p class="feature-description">
+              Control who can view sensitive information with role-based
+              permissions.
+            </p>
+          </div>
+          <!-- Feature 7 -->
+        
+    
+           
+         
+        </div>
+      </div>
+    </section>
+ <!-- #region -->
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <h2 class="section-title fade-in" style="color: white">
+        Grow business
+        </h2>
+        <p
+          class="section-subtitle fade-in"
+          style="color: rgba(255, 255, 255, 0.8)"
+        >
+          Join thousands of businesses that trust Lead for their workforce
+          management needs.
+        </p>
+        <div class="stats-container">
+          <div class="stat-item fade-in">
+            <div class="stat-number" id="stat1">{{$clients}}+</div>
+            <div class="stat-label" style="color: rgba(255, 255, 255, 0.8)">
+              Active Client
+            </div>
+          </div>
+          <div class="stat-item fade-in" style="transition-delay: 0.2s">
+            <div class="stat-number" id="stat2">25,000+</div>
+            <div class="stat-label" style="color: rgba(255, 255, 255, 0.8)">
+              Employees Tracked
+            </div>
+          </div>
+          <div class="stat-item fade-in" style="transition-delay: 0.4s">
+            <div class="stat-number" id="stat3">100%</div>
+            <div class="stat-label" style="color: rgba(255, 255, 255, 0.8)">
+              Customer Satisfaction
+            </div>
+          </div>
+          <div class="stat-item fade-in" style="transition-delay: 0.6s">
+            <div class="stat-number" id="stat4">35%</div>
+            <div class="stat-label" style="color: rgba(255, 255, 255, 0.8)">
+              Average Lead Increase
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+   
+
+   
+    <!-- Productivity Features Section -->
+    <section class="light" id="productivity-features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title fade-in">
+            Get the Most out of Your Employees’ Time
+          </h2>
+          <p class="section-subtitle fade-in">
+            Discover exactly what your employees are up to every minute of the
+            day with all-seeing software for workplace monitoring and complete
+            behavior analytics.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card fade-in-left">
+            <div class="feature-icon">
+              <i class="fas fa-desktop"></i>
+            </div>
+            <h3 class="feature-title">Company Computers</h3>
+            <p class="feature-description">
+              Suitable for office teams using company-owned computers. Lead
+              starts automatically, with options to track non-stop, during
+              specific hours, or on specific networks.
+            </p>
+          </div>
+          <div class="feature-card fade-in" style="transition-delay: 0.2s">
+            <div class="feature-icon">
+              <i class="fas fa-laptop"></i>
+            </div>
+            <h3 class="feature-title">Personal Computers</h3>
+            <p class="feature-description">
+              Ideal for remote teams, allowing employees to control tracking
+              with clock in/out buttons for flexible monitoring.
+            </p>
+          </div>
+          <div
+            class="feature-card fade-in-right"
+            style="transition-delay: 0.4s"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3 class="feature-title">Visible Mode</h3>
+            <p class="feature-description">
+              Promotes transparency by notifying employees when monitoring is
+              active, ensuring trust and accountability.
+            </p>
+          </div>
+          <div class="feature-card fade-in-left" style="transition-delay: 0.2s">
+            <div class="feature-icon">
+              <i class="fas fa-user-secret"></i>
+            </div>
+            <h3 class="feature-title">Stealth Mode</h3>
+            <p class="feature-description">
+              Detects suspicious activities discreetly to protect team data
+              without employee awareness.
+            </p>
+          </div>
+
+          <div class="feature-card fade-in" style="transition-delay: 0.4s">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="feature-title">Real-Time Alerts</h3>
+            <p class="feature-description">
+              Instant notifications on policy violations or anomalies to enable
+              swift action.
+            </p>
+          </div>
+
+          <div
+            class="feature-card fade-in-right"
+            style="transition-delay: 0.2s"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="feature-title">Activity Insights</h3>
+            <p class="feature-description">
+              Provides detailed analytics on user behavior to help improve
+              security and productivity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="learnmore">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title fade-in">How Quick Dials help You to Grow your Business</h2>
+        
+       
+        </div>
+      </div>
+    </section>
+  
+  
 
 
 
@@ -466,9 +2141,7 @@ display: block;
             <div class="tab-content">  
 <div class="" >
  <div class="growthbusiness">
-  <div class="blog-title text-center">
-            <h3>How Quick Dials help You to Grow your Business</h3>  			
-            </div>
+ 
 			 
       <div class="col-md-12">    
             
@@ -504,7 +2177,7 @@ display: block;
 <li>	The leads provided by us are all verified twice by our expert counselors, in order to provide you genuine candidates.</li></ul>
 
 <h3> <a href="javascript:void(0)">contact Us :</a></h3>
-		<p>Contact: +91 70113 10265, Email: info@quickdials.in, Website: www.quickdials.in.</p>
+		<p>Contact: +91 70113 10265, Email: info@quickdials.com, Website: www.quickdials.com.</p>
 		<p>Other ways can be; by registering your business as a free listing, don’t worry, our marketing team is always happy to find you.</p>
 
 
@@ -780,7 +2453,7 @@ display: block;
                 <div id="check8" class="panel-collapse collapse">
                   <div class="panel-body">
                     <p>
-                    For More Info & any Queries, you can Contact Us on +91 70113 10265 or reach out to us via e-mail @ info@quickdials.in, or list your business as free listing, our marketing team Will Contact you Soon.
+                    For More Info & any Queries, you can Contact Us on +91 70113 10265 or reach out to us via e-mail @ info@quickdials.com, or list your business as free listing, our marketing team Will Contact you Soon.
                     </p>
                   </div>
                 </div>
@@ -811,4 +2484,165 @@ $(function() {
   }, 5000);
 });
 </script>
+<script>
+
+
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const navLinks = document.getElementById("navLinks");
+
+mobileMenuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    mobileMenuBtn.classList.toggle("active");
+});
+
+// Header Scroll Effect
+const header = document.getElementById("header");
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        header.classList.remove("scrolled");
+    } else {
+        header.classList.add("scrolled");
+    }
+});
+
+// Scroll Animations
+const fadeInElements = document.querySelectorAll(
+    ".fade-in, .fade-in-left, .fade-in-right, .scale-in"
+);
+
+const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+fadeInElements.forEach((element) => {
+    observer.observe(element);
+});
+
+// FAQ Accordion
+// const faqItems = document.querySelectorAll(".faq-item");
+
+// faqItems.forEach((item) => {
+//     const question = item.querySelector(".faq-question");
+//     question.addEventListener("click", () => {
+//         const isActive = item.classList.contains("active");
+
+//         // Close all other FAQ items
+//         faqItems.forEach((i) => {
+//             if (i !== item) {
+//                 i.classList.remove("active");
+//             }
+//         });
+
+//         // Toggle current FAQ item
+//         item.classList.toggle("active", !isActive);
+//     });
+// });
+
+// Smooth Scroll for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href");
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            navLinks.classList.remove("active");
+            mobileMenuBtn.classList.remove("active");
+        }
+    });
+});
+
+// Stats Counter Animation
+const statNumbers = document.querySelectorAll(".stat-number");
+let statsAnimated = false;
+
+const animateStats = () => {
+    statNumbers.forEach((stat) => {
+        const target = parseInt(stat.textContent.replace(/[^0-9]/g, ""));
+        let current = 0;
+        const increment = target / 100;
+
+        const updateCounter = () => {
+            current += increment;
+            if (current >= target) {
+                stat.textContent = stat.textContent.replace(
+                    /[0-9,]+/,
+                    target.toLocaleString()
+                );
+                return;
+            }
+            stat.textContent = stat.textContent.replace(
+                /[0-9,]+/,
+                Math.floor(current).toLocaleString()
+            );
+            requestAnimationFrame(updateCounter);
+        };
+
+        updateCounter();
+    });
+};
+
+const statsSection = document.querySelector(".stats-section");
+const statsObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !statsAnimated) {
+        animateStats();
+        statsAnimated = true;
+    }
+}, observerOptions);
+
+statsObserver.observe(statsSection);
+
+ 
+ 
+
+// Theme Toggle
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Check for saved theme preference or system preference
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    body.classList.add('dark-theme');
+    updateIcons(true);
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-theme');
+    const isDark = body.classList.contains('dark-theme');
+    updateIcons(isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+function updateIcons(isDark) {
+    const sunIcon = themeToggle.querySelector('.fa-sun');
+    const moonIcon = themeToggle.querySelector('.fa-moon');
+
+    if (sunIcon && moonIcon) {
+        sunIcon.style.display = isDark ? 'none' : 'inline';
+        moonIcon.style.display = isDark ? 'inline' : 'none';
+    }
+}
+
+</script>
+
 @endsection

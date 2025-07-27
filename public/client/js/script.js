@@ -1,54 +1,7 @@
-/*if('undefined' === typeof window.jQuery){
-	throw new Error('This code requires jQuery');
-}*/
+ 
 $.ajaxSetup({	headers: {	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')	}	});
 
-// **************
-// SPINNER OBJECT
-// 	var mainSpinner = (function(){
-// 		var opts = {
-// 		lines: 13 // The number of lines to draw
-// 		, length: 28 // The length of each line
-// 		, width: 14 // The line thickness
-// 		, radius: 42 // The radius of the inner circle
-// 		, scale: 1 // Scales overall size of the spinner
-// 		, corners: 1 // Corner roundness (0..1)
-// 		, color: '#000' // #rgb or #rrggbb or array of colors
-// 		, opacity: 0.25 // Opacity of the lines
-// 		, rotate: 0 // The rotation offset
-// 		, direction: 1 // 1: clockwise, -1: counterclockwise
-// 		, speed: 1 // Rounds per second
-// 		, trail: 60 // Afterglow percentage
-// 		, fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
-// 		, zIndex: 2e9 // The z-index (defaults to 2000000000)
-// 		, className: 'spinner' // The CSS class to assign to the spinner
-// 		, top: '50%' // Top position relative to parent
-// 		, left: '50%' // Left position relative to parent
-// 		, shadow: false // Whether to render a shadow
-// 		, hwaccel: false // Whether to use hardware acceleration
-// 		, position: 'absolute' // Element positioning
-// 		};
-// 		var spinnerBkgd = document.getElementById('spinnerBkgd');
-// 		var target = document.getElementById('spinnerCntr');
-// 		var spinner = new Spinner(opts);
-// 		return {
-// 			start:function(){
-// 				spinner.spin(target);
-// 				spinnerBkgd.style.display = 'block';
-// 			},
-// 			stop:function(){
-// 				spinner.stop();
-// 				spinnerBkgd.style.display = 'none';
-// 			}
-// 		}
-// 	})();
-	
-	
-// SPINNER OBJECT
-// **************
-
-// ***********
-// DATA TABLES
+ 
 	var dataTableViewAllLeads = $('#datatable-view-all-leads').dataTable({
 		"fixedHeader": true,
 		"processing":true,
@@ -67,11 +20,6 @@ $.ajaxSetup({	headers: {	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('cont
 	}).api();
 	
 	
- 
-	
-	
-// ***********
-// DATA TABLES
 	var dataTableViewAllStudent = $('#datatable-view-all-students').dataTable({
 		"fixedHeader": true,
 		"processing":true,
@@ -87,8 +35,7 @@ $.ajaxSetup({	headers: {	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('cont
 				d.order = null;
 			}
 		}
-	}).api();
-	
+	}).api();	
 	
 	
 	var dataTableViewAllDiscussion = $('#datatable-view-all-Discussion').dataTable({
@@ -143,11 +90,7 @@ var dataTablePaymentHistory = $('#datatable-payment-history').dataTable({
 		}
 	}
 }).api();
-// DATA TABLES
-// ***********
-
-// ***************
-// FORGOT PASSWORD
+ 
 	var fp = (function(){
 		return {
 			getFPF:function(){
@@ -247,23 +190,14 @@ var dataTablePaymentHistory = $('#datatable-payment-history').dataTable({
 			}
 		}
 	})();
-// FORGOT PASSWORD
-// ***************
-
+ 
 
 var homeController = (function(){
 		return {
 			checked_Ids:[],
 			saveEnquiry:function(THIS){				
 				var $this = $(THIS), 
-				data  = $this.serialize();	
-			//	alert('inner');
-		/*	$('button[type="submit"]').prop('disabled','disabled');	
-			$('input[type="text"],input[type="tel"]').keyup(function() {
-			if($(this).val() != '') {
-			$(':input[type="submit"]').prop('disabled', false);
-			} });*/  
-			
+				data  = $this.serialize();		
 		 
 			$.ajax({
 					url:"/client/lead/saveEnquiry",
@@ -271,15 +205,9 @@ var homeController = (function(){
 					data:data,
 					dataType: 'json',
 					success:function(response,textStatus,jqXHR){
-					    						
-					   // alert(response);
-						//alert('hello');
-					   // alert(response.errors);
+					    					
+					  
 						if(response.statusCode){
-						   
-							//window.location.href ="/thanks";			 
-					//	 $('button[type="submit"]').removeAttr('disabled');
- 
 						
 						    $('.connectedclosebtn').click();
 						    $('.dealclosebtn').click();
@@ -288,10 +216,10 @@ var homeController = (function(){
 							$('.imgclass').html('<img src="/images/Thanks.png" style="width: 100%;text-align: center;margin: auto;display: block;">');					
 							$('.successhtml').html("<p class='text-center' style='font-weight: 600;'>Your Submission has been received. <br> Our experts will reach out to you in the next 24 hours.</p>");
 							$('#messagemodel').modal({backdrop:"static",keyboard:false});
-						//	removeValidationErrors($this);
+						 
 							$this.find('.jinp').removeClass('has-error');
 							$this.find('.help-block').remove();
-							// window.location.href ="/thanks";
+							 
 							
 						}else{			
                             $('.connectedclosebtn').click();
@@ -315,7 +243,8 @@ var homeController = (function(){
 						var el = $this.find('*[name="'+key+'"]');
 						$('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el);
 						el.closest('.form-inline').find('.jinp').addClass('has-error');
-						}		}
+						}		
+						}
 
 						}else{
                             $('.connectedclosebtn').click();
@@ -335,41 +264,27 @@ var homeController = (function(){
 				saveTwoEnquiry:function(THIS){				
 				var $this = $(THIS), 
 				data  = $this.serialize();	
-			//	alert('inner');
-		/*	$('button[type="submit"]').prop('disabled','disabled');	
-			$('input[type="text"],input[type="tel"]').keyup(function() {
-			if($(this).val() != '') {
-			$(':input[type="submit"]').prop('disabled', false);
-			} });*/  
-			
-			//alert(data);
+			 
 			$.ajax({
 					url:"/client/lead/saveTwoEnquiry",
 					type:"POST",
 					data:data,
 					dataType: 'json',
-					success:function(response,textStatus,jqXHR){
-					    						
-					   // alert(response);
-						//alert('hello');
-					   // alert(response.errors);
+					success:function(response,textStatus,jqXHR){		    						
+					 
 						if(response.statusCode){
 						   
-							//window.location.href ="/thanks";			 
-					//	 $('button[type="submit"]').removeAttr('disabled');
- 
-						
-						    $('.connectedclosebtn').click();
+					 	    $('.connectedclosebtn').click();
 						    $('.dealclosebtn').click();
 							$(".reset_lead_form").click();
 							$("#messagemodel").modal();
 							$('.imgclass').html('<img src="/public/images/Thanks.png" style="width: 100%;text-align: center;margin: auto;display: block;">');					
 							$('.successhtml').html("<p class='text-center' style='font-weight: 600;'>Your Submission has been received. <br> Our experts will reach out to you in the next 24 hours.</p>");
 							$('#messagemodel').modal({backdrop:"static",keyboard:false});
-						//	removeValidationErrors($this);
+					
 							$this.find('.jinp').removeClass('has-error');
 							$this.find('.help-block').remove();
-							// window.location.href ="/thanks";
+							
 							
 						}else{			
                             $('.connectedclosebtn').click();
@@ -429,10 +344,10 @@ function newsletter(THIS){
 		success: function(response) {
 			if(response.status){
 				$this.find('.nl_err').text(response.message);
-				//alert(response.message);
+			 
 				$this.find('input[name="reset"]').click();
 			}else{
-				//alert(response.message);
+			 
 				$this.find('.nl_err').text(response.message);
 			}
 		},
@@ -443,108 +358,19 @@ function newsletter(THIS){
 	return false;
 }
 
-function uploadProfilePic(clientID){
-	alert(clientID);
-}
-
-/* function openGBVerified(){
-	alert()
-	//e.preventDefault();
-	$('<div class="loginoverlay"></div>').insertBefore('.gbVerifiedPopup');
-	$('.gbVerifiedPopup').addClass('dealshowup');
-	$('html, body').animate({
-		scrollTop: $(".gbVerifiedPopup").offset().top - 15 + "px"
-	}, 1300);
-} */
+ 
 
 function showCategory(parent_id,parent_slug){
  
- //alert(parent_id);
-	//alert(c.replace(/[^a-z0-9\s]/gi,'-'));
-	//alert(cat_url)
-	 $.ajax({
+ $.ajax({
 		type:"post",
 		url:"/category/"+parent_slug,
 		data:{parent_id:parent_id},
-		success:function(response){			
-			alert(response);
-			//return false;
-			location.href="/category/"+parent_slug;
-			
-			/* if(response.status){
-				//alert(JSON.stringify(response.message));
-				var kwdsList = response.message;
-				var i = 0;
-				var subMenu = [];
-				subMenu['list_one']   = '<div class="col-md-4"><ul>';
-				subMenu['list_two']   = '<div class="col-md-4"><ul>';
-				subMenu['list_three'] = '<div class="col-md-4"><ul>';
-				for(var k in kwdsList){
-					i++;
-					if(i==1){
-						subMenu['list_one']   += "<li><a href=\"javascript:getCitiesOfKW('"+parentID+"','"+childID+"','"+parentCat+"','"+childCat+"','"+kwdsList[k]['keyword']+"')\">"+kwdsList[k]['keyword']+"</a></li>";
-					}
-					if(i==2){
-						subMenu['list_two']   += "<li><a href=\"javascript:getCitiesOfKW('"+parentID+"','"+childID+"','"+parentCat+"','"+childCat+"','"+kwdsList[k]['keyword']+"')\">"+kwdsList[k]['keyword']+"</a></li>";
-					}
-					if(i==3){
-						subMenu['list_three'] += "<li><a href=\"javascript:getCitiesOfKW('"+parentID+"','"+childID+"','"+parentCat+"','"+childCat+"','"+kwdsList[k]['keyword']+"')\">"+kwdsList[k]['keyword']+"</a></li>";
-						i=0;
-					}					
-				}
-				subMenu['list_one']   += '</ul></div>';
-				subMenu['list_two']   += '</ul></div>';
-				subMenu['list_three'] += '</ul></div><div class="clearfix"></div>';
-				$('#showKeywordsList .modal-body').html(subMenu['list_one']+subMenu['list_two']+subMenu['list_three']);
-			}else{
-				
-			} */
+		success:function(response){				
+			location.href="/category/"+parent_slug;		 
 		}
 	}); 
 	 
-	/* 
-	$('#showKeywordsList .modal-title').text(parent_cat+"["+child_cat+"]");
-	$('#showKeywordsList').modal({keyboard:false,backdrop:'static'});
-	var formToSend = $('<form><input name="parent_cat_id" value="'+parent_id+'" /><input name="child_cat_id" value="'+child_id+'" /></form>');
-	var parentID  = parent_id,
-	    childID   = child_id,
-		parentCat = parent_cat,
-		childCat  = child_cat;
-	$.ajax({
-		type:"POST",
-		url:"/getKWList",
-		data:formToSend.serialize(),
-		success:function(response){
-			if(response.status){
-				//alert(JSON.stringify(response.message));
-				var kwdsList = response.message;
-				var i = 0;
-				var subMenu = [];
-				subMenu['list_one']   = '<div class="col-md-4"><ul>';
-				subMenu['list_two']   = '<div class="col-md-4"><ul>';
-				subMenu['list_three'] = '<div class="col-md-4"><ul>';
-				for(var k in kwdsList){
-					i++;
-					if(i==1){
-						subMenu['list_one']   += "<li><a href=\"javascript:getCitiesOfKW('"+parentID+"','"+childID+"','"+parentCat+"','"+childCat+"','"+kwdsList[k]['keyword']+"')\">"+kwdsList[k]['keyword']+"</a></li>";
-					}
-					if(i==2){
-						subMenu['list_two']   += "<li><a href=\"javascript:getCitiesOfKW('"+parentID+"','"+childID+"','"+parentCat+"','"+childCat+"','"+kwdsList[k]['keyword']+"')\">"+kwdsList[k]['keyword']+"</a></li>";
-					}
-					if(i==3){
-						subMenu['list_three'] += "<li><a href=\"javascript:getCitiesOfKW('"+parentID+"','"+childID+"','"+parentCat+"','"+childCat+"','"+kwdsList[k]['keyword']+"')\">"+kwdsList[k]['keyword']+"</a></li>";
-						i=0;
-					}					
-				}
-				subMenu['list_one']   += '</ul></div>';
-				subMenu['list_two']   += '</ul></div>';
-				subMenu['list_three'] += '</ul></div><div class="clearfix"></div>';
-				$('#showKeywordsList .modal-body').html(subMenu['list_one']+subMenu['list_two']+subMenu['list_three']);
-			}else{
-				
-			}
-		}
-	}); */
 }
 
 
@@ -562,13 +388,10 @@ function showKeywordsList(parent_id, parent_cat, child_id, child_cat){
 		url:"/getKWList",
 			dataType: 'json',
 		data:formToSend.serialize(),
-		success:function(response){
-		    //	response = JSON.stringify(response);
-		    
+		success:function(response){		    
 			if(response.status){
-				//alert(JSON.stringify(response.message));
-				var kwdsList = response.message;
-			 
+				 
+				var kwdsList = response.message;			 
 				var i = 0;
 				var subMenu = [];
 				subMenu['list_one']   = '<div class="col-md-4"><ul>';
@@ -618,10 +441,8 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 		dataType: 'json',
 		data:formToSend.serialize(),
 		success:function(response){
-			if(response.status){
-				//alert(JSON.stringify(response.message));
-				var kwdsList = response.message;
-			//	alert(kwdsList);
+			if(response.status){				 
+				var kwdsList = response.message;			 
 				var html = "<option value=\"\">--Select the City--</option>";
 				for(var k in kwdsList){
 					html += "<option value=\""+(kwdsList[k]['city']).toLowerCase()+"\">"+kwdsList[k]['city']+"</option>";
@@ -634,38 +455,7 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 	});	
 }
 
-
-
-/*  login password*/
-/*
-function submitForm(){
-	 var data = $("#login-form").serialize();
-	$.ajax({
-		type:"POST",
-		 url:"/client-login",
-		 data:data,
-		beforeSend:function(){
-			$("#error").fadeOut();
-			$("#btn-login").html("<span class=\"glyphicon glyphicon-transfer\"></span> &nbsp; sending ...");
-		},
-		success:function(response){
-			 if(response.status){
-				$("#btn-login").html('<img src="/client/images/btn-ajax-loader.gif" /> &nbsp; Signing In ...');
-			 setTimeout(function(){ window.location.href = "/business-owners"; },2000);
-			}else{
-				$('#login-form').prepend('<div class="alert alert-danger">'+response.msg+'</div>');
-				$("#btn-login").html('<span><span>Login</span></span>');
-				$("#error").fadeIn(1000, function(){						
-				 $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+response.msg+' !</div>');
-				$("#btn-login").html(' <span><span>Login</span></span>');
-				}); 
-			 }
-		}
-	});
-	 return false;
- }
- */
-/* mobile otp important */
+  
  function submitForm(){
 	var data = $("#login-form").serialize();
 	$.ajax({
@@ -695,10 +485,7 @@ function submitForm(){
 	});
 	return false;
 } 
-
  
-// ****************
-// HELPER FUNCTIONS
 	/**
 	 * Removing hash from the given url
 	 *
@@ -709,53 +496,12 @@ function submitForm(){
 		if($url==null) return;
 		return $url.substr(0,($url.indexOf('#')==(-1))?$url.length:$url.indexOf('#'));
 	}
-// HELPER FUNCTIONS
-// ****************
+ 
 
 +(function($){
 	$(document).ready(function(){
-		/* var popoverTemplate = ['<div class="timePickerWrapper popover" style="min-width:300%">',
-			'<div class="arrow"></div>',
-			'<div class="popover-content">',
-			'</div>',
-			'</div>'].join('');
-
-		var content = ['<div class="col-md-4">asfaf asfsadf</div>',
-			'<div class="col-md-4">asdf asdfasf</div>',
-			'<div class="col-md-4">asfa</div>','<div class="col-md-4">asfaf asfsadf</div>',
-			'<div class="col-md-4">asdf asdfasf</div>',
-			'<div class="col-md-4">asfa</div>','<div class="col-md-4">asfaf asfsadf</div>',
-			'<div class="col-md-4">asdf asdfasf</div>',
-			'<div class="col-md-4">asfa</div>', ].join('');		
-		$('[data-toggle="popover"]').popover({
-			html:true,
-			content: content,
-			template: popoverTemplate,
-			trigger: 'click'
-		}); */
-		
-		// INCLUDE CSRF TOKEN IN HEADER IN EACH REQUEST
-		// ********************************************
-	
-
-/*
-$.ajaxSetup(
-{
-    headers:
-    {
-        'X-CSRF-Token': $('input[name="_token"]').val()
-    }
-});
-
-*/
-		// *****************************************
-		// SET WIDTH OF "SELECT A CITY" ON HOME PAGE
-			//$('.filterForm .select2-container').css('width','145px');
-		// SET WIDTH OF "SELECT A CITY" ON HOME PAGE
-		// *****************************************
-		
-		// SELECT ALL CHECKBOX
-		// *******************
+	 
+ 
 		$('input[name="payment_mode_accepted[select_all]"]').on('change',function(){
 			var k = this.checked?true:false;
 			if(k){
@@ -764,21 +510,29 @@ $.ajaxSetup(
 				$(this).closest('.form-group').find('input[type="checkbox"]').prop('checked',false);
 			}
 		});
-		// *******************
-		// SELECT ALL CHECKBOX
-		
-		// LEAD FORM SUBMISSION
-		// ********************
- 
-		// ONSUBMIT SEARCH FORM
-		// ********************
+	 
 		$('.search-form').submit(function(e){
 			e.preventDefault();
 			var $city = $(this).find('.city').val();
 			var searchKW = $(this).find('.home-search').val();
 			localStorage.setItem('keyword',searchKW);	
 			 var city = $(this).find('.cityList').val();
+
             localStorage.setItem('city',city);
+			let cities = localStorage.getItem('cityData');			 
+			cities = cities ? JSON.parse(cities) : [];
+			cities.push(city);
+			cities = [...new Set(cities)];
+			localStorage.setItem('cityData', JSON.stringify(cities));
+
+     
+			let keywords = localStorage.getItem('keywordData');			 
+			keywords = keywords ? JSON.parse(keywords) : [];
+			keywords.push(searchKW);
+			keywords = [...new Set(keywords)];
+			localStorage.setItem('keywordData', JSON.stringify(keywords));
+
+
 			var message = '';
 			if(searchKW==''){
 				if(searchKW==''){
@@ -809,12 +563,11 @@ $.ajaxSetup(
 			
 		});
 		
-		// ONCLICK TO SEARCH RESULTS
-		// *************************
+		// ONCLICK TO SEARCH RESULTS	 
 		$(document).on('click','.ajax-suggest ul>li',function(e){
 			e.preventDefault();
 			$(this).closest('form').find(".home-search").val($(this).find('a').text());
-			//$(".home-search").closest('form').submit();
+		 
 			var closestForm = $(this).closest('form');
 			if(closestForm.hasClass('search-form')){
 				closestForm.submit();
@@ -846,14 +599,13 @@ $.ajaxSetup(
 		   }
         });
 		
-		// SEARCHING KEYDOWN
-		// *****************
+		// SEARCHING KEYDOWN	 
 		$(".home-search").on('keydown',function(evt){	
 			
 			if($(this).closest('form').find('.ajax-suggest ul>li').length>0){
 				if($(this).closest('form').find('.ajax-suggest ul li.active').length>0){
 					if(evt.keyCode == '38'){
-						//alert(38)
+					 
 						if($(this).closest('form').find('.ajax-suggest ul li.active').is(':first-child')){
 							$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active');
 							$(this).closest('form').find('.ajax-suggest ul>li').last().addClass('active');
@@ -862,7 +614,7 @@ $.ajaxSetup(
 						}
 					}
 					if(evt.keyCode == '40'){
-						//alert(40)
+					 
 						if($(this).closest('form').find('.ajax-suggest ul li.active').is(':last-child')){
 							$(this).closest('form').find('.ajax-suggest ul li.active').removeClass('active');
 							$(this).closest('form').find('.ajax-suggest ul>li').first().addClass('active');
@@ -876,17 +628,15 @@ $.ajaxSetup(
 			}
 		});
 		
-		// SEARCHING ENGINE
-		// ****************
+		// SEARCHING ENGINE		 
 		$(".home-search").on('keyup',function(evt){
-			// alert('dd');
+			 
 			if(evt.keyCode == '38'||evt.keyCode == '40'){
 				$(this).val($('.ajax-suggest ul li.active>a').text());
 				return;
 			}
 			var key = $(this).val();
-			var yearly_subs_form = $(this).closest('form');
-			//alert(yearly_subs_form);
+			var yearly_subs_form = $(this).closest('form');			 
 			if(key!=""){
 				$(this).closest('form').find(".ajax-suggest").show();
 				$(this).closest('form').find(".ajax-suggest ul").html("<li><a href='#'>Loading...</a><li>");
@@ -900,17 +650,26 @@ $.ajaxSetup(
 					dataType: 'json',
 					success: function(response) {
 						if(response.status){
-							//alert(JSON.stringify(response.message));
+							 
 							$this.closest('form').find(".ajax-suggest ul").html(response.message);
 						}else{
-							//alert(response.message);
+						 
 							$this.closest('form').find(".ajax-suggest ul").html("<li><a href='#'>Nothing found...</a><li>");	
 						}
 					}
 				});	
 			}else{
-				$(this).closest('form').find(".ajax-suggest").hide();
-				$(this).closest('form').find(".ajax-suggest ul").html("");
+				 
+				var keywordsData = JSON.parse(localStorage.getItem('keywordData'));		
+			 
+				let html = '';
+				if(keywordsData){ 					
+					keywordsData.forEach(q => {
+					html += `<li><a href='#'><i class='fa fa-search'></i>${q}</a></li>`;
+					});
+				}
+				$(this).closest('form').find(".ajax-suggest").show();
+				$(this).closest('form').find(".ajax-suggest ul").html(html);
 			}
 		});
 		
@@ -932,8 +691,52 @@ $.ajaxSetup(
                 	}
             	});
         	}else{
-			 
-        		 
+			        		 
+ 				var citiesData = JSON.parse(localStorage.getItem('cityData'));				 
+				if (citiesData) {
+				 
+					let cities = citiesData;  
+					let searchInput = 'id';  
+					let len = searchInput.length; 					 
+					let resultDiv = document.createElement('div');
+					resultDiv.className = 'resultCode';
+					resultDiv.style.cssText = `
+						background: #f7fbff;
+						padding: 10px;
+						border: 1px solid #DCDCDC;
+						margin-top: 0px;
+						position: absolute;
+						width: 228px;
+						z-index: 9;
+						margin-left: 0px;
+						top: 100%;
+						height: 205px;
+						overflow-y: scroll;
+					`;
+		 
+					let ul = document.createElement('ul');				 
+					cities.forEach(city => {  
+						let li = document.createElement('li');
+						li.style.cssText = `
+							padding: 5px 5px;
+							text-align: left;
+							margin-left: 1px;
+							font-size: 14px;
+						`;
+
+						let a = document.createElement('a');
+						a.style.cssText = 'width: 100%; cursor: pointer;';					 
+						let pos = city.toLowerCase().indexOf(searchInput.toLowerCase()); 			 
+						li.style.padding = '5px 20px';
+						a.textContent = city.charAt(0).toUpperCase() + city.slice(1);  
+						li.appendChild(a);
+						ul.appendChild(li);
+					});
+					resultDiv.appendChild(ul);
+					$('.city-result').html(resultDiv);
+					 
+				}else{
+
                 	$.ajax({
                 	url:"/getCityList",
                 	type:'get',
@@ -943,12 +746,13 @@ $.ajaxSetup(
                 	 
                 	}
                 	});
+				}
     	 
     	}
 		});
 		
 		// HANDLING REVIEW SUBMIT
-		// **********************
+	 
 		$('#commentform').submit(function(e){
 			e.preventDefault();
 			var msg = 'Please check if all the mandatory fields are filled as listed below:<br> <span class="orng" style="font-weight:normal">"Rating", "Name", "Mobile", "Email" &amp; "Comment"</span><br> to submit your<br>review and rating.<br><br><br><strong>Thanks,<br>Quick Dials Team<br></strong>';
@@ -959,9 +763,7 @@ $.ajaxSetup(
 			}
 			$.ajax({
 				type:"POST",
-				url: '/review',
-			 
-				//data:{"formdata":$(this).serialize()},
+				url: '/review',				 
 				data:$(this).serialize(),
 				dataType: 'json',
 				success: function(data){
@@ -970,7 +772,7 @@ $.ajaxSetup(
 						$('.s_active').removeClass('s_active');
 						var imageUrl = '/client/images/empty-star.png';
 						for(var i=0;i<5;++i){
-							//alert($('.s_rating[data-s_rating="'+(i+1)+'"]').data('s_rating'));
+							 
 							$('.s_rating[data-s_rating="'+(i+1)+'"]').css('background-image', 'url(' + imageUrl + ')');
 						}
 						$('#msgModal .modal-body').html(data.message);
@@ -981,7 +783,7 @@ $.ajaxSetup(
 						$('.s_active').removeClass('s_active');
 						var imageUrl = '/client/images/empty-star.png';
 						for(var i=0;i<5;++i){
-							//alert($('.s_rating[data-s_rating="'+(i+1)+'"]').data('s_rating'));
+							 
 							$('.s_rating[data-s_rating="'+(i+1)+'"]').css('background-image', 'url(' + imageUrl + ')');
 						}
 						$('#msgModal .modal-body').html(data.message);
@@ -994,7 +796,7 @@ $.ajaxSetup(
 					$('.s_active').removeClass('s_active');
 						var imageUrl = '/client/images/empty-star.png';
 						for(var i=0;i<5;++i){
-							//alert($('.s_rating[data-s_rating="'+(i+1)+'"]').data('s_rating'));
+							 
 							$('.s_rating[data-s_rating="'+(i+1)+'"]').css('background-image', 'url(' + imageUrl + ')');
 						}
 					$('#msgModal .modal-body').html("Please fill the mandatory fields with proper values");
@@ -1003,13 +805,12 @@ $.ajaxSetup(
 			});
 		});
 		
-		// PLAYING WITH STAR RATING
-		// ************************
+		// PLAYING WITH STAR RATING	 
 		$(document).on('mouseover','.s_rating',function(){
 			var s_rating = $(this).data('s_rating');
 			var imageUrl = '/client/images/full-star.png';
 			for(var i=0;i<s_rating;++i){
-				//alert($('.s_rating[data-s_rating="'+(i+1)+'"]').data('s_rating'));
+			 
 				$('.s_rating[data-s_rating="'+(i+1)+'"]').css('background-image', 'url(' + imageUrl + ')');
 			}
 		});
@@ -1021,7 +822,7 @@ $.ajaxSetup(
 			}
 			var imageUrl = '/client/images/empty-star.png';
 			for(var i=s_rating;i<5;++i){
-				//alert($('.s_rating[data-s_rating="'+(i+1)+'"]').data('s_rating'));
+			 
 				$('.s_rating[data-s_rating="'+(i+1)+'"]').css('background-image', 'url(' + imageUrl + ')');
 			}
 		});
@@ -1061,21 +862,10 @@ $.ajaxSetup(
 		$(document).on('click','.loc_trigger',function(e){
 			e.preventDefault();
 			$('#g_MapsModal').modal();
-			//initMap();
-			//$('#map_canvas').css({"position":"fixed"});
-			//initialize();
+			 
 		});
-		
-		/* $(document).on('submit','#business-form',function(e){
-			e.preventDefault();
-			//alert('test');
-			$('.business-slide-section').slideToggle();
-		}); */
-		
-		
-		
-		// LOGIN FORM VALIDATION
-		// *********************
+				
+		// LOGIN FORM VALIDATION		 
 		if(typeof $.fn.validate == 'function'){
 			$("#login-form").validate({
 				errorElement: 'small',
@@ -1114,25 +904,23 @@ $.ajaxSetup(
 		}
 		
 		// ACTION TOOK PLACE WHEN CLICK ON '.REMOVE-THUMBNAIL'
-		// ***************************************************
+		 
 		$(document).on('click','.remove-thumbnail',function(e){
 			e.preventDefault();
 			var srno = $(this).data('srno');
-			var target = $('#'+srno);
-			//alert($(this).data('srno'));
+			var target = $('#'+srno);		
 			target.prepend("<input type=\"file\" class=\"form-control\" name=\""+srno+"\">");
 			target.find('.help-block').remove();
 		});
 		
 		// TOGGLE HOURS OF OPERATION
-		// *************************
+		 
 		$(document).on('click','.max-min',function(){
 			$('.today').toggleClass('hide');
 			$('.otherday').toggleClass('hide');
 		});
 		
-		// TOGGLE FORMS ON BUSINESS OWNERS PAGE
-		// ************************************
+		// TOGGLE FORMS ON BUSINESS OWNERS PAGE		 
 		$(document).on('click','.acc-head',function(e){
 			e.preventDefault();
 			$this = $(this);
@@ -1140,8 +928,7 @@ $.ajaxSetup(
 			$this.next().slideToggle();
 		});
 		
-		// ANIMATE PAGE SCROLL WHEN FILL THE BUSINESS FORM
-		// ***********************************************
+		// ANIMATE PAGE SCROLL WHEN FILL THE BUSINESS FORM		 
 		var forms_group = $('#forms_group');
 		if(forms_group.length){
 			
@@ -1151,8 +938,7 @@ $.ajaxSetup(
 			}, 400);			
 		}
 		
-		// HANDLING HOURS OF OPERATION TIME VALIDATION
-		// *******************************************
+		// HANDLING HOURS OF OPERATION TIME VALIDATION		 
 		$(document).on('change','.time-from',function(){
 			var $this = $(this);
 			var id = $this.attr('id');
@@ -1212,7 +998,7 @@ $.ajaxSetup(
 			success: function(response) {				
 				if(response.status){					 
 				 $('.location_success').text(response.result);
-				// removeValidationErrors($this);
+				 
 				}else{
 					 alert(response.result);
 				}
@@ -1231,11 +1017,9 @@ $.ajaxSetup(
 				$('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el);
 				el.closest('.form-group').addClass('has-error');
 				}
-				}
-				//alert($this,response.errors);
-				//showValidationErrors($this,response.errors);
+				}			 
 				}else{
-				alert('Something went wrong');
+				alert(response.result);
 				}
 				
 			}
@@ -1272,10 +1056,9 @@ $.ajaxSetup(
 				el.closest('.form-group').addClass('has-error');
 				}
 				}
-				//alert($this,response.errors);
-				//showValidationErrors($this,response.errors);
+				 
 				}else{
-				alert('Something went wrong');
+				alert(response.result);
 				}
 				
 			}
@@ -1331,9 +1114,7 @@ $.ajaxSetup(
 				e.preventDefault();
 			}
 		});
-	// MOBILE NO LIMIT
-		
-		
+	// MOBILE NO LIMIT	
 		function removeValidationErrors($this){
 		$this.find('.form-group').removeClass('has-error');
 		$this.find('.help-block').remove();
@@ -1342,17 +1123,7 @@ $.ajaxSetup(
 		
 	 
 function showValidationErrors($this,errors){ $this.find('.form-group').removeClass('has-error'); $this.find('.help-block').remove(); for (var key in errors) { if(errors.hasOwnProperty(key)){ var el = $this.find('*[name="'+key+'"]'); $('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el); el.closest('.form-group').addClass('has-error'); } } }
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 		
 	});
 })(jQuery);

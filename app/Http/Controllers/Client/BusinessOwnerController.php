@@ -15,6 +15,7 @@ use DB;
 use Mail;
 use Excel;
 use session;
+use App\Models\Keyword;
 use App\Http\Controllers\SitemapsController as SMC;
 
 class BusinessOwnerController extends Controller
@@ -32,7 +33,10 @@ class BusinessOwnerController extends Controller
     public function index()
     {
         
-		return view('client.business-owners');
+		$clients = Client::get()->count();
+		$keyword = Keyword::get()->count();
+ 
+		return view('client.business-owners',['clients'=>$clients,'keyword'=>$keyword]);
     }
 
 

@@ -949,9 +949,9 @@ searchInputs[i].value = '';
         
         
     }
-    $('.home-search').val(localStorage.getItem('keyword'));
+   // $('.home-search').val(localStorage.getItem('keyword'));
 
-   
+   //console.log(localStorage.getItem('cityData'));
 </script>
 
    
