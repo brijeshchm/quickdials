@@ -3227,7 +3227,7 @@ class BackEndClientsController extends Controller
 		 
 		$assignedZone->city_id = $city->id;
 		if($request->input('zone_id') == "Other"){
-			$checkZone = Zone::where('zone',$request->input('other'))->first();
+			$checkZone = Zone::where('zone',$request->input('other'))->where('city_id',$city->id)->first();
 				if(empty($checkZone)){
 					$zone = New Zone;
 					$zone->city_id = $city->id;
