@@ -31,7 +31,7 @@
                     <div class="panel panel-default">
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-							<?php if(isset($area) && count($area)>0): ?>
+							<?php if(!empty($area)): ?>
 							<form class="form-horizontal" role="form" method="POST" action="{{ url('/developer/area/update/'.$area->id) }}">
 								{{ csrf_field() }}
 

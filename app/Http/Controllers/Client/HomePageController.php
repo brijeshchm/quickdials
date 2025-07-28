@@ -34,8 +34,7 @@ class HomePageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {        
 		$menuArr = [];
 		$parentCategories = ParentCategory::take(7)->whereIn('parent_slug', ['packers-movers','hospitals','computer-courses','study-abroad','spa-beauty','restaurants','schools--colleges','home-services','event-organizers'])->get();
 		$clientCategories = DB::table('parent_category as cc')

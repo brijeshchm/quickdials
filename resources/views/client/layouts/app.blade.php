@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">	
 <link rel="canonical" href="{{ URL::current() }}"/> 
-<link rel="shortcut icon" href="{{asset('client/images/small-logo.png')}}" type="image/png"/>
+<link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png"/>
 <meta http-equiv="content-language" content="en-IN">
 <meta name="classification" content="directory portal" />
 
