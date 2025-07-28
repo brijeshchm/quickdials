@@ -45,7 +45,7 @@ body { font: normal 14px/17px 'robotoregular'; font-family: "Poppins", sans-seri
 /*Header Css*/
 #header{
     width:100%; 
-    float:left; 
+    display:flex; 
     background:#fff; 
     padding:7px 0 7px 0;
     -moz-transition: all 0.3s ease-in-out 0s;
@@ -55,15 +55,15 @@ body { font: normal 14px/17px 'robotoregular'; font-family: "Poppins", sans-seri
 	top:0;
 	left:0;
 	z-index:9;
-	height:51px;
+	height:70px;
 	box-shadow: 0 0 5px 0 #bbb;
 	}
 #header .logo{
 	float:left;-moz-transition: all 0.3s ease-in-out 0s;
     -webkit-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
-	width: 183px;
-    margin-top: -16px;
+	width: 180px;
+    margin-top: -9px;
 }
 #header .logo-sm{display:none;-moz-transition: all 0.3s ease-in-out 0s;
     -webkit-transition: all 0.3s ease-in-out 0s;
@@ -2131,6 +2131,9 @@ margin-left: 52px;
 .img-responsive{
   border: none;
   border-radius:50px; 
+}
+.img-logo{
+  border: none;  
 }
 .pma:before{
   content:"\2713";

@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">	
 <link rel="canonical" href="{{ URL::current() }}"/> 
-<link rel="shortcut icon" href="{{asset('client/images/quickind-logo-blue.png')}}" type="image/png"/>
+<link rel="shortcut icon" href="{{asset('client/images/small-logo.png')}}" type="image/png"/>
 <meta http-equiv="content-language" content="en-IN">
 <meta name="classification" content="directory portal" />
 
@@ -21,34 +21,34 @@
 <meta content="All, FOLLOW" name="YAHOOBots" />
 <meta content="All, FOLLOW" name="GoogleBots" />
 <meta name="copyright" content="quickdials">
-<meta name="author" content="quickdials" />
+<meta name="author" content="Quick Dials" />
 <meta http-equiv="CACHE-CONTROL" content="PUBLIC" />
 <meta name="publisher" content="" />
 <meta name="identifier-URL" content="{{url('/')}}">
 <meta name="msvalidate.01" content="" />
-<meta name="p:domain_verify" content="6b026cb56a0cbb53c2811890ecdc5b07"/>
-<meta name="google-site-verification" content="XwopxjB-09taNCDkXgTI6O5xdT-MmgnIZT0d4cIYqFk"/>
+<!-- <meta name="p:domain_verify" content="6b026cb56a0cbb53c2811890ecdc5b07"/> -->
+<meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
 <meta name="url" content="{{url('/')}}" />
 <meta name="DC.title" content="@yield('keyword')" />
 <meta name="distribution" content="global" />
 <meta name="geo.region" content="IN-UP" />
 <meta name="geo.placename" content="Noida" />
-<meta name="geo.position" content="28.535516;77.391026" />
-<meta name="ICBM" content="28.535516, 77.391026" />
+<meta name="geo.position" content="28.5802;77.3181" />
+<meta name="ICBM" content="28.5802, 77.3181" />
 <meta name="robots" content="index, follow" />
 <meta name="Revisit-after" content="7 Days" />
 <meta property="og:locale" content="en_IN" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="@yield('title')" />
 <meta property="og:description" content="@yield('description')" />
-<meta property="og:url" content="https://quickdials.in/" />
-<meta property="og:site_name" content="quickdials" />
+<meta property="og:url" content="https://www.quickdials.com/" />
+<meta property="og:site_name" content="Quick Dials" />
 <meta property="fb:app_id" content="https://www.facebook.com/quickindofficial/" />
-<meta property="og:image" content="{{asset('client/images/quickind-logo-blue.png')}}" />
+<meta property="og:image" content="{{asset('client/images/small-logo.png')}}" />
 <meta property="og:image:secure_url" content="{{asset('client/images/logo.png')}}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="628" />
-<meta property="og:image:alt" content="quickind" />
+<meta property="og:image:alt" content="Quick Dials" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:description" content="@yield('keyword')" />
 
@@ -57,10 +57,9 @@
 <meta name="robots" content="ALL">
 <meta name="googlebot" content=" index, follow ">
 <meta name="bingbot" content=" index, follow " >
-<meta name="reply-to" content="info@quickdials.in">
+<meta name="reply-to" content="info@quickdials.com">
 <meta name="expires" content="never" >
-<link rel="alternate" href="https://quickdials.in/" hreflang="en-in" />
-
+<link rel="alternate" href="https://www.quickdials.com/" hreflang="en-in" />
 
 <!-- SCRIPT-SPINNER -->  
 <script src="<?php echo asset('vendor/spinner/spin.min.js') ?>" async></script>	
@@ -89,29 +88,29 @@
  
  
 <!------Google Analytic Script End----->
-<!--<script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Organization",
-  "url": "https://quickdials.in",
+  "url": "https://www.quickdials.com/",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Noida",
     "addressRegion": "Uttar Pradesh",
     "postalCode": "201301",
-    "streetAddress": ""
+    "streetAddress": "Sector-3"
   },
-  "description": "An Education Information Provider.",
-  "name": "quickdials",
+  "description": "A Local Search Engine for Businesses | Quick Dials.",
+  "name": "Quick Dials",
   "contactPoint": [{
     "@type": "ContactPoint",
     "telephone": "+91-7011310265",
     "contactType": "Customer service"
   }],
-  "logo": "https://quickdials.in/public/client/images/quickind-logo-blue.png",
+  "logo": "https://quickdials.in/public/client/images/quick-large-logo.png",
   "sameAs": ["https://www.facebook.com/quickdialsofficial/"]
 }
-</script>-->
+</script>
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -121,7 +120,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P5MNPW9F');</script>
 <!-- End GoogleTagManager-->
 </head>
-
 <body>      
 <div id="spinnerBkgd"></div>  
 <div id="spinnerCntr"></div>    
@@ -131,11 +129,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager(noscript)-->
    
     
-     <header id="header">
+    <header id="header">
         <div class="container">
             <div class="logo">
                 <h1 title="quickind">                  
-                    <a href="{{url('/')}}"><img src="<?php echo asset('client/images/logo.png'); ?>" alt="Quick Dials" class="img-responsive" /></a> 
+                    <a href="{{url('/')}}"><img src="<?php echo asset('client/images/small-logo.png'); ?>" alt="Quick Dials" class="img-logo" /></a> 
                 </h1>
             </div>
      
@@ -316,18 +314,7 @@ searchInputs[i].value = '';
  
     <div class="container">
         <div class="main-footer">
-        <div><h4>Popular Categories</h4>
-        <?php 
-        
-        $cityes = App\Models\Citieslists::where('city',Request::segment(1))->first();
-        if($cityes){
-            $city = $cityes->city;
-        }else{
-            
-            $city = "delhi";
-        }
-       
-         ?>
+        <div><h4>Popular Categories</h4>         
         <ul>
             <li><a title="Coaching &amp; Tuitions" href="{{url('coaching-tuitions')}}" tabindex="0" >Coaching &amp; Tuitions</a></li>  |
             <li><a title="Business Services" href="{{url('business-services')}}" tabindex="0" >Business Services</a></li> |
@@ -569,11 +556,7 @@ searchInputs[i].value = '';
   
 <div class="modal fade" id="msgModal" role="dialog">
     <div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <!--div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div-->
+        <div class="modal-content">            
             <div class="modal-body">
             </div>
             <div class="modal-footer" style="text-align:center">
@@ -595,40 +578,7 @@ searchInputs[i].value = '';
         </div>
     </div>
 </div>
-
-<!--login pass-->
- <!--
-<div class="loginpopup">
-    <div class="popwraper">
-        <a href="javascript:void(0);" class="closebtn">&times;</a>
-        <div class="col-xs-12 col-sm-5 col-md-5 formleft">
-            <h2>Login</h2>
-            <p>Get access to your Profile, Reviews and Recommendations</p>
-        </div>
-        <div class="col-xs-12 col-sm-7 col-md-7 formright">
-            <form action="" method="POST" autocomplete="on" id="login-form" class="text-center">
-                <div class="input-layout">
-                    <input type="text" class="cleanup validate-empty" name="mobile" id="mobile" value="" required>
-                    <span class="highlight"></span>
-                    <label>Enter Registered Mobile</label>
-                    <div class="alert alert-error alert-email" style="display: none;">Oops! Mobile is required.</div>
-                </div>
-              <div class="input-layout">
-									<input type="password" class="cleanup validate-empty" name="password" id="password" value="" required>
-									<span class="highlight"></span>
-									<label>Enter Paasword</label>
-									<div class="alert alert-error alert-email" style="display: none;">Oops! OTP is required.</div>
-								</div>
-                <div class="_1avdGP">
-                    <button class="_39M2dMsubmit" type="submit" id="btn-login"> <span><span>Continue</span></span></button>
-                </div>
-                <button class="jUwFiZ" onclick="window.location.href='{{ url('business-owners') }}'"><span>New User? Sign up</span></button>
-                <input class="hide" type="reset" name="reset" />
-            </form>
-        </div>
-    </div>
-</div>--> 
-<!--OTP Send meassage-->
+ 
  
 <div class="loginpopup">
     <div class="popwraper">
@@ -733,15 +683,13 @@ searchInputs[i].value = '';
     }
 </script>
 <script type="text/javascript">
-    jQuery(document).ready(function($) {
-        // We only want these styles applied when javascript is enabled
+    jQuery(document).ready(function($) {        
         $('div.navigation').css({
             'width': '25%',
             'float': 'right'
         });
         $('div.content').css('display', 'block');
-        // Initially set opacity on thumbs and add
-        // additional styling for hover effect on thumbs
+      
         var onMouseOutOpacity = 0.67;
         $('#thumbs ul.thumbs li').opacityrollover({
             mouseOutOpacity: onMouseOutOpacity,
@@ -920,38 +868,8 @@ searchInputs[i].value = '';
         localStorage.setItem('city',location.city.toLowerCase())
         $('.cityList').val(localStorage.getItem('city'));
         }
-        });
-        
-        
-        
-        // const apiKey = '3ad5f90d651b46f6877197d1c64b2129';
-        // if (navigator.geolocation) {
-        // navigator.geolocation.getCurrentPosition(function(position) {
-        //     const {latitude,longitude} = position.coords;
-        //     console.log(latitude);
-        //     console.log(longitude);
-        //     const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}`;
-
-        //     fetch(url)
-        //     .then(response => response.json())
-        //     .then(data => {    
-        //         console.log(data.results[0]);
-        //         $(".cityList").val(data.results[0].components._normalized_city.toLowerCase());
-        //     })
-        //     .catch(error => {
-            
-        //     });
-        // }, function(error) {
-            
-        // });
-        // }
-        
-        
-        
-    }
-   // $('.home-search').val(localStorage.getItem('keyword'));
-
-   //console.log(localStorage.getItem('cityData'));
+        });       
+    }   
 </script>
 
    

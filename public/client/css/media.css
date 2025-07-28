@@ -946,7 +946,7 @@ div.caption {font-size: 13px;}
     }
 	#header {
     width: 100%;
-    float: left;
+    display: flex;
     background: #fff;
     padding: 7px 0 7px 0;
     -moz-transition: all 0.3s ease-in-out 0s;
@@ -1091,7 +1091,8 @@ div.caption {font-size: 13px;}
     -moz-transition: all 0.3s ease-in-out 0s;
     -webkit-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
-    width: 100px;
+    width: 78px;
+    margin-top: 1px;
 }
 
 .reviews-left {
