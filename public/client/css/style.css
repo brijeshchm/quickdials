@@ -62,7 +62,7 @@ body { font: normal 14px/17px 'robotoregular'; font-family: "Poppins", sans-seri
 	float:left;-moz-transition: all 0.3s ease-in-out 0s;
     -webkit-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
-	width: 180px;
+	width: 155px;
     margin-top: -9px;
 }
 #header .logo-sm{display:none;-moz-transition: all 0.3s ease-in-out 0s;
@@ -94,7 +94,7 @@ body { font: normal 14px/17px 'robotoregular'; font-family: "Poppins", sans-seri
     text-align: center;
     color: #cbcbcb;
     font-size: 15px;
-    margin-top: -60px;
+    margin-top: -55px;
     top: 1px;
     position: relative;
     padding-top: 16px;
@@ -109,7 +109,7 @@ body { font: normal 14px/17px 'robotoregular'; font-family: "Poppins", sans-seri
     text-align: right;
     color: #cbcbcb;
     font-size: 15px;
-    margin-top: -54px;
+    margin-top: -48px;
     top: -14px;
     padding-top: 61px;
     border-radius: 4px;

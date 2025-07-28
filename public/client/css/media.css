@@ -45,7 +45,7 @@
     border-left: 0;
     font-size: 0;
 }
-.showform{ opacity:1; visibility:visible; margin-top:5px;}
+.showform{ opacity:1; visibility:visible; margin-top:13px;}
 
 .fixedform{ opacity:1!important; visibility:visible!important; margin-top:5px!important;}
 .fixedform .filterForm{
