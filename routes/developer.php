@@ -281,10 +281,10 @@ Route::get('/password/reset/{token?}',[App\Http\Controllers\Auth\PasswordControl
 	Route::post('/clients/remark/{id}',[App\Http\Controllers\BackEndClientsController::class, 'remark'])->middleware('auth');
 	Route::post('/clients/discussion/{id}',[App\Http\Controllers\BackEndClientsController::class, 'remarkDiscussion'])->middleware('auth');
 	Route::post('/clients/payment',[App\Http\Controllers\BackEndClientsController::class, 'paymentClient'])->middleware('auth');
-	Route::get('/clients/getpaymentPrintfile/',[App\Http\Controllers\BackEndClientsController::class, 'getpaymentPrintfile'])->middleware('auth');
-	Route::post('/clients/getpaymentPrint/',[App\Http\Controllers\BackEndClientsController::class, 'getpaymentPrint'])->middleware('auth');
+	Route::get('/clients/getpaymentPrintfile',[App\Http\Controllers\BackEndClientsController::class, 'getpaymentPrintfile'])->middleware('auth');
+	Route::post('/clients/getpaymentPrint',[App\Http\Controllers\BackEndClientsController::class, 'getpaymentPrint'])->middleware('auth');
 	Route::get('/clients/geteditpayment/{id}', [App\Http\Controllers\BackEndClientsController::class, 'geteditpayment'])->middleware('auth');  
-	Route::post('/clients/getinvoicePrintPdf/',[App\Http\Controllers\BackEndClientsController::class, 'getinvoicePrintPdf'])->middleware('auth');
+	Route::post('/clients/getinvoicePrintPdf',[App\Http\Controllers\BackEndClientsController::class, 'getinvoicePrintPdf'])->middleware('auth');
 	Route::post('/clients/getproformaPrintPdf',[App\Http\Controllers\BackEndClientsController::class, 'getproformaPrintPdf'])->middleware('auth');
 	Route::get('/clients/restore/{id?}',[App\Http\Controllers\BackEndClientsController::class, 'restore'])->middleware('auth');
 	Route::get('/clients/list/deleted-clients/{id?}',[App\Http\Controllers\BackEndClientsController::class, 'deletedClients'])->middleware('auth');

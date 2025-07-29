@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\client\Client;
+use App\Models\Client\Client;
 use App\Models\PaymentHistory;
 use App\Models\Modesdetails;
 use App\Models\Banksdetails;

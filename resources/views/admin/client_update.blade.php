@@ -899,14 +899,14 @@
 					<input type="text" name="business_name" class="form-control" value="{{$client->business_name}}" placeholder="Business Name"> 
 					</div>
 					</div> 								
-					
+<!-- 					
 					<div class="form-group">
 					<label class="col-sm-2">Package Name <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					
 					<div class="col-md-6"> 								 
 					<input type="text" name="package_name" class="form-control" value="{{ old('client_type',(isset($client)) ? $client->client_type:"")}}" placeholder="Package Name"> 
 					</div>
-					</div>				 
+					</div>				  -->
 					<div class="form-group">
 					<label class="col-sm-2">Paid Amount<sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					

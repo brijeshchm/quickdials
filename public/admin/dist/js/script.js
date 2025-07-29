@@ -2685,8 +2685,8 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 				return false;
 			},
 			clientOrderHistoryStatus:function(id){
-				if(confirm("Are you sure want to Invoice active and update client pain ??")){
-				//	mainSpinner.start();
+				if(confirm("Are you sure want to Invoice active and update client paid ??")){
+			 
 			 
 					$.ajax({
 						url:"/developer/clientOrderHistoryStatus/status/"+id,
@@ -6456,7 +6456,7 @@ $(document).ready(function(){
 
 		var id   = THIS.data('sid'); 
 			$.ajax({
-			url:"/developer/clients/getpaymentPrint/",
+			url:"/developer/clients/getpaymentPrint",
 			type:"POST",			
 			data:{action:'getPaymentPrint',pid:id},
 			 
@@ -6476,7 +6476,7 @@ $(document).ready(function(){
 
 		var id   = THIS.data('sid'); 
 			$.ajax({
-			url:"/developer/clients/getinvoicePrintPdf/",
+			url:"/developer/clients/getinvoicePrintPdf",
 			type:"POST",			
 			data:{action:'getinvoicePrintPdf',pid:id},
 			 
@@ -6496,7 +6496,7 @@ $(document).ready(function(){
 
 		var id   = THIS.data('sid'); 
 			$.ajax({
-			url:"/developer/clients/getproformaPrintPdf/",
+			url:"/developer/clients/getproformaPrintPdf",
 			type:"POST",			
 			data:{action:'getproformaPrintPdf',pid:id},
 			 
