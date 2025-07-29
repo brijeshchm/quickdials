@@ -683,18 +683,19 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 					  	
 					if(data.status){
                         $("#messaged").modal("show");                        							 
-						$('#messaged .modal-title').text("Keyword Assign");	
+						$('#messaged .modal-title').text("Free subscribed");	
 						$('#messaged .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
 						$('#messaged').modal({keyboard:false,backdrop:'static'});
 						$('#messaged').css({'width':'100%'});					
-						dataTableViewAllkeywords.ajax.reload( null, false );  
+				 
 						setInterval(function() {
 						$("#messaged").modal("hide");
 						}, 1000);	 
-							 
+						window.location.href = "/business/billing-history";	
+						
 					}else{
 							$("#messaged").modal("show");                        							 
-							$('#messaged .modal-title').text("Keyword Assign");	
+							$('#messaged .modal-title').text("Free subscribed");	
 							$('#messaged .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
 							$('#messaged').modal({keyboard:false,backdrop:'static'});
 							$('#messaged').css({'width':'100%'});								

@@ -51,7 +51,7 @@
       <a href="{{url('business/dashboard')}}" class="logo d-flex align-items-center">
        
         <img src="{{asset('client/images/small-logo.png')}}" alt="Logo">
-        <span class="d-none d-lg-block"><?php if($client->first_name){ echo $client->first_name.' '.$client->last_name; } ?></span>
+        <span class="d-none d-lg-block"></span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -147,7 +147,15 @@
  
 <div class="patti-header">
     <div class="info-head">
-        <div class="package"><a href="{{ url('business/package')}}"><?php if($client->client_type=='count_based_subscription'){  echo "Subscription"; }else{  echo $client->client_type; }  ?> </a></div>
+        <div class="package"><?php  if($client->coins_free =='0'){   ?>
+        <a href="{{ url('business/package')}}">Free subscribed Coins </a> <?php 
+
+        }else{  ?>  <a href="{{ url('business/package')}}">
+        <?php if($client->client_type=='count_based_subscription'){ echo "Subscription"; }else{  echo $client->client_type; } ?> </a> <?php  } ?>
+      
+      
+      </div>
+       
         <div class="expire">Expire: {{ date('d M, Y',strtotime($client->expired_on)) ?? '' }}</div>
        <form class="profileSave" method="POST">
         <div class="form-check form-switch">
@@ -156,7 +164,7 @@
         </div>
         </form>
         <div class="remain-code">Remaining Cons: {{ $client->coins_amt ?? '' }}</div>
-        <div class="new-lead">New Lead:<a href="{{ url('business/new-enquiry') }}"> <span class="bell"><i class="bi bi-envelope"></i> {{ $leads??''}}</span></a></div>
+        <div class="new-lead"><a href="{{ url('business/new-enquiry') }}"> <span class="bell"><i class="bi bi-envelope"></i> {{ $leads??''}}</span></a></div>
     </div>
     <div class="notifi">
         

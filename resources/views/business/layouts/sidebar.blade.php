@@ -4,14 +4,6 @@
           <span>Your Dashboard</span>
         </a>
     </li> 
-<!--     
-    <li class="nav-item">
-    <a class="nav-link " href="{{url('business/enquiry')}}">
-      <i class="bi bi-people"></i>
-      <span>Enquiry</span>
-    </a>
-    </li>  -->
-
      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#enquiry-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-people"></i><span>Enquiry</span><i class="bi bi-chevron-down ms-auto"></i>

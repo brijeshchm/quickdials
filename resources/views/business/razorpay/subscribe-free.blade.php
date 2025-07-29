@@ -168,6 +168,7 @@ document.getElementById("tid").value = d;
 var o = "QI_"+Math.floor((Math.random() * 1000) + 1)+"_"+d;
 document.getElementById("merchant_order_id").value = o;
 // document.getElementById("order").innerHTML = o;
+ 
 };
 </script>
 				 
@@ -237,7 +238,7 @@ document.getElementById("merchant_order_id").value = o;
 
 				<form method="post" onsubmit="return businessController.freeSubscribe(this,<?php if($data->id){ echo $data->id; } ?>)" >
 				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-				
+				<input type="hidden" name="tid" id="tid" readonly />
 				<input type="hidden" name="oo" value="<?php echo $oo; ?>" />
 				<input type="hidden" name="merchant_order_id" id="merchant_order_id"> 
 				<input type="hidden" name="language" value="EN"> 

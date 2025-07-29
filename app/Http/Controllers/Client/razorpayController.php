@@ -886,56 +886,42 @@ echo json_encode($json);
 	return view('business.razorpay.subscribe-free',['data'=>$data,'oo'=>$_GET['o']]);
  
 	}
-	public function saveSubscribeFree(Request $request){
- 		echo "<pre>";print_r($_POST);die;
+	public function saveSubscribeFree(Request $request,$id){
+ 		//echo "<pre>";print_r($request->input('merchant_order_id'));die;
 		if($request->ajax()){
+			$oo = base64_decode ( $_POST['oo'], $strict=false );
+			$data = json_decode($oo);	 
+			//echo "<pre>";print_r($data);die;		 
 
-			$feesHisoty =New RazorpayHistory;		
-			$feesHisoty->name= $paymentInfo['card_holder_name'];
-			$feesHisoty->email= $paymentInfo['email'];
-			$feesHisoty->phone= $paymentInfo['phone'];
-			$feesHisoty->username= $paymentInfo['username'];
-			$feesHisoty->coins= $paymentInfo['coins'];
-			$feesHisoty->client_id= $paymentInfo['client_id'];
-			$feesHisoty->merchant_amount= $paymentInfo['merchant_amount'];
-			$feesHisoty->merchant_total= $paymentInfo['merchant_total'];
-			$feesHisoty->currency_code= $paymentInfo['currency_code'];
-			$feesHisoty->order_id= $paymentInfo['order_id'];
-			$feesHisoty->razorpay_payment_id= $paymentInfo['razorpay_payment_id'];
-			$feesHisoty->city= $paymentInfo['city'];
-			$feesHisoty->billing_country= $paymentInfo['billing_country'];
-			$feesHisoty->billing_state= $paymentInfo['billing_state'];
-			$feesHisoty->pay_to= $paymentInfo['pay_to'];
-			$feesHisoty->getpay= 1;
-			$feesHisoty->message= $error;
-			$feesHisoty->save();
-
-			$clientdeatails = Client::find($paymentInfo['client_id']);
-			$paymenthistory = new PaymentHistory;
-			$paymenthistory->client_id =$paymentInfo['client_id'];  	
-			$paymenthistory->customer_name = $paymentInfo['card_holder_name'];
-			$paymenthistory->business_name =  $clientdeatails->business_name;
-			$paymenthistory->mobile = $paymentInfo['phone'];
-			$paymenthistory->email = $paymentInfo['email'];
-			$paymenthistory->package_name = $clientdeatails->client_type;			 
-			$paymenthistory->coins_amt = $paymentInfo['coins']; 
-			$paymenthistory->selectproofid = "";
-			$paymenthistory->proofid = "";	 
-			$paymenthistory->paid_amount = $paymentInfo['paid_amount'];	 
-			$paymenthistory->tds_status = "No";	 
-			$paymenthistory->tds_amount ="0";
-			$paymenthistory->gst_tax = $paymentInfo['gst_tax'];		 
-			$paymenthistory->gst_total_amount = $paymentInfo['merchant_amount'];	 
-			$paymenthistory->gst_status = "Yes";	 
-			$paymenthistory->total_amount = $paymentInfo['merchant_amount'];	
-			$paymenthistory->transactionid = $paymentInfo['order_id'];			 
-			$paymenthistory->paymentcollect = 0;			 
-			$paymenthistory->payment_mode = "razorpay";
-			$paymenthistory->payment_bank = ""; 
-			$paymenthistory->save();
+			$clientdeatails = Client::find($data->id);
+			if($clientdeatails->coins_free=='0'){
+				$paymenthistory = new PaymentHistory;
+				$paymenthistory->client_id =$data->id;  	
+				$paymenthistory->customer_name = $data->name;
+				$paymenthistory->business_name =  $clientdeatails->business_name;
+				$paymenthistory->mobile = $data->phone;
+				$paymenthistory->email = $data->email;
+				$paymenthistory->package_name = 'Diamond';
+				$paymenthistory->coins_amt = $data->coins; 
+				$paymenthistory->selectproofid = "";
+				$paymenthistory->proofid = "";	 
+				$paymenthistory->paid_amount = '0';	 
+				$paymenthistory->tds_status = "No";	 
+				$paymenthistory->tds_amount ="0";
+				$paymenthistory->gst_tax = '0';
+				$paymenthistory->gst_total_amount = '0';
+				$paymenthistory->gst_status = "Yes";
+				$paymenthistory->total_amount = '0';
+				$paymenthistory->transactionid = $request->input('merchant_order_id');		  	 
+				$paymenthistory->order_number = $request->input('merchant_order_id');		  	 
+				$paymenthistory->paymentcollect = 0;
+				$paymenthistory->payment_mode = "free subscribe";
+				$paymenthistory->payment_bank = ""; 
+				$paymenthistory->invoice_status = '1';
+				$paymenthistory->save();
 
 	
-			$clientdeatails->coins_amt = $clientdeatails->coins_amt + $paymentInfo['coins'];
+			$clientdeatails->coins_amt = $clientdeatails->coins_amt + $data->coins;
 			if($clientdeatails->expired_on == '0000-00-00 00:00:00' || $clientdeatails->expired_on =='NULL'){
 			
 			$newDate = date('Y-m-d', strtotime(now(). ' +365 days'));
@@ -955,11 +941,15 @@ echo json_encode($json);
 			$clientdeatails->coins_free = "1";
 			if($clientdeatails->save()){
 				$status = true;
-				$msg = "Payment successfully ";
+				$msg = "Free subscribed successfully ";
 			}else{
-				$status = true;
-				$msg = "Payment successfully ";
+				$status = false;
+				$msg = "Not subscribed successfully ";
 			}
+		}else{
+				$status = false;
+				$msg = "Already subscribed!";
+		}
 
 		return response()->json(['status'=>$status,'msg'=>$msg],200);
 		}

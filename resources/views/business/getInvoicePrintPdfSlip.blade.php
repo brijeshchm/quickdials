@@ -76,7 +76,7 @@
 					<tr>
 						<th><span contenteditable>S.No</span></th>
 						<th><span contenteditable>Package</span></th>
-						<th><span contenteditable>Duration</span></th>
+						<th><span contenteditable>Coins</span></th>
 						<th><span contenteditable>Rate(Per Package )</span></th>						
 						<th><span contenteditable>Amount</span></th>
 						
@@ -87,18 +87,18 @@
 						<td><span contenteditable>1</span></td>					 
 						<?php if($paymentprint->package_name=='Gold'){ ?>
 						<td><span contenteditable>Gold</span></td>
-						<td><span contenteditable><?php  echo date('d-M-Y',strtotime($paymentprint->expired_from));?>  To <?php echo date('d-M-Y',strtotime($paymentprint->expired_on)); ?></span></td>	
+						<td><span contenteditable><?php  echo $paymentprint->coins_amt; ?> </span></td>	
 						<td><span contenteditable><?php echo $paymentprint->paid_amount; ?></span></td>	
 				
 				<?php }else if($paymentprint->package_name=='Diamond'){ ?>
 				 
 						<td><span contenteditable>Diamond</span></td>
-						<td><span contenteditable><?php  echo date('d-M-Y',strtotime($paymentprint->expired_from));?>  To <?php echo date('d-M-Y',strtotime($paymentprint->expired_on)); ?></span></td>	
+						<td><span contenteditable><?php  echo $paymentprint->coins_amt; ?> </span></td>	
 						<td><span contenteditable><?php echo $paymentprint->paid_amount; ?></span></td>
 				<?php }if($paymentprint->package_name=='Platinum'){ ?>
 					
 					<td><span contenteditable>Platinum</span></td>
-						<td><span contenteditable><?php  echo date('d-M-Y',strtotime($paymentprint->expired_from));?>  To <?php echo date('d-M-Y',strtotime($paymentprint->expired_on)); ?></span></td>	
+						<td><span contenteditable><?php  echo $paymentprint->coins_amt; ?> </span></td>	
 						<td><span contenteditable><?php echo $paymentprint->paid_amount; ?></span></td>
 				
 				<?php } ?>

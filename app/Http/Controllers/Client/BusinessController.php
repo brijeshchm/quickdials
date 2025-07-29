@@ -1048,7 +1048,7 @@ class BusinessController extends Controller
 			foreach($payments as $payment){
 				$action = '';
 				$separator = '';
-				 if($payment->invoice_status == 1){
+				 if($payment->invoice_status == '1'){
 				$action .= $separator.'<a href="javascript:void(0)" data-toggle="popover" title="Invoice PDF" id="invoiceBillingPdf" data-trigger="hover" data-placement="left" data-sid="'.$payment->id.'"><i aria-hidden="true" class="bi bi-file-earmark-pdf"></i></a>'; 
 				}
     						 
