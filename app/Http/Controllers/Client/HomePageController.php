@@ -34,7 +34,8 @@ class HomePageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
+        
 		$menuArr = [];
 		$parentCategories = ParentCategory::take(7)->whereIn('parent_slug', ['packers-movers','hospitals','computer-courses','study-abroad','spa-beauty','restaurants','schools--colleges','home-services','event-organizers'])->get();
 		$clientCategories = DB::table('parent_category as cc')
@@ -312,63 +313,6 @@ class HomePageController extends Controller
 		
 	}
  
-
-
-/**
-     * Get matches trainers based on ajax.
-     *
-     * @param  string
-     * @return JSON Object having matched course details
-     */
-    public function getCountryCode(Request $request)
-    {
-		if($request->ajax()){
-			
-			$len=strlen($request->input('id'));
-			if(null==$request->input('id')){
-					$countryies = Citieslists::whereIn('id',['278','596','961','428'])->get();
-				 
-			}else{
-				$countryies = Citieslists::orderBy('city','asc');				
-				$countryies = $countryies->where(function($query) use($request){
-					$query->orWhere('city','LIKE','%'.$request->input('id').'%')			    	 
-						  ->orWhere('state','LIKE','%'.$request->input('id').'%');
-				});
-				$countryies =$countryies->get();				
-			}
-			 
-			if(count($countryies)>0){ 
-			echo'<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;">	
-			<ul>';
-			foreach($countryies as $data){
-				
-			$pos=stripos($data->city, $request->input('id'));
-			if($pos>=0){
-			$str=substr($data->city, $pos, $len);
-			$strong_str=$str;
-			$final_str=str_replace($str, $strong_str, $data->city); ?>
-		 
-			<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" >
-			<a style='width:100%; cursor:pointer;'><?php echo ucwords($final_str); ?></a>
-			</li>
-		 
-			<?php }else{ ?>
-			 
-			<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" >
-			<a style='width:100%; cursor:pointer;' ><?php echo ucwords($data->city); ?></a>
-			</li>
-			
-			<?php 	} ?>
-			<?php	
-			}
-			echo'</ul>
-			</div>';
-			} else { 
-			echo'<div class="resultCourse" style="list-style-type: none; background: #fff; padding: 10px 20px; border: 1px solid #DCDCDC; margin-top: 68px;position: absolute;width: 228px;z-index: 999999;margin-left: 0px;" ><ul><li><p style="color:red;text-align: left;font-size: 13px;" >Sorry Does not found city !</p></li></ul></div>';
-		
-			} 				 
-		} 	
-	}
 
 
 public function saveTwoEnquiry(Request $request){
@@ -659,6 +603,8 @@ public function saveTwoEnquiry(Request $request){
 		}
 	}
 	
+	 
+	
 	/**
      * Remove the specified resource from storage.
      *
@@ -668,7 +614,7 @@ public function saveTwoEnquiry(Request $request){
     public function searchKW(Request $request)
     { 
 		 
-		$query = DB::table('keyword')			 
+		$query = DB::table('keyword')
 			->select('keyword.keyword','keyword.id');
 		$str = '';
 		if($request->input('search_kw')!=""){
@@ -681,7 +627,6 @@ public function saveTwoEnquiry(Request $request){
 		}
 		$html = "";
 		foreach($query as $q){
-		 
 			$html .= "<li><a href='#'><i class='fa fa-search'></i>".$q->keyword."</a></li>";
 		}
 		$query = DB::table('clients')
@@ -691,18 +636,141 @@ public function saveTwoEnquiry(Request $request){
 			$str = trim($request->input('search_kw'));
 			$query = $query->orWhere('clients.business_name','LIKE','%'.$str.'%');
 			$query = $query->orderBy(DB::raw("CASE WHEN clients.business_name LIKE '".$str."%' THEN 1 ELSE 2 END"),'DESC');
-			if($request->has('city')&&$request->input('city')!=''){
-				$query = $query->where('clients.city','LIKE','%'.$request->input('city').'%');
-			}
 			$query = $query->distinct()->get();
 		}
+		 
 		foreach($query as $q){
-			 
-			$html .= "<li><a href='#'><i class='fa fa-search'></i> ".$q->business_name."</a></li>";
+			$html .= "<li><a href='#'><i class='fa fa-search'></i>".$q->business_name."</a></li>";
 		}
 		return response()->json(['status'=>1,'message'=>$html]);
     }
 	
+
+
+/**
+     * Get matches trainers based on ajax.
+     *
+     * @param  string
+     * @return JSON Object having matched course details
+     */
+    public function getCountryCode(Request $request)
+    {
+		if($request->ajax()){
+			
+			$len=strlen($request->input('id'));
+			if(null==$request->input('id')){
+			$countryies = Citieslists::whereIn('id',['278','596','961','428'])->get();
+				 
+			}else{
+				$countryies = DB::table('citylists')->orderBy('city','asc');
+				$countryies = $countryies->join('zones','citylists.id','=','zones.city_id');
+				$countryies = $countryies->join('areas','zones.id','=','areas.zone_id');
+
+				$countryies = $countryies->where(function($query) use($request){
+				$query->orWhere('city','LIKE','%'.$request->input('id').'%')			    	 
+				 		->orWhere('area','LIKE','%'.$request->input('id').'%')			    	 
+				 		->orWhere('zone','LIKE','%'.$request->input('id').'%')			    	 
+						->orWhere('state','LIKE','%'.$request->input('id').'%');
+				});
+				$countryies =$countryies->get();
+			}
+		 
+			if(!empty($countryies)){ 
+			echo'<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;">	
+			
+			<ul>';
+			foreach($countryies as $data){
+				
+			$pos=stripos($data->city, $request->input('id'));
+			if($pos>=0){
+			$str=substr($data->city, $pos, $len);
+			$strong_str=$str;
+			$final_str=str_replace($str, $strong_str, $data->city); ?>
+		 
+			<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" >
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>" data-area="<?php echo strtolower($data->area); ?>" data-zone="<?php echo strtolower($data->zone); ?>"><?php echo $data->area.' '.ucwords($final_str); ?></a>
+			</li>
+		 
+			<?php }else{ ?>
+			 
+			<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" >
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>"><?php echo ucwords($data->city); ?></a>
+			</li>
+			
+			<?php 	} ?>
+			<?php	
+			}
+			echo'</ul>
+			</div>';
+			} else {
+			echo'<div class="resultCourse" style="list-style-type: none; background: #fff; padding: 10px 20px; border: 1px solid #DCDCDC; margin-top: 68px;position: absolute;width: 228px;z-index: 999999;margin-left: 0px;" ><ul><li><p style="color:red;text-align: left;font-size: 13px;" >Sorry Does not found city !</p></li></ul></div>';
+		
+			}
+
+			
+			
+			
+		} 	
+	}
+
+/**
+     * Get matches trainers based on ajax.
+     *
+     * @param  string
+     * @return JSON Object having matched course details
+     */
+    public function getCountryCode_old(Request $request)
+    {
+		if($request->ajax()){
+			
+			$len=strlen($request->input('id'));
+			if(null==$request->input('id')){
+					$countryies = Citieslists::whereIn('id',['278','596','961','428'])->get();
+				 
+			}else{
+				$countryies = Citieslists::orderBy('city','asc');				
+				$countryies = $countryies->where(function($query) use($request){
+					$query->orWhere('city','LIKE','%'.$request->input('id').'%')			    	 
+						  ->orWhere('state','LIKE','%'.$request->input('id').'%');
+				});
+				$countryies =$countryies->get();				
+			}
+			 
+			if(count($countryies)>0){ 
+			echo'<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;">	
+			<ul>';
+			foreach($countryies as $data){
+				
+			$pos=stripos($data->city, $request->input('id'));
+			if($pos>=0){
+			$str=substr($data->city, $pos, $len);
+			$strong_str=$str;
+			$final_str=str_replace($str, $strong_str, $data->city); ?>
+		 
+			<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" >
+			<a style='width:100%; cursor:pointer;'><?php echo ucwords($final_str); ?></a>
+			</li>
+		 
+			<?php }else{ ?>
+			 
+			<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" >
+			<a style='width:100%; cursor:pointer;' ><?php echo ucwords($data->city); ?></a>
+			</li>
+			
+			<?php 	} ?>
+			<?php	
+			}
+			echo'</ul>
+			</div>';
+			} else { 
+			echo'<div class="resultCourse" style="list-style-type: none; background: #fff; padding: 10px 20px; border: 1px solid #DCDCDC; margin-top: 68px;position: absolute;width: 228px;z-index: 999999;margin-left: 0px;" ><ul><li><p style="color:red;text-align: left;font-size: 13px;" >Sorry Does not found city !</p></li></ul></div>';
+		
+			} 				 
+		} 	
+	}
+
+
+
     /**
      * Remove the specified resource from storage.
      *

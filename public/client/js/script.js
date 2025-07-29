@@ -513,11 +513,17 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 	 
 		$('.search-form').submit(function(e){
 			e.preventDefault();
-			var $city = $(this).find('.city').val();
-			var searchKW = $(this).find('.home-search').val();
-			localStorage.setItem('keyword',searchKW);	
-			 var city = $(this).find('.cityList').val();
 
+			var city  = $(this).find('.location').attr('data-city');
+			var area  = $(this).find('.location').attr('data-area');
+			var zone  = $(this).find('.location').attr('data-zone');
+		 
+			if(city !='undefined'){
+			 var city = $(this).find('.city').val();
+			}
+			 
+			var searchKW = $(this).find('.home-search').val();			 
+			localStorage.setItem('keyword',searchKW);	
             localStorage.setItem('city',city);
 			let cities = localStorage.getItem('cityData');			 
 			cities = cities ? JSON.parse(cities) : [];
@@ -532,7 +538,6 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 				keywords = [...new Set(keywords)];
 				localStorage.setItem('keywordData', JSON.stringify(keywords));
 	 		}
-
 			var message = '';
 			if(searchKW==''){
 				if(searchKW==''){
@@ -549,9 +554,8 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 				$('#msgModal').modal({keyboard:false,backdrop:'static'});				
 				return;
 			}
-			var searchKW = $(this).find('.home-search').val();
-			var city = $(this).find('.city').val();
-		 
+		//	var searchKW = $(this).find('.home-search').val();
+			//var city = $(this).find('.city').val();		 
 			searchKW = searchKW.replace(/\s+/g, '-').toLowerCase();
 			if(city){
 				city = city.replace(/[_\s]+/g, '-').toLowerCase();
@@ -578,7 +582,12 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 		
 		
 		$(document).on('click','.resultCode ul>li',function(e){ 	
-		$(this).closest('form').find(".location").val($(this).find('a').text());	
+
+		$(this).closest('form').find(".location").val($(this).find('a').attr("data-city"));		 
+		$(this).closest('form').find('.location').attr('data-city', $(this).find('a').attr("data-city"));
+		$(this).closest('form').find('.location').attr('data-area', $(this).find('a').attr("data-area"));
+		$(this).closest('form').find('.location').attr('data-zone', $(this).find('a').attr("data-zone"));
+ 
 		var closestForm = $(this).closest('form');
 			if(closestForm.hasClass('search-form')){
 				closestForm.submit();
@@ -598,6 +607,13 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 		       window.location.href="/"+slug;
 		   }
         });
+
+		// ONCLICK TO SEARCH RESULTS	 
+		$(document).on('click','.cityCache',function(e){
+			e.preventDefault();
+			 
+			localStorage.clear();
+		});
 		
 		// SEARCHING KEYDOWN	 
 		// $(".home-search").on('keydown',function(evt){	
@@ -630,13 +646,13 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 		
 		// SEARCHING ENGINE		 
 		$(".home-search").on('keyup',function(evt){
-			 console.log(evt.keyCode);
+			 //console.log(evt.keyCode);
 			// if(evt.keyCode == '38'||evt.keyCode == '40'){
 			// 	$(this).val($('.ajax-suggest ul li.active>a').text());
 			// 	return;
 			// }
 			var key = $(this).val();
-			console.log(key);
+			 
 			var yearly_subs_form = $(this).closest('form');			 
 			if(key.length >0){
 				$(this).closest('form').find(".ajax-suggest").show();
@@ -713,6 +729,8 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 						height: 205px;
 						overflow-y: scroll;
 					`;
+			//resultDiv.html('<p class="cityCache" style="cursor: pointer;margin-left: 54px;color:#0089ff">Clean Cache </p>');
+			
 		 
 					let ul = document.createElement('ul');				 
 					cities.forEach(city => {  

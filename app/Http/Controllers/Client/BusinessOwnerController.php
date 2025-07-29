@@ -87,7 +87,7 @@ class BusinessOwnerController extends Controller
 				// GENERATING SLUG
 				// ***************
 				$business_slug = NULL;
-				$business_slug = generate_slug($request->input('business_name'));
+				$business_slug = trim(generate_slug(trim($request->input('business_name'))));
 				if(is_null($business_slug)){
 					return redirect("/business-owners")
 								->withErrors($validator)
@@ -113,7 +113,7 @@ class BusinessOwnerController extends Controller
 				}
 			}
 			
-			$client->business_name = $request->input('business_name');
+			$client->business_name = trim($request->input('business_name'));
 			$client->business_slug = $business_slug;
 		 
 			$pass = rand(000001,999999);
@@ -194,7 +194,7 @@ class BusinessOwnerController extends Controller
 							->withInput();
 			} */
 			
-			$client->business_name = $request->input('business_name');
+			$client->business_name = trim($request->input('business_name'));
 			$client->address = $request->input('address');
 			$client->landmark = $request->input('landmark');
 			$client->city = $request->input('city');

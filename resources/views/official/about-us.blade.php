@@ -34,8 +34,8 @@ Quick Dials- Local search, IT Training, Playschool, overseas education
               <div class="services-details">
                 <div class="single-services">                   
                   <p>
-                    Quick Dials, one of the most promising start-ups lead generation in India in 2023, offers a B2C model as a match-making admission solution to students, professionals study and services. Their quickind.com, provide platform connects education seekers with education providers, coupled with excellent career counseling services.</p>
-<p>Quick Dials is an extensive search engine for students, parents, professionals, and education industry players seeking information on the education sector in India. Users can rely on quickind.com for the most relevant data on institutes, colleges, and universities. </p>
+                    Quick Dials, one of the most promising start-ups lead generation in India in 2023, offers a B2C model as a match-making admission solution to students, professionals study and services. Their quickdials.com, provide platform connects education seekers with education providers, coupled with excellent career counseling services.</p>
+<p>Quick Dials is an extensive search engine for students, parents, professionals, and education industry players seeking information on the education sector in India. Users can rely on quickdials.com for the most relevant data on institutes, colleges, and universities. </p>
 					 
                 </div>
                 </div>
@@ -303,4 +303,5 @@ Quick Dials's certified business partners ensure quality education, campus place
       </div>
     </div>
   </div>
+    <script src="{{asset('official/contactform/contactform.js')}}"></script>
  @endsection

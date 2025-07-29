@@ -262,11 +262,11 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
             <span class="title-serv"><a href="{{('hotels')}}" class="keystore">Hotels</a></span>
          </div>
          <div class="img-items">        
-         <div class="items"><a href="{{url('restaurants')}}" class="keystore">
+         <div class="items"><a href="restaurants" class="keystore">
             <img src="{{asset('img/Restaurants.png')}}"></a>
              </div>
             <span class="title-serv">
-                <a href="{{url('restaurants')}}" class="keystore">Restaurants</a></span>
+                <a href="restaurants" class="keystore">Restaurants</a></span>
          </div>
          <div class="img-items">          
          <div class="items"><a href="{{url('/categories/distance-education')}}" >
@@ -357,11 +357,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
              </div>
             <span class="title-serv"><a href="{{url('tours-and-travels')}}" >Tours & Travels</a></span>
          </div>
-         <div class="img-items">             <div class="items"><a href="{{url('aws-training')}}" >
-            <img src="{{asset('images/aws-cloud.png')}}"></a>
-             </div>
-            <span class="title-serv"><a href="{{url('aws-training')}}" >AWS Training</a></span>
-         </div>
+       
          <div class="img-items">             <div class="items"><a href="{{url('school-tuition')}}" >
             <img src="{{asset('images/school.png')}}"></a>
              </div>

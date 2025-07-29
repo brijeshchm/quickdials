@@ -172,7 +172,7 @@ class BackEndClientsController extends Controller
 				// GENERATING SLUG
 				// ***************
 				$business_slug = NULL;
-				$business_slug = generate_slug($request->input('business_name'));
+				$business_slug = trim(generate_slug($request->input('business_name')));
 				if(is_null($business_slug)){
 					return redirect("/developer/clients/register")
 								->withErrors($validator)
@@ -198,7 +198,7 @@ class BackEndClientsController extends Controller
 				}
 			}
 			
-			$client->business_name = $request->input('business_name');
+			$client->business_name = trim($request->input('business_name'));
 			$client->business_slug = $business_slug;
 	 
 			$pass = rand(000001,999999);
@@ -599,8 +599,8 @@ class BackEndClientsController extends Controller
 					$client = Client::withTrashed()->where('id',$id)->first();
 
 					if ($request->user()->current_user_can('administrator')) {	 
-						$client->business_name = $request->input('business_name');
-						$business_slug = generate_slug($request->input('business_name'));
+						$client->business_name = trim($request->input('business_name'));
+						$business_slug = trim(generate_slug($request->input('business_name')));
 					
 						$slugExists = DB::table('clients')
 						->select(DB::raw('business_slug'))
@@ -2443,7 +2443,7 @@ class BackEndClientsController extends Controller
 				$paymenthistory = new PaymentHistory;
 				$paymenthistory->client_id = $client->id;  	
 				$paymenthistory->customer_name = $client->first_name.' '.$client->last_name;
-				$paymenthistory->business_name = $request->input('business_name');
+				$paymenthistory->business_name = trim($request->input('business_name'));
 				$paymenthistory->mobile = $client->mobile;
 				$paymenthistory->email = $client->email;
 				$paymenthistory->package_name = $request->input('package_name');
