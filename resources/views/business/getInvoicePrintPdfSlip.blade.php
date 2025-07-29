@@ -14,7 +14,7 @@
 				<p>Phone : 120-49999</p>
 				<p>Email : info@quickdials.com</p>
 				<p>Website : www.quickdials.com</p>
-				<img src="{{asset('/client/images/logo-blue.png')}}">
+				<img src="{{asset('/client/images/quick-large-logo.png')}}">
 			</address>
 			<table class="meta">
 				<tr>

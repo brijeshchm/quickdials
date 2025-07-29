@@ -376,7 +376,7 @@ class BackEndClientsController extends Controller
 				'parent'=>'required',
 				'child'=>'required',
 				'kw'=>'required',
-				'position'=>'required',
+				//'position'=>'required',
 				 
 				 
 			]);
@@ -426,7 +426,7 @@ class BackEndClientsController extends Controller
 				$assignedKWDS->parent_cat_id = $request->input('parent');
 				$assignedKWDS->child_cat_id = $request->input('child');		
 				$assignedKWDS->kw_id = $keyw;
-				$assignedKWDS->sold_on_position = $request->input('position');	
+				$assignedKWDS->sold_on_position = 'diamond';	
 				$keyword = Keyword::find($keyw);				
 				$keywordSellCount = KeywordSellCount::where('slug',$request->input('position'))->first();		
 			if(!empty($keywordSellCount)){
@@ -438,6 +438,12 @@ class BackEndClientsController extends Controller
 				}
 				else if($keyword->category==='Category 3'){
 					$assignedKWDS->sold_on_price = $keywordSellCount->cat3_price;
+				}
+				else if($keyword->category==='Category 4'){
+					$assignedKWDS->sold_on_price = $keywordSellCount->cat4_price;
+				}
+				else if($keyword->category==='Category 5'){
+					$assignedKWDS->sold_on_price = $keywordSellCount->cat5_price;
 				}
 				
 				  else if($keyword->category==='Category X'){
@@ -1691,6 +1697,12 @@ class BackEndClientsController extends Controller
 				else if($keyword->category=='Category 3'){
 					$result['price'] = $keywordSellCount->cat3_price;
 				}
+				else if($keyword->category=='Category 4'){
+					$result['price'] = $keywordSellCount->cat4_price;
+				}
+				else if($keyword->category=='Category 5'){
+					$result['price'] = $keywordSellCount->cat5_price;
+				}
 				else if($keyword->category=='Category X'){
 					switch($request->input('position')){
 						case 'diamond':
@@ -2586,13 +2598,15 @@ class BackEndClientsController extends Controller
      */
     public function getPaginatedPaymentHistory(Request $request, $id=null)
     {
-		 
+		  
 		//if($request->ajax()){
 			//$leads = Lead::orderBy('id','desc')->paginate($request->input('length'));
 			if(null!==$id){
 				$client = Client::where('username',$id)->first();
 				$clientID = $client->id;
 			}
+
+		 
 			$payments = DB::table('payment_histories')
 					   ->where('client_id',$clientID)
 					   ->orderBy('created_at','desc')

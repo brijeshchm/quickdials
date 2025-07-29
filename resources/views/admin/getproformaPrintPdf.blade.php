@@ -9,12 +9,12 @@
 		<header>
 			<h1 contenteditable>Proforma Invoice</h1>
 			<address contenteditable>
-				<b style="font-size: 18px;">quickdials Media Pvt Ltd</b>
-				<p> G-21, Third Floor, Sector-3 Noida, U.P India </p>
+				<b style="font-size: 18px;">Quick Dials Pvt Ltd</b>
+				<p> G-13, Third Floor, Sector-3 Noida, U.P India </p>
 				<p>Phone : 120-4271088</p>
 				<p>Email : info@quickdials.in</p>
 				<p>Website : www.quickdials.in</p>
-				<img src="https://quickdials.in/client/images/logo-blue.png">
+				<img src="https://www.quickdials.com/client/images/quick-large-logo.png">
 			</address>
 			<table class="meta">
 				<tr>

@@ -2362,8 +2362,8 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 						 var response = JSON.parse(jqXHR.responseText);	
 						 if(response.status){	
 						alert('Client Order payment successfully');		
-						 $('.resetData').click();
-						 	$('input[type="text"], textarea').val('');
+					 
+						 	 
 							$('#success-payment').html("<div class='alert alert-success'>Client Order payment successfully !!</div>");						 
 							dataTablePaymentHistory.ajax.reload(null,false);
 							 
@@ -2698,7 +2698,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 								alert(data.data.message);
 								$('.alert').addClass('hide');
 								$('.alert-success').removeClass('hide').html(data.data.message);
-								dataTableAllOrderHistory.ajax.reload(null,false);
+								//dataTableAllOrderHistory.ajax.reload(null,false);
 								dataTablePaymentHistory.ajax.reload(null,false);
 					 
 							}else{
@@ -3894,8 +3894,7 @@ var keyword = {
 		});
 	},
 	setProperties:function(field,value){
-	var client_id= $('#clientIDASSKW').val();
-	//alert(client_id);
+	var client_id= $('#clientIDASSKW').val();	 
 		switch(field){
 			case 'city':
 				this.city = value;

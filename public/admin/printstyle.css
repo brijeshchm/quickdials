@@ -61,7 +61,7 @@ header section { float: left; font-size: 75%; font-style: normal; line-height: 1
 header address p { margin: 0 0 0.25em; }
 header span, header img { display: block; float: left; }
 header span { margin: 0 0 1em 1em; max-height: 25%; max-width: 60%; position: relative; }
-header img { max-height: 100%; max-width: 100%; width: 80px;margin-top: 0px;margin-left: 0px;}
+header img { max-height: 100%; max-width: 100%; width: 220px;margin-top: 0px;margin-left: 0px;}
 header input { cursor: pointer; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; height: 100%; left: 0; opacity: 0; position: absolute; top: 0; width: 100%; }
 
 /* article */

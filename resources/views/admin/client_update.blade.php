@@ -72,8 +72,7 @@
         }
 
         /* Form Styles */
-        .form-container {
-            max-width: 600px;
+        .form-container {            
             margin: 0 auto;
             background-color: white;
             padding: 7px 20px;
@@ -737,16 +736,16 @@
 								</select>
 							</div>
 							 
-							<div class="col-md-3">
+							<!-- <div class="col-md-3">
 								<label>Position:</label>
 								<select class="select2-single form-control position" name="position" id="positionv">
-							<!--	<option value="Free Listing">Free Listing</option>-->
+					 
 								</select>
 							</div>
 							<div class="col-md-3">
 								<label>Price:</label>
 								<input type="text" class="form-control price" disabled>
-							</div>
+							</div> -->
 							<input type="hidden" name="kw-submit" value="kw-submit">
 							<div class="col-md-3">
 								<label style="visibility:hidden">Submit:</label>
@@ -860,7 +859,7 @@
         <div class="form-container">
             <h4>Payment Order</h4>
 			<div>
-					<form id="submitPackageStatus" class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
+					<!-- <form id="submitPackageStatus" class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
 						{{csrf_field()}}
 						
 						<div class="form-group">
@@ -885,7 +884,7 @@
 								<input type="hidden" name="submit_packege_status" value="1" />
 							</div>
 						</div>
-					</form>
+					</form> -->
 				</div>
 			<div>
 			<form  class="form-horizontal order_validation" onsubmit="return client.submitClientPayOrder(this)"  method="post">
@@ -904,21 +903,21 @@
 					<div class="form-group">
 					<label class="col-sm-2">Package Name <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					
-					<div class="col-md-4"> 								 
+					<div class="col-md-6"> 								 
 					<input type="text" name="package_name" class="form-control" value="{{ old('client_type',(isset($client)) ? $client->client_type:"")}}" placeholder="Package Name"> 
 					</div>
 					</div>				 
 					<div class="form-group">
 					<label class="col-sm-2">Paid Amount<sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					
-					<div class="col-md-4"> 							 
+					<div class="col-md-6"> 							 
 					<input type="text" name="paid_amount" id="paid_amount" class="form-control" placeholder="Paid Amount" onkeypress="return isNumericKeyCheck(event);" onblur="handlingPaiAmt()"> 
 					</div>
 					</div> 
 					
 					<div class="form-group">
 					<label class="col-sm-2">Coins <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
-					<div class="col-md-3">
+					<div class="col-md-6">
 					<label>Coins:</label>
 					<input type="text" min=0 step=1 class="form-control" name="coins_amt" id="coins_per_lead" value="" onkeypress="return isNumericKeyCheck(event);" readonly/>
 					</div>
@@ -929,7 +928,7 @@
 								
 					<div class="form-group">
 					<label class="col-sm-2">GST <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
-					<div class="col-md-4"> 	
+					<div class="col-md-6"> 	
 					<label class="radio-inline">
 					<input type="radio" name="gst_status" value="Yes" onchange="paidgst(this.value)">Yes
 					</label>
@@ -942,7 +941,7 @@
 					<div class="form-group">
 					<label class="col-sm-2">GST Amount</label>
 					
-					<div class="col-md-4"> 
+					<div class="col-md-6"> 
 						
 					<input type="number" name="gst_tax" id="gst_tax" class="form-control" placeholder="GST Amount"> 
 					</div>
@@ -951,7 +950,7 @@
 					<div class="form-group">
 					<label class="col-sm-2">GST Total Amount<sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 					
-					<div class="col-md-4"> 
+					<div class="col-md-6"> 
 						
 					<input type="number" name="gst_total_amount" id="gst_total_amount" class="form-control" placeholder="GST Total Amount" > 
 					</div>
@@ -960,7 +959,7 @@
 
 					<div class="form-group">
 					<label class="col-sm-2">TDS<sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
-					<div class="col-md-4"> 	
+					<div class="col-md-6"> 	
 					<label class="radio-inline">
 					<input type="radio" name="tds_status" value="Yes" onchange="paidtds(this.value)" >Yes
 					</label>
@@ -973,7 +972,7 @@
 					<div class="form-group">
 					<label class="col-sm-2">TDS Amount</label>
 					
-					<div class="col-md-4"> 
+					<div class="col-md-6"> 
 						
 					<input type="number" name="tds_amount" id="tds_amount" class="form-control" placeholder="TDS Amount" > 
 					</div>
@@ -981,7 +980,7 @@
 					
 					<div class="form-group">
 					<label class="col-sm-2">Total Amount<sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>						 
-					<div class="col-md-4"> 								 
+					<div class="col-md-6"> 								 
 					<input type="number" name="total_amount" id="total_amount" class="form-control" placeholder="Total Amount" > 
 					</div>
 					</div> 
@@ -990,7 +989,7 @@
 					
 					<div class="form-group">
 							<label class="col-sm-2" for="stud-payment_mode">Payment Mode<sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
-							<div class="col-sm-4">
+							<div class="col-sm-6">
 								<?php
 																					
 									foreach($moderesults as $moderesult){
@@ -1010,7 +1009,7 @@
 							<?php if($key!='cash' && $key!='cheque'): ?>
 								<div class="form-group hide-mode <?php echo $key; ?>">
 									<label class="col-sm-2" for="stud-<?php echo $key; ?>"><?php echo $value; ?></label>
-									<div class="col-sm-4">          
+									<div class="col-sm-6">          
 										<select class="form-control" id="stud-<?php echo $key; ?>" name="stud-<?php echo $key; ?>">
 											<option value="" selected="selected">-- Select <?php echo $value; ?> --</option>
 											<?php
@@ -1029,14 +1028,14 @@
 						<?php endforeach; ?>
 						<div class="form-group hide-mode cheque">
 							<label class="col-sm-2" for="stud-chq_no">Cheque Number</label>
-							<div class="col-sm-4">          
+							<div class="col-sm-6">          
 								<input type="text" class="form-control" id="stud-chq_no" name="stud-chq_no" placeholder="Enter Cheque Number">
 							</div>
 						</div>	
 						
 						<div class="form-group hide-mode bank">
 							<label class="col-sm-2" for="stud-card_no">Card Number</label>
-							<div class="col-sm-4">          
+							<div class="col-sm-6">          
 								<input type="text" class="form-control" maxlength="4" id="
 								
 								" name="stud-card_no" placeholder="Enter Last 4 Digit of Card Number">
@@ -1047,7 +1046,7 @@
 					
 					<div class="form-group">
 					<label class="col-sm-2">Transaction-Id:</label>							 
-					<div class="col-md-4"> 								 
+					<div class="col-md-6"> 								 
 					<input type="text" name="transactionid" class="form-control" placeholder="Enter Transaction-Id"> 
 					
 					</div>
@@ -1055,7 +1054,7 @@
 					
 					<div class="form-group">
 					<label class="col-sm-2">Select ID Proof:</label>							 
-					<div class="col-md-4"> 								 
+					<div class="col-md-6"> 								 
 					<select class="form-control" name="selectproofid"> 
 					<option value="">Select ID Proof</option>
 					<option value="Pan Card">Pan Card</option>
@@ -1069,7 +1068,7 @@
 					
 					<div class="form-group">
 					<label class="col-sm-2">ID Proof:</label>							 
-					<div class="col-md-4"> 								 
+					<div class="col-md-6"> 								 
 					<input type="text" name="proofid" class="form-control" placeholder="Enter ID proof"> 
 					
 					</div>

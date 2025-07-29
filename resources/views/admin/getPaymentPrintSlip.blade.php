@@ -12,7 +12,7 @@
 				 
 	
 			<section>
-			<img src="https://quickdials.in/client/images/logo-blue.png">
+			<img src="https://www.quickdials.com/client/images/quick-large-logo.png">
 			</section>
 			<address>
 			

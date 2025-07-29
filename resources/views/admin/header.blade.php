@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{asset('/client/images/quickind-logo-blue.png')}}" rel="icon">
+    <link href="{{asset('/client/images/quickind-quick-large-logo.png')}}" rel="icon">
 	<meta name="csrf-token" content="<?php echo csrf_token(); ?>">
     <title>Quick Dials</title>
 	 <!-- SCRIPT-ANGULAR-JS -->

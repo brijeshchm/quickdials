@@ -194,7 +194,7 @@ class OrderHistoryController extends Controller
 			$client->active_status = 1;		
 		 
 			if($client->save()){ 			
-				$paymentHistory->invoice_status =1;
+				$paymentHistory->invoice_status ='1';
 				$paymentHistory->save();
 				return response()->json([
 					"statusCode"=>1,
