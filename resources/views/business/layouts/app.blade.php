@@ -44,14 +44,14 @@
 				   ->orderBy('assigned_leads.created_at','desc')
 				   ->where('assigned_leads.readLead','0')
 				   ->where('assigned_leads.client_id',$clientID)->get()->count();
-    
+  
 
      ?>
     <div class="d-flex align-items-center justify-content-between">
       <a href="{{url('business/dashboard')}}" class="logo d-flex align-items-center">
        
         <img src="{{asset('client/images/small-logo.png')}}" alt="Logo">
-        <span class="d-none d-lg-block">{{ $client->business_name ?? 'Quick Dials' }}</span>
+        <span class="d-none d-lg-block"><?php if($client->first_name){ echo $client->first_name.' '.$client->last_name; } ?></span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -277,14 +277,14 @@
              <img src="{{asset('business/assets/img/user.png')}}" alt="Profile" class="rounded-circle">
             
             <?php } ?>
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->guard('clients')->user()->business_name }}
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->guard('clients')->user()->first_name }}
              
             </span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{ auth()->guard('clients')->user()->business_name }} </h6>
+              <h6>{{ auth()->guard('clients')->user()->first_name }} </h6>
               
             </li>
             <li>

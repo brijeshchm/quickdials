@@ -160,7 +160,7 @@ class BackEndClientsController extends Controller
 			$validator = Validator::make($request->all(), [
 				//'business_name' => 'required|regex:/[A-Za-z0-9 ]+/|unique:clients,business_name,NULL,id,mobile,'.$request->input('mobile').',city,'.$request->input('city'),
 				'business_name' => 'required|regex:/[A-Za-z0-9 ]+/',
-				'mobile' => 'required|numeric|max:16|regex:/^[1-9]+/|unique:clients,mobile,NULL,id',
+				'mobile' => 'required|numeric|regex:/^[1-9]+/|unique:clients,mobile,NULL,id',
 				'city' => 'required|max:50',
 				'email' => 'required|email'
 			],$messages);
@@ -687,7 +687,7 @@ class BackEndClientsController extends Controller
 					 
 					$validator = Validator::make($request->all(),[					
 					'contact_person' => 'regex:/^[a-zA-Z ]*$/',
-						'mobile' => 'required|numeric|max:16|regex:/^[1-9]+/',				 
+						'mobile' => 'required|numeric|regex:/^[1-9]+/',				 
 						'email' => 'required|email',
 						'website' => ['regex:/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i'],				 	
 				
