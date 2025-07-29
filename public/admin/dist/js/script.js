@@ -2355,7 +2355,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 				var $this = $(THIS),
 					data  = $this.serialize();				  
 				$.ajax({
-					url:"/developer/clients/payment/",					 
+					url:"/developer/clients/payment",					 
 					type:"POST",
 					data:data,					 
 					success:function(data,textStatus,jqXHR){					 

@@ -667,8 +667,61 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 					}
 				});
 				}
+			},		 
+			freeSubscribe:function(THIS,id){			     
+			var $this = $(THIS);
+			var form = new FormData(THIS);	
+				$.ajax({
+					url:"/business/saveSubscribeFree/"+id,
+					type:"POST",					   
+					dataType:"json",	
+					data:form,
+					cache: false,
+					contentType: false, 
+                    processData: false,                      
+					success:function(data){
+					  	
+					if(data.status){
+                        $("#messaged").modal("show");                        							 
+						$('#messaged .modal-title').text("Keyword Assign");	
+						$('#messaged .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
+						$('#messaged').modal({keyboard:false,backdrop:'static'});
+						$('#messaged').css({'width':'100%'});					
+						dataTableViewAllkeywords.ajax.reload( null, false );  
+						setInterval(function() {
+						$("#messaged").modal("hide");
+						}, 1000);	 
+							 
+					}else{
+							$("#messaged").modal("show");                        							 
+							$('#messaged .modal-title').text("Keyword Assign");	
+							$('#messaged .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
+							$('#messaged').modal({keyboard:false,backdrop:'static'});
+							$('#messaged').css({'width':'100%'});								
+						}
+					},
+					error:function(jqXHR, textStatus, errorThrown){
+							var response = JSON.parse(jqXHR.responseText);	
+							if(response.status){						 
+							var errors = response.errors;						 
+							$('.keyword_form').find('.form-group').removeClass('has-error');
+							$('.keyword_form').find('.help-block').remove();
+							for (var key in errors) {
+							if(errors.hasOwnProperty(key)){	
+
+							var el = $('.keyword_form').find('*[name="'+key+'"]');
+							$('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el);
+							el.closest('.form-group').addClass('has-error');
+							}
+							}				 
+							}else{
+							alert('Something went wrong');
+							}
+			 
+					}
+				}); 
+				 return false;	
 			},
-		 
 			};
 })();		
 

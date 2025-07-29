@@ -105,6 +105,7 @@ Route::get('/business/get-paginated-payment-history',[App\Http\Controllers\Clien
 /* Change Password - CLIENT */
  Route::get('/business/pay-deposit',[App\Http\Controllers\Client\razorpayController::class,'payDeposit']);
  Route::get('/business/subscribe-free',[App\Http\Controllers\Client\razorpayController::class,'subscribeFree']);
+ //Route::psot('/business/saveSubscribeFree',[App\Http\Controllers\Client\razorpayController::class,'saveSubscribeFree']);
  Route::post('/business/razorPayCheckout',[App\Http\Controllers\Client\razorpayController::class,'razorPayCheckout']);
  Route::post('/business/save-processing',[App\Http\Controllers\Client\razorpayController::class,'saveProcessing']);
  Route::get('/business/success',[App\Http\Controllers\Client\razorpayController::class,'success']);

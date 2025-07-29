@@ -887,7 +887,7 @@
 					</form> -->
 				</div>
 			<div>
-			<form  class="form-horizontal order_validation" onsubmit="return client.submitClientPayOrder(this)"  method="post">
+			<form  class="form-horizontal order_validation" onsubmit="return client.submitClientPayOrder(this)" method="post">
 					{{csrf_field()}}
 					 
 					<input type="hidden" name="client-id" value="<?php echo $client->username; ?>" />

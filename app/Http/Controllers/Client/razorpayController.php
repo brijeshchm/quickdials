@@ -873,20 +873,96 @@ echo json_encode($json);
 
 
 	public function subscribeFree(Request $request){
-	//echo "<pre>";print_r($this->dataDecodeJsonBase64($_GET['o']));die;
-		
-		
+ 		
 	if(isset($_GET['status'],$_GET['o'])&& !empty($_GET['o'])){
-	$oo = base64_decode ( $_GET['o'], $strict=false );
-	$data = json_decode($o);
-	$oo = 
-	$status = $_GET['status'];
+		$oo = base64_decode ( $_GET['o'], $strict=false );
+		$data = json_decode($oo);	 
+		$status = $_GET['status'];
 	}else{
 		$data=array();
-	}
-//	echo "<pre>";print_r($data);die;
-		return view('business.razorpay.subscribe-free',['data'=>$data,'oo'=>$oo]);
+	} 
+
  
+	return view('business.razorpay.subscribe-free',['data'=>$data,'oo'=>$_GET['o']]);
+ 
+	}
+	public function saveSubscribeFree(Request $request){
+ 		echo "<pre>";print_r($_POST);die;
+		if($request->ajax()){
+
+			$feesHisoty =New RazorpayHistory;		
+			$feesHisoty->name= $paymentInfo['card_holder_name'];
+			$feesHisoty->email= $paymentInfo['email'];
+			$feesHisoty->phone= $paymentInfo['phone'];
+			$feesHisoty->username= $paymentInfo['username'];
+			$feesHisoty->coins= $paymentInfo['coins'];
+			$feesHisoty->client_id= $paymentInfo['client_id'];
+			$feesHisoty->merchant_amount= $paymentInfo['merchant_amount'];
+			$feesHisoty->merchant_total= $paymentInfo['merchant_total'];
+			$feesHisoty->currency_code= $paymentInfo['currency_code'];
+			$feesHisoty->order_id= $paymentInfo['order_id'];
+			$feesHisoty->razorpay_payment_id= $paymentInfo['razorpay_payment_id'];
+			$feesHisoty->city= $paymentInfo['city'];
+			$feesHisoty->billing_country= $paymentInfo['billing_country'];
+			$feesHisoty->billing_state= $paymentInfo['billing_state'];
+			$feesHisoty->pay_to= $paymentInfo['pay_to'];
+			$feesHisoty->getpay= 1;
+			$feesHisoty->message= $error;
+			$feesHisoty->save();
+
+			$clientdeatails = Client::find($paymentInfo['client_id']);
+			$paymenthistory = new PaymentHistory;
+			$paymenthistory->client_id =$paymentInfo['client_id'];  	
+			$paymenthistory->customer_name = $paymentInfo['card_holder_name'];
+			$paymenthistory->business_name =  $clientdeatails->business_name;
+			$paymenthistory->mobile = $paymentInfo['phone'];
+			$paymenthistory->email = $paymentInfo['email'];
+			$paymenthistory->package_name = $clientdeatails->client_type;			 
+			$paymenthistory->coins_amt = $paymentInfo['coins']; 
+			$paymenthistory->selectproofid = "";
+			$paymenthistory->proofid = "";	 
+			$paymenthistory->paid_amount = $paymentInfo['paid_amount'];	 
+			$paymenthistory->tds_status = "No";	 
+			$paymenthistory->tds_amount ="0";
+			$paymenthistory->gst_tax = $paymentInfo['gst_tax'];		 
+			$paymenthistory->gst_total_amount = $paymentInfo['merchant_amount'];	 
+			$paymenthistory->gst_status = "Yes";	 
+			$paymenthistory->total_amount = $paymentInfo['merchant_amount'];	
+			$paymenthistory->transactionid = $paymentInfo['order_id'];			 
+			$paymenthistory->paymentcollect = 0;			 
+			$paymenthistory->payment_mode = "razorpay";
+			$paymenthistory->payment_bank = ""; 
+			$paymenthistory->save();
+
+	
+			$clientdeatails->coins_amt = $clientdeatails->coins_amt + $paymentInfo['coins'];
+			if($clientdeatails->expired_on == '0000-00-00 00:00:00' || $clientdeatails->expired_on =='NULL'){
+			
+			$newDate = date('Y-m-d', strtotime(now(). ' +365 days'));
+				
+			}else if(strtotime($clientdeatails->expired_on) > strtotime(date('Y-m-d'))){
+				$newDate = date('Y-m-d', strtotime($clientdeatails->expired_on . ' +365 days'));
+							
+			}else if(strtotime($clientdeatails->expired_on) < strtotime(date('Y-m-d'))){
+				$newDate = date('Y-m-d', strtotime(now() . ' +365 days'));
+							
+			}else{
+				$newDate = date('Y-m-d', strtotime(now() . ' +365 days'));
+			}
+			$clientdeatails->expired_on = $newDate;
+			$clientdeatails->active_status = "1";
+			$clientdeatails->paid_status = "1";
+			$clientdeatails->coins_free = "1";
+			if($clientdeatails->save()){
+				$status = true;
+				$msg = "Payment successfully ";
+			}else{
+				$status = true;
+				$msg = "Payment successfully ";
+			}
+
+		return response()->json(['status'=>$status,'msg'=>$msg],200);
+		}
 	}
 
 
