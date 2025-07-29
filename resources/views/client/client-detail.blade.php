@@ -682,7 +682,7 @@ Quick Dials- Training in {{$client->business_name}}
 								@foreach($comments as $comment)
                                 <div class="reviews-box">
                                     <div class="alllearners_reviews clearfix">
-                                        <div class="alllearners_reviews_img_box"><img src="<?php echo asset('client/images/user.png'); ?>" alt=""> </div>
+                                        <div class="alllearners_reviews_img_box"><img src="<?php echo asset('client/images/user.png'); ?>" alt="user"> </div>
                                         <div class="alllearners_reviews_info_box">
                                             <h5><span style="color:#333;">{{ $comment->comment_author }} </span> <span class="star-rating pull-right">
 												<?php
@@ -1093,7 +1093,7 @@ Quick Dials- Training in {{$client->business_name}}
     </script>
     <div class="galleryPopup">
         <div class="popwraper whiteBg">
-           <!-- <a href="javascript:void(0);" class="closebtn"><img src="<?php echo asset('client/images/close2.png'); ?>" alt="" /></a>-->
+           <!-- <a href="javascript:void(0);" class="closebtn"><img src="<?php echo asset('client/images/close2.png'); ?>" alt="close2" /></a>-->
 <button type="button" class="close closebtn" data-dismiss="modal">×</button>
             <div id="gallery" class="content">
                 <div class="topinfo"> <strong>{{(isset($client->business_name)&&!empty($client->business_name))?$client->business_name.",":""}}</strong> 
@@ -1131,7 +1131,7 @@ Quick Dials- Training in {{$client->business_name}}
                 <ul class="thumbs noscript">vvv
 					<?php foreach($pictures as $picture): ?>
                     <li>
-                        <a class="thumb" href="<?php echo asset(''.$picture['large']['src']); ?>" title=""><img src="<?php echo asset(''.$picture['large']['src']); ?>" style="height:75px;width:100px;" alt="" /></a>
+                        <a class="thumb" href="<?php echo asset(''.$picture['large']['src']); ?>" title=""><img src="<?php echo asset(''.$picture['large']['src']); ?>" style="height:75px;width:100px;" alt="<?php if($picture['large']['name']){ echo $picture['large']['name']; } ?>" /></a>
                     </li>
 					<?php endforeach; ?>
                 </ul>

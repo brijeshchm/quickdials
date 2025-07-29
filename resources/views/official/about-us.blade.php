@@ -21,7 +21,7 @@ Quick Dials- Local search, IT Training, Playschool, overseas education
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline services-head text-center">
-            <h2>About <span>Quick</span> India</h2>
+            <h2>About <span>Quick</span> Dials</h2>
           </div>
         </div>
       </div>

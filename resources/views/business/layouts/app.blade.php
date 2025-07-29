@@ -50,7 +50,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="{{url('business/dashboard')}}" class="logo d-flex align-items-center">
        
-        <img src="{{asset('client/images/small-logo.png')}}" alt="">
+        <img src="{{asset('client/images/small-logo.png')}}" alt="Logo">
         <span class="d-none d-lg-block">{{ $client->business_name ?? 'Quick Dials' }}</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>

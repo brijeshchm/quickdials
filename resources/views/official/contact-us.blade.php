@@ -4,109 +4,261 @@
      Contact us
 @endsection
 @section('content') 
-<div class="about-bg page-hearder-area">
-    <div class="official-overly"></div> 
-  </div>   
-    
-  <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
-  <div id="contact" class="about-area area-padding">
-      <div class="contact-inner area-padding">
-      <div class="contact-overly"></div>
-      <div class="container ">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>Contact us</h2>              
+
+<style>
+       
+
+        /* contact-header Styles */
+        .contact-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #cacaca, #cacaca);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .contact-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+     
+
+        .cnt-ck-scn {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Contact Card Styles */
+        .contact-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #003366, #feb47b);
+        }
+
+        .contact-card .icon {
+            width: 50px;
+            height: 50px;
+            background: #feb47b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-card .icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #4b5563;
+        }
+
+        .contact-card a {
+            color: #0C23FC;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #0C23FC;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-header p {
+                font-size: 1rem;
+            }
+
+            .cnt-ck-scn {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-header {
+                padding: 40px 15px;
+            }
+
+            .contact-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .contact-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+           .contact-us{ margin-top: 70px; }
+          .support {
+            background: #acabab url('https://via.placeholder.com/1200x100') no-repeat;
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100px;
+            margin-bottom: 25px;
+        }
+        .support {
+            color: #fff;
+        }
+        .email {
+            color: #fff;
+            text-decoration: none;
+        }
+        .phone {
+            color: #fff;
+        }
+        .button {
+            background-color: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+
+<div class="contact-us">	
+ <div class="contact-header">
+        <h1>Contact Us</h1>
+        <p>Reach out to our offices for any inquiries or support.</p>
+    </div>
+ <div class="support">
+    <div>Customer Support India<br><i class="fa fa-envelope-o"></i> <a href="mailto:support@quickdials.com" class="email">support@quickdials.com</a></div>
+    <div>Customer Support<br><i class="fa fa-mobile"></i> <span class="phone">70113 10265</span> </div>
+    <!-- <div>For Advertisement Call<br><button class="button">Advertise Now</button></div> -->
+</div>
+<div class="container">
+        <div class="cnt-ck-scn">
+            <!-- Corporate Office -->
+            <div class="contact-card">
+                <div class="icon">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/building.png" alt="Building Icon">
+                </div>
+                <h3>Codekredit Official - Corporate Learning</h3>
+                <p>G-13, Sector-3 Noida (India)</p>
+                <p><strong>Phone (India):</strong> <a href="tel:+917011310265">+91-70113 10265</a></p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/917011310265">+91-70113 10265</a></p>
             </div>
-          </div>
+
+            <!-- Head Branch -->
+            <div class="contact-card">
+                <div class="icon">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/graduation-cap.png" alt="Learning Icon">
+                </div>
+                <h3>Head Branch - Corporate Learning</h3>
+                <p>Location:Pillar No.33, 1,2,3,4 1st floor Breja market, NH-19, opposite flyover, Faridabad, New Delhi<br>
+                  <span>Pin Code:- 110044, India</span></p>
+                <p><strong>Phone (India):</strong> <a href="tel:+917011310265">+91-70113 10265</a></p>
+                <p><strong>WhatsApp:</strong> <a href="https://wa.me/917011310265">+91-70113 10265</a></p>
+            </div>
+
+        
+            <div class="contact-card">
+                <div class="icon">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/globe.png" alt="Globe Icon">
+                </div>
+                <h3>Branch -</h3>
+                <p></p>
+                <p><strong>Phone:</strong> <a href="tel:+917011310265">+917011310265</a></p>
+                 
+            </div>
+ 
         </div>
-        <div class="row">
-          <!-- Start contact icon column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-icon text-center">
-              <div class="single-icon">
-                <i class="fa fa-mobile"></i>
-                
-                
-                		    
-	    <ul>
-	        
-	        <li>
-	            📱 Phone: +91 70113 10265
+    </div>
 
-	        </li>
-	         
-	        
-	    </ul>
-               
-              </div>
-            </div>
-          </div>
-          <!-- Start contact icon column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-icon text-center">
-              <div class="single-icon">
-                <i class="fa fa-envelope-o"></i>
-               
-                
-                <ul>
-	        
-	        
-	        
-	         <li>
-	            📧 Email: info@quickdials.com
-
-	        </li>
-	        
-	         <li>
-	            🌐 Website: www.quickdials.com
-
-	        </li>
-	        
-	    </ul>
-              </div>
-            </div>
-          </div>
-          <!-- Start contact icon column -->
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-icon text-center">
-              <div class="single-icon">
-                <i class="fa fa-map-marker"></i>
-                <p>
-                  Location:Pillar No.33, 1,2,3,4 1st floor Breja market, NH-19, opposite flyover, Faridabad, New Delhi<br>
-                  <span>Pin Code:- 110044, India</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-
-          <!-- Start Google Map -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <!-- Start Map -->
-			<div style="wdith:100%" class="map-container">
-
-
-			<iframe style="width:100%;height:500px"
+ 
+ 
+ <section class="map-cnt-ck">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="google-map">
+							<strong>Reach to Us: </strong> 
+							 
+							
+							<iframe style="width:100%;height:500px"
 			frameborder="0" scrolling="no" style="border:0"
-			src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAPFOcLOlCcBCtp764h9HflPfA56VlCFo0&q= Pillar No.33,Breja market,Badarpur, New Delhi" allowfullscreen>
+			src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAPFOcLOlCcBCtp764h9HflPfA56VlCFo0&q=delhi" allowfullscreen   width="520" height="275" frameborder="0" style="border:0;">
 			</iframe>
-
-			</div>
-              
-            <!-- End Map -->
-          </div>
-          <!-- End Google Map -->
-
-          <!-- Start  contact -->
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <div class="form contact-form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
+						</div>
+					</div>
+					
+					<div class="col-md-6 col-12">
+						<div class="contact-query">
+						 
+							<div class="contact-query-heading">
+								<h4>Let's Resolve Your Query</h4>
+							</div>
+							<div class="cnt-ck-form">
+								  <div class="form contact-form">
+              <div id="sendmessage"></div>
               <div id="errormessage"></div>
               <form action="" method="post" role="form" class="contactForm">
                 <div class="form-group">
-				{{csrf_field()}}
+			        	{{csrf_field()}}
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                   <div class="validation"></div>
                 </div>
@@ -126,14 +278,24 @@
                   <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                   <div class="validation"></div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+                <!-- <div class="text-center"><button type="submit">Send Message</button></div> -->
               </form>
             </div>
-          </div>
-          <!-- End Left contact -->
-        </div>
-      </div>
-    </div>
-  
-	 </div>
+								 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+ 
+</div>
+
+ 
+    
+ 
+
+
+ 
  @endsection

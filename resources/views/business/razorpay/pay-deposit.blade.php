@@ -181,13 +181,13 @@ a.new-payment-type {position: relative;}
 		<nav>
 		<div class="nav paymentonline-form" role="tablist">
 		<a class="nav-item1 active my-mr-5" data-toggle="tab" href="#payment-student-Detail" role="tab"
-		aria-controls="nav-home" aria-selected="true"><img src="{{asset('public/img/pay/baseline-person.png')}}" alt="" class="img-fluid pay-responsive-img"><span class="text-payment">Details</span></a>
+		aria-controls="nav-home" aria-selected="true"><img src="{{asset('public/img/pay/baseline-person.png')}}" alt="Details" class="img-fluid pay-responsive-img"><span class="text-payment">Details</span></a>
 		
 		<a class="nav-item1 my-mr-5 line-right-pay disabled" data-toggle="tab" href="#transaction" role="tab"
-		aria-controls="nav-profile" aria-selected="false"><img src="{{asset('public/img/pay/verified-user.png')}}" alt="" class="img-fluid pay-responsive-img "><div class="text-payment">Verify Details </div></a>
+		aria-controls="nav-profile" aria-selected="false"><img src="{{asset('public/img/pay/verified-user.png')}}" alt="Verify" class="img-fluid pay-responsive-img "><div class="text-payment">Verify Details </div></a>
 		
 		<a class="nav-item1  line-right-pay disabled" data-toggle="tab" href="#payment" role="tab"
-		aria-controls="nav-contact" aria-selected="false"><img src="{{asset('public/img/pay/wallet.png')}}" alt="" class="img-fluid pay-responsive-img"><div class="text-payment">Payment</div></a>
+		aria-controls="nav-contact" aria-selected="false"><img src="{{asset('public/img/pay/wallet.png')}}" alt="Payment" class="img-fluid pay-responsive-img"><div class="text-payment">Payment</div></a>
 
 		</div>
 		</nav>

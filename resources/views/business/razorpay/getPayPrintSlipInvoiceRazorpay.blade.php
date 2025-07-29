@@ -19,7 +19,7 @@
     <div class="container">
       <div class="row align-items-center padding-invoice-em-top">
         <div class="col-sm-4 text-sm-left mb-3 mb-sm-0">
-          <img id="logo" src="{{asset('public/printdata/logo.svg')}}" title="croma campus" alt="croma campus" width="250" />
+          <img id="logo" src="{{asset('public/printdata/logo.svg')}}" title="Quick Dials" alt="Quick Dials" width="250" />
         </div>
         <div class="col-sm-8 text-sm-left">
           <div class="header-info-section">
@@ -28,7 +28,7 @@
                 <img src="{{asset('public/printdata/location.svg')}}">
               </div>
               <div class="header-info-address">
-                <p>G-21, Sector 3, Noida, Uttar Pradesh 201301</p>
+                <p>G-13, Sector 3, Noida, Uttar Pradesh 201301</p>
               </div>
             </div>
           </div>
@@ -38,7 +38,7 @@
                 <img src="{{asset('public/printdata/phone.svg')}}">
               </div>
               <div class="header-info-address">
-                <p>+91-120-4155255</p>
+                <p>+91-120-23444333</p>
               </div>
             </div>
             <div class="header-info" style="width: 167px;margin-left:0px;">
@@ -46,7 +46,7 @@
                 <img src="{{asset('public/printdata/mobile.svg')}}">
               </div>
               <div class="header-info-address">
-                <p>+91-9821548232</p>
+                <p>+91-2334444</p>
               </div>
             </div>
             <div class="header-info">
@@ -54,7 +54,7 @@
                 <img src="{{asset('public/printdata/Message.svg')}}">
               </div>
               <div class="header-info-address">
-                <p>team-accounts@cromacampus.com</p>
+                <p>team-accounts@quickdials.com</p>
               </div>
             </div>
             <div class="header-info" style="margin-left:0px;">
@@ -62,7 +62,7 @@
                 <img src="{{asset('public/printdata/web.svg')}}">
               </div>
               <div class="header-info-address">
-                <p>www.cromacampus.com</p>
+                <p>www.quickdials.com</p>
               </div>
             </div>
           </div>

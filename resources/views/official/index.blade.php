@@ -11,7 +11,7 @@
   <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
       <div id="ensign-nivoslider" class="slides">
-        <img src="{{asset('public/official/img/slider/Quick Dials.jpg')}}" alt="" title="#slider-direction-1" />        
+        <img src="{{asset('public/official/img/slider/Quick Dials.jpg')}}" alt="Quick Dial" title="#slider-direction-1" />        
       </div>
 
       <!-- direction 1 -->
@@ -49,7 +49,7 @@
                   <a class="ready-btn page-scroll" href="jacascript:void(0)" data-toggle="modal" data-target="#inquiry">Get Connected</a>&nbsp;&nbsp;
                   
                 </div>
-                <div class="plan-demo-btns" style="margin-top: 40px"> <a href="https://Quick Dials/" target="_black" class="header-plans-btn" style="color:#fff !important"> <i class="fa fa-forward"></i> See certified institutions<i class="fa fa-backward"></i></a><div class="clearfix"></div></div>
+                <div class="plan-demo-btns" style="margin-top: 40px"> <a href="https://quickdials.com/" target="_black" class="header-plans-btn" style="color:#fff !important"> <i class="fa fa-forward"></i> See certified institutions<i class="fa fa-backward"></i></a><div class="clearfix"></div></div>
               </div>
             </div>
           </div>

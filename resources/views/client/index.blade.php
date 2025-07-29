@@ -479,7 +479,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/categories/packers-movers')}}"   tabindex="0" title="Packers & Movers" tabindex="0">
-                  <img class="" src="popular/Packers-Movers.jpg"  alt="" ></a>
+                  <img class="" src="popular/Packers-Movers.jpg"  alt="packers-movers" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/categories/packers-movers')}}"   tabindex="0"> <span>Packers & Movers</span> </a></h3>
@@ -489,7 +489,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/categories/interior-designer')}}" title="Interior Design" tabindex="0">
-                  <img class="" src="popular/Interior-design.jpg"  alt="" ></a>
+                  <img class="" src="popular/Interior-design.jpg"  alt="Interior-design" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/categories/interior-designer')}}"   tabindex="0"> <span>Interior Design</span> </a></h3>
@@ -499,7 +499,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/real-estate-agent')}}" title="Estate Agents" tabindex="0">
-                  <img class="" src="popular/real-estate-agent.jpg"  alt="" ></a>
+                  <img class="" src="popular/real-estate-agent.jpg"  alt="real-estate-agent" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/real-estate-agent')}}"   tabindex="0"> <span>Real Estate Agents</span> </a></h3>
@@ -509,7 +509,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/carpenters')}}" title="Carpenters" tabindex="0">
-                  <img class="" src="popular/carpenter.jpg"  alt="" ></a>
+                  <img class="" src="popular/carpenter.jpg"  alt="carpenter" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/carpenters')}}"   tabindex="0"> <span>Carpenters</span> </a></h3>
@@ -527,7 +527,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/ac-service')}}" title="AC Service" tabindex="0">
-                  <img class="" src="popular/AC-Service.jpg"  alt="" ></a>
+                  <img class="" src="popular/AC-Service.jpg"  alt="AC-Service" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/ac-service')}}"   tabindex="0"> <span>AC Service</span> </a></h3>
@@ -537,7 +537,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/car-service')}}" title="Car Services" tabindex="0">
-                  <img class="" src="popular/car-services.jpg"  alt="" ></a>
+                  <img class="" src="popular/car-services.jpg"  alt="car-services" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/car-service')}}"   tabindex="0"> <span>Car Services</span> </a></h3>
@@ -547,7 +547,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/laundry-service')}}" title="Laundry Services" tabindex="0">
-                  <img class="" src="popular/washing-machines.jpg"  alt="" ></a>
+                  <img class="" src="popular/washing-machines.jpg"  alt="washing" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/laundry-service')}}"   tabindex="0"> <span>Laundry Services</span> </a></h3>
@@ -557,7 +557,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/electricity-service')}}" title="Electricity Services" tabindex="0">
-                  <img class="" src="popular/Electricity-Services.jpg"  alt="" ></a>
+                  <img class="" src="popular/Electricity-Services.jpg"  alt="Electricity" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/electricity-service')}}"   tabindex="0"> <span>Electrician Services</span> </a></h3>
@@ -566,18 +566,18 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{url('hotels')}}" title="Hotel Services" tabindex="0">
-                  <img class="" src="popular/Hotel-Services.jpg"  alt="" ></a>
+               <figure><a href="hotels" title="Hotel Services" tabindex="0" class="keystore">
+                  <img class="" src="popular/Hotel-Services.jpg"  alt="Hotel" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url('hotels')}}"   tabindex="0"> <span>Hotels </span> </a></h3>
+                  <h3><a href="hotels"   tabindex="0" class="keystore"> <span>Hotels </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/categories/clinical-research-training')}}" title="Fitness Services" tabindex="0">
-                  <img class="" src="popular/Fitness-Services.jpg"  alt="" ></a>
+                  <img class="" src="popular/Fitness-Services.jpg"  alt="Fitness" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/categories/clinical-research-training')}}"   tabindex="0"> <span>Health & Fitness</span> </a></h3>
@@ -595,7 +595,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('catering-services')}}" title="Catering Services" tabindex="0">
-                  <img class="" src="popular/Catering-Services.jpg"  alt="" ></a>
+                  <img class="" src="popular/Catering-Services.jpg"  alt="Catering" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('catering-services')}}"   tabindex="0"> <span>Catering Services</span> </a></h3>
@@ -605,7 +605,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/banquet-halls')}}" title="Banquet Halls" tabindex="0">
-                  <img class="" src="popular/Banquet-Halls.jpg"  alt="" ></a>
+                  <img class="" src="popular/Banquet-Halls.jpg"  alt="Banquet" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/banquet-halls')}}"   tabindex="0"> <span>Banquet Halls </span> </a></h3>
@@ -615,7 +615,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('stage-decorators')}}" title="Stage Decorators" tabindex="0">
-                  <img class="" src="popular/Stage-Decorators.jpg"  alt="" ></a>
+                  <img class="" src="popular/Stage-Decorators.jpg"  alt="Stage" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('stage-decorators')}}"   tabindex="0"> <span>Stage Decorators</span> </a></h3>
@@ -625,7 +625,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('makeup-artists')}}" title="Makeup Artists" tabindex="0">
-                  <img class="" src="popular/makeup-artists.jpg"  alt=""></a>
+                  <img class="" src="popular/makeup-artists.jpg"  alt="makeup"></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('makeup-artists')}}"   tabindex="0"> <span>Makeup Artists</span> </a></h3>
@@ -635,7 +635,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('mehendi-artists')}}" title="Mehendi Artists" tabindex="0">
-                  <img class="" src="popular/Mehendi-Artists.jpg"  alt="" ></a>
+                  <img class="" src="popular/Mehendi-Artists.jpg"  alt="Mehendi" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('mehendi-artists')}}"   tabindex="0"> <span>Mehendi Artists</span> </a></h3>
@@ -645,7 +645,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('bridal-wear')}}" title="Bridal Wear" tabindex="0">
-                  <img class="" src="popular/Bridal-Wear.jpg"  alt="" ></a>
+                  <img class="" src="popular/Bridal-Wear.jpg"  alt="Bridal" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('bridal-wear')}}"   tabindex="0"> <span>Bridal Wear</span> </a></h3>
@@ -673,7 +673,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/categories/entrance-exams-coaching')}}" title="UPSC & IAS" tabindex="0">
-                  <img class="" src="popular/UPSC-IAS.jpg"  alt="" ></a>
+                  <img class="" src="popular/UPSC-IAS.jpg"  alt="UPSC" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/categories/entrance-exams-coaching')}}"   tabindex="0"> <span>UPSC & IAS</span> </a></h3>
@@ -683,7 +683,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/ssc-cgl')}}" title="SSC CGL JEE" tabindex="0">
-                  <img class="" src="popular/SSC-CGL-JEE.jpg"  alt="" ></a>
+                  <img class="" src="popular/SSC-CGL-JEE.jpg"  alt="SSC-CGL" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/ssc-cgl')}}"   tabindex="0"> <span>SSC CGL JEE </span> </a></h3>
@@ -693,17 +693,17 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/rrb-ntpc-coaching')}}" title="NTPC & RRB Railway" tabindex="0">
-                  <img class="" src="popular/NTPC-RRB-Railway.jpg"  alt="" ></a>
+                  <img class="" src="popular/NTPC-RRB-Railway.jpg"  alt="NTPC-RRB" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url('/rrb-ntpc-coaching')}}"   tabindex="0"> <span>NTPC & RRB Railway </span> </a></h3>
+                  <h3><a href="{{url('/rrb-ntpc-coaching')}}" tabindex="0"> <span>NTPC & RRB Railway </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/cat-coaching')}}" title="CAT" tabindex="0">
-                  <img class="" src="popular/CAT-exam.jpg"  alt="" ></a>
+                  <img class="" src="popular/CAT-exam.jpg"  alt="CAT-exam" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/cat-coaching')}}"   tabindex="0"> <span>CAT/NEET</span> </a></h3>
@@ -713,7 +713,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="col-md-2">
             <div class="popular-div">
                <figure><a href="{{url('/ctet-coaching')}}" title="CTET Super TET" tabindex="0">
-                  <img class="" src="popular/CTET-Super-TET.jpg"  alt="" ></a>
+                  <img class="" src="popular/CTET-Super-TET.jpg"  alt="CTET-Super" ></a>
                </figure>
                <div class="grid-info ">
                   <h3><a href="{{url('/ctet-coaching')}}"   tabindex="0"> <span>CTET Super TET</span> </a></h3>
@@ -743,13 +743,13 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      @foreach($subcategory as $category)
                       <div class="crs-img-items">
                      <div class="course-items">
-                        <!-- <a href="{{url('/categories/'.$category->parent_slug.'/'.$category->child_slug)}}" title="<?php if(!empty($category->child_category)){  echo $category->child_category; } ?>" >  -->
+                       
                         <a href="{{url('/child/'.$category->child_slug)}}" title="<?php if(!empty($category->child_category)){  echo $category->child_category; } ?>" > 
                         <?php  if(!empty($category->pc_icon)){
                            $vicons= unserialize($category->pc_icon); ?> 
-                        <img src="{{asset($vicons['pc_icon']['src'])}}" width="100">	 <?php 
+                        <img src="{{asset($vicons['pc_icon']['src'])}}" width="100" alt="{{$vicons['pc_icon']['name']}}"><?php
                            }else{ ?>
-                        <img src="{{asset('images/it-training.png')}}">
+                        <img src="{{asset('images/it-training.png')}}" alt="it-training">
                         <?php  } ?>
                         </a>
                         </div>
@@ -783,9 +783,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                         <a href="{{url('/child/'.$entrance->child_slug)}}" title="<?php if(!empty($entrance->child_category)){  echo $entrance->child_category; } ?>" >
                         <?php  if(!empty($entrance->pc_icon)){
                            $enicons= unserialize($entrance->pc_icon); ?> 
-                        <img src="{{asset($enicons['pc_icon']['src'])}}" width="100">	 <?php 
+                        <img src="{{asset($enicons['pc_icon']['src'])}}" width="100" alt="{{$enicons['pc_icon']['name']}}">	 <?php 
                            }else{ ?>
-                        <img src="{{asset('images/it-training.png')}}">
+                        <img src="{{asset('images/it-training.png')}}" alt="it training">
                         <?php  } ?>
                         </a>
                         </div>
@@ -811,9 +811,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                <div class="">
                   <div class="course-list">
                      <?php   $x = 9; ?>
-                     <?php  
-                           $city ="delhi";                         
-                        ?>
+                    
                      @if(!empty($studyAbroad))
                      @foreach($studyAbroad as $study)
                      @if($study->child_slug !='overseas-journalism-education-consultants' && $study->child_slug !='overseas-engineering-education-consultant')
@@ -822,9 +820,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                         <a href="{{url('/child/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" >
                         <?php  if(!empty($study->pc_icon)){
                            $abicons= unserialize($study->pc_icon); ?> 
-                        <img src="{{asset(''.$abicons['pc_icon']['src'])}}" width="100">	 <?php 
+                        <img src="{{asset(''.$abicons['pc_icon']['src'])}}" width="100" alt="{{$abicons['pc_icon']['name']}}">	 <?php 
                            }else{ ?>                                        
-                        <img src="{{asset('images/it-training.png')}}">
+                        <img src="{{asset('images/it-training.png')}}" alt="it-training">
                         <?php  } ?>
                         </a>
                         </div>

@@ -201,13 +201,13 @@ a.new-payment-type {position: relative;}
 		<div class="nav paymentonline-form" role="tablist">
 		
 		<a class="nav-item1 my-mr-5 active disabled" data-toggle="tab" href="#payment-student-Detail" role="tab"
-		aria-controls="nav-home" aria-selected="false"><img src="{{asset('public/img/pay/baseline-person.png')}}" alt="" class="img-fluid pay-responsive-img"><span class="text-payment">Details</span></a>
+		aria-controls="nav-home" aria-selected="false"><img src="{{asset('public/img/pay/baseline-person.png')}}" alt="person" class="img-fluid pay-responsive-img"><span class="text-payment">Details</span></a>
 		
 		<a class="nav-item1 my-mr-5 line-right-pay active disabled" data-toggle="tab" href="#transaction" role="tab"
-		aria-controls="nav-profile" aria-selected="false"><img src="{{asset('public/img/pay/verified-user.png')}}" alt="" class="img-fluid pay-responsive-img "><div class="text-payment">Verify Details </div></a>
+		aria-controls="nav-profile" aria-selected="false"><img src="{{asset('public/img/pay/verified-user.png')}}" alt="verify" class="img-fluid pay-responsive-img "><div class="text-payment">Verify Details </div></a>
 		
 		<a class="nav-item1  line-right-pay active" data-toggle="tab" href="#payment" role="tab"
-		aria-controls="nav-contact" aria-selected="true"><img src="{{asset('public/img/pay/wallet.png')}}" alt="" class="img-fluid pay-responsive-img"><div class="text-payment">Payment</div></a>
+		aria-controls="nav-contact" aria-selected="true"><img src="{{asset('public/img/pay/wallet.png')}}" alt="wallet" class="img-fluid pay-responsive-img"><div class="text-payment">Payment</div></a>
 
 		</div>
 		</nav>
@@ -226,23 +226,23 @@ a.new-payment-type {position: relative;}
 	<a class="nav-item-payment-type new-payment-type google-pay-active active" data-toggle="tab" href="#GooglePay" role="tab"
 	aria-controls="nav-profile" aria-selected="false">
 	
-	<img src="{{asset('public/img/pay/google-payment.png')}}" alt="" class="img-fluid">
+	<img src="{{asset('public/img/pay/google-payment.png')}}" alt="google" class="img-fluid">
 	
 	</a>
 			<?php }else if($mode->mode=='PayTm'){ ?>
  
 <a class="nav-item-payment-type new-payment-type paytm-pay-active" data-toggle="tab" href="#PayTm" role="tab"
 	aria-controls="nav-about" aria-selected="false">
-	<img src="{{asset('public/img/pay/paytm-payment.png')}}" alt="" class="img-fluid">
+	<img src="{{asset('public/img/pay/paytm-payment.png')}}" alt="paytm" class="img-fluid">
 	</a>
 
 
 			<?php }else if($mode->mode=='PhonePay'){ ?>
 <a class="nav-item-payment-type new-payment-type phonepe-pay-active" data-toggle="tab" href="#PhonePay" role="tab"
-	aria-controls="nav-contact" aria-selected="false"><img src="{{asset('/public/img/pay/phonepay-payment.png')}}" alt="" class="img-fluid"></a>
+	aria-controls="nav-contact" aria-selected="false"><img src="{{asset('/public/img/pay/phonepay-payment.png')}}" alt="phonepay" class="img-fluid"></a>
 		<?php 	}else if($mode->mode=='UPI'){ ?>
 <a class="nav-item-payment-type new-payment-type phonepe-pay-active" data-toggle="tab" href="#UPI" role="tab"
-	aria-controls="nav-contact" aria-selected="false"><img src="{{asset('/public/img/pay/upi-payment.png')}}" alt="" class="img-fluid"></a>
+	aria-controls="nav-contact" aria-selected="false"><img src="{{asset('/public/img/pay/upi-payment.png')}}" alt="upi" class="img-fluid"></a>
 	<?php  } } } ?>
 	
 	  
@@ -254,8 +254,8 @@ a.new-payment-type {position: relative;}
 <input type="hidden" name="merchant_order_id" id="merchant_order_id"> 
 <input type="hidden" name="language" value="EN"> 
 <input type="hidden" name="currency" id="currency" value="INR"> 
-<input type="hidden" name="surl" id="surl" value="https://www.cromacampus.com/success/"> 
-<input type="hidden" name="furl" id="furl" value="https://www.cromacampus.com/failed/"> 
+<input type="hidden" name="surl" id="surl" value="https://www.quickdials.com/success/"> 
+<input type="hidden" name="furl" id="furl" value="https://www.quickdials.com/failed/"> 
 <!--<input type="hidden" name="surl" id="surl" value="http://localhost:8000/success/"> 
 <input type="hidden" name="furl" id="furl" value="http://localhost:8000/failed/">  -->
 
@@ -276,10 +276,10 @@ a.new-payment-type {position: relative;}
 <a class="edit-button"  href="{{url('fees-deposit?status=correction&o='.$_GET['o'])}}" >Edit Now</a>
 <a class="cancel-button" href="{{url('fees-deposit')}}">Cancel</a> -->
 
-<a type="submit"  class="nav-item-payment-type new-payment-type phonepe-pay-active" id="razor-pay-now" ><img src="{{asset('/public/img/pay/group450.png')}}" alt="" class="img-fluid"></a>
+<a type="submit"  class="nav-item-payment-type new-payment-type phonepe-pay-active" id="razor-pay-now" ><img src="{{asset('/public/img/pay/group450.png')}}" alt="group450" class="img-fluid"></a>
 
 <!--<a href="{{url('airpay')}}">.</a>-->
-<!-- <a href="{{url('cromajuspay')}}"><img src="{{asset('/public/img/pay/group450.png')}}" alt="" class="img-fluid"></a> -->
+<!-- <a href="{{url('cromajuspay')}}"><img src="{{asset('/public/img/pay/group450.png')}}" alt="ss" class="img-fluid"></a> -->
  
 
 </form>

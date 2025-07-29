@@ -52,7 +52,7 @@
 <div class="container">
 <div class="logo">
     <a href="index.html">
-        <img src="<?php echo asset('client/images/gb_logo.png'); ?>" alt=""/>
+        <img src="<?php echo asset('client/images/gb_logo.png'); ?>" alt="gb_logo"/>
     </a>
 </div>
 <div class="head-right">
@@ -64,38 +64,4 @@
 </div>
 </div>
 </header>
-<!--header id="header">
-<div class="container">
-<div class="logo">
-    <a href="index.html">
-        <img src="<?php //echo asset('client/images/gb_logo.png'); ?>" alt=""/>
-    </a>
-</div>
-<div class="head-right">
-    <a href="#" class="freelisting">Free Listing</a>
-    |
-     <a href="#" id="login">Sign In</a>
-    | 
-    <a href="#signup">Sign Up</a>
-</div>
-</div>
-</header>
-
-<div class="business-scrollheadsearch showform">
-<div class="filterForm">
-<form>
-<select class="select2-single location locationbtn">
-	<optgroup label="Popular Cities">
-		<option>Delhi</option>
-		<option>Agra</option>
-		<option selected>Noida</option>
-		<option>Aligarh</option>
-		<option>Jhansi</option>
-		<option>Bangalore</option>
-	</optgroup>
-</select>
-<input type="text" placeholder="What service you need today!" class="col-md-7 serviceneed">
-<input type="submit" class="col-md-2 submitbtn" value="GO">
-</form>
-</div>
-</div-->
+ 

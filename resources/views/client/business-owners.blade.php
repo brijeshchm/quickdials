@@ -196,18 +196,18 @@ display: block;
    
  <div class="banner-steps banner-stepsInternalEven" ><div class="bstep1">
      
-     <img class="banimgInt" style="height: 37px; width: 37px;" src="{{asset('images/buyer.png')}}" alt=""> 
+     <img class="banimgInt" style="height: 37px; width: 37px;" src="{{asset('images/grow-client.png')}}" alt="buyer"> 
      <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">{{$clients}}</span>  +</figcaption><figcaption class="banimgDir" style="display: none;"> Grow your Business </figcaption><p class="banimgInt">Grow Client</p>
      
      <p class="banimgDir" style="display: none;">Sell to buyers anytime, anywhere</p></div>
      
      <div class="bstep1">
-         <img style="width: 47px;" class="banimgInt" src="{{asset('images/supplier.png')}}" alt="">
+         <img style="width: 47px;" class="banimgInt" src="{{asset('images/Suppliers.png')}}" alt="supplier">
          
        <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">81</span> lakh+</figcaption>
        <p class="banimgInt">Suppliers</p></div>
        
-       <div class="bstep1"><img class="banimgInt" style="width: 37px;" src="{{asset('images/prodnserv.png')}}" alt=""> 
+       <div class="bstep1"><img class="banimgInt" style="width: 37px;" src="{{asset('images/Products-services-grow.png')}}" alt="Products-services-grow"> 
        
        <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">11.3</span> K+</figcaption><p class="banimgInt">Products &amp; Services</p>
        </div>
@@ -215,18 +215,18 @@ display: block;
        
        <div class="banner-steps banner-stepsInternalEven" ><div class="bstep1">
      
-     <img class="banimgInt" style="height: 37px; width: 37px;" src="{{asset('images/prodnserv.png')}}" alt=""> 
+     <img class="banimgInt" style="height: 37px; width: 37px;" src="{{asset('images/keyword-grow.png')}}" alt="prodnserv"> 
      <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">{{ $keyword }}</span>  +</figcaption><figcaption class="banimgDir" style="display: none;"> Grow your Business </figcaption><p class="banimgInt">Keyword</p>
      
      <p class="banimgDir" style="display: none;">Sell to buyers anytime, anywhere</p></div>
      
      <div class="bstep1">
-         <img style="width: 47px;" class="banimgInt" src="{{asset('images/prodnserv.png')}}" alt="">
+         <img style="width: 47px;" class="banimgInt" src="{{asset('images/Store-grow.png')}}" alt="prodnserv">
          
        <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">21</span>+</figcaption>
        <p class="banimgInt">Store</p></div>
        
-       <div class="bstep1"><img class="banimgInt" style="width: 37px;" src="{{asset('images/prodnserv.png')}}" alt=""> 
+       <div class="bstep1"><img class="banimgInt" style="width: 37px;" src="{{asset('images/Platform.png')}}" alt="prodnserv"> 
        
        <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">11.3</span> K+</figcaption><p class="banimgInt">Platform</p></div>
        </div>
@@ -1999,96 +1999,7 @@ textarea.form-control {
       </div>
     </section>
 
- 
-   
-
-   
-    <!-- Productivity Features Section -->
-    <section class="light" id="productivity-features">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title fade-in">
-            Get the Most out of Your Employees’ Time
-          </h2>
-          <p class="section-subtitle fade-in">
-            Discover exactly what your employees are up to every minute of the
-            day with all-seeing software for workplace monitoring and complete
-            behavior analytics.
-          </p>
-        </div>
-        <div class="features-grid">
-          <div class="feature-card fade-in-left">
-            <div class="feature-icon">
-              <i class="fas fa-desktop"></i>
-            </div>
-            <h3 class="feature-title">Company Computers</h3>
-            <p class="feature-description">
-              Suitable for office teams using company-owned computers. Lead
-              starts automatically, with options to track non-stop, during
-              specific hours, or on specific networks.
-            </p>
-          </div>
-          <div class="feature-card fade-in" style="transition-delay: 0.2s">
-            <div class="feature-icon">
-              <i class="fas fa-laptop"></i>
-            </div>
-            <h3 class="feature-title">Personal Computers</h3>
-            <p class="feature-description">
-              Ideal for remote teams, allowing employees to control tracking
-              with clock in/out buttons for flexible monitoring.
-            </p>
-          </div>
-          <div
-            class="feature-card fade-in-right"
-            style="transition-delay: 0.4s"
-          >
-            <div class="feature-icon">
-              <i class="fas fa-eye"></i>
-            </div>
-            <h3 class="feature-title">Visible Mode</h3>
-            <p class="feature-description">
-              Promotes transparency by notifying employees when monitoring is
-              active, ensuring trust and accountability.
-            </p>
-          </div>
-          <div class="feature-card fade-in-left" style="transition-delay: 0.2s">
-            <div class="feature-icon">
-              <i class="fas fa-user-secret"></i>
-            </div>
-            <h3 class="feature-title">Stealth Mode</h3>
-            <p class="feature-description">
-              Detects suspicious activities discreetly to protect team data
-              without employee awareness.
-            </p>
-          </div>
-
-          <div class="feature-card fade-in" style="transition-delay: 0.4s">
-            <div class="feature-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <h3 class="feature-title">Real-Time Alerts</h3>
-            <p class="feature-description">
-              Instant notifications on policy violations or anomalies to enable
-              swift action.
-            </p>
-          </div>
-
-          <div
-            class="feature-card fade-in-right"
-            style="transition-delay: 0.2s"
-          >
-            <div class="feature-icon">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h3 class="feature-title">Activity Insights</h3>
-            <p class="feature-description">
-              Provides detailed analytics on user behavior to help improve
-              security and productivity.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+  
 
      
 
@@ -2484,165 +2395,6 @@ $(function() {
   }, 5000);
 });
 </script>
-<script>
-
-
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const navLinks = document.getElementById("navLinks");
-
-mobileMenuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-    mobileMenuBtn.classList.toggle("active");
-});
-
-// Header Scroll Effect
-const header = document.getElementById("header");
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-        header.classList.remove("scrolled");
-    } else {
-        header.classList.add("scrolled");
-    }
-});
-
-// Scroll Animations
-const fadeInElements = document.querySelectorAll(
-    ".fade-in, .fade-in-left, .fade-in-right, .scale-in"
-);
-
-const observerOptions = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1,
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-fadeInElements.forEach((element) => {
-    observer.observe(element);
-});
-
-// FAQ Accordion
-// const faqItems = document.querySelectorAll(".faq-item");
-
-// faqItems.forEach((item) => {
-//     const question = item.querySelector(".faq-question");
-//     question.addEventListener("click", () => {
-//         const isActive = item.classList.contains("active");
-
-//         // Close all other FAQ items
-//         faqItems.forEach((i) => {
-//             if (i !== item) {
-//                 i.classList.remove("active");
-//             }
-//         });
-
-//         // Toggle current FAQ item
-//         item.classList.toggle("active", !isActive);
-//     });
-// });
-
-// Smooth Scroll for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute("href");
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: "smooth",
-            });
-
-            // Close mobile menu if open
-            navLinks.classList.remove("active");
-            mobileMenuBtn.classList.remove("active");
-        }
-    });
-});
-
-// Stats Counter Animation
-const statNumbers = document.querySelectorAll(".stat-number");
-let statsAnimated = false;
-
-const animateStats = () => {
-    statNumbers.forEach((stat) => {
-        const target = parseInt(stat.textContent.replace(/[^0-9]/g, ""));
-        let current = 0;
-        const increment = target / 100;
-
-        const updateCounter = () => {
-            current += increment;
-            if (current >= target) {
-                stat.textContent = stat.textContent.replace(
-                    /[0-9,]+/,
-                    target.toLocaleString()
-                );
-                return;
-            }
-            stat.textContent = stat.textContent.replace(
-                /[0-9,]+/,
-                Math.floor(current).toLocaleString()
-            );
-            requestAnimationFrame(updateCounter);
-        };
-
-        updateCounter();
-    });
-};
-
-const statsSection = document.querySelector(".stats-section");
-const statsObserver = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && !statsAnimated) {
-        animateStats();
-        statsAnimated = true;
-    }
-}, observerOptions);
-
-statsObserver.observe(statsSection);
-
  
- 
-
-// Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
-
-// Check for saved theme preference or system preference
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-    body.classList.add('dark-theme');
-    updateIcons(true);
-}
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-theme');
-    const isDark = body.classList.contains('dark-theme');
-    updateIcons(isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
-
-function updateIcons(isDark) {
-    const sunIcon = themeToggle.querySelector('.fa-sun');
-    const moonIcon = themeToggle.querySelector('.fa-moon');
-
-    if (sunIcon && moonIcon) {
-        sunIcon.style.display = isDark ? 'none' : 'inline';
-        moonIcon.style.display = isDark ? 'inline' : 'none';
-    }
-}
-
-</script>
 
 @endsection

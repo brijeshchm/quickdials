@@ -850,10 +850,7 @@ searchInputs[i].value = '';
         maximumSelectionSize: 6,
         containerCssClass: ":all:"
     });
-   console.log(localStorage.getItem('city'));
-   console.log(localStorage.getItem('cityData'));
-   console.log(localStorage.getItem('keywordData'));
-   localStorage.getItem('keyword');
+   
  $('.home-search').val(localStorage.getItem('keyword'));
 
     if(localStorage.getItem('city')){
