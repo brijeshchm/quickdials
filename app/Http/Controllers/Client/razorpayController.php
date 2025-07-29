@@ -869,5 +869,27 @@ echo json_encode($json);
         echo '</html>';
 	}
 	
+
+
+
+	public function subscribeFree(Request $request){
+	//echo "<pre>";print_r($this->dataDecodeJsonBase64($_GET['o']));die;
+		
+		
+	if(isset($_GET['status'],$_GET['o'])&& !empty($_GET['o'])){
+	$oo = base64_decode ( $_GET['o'], $strict=false );
+	$data = json_decode($o);
+	$oo = 
+	$status = $_GET['status'];
+	}else{
+		$data=array();
+	}
+//	echo "<pre>";print_r($data);die;
+		return view('business.razorpay.subscribe-free',['data'=>$data,'oo'=>$oo]);
+ 
+	}
+
+
+
  
 }

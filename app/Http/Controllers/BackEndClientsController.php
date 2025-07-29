@@ -160,7 +160,7 @@ class BackEndClientsController extends Controller
 			$validator = Validator::make($request->all(), [
 				//'business_name' => 'required|regex:/[A-Za-z0-9 ]+/|unique:clients,business_name,NULL,id,mobile,'.$request->input('mobile').',city,'.$request->input('city'),
 				'business_name' => 'required|regex:/[A-Za-z0-9 ]+/',
-				'mobile' => 'required|numeric|regex:/^[1-9]+/|unique:clients,mobile,NULL,id',
+				'mobile' => 'required|numeric|unique:clients,mobile,NULL,id',
 				'city' => 'required|max:50',
 				'email' => 'required|email'
 			],$messages);
@@ -687,7 +687,7 @@ class BackEndClientsController extends Controller
 					 
 					$validator = Validator::make($request->all(),[					
 					'contact_person' => 'regex:/^[a-zA-Z ]*$/',
-						'mobile' => 'required|numeric|regex:/^[1-9]+/',				 
+						'mobile' => 'required|numeric',
 						'email' => 'required|email',
 						'website' => ['regex:/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i'],				 	
 				
@@ -809,7 +809,7 @@ class BackEndClientsController extends Controller
 
 
 					$validator = Validator::make($request->all(), [
-					'image' => 'mimes:jpeg,jpg,png|max:448|dimensions:min_width=40,min_height=35,max_width=300,max_height=150',
+					'image' => 'mimes:jpeg,jpg,png|max:448|dimensions:min_width=20,min_height=25,max_width=800,max_height=550',
 					'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319',
 					'year_of_estb' => 'required',
 					],[

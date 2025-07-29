@@ -87,25 +87,47 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quickinida
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Buy Details </h5>
 
+                  <?php if($client->coins_free=='0'){ ?>
                   <div class="row">
-                    <div class="col-lg-2 col-md-4 label "><i class="bi bi-currency-rupee"></i> 1000: </div>
-                    <div class="col-lg-2 col-md-8"> 1111 Coins</div>
-                    <?php 
-                   // echo "<pre>";print_r($client);
-                        $data1['name'] = trim($client->business_name);
-                        $data1['email'] = trim($client->email);
-                        $data1['amt'] = trim(1000);
-                        $data1['phone'] = $client->mobile;
-                        $data1['coins'] = trim(1111);
-                        $data1['country'] = $client->country;
-                        $data1['state'] = $client->state;
-                        $data1['city'] = $client->city;
-                        $data1['id'] = $client->id;
-                        $data1['username'] = $client->username;
-                        $resultData1000 = dataEncodeJsonBase64($data1);
+                    <div class="col-lg-2 col-md-4 label "><i class="bi bi-currency-rupee"></i> 0: </div>
+                    <div class="col-lg-2 col-md-8"> 555 Coins</div>
+                    <?php                   
+                        $datafree['name'] = trim($client->business_name);
+                        $datafree['email'] = trim($client->email);
+                        $datafree['amt'] = trim(0);
+                        $datafree['phone'] = $client->mobile;
+                        $datafree['coins'] = trim(555);
+                        $datafree['country'] = $client->country;
+                        $datafree['state'] = $client->state;
+                        $datafree['city'] = $client->city;
+                        $datafree['id'] = $client->id;
+                        $datafree['username'] = $client->username;
+                        $resultDatafree = dataEncodeJsonBase64($datafree);
                     ?>
-                     <div class="col-lg-3 col-md-8"> <a href="{{url('business/pay-deposit/?status=correction&o='.$resultData1000)}}">Buy Package</a></div>
+                     <div class="col-lg-3 col-md-8"> <a href="{{url('business/subscribe-free/?status=correction&o='.$resultDatafree)}}">Free Package</a></div>
                   </div>
+                    <?php  } ?>
+ 
+
+                    <div class="row">
+                      <div class="col-lg-2 col-md-4 label "><i class="bi bi-currency-rupee"></i> 1000: </div>
+                      <div class="col-lg-2 col-md-8"> 1111 Coins</div>
+                      <?php 
+                    
+                          $data1['name'] = trim($client->business_name);
+                          $data1['email'] = trim($client->email);
+                          $data1['amt'] = trim(1000);
+                          $data1['phone'] = $client->mobile;
+                          $data1['coins'] = trim(1111);
+                          $data1['country'] = $client->country;
+                          $data1['state'] = $client->state;
+                          $data1['city'] = $client->city;
+                          $data1['id'] = $client->id;
+                          $data1['username'] = $client->username;
+                          $resultData1000 = dataEncodeJsonBase64($data1);
+                      ?>
+                      <div class="col-lg-3 col-md-8"> <a href="{{url('business/pay-deposit/?status=correction&o='.$resultData1000)}}">Buy Package</a></div>
+                    </div>
                     <div class="row">
                     <div class="col-lg-2 col-md-4 label "><i class="bi bi-currency-rupee"></i> 2000 : </div>
                     <div class="col-lg-2 col-md-8"> 2272 Coins</div>

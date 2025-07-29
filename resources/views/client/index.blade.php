@@ -187,6 +187,14 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
              </div>
             <span class="title-serv"><a href="{{url('categories/computer-courses')}}" >Professional Courses </a></span>
          </div>
+
+         <div class="img-items">  
+         <div class="items">
+            <a href="{{url('child/electric-services')}}" >
+            <img src="{{asset('img/wedding.jpeg')}}"></a>
+             </div>
+            <span class="title-serv"><a href="{{url('child/wedding-planning')}}" >Wedding Planing </a></span>
+         </div>
          <div class="img-items">  
          <div class="items">
             <a href="{{url('categories/electric-services')}}" >
@@ -194,6 +202,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
              </div>
             <span class="title-serv"><a href="{{url('categories/electric-services')}}" >Electric Services </a></span>
          </div>
+
+
          <div class="img-items">    
        
          <div class="items">
