@@ -22,8 +22,7 @@ class ClientDetailController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($slug)
-    { 	 
-      
+    { 	       
       $clients = Client::where('business_slug',$slug)->get();	
       $cities = Citieslists::all();		 	
 		  $clientLists =  Client::where('logo','<>','')->where('business_intro','<>','')->where('city','noida')->where('paid_status','1')->limit(12)->get();		
@@ -61,7 +60,7 @@ class ClientDetailController extends Controller
 							  ->join('keyword','keyword.id','=','assigned_kwds.kw_id')
 								->join('citylists','assigned_kwds.city_id','=','citylists.id')
 							  ->join('child_category','child_category.id','=','assigned_kwds.child_cat_id')
-							  ->select('keyword.keyword','citylists.city','child_category.child_category as child_category_name')
+							  ->select('keyword.keyword','citylists.city','child_category.child_category as child_category_name','keyword.id as key_id','child_category.id as child_id')
 							  ->where('assigned_kwds.client_id','=',$client->id)
 								->groupBy('kw_id')
 								->get();	

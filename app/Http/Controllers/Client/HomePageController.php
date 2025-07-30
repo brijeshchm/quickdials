@@ -668,7 +668,7 @@ public function saveTwoEnquiry(Request $request){
 
 				$countryies = $countryies->where(function($query) use($request){
 				$query->orWhere('city','LIKE','%'.$request->input('id').'%')			    	 
-				 		->orWhere('area','LIKE','%'.$request->input('id').'%')			    	 
+				 	//	->orWhere('area','LIKE','%'.$request->input('id').'%')			    	 
 				 		->orWhere('zone','LIKE','%'.$request->input('id').'%')			    	 
 						->orWhere('state','LIKE','%'.$request->input('id').'%');
 				});
@@ -688,7 +688,7 @@ public function saveTwoEnquiry(Request $request){
 			$final_str=str_replace($str, $strong_str, $data->city); ?>
 		 
 			<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" >
-			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>" data-area="<?php echo strtolower($data->area); ?>" data-zone="<?php echo strtolower($data->zone); ?>"><?php echo $data->area.' '.ucwords($final_str); ?></a>
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>" data-area="<?php echo strtolower($data->area); ?>" data-zone="<?php echo strtolower($data->zone); ?>"><?php echo $data->zone.' '.ucwords($final_str); ?></a>
 			</li>
 		 
 			<?php }else{ ?>

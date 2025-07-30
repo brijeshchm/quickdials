@@ -189,18 +189,28 @@ Quick Dials- Training in {{$client->business_name}}
 						<?php						
 						}
 						?>
-                        <li><i class="fa fa-fw fa fa-envelope location-icon-1" aria-hidden="true"></i><a href="{{isset($client->email)&&!empty($client->email)?"mailto:".$client->email:"#"}}">Send Enquriy By Mail</a></li>
-                        <li><i class="fa fa-fw fa fa-chrome location-icon-1" aria-hidden="true"></i><a target="_blank" href="{{isset($client->website)&&!empty($client->website)?buildWebsiteURL($client->website):'javascript:void(0)'}}">{{isset($client->website)&&!empty($client->website)?$client->website:'Website Not Available'}}</a></li>
+                        <li><i class="fa fa-fw fa fa-envelope location-icon-1" aria-hidden="true"></i><a href="{{isset($client->email) && !empty($client->email)?"mailto:".$client->email:"#"}}">Send Enquriy By Mail</a></li>
+                        <li><i class="fa fa-fw fa fa-chrome location-icon-1" aria-hidden="true"></i>
+						
+						
+				<a target="_blank" href="{{isset($client->website)&&!empty($client->website)?buildWebsiteURL($client->website):'javascript:void(0)'}}">
+					 
+						
+						{{isset($client->website)&&!empty($client->website)?$client->website:'Website Not Available'}}  </a>
+					
+					
+					</li>
                     </ul>
                 </aside>
             
                 <aside>
                     <h4>Year Established</h4>
                     <ul>
-                        <li>{{isset($client->year_of_estb)&&!empty($client->year_of_estb)?$client->year_of_estb:"Not Available"}}</li>
+                        <li><?php if(!empty($client->year_of_estb)){ 
+							echo $client->year_of_estb;}  ?></li>
                     </ul>
                 </aside>
-				<?php if(isset($client->display_hofo)&&empty($client->display_hofo)): //echo "<pre>";print_r(unserialize($client->time));echo "</pre>"; ?>
+				<?php if($client->display_hofo){ ?>
                 <aside>
                     <h4>Business Hours of Operation </strong><small style="cursor:pointer" class="orangeColor pull-right max-min today">Maximize</small><small style="cursor:pointer" class="orangeColor pull-right hide otherday max-min">Minimize</small>
                     </h4>
@@ -227,41 +237,28 @@ Quick Dials- Training in {{$client->business_name}}
 							echo "<tr><td>No working hours available</td></tr>";
 						}
 						?>
-                        <!--tr>
-                            <td>Today</td>
-                            <td>09:00am - 09:00pm</td>
-                            <td><span class="orangeColor">Open</span></td>
-                        </tr>
-                        <tr>
-                            <td>Today</td>
-                            <td>09:00am - 09:00pm</td>
-                        </tr-->
+                        
                     </table>
                 </aside>
-				<?php endif; ?>
+				<?php } ?>
       
 				
                 <aside>
                 <div class="clearfix"></div>
                 </aside>
-				<?php if(isset($client->certifications)&&!empty($client->certifications)): ?>
+				<?php
+			 
+
+				if(isset($client->certifications)&&!empty($client->certifications)){ 				
+					
+					?>
                 <aside>
                     <h4>Certifications </strong>
                     </h4>
-					<?php
-						$certifications = unserialize($client->certifications);
-						if(count($certifications)>0):
-							foreach($certifications as $certification): ?>
-								<div class="col-md-12">
-									<div class="row pma" style="margin:5px;"><?php echo ucfirst($certification); ?></div>
-								</div>									
-							<?php
-							endforeach;
-						endif;
-					?>
+				 <?php echo $client->certifications; ?>
                     <div class="clearfix"></div>
                 </aside>
-				<?php endif; ?>
+				<?php } ?>
             </div>
             <div class="col-xs-12 col-sm-8 col-md-9 aside-section">
                 
@@ -936,7 +933,7 @@ Quick Dials- Training in {{$client->business_name}}
 															<?php }else{ ?>
 															<iframe style="width:100%;height:695px"
 															frameborder="0" scrolling="no" style="border:0"
-															src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAPFOcLOlCcBCtp764h9HflPfA56VlCFo0&q=Delhi" allowfullscreen>
+															src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAPFOcLOlCcBCtp764h9HflPfA56VlCFo0&q=<?php if($client->city){ echo $client->city; } ?>" allowfullscreen>
 															</iframe>
 															
 															<?php  } ?>
@@ -1069,8 +1066,176 @@ Quick Dials- Training in {{$client->business_name}}
 				</style>
                   <div class="clearfix"></div>
             </div>
+
+
+
+			
         </div>
-		
+		<style>
+			.related-seach{
+				padding: 0 0 10px;
+				position: relative;
+				width: 100%;
+				margin-top: 30px;
+			}
+
+				.related-seach ul {
+				list-style: outside none none;
+				margin: 0 -7px;
+				padding: 0;
+				}
+
+				.related-seach ul li {
+				display: inline-grid;
+				line-height: 17px;
+				}
+			.assign-city{
+				padding: 0 0 10px;
+				position: relative;
+				width: 100%;
+				margin-top: 30px;
+			}
+
+				.assign-city ul {
+				list-style: outside none none;
+				margin: 0 -7px;
+				padding: 0;
+				}
+
+				.assign-city ul li {
+				display: inline-grid;
+				line-height: 17px;
+				}
+			</style>
+		  <div class="related-seach"> 
+
+				<div class="col-xs-12">
+				<h3>Related Searches</h3>
+				<script>
+					localStorage.getItem('keyword');
+				 
+				</script>
+				<?php  
+				// echo "<pre>";print_r($client);
+				?>
+				<ul>
+				<?php				 
+					$relKeywords  = App\Models\Keyword::select('keyword')->where('child_category_id','1')->get();
+					if($relKeywords){
+						foreach($relKeywords as $relKeyword){
+					?>
+				<li>
+				<a href="{{$relKeyword->keyword}}" class="keystore">{{$relKeyword->keyword}} |</a> </li>
+				<?php  } }  ?>
+			 
+
+				</ul>
+
+				</div>
+			</div>
+		<div class="col-xs-12">
+ <article class="jsx-5f2699f63e338e40">
+	
+ <div class="jsx-5f2699f63e338e40 jdwrapper dtlboxleft_section jddtl_overview mt-20 mb-20 pl-20 pr-20"><div class="jsx-5f2699f63e338e40 overview_content font16 fw400 color111"><h2> <?php if($client->business_name){ echo $client->business_name; } ?> in <?php if($client->area){ echo $client->area; } ?>, <?php if($client->city){ echo $client->city; } ?> </h2> <p> <?php if($client->business_name){ echo $client->business_name; } ?>, located in <?php if($client->area){ echo $client->area; } ?>, <?php if($client->city){ echo $client->city; } ?>, has been a leader in skill development since many years. The company specializes in providing a comprehensive range of training programs designed to equip individuals with the practical knowledge and expertise needed to excel in their chosen fields.</p> 
+ 
+ <h3>Overview of Business</h3> <p> <?php if($client->business_name){ echo $client->business_name; } ?> in <?php if($client->area){ echo $client->area; } ?>, <?php if($client->city){ echo $client->city; } ?> is a prominent institution in the SAP Training Institutes sector, offering various skill-building programs tailored to meet the demands of today’s competitive job market. 
+		<?php
+
+
+		if(!empty($client->time)){
+		$times = unserialize($client->time);
+		$today =  strtolower(date('l'));
+		?>
+		<tr class="today">
+		<td><?php echo "Today"; ?></td>
+		<td><?php echo $times[$today]['from']." - ".$times[$today]['to']?></td>
+		</tr>								
+		<?php
+		foreach($times as $day => $time){
+		?>
+		<tr class="hide otherday">
+		<td><?php echo ucfirst($day); ?></td>
+		<td><?php echo $time['from']." - ".$time['to']; ?></td>
+		</tr>
+		<?php
+		}
+		}else{
+		echo "<tr><td>No working hours available</td></tr>";
+		}
+		?> 
+ the company provides flexible scheduling options for individuals looking to enhance their skills while managing other responsibilities. The highly experienced team at <?php if($client->business_name){ echo $client->business_name; } ?> is committed to delivering high-quality training to each participant.</p> <p>Whether you're looking to improve your technical skills, leadership capabilities, or industry-specific knowledge, <?php if($client->business_name){ echo $client->business_name; } ?> in <?php if($client->area){ echo $client->area; } ?>, <?php if($client->city){ echo $client->city; } ?> has the right program for you. With a wide range of offerings, including IT, management, soft skills, and vocational training, <?php if($client->business_name){ echo $client->business_name; } ?> stands as a comprehensive solution for all your skill development needs.</p>        </div></div>
+ 
+ <div class="mt-20 mb-20 pl-20 pr-20"><div class="jsx-5f2699f63e338e40 overview_content font16 fw400 color111"> 
+
+    <!-- <div class="city_sec col-sm-12">
+        <div itemscope="" itemtype="https://schema.org/FAQPage">
+            <div class="col-sm-12 businfo seoshow">
+                <h2 class="heading lng_commn_all">Frequently Asked Question</h2>
+                <div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question"><p></p><h3 itemprop="name">1. Do SAP institutes guarantee job offers after successful course completion?</h3><p></p>
+                <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text">
+                        <p>SAP institutes cannot guarantee such placements as these matter depending on the individual's capacity and market conditions. However, many institutes help in providing placement services.</p>
+                    </div>
+                </div>
+            </div><div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question"><p></p><h3 itemprop="name">2. Will my certification from <?php if($client->business_name){ echo $client->business_name; } ?> in <?php if($client->city){ echo $client->city; } ?> be valid abroad?</h3><p></p>
+                <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text">
+                        <p>Ideally, SAP courses conducted here are considered valid by most foreign universities and companies. But, please check with an institute representative for affiliations and certifications.</p>
+                    </div>
+                </div>
+            </div><div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question"><p></p><h3 itemprop="name">3. Can <?php if($client->business_name){ echo $client->business_name; } ?> in <?php if($client->area){ echo $client->area; } ?> allow me to complete my course through distance education?</h3><p></p>
+                <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text">
+                        <p>As of now, most SAP training institutes do not do this although some began such stints during the pandemic. Kindly contact <?php if($client->business_name){ echo $client->business_name; } ?> to get a clearer picture of the current policies regarding physical attendance.</p>
+                    </div>
+                </div>
+            </div><div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question"><p></p><h3 itemprop="name">4. Where is <?php if($client->business_name){ echo $client->business_name; } ?> located?</h3><p></p>
+                <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text">
+                        <p><?php if($client->business_name){ echo $client->business_name; } ?> in <?php if($client->area){ echo $client->area; } ?>, <?php if($client->city){ echo $client->city; } ?> is quite easy to find as it is Opp. <?php if($client->area){ echo $client->area; } ?> Metro Gate 2.</p>
+                    </div>
+                </div>
+            </div><div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question"><p></p><h3 itemprop="name">5. Will this be a degree or diploma course?</h3><p></p>
+                <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text">
+                        <p>SAP is usually a full-time degree course. But, certain short courses also exist. Please connect with the institute to better understand its offerings.</p>
+                    </div>
+                </div>
+            </div><div itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question"><p></p><h3 itemprop="name">6. What are the qualifications and prerequisites required to enrol in a SAP course?</h3><p></p>
+                <div itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <div itemprop="text">
+                        <p>Applicants should be in possession of a graduation certificate. Although there are no specific requirements, having a BTech, B.Sc or even a Master's degree with a science background will be helpful to aspiring students.</p>
+                    </div>
+                </div>
+            </div>            </div>
+        </div>
+    </div> -->
+
+
+</div></div></article>
+
+
+
+			</div>
+<!-- 	
+			<div class="col-xs-12">
+ <h3> in nearby areas</h3>
+ SAP-Training-Institutes in <?php if($client->area){ echo $client->area; } ?> SAP-Training-Institutes in Madhuban Chowk-Laxmi NagarSAP-Training-Institutes in Dayanand BlockSAP-Training-Institutes in Madhuban EnclaveSAP-Training-Institutes in Bharti Colony-Preet ViharSAP-Training-Institutes in Shankar Vihar-Preet ViharSAP-Training-Institutes in Vijay BlockSAP-Training-Institutes in Guru Nanak NagarSAP-Training-Institutes in Veer Savarkar BlockSAP-Training-Institutes in Swasthya ViharSAP-Training-Institutes in Jawahar Park-Laxmi NagarSAP-Training-Institutes in Subhash Chowk-Laxmi NagarSAP-Training-Institutes in Shakarpur ExtensionSAP-Training-Institutes in Guru Nanak PuraSAP-Training-Institutes in Guru Angad Nagar-Laxmi NagarSAP-Training-Institutes in Mandawali Railway ColonySAP-Training-Institutes in Guru Angad Nagar WestSAP-Training-Institutes in Defence Enclave-Preet ViharSAP-Training-Institutes in Chitra ViharSAP-Training-Institutes in Vikas Marg
+
+
+			</div>
+			<div class="assign-city">
+			<div class="col-xs-12">
+ <h3>SAP Training Institutes in popular cities</h3>
+
+   
+
+			</div>
+			</div> -->
+
+
+
+
 		
     </div>
 	<div class="clearfix"></div>
@@ -1128,7 +1293,7 @@ Quick Dials- Training in {{$client->business_name}}
 				$pictures = array_slice($pictures,0);				
 			?>
             <div id="thumbs" class="navigation">
-                <ul class="thumbs noscript">vvv
+                <ul class="thumbs noscript">
 					<?php foreach($pictures as $picture): ?>
                     <li>
                         <a class="thumb" href="<?php echo asset(''.$picture['large']['src']); ?>" title=""><img src="<?php echo asset(''.$picture['large']['src']); ?>" style="height:75px;width:100px;" alt="<?php if($picture['large']['name']){ echo $picture['large']['name']; } ?>" /></a>
@@ -1140,5 +1305,10 @@ Quick Dials- Training in {{$client->business_name}}
         </div>
 	</div>
 	 <div class="clearfix"></div>
+
+
+	 <script>
+
+		</script>
    
 @endsection

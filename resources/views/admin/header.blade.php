@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="{{asset('/client/images/quickind-quick-large-logo.png')}}" rel="icon">
+    <meta name="author" content="">     
+    <link href="{{asset('client/images/favicon.png')}}" rel="icon">
 	<meta name="csrf-token" content="<?php echo csrf_token(); ?>">
     <title>Quick Dials</title>
 	 <!-- SCRIPT-ANGULAR-JS -->

@@ -179,6 +179,107 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                         <input name="certifications" type="text" class="form-control" value="{{ old('certifications',(isset($client)) ? $client->certifications:"")}}">
                 </div>
             
+
+                <?php $days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+								$times = ["24:00"=>"Open 24 Hrs","00:00"=>"00:00","00:30"=>"00:30","01:00"=>"01:00","01:30"=>"01:30","02:00"=>"02:00","02:30"=>"02:30","03:00"=>"03:00","03:30"=>"03:30","04:00"=>"04:00","04:30"=>"04:30","05:00"=>"05:00","05:30"=>"05:30","06:00"=>"06:00","06:30"=>"06:30","07:00"=>"07:00","07:30"=>"07:30","08:00"=>"08:00","08:30"=>"08:30","09:00"=>"09:00","09:30"=>"09:30","10:00"=>"10:00","10:30"=>"10:30","11:00"=>"11:00","11:30"=>"11:30","12:00"=>"12:00","12:30"=>"12:30","13:00"=>"13:00","13:30"=>"13:30","14:00"=>"14:00","14:30"=>"14:30","15:00"=>"15:00","15:30"=>"15:30","16:00"=>"16:00","16:30"=>"16:30","17:00"=>"17:00","17:30"=>"17:30","18:00"=>"18:00","18:30"=>"18:30","19:00"=>"19:00","19:30"=>"19:30","20:00"=>"20:00","20:30"=>"20:30","21:00"=>"21:00","21:30"=>"21:30","22:00"=>"22:00","22:30"=>"22:30","23:00"=>"23:00","23:30"=>"23:30",""=>"Closed"];
+						 
+								$time = unserialize($client->time);
+								foreach($days as $day): ?>
+									<div class="form-group">
+										<div class="col-md-12" style="display: flex;">
+											<div class="col-md-2">
+												<div class="row">
+													<label class="time[<?php echo $day; ?>][from]"><?php echo ucfirst($day); ?> :</label>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="row">
+													<select class="form-control input-sm inline-space time-from" data-time="<?php echo $time[$day]['from']; ?>" id="time[<?php echo $day; ?>][from]" name="time[<?php echo $day; ?>][from]">
+														<?php $dataValue = 1440;
+														$matchStatus = 1;
+														if(null!=$time){
+															foreach($times as $key=>$value){
+																if($time[$day]['from'] == $key){
+																	if($key=='10:00')
+																		$matchStatus = 1;
+																	else
+																		$matchStatus = 0;
+																}
+															}
+														}
+														foreach($times as $key=>$value):
+														$selected = '';
+														if($time[$day]['from'] == $key){
+															$selected = 'selected';
+														}
+														if($dataValue == 1440){
+															echo "<option data-time_in_min = \"".$dataValue."\" value=\"".$key."\" ".$selected."> ".$value." </option>";
+															$dataValue = 0;
+														}else{
+															if(empty($key)){
+																echo "<option data-time_in_min = \"\" value=\"\"> ".$value." </option>";
+															}else{
+																if($matchStatus==1 && $dataValue==600){
+																	$selected = 'selected';
+																}
+																echo "<option data-time_in_min = \"".$dataValue."\" value=\"".$key."\" ".$selected."> ".$value." </option>";
+																$dataValue += 30;
+																if($dataValue == 1440) $dataValue = 0;
+															}
+														}
+														endforeach;
+														?>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-1 text-center">
+												<div class="row">
+													<label for="time[<?php echo $day; ?>][to]">To</label>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="row">
+													<select class="form-control input-sm inline-space time-to" data-time="<?php echo $time[$day]['to']; ?>" id="time[<?php echo $day; ?>][to]" name="time[<?php echo $day; ?>][to]">
+														<?php $dataValue = 1440;
+														$matchStatus = 1;
+														if(null!=$time){
+															foreach($times as $key=>$value){
+																if($time[$day]['to'] == $key){
+																	if($key=='19:00')
+																		$matchStatus = 1;
+																	else
+																		$matchStatus = 0;
+																}
+															}
+														}
+														foreach($times as $key=>$value):
+														$selected = '';
+														if($time[$day]['to'] == $key){
+															$selected = 'selected';
+														}						
+														if($dataValue == 1440){
+															echo "<option data-time_in_min = \"".$dataValue."\" value=\"".$key."\" ".$selected."> ".$value." </option>";
+															$dataValue = 0;
+														}else{
+															if(empty($key)){
+																echo "<option data-time_in_min = \"\" value=\"\"> ".$value." </option>";
+															}else{
+																if($matchStatus==1 && $dataValue==1140){
+																	$selected = 'selected';
+																}
+																echo "<option data-time_in_min = \"".$dataValue."\" value=\"".$key."\" ".$selected."> ".$value." </option>";
+																$dataValue += 30;
+																if($dataValue == 1440) $dataValue = 0;
+															}
+														}
+														endforeach;
+														?>
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>								
+								<?php endforeach; ?>
               
                    <div class="row mb-3">
                       <label for="Country" class="col-md-4 col-lg-3 col-form-label">Hours of Operation</label>

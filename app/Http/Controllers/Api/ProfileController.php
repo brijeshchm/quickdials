@@ -47,12 +47,12 @@ class ProfileController extends Controller
                 if(!empty($user->time)){
                     $time = unserialize($user->time);
                 }else{
-                    $time = "null";
+                    $time = "";
                 }
                 if(!empty($user->certifications)){
                     $certifications = unserialize($user->certifications);
                 }else{
-                    $certifications = "null";
+                    $certifications = "";
                 }
                 if(!empty($user->profile_pic)){
                     $profile_pic = unserialize($user->profile_pic);

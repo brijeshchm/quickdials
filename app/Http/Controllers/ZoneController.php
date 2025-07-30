@@ -188,8 +188,7 @@ class ZoneController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        
-        echo "zone";die;
+               
 		if(!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('delete_zone'))){
 			return view('errors.unauthorised');
 		}

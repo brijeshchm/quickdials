@@ -448,6 +448,7 @@ class BusinessController extends Controller
     
     public function saveProfileInfo(Request $request,$id)
     {
+		//echo "<pre>";print_r($_POST);die;
 		 
         if($request->ajax()){
 			
@@ -471,9 +472,7 @@ class BusinessController extends Controller
 			}	
 
 
-			$client = Client::find($id);
-		 
-					
+			$client = Client::find($id);					
 			$client->business_name = trim($request->input('business_name'));
 			$client->email = $request->input('email');
 			$client->address = $request->input('address');
@@ -486,6 +485,11 @@ class BusinessController extends Controller
 			$client->business_intro = $request->input('business_intro');
 			$client->certifications = $request->input('certifications');
 			$client->display_hofo = $request->input('display_hofo');
+		 
+			if(!empty($request->input('time'))){
+				$client->time = serialize($request->input('time'));
+			}
+
 			if($client->save()){
 			$status=1;
 			$msg="Personal Details updated successfully !";

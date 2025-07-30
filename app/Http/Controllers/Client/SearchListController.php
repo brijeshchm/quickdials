@@ -24,7 +24,7 @@ class SearchListController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request, $city, $search_kw)
-    {
+    {  
 		$city = ucwords(str_replace("-"," ",$city)); 
 		$clientLists =  Client::where('logo','<>','')->where('business_intro','<>','')->limit(12)->get();	
 	 
@@ -39,7 +39,7 @@ class SearchListController extends Controller
 			->join('assigned_kwds','clients.id','=','assigned_kwds.client_id')
 			->join('keyword','assigned_kwds.kw_id','=','keyword.id')
 			->join('citylists','assigned_kwds.city_id','=','citylists.id')
-			->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'),'c.comment_client_ID','=','clients.id')			
+		 	->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'),'c.comment_client_ID','=','clients.id')			
 			->select('clients.*','citylists.city','assigned_kwds.sold_on_position','c.rating','c.comment_count')
 			->where('citylists.city','LIKE',$city)
 			->where('clients.active_status','1')
@@ -48,14 +48,13 @@ class SearchListController extends Controller
 			->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 WHEN \'FreeListing\' THEN 3 END)'),'asc')
 			->groupBy('client_id')			
 			//->orderby(DB::raw('(CASE `clients`.`certified_status` WHEN \'1\' THEN 1 END)'),'DESC')		
-			->get();
+			->get();			 
+		if(!empty($clientscheck->count())){
 			 
-
-		if(!empty($clientscheck) && count($clientscheck)>0){				
 				$clientsList = $clientscheck;
 				
 		}else{
-				
+			 	 
 				$clientsList = DB::table('clients')
 				->join('assigned_kwds','clients.id','=','assigned_kwds.client_id')
 				->join('keyword','assigned_kwds.kw_id','=','keyword.id')
@@ -119,7 +118,7 @@ class SearchListController extends Controller
 			    
 					$clients = Client::where('business_slug',$search_kw)->get();
 					if(!empty($clients)){
-					if(!empty($clients) && count($clients)==0){
+					if(!empty($clients->count())){
 					$search_kw =  ucwords(str_replace("-"," ",$search_kw));
 					$clients = Client::where('business_name',$search_kw)->get();
 					}
@@ -127,7 +126,7 @@ class SearchListController extends Controller
 
 					$cities = Citieslists::select('id','city')->get();
 					$clientLists =  Client::where('logo','<>','')->where('business_intro','<>','')->where('city','noida')->where('paid_status','1')->limit(12)->get();		
-					if(count($clients)>0){
+					if($clients->count()){
 					foreach($clients as $c){
 					$client = $c;
 					break;

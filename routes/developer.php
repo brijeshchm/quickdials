@@ -280,7 +280,7 @@ Route::get('/password/reset/{token?}',[App\Http\Controllers\Auth\PasswordControl
 	Route::post('/clients/register',[App\Http\Controllers\BackEndClientsController::class, 'store'])->middleware('auth');
 	Route::post('/clients/remark/{id}',[App\Http\Controllers\BackEndClientsController::class, 'remark'])->middleware('auth');
 	Route::post('/clients/discussion/{id}',[App\Http\Controllers\BackEndClientsController::class, 'remarkDiscussion'])->middleware('auth');
-	Route::post('/clients/payment',[App\Http\Controllers\BackEndClientsController::class, 'paymentClient'])->middleware('auth');
+	Route::post('/clients/payment',action: [App\Http\Controllers\BackEndClientsController::class, 'paymentClient'])->middleware('auth');
 	Route::get('/clients/getpaymentPrintfile',[App\Http\Controllers\BackEndClientsController::class, 'getpaymentPrintfile'])->middleware('auth');
 	Route::post('/clients/getpaymentPrint',[App\Http\Controllers\BackEndClientsController::class, 'getpaymentPrint'])->middleware('auth');
 	Route::get('/clients/geteditpayment/{id}', [App\Http\Controllers\BackEndClientsController::class, 'geteditpayment'])->middleware('auth');  
