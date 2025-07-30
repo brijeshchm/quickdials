@@ -127,9 +127,11 @@ body { font: normal 14px/17px 'robotoregular'; font-family: "Poppins", sans-seri
     width: 90px;
 }
 #header .head-right-lout a {
-    color: #000;
-    font-size: 15px;
-    margin: 0 2px;
+    color: #212529;
+    font-size: 14px;
+    margin: 0 2px;     
+    transition: 0.3s;
+    font-weight: 400;
 }
 .head-left h6 {
     margin-top: 30px;

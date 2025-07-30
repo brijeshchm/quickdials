@@ -101,7 +101,7 @@ class BusinessController extends Controller
 			$messages = ['mobile.regex' => 'Mobile number cannot start with 0.'];
 			$validator = Validator::make($request->all(), [
 				'business_name' => 'required|regex:/[A-Za-z0-9 ]+/',
-				'mobile' => 'required|numeric|digits:10|regex:/^[1-9]+/|unique:clients,mobile,NULL,id',
+				'mobile' => 'required|unique:clients,mobile,NULL,id',
 				'city' => 'required|max:50',
 				'email' => 'required|email'
 			],$messages);

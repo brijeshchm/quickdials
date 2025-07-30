@@ -170,7 +170,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<?php } ?>
 		 	 
-		  
+		  <style>
+            .dropdown-divider {
+            height: 0;
+            margin: var(--bs-dropdown-divider-margin-y) 0;
+            overflow: hidden;
+            border-top: 1px solid var(--bs-dropdown-divider-bg);
+            opacity: 1;
+            }
+            .dropdown-menu{
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 1000;
+                display: none;
+                float: left;
+                width: 225px;
+                padding: 5px 0;
+                margin: 2px 0 0;
+                font-size: 14px;
+                text-align: left;
+                list-style: none;
+                background-color: #fff;
+                -webkit-background-clip: padding-box;
+                background-clip: padding-box;
+                border: 1px solid #ccc;
+                border: 1px solid rgba(0, 0, 0, .15);
+                border-radius: 4px;
+                -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            }
+		  </style>
 		 	 
 		 	 <ul class="nav navbar-top-links navbar-right">
                 
@@ -185,9 +215,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                      <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user"> 
-                        <li><a href="{{url('business/profileInfo')}}">Profile</a></li> 
-                        <li><a href="{{ url('client/logout') }}">Logout</a>
+                    
+
+
+                            <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('business/personal-details')}}">
+                                <i class="bi bi-person"></i>
+                                <span>My Profile</span>
+                            </a>
+                            </li>
+
+                            <li>
+                            <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('business/account-settings')}}">
+                                <i class="bi bi-gear"></i>
+                                <span>Account Settings</span>
+                            </a>
+                            </li>
+                        
+                        
+                        
+
+                            <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('business/favorite-enquiry')}}">
+                                <i class="bi bi-star"></i>
+                                <span>Favorite Enquiry</span>
+                            </a>
+                            </li>
+
+                            <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('business/manage-enquiry')}}">
+                                <i class="bi bi-envelope"></i>
+                                <span>Manage Enquiry</span>
+                            </a>
+                            </li>
+                            
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="">
+                                <i class="bi bi-briefcase-fill"></i>
+                                <span>Occupation</span>
+                            </a>
                         </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="">
+                                <i class="bi bi-shop"></i>
+                                <span>My Business</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('business/keywords')}}">
+                                <i class="bi bi-book-half"></i>
+                                <span>Service Keywords</span>
+                            </a>
+                        </li>
+
+                            <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('business/package')}}">
+                                <i class="bi bi-currency-rupee"></i>
+                                <span>Package</span>
+                            </a>
+                            </li>                            
+                            <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('business/billing-history')}}">
+                                <i class="bi bi-currency-rupee"></i>
+                                <span>My Transaction</span>
+                            </a>
+                            </li>
+
+                            <li>
+                            <a class="dropdown-item d-flex align-items-center" href="{{url('client/logout')}}">
+                                <i class="bi bi-currency-rupee"></i>
+                                <span>Logout</span>
+                            </a>
+                            </li>
                     </ul>
                     
                 </li>

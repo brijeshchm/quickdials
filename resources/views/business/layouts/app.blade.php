@@ -320,30 +320,49 @@
            
 
             <li>
-
               <a class="dropdown-item d-flex align-items-center" href="{{url('business/favorite-enquiry')}}">
                  <i class="bi bi-star"></i>
                 <span>Favorite Enquiry</span>
               </a>
             </li>
-            <li>
 
-              <a class="dropdown-item d-flex align-items-center" href="{{url('business/manage-enquiry')}}">
+            <li>
+            <a class="dropdown-item d-flex align-items-center" href="{{url('business/manage-enquiry')}}">
                  <i class="bi bi-envelope"></i>
                 <span>Manage Enquiry</span>
               </a>
             </li>
-            <li>
+            
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="">
+                 <i class="bi bi-briefcase-fill"></i>
+                <span>Occupation</span>
+              </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="">
+                 <i class="bi bi-shop"></i>
+                <span>My Business</span>
+              </a>
+          </li>
 
+          <li>
               <a class="dropdown-item d-flex align-items-center" href="{{url('business/keywords')}}">
                  <i class="bi bi-book-half"></i>
                 <span>Service Keywords</span>
               </a>
-            </li>
+          </li>
+
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{{url('business/package')}}">
                 <i class="bi bi-currency-rupee"></i>
                 <span>Package</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{{url('business/billing-history')}}">
+                <i class="bi bi-currency-rupee"></i>
+                <span>My Transaction</span>
               </a>
             </li>
 

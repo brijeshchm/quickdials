@@ -152,15 +152,13 @@ class BackEndClientsController extends Controller
     public function store(Request $request)
     {
 		if($request->has('initial_form_submit')){
-		 
-			
-			//echo "<pre>";print_r($_POST);die;
+		 		 
 			$client = new Client;
 			$messages = ['mobile.regex' => 'Mobile number cannot start with 0.'];
 			$validator = Validator::make($request->all(), [
 				//'business_name' => 'required|regex:/[A-Za-z0-9 ]+/|unique:clients,business_name,NULL,id,mobile,'.$request->input('mobile').',city,'.$request->input('city'),
 				'business_name' => 'required|regex:/[A-Za-z0-9 ]+/',
-				'mobile' => 'required|numeric|unique:clients,mobile,NULL,id',
+				'mobile' => 'required|unique:clients,mobile,NULL,id',
 				'city' => 'required|max:50',
 				'email' => 'required|email'
 			],$messages);
