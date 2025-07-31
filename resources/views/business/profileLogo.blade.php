@@ -13,13 +13,10 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 
   <main id="main" class="main">
     <section class="section profile">
-      <div class="row">
-        
+      <div class="row">        
         <div class="col-xl-12">
-
           <div class="card">
-            <div class="card-body pt-3">
-              <!-- Bordered Tabs -->
+            <div class="card-body pt-3">            
               <ul class="nav nav-tabs nav-tabs-bordered">
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-edit">Profile Logo & Banner </button>
@@ -27,8 +24,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                 <li class="nav-item profile_success"></li>
               </ul>
               <div class="tab-content pt-2">
-                <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
-                     
+                <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">                     
                       <form class="profile-logo" ction="" method="post" enctype="multipart/form-data" onsubmit="return profileController.saveProfileLogo(this,<?php echo (isset($client->id)? $client->id:""); ?>)" >
                             {{csrf_field()}}
                         <input type="hidden" name="business_id" value="{{$client->id}}">
@@ -36,22 +32,20 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Company Logo </label>
                       <div class="col-md-8 col-lg-9">
                          
-                          <?php
-							$image = '#';
-							if(!empty($client->logo)){
-								$logo = unserialize($client->logo);
-								if(!isset($logo['thumbnail'])){
-									$logo['thumbnail'] = $logo['large'];
-								}								
-								$image = $logo['large']['src'];
-							 
-						?>
+              <?php
+              $image = '#';
+              if(!empty($client->logo)){
+              $logo = unserialize($client->logo);
+              if(!isset($logo['thumbnail'])){
+              $logo['thumbnail'] = $logo['large'];
+              }								
+              $image = $logo['large']['src'];
+              ?>
 						 <img src="<?php echo asset('/'.$image); ?>" alt="Profile">
 						<a href="{{url('business/profileLogo/logoDel/'.$client->id)}}" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-						<?php  }else{ ?>
-                        
-                         <input type="file" class="form-control" name="image">
-                        	@if ($errors->has('image'))
+						<?php  }else{ ?>                        
+            <input type="file" class="form-control" name="image">
+            @if ($errors->has('image'))
 						<span class="help-block">
 							<strong><?php
 								foreach ($errors->get('image') as $message) {
@@ -60,8 +54,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 							?></strong>
 						</span>
 					@endif
-                        <?php  } ?>
-                      </div>
+          <?php  } ?>
+          </div>
                     </div>
                     <div class="row mb-3 {{ $errors->has('profile_pic') ? ' has-error' : '' }}">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Busness Banner</label>
@@ -75,14 +69,14 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                         <?php  }else{ ?>
                         <input type="file" class="form-control" id="profile_pic" name="profile_pic">
                         	@if ($errors->has('profile_pic'))
-						<span class="help-block">
-							<strong><?php
-								foreach ($errors->get('profile_pic') as $message) {
-									echo $message."<br>";
-								}
-							?></strong>
-						</span>
-					@endif
+                      <span class="help-block">
+                        <strong><?php
+                          foreach ($errors->get('profile_pic') as $message) {
+                            echo $message."<br>";
+                          }
+                        ?></strong>
+                      </span>
+                    @endif
                         <?php  } ?>
                       </div>
                     </div>
@@ -91,13 +85,13 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                         <input type="hidden" name="profile_logo" value="profileLogo">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
-                  </form><!-- End Profile Edit Form -->
+                  </form>
 
                 </div>
 
                  
                 
-              </div><!-- End Bordered Tabs -->
+              </div>
 
             </div>
           </div>
@@ -105,7 +99,6 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
         </div>
       </div>
     </section>
-
-  </main><!-- End #main -->
+  </main>
 
  @endsection

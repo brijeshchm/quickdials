@@ -31,72 +31,102 @@ Route::get('/cities/getajaxcities',[App\Http\Controllers\CitiesController::class
  Route::prefix('developer')->name('developer.')->middleware(['auth:developer'])->as('developer.')->group(function () {
     require __DIR__.'/developer.php';
 });
- 
+ use App\Http\Controllers\Business\BusinessController;
+ use App\Http\Controllers\Business\EnquiryController;
 Route::middleware('auth:clients')->group(function () {
  Auth::routes();
- 
-Route::get('/business/dashboard',[App\Http\Controllers\Client\BusinessController::class, 'dashboard'])->name('business.dashboard');
-Route::get('/business-owners/get-leads',[App\Http\Controllers\Client\BusinessOwnerController::class, 'getLeads']);
-Route::get('/business/enquiry',[App\Http\Controllers\Client\BusinessController::class,'enquiry']);
-Route::get('/business/new-enquiry',[App\Http\Controllers\Client\BusinessController::class,'newEnquiry']);
-Route::get('/business/myLead',[App\Http\Controllers\Client\BusinessController::class,'myLead']);
-Route::get('/business/favorite-enquiry',[App\Http\Controllers\Client\BusinessController::class,'favoriteEnquiry']);
-Route::get('/business/manage-enquiry',[App\Http\Controllers\Client\BusinessController::class,'manageEnquiry']);
 
-Route::get('/business-owners/get-Discussion',[App\Http\Controllers\Client\BusinessOwnerController::class, 'getDiscussion']);
-Route::get('/business-owners/get-paginated-assigned-keywords',[App\Http\Controllers\Client\BusinessOwnerController::class, 'getPaginatedAssignedKeywords']);
-Route::get('/business-owners/get-paginated-payment-history',[App\Http\Controllers\Client\BusinessOwnerController::class, 'getPaginatedPaymentHistory']);
-Route::post('/business-owners/export-excel',[App\Http\Controllers\Client\BusinessOwnerController::class, 'getLeadsExcel']);
+Route::get('/business/dashboard',[App\Http\Controllers\Business\BusinessDashboardController::class, 'dashboard'])->name('business.dashboard');
 
-Route::post('/business-owners/discussion',[App\Http\Controllers\Client\BusinessOwnerController::class, 'discussion']);
 
-Route::get('/business/personal-details',[App\Http\Controllers\Client\BusinessController::class, 'personalDetails']);
-Route::get('/business/profileInfo',[App\Http\Controllers\Client\BusinessController::class, 'profileInfo']);
-Route::post('/business/saveProfileInfo/{id}',[App\Http\Controllers\Client\BusinessController::class, 'saveProfileInfo']);
-Route::post('/business/saveBusinessLocation/{id}',[App\Http\Controllers\Client\BusinessController::class, 'saveBusinessLocation']);
-Route::post('/business/savePersonalDetails/{id}',[App\Http\Controllers\Client\BusinessController::class, 'savePersonalDetails']);
-Route::get('/business/profile-logo',[App\Http\Controllers\Client\BusinessController::class, 'profileLogo']);
-Route::post('/business/saveProfileLogo/{id}',[App\Http\Controllers\Client\BusinessController::class, 'saveProfileLogo']);
-Route::get('/business/profileLogo/logoDel/{id}',[App\Http\Controllers\Client\BusinessController::class, 'logoDel']);
-Route::get('/business/profileLogo/profilePicDel/{id}',[App\Http\Controllers\Client\BusinessController::class, 'profilePicDel']);
-Route::get('/business/location-information',[App\Http\Controllers\Client\BusinessController::class, 'locationInformation']);
-Route::post('/business/saveLocationInformation',[App\Http\Controllers\Client\BusinessController::class, 'saveLocationInformation']);
-Route::post('/business/pauseLead',[App\Http\Controllers\Client\BusinessController::class, 'pauseLead']);
-Route::post('/business/scrapLead',[App\Http\Controllers\Client\BusinessController::class, 'scrapLead']);
-Route::post('/business/readLead',[App\Http\Controllers\Client\BusinessController::class, 'readLead']);
-Route::post('/business/favoritleads',[App\Http\Controllers\Client\BusinessController::class, 'favoritleads']);
+Route::get('/business-owners/get-leads',[EnquiryController::class, 'getLeads']);
+Route::get('/business/enquiry',[EnquiryController::class,'enquiry']);
+Route::get('/business/new-enquiry',[EnquiryController::class,'newEnquiry']);
+Route::get('/business/myLead',[EnquiryController::class,'myLead']);
+Route::get('/business/favorite-enquiry',[EnquiryController::class,'favoriteEnquiry']);
+Route::get('/business/manage-enquiry',[EnquiryController::class,'manageEnquiry']);
+
+
+Route::get('/business-owners/get-Discussion',[App\Http\Controllers\Business\BusinessDiscussionController::class, 'getDiscussion']);
+
+
+Route::get('/business-owners/get-paginated-assigned-keywords',[App\Http\Controllers\Business\BusinessKeywordController::class, 'getPaginatedAssignedKeywords']);
+
+//Route::get('/business-owners/get-paginated-payment-history',[App\Http\Controllers\Business\BusinessOwnerController::class, 'getPaginatedPaymentHistory']);
+
+Route::post('/business-owners/export-excel',[App\Http\Controllers\Business\EnquiryController::class, 'getLeadsExcel']);
+
+//Route::post('/business-owners/discussion',[App\Http\Controllers\Client\BusinessDiscussionController::class, 'discussion']);
+
+Route::get('/business/personal-details',[App\Http\Controllers\Business\PersonalDetailsController::class, 'personalDetails']);
+Route::get('/business/profileInfo',[App\Http\Controllers\Business\ProfileController::class, 'profileInfo']);
+Route::post('/business/saveProfileInfo/{id}',[App\Http\Controllers\Business\ProfileController::class, 'saveProfileInfo']);
+Route::post('/business/saveBusinessLocation/{id}',[App\Http\Controllers\Business\ProfileController::class, 'saveBusinessLocation']);
+Route::post('/business/savePersonalDetails/{id}',[App\Http\Controllers\Business\PersonalDetailsController::class, 'savePersonalDetails']);
+
+Route::get('/business/profile-logo',[App\Http\Controllers\Business\BusinessLogoController::class, 'profileLogo']);
+Route::post('/business/saveProfileLogo/{id}',[App\Http\Controllers\Business\BusinessLogoController::class, 'saveProfileLogo']);
+Route::get('/business/profileLogo/logoDel/{id}',[App\Http\Controllers\Business\BusinessLogoController::class, 'logoDel']);
+Route::get('/business/profileLogo/profilePicDel/{id}',[App\Http\Controllers\Business\BusinessLogoController::class, 'profilePicDel']);
+
+Route::get('/business/gallery-pictures',[App\Http\Controllers\Business\BusinessLogoController::class, 'uploadPictures']);
+
+Route::post('/business/saveGallary',[App\Http\Controllers\Business\BusinessLogoController::class,'saveGallary']); 
+
+Route::get('/business/location-information',[App\Http\Controllers\Business\BusinessLocationController::class, 'locationInformation']);
+Route::post('/business/saveLocationInformation',[App\Http\Controllers\Business\BusinessLocationController::class, 'saveLocationInformation']);
+
+
+Route::post('/business/pauseLead',[App\Http\Controllers\Business\EnquiryController::class, 'pauseLead']);
+Route::post('/business/scrapLead',[App\Http\Controllers\Business\EnquiryController::class, 'scrapLead']);
+Route::post('/business/readLead',[App\Http\Controllers\Business\EnquiryController::class, 'readLead']);
+Route::post('/business/favoritleads',[App\Http\Controllers\Business\EnquiryController::class, 'favoritleads']);
+
 Route::post('/business/cities/getajaxcities',[App\Http\Controllers\Client\BusinessController::class, 'getAjaxCities']);
 Route::post('/business/zone/getAjaxZone',[App\Http\Controllers\Client\BusinessController::class, 'getAjaxZone']);
 Route::get('/business/get-assigned-zones',[App\Http\Controllers\Client\BusinessController::class, 'getAssignedZonesPagination']);
 Route::get('/business/assignZone/delete/{id}',[App\Http\Controllers\Client\BusinessController::class, 'assignZoneDelete']);
 
-Route::get('/business/gallery-pictures',[App\Http\Controllers\Client\BusinessController::class, 'uploadPictures']);
-Route::get('/business/package',[App\Http\Controllers\Client\BusinessController::class, 'package']);
-Route::get('/business/account-settings',[App\Http\Controllers\Client\BusinessController::class, 'accountSettings']);
-Route::get('/business/business-location',[App\Http\Controllers\Client\BusinessController::class, 'businessLocation']);
-Route::get('/business/buy-package',[App\Http\Controllers\Client\BusinessController::class, 'buyPackage']);
 
-Route::get('/business/billing-history',[App\Http\Controllers\Client\BusinessController::class, 'billingHistory']);
-Route::get('/business/get-billing-history',[App\Http\Controllers\Client\BusinessController::class, 'getBillingHistory']);
-Route::get('/business/getinvoiceBillingPrintPdf',[App\Http\Controllers\Client\BusinessController::class, 'getinvoiceBillingPrintPdf']);
-Route::get('/business/coinsHistory',[App\Http\Controllers\Client\BusinessController::class, 'coinsHistory']);
-Route::get('/business/get-paginated-assigned-keywords',[App\Http\Controllers\Client\BusinessController::class, 'getPaginatedAssignedKeywords']);
-Route::get('/business/get-paginated-payment-history',[App\Http\Controllers\Client\BusinessController::class, 'getPaginatedPaymentHistory']);
+
+
+Route::get('/business/package',[App\Http\Controllers\Business\AccountController::class, 'package']);
+Route::get('/business/account-settings',[App\Http\Controllers\Business\AccountController::class, 'accountSettings']);
+Route::get('/business/business-location',[App\Http\Controllers\Business\BusinessLocationController::class, 'businessLocation']);
+
+Route::get('/business/buy-package',[App\Http\Controllers\Business\AccountController::class, 'buyPackage']);
+
+Route::get('/business/billing-history',[App\Http\Controllers\Business\InvoiceController::class, 'billingHistory']);
+
+Route::get('/business/get-billing-history',[App\Http\Controllers\Business\InvoiceController::class, 'getBillingHistory']);
+
+Route::get('/business/getinvoiceBillingPrintPdf',[App\Http\Controllers\Business\InvoiceController::class, 'getinvoiceBillingPrintPdf']);
+
+Route::get('/business/coinsHistory',[App\Http\Controllers\Business\InvoiceController::class, 'coinsHistory']);
+
+Route::get('/business/get-paginated-payment-history',[App\Http\Controllers\Business\InvoiceController::class, 'getPaginatedPaymentHistory']);
 
 
  Route::get('/business/help',[App\Http\Controllers\Client\BusinessController::class,'help']);
  
- Route::get('/business/get-enquiry',[App\Http\Controllers\Client\BusinessController::class,'getEnquiry']);
- Route::get('/business/enquiry/follow-up/{id}',[App\Http\Controllers\Client\BusinessController::class,'followUp']);
- Route::post('/business/enquiry/store-follow-up/{id}',[App\Http\Controllers\Client\BusinessController::class,'storeFollowUp']);
- Route::get('/business/enquiry/getfollowups/{id}',[App\Http\Controllers\Client\BusinessController::class,'getFollowUps']);  
- Route::get('/business/keywords',[App\Http\Controllers\Client\BusinessController::class,'keywords']); 
- Route::post('/business/saveKeywordAssign/{id}',[App\Http\Controllers\Client\BusinessController::class,'saveKeywordAssign']); 
- Route::get('/business/assignKeyword/delete/{id}',[App\Http\Controllers\Client\BusinessController::class, 'assignKeywordDelete']);
+ Route::get('/business/get-enquiry',[App\Http\Controllers\Business\EnquiryController::class,'getEnquiry']);
+ Route::get('/business/enquiry/follow-up/{id}',[App\Http\Controllers\Business\EnquiryController::class,'followUp']);
+ Route::post('/business/enquiry/store-follow-up/{id}',[App\Http\Controllers\Business\EnquiryController::class,'storeFollowUp']);
+ Route::get('/business/enquiry/getfollowups/{id}',[App\Http\Controllers\Business\EnquiryController::class,'getFollowUps']);  
 
- Route::post('/business/saveGallary',[App\Http\Controllers\Client\BusinessController::class,'saveGallary']); 
- Route::get('/business/coins-history',[App\Http\Controllers\Client\BusinessController::class,'coinsHistory']);
+
+ Route::get('/business/keywords',[App\Http\Controllers\Business\BusinessKeywordController::class,'keywords']); 
+
+
+ Route::post('/business/saveKeywordAssign/{id}',[App\Http\Controllers\Business\BusinessKeywordController::class,'saveKeywordAssign']); 
+ Route::get('/business/assignKeyword/delete/{id}',[App\Http\Controllers\Business\BusinessKeywordController::class, 'assignKeywordDelete']);
+Route::get('/business/get-paginated-assigned-keywords',[App\Http\Controllers\Business\BusinessKeywordController::class, 'getPaginatedAssignedKeywords']);
+
+
+ Route::get('/business/coins-history',[App\Http\Controllers\Business\InvoiceController::class,'coinsHistory']);
  
+
+
 /* Change Password - CLIENT */
 	Route::get('/business-owners/changepassword',[App\Http\Controllers\Client\ChangePasswordController::class, 'create']);
 	Route::post('/business-owners/changepassword',[App\Http\Controllers\Client\ChangePasswordController::class, 'store']);

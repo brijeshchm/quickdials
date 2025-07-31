@@ -40,16 +40,21 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                 @foreach($leads as $lead)
                  
                 <div class="enquiry-item assignedLeadsClick"  data-assigned_leads= "{{ $lead->assignId }}" data-client_id= "{{ $lead->clientId }}" style="<?php  if(!$lead->readLead){ echo "background:#ddd"; } ?>">
-            
-
                     <div class="avatar"><?php  echo ucfirst(substr($lead->name,0,1)); ?>
                     </div>
-
-
                     <div class="enquiry-details">
                         <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">My Lead</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favoriteLead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" "></i>
                       
-                       <i class="bi bi-coin"></i> <?php if($lead->scrapLead){ ?> <span style="color:green;">  <?php echo "+".$lead->coins; ?> </span><?php }else{ ?><span style="color:red;"> <?php echo "-".$lead->coins; ?>   </span><?php } ?>
+                       <i class="bi bi-coin"></i> 
+                            <?php    $coins= "";
+                            if(!empty($lead->scrapLead)) { 
+                            $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
+                            }else if($lead->coins){ 
+                            $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
+                            }  
+                            echo $coins;
+                            ?>
+                     
                       </h4>
                         <p><i class="bi bi-book"></i> {{$lead->kw_text}}</p>
                         <p>Online Class</p>
@@ -63,18 +68,15 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                      <p> </p>
                 </div>
                 <div class="show-details" onclick="toggleDetails(this)">Show details</div>
-                    </div>
-
-                
+                </div>
                 <div class="scrapLead">
-            
-               <button type="button" class="scrapbutton" data-bs-toggle="modal" data-bs-target="#basicModal">
-                Scrap Lead
-              </button>
+                <!-- <button type="button" class="scrapbutton" data-bs-toggle="modal" data-bs-target="#basicModal_<?php echo $lead->id; ?>">
+                    Scrap Lead
+                </button> -->
 
-                <div class="modal fade" id="basicModal" tabindex="-1">
-                <div class="modal-dialog">
-                  <div class="modal-content">
+                <div class="modal fade" id="basicModal_<?php echo $lead->id; ?>" tabindex="-1">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title">Report an issues</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,69 +85,58 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                      <form>
                       <p>Please tell us the probelem</>
                     <div class="row mb-3">
-                  
-                  <div class="col-sm-10">
+                    <div class="col-sm-10"> 
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios1" name="scrapLead" value="1">
+                            <span class="checkbox-text"> Student in just exploring & not planing to hire any tutor</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios2" name="scrapLead" value="2" >
+                            <span class="checkbox-text">Enquiry is posted by a tutor, an Institute or a tutor agency</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios3" name="scrapLead" value="3" >
+                            <span class="checkbox-text">Student has selected wrong category</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios4" name="scrapLead" value="4" >
+                            <span class="checkbox-text">Student has select wrong locality</span>
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="5" >
+                            <span class="checkbox-text">Student is asking for only Female/Male tutor</span>
+                        </label>
+                    </div>
 
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="6">
+                            <span class="checkbox-text">Student phone number is either invailid or not reachable or no response </span>
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="7">
+                            <span class="checkbox-text">Student has already hire tutor for this requirement </span>
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <label class="checkbox-label">
+                            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="8">
+                            <span class="checkbox-text">Student is showing suspicious behaviour, with an intention to do a payment scam  or any other misuse.  </span>
+                        </label>
+                    </div>
 
- 
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios1" name="scrapLead" value="1">
-            <span class="checkbox-text"> Student in just exploring & not planing to hire any tutor</span>
-        </label>
-    </div>
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios2" name="scrapLead" value="2" >
-            <span class="checkbox-text">Enquiry is posted by a tutor, an Institute or a tutor agency</span>
-        </label>
-    </div>
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios3" name="scrapLead" value="3" >
-            <span class="checkbox-text">Student has selected wrong category</span>
-        </label>
-    </div>
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios4" name="scrapLead" value="4" >
-            <span class="checkbox-text">Student has select wrong locality</span>
-        </label>
-    </div>
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="5" >
-            <span class="checkbox-text">Student is asking for only Female/Male tutor</span>
-        </label>
-    </div>
-
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="5">
-            <span class="checkbox-text">Student phone number is either invailid or not reachable or no response </span>
-        </label>
-    </div>
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="5">
-            <span class="checkbox-text">Student has already hire tutor for this requirement </span>
-        </label>
-    </div>
-    <div class="checkbox-container">
-        <label class="checkbox-label">
-            <input type="radio" class="form-check-input" id="gridRadios5" name="scrapLead" value="5">
-            <span class="checkbox-text">Student is showing suspicious behaviour, with an intention to do a payment scam  or any other misuse.  </span>
-        </label>
-    </div>
-
-
-
-
- 
-
-
-
-                  </div>
+                 </div>
                 </div>
 
 

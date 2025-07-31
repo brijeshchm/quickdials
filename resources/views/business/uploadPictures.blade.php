@@ -28,12 +28,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                   <!-- Profile Edit Form -->
                     <?php if(!empty($client->pictures)):
                     $picture = unserialize($client->pictures);
-                   // echo "<pre>";print_r($picture);
-                    /* $picture = array_diff($picture, array('')); */
-                    /* $picture = array_slice($picture,0);
-                    for($i=(count($picture));$i<12;$i++){
-                    $picture[$i]['large']['name'] = '';
-                    } */
+                 
                     for($i=0;$i<12;$i++){
                     if(!isset($picture[$i])){
                     $picture[$i]['large']['name'] = '';
@@ -53,14 +48,14 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                       ?>
                       <div class="col-md-4 col-lg-4" id="image{{$i+1}}">
                         	@if(empty($picture[$i]['large']['name']))
-						<input type="file" class="form-control" name="image{{$i+1}}" accept=".png, .jpg, .jpeg">
-						@endif
-						<span class="help-block">
-							@if(isset($picture[$i]['large']['src'])&&!empty($picture[$i]['large']['src']))
-							<img src="{{asset('public/'.$picture[$i]['large']['src'])}}" style="height:75px;width:75px;">
-							<a href="javascript:void(0)" class="remove-thumbnail btn btn-danger btn-sm" data-srno="image{{$i+1}}" title="remove"><i class="bi bi-trash" aria-hidden="true"></i></a>
-							@endif
-						</span>
+                      <input type="file" class="form-control" name="image{{$i+1}}" accept=".png, .jpg, .jpeg">
+                      @endif
+                      <span class="help-block">
+                        @if(isset($picture[$i]['large']['src'])&&!empty($picture[$i]['large']['src']))
+                        <img src="{{asset('/'.$picture[$i]['large']['src'])}}" style="height:75px;width:75px;">
+                        <a href="javascript:void(0)" class="remove-thumbnail btn btn-danger btn-sm" data-srno="image{{$i+1}}" title="remove"><i class="bi bi-trash" aria-hidden="true"></i></a>
+                        @endif
+                      </span>
                        <div class="pt-2"></div>
                        <!-- <div class="pt-2">
                           <a href="javascript:void(0);" id="getImage" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>

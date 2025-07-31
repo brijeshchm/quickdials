@@ -668,6 +668,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 				});
 				}
 			},		 
+
 			freeSubscribe:function(THIS,id){			     
 			var $this = $(THIS);
 			var form = new FormData(THIS);	
@@ -723,6 +724,64 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 				}); 
 				 return false;	
 			},
+			businesActiveStatus:function(THIS,id,val){			     
+			var $this = $(THIS);
+			var form = new FormData(THIS);	
+			if(confirm('Are sure account active')){
+				$.ajax({
+					url:"/business/saveSubscribeFree/"+id,
+					type:"POST",					   
+					dataType:"json",	
+					data:form,
+					cache: false,
+					contentType: false, 
+                    processData: false,                      
+					success:function(data){
+					  	
+					if(data.status){
+                        $("#messaged").modal("show");                        							 
+						$('#messaged .modal-title').text("Free subscribed");	
+						$('#messaged .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
+						$('#messaged').modal({keyboard:false,backdrop:'static'});
+						$('#messaged').css({'width':'100%'});					
+				 
+						setInterval(function() {
+						$("#messaged").modal("hide");
+						}, 1000);	 
+						window.location.href = "/business/billing-history";	
+						
+					}else{
+							$("#messaged").modal("show");                        							 
+							$('#messaged .modal-title').text("Free subscribed");	
+							$('#messaged .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
+							$('#messaged').modal({keyboard:false,backdrop:'static'});
+							$('#messaged').css({'width':'100%'});								
+						}
+					},
+					error:function(jqXHR, textStatus, errorThrown){
+							var response = JSON.parse(jqXHR.responseText);	
+							if(response.status){						 
+							var errors = response.errors;						 
+							$('.keyword_form').find('.form-group').removeClass('has-error');
+							$('.keyword_form').find('.help-block').remove();
+							for (var key in errors) {
+							if(errors.hasOwnProperty(key)){	
+
+							var el = $('.keyword_form').find('*[name="'+key+'"]');
+							$('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el);
+							el.closest('.form-group').addClass('has-error');
+							}
+							}				 
+							}else{
+							alert('Something went wrong');
+							}
+			 
+					}
+				}); 
+			}
+				 return false;	
+			},
+
 			};
 })();		
 
@@ -1133,14 +1192,10 @@ var enquiryController  = (function(){
         }
     }
 
- 
- 
-
 	$(document).on('click','.assignedLeadsClick',function(e){
 		e.preventDefault();	
 		var $this = $(this);
-		var assingId   = $(this).attr("data-assigned_leads");	 
-
+		var assingId   = $(this).attr("data-assigned_leads");	
 		$.ajax({
 			type: "POST",
 		 	url:"/business/readLead",
@@ -1151,32 +1206,31 @@ var enquiryController  = (function(){
 					 $this.css('background-color', '#fff');			 
 				}
 			},
-			error: function(response) {
-			 
+			error: function(response) {			 
 			}
-		});	
-		
+		});			
 	});
 
 	$(document).on('click','.favorite-icon',function(e){
 		e.preventDefault();	
 		var $this = $(this);
-		var assingId   = $(this).attr("data-favoritleads");	  
-		$.ajax({
-			type: "POST",
-		 	url:"/business/favoritleads",
-			data: {assingId: assingId},
-			dataType: 'json',
-			success: function(response) {				
-				if(response.status){					 
-					$this.css('background-color', '#fff');			 
+		if( confirm("Are you sure you want to favorite?") ) {	
+			var assingId   = $(this).attr("data-favoritleads");	  
+			$.ajax({
+				type: "POST",
+				url:"/business/favoritleads",
+				data: {assingId: assingId},
+				dataType: 'json',
+				success: function(response) {				
+					if(response.status){					 
+						$this.css('background-color', '#fff');			 
+					}
+				},
+				error: function(response) {
+				
 				}
-			},
-			error: function(response) {
-			 
-			}
-		});	
-		
+			});	
+		}		
 	});
 
 
@@ -1185,10 +1239,6 @@ var enquiryController  = (function(){
 		e.preventDefault();	
 		var clientId   = $(this).attr("data-client-id");	 
 		const isChecked = $(this).is(':checked');
-
-		console.log('Checkbox is checked:', isChecked);
-        console.log('Client ID:', clientId);
-
 		$.ajax({
 			type: "POST",
 		 	url:"/business/pauseLead",
@@ -1213,10 +1263,6 @@ var enquiryController  = (function(){
 		e.preventDefault();	
 		var clientId   = $(this).attr("data-client_id");	 
 		const isChecked = $(this).is(':checked');
-
-		console.log('Checkbox is checked:', isChecked);
-        console.log('Client ID:', clientId);
-
 		$.ajax({
 			type: "POST",
 		 	url:"/business/pauseLead",
@@ -1230,27 +1276,24 @@ var enquiryController  = (function(){
 					  
 				}				
 			},
-			error: function(response) {
-			 
+			error: function(response) {			 
 			}
 		});	
 		
 	});
 
 
-  $(document).ready(function(){
+  $(document).ready(function(){  
   
-  
-    $('.leaddf').datepicker();
-    $('.leaddt').datepicker();
-    $('.dob').datepicker();
-    $(".select2-keyword").select2({
-    theme: "bootstrap",
-    placeholder: "Select keyword",
-    maximumSelectionSize: 6,
-    containerCssClass: ":all:"
-    });
-
+		$('.leaddf').datepicker();
+		$('.leaddt').datepicker();
+		$('.dob').datepicker();
+		$(".select2-keyword").select2({
+		theme: "bootstrap",
+		placeholder: "Select keyword",
+		maximumSelectionSize: 6,
+		containerCssClass: ":all:"
+		});
 });
   
   

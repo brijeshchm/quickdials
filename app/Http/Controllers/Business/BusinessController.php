@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Client;
+namespace App\Http\Controllers\Business;
 
 use Illuminate\Http\Request;
 
@@ -59,7 +59,35 @@ class BusinessController extends Controller
 		return view('client.business-owners');
     }
 
-     /**
+
+ /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {  
+	 
+    	$clientID = auth()->guard('clients')->user()->id;	 
+        $clientDetails = 	DB::table('clients')->where('id',$clientID)->first();
+		$leads = DB::table('leads')
+				   ->join('assigned_leads','leads.id','=','assigned_leads.lead_id')		 
+				  ->leftjoin('citylists','leads.city_id','=','citylists.id')		 
+				   ->leftjoin('areas','leads.area_id','=','areas.id')		 
+				   ->leftjoin('zones','leads.zone_id','=','zones.id')		 
+				   ->select('leads.*','assigned_leads.client_id','assigned_leads.lead_id','assigned_leads.created_at as created','areas.area','zones.zone')				 
+				   
+				   ->orderBy('assigned_leads.created_at','desc')
+				    //  ->where('assigned_leads.readLead','0')
+				   ->where('assigned_leads.client_id',$clientID)->get();
+		//	echo "<pre>";print_r($clientDetails);	   die;
+	 
+		return view('business.dashboard',['leads'=>$leads,'clientDetails'=>$clientDetails]);
+    }
+
+  
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -157,6 +185,7 @@ class BusinessController extends Controller
 		}
 		 
     }
+
      
     /**
      * Send client registration mail to client containing user name password.
@@ -170,6 +199,8 @@ class BusinessController extends Controller
             $m->to($client->email, $client->first_name." ".$client->last_name)->subject('quickdials Login Credentials')->cc('clients@quickdials.in');
         });
     }
+
+
 
 	/**
 	 * Return Paginated Assigned Keywords
@@ -218,7 +249,6 @@ class BusinessController extends Controller
 			 
 		}
 	 }
-
 	 /**
      * Remove the specified resource from storage.
      *
@@ -239,31 +269,34 @@ class BusinessController extends Controller
     }
 	
 	
+	
 
-	public function getAjaxCities(Request $request)
+	 public function getAjaxCities(Request $request)
     {
          
-		$sid = $request->input('sid');
-		$cid = $request->input('cid');
+		$sid = $request->input('sid'); 
+		$cid = $request->input('cid'); 	
 		$citys= DB::table('citylists')->where('state',$sid)->get();
  
 		if($citys){ 
-			echo '<option value="">Select City</option>';
-			foreach($citys as $city){ 
-			$selected = ($cid==$city->city)?"selected":'';
+		echo '<option value="">Select City</option>';
+		foreach($citys as $city){ 
+		$selected = ($cid==$city->city)?"selected":'';
 
-			echo'<option value="'.$city->city.'" '.$selected.' >'.$city->city.'</option>';
+		echo'<option value="'.$city->city.'" '.$selected.' >'.$city->city.'</option>';
 
-			}
-		} else { 
-			echo'<option value="">No record found</option>';
 		}
+		} else { 
+		echo'<option value="">No record found</option>';
+		}
+		
+	
     }
 
-	public function getAjaxZone(Request $request)
-    {
+	 public function getAjaxZone(Request $request)
+    {        
 	
-		$cid = $request->input('city');
+		$cid = $request->input('city'); 	
 		$zid = $request->input('zone'); 
 		$zones= DB::table('zones')->where('city_id',$cid)->get();
  
@@ -295,20 +328,14 @@ class BusinessController extends Controller
         return view('business.help',['client'=>$client]);
     }
 	 
-    	
-	public function package(Request $request)
-    { 
-        	$clientID = auth()->guard('clients')->user()->id;
-        	$client = Client::find($clientID);
-        $search = [];
-		if($request->has('search')){
-			$search = $request->input('search');
-		}
-        return view('business.package',['search'=>$search,'client'=>$client]);
-    }
-    
-		 
 	 
+ 
+	
+   
+		
+	
+	
+    
     
     public function buyPackage(Request $request)
     { 
@@ -320,41 +347,46 @@ class BusinessController extends Controller
 		}
         return view('business.buyPackage',['search'=>$search,'client'=>$client]);
     }
-        
- 	
-    /**
-     * Return paginated resources.
-     *
-     * @return JSON Payload.
-     */
-    public function getDiscussion(Request $request){
-		if($request->ajax()){
-			 
-			$clientID = auth()->guard('clients')->user()->id;
-			$discussion = DB::table('client_discussion')			 
-					   ->orderBy('id','desc')					  
-					   ->where('client_id',$clientID)
-					   ->paginate($request->input('length'));
-					   
-			$returnLeads = [];
-			$data = [];
-			$returnLeads['draw'] = $request->input('draw');
-			$returnLeads['recordsTotal'] = $discussion->total();
-			$returnLeads['recordsFiltered'] = $discussion->total();
-			 
-			foreach($discussion as $lead){
-				$data[] = [								 
-					date_format(date_create($lead->createdate),'d-m-Y H:i:s'),
-					$lead->discussion,	
-				];
-			}
-			$returnLeads['data'] = $data;
-			return response()->json($returnLeads);
-			//return $leads->links();
-		}
-    }
+    	
+	
+	
+	
+	
 
-   
+
+    /**
+     * Export assigned leads.
+     */
+    public function getLeadsExcel(Request $request){
+		$clientID = auth()->guard('clients')->user()->id;
+		
+		$assignedKWDS = DB::table('leads')
+				   ->join('assigned_leads','leads.id','=','assigned_leads.lead_id')
+				   ->join('cities','leads.city_id','=','cities.id')
+				   ->select('leads.*','assigned_leads.client_id','assigned_leads.lead_id','cities.city')
+				   ->orderBy('leads.created_at','desc')
+				   ->where('assigned_leads.client_id',$clientID)
+				   ->get();
+				   
+		$arr = [];
+		foreach($assignedKWDS as $assKWDS){
+			$arr[] = [
+				'Name'=>$assKWDS->name,
+				'Mobile'=>$assKWDS->mobile,
+				'Email'=>$assKWDS->email,
+				'Course'=>$assKWDS->kw_text,
+				'City'=>$assKWDS->city,
+				'Date'=>date_format(date_create($assKWDS->created_at),'d M, Y H:i:s'),
+			];
+		}
+		$excel = \App::make('excel');
+		Excel::create('assigned_leads', function($excel) use($arr) {
+			$excel->sheet('Sheet 1', function($sheet) use($arr) {
+				$sheet->fromArray($arr);
+			});
+		})->export('xls');
+	}	
+	
 	
 	/**
      * Handling client remark
@@ -389,12 +421,6 @@ class BusinessController extends Controller
 			}
 			 
 	}
-	
-	
-	
-	
-	
-   
 	
 	
 	

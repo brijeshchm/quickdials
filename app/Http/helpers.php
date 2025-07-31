@@ -377,7 +377,8 @@ return array(
   array('id' => '38','state_name' => 'Uttar Pradesh','state_country_id' => '101'),
   array('id' => '39','state_name' => 'Uttaranchal','state_country_id' => '101'),
   array('id' => '40','state_name' => 'Vaishali','state_country_id' => '101'),
-  array('id' => '41','state_name' => 'West Bengal','state_country_id' => '101')
+  array('id' => '41','state_name' => 'West Bengal','state_country_id' => '101'),
+  array('id' => '42','state_name' => 'Uttarakhand','state_country_id' => '101'),
 );
  
 }
