@@ -515,8 +515,8 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 			e.preventDefault();
 
 			var city  = $(this).find('.location').attr('data-city');
-			var area  = $(this).find('.location').attr('data-area');
-			var zone  = $(this).find('.location').attr('data-zone');
+			// var area  = $(this).find('.location').attr('data-area');
+			// var zone  = $(this).find('.location').attr('data-zone');
 		 
 			if(city !='undefined'){
 			 var city = $(this).find('.city').val();
@@ -585,8 +585,8 @@ function getCitiesOfKW_old(parent_id,child_id,parent_cat,child_cat,keyword){
 
 		$(this).closest('form').find(".location").val($(this).find('a').attr("data-city"));		 
 		$(this).closest('form').find('.location').attr('data-city', $(this).find('a').attr("data-city"));
-		$(this).closest('form').find('.location').attr('data-area', $(this).find('a').attr("data-area"));
-		$(this).closest('form').find('.location').attr('data-zone', $(this).find('a').attr("data-zone"));
+		// $(this).closest('form').find('.location').attr('data-area', $(this).find('a').attr("data-area"));
+		// $(this).closest('form').find('.location').attr('data-zone', $(this).find('a').attr("data-zone"));
  
 		var closestForm = $(this).closest('form');
 			if(closestForm.hasClass('search-form')){

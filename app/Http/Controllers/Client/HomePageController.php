@@ -656,20 +656,20 @@ public function saveTwoEnquiry(Request $request){
     public function getCountryCode(Request $request)
     {
 		if($request->ajax()){
-			
+		 
 			$len=strlen($request->input('id'));
 			if(null==$request->input('id')){
 			$countryies = Citieslists::whereIn('id',['278','596','961','428'])->get();
 				 
 			}else{
 				$countryies = DB::table('citylists')->orderBy('city','asc');
-				$countryies = $countryies->join('zones','citylists.id','=','zones.city_id');
-				$countryies = $countryies->join('areas','zones.id','=','areas.zone_id');
+				//$countryies = $countryies->join('zones','citylists.id','=','zones.city_id');
+			//	$countryies = $countryies->join('areas','zones.id','=','areas.zone_id');
 
 				$countryies = $countryies->where(function($query) use($request){
 				$query->orWhere('city','LIKE','%'.$request->input('id').'%')			    	 
 				 	//	->orWhere('area','LIKE','%'.$request->input('id').'%')			    	 
-				 		->orWhere('zone','LIKE','%'.$request->input('id').'%')			    	 
+				 		//->orWhere('zone','LIKE','%'.$request->input('id').'%')			    	 
 						->orWhere('state','LIKE','%'.$request->input('id').'%');
 				});
 				$countryies =$countryies->get();
@@ -688,9 +688,8 @@ public function saveTwoEnquiry(Request $request){
 			$final_str=str_replace($str, $strong_str, $data->city); ?>
 		 
 			<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" >
-			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>" data-area="<?php echo strtolower($data->area); ?>" data-zone="<?php echo strtolower($data->zone); ?>"><?php echo $data->zone.' '.ucwords($final_str); ?></a>
-			</li>
-		 
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>" data-area="" data-zone=""><?php echo ucwords($final_str); ?></a>
+			</li>		 
 			<?php }else{ ?>
 			 
 			<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" >
