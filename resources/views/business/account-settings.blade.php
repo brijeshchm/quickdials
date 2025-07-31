@@ -26,21 +26,27 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quickinida
 
           <div class="card">
             <div class="card-body pt-3">
-              <!-- Bordered Tabs -->
-          
-               
-              
-              
                <div class="tab-content pt-2">
-
-                <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">         
 
                   <div class="row">
                     <div class="col-lg-4 col-md-4 label "> Client Active Status: : </div>
-                    <div class="col-lg-4 col-md-8">in-Active</div>
+                    <div class="col-lg-4 col-md-8">
+                      <?php  
+                      if(!empty($client->active_status)){
+                        echo "Active";
+                      }else{
+                        echo "In-Active";
+                      }
+                      ?>
+                    </div>
                    
-                     <div class="col-lg-3 col-md-8"> <a href="">Active</a></div>
+                     <div class="col-lg-3 col-md-8">
+                     <form id="submitActiveStatus" method="POST" class="form-horizontal" onsubmit="return profileController.editPersonaleDetailsSave(this,<?php echo (isset($client->id)? $client->id:""); ?>,'')">
+                      {{csrf_field()}} 
+                        <a href="">Active</a>
+                    </form>
+                    </div>
                   </div>
                     <div class="row">
                     <div class="col-lg-4 col-md-4 label ">Client Paid Status : </div>

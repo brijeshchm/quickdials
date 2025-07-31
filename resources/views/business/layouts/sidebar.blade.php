@@ -8,7 +8,8 @@
         <a class="nav-link collapsed" data-bs-target="#enquiry-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-people"></i><span>Enquiry</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="enquiry-nav" class="nav-content collapse <?php if(Request::segment(2)=='myLead' || Request::segment(2)=='new-enquiry' || Request::segment(2)=='favorite-enquiry' || Request::segment(2)=='manage-enquiry'){ echo  "show"; }   ?>" data-bs-parent="#sidebar-nav">
+           
+        <ul id="enquiry-nav" class="nav-content collapse <?php if(Request::segment(2)=='myLead' || Request::segment(2)=='new-enquiry' || Request::segment(2)=='favorite-enquiry' || Request::segment(2)=='manage-enquiry' || Request::segment(2)=='enquiry' ){ echo  "show"; }   ?>" data-bs-parent="#sidebar-nav">
             
         <li>
             <a class="<?php if(Request::segment(2)=='new-enquiry') { echo "active"; } ?>" href="{{url('business/new-enquiry')}}">
@@ -24,6 +25,11 @@
           <li>
             <a class="<?php if(Request::segment(2)=='favorite-enquiry') { echo "active"; } ?>" href="{{url('business/favorite-enquiry')}}">
               <i class="bi bi-envelope"></i><span>Favorite Enquiry</span>
+            </a>
+          </li>
+          <li>
+            <a class="<?php if(Request::segment(2)=='enquiry') { echo "active"; } ?>" href="{{url('business/enquiry')}}">
+              <i class="bi bi-envelope"></i><span>Archived Enquiry</span>
             </a>
           </li>
           
