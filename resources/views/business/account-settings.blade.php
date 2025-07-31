@@ -42,45 +42,139 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quickinida
                     </div>
                    
                      <div class="col-lg-3 col-md-8">
-                     <form id="submitActiveStatus" method="POST" class="form-horizontal" onsubmit="return profileController.editPersonaleDetailsSave(this,<?php echo (isset($client->id)? $client->id:""); ?>,'')">
-                      {{csrf_field()}} 
-                        <a href="">Active</a>
-                    </form>
+                      <?php
+                    
+                  if($client->active_status=='1'){ 
+                  $active_status ='<a title="Course status" class="btn btn-success">Active</a>';	
+                  }else{
+                  $active_status ='<a title="Course status" class="btn btn-danger">Inactive</a>';	
+                  }
+                  echo $active_status;
+                  ?>
                     </div>
                   </div>
                     <div class="row">
                     <div class="col-lg-4 col-md-4 label ">Client Paid Status : </div>
-                    <div class="col-lg-4 col-md-8"> Active</div>
+                    <div class="col-lg-4 col-md-8"> 
+                      
+                     <?php
+                    
+                  if($client->paid_status=='1'){ 
+                  $paid_status ='Paid';	
+                  }else{
+                  $paid_status ='Un-Paid';	
+                  }
+                  echo $paid_status;
+                  ?>
+                    
+                  
+                  
+                  </div>
                      
-                     <div class="col-lg-3 col-md-8"> <a href="">Un-Paid</a></div>
+                     <div class="col-lg-3 col-md-8">  <?php
+                    
+                  if($client->paid_status=='1'){ 
+                  $paidStatus ='<a title="Course status" class="btn btn-success">Paid</a>';	
+                  }else{
+                  $paidStatus ='<a title="Course status" class="btn btn-danger">Un-Paid</a>';	
+                  }
+                  echo $paidStatus;
+                  ?>
+                    </div>
                   </div>
                   
                        <div class="row">
                     <div class="col-lg-4 col-md-4 label "> Client Certified Status:  </div>
-                    <div class="col-lg-4 col-md-8"> Active</div>
+                    <div class="col-lg-4 col-md-8"> 
+                      
+
+                    <?php
+                    
+                  if($client->certified_status=='1'){ 
+                  $certified_status ='Certified';	
+                  }else{
+                  $certified_status ='Un-Certified';	
+                  }
+                  echo $certified_status;
+                  ?>
+                    
+                    </div>
                      
-                     <div class="col-lg-3 col-md-8"> <a href="">Un Certified</a></div>
+                     <div class="col-lg-3 col-md-8"> 
+                      
+                     <?php
+                    
+                  if($client->certified_status=='1'){ 
+                  $certifiedStatus ='<a title="Course status" class="btn btn-success">Certified</a>';	
+                  }else{
+                  $certifiedStatus ='<a title="Course status" class="btn btn-danger">Un-Certified</a>';	
+                  }
+                  echo $certifiedStatus;
+                  ?>
+                     </div>
                   </div>
                  
                     <div class="row">
                     <div class="col-lg-4 col-md-4 label ">Pausing and resuming the lead : </div>
-                    <div class="col-lg-4 col-md-8">Resuming </div>
+                    <div class="col-lg-4 col-md-8">
+                      
+                    
+                    <?php
+                    
+                  if($client->pauseLead=='1'){ 
+                  $pauseLead ='Resuming';	
+                  }else{
+                  $pauseLead ='Un-Resuming';	
+                  }
+                  echo $pauseLead;
+                  ?>
+                     </div>
                    
-                     <div class="col-lg-3 col-md-8"> <a href="">Buy Package</a></div>
+                     <div class="col-lg-3 col-md-8"> 
+                       <?php
+                    
+                  if($client->pauseLead=='1'){ 
+                  $pauseLeadStatus ='<a title="Course status" class="btn btn-success">Certified</a>';	
+                  }else{
+                  $pauseLeadStatus ='<a title="Course status" class="btn btn-danger">Un-Certified</a>';	
+                  }
+                  echo $pauseLeadStatus;
+                  ?>
+
+
+                     </div>
                   </div>
                   
                      <div class="row">
                     <div class="col-lg-4 col-md-4 label "> Membership Type  : </div>
-                    <div class="col-lg-4 col-md-8"> Platinum</div>
+                    <div class="col-lg-4 col-md-8">
+                      
+                     <?php
+                    
+                  if($client->client_type){ 
+                  echo $client->client_type;
+                  } 
+                  ?>
+                    </div>
                 
-                     <div class="col-lg-3 col-md-8"> <a href="">Buy Package</a></div>
+                     <div class="col-lg-3 col-md-8"> 
+                      
+                      
+                    <?php
+                    
+                  if(!empty($client->client_type)){  ?>
+                  <a title="Course status" class="btn btn-success"><?php echo $client->client_type; ?></a>
+                <?php  } ?>
+                    
+                    
+                    </div>
                   </div>
-                     <div class="row">
-                    <div class="col-lg-4 col-md-4 label ">subscript expire  : </div>
+                    <!-- <div class="row">
+                    <div class="col-lg-4 col-md-4 label ">Subscript expire  : </div>
                     <div class="col-lg-4 col-md-8"> 26-7-2026</div>
                      
                      <div class="col-lg-3 col-md-8"> <a href="">Buy Package</a></div>
-                  </div>
+                  </div> -->
 
 
              

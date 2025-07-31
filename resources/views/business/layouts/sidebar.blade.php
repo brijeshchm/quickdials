@@ -13,25 +13,25 @@
             
         <li>
             <a class="<?php if(Request::segment(2)=='new-enquiry') { echo "active"; } ?>" href="{{url('business/new-enquiry')}}">
-              <i class="bi bi-circle"></i><span>New Enquiry</span>
+              <i class="bi bi-circle"></i><span>New Enquiries</span>
             </a>
           </li>
         <li>
             <a class="<?php if(Request::segment(2)=='myLead') { echo "active"; } ?>" href="{{url('business/myLead')}}">
-              <i class="bi bi-circle"></i><span>My lead</span>
+              <i class="bi bi-circle"></i><span>My Leads</span>
             </a>
           </li>
           
           <li>
             <a class="<?php if(Request::segment(2)=='favorite-enquiry') { echo "active"; } ?>" href="{{url('business/favorite-enquiry')}}">
-              <i class="bi bi-envelope"></i><span>Favorite Enquiry</span>
+              <i class="bi bi-envelope"></i><span>Favorite Enquiries</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a class="<?php if(Request::segment(2)=='enquiry') { echo "active"; } ?>" href="{{url('business/enquiry')}}">
-              <i class="bi bi-envelope"></i><span>Archived Enquiry</span>
+              <i class="bi bi-envelope"></i><span>All Enquiries</span>
             </a>
-          </li>
+          </li> -->
           
           <li>
             <a class="<?php if(Request::segment(2)=='manage-enquiry') { echo "active"; } ?>" href="{{url('business/manage-enquiry')}}">

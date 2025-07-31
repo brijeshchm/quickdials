@@ -42,7 +42,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
               <div class="info-box card">
                 <i class="bi bi-envelope"></i>
                 <h3>Email Us</h3>
-                <p>info@quickdials.in<br>help@quickdials.in</p>
+                <p>info@quickdials.com<br>help@quickdials.com</p>
               </div>
             </div>
             <div class="col-lg-6">

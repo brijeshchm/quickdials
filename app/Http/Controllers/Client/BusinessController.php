@@ -390,7 +390,29 @@ class BusinessController extends Controller
 			 
 	}
 	
+	 /**
+     * Remove the specified resource from storage status.
+     * Author: Brijesh Chauhan.
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function businessActiveStatus(request $request, $id,$val)
+    {
+       	 if($request->ajax()){	
+		 
+		$client = Client::findOrFail($id);	 
+		$client->status=$val;
 	
+		if($client->save()){
+			$status=1;							 
+			$msg="Placement status updated successfully!";					
+			}else{
+			$status=0;							 
+			$msg="Placement status could not be updated!";	
+			}		
+			return response()->json(['status'=>$status,'msg'=>$msg],200); 
+		 }
+    }
 	
 	
 	

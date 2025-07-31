@@ -176,7 +176,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 
                 <div class="form-group">              
                     <label>Certifications(Comma separated if more than 1):</label>
-                        <input name="certifications" type="text" class="form-control" value="{{ old('certifications',(isset($client)) ? $client->certifications:"")}}">
+                        <input name="certifications" type="text" class="form-control" value="{{ old('certifications',(isset($client->certifications)) ? $client->certifications:"")}}">
                 </div>
             
 

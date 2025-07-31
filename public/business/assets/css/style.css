@@ -766,9 +766,7 @@ div.dataTables_paginate{
             background-color: #f7fafc;
         }
 
-        .enquiry-item:last-child {
-            border-bottom: none;
-        }
+       
 
         .enquiry-item .avatar {
             width: 45px;
@@ -1325,8 +1323,8 @@ color:#000;
 
         .lead-details {
             background: #ffffff;
-            border-radius: 15px;
-            padding: 20px 20px 0px;
+            border-radius: 5px;
+            padding: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             margin-bottom: 7px;
         }
@@ -1339,9 +1337,7 @@ color:#000;
             border-bottom: 1px solid #e5e7eb;
         }
 
-        .lead-details .lead:last-child {
-            border-bottom: none;
-        }
+       
 
         .lead-details .lead .img-cls {
             width: 40px;

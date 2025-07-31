@@ -19,6 +19,14 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
 .align-items-center{
     margin-left:10px;
 }
+
+.lead.enquiry-item{
+background-color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+ 
 </style>
    
 

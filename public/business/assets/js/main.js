@@ -724,12 +724,12 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 				}); 
 				 return false;	
 			},
-			businesActiveStatus:function(THIS,id,val){			     
+			businessActiveStatus:function(THIS,id,val){			     
 			var $this = $(THIS);
 			var form = new FormData(THIS);	
 			if(confirm('Are sure account active')){
 				$.ajax({
-					url:"/business/saveSubscribeFree/"+id,
+					url:"/business/businessActiveStatus/"+id+"/"+val,
 					type:"POST",					   
 					dataType:"json",	
 					data:form,
