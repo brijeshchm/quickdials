@@ -353,7 +353,7 @@ var dataTableCitylist = $('#datatable-citylist').on('draw.dt',function(e,setting
 	"ordering":false,	
 	//"searching":true,	
 	"ajax":{
-		url:"/developer/cities",
+		url:"/developer/cities/getcities",
 		data:function(d){
 			d.page = (d.start/d.length)+1;
 			//d.search['value']=$('*[name="search[value]"]').val();

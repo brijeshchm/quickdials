@@ -286,12 +286,11 @@
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->guard('clients')->user()->first_name }}
              
             </span>
-          </a><!-- End Profile Iamge Icon -->
+          </a> 
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{ auth()->guard('clients')->user()->first_name }} </h6>
-              
+              <h6>{{ auth()->guard('clients')->user()->first_name }} </h6>              
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -312,10 +311,7 @@
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
-            </li>
-           
-          
-           
+            </li>         
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{{url('business/favorite-enquiry')}}">

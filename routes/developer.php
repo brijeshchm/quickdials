@@ -63,7 +63,7 @@ Route::post('/update-user/{id}',[App\Http\Controllers\userController::class, 'up
 	Route::get('/cities/delete/{id}', [App\Http\Controllers\CitiesController::class, 'destroy'])->middleware('auth');
 	Route::get('/cities/updatecity/{id}',[App\Http\Controllers\CitiesController::class, 'edit'])->middleware('auth');
 	Route::post('/cities/update', [App\Http\Controllers\CitiesController::class, 'update'])->middleware('auth');
-	Route::get('/cities/getcities', [App\Http\Controllers\CitiesController::class, 'getCities'])->middleware('auth');
+	Route::get('/cities/getcities', [App\Http\Controllers\CitiesController::class, 'getCitiesPagination'])->middleware('auth');
 	
 /* Cities */
 

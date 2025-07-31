@@ -2,7 +2,8 @@
 @section('title')
 @if(!empty($keyword->meta_title))	
 <?php   
-$key = preg_replace('/in {{city}}/i','',$keyword->meta_title);
+
+$key = preg_replace('/in {{city}}/i',ucfirst($city),$keyword->meta_title);
 echo trim($key);   ?>
 @else
 	@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif  

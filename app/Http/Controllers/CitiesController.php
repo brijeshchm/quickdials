@@ -26,77 +26,18 @@ class CitiesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-    
-			if($request->ajax()){
-		 
-			$cities = Citieslists::orderBy('city','desc');
-			if($request->input('search.value')!=''){
-				 
-				$cities = $cities->where(function($query) use($request){
-					$query->orWhere('city','LIKE','%'.$request->input('search.value').'%')						 
-						  ->orWhere('state','LIKE','%'.$request->input('search.value').'%');
-				});
-			}
-		 
-		 
-			$cities = $cities->paginate($request->input('length'));
-			$returnLeads = $data = [];
-			$returnLeads['draw'] = $request->input('draw');
-			$returnLeads['recordsTotal'] = $cities->total();
-			$returnLeads['recordsFiltered'] = $cities->total();
-			$returnLeads['recordCollection'] = [];
-			foreach($cities as $city){
-							
-				$action = '';
-				$separator = ''; 
-					$action .= $separator.'<a href="javascript:void(0)" onclick="javascript:updateCity('.$city->id.',this)"><i class="fa fa-refresh fa-fw" aria-hidden="true"></i></a>';
-					$separator = ' | ';			 
-					 
-			 
-			 	if($request->user()->current_user_can('administrator')){
-				 
-					$action .= $separator.'<a href="javascript:void(0)" onclick="javascript:deleteCity('.$city->id.',this)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></a>';
-					$separator = ' | ';		
-					
-					 		
-				}
-							
-				$data[] = [		
-					"<th><input type='checkbox' class='check-box' value='$city->id'></th>",				
-			 		$city->city,					 
-					$city->state,
-					$action
-					
-				];	
-				$returnLeads['recordCollection'][] = $city->id;
-			}
-			$returnLeads['data'] = $data;
-			return response()->json($returnLeads);
-			}else{
-		//echo "<pre>";print_r($state);die;
-		 //
-		 
-			$search = [];
-			if($request->has('search')){
+    {		
+		$search = [];
+		if($request->has('search')){
 			$search = $request->input('search');
-			}
-	//	$citiess = Cities::all();
+		}	 
 		$citiess = Citieslists::all();
 		$states = Citieslists::select('state')->groupBy('state')->get();
 		return view('admin.citylist.citieslist',['allCities'=>$citiess,'search'=>$search,'states'=>$states]);
-			}
+			
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+     
 
     /**
      * Store a newly created resource in storage.
@@ -106,11 +47,11 @@ class CitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
 		if(!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('add_city'))){
 			return view('errors.unauthorised');
 		}
-		//echo "<pre>";print_r($_POST);die;
+	 
         $validator = Validator::make($request->all(), [
             'city' => 'required|unique:citylists,city|min:3|max:25',
             'state' => 'required'
@@ -228,6 +169,59 @@ class CitiesController extends Controller
 		}
     }
 
+
+	
+	public function getCitiesPagination(Request $request){
+
+		if($request->ajax()){
+		 
+			$cities = Citieslists::orderBy('city','desc');
+			if($request->input('search.value')!=''){
+				 
+				$cities = $cities->where(function($query) use($request){
+					$query->orWhere('city','LIKE','%'.$request->input('search.value').'%')						 
+						  ->orWhere('state','LIKE','%'.$request->input('search.value').'%');
+				});
+			}
+		 
+		 
+			$cities = $cities->paginate($request->input('length'));
+			$returnLeads = $data = [];
+			$returnLeads['draw'] = $request->input('draw');
+			$returnLeads['recordsTotal'] = $cities->total();
+			$returnLeads['recordsFiltered'] = $cities->total();
+			$returnLeads['recordCollection'] = [];
+			foreach($cities as $city){
+							
+				$action = '';
+				$separator = ''; 
+					$action .= $separator.'<a href="javascript:void(0)" onclick="javascript:updateCity('.$city->id.',this)"><i class="fa fa-refresh fa-fw" aria-hidden="true"></i></a>';
+					$separator = ' | ';			 
+					 
+			 
+			 	if($request->user()->current_user_can('administrator')){
+				 
+					$action .= $separator.'<a href="javascript:void(0)" onclick="javascript:deleteCity('.$city->id.',this)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></a>';
+					$separator = ' | ';		
+					
+					 		
+				}
+							
+				$data[] = [		
+					"<th><input type='checkbox' class='check-box' value='$city->id'></th>",				
+			 		$city->city,					 
+					$city->state,
+					$action
+					
+				];	
+				$returnLeads['recordCollection'][] = $city->id;
+			}
+			$returnLeads['data'] = $data;
+			return response()->json($returnLeads);
+			}
+
+
+	}
     /**
      * Remove the specified resource from storage.
      *
@@ -247,6 +241,8 @@ class CitiesController extends Controller
     }
 	
     
+
+
     /**
      * Remove the specified resource from storage.
      *

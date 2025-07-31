@@ -53,7 +53,7 @@
 										 
 									</div>
 									<div class="col-lg-3">
-										<label for="latitude">Latitude:</label>
+										<label for="latitude">Latitude:Remove °(x.xxxxN) </label>
 										<input type="text" class="form-control" name="latitude" placeholder="Enter Latitude" value="{{ old('latitude') }}">
 										@if ($errors->has('latitude'))
 											<span class="help-block">
@@ -63,7 +63,7 @@
 										 
 									</div>
 									<div class="col-lg-3">
-										<label for="longitude">longitude:</label>
+										<label for="longitude">longitude:Remove°(x.xxxxE)</label>
 										<input type="text" class="form-control" name="longitude"  placeholder="Enter longitude" value="{{ old('longitude') }}">
 										@if ($errors->has('longitude'))
 											<span class="help-block">
@@ -91,14 +91,7 @@
 										 
                                     </tr>
                                 </thead>
-                              <tfoot>
-										<tr>
-										<th></th>
-										<th>City</th>    
-                                        <th>State</th>										 
-                                        <th>Action</th>
-										</tr>
-									</tfoot>
+                              
                             </table>
                             <!-- /.table-responsive -->
 												 
