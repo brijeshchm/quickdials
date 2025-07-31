@@ -155,22 +155,22 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 
               <div class="form-group">
                     <label>Area:</label>
-                    <input type="text" class="form-control" name="area" value="{{ old('area',(isset($client)) ? $client->area:"")}}" placeholder="Enter Area">
+                    <input type="text" class="form-control" name="area" value="{{ old('area',(isset($client->area)) ? $client->area:"")}}" placeholder="Enter Area">
                     <label>Pincode:</label>
-                    <input type="text" class="form-control" value="{{ old('pincode',(isset($client)) ? $client->pincode:"")}}" placeholder="Enter Pincode">
+                    <input type="text" class="form-control" value="{{ old('pincode',(isset($client->pincode)) ? $client->pincode:"")}}" placeholder="Enter Pincode">
                 </div>
                 <div class="form-group">
                     <label>Country:</label>
-                   	<input type="text" class="form-control" name="country" value="{{ old('country',(isset($client)) ? $client->country:"")}}">
+                   	<input type="text" class="form-control" name="country" value="{{ old('country',(isset($client->country)) ? $client->country:"")}}">
                     <label>year of Establishment:</label>              
-                    <input name="year_of_estb" type="text" class="form-control" value="{{ old('year_of_estb',(isset($client)) ? $client->year_of_estb:"")}}" placeholder="Please enter (YYYY)" maxlength="4">
+                    <input name="year_of_estb" type="text" class="form-control" value="{{ old('year_of_estb',(isset($client->year_of_estb)) ? $client->year_of_estb:"")}}" placeholder="Please enter (YYYY)" maxlength="4">
                     
                 </div>
                 <div class="form-group">
                
                     <label>Business Info:</label>
                    
-                     <textarea name="business_intro" class="form-control" id="about" style="height: 100px">{{ old('business_intro',(isset($client)) ? $client->business_intro:"")}}</textarea>
+                     <textarea name="business_intro" class="form-control" id="about" style="height: 100px">{{ old('business_intro',(isset($client->business_intro)) ? $client->business_intro:"")}}</textarea>
                     
                 </div>
 
