@@ -15,8 +15,8 @@
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     
     # Redirect to  www
-    RewriteCond %{HTTP_HOST} ^quickdials\.com [NC]
-    RewriteRule ^(.*)$ https://www.quickdials.com/$1 [L,R=301,NC]
+    RewriteCond %{HTTP_HOST} ^qc.quickdials\.com [NC]
+    RewriteRule ^(.*)$ https://www.qc.quickdials.com/$1 [L,R=301,NC]
     
     
     
