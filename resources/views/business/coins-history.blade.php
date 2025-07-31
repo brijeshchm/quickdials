@@ -186,29 +186,27 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                     <th>Coins</th>
                 </tr>
             </thead>
-            <tbody id="tableBody">
-                <!-- Initially load first 10 data rows -->
-                <!-- <tr class="data-row">
-                    <td data-label="Date">08 Feb 2025</td>
-                    <td data-label="Value 1">1000001</td>
-                    <td data-label="Value 2">184.00</td>
-                    <td data-label="Total">1206.00</td>
-                </tr> -->
-              
-               
-              
+            <tbody id="tableBody">              
             </tbody>
         </table>
     </div>
-    <?php if(!empty($coinsLeads)){
+    <?php 
+ 
+ 
+    if(!empty($coinsLeads)){
             $coinsList = [];
             foreach($coinsLeads as $coinsLead){
- 
+            $coins= "";
+            if(!empty($coinsLead->scrapLead)) { 
+            $coins =    "<span style='color:green'>" . $coinsLead->coins . "</span>"; 
+            }else if($coinsLead->coins){ 
+            $coins =  "<span style='color:red;'> -" . $coinsLead->coins . " </span>"; 
+            } 
             $coinsList[] = [
             'name' => $coinsLead->name,
             'mobile' => $coinsLead->mobile,           
             'service' => $coinsLead->kw_text,
-            'coins' =>  (isset($coinsLead->scrapLead) && !empty($coinsLead->scrapLead)) ? "<span style='color:green'>" . $coinsLead->coins . "</span>" : "<span style='color:red;'> -" . $coinsLead->coins . " </span>",
+            'coins' =>$coins,  
             'date' => date('d M Y',strtotime($coinsLead->created))
             ];
             }
@@ -224,8 +222,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
         const tableBody = document.getElementById('tableBody');
 
 
-        const remainingData = 
-<?php  echo json_encode($coinsLeads); ?>;
+        const remainingData = <?php  echo json_encode($coinsList); ?>;
        
 
         // Function to append new rows
