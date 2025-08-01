@@ -197,7 +197,7 @@
                 <div class="icon">
                     <img src="https://img.icons8.com/ios-filled/50/ffffff/building.png" alt="Building Icon">
                 </div>
-                <h3>Codekredit Official - Corporate Learning</h3>
+                <h3>Quick Dials Official - Corporate Learning</h3>
                 <p>G-13, Sector-3 Noida (India)</p>
                 <p><strong>Phone (India):</strong> <a href="tel:+917011310265">+91-70113 10265</a></p>
                 <p><strong>WhatsApp:</strong> <a href="https://wa.me/917011310265">+91-70113 10265</a></p>
