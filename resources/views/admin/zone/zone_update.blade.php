@@ -31,7 +31,7 @@
                     <div class="panel panel-default">
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-							<?php if(isset($edit_data) && count($edit_data)>0): ?>
+							<?php if(isset($edit_data)): ?>
 							<form class="form-horizontal" role="form" method="POST" action="{{ url('/developer/zone/update/'.$edit_data->id) }}">
 								{{ csrf_field() }}
 
