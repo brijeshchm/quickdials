@@ -107,7 +107,7 @@
     "telephone": "+91-7011310265",
     "contactType": "Customer service"
   }],
-  "logo": "https://quickdials.in/public/client/images/quick-large-logo.png",
+  "logo": "https://www.quickdials.com/client/images/small-logo.png",
   "sameAs": ["https://www.facebook.com/quickdialsofficial/"]
 }
 </script>

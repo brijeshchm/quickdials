@@ -669,7 +669,7 @@ public function saveTwoEnquiry(Request $request){
 				$countryies =$countryies->get();
 			}
 		 
-			$html ='<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;"><ul>';
+			$html ='<div class="resultCode"><ul>';
 			if(!empty($countryies)){
 		
 			foreach($countryies as $data){
@@ -680,10 +680,10 @@ public function saveTwoEnquiry(Request $request){
 			$strong_str="<strong>".$str."</strong>";
 			$final_str=str_replace($str, $strong_str, $data->city);
 		 
-			$html .='<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($data->city).'" >'.ucwords($final_str).'</a></li>';
+			$html .='<li><a data-city="'.strtolower($data->city).'" >'.ucwords($final_str).'</a></li>';
 			}else{ 
 			 
-			$html .='<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($data->city).'">'. ucwords($data->city).'</a>
+			$html .='<li><a data-city="'.strtolower($data->city).'">'. ucwords($data->city).'</a>
 			</li>';
 			
 				} 
@@ -707,11 +707,11 @@ public function saveTwoEnquiry(Request $request){
 			$str=substr($zone->zone, $pos, $len);
 			$strong_str="<strong>".$str."</strong>";
 			$final_str=str_replace($str, $strong_str, $zone->zone);		 
-			$html .='<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'. strtolower($zone->city).'" data-zone="">'.ucwords($final_str).', '.ucwords($zone->city).'</a>
+			$html .='<li><a data-city="'. strtolower($zone->city).'" data-zone="">'.ucwords($final_str).', '.ucwords($zone->city).'</a>
 			</li>';
 			 }else{
 			 
-			$html .='<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($zone->city).'">'.ucwords($zone->zone).', '.ucwords($zone->city).'></a></li>';
+			$html .='<li><a data-city="'.strtolower($zone->city).'">'.ucwords($zone->zone).', '.ucwords($zone->city).'></a></li>';
 			
 			}
 			}
@@ -739,16 +739,11 @@ public function saveTwoEnquiry(Request $request){
 			$strong_str="<strong>".$str."</strong>";
 			$final_str=str_replace($str, $strong_str, $area->area);
 		 
-			$html .='<li style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($area->city).'" data-area="" data-zone="">'.ucwords($final_str).', '. ucwords($area->city).'</a></li>';		 
+			$html .='<li><a data-city="'.strtolower($area->city).'" data-area="" data-zone="">'.ucwords($final_str).', '. ucwords($area->city).'</a></li>';		 
 			 }else{ 	 
-			$html .='<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($area->city).'">'.ucwords($area->area).', '.ucwords($area->city).'</a></li>';		
-		 	} 
-			 	
-			}
-			 
-			}
+			$html .='<li><a data-city="'.strtolower($area->city).'">'.ucwords($area->area).', '.ucwords($area->city).'</a></li>';		
+		 	} } }
 			$html .='</ul></div>';
-
 			echo $html;
 		} 	
 	}
@@ -765,9 +760,7 @@ public function saveTwoEnquiry(Request $request){
 			   ->where('parent_category_id',$request->input('parent_cat_id'))
 			   ->select('keyword')
 			   ->distinct()
-			   ->get();
-			   
-			   
+			   ->get();			   
 		return response()->json(['status'=>1,'message'=>$kwdsList]);
     }
 	

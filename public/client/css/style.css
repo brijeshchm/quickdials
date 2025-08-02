@@ -115,6 +115,29 @@ body { font: normal 14px/17px 'robotoregular'; font-family: "Poppins", sans-seri
     border-radius: 4px;
     height: 49px;
 }
+.resultCode{
+    background: #f7fbff;
+    padding: 10px;
+    border: 1px solid #DCDCDC;
+    margin-top: 0px;
+    position: absolute;
+    width: 228px;
+    z-index: 9;
+    margin-left: 0px;
+    top: 100%;
+    height: 205px;
+    overflow-y: scroll;
+}
+.resultCode ul li{
+    padding: 5px 5px;
+    text-align: left;
+    margin-left: 1px;
+    font-size: 14px;
+}
+.resultCode ul li a{
+    width: 100%;
+    cursor: pointer;
+}
 .freelisting {
     border-radius: 3px;
     color: #000 !important;
