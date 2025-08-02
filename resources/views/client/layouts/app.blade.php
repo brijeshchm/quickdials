@@ -24,8 +24,8 @@
 <meta name="author" content="Quick Dials" />
 <meta http-equiv="CACHE-CONTROL" content="PUBLIC" />
 <meta name="publisher" content="" />
-<meta name="identifier-URL" content="{{url('/')}}">
-<meta name="msvalidate.01" content="" />
+<meta name="identifier-URL" content="{{url('/')}}"> 
+<meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
 <!-- <meta name="p:domain_verify" content="6b026cb56a0cbb53c2811890ecdc5b07"/> -->
 <meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
 <meta name="url" content="{{url('/')}}" />
