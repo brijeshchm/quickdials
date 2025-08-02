@@ -68,7 +68,7 @@ class BusinessLogoController extends Controller
 			$client = Client::find($request->input('business_id'));
 			$id = $request->input('business_id');
 	    	$validator = Validator::make($request->all(), [
-				'image' => 'mimes:jpeg,jpg,png|max:448|dimensions:min_width=40,min_height=35,max_width=300,max_height=150',
+				'image' => 'mimes:jpeg,jpg,png|max:2048',
 				'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319'
 			],[
 				'profile_pic.dimensions' => 'Please upload Banner of given size -> [Minimum Height:319px] &amp; [Minimum Width:1137px].',

@@ -734,7 +734,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
    </div>
    
    
-   <div class="">
+   <!-- <div class="">
       <div class="clearfix"></div>
       <h2 class="title">Our Courses <span>Computer Courses & Training</a></span> </h2>
       <br>
@@ -744,11 +744,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                <div class="">
                   <div class="course-list">
                      <?php $i = 0; $x = 0; ?>
-                     <?php   
-                            $city = "delhi";               
-                        
-                        
-                        ?>
+                    
                      @if(!empty($subcategory))
                      @foreach($subcategory as $category)
                       <div class="crs-img-items">
@@ -773,9 +769,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
       </div>
       <div class="clearfix"></div>
-   </div>
+   </div> -->
    
-   <div class="">
+   <!-- <div class="">
       <div class="clearfix"></div>
       <h2 class="title">Our <span>Entrance Exams Coaching</a></span> </h2>
       <br>
@@ -810,7 +806,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
       </div>
       <div class="clearfix"></div>
-   </div>
+   </div> -->
    <div class="">
       <div class="clearfix"></div>
       <h2 class="title">Our <span>Study Abroad</a></span> </h2>
@@ -848,6 +844,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       </div>
       <div class="clearfix"></div>
    </div>
+   
    <div class="blog" >
       <div class="tab-content">
          <div class="review-list" >

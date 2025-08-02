@@ -168,6 +168,11 @@ Route::get('/business/get-paginated-assigned-keywords',[App\Http\Controllers\Bus
     Route::get('/sitemap-chandigarh',[App\Http\Controllers\SitemapsController::class, 'chandigarh']);
     Route::get('/sitemap-meerut',[App\Http\Controllers\SitemapsController::class, 'meerut']);
     Route::get('/sitemap-bangalore',[App\Http\Controllers\SitemapsController::class, 'bangalore']);
+    Route::get('/sitemap-ahmedabad',[App\Http\Controllers\SitemapsController::class, 'ahmedabad']);
+    Route::get('/sitemap-patna',[App\Http\Controllers\SitemapsController::class, 'patna']);
+    Route::get('/sitemap-jaipur',[App\Http\Controllers\SitemapsController::class, 'jaipur']);
+    Route::get('/sitemap-chennai',[App\Http\Controllers\SitemapsController::class, 'chennai']);
+    Route::get('/sitemap-kolkata',[App\Http\Controllers\SitemapsController::class, 'kolkata']);
 				
 
  

@@ -188,6 +188,57 @@ class SitemapsController extends Controller
         return response()->view('client.sitemap-bangalore', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
 	}
 	
+	public function ahmedabad(){
+      
+        $keywords = DB::table('keyword');
+        $keywords = $keywords->select('keyword','updated_at');
+        $keywords = $keywords->get();
+        return response()->view('client.sitemap-ahmedabad', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+	}
+	
+	public function patna(){
+      
+        $keywords = DB::table('keyword');
+        $keywords = $keywords->select('keyword','updated_at');
+        $keywords = $keywords->get();
+        return response()->view('client.sitemap-patna', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+	}
+	
+	public function hyderabad(){
+      
+        $keywords = DB::table('keyword');
+        $keywords = $keywords->select('keyword','updated_at');
+        $keywords = $keywords->get();
+        return response()->view('client.sitemap-hyderabad', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+	}
+	
+	
+	
+	public function jaipur(){
+      
+        $keywords = DB::table('keyword');
+        $keywords = $keywords->select('keyword','updated_at');
+        $keywords = $keywords->get();
+        return response()->view('client.sitemap-jaipur', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+	}
+	
+	
+	public function chennai(){
+      
+        $keywords = DB::table('keyword');
+        $keywords = $keywords->select('keyword','updated_at');
+        $keywords = $keywords->get();
+        return response()->view('client.sitemap-chennai', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+	}
+	
+	public function kolkata(){
+      
+        $keywords = DB::table('keyword');
+        $keywords = $keywords->select('keyword','updated_at');
+        $keywords = $keywords->get();
+        return response()->view('client.sitemap-kolkata', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+	}
+	
 	
 	public function storeSitemap(){
 		$sitemap = App::make("sitemap");
