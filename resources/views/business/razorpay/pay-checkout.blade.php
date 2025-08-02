@@ -249,7 +249,7 @@ document.getElementById("merchant_order_id").value = o;
 				<input type="hidden" name="furl" id="furl" value="http://localhost:8000/business/failed">  
 
 
-				<!--<input type="hidden" name="surl" id="surl" value="https://www.quickdials.in/business/success/"> 
+				<!--<input type="hidden" name="surl" id="surl" value="https://www.quickdials.com/business/success/"> 
 				<input type="hidden" name="furl" id="furl" value="https://www.quickdials.com/business/failed/">  -->
 
 				<input type="hidden" class="form-control" id="amount1" placeholder="amount" value="<?php if($data->amt){ echo $data->amt; } ?>" readonly="readonly">
