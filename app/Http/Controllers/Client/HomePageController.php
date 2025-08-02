@@ -662,53 +662,211 @@ public function saveTwoEnquiry(Request $request){
 			$countryies = Citieslists::whereIn('id',['278','596','961','428'])->get();
 				 
 			}else{
-				$countryies = DB::table('citylists')->orderBy('city','asc');
-				//$countryies = $countryies->join('zones','citylists.id','=','zones.city_id');
-			//	$countryies = $countryies->join('areas','zones.id','=','areas.zone_id');
-
+				$countryies = DB::table('citylists');
 				$countryies = $countryies->where(function($query) use($request){
-				$query->orWhere('city','LIKE','%'.$request->input('id').'%')			    	 
-				 	//	->orWhere('area','LIKE','%'.$request->input('id').'%')			    	 
-				 		//->orWhere('zone','LIKE','%'.$request->input('id').'%')			    	 
-						->orWhere('state','LIKE','%'.$request->input('id').'%');
+				$query->where('city','LIKE','%'.$request->input('id').'%');			 
 				});
 				$countryies =$countryies->get();
 			}
 		 
-			if(!empty($countryies)){ 
-			echo'<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;">	
-			
-			<ul>';
+			$html ='<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;"><ul>';
+			if(!empty($countryies)){
+		
 			foreach($countryies as $data){
 				
 			$pos=stripos($data->city, $request->input('id'));
 			if($pos>=0){
 			$str=substr($data->city, $pos, $len);
-			$strong_str=$str;
+			$strong_str="<strong>".$str."</strong>";
+			$final_str=str_replace($str, $strong_str, $data->city);
+		 
+			$html .='<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($data->city).'" >'.ucwords($final_str).'</a></li>';
+			}else{ 
+			 
+			$html .='<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($data->city).'">'. ucwords($data->city).'</a>
+			</li>';
+			
+				} 
+			 }
+	 	
+			}  
+		
+ 			$zones = DB::table('zones');
+			$zones = $zones->join('citylists','citylists.id','=','zones.city_id');
+			$zones = $zones->where(function($query) use($request){
+			$query->where('zone','LIKE','%'.$request->input('id').'%');				
+			});
+
+			$zones =$zones->get(); 
+			if(!empty($zones)){
+		 
+			foreach($zones as $zone){
+				
+			$pos=stripos($zone->zone, $request->input('id'));
+			if($pos>=0){
+			$str=substr($zone->zone, $pos, $len);
+			$strong_str="<strong>".$str."</strong>";
+			$final_str=str_replace($str, $strong_str, $zone->zone);		 
+			$html .='<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'. strtolower($zone->city).'" data-zone="">'.ucwords($final_str).', '.ucwords($zone->city).'</a>
+			</li>';
+			 }else{
+			 
+			$html .='<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($zone->city).'">'.ucwords($zone->zone).', '.ucwords($zone->city).'></a></li>';
+			
+			}
+			}
+			 
+			}
+
+
+			$areas = DB::table('citylists');
+			$areas = $areas->join('zones','citylists.id','=','zones.city_id');
+			$areas = $areas->join('areas','zones.id','=','areas.zone_id');
+	 
+			$areas = $areas->where(function($query) use($request){
+			$query->where('area','LIKE','%'.$request->input('id').'%');				
+			});
+
+			$areas =$areas->get();
+		 
+			if(!empty($areas)){
+		 
+			foreach($areas as $area){
+				
+			$pos=stripos($area->area, $request->input('id'));
+			if($pos>=0){
+			$str=substr($area->area, $pos, $len);
+			$strong_str="<strong>".$str."</strong>";
+			$final_str=str_replace($str, $strong_str, $area->area);
+		 
+			$html .='<li style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($area->city).'" data-area="" data-zone="">'.ucwords($final_str).', '. ucwords($area->city).'</a></li>';		 
+			 }else{ 	 
+			$html .='<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style="width:100%; cursor:pointer;" data-city="'.strtolower($area->city).'">'.ucwords($area->area).', '.ucwords($area->city).'</a></li>';		
+		 	} 
+			 	
+			}
+			 
+			}
+			$html .='</ul></div>';
+
+			echo $html;
+		} 	
+	}
+
+
+/**
+     * Get matches trainers based on ajax.
+     *
+     * @param  string
+     * @return JSON Object having matched course details
+     */
+    public function getCountryCode_good(Request $request)
+    {
+		if($request->ajax()){
+		 
+			$len=strlen($request->input('id'));
+			if(null==$request->input('id')){
+			$countryies = Citieslists::whereIn('id',['278','596','961','428'])->get();
+				 
+			}else{
+				$countryies = DB::table('citylists');
+				$countryies = $countryies->where(function($query) use($request){
+				$query->where('city','LIKE',''.$request->input('id').'%');			 
+				});
+				$countryies =$countryies->get();
+			}
+		 	$html = "";
+			if(!empty($countryies)){
+			$html .='<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;"><ul>';
+			foreach($countryies as $data){
+				
+			$pos=stripos($data->city, $request->input('id'));
+			if($pos>=0){
+			$str=substr($data->city, $pos, $len);
+			$strong_str="<strong>".strtoupper($str)."</strong>";
 			$final_str=str_replace($str, $strong_str, $data->city); ?>
 		 
+			$html .='<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>" data-area="" data-zone=""><?php echo ucwords($final_str); ?></a></li>';		 
+			<?php }else{ ?>
+			 
+			$html .=<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" ><a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>"><?php echo ucwords($data->city); ?></a>
+			</li>';
+			
+			<?php 	} ?>
+			<?php }
+		 $html .='</ul></div>';
+			}  
+
+
+			$zones = DB::table('zones');
+			$zones = $zones->join('citylists','citylists.id','=','zones.city_id');
+			$zones = $zones->where(function($query) use($request){
+			$query->where('zone','LIKE',''.$request->input('id').'%');				
+			});
+
+			$zones =$zones->get(); 
+			if(!empty($zones)){
+			$html .='<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;">				
+			<ul>';
+			foreach($zones as $zone){
+				
+			$pos=stripos($zone->zone, $request->input('id'));
+			if($pos>=0){
+			$str=substr($zone->zone, $pos, $len);
+			$strong_str="<strong>".strtoupper($str)."</strong>";
+			$final_str=str_replace($str, $strong_str, $zone->zone); ?>
+		 
 			<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" >
-			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>" data-area="" data-zone=""><?php echo ucwords($final_str); ?></a>
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($zone->city); ?>" data-area="" data-zone=""><?php echo ucwords($final_str); ?>, <?php echo ucwords($zone->city); ?> </a>
 			</li>		 
 			<?php }else{ ?>
 			 
 			<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" >
-			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($data->city); ?>"><?php echo ucwords($data->city); ?></a>
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($zone->city); ?>"><?php echo ucwords($zone->zone); ?>, <?php echo ucwords($zone->city); ?></a>
 			</li>
 			
 			<?php 	} ?>
 			<?php	
 			}
-			echo'</ul>
+			$html .='</ul>
 			</div>';
-			} else {
-			echo'<div class="resultCourse" style="list-style-type: none; background: #fff; padding: 10px 20px; border: 1px solid #DCDCDC; margin-top: 68px;position: absolute;width: 228px;z-index: 999999;margin-left: 0px;" ><ul><li><p style="color:red;text-align: left;font-size: 13px;" >Sorry Does not found city !</p></li></ul></div>';
-		
 			}
 
-			
-			
-			
+			$areas = DB::table('citylists');
+			$areas = $areas->join('zones','citylists.id','=','zones.city_id');
+			$areas = $areas->join('areas','zones.id','=','areas.zone_id');
+		//	$areas->select('areas.area as area','zones.zone as zone','citylists.city as city');
+			$areas = $areas->where(function($query) use($request){
+			$query->where('area','LIKE',''.$request->input('id').'%');				
+			});
+
+			$areas =$areas->get();
+		 
+			if(!empty($areas)){
+			$html .='<div class="resultCode" style="background: #f7fbff;padding: 10px;border: 1px solid #DCDCDC;margin-top: 0px;position: absolute;width: 228px;z-index: 9;margin-left: 0px;top: 100%;height: 205px;overflow-y: scroll;">				
+			<ul>';
+			foreach($areas as $area){
+				
+			$pos=stripos($area->area, $request->input('id'));
+			if($pos>=0){
+			$str=substr($area->area, $pos, $len);
+			$strong_str="<strong>".strtoupper($str)."</strong>";
+			$final_str=str_replace($str, $strong_str, $area->area); ?>
+		 
+			<li  style="padding: 5px 5px;text-align:left;margin-left: 1px;font-size: 14px;" >
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($area->city); ?>" data-area="" data-zone=""><?php echo ucwords($final_str); ?>, <?php  echo ucwords($area->city); ?></a>
+			</li>		 
+			<?php }else{ ?>			 
+			<li  style="padding: 5px 20px;text-align:left;margin-left: 1px;font-size: 14px;" >
+			<a style='width:100%; cursor:pointer;' data-city="<?php echo strtolower($area->city); ?>"><?php echo ucwords($area->area); ?>, <?php  echo ucwords($area->city); ?></a>
+			</li>			
+			<?php 	} ?>
+			<?php	
+			}
+			$html .='</ul>
+			</div>';
+			}
+			echo $html;			
 		} 	
 	}
 
