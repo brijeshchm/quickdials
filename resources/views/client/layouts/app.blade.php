@@ -202,7 +202,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		 	 <ul class="nav navbar-top-links navbar-right">
                 
 				
-				<li class="dropdown open">
+				<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="{{url('business/dashboard')}}" aria-expanded="true">  
                     <?php 
                

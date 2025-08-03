@@ -187,7 +187,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 								foreach($days as $day): ?>
 									<div class="form-group">
 										<div class="col-md-12" style="display: flex;">
-											<div class="col-md-2">
+											<div class="col-md-3">
 												<div class="row">
 													<label class="time[<?php echo $day; ?>][from]"><?php echo ucfirst($day); ?> :</label>
 												</div>

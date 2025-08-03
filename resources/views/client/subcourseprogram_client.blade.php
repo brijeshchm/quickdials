@@ -437,7 +437,7 @@ $value = Cookie::get('showPopup');
         <a href="javascript:void(0);" class="dealclosebtn">&nbsp;</a> 
  
 	   <h4>Need Expert Advice ?</h4>
-        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php echo $child_id->child_category." in "; ?>{{Request::segment(1)}}</span>"</div>
+        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php echo $child_id->child_category; ?> </span>"</div>
         <div class="bdc">
             <!--{{url('/client/lead/add-lead')}}-->
             <form class="form-inline" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">

@@ -703,8 +703,8 @@ echo trim($descrip); } ?>
 		 
         <a href="javascript:void(0);" class="dealclosebtn">&nbsp;</a> 
 
-	   <h4>Need Expert Advice ?</h4>
-        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php if($part_id->parent_category){ echo $part_id->parent_category; } ?>" in "; ?></span>"</div>
+	   <h4>Need Expert Advice </h4>
+        <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php if($part_id->parent_category){ echo $part_id->parent_category; } ?></span>"</div>
         <div class="bdc">
              
             <form class="form-inline" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
