@@ -1,13 +1,4 @@
-/**
-* Template Name: NiceAdmin
-* Updated: Jan 29 2024 with Bootstrap v5.3.2
-* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-/*(function() {
-  "use strict";
-*/
+
 $.ajaxSetup({	headers: {	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')	}	});
   /**
    * Easy selector helper function
@@ -179,7 +170,7 @@ $.ajaxSetup({	headers: {	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('cont
       theme: "snow"
     });
   }
-
+ 
   /**
    * Initiate TinyMCE Editor
    */
@@ -189,8 +180,7 @@ $.ajaxSetup({	headers: {	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('cont
    
    
     
-jQuery(document).on('click', '#razor-pay-now', function (e) {	 
-    
+jQuery(document).on('click', '#razor-pay-now', function (e) {   
  
     var total = (jQuery('form#razorpay-frm-payment').find('input#gst_total_amount').val() * 100);
     var merchant_order_id = jQuery('form#razorpay-frm-payment').find('input#merchant_order_id').val();
@@ -783,8 +773,8 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 			},
 
 			};
-})();		
-
+})();	
+ 
  var profileController = (function(){
 		return {
 			checked_Ids:[],	
@@ -848,7 +838,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 			},
 		 saveProfileLogo:function(THIS,id){			  
 			var $this = $(THIS);
-			var form = new FormData(THIS);			 
+			var form = new FormData(THIS);			 	 
 				$.ajax({
 					url:"/business/saveProfileLogo/"+id,
 					type:"POST",					   

@@ -204,7 +204,7 @@ display: block;
      <div class="bstep1">
          <img style="width: 47px;" class="banimgInt" src="{{asset('images/Suppliers.png')}}" alt="supplier">
          
-       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">81</span> lakh+</figcaption>
+       <figcaption class="banimghdr" style="display: block; font-size: 20px;"> <span class="count">8.1</span> K+</figcaption>
        <p class="banimgInt">Suppliers</p></div>
        
        <div class="bstep1"><img class="banimgInt" style="width: 37px;" src="{{asset('images/Products-services-grow.png')}}" alt="Products-services-grow"> 
@@ -1880,10 +1880,9 @@ textarea.form-control {
             <div class="feature-icon">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3 class="feature-title">Real-Time Tracking</h3>
+            <h3 class="feature-title">📍Google Maps Optimization</h3>
             <p class="feature-description">
-              Monitor employee activity with live session tracking, screenshot
-              capture, and popup code responses.
+              Improve your local visibility by optimizing Google Business Profile with keywords, reviews.
             </p>
           </div>
           <!-- Feature 2 -->
@@ -1891,10 +1890,9 @@ textarea.form-control {
             <div class="feature-icon">
               <i class="fas fa-tasks"></i>
             </div>
-            <h3 class="feature-title">Project Management</h3>
+            <h3 class="feature-title">🏷️Local Keyword Targeting</h3>
             <p class="feature-description">
-              Create, assign, and track projects with progress charts and budget
-              alerts.
+              Rank for city-specific or “near me” search terms to drive local traffic and qualified leads.
             </p>
           </div>
           <!-- Feature 3 -->
@@ -1905,10 +1903,9 @@ textarea.form-control {
             <div class="feature-icon">
               <i class="fas fa-credit-card"></i>
             </div>
-            <h3 class="feature-title">Flexible Billing</h3>
+            <h3 class="feature-title">📞 Call & Form Tracking</h3>
             <p class="feature-description">
-              Pay per minute or per storage, with customizable invoices and
-              secure payments.
+              Monitor how many calls and form submissions come from local searches and specific landing pages.
             </p>
           </div>
           <!-- Feature 4 -->
@@ -1916,10 +1913,9 @@ textarea.form-control {
             <div class="feature-icon">
               <i class="fas fa-bell"></i>
             </div>
-            <h3 class="feature-title">Smart Notifications</h3>
+            <h3 class="feature-title">🛠️ Lead Capture Landing Pages</h3>
             <p class="feature-description">
-              Get instant alerts for important events, milestones, and potential
-              issues.
+             Create location-specific landing pages designed to convert local visitors into leads
             </p>
           </div>
           <!-- Feature 5 -->
@@ -1927,10 +1923,9 @@ textarea.form-control {
             <div class="feature-icon">
               <i class="fas fa-file-alt"></i>
             </div>
-            <h3 class="feature-title">Detailed Reports</h3>
+            <h3 class="feature-title">⭐ Review & Reputation Management</h3>
             <p class="feature-description">
-              Generate comprehensive reports on productivity, time usage, and
-              project progress.
+              Encourage and manage customer reviews to boost credibility and local rankings.
             </p>
           </div>
           <!-- Feature 6 -->
@@ -1941,10 +1936,9 @@ textarea.form-control {
             <div class="feature-icon">
               <i class="fas fa-lock"></i>
             </div>
-            <h3 class="feature-title">Secure Access</h3>
+            <h3 class="feature-title">🧭 Citation Building & Local Listings</h3>
             <p class="feature-description">
-              Control who can view sensitive information with role-based
-              permissions.
+              Submit your business info to trusted local directories to improve consistency and authority.
             </p>
           </div>
           <!-- Feature 7 -->
@@ -2058,9 +2052,15 @@ textarea.form-control {
             
      <div class="col-md-6">           
      <h3> <a href="javascript:void(0)">How Quick Dials help You to Grow your Business?</a></h3>
-     <p>Education is the main root of developing your life into a stable place to help you grow and to achieve success in the future. Quick Dials a growing education consultancy provider understand the growth. A company builds to help in providing the basic need of every individual related to education.</p>
+     <p>Quick Dials helps grow your business by boosting local visibility, generating quality leads, and connecting you with customers searching for your services.</p>
 		<h3> <a href="javascript:void(0)">What is Quick Dials?</a></h3>
-		<p>Quick Dials is an extensive search engine for the students, parents, and professionals, those who are seeking an education platform for giving growth to their career and to build their future. We only deal with the education sector and helps students and professionals to grab the right opportunity at the right time, we have associated with a number of institutes, colleges and universities to help them provide the right candidate and to help them to grow their business.</p>
+		<p>Quick Dials is a comprehensive search platform designed for students, parents, and professionals seeking reliable information across India's diverse education landscape and industrial sectors. India offers a wide spectrum of opportunities, spanning education, manufacturing, services, and core industries.</p>
+        <ul>
+            <li>🎓 Education: From schools and coaching centers to higher education institutions.</li>
+            <li>🏭 Manufacturing: Including automotive, pharmaceuticals, textiles, and chemicals.</li>
+            <li>💼 Service Industries: Such as IT, finance, tourism, and healthcare.</li>
+            <li>⚙️ Core Sectors: Covering India’s Eight Core Industries — electricity, steel, refinery products, crude oil, coal, cement, natural gas, and fertilizers.</li>
+        </ul>
 
   <h3> <a href="javascript:void(0)"> Benefits you will get after associating with us:</a></h3>
                

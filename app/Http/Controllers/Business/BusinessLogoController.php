@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Client\Client; //model
 use Validator;
 use Illuminate\Support\Facades\Input;
-use Image;
+ 
 use DB;
 use Mail;
 use Excel;
@@ -32,6 +32,10 @@ use App\Models\Citieslists;
 use App\Models\AssignedZone;
 use App\Models\KeywordSellCount;
 use App\Models\Client\AssignedKWDS;
+use Image;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+
 class BusinessLogoController extends Controller
 {
 	protected $danger_msg = '';
@@ -61,15 +65,16 @@ class BusinessLogoController extends Controller
         return view('business.profileLogo',['client'=>$client]);
     }
     
+ 
+
     public function saveProfileLogo(Request $request,$id)
-    { 
-        
-         if($request->ajax()){
+    {          
+        if($request->ajax()){
 			$client = Client::find($request->input('business_id'));
 			$id = $request->input('business_id');
 	    	$validator = Validator::make($request->all(), [
-				'image' => 'mimes:jpeg,jpg,png|max:2048',
-				'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319'
+				'image' => 'mimes:jpeg,jpg,png,svg|max:2048',
+				'profile_pic' => 'mimes:jpeg,jpg,png,svg|max:2048'
 			],[
 				'profile_pic.dimensions' => 'Please upload Banner of given size -> [Minimum Height:319px] &amp; [Minimum Width:1137px].',
 				'image.dimensions' => 'Please upload profile logo of given size -> .[Maximum Height:150px] &amp; [Maximum Width:300px]'
@@ -80,7 +85,7 @@ class BusinessLogoController extends Controller
 				return response()->json(['status'=>1,'errors'=>$errorsBag],400);
 			}				
 	 
-	 
+	 try{
 			if ($request->hasFile('image')) {
 				$image = [];
 				$filePath = getFolderStructure();
@@ -93,9 +98,42 @@ class BusinessLogoController extends Controller
 				if(file_exists($destinationPath.'/'.$filename)){
 					$filename = $name."_".time().'.'.$ext;
 				}
-				$file->move($destinationPath,$filename);
-		 
+  						 
+				$imagePath = $file->getPathname();			 
+				$targetWidth = 250;   // set desired width
+				$targetHeight = 141;  // set desired height
+				$quality = 75;        // compression quality (0–100)
+
+				$ext = strtolower($file->getClientOriginalExtension());
+
+				// Load original image
+				if ($ext === 'jpeg' || $ext === 'jpg') {
+				$srcImage = imagecreatefromjpeg($imagePath);
+				} elseif ($ext === 'png') {
+				$srcImage = imagecreatefrompng($imagePath);
+				}else if($ext === 'svg'){
+				 $file->move($destinationPath,$filename);
+				} 
+				if($ext != 'svg'){
+					
+					list($width, $height) = getimagesize($imagePath);
 				 
+					$newImage = imagecreatetruecolor($targetWidth, $targetHeight);
+ 
+					imagecopyresampled(
+					$newImage, $srcImage,
+					0, 0, 0, 0,
+					$targetWidth, $targetHeight,
+					$width, $height
+					);
+
+					 
+					$outputPath = public_path($filePath."/".$filename);
+					imagejpeg($newImage, $outputPath, $quality);				 
+					imagedestroy($srcImage);
+					imagedestroy($newImage);
+				}
+	
 				$image['large'] = array(
 					'name'=>$filename,
 					'alt'=>$filename,
@@ -125,9 +163,51 @@ class BusinessLogoController extends Controller
 				if(file_exists($destinationPath.'/'.$filename)){
 					$filename = $name."_".time().'.'.$ext;
 				}
-				$file->move($destinationPath,$filename);
-		 
-				 
+
+				//$file->move($destinationPath,$filename);
+		 			 
+				$imagePath = $file->getPathname();			 
+				$targetWidth = 1200;   // set desired width
+				$targetHeight = 180;  // set desired height
+				$quality = 75;        // compression quality (0–100)
+
+				$ext = strtolower($file->getClientOriginalExtension());
+			 
+				// Load original image
+				if ($ext === 'jpeg' || $ext === 'jpg') {
+					$srcImage = imagecreatefromjpeg($imagePath);
+				} elseif ($ext === 'png') {
+					$srcImage = imagecreatefrompng($imagePath);
+				} else if($ext === 'svg'){
+ 				$file->move($destinationPath,$filename);
+				}
+				if($ext != 'svg'){
+ 				 
+				// Get original size
+				list($width, $height) = getimagesize($imagePath);
+
+				// Create new blank image
+				$newImage = imagecreatetruecolor($targetWidth, $targetHeight);
+
+				// Resize image
+				imagecopyresampled(
+				$newImage, $srcImage,
+				0, 0, 0, 0,
+				$targetWidth, $targetHeight,
+				$width, $height
+				);
+
+				// Save compressed image
+				 $outputPath = public_path($filePath."/".$filename);
+
+				imagejpeg($newImage, $outputPath, $quality);  // For PNG, use imagepng()
+
+				// Cleanup
+				imagedestroy($srcImage);
+				imagedestroy($newImage);			 
+
+			} 
+
 				$image['large'] = array(
 					'name'=>$filename,
 					'alt'=>$filename,
@@ -151,14 +231,17 @@ class BusinessLogoController extends Controller
 				$status=0;
 				$msg="Profile Logo could not be successfully, Please try again !";	
 				}
+
+			}catch(Exception $e){
+				$status = 0;
+				$msg =  $e->getMessage();
+			}
 		return response()->json(['status'=>$status,'msg'=>$msg],200); 		
 		
 		}
         
     }
     
- 
-	
 	public function logoDel($id)
     {
        	 
@@ -258,16 +341,56 @@ class BusinessLogoController extends Controller
 					if(file_exists($destinationPath.'/'.$filename)){
 						$filename = $name."_".time().'.'.$ext;
 					}
-					$file->move($destinationPath,$filename);
+					//$file->move($destinationPath,$filename);
 		
-				 
-						$image[$i]['large'] = array(
-							'name'=>$filename,
-							'alt'=>$filename,
-							'width'=>'',
-							'height'=>'',
-							'src'=>$filePath."/".$filename
-						);
+
+				$imagePath = $file->getPathname();			 
+				$targetWidth = 800;   // set desired width
+				$targetHeight = 600;  // set desired height
+				$quality = 75;        // compression quality (0–100)
+
+				$ext = strtolower($file->getClientOriginalExtension());
+			 
+				// Load original image
+				if ($ext === 'jpeg' || $ext === 'jpg') {
+					$srcImage = imagecreatefromjpeg($imagePath);
+				} elseif ($ext === 'png') {
+					$srcImage = imagecreatefrompng($imagePath);
+				}  
+				if($ext != 'svg'){
+ 				 
+				// Get original size
+				list($width, $height) = getimagesize($imagePath);
+
+				// Create new blank image
+				$newImage = imagecreatetruecolor($targetWidth, $targetHeight);
+
+				// Resize image
+				imagecopyresampled(
+				$newImage, $srcImage,
+				0, 0, 0, 0,
+				$targetWidth, $targetHeight,
+				$width, $height
+				);
+
+				// Save compressed image
+				 $outputPath = public_path($filePath."/".$filename);
+
+				imagejpeg($newImage, $outputPath, $quality);  // For PNG, use imagepng()
+
+				// Cleanup
+				imagedestroy($srcImage);
+				imagedestroy($newImage);			 
+
+			} 
+			 
+			$image[$i]['large'] = array(
+				'name'=>$filename,
+				'alt'=>$filename,
+				'width'=>'',
+				'height'=>'',
+				'src'=>$filePath."/".$filename
+			);
 						 
 					
 					 

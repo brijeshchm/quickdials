@@ -12,7 +12,6 @@
 <link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png"/>
 <meta http-equiv="content-language" content="en-IN">
 <meta name="classification" content="directory portal" />
-
 <meta name="distribution" content="local" />
 <meta content="All" name="WebCrawlers" />
 <meta content="All, FOLLOW" name="MSNBots" />
@@ -51,8 +50,6 @@
 <meta property="og:image:alt" content="Quick Dials" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:description" content="@yield('keyword')" />
-
-
 <meta name="rating" content="general">
 <meta name="robots" content="ALL">
 <meta name="googlebot" content=" index, follow ">
@@ -65,7 +62,7 @@
 <script src="<?php echo asset('vendor/spinner/spin.min.js') ?>" async></script>	
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-<link href="<?php echo asset('client/css/bootstrap.css'); ?>" rel="stylesheet"> 
+<link href="<?php echo asset('client/css/bootmain.css'); ?>" rel="stylesheet"> 
 <link href="<?php echo asset('vendor/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
 <link href="<?php echo asset('client/customfont/stylesheet.css'); ?>" rel="stylesheet">
 <link href="<?php echo asset('vendor/select2/css/select2.min.css'); ?>" rel="stylesheet">

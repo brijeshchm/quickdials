@@ -25,12 +25,12 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
               </ul>
               <div class="tab-content pt-2">
                 <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">                     
-                      <form class="profile-logo" ction="" method="post" enctype="multipart/form-data" onsubmit="return profileController.saveProfileLogo(this,<?php echo (isset($client->id)? $client->id:""); ?>)" >
+              <form class="profile-logo" action="" method="POST" enctype="multipart/form-data" onsubmit="return profileController.saveProfileLogo(this,<?php echo (isset($client->id)? $client->id:""); ?>)" >
                             {{csrf_field()}}
-                        <input type="hidden" name="business_id" value="{{$client->id}}">
-                      <div class="row mb-3{{ $errors->has('image') ? ' has-error' : '' }}">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Company Logo </label>
-                      <div class="col-md-8 col-lg-9">
+              <input type="hidden" name="business_id" value="{{$client->id}}">
+              <div class="row mb-3{{ $errors->has('image') ? ' has-error' : '' }}">
+              <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Company Logo </label>
+              <div class="col-md-8 col-lg-9">
                          
               <?php
               $image = '#';
@@ -44,7 +44,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 						 <img src="<?php echo asset('/'.$image); ?>" alt="Profile">
 						<a href="{{url('business/profileLogo/logoDel/'.$client->id)}}" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
 						<?php  }else{ ?>                        
-            <input type="file" class="form-control" name="image">
+            <input type="file" class="form-control" name="image" accept=".jpg,.jpeg,.png,.svg">
             @if ($errors->has('image'))
 						<span class="help-block">
 							<strong><?php
@@ -67,7 +67,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                         <img src="<?php echo asset('/'.$profile_pic['large']['src']); ?>" alt="Profile">
                         <a href="{{url('business/profileLogo/profilePicDel/'.$client->id)}}" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
                         <?php  }else{ ?>
-                        <input type="file" class="form-control" id="profile_pic" name="profile_pic">
+                        <input type="file" class="form-control" id="profile_pic" name="profile_pic" accept=".jpg,.jpeg,.png,.svg">
                         	@if ($errors->has('profile_pic'))
                       <span class="help-block">
                         <strong><?php

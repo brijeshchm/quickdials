@@ -48,7 +48,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                       ?>
                       <div class="col-md-4 col-lg-4" id="image{{$i+1}}">
                         	@if(empty($picture[$i]['large']['name']))
-                      <input type="file" class="form-control" name="image{{$i+1}}" accept=".png, .jpg, .jpeg">
+                      <input type="file" class="form-control" name="image{{$i+1}}" accept=".png, .jpg,.jpeg">
                       @endif
                       <span class="help-block">
                         @if(isset($picture[$i]['large']['src'])&&!empty($picture[$i]['large']['src']))
