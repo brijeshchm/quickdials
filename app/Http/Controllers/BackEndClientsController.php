@@ -793,39 +793,32 @@ class BackEndClientsController extends Controller
 					$status = false;
 					$msg = 'Unauthorised Permission';
 					$code = 400;
-				} 
+				}
 			 			
 		 
 			 
-					$client = Client::withTrashed()->where('id',$id)->first();					 
-					// $validator = Validator::make($request->all(),[					
-					// 	'year_of_estb' => 'required',
-					// 	'image' => 'mimes:jpeg,jpg,png|max:2048',
-					// 	'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319'							
-				 
-					// ]);
+				$client = Client::withTrashed()->where('id',$id)->first();					 
+			 
 
-
-					$validator = Validator::make($request->all(), [
-					'image' => 'mimes:jpeg,jpg,png|max:448|dimensions:min_width=20,min_height=25,max_width=800,max_height=550',
-					'profile_pic' => 'mimes:jpeg,jpg,png|max:2048|dimensions:min_width=1137,min_height=319',
+			$validator = Validator::make($request->all(), [
+					'image' => 'mimes:jpeg,jpg,png,svg|max:2048',
+					'profile_pic' => 'mimes:jpeg,jpg,png,svg|max:2048',
 					'year_of_estb' => 'required',
 					],[
 					'profile_pic.dimensions' => 'Please upload Banner of given size -> [Minimum Height:319px] &amp; [Minimum Width:1137px].',
 					'image.dimensions' => 'Please upload profile logo of given size -> .[Maximum Height:150px] &amp; [Maximum Width:300px]'
 					]);
 				if ($validator->fails()) {
-						$errorsBag = $validator->getMessageBag()->toArray();
-						return response()->json(['status'=>1,'errors'=>$errorsBag],400);
+					$errorsBag = $validator->getMessageBag()->toArray();
+					$status=true;
+					return response()->json(['status'=>1,'errors'=>$errorsBag],400);
 				}
-									
+					 		
 					 
 				 
-				$client->business_intro = $request->input('business_intro');				 
+				$client->business_intro = $request->input('business_intro');
 				$client->year_of_estb = $request->input('year_of_estb');
 				$client->certifications = $request->input('certifications');
-				
-			 
 				// LOGO Pictures
 				// *************
 				if ($request->hasFile('image')) {
@@ -840,9 +833,51 @@ class BackEndClientsController extends Controller
 					if(file_exists($destinationPath.'/'.$filename)){
 						$filename = $name."_".time().'.'.$ext;
 					}
-					$file->move($destinationPath,$filename);
+					//$file->move($destinationPath,$filename);
 				 
 				 
+				$imagePath = $file->getPathname();
+				$targetWidth = 800;   // set desired width
+				$targetHeight = 600;  // set desired height
+				$quality = 75;        // compression quality (0–100)
+
+				$ext = strtolower($file->getClientOriginalExtension());
+			 
+				// Load original image
+				if ($ext === 'jpeg' || $ext === 'jpg') {
+					$srcImage = imagecreatefromjpeg($imagePath);
+				} elseif ($ext === 'png') {
+					$srcImage = imagecreatefrompng($imagePath);
+				} elseif($ext === 'svg'){
+ 					$file->move($destinationPath,$filename);
+				}
+
+				if($ext === 'jpeg' || $ext === 'jpg' || $ext === 'png'){
+ 				 
+				// Get original size
+				list($width, $height) = getimagesize($imagePath);
+
+				// Create new blank image
+				$newImage = imagecreatetruecolor($targetWidth, $targetHeight);
+
+				// Resize image
+				imagecopyresampled(
+				$newImage, $srcImage,
+				0, 0, 0, 0,
+				$targetWidth, $targetHeight,
+				$width, $height
+				);
+
+				// Save compressed image
+				 $outputPath = public_path($filePath."/".$filename);
+
+				imagejpeg($newImage, $outputPath, $quality);  // For PNG, use imagepng()
+
+				// Cleanup
+				imagedestroy($srcImage);
+				imagedestroy($newImage);			 
+
+			}
 					$image['large'] = array(
 						'name'=>$filename,
 						'alt'=>$filename,
@@ -872,8 +907,48 @@ class BackEndClientsController extends Controller
 					if(file_exists($destinationPath.'/'.$filename)){
 						$filename = $name."_".time().'.'.$ext;
 					}
-					$file->move($destinationPath,$filename);
-					 
+
+					//$file->move($destinationPath,$filename);					 
+					$imagePath = $file->getPathname();
+					$targetWidth = 1200;   // set desired width
+					$targetHeight = 180;  // set desired height
+					$quality = 75;        // compression quality (0–100)
+
+					$ext = strtolower($file->getClientOriginalExtension());
+				
+					// Load original image
+					if ($ext === 'jpeg' || $ext === 'jpg') {
+						$srcImage = imagecreatefromjpeg($imagePath);
+					} elseif ($ext === 'png') {
+						$srcImage = imagecreatefrompng($imagePath);
+					} elseif($ext === 'svg'){
+						$file->move($destinationPath,$filename);
+					}
+					if($ext === 'jpeg' || $ext === 'jpg' || $ext === 'png'){
+					
+						// Get original size
+						list($width, $height) = getimagesize($imagePath);
+
+						// Create new blank image
+						$newImage = imagecreatetruecolor($targetWidth, $targetHeight);
+
+						// Resize image
+						imagecopyresampled(
+						$newImage, $srcImage,
+						0, 0, 0, 0,
+						$targetWidth, $targetHeight,
+						$width, $height
+						);
+
+						// Save compressed image
+						$outputPath = public_path($filePath."/".$filename);
+
+						imagejpeg($newImage, $outputPath, $quality);  // For PNG, use imagepng()
+
+						// Cleanup
+						imagedestroy($srcImage);
+						imagedestroy($newImage);
+					}
 					$image['large'] = array(
 						'name'=>$filename,
 						'alt'=>$filename,
@@ -893,7 +968,7 @@ class BackEndClientsController extends Controller
 					}else{
 						$status= false;
 						$msg = 'Contact Information Not Updated';
-						$code = 400;	
+						$code = 400;
 					}
 				}
 			
@@ -903,10 +978,12 @@ class BackEndClientsController extends Controller
 				$msg = $e->getMessage();
 				$code = 400;
 			}
-			return response()->json(['status'=>$status,'msg'=>$msg],$code); 	
-		} 	
-        
+			return response()->json(['status'=>$status,'msg'=>$msg],$code);
+		}
+    
     }
+
+
 
     /**
      * Update the specified resource in storage.
@@ -917,7 +994,7 @@ class BackEndClientsController extends Controller
      */
     public function uploadClientGalleryPics(Request $request, $id)
     {
-		
+	 
 		if($request->ajax()){ 
 			try{
 					if(!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('client_update') )){
@@ -927,8 +1004,8 @@ class BackEndClientsController extends Controller
 					} 
 		 
 				if($request->has('upload_pics')){
-					$client = Client::withTrashed()->where('username',$id)->first();				 		
-				
+					$client = Client::withTrashed()->where('id',$id)->first();				 		
+					 
 			 
 				$image = [];
 				if(!empty($client->pictures)){
@@ -938,7 +1015,7 @@ class BackEndClientsController extends Controller
 				$filePath = getFolderStructure();
 	 
 				for($i=0;$i<12;$i++){
-					if ($request->hasFile('image'.($i+1))) {	
+					if ($request->hasFile('image'.($i+1))) {
 					 
 						$file =  $request->file('image'.($i+1));
 					 
@@ -950,9 +1027,49 @@ class BackEndClientsController extends Controller
 							if(file_exists($destinationPath.'/'.$filename)){
 								$filename = $name."_".time().'.'.$ext;
 							}
-							$file->move($destinationPath,$filename);
+						//	$file->move($destinationPath,$filename);
 						 
-							 
+							$imagePath = $file->getPathname();
+							$targetWidth = 800;   // set desired width
+							$targetHeight = 600;  // set desired height
+							$quality = 75;        // compression quality (0–100)
+
+							$ext = strtolower($file->getClientOriginalExtension());
+
+							// Load original image
+							if ($ext === 'jpeg' || $ext === 'jpg') {
+							$srcImage = imagecreatefromjpeg($imagePath);
+							} elseif ($ext === 'png') {
+							$srcImage = imagecreatefrompng($imagePath);
+							} elseif($ext === 'svg'){
+							$file->move($destinationPath,$filename);
+							} 
+							if($ext === 'jpeg' || $ext === 'jpg' || $ext === 'png'){
+
+							// Get original size
+							list($width, $height) = getimagesize($imagePath);
+
+							// Create new blank image
+							$newImage = imagecreatetruecolor($targetWidth, $targetHeight);
+
+							// Resize image
+							imagecopyresampled(
+							$newImage, $srcImage,
+							0, 0, 0, 0,
+							$targetWidth, $targetHeight,
+							$width, $height
+							);
+
+							// Save compressed image
+							$outputPath = public_path($filePath."/".$filename);
+
+							imagejpeg($newImage, $outputPath, $quality);  // For PNG, use imagepng()
+
+							// Cleanup
+							imagedestroy($srcImage);
+							imagedestroy($newImage);			 
+
+							} 
 							$image[$i]['large'] = array(
 								'name'=>$filename,
 								'alt'=>$filename,
@@ -975,13 +1092,12 @@ class BackEndClientsController extends Controller
 						}
 					}
 				}
+
+					
 				if(!empty($image)){
 					$client->pictures = serialize($image);
-				}else{
-					$client->pictures = '';
-				}
-				 
-				 					 
+				} 
+		 	 
 					if($client->save()){
 						$status= true;
 						$msg = 'Gallery Image Updated Successfully';

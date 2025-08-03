@@ -2922,7 +2922,7 @@ var occupationController = (function(){
 					}						
 					},
 					error:function(response){
-					    ;			
+					 	
 						 alert('some error');
 					}
 				});
@@ -2959,7 +2959,7 @@ var occupationController = (function(){
 				
 				}else{
 					if(confirm("Are you sure you want to change the status to Inactive?")){		
-				 // 
+			 
 				$.ajax({
 					url:"/developer/occupation/status/"+id+"/"+val,
 					type:"GET",					
@@ -3008,7 +3008,7 @@ var CategoryController = (function(){
 					contentType: false, 
                     processData: false,             
 					success:function(data){	
-					   // ;			
+					 	
 						if(data.status){	
 						 
 						$('#messagemodel .modal-title').text("doctor");	
@@ -3026,7 +3026,7 @@ var CategoryController = (function(){
 						}
 					},
 					error:function(jqXHR, textStatus, errorThrown){
-					   // ;			
+					 
 						var response = JSON.parse(jqXHR.responseText);
 						if(response.status){ 
 						
@@ -3065,7 +3065,7 @@ var CategoryController = (function(){
 					contentType: false, 
                     processData: false,                      
 					success:function(data){
-					    ;			
+					   		
 						if(data.status){	
 					 					
 						$('#messagemodel .modal-title').text("FAQs");	
@@ -3107,7 +3107,7 @@ var CategoryController = (function(){
 					type:"GET",
 				 
 					success:function(response){	
-					 ;			
+				 	
 					if(response.status){
 						$('#messagemodel .modal-title').text("doctor Delete");	
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
@@ -3136,7 +3136,7 @@ var CategoryController = (function(){
 					url:"/developer/category/status/"+id+"/"+val,
 					type:"GET",					
 					success:function(response){	
-					 ;			
+				 	
 					if(response.status){
 						$('#messagemodel .modal-title').text("status successfully update");	
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
@@ -3151,7 +3151,7 @@ var CategoryController = (function(){
 					}						
 					},
 					error:function(response){
-					    ;			
+					   		
 						 alert('some error');
 					}
 				});
@@ -3349,14 +3349,16 @@ var ClientController = (function(){
 					contentType: false, 
                     processData: false,                      
 					success:function(data){
-					 console.log(data);
+					
 						if(data.status){						 					
 						$('#messagemodel .modal-title').text("update");	
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 							removeValidationErrors($this);
-							 
+						setInterval(function() {
+						$("#messagemodel").modal("hide");
+						}, 1000);
 						}else{
 							$('#messagemodel .modal-title').text("Course Content");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
@@ -3393,13 +3395,16 @@ var ClientController = (function(){
 					type:"GET",
 				 
 					success:function(response){	
-					 ;			
+					 	
 					if(response.status){
 						$('#messagemodel .modal-title').text("doctor Delete");	
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
-						dataTableAllCategory.ajax.reload( null, false );   
+						dataTableAllCategory.ajax.reload( null, false );  
+						setInterval(function() {
+						$("#messagemodel").modal("hide");
+						}, 1000); 
 					}else{
 							$('#messagemodel .modal-title').text("doctor Delete");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
@@ -3420,7 +3425,7 @@ var ClientController = (function(){
 			status:function(id,val){		 
 			 if(val==true){
 				if(confirm("Are you sure you want to change the status to Active?")){		
-				 // 
+			 
 				$.ajax({
 					url:"/developer/category/status/"+id+"/"+val,
 					type:"GET",					
@@ -3432,6 +3437,9 @@ var ClientController = (function(){
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 						dataTableAllCategory.ajax.reload( null, false );   
+						setInterval(function() {
+						$("#messagemodel").modal("hide");
+						}, 1000);
 					}else{
 							$('#messagemodel .modal-title').text("Status successfully update");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
@@ -3448,18 +3456,21 @@ var ClientController = (function(){
 				
 				}else{
 					if(confirm("Are you sure you want to change the status to Inactive?")){		
-				 // 
+				 
 				$.ajax({
 					url:"/developer/category/status/"+id+"/"+val,
 					type:"GET",					
 					success:function(response){	
-					 ;			
+				 
 					if(response.status){
 						$('#messagemodel .modal-title').text("status successfully update");	
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 						dataTableAllCategory.ajax.reload( null, false );   
+						setInterval(function() {
+						$("#messagemodel").modal("hide");
+						}, 1000);
 					}else{
 							$('#messagemodel .modal-title').text("Status successfully update");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		

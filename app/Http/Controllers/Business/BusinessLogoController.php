@@ -114,7 +114,7 @@ class BusinessLogoController extends Controller
 				}else if($ext === 'svg'){
 				 $file->move($destinationPath,$filename);
 				} 
-				if($ext != 'svg'){
+				if($ext === 'jpeg' || $ext === 'jpg' || $ext === 'png'){
 					
 					list($width, $height) = getimagesize($imagePath);
 				 
@@ -179,9 +179,9 @@ class BusinessLogoController extends Controller
 				} elseif ($ext === 'png') {
 					$srcImage = imagecreatefrompng($imagePath);
 				} else if($ext === 'svg'){
- 				$file->move($destinationPath,$filename);
+ 					$file->move($destinationPath,$filename);
 				}
-				if($ext != 'svg'){
+				if($ext === 'jpeg' || $ext === 'jpg' || $ext === 'png'){
  				 
 				// Get original size
 				list($width, $height) = getimagesize($imagePath);
@@ -356,8 +356,10 @@ class BusinessLogoController extends Controller
 					$srcImage = imagecreatefromjpeg($imagePath);
 				} elseif ($ext === 'png') {
 					$srcImage = imagecreatefrompng($imagePath);
-				}  
-				if($ext != 'svg'){
+				} elseif($ext === 'svg'){
+ 					$file->move($destinationPath,$filename);
+				} 
+				if($ext === 'jpeg' || $ext === 'jpg' || $ext === 'png'){
  				 
 				// Get original size
 				list($width, $height) = getimagesize($imagePath);
