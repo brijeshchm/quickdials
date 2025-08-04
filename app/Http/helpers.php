@@ -615,7 +615,7 @@ function leadassignWithoutZoneCounsellor($leads)
 								foreach($clientss as $clientC){								
 								
 									if($clientC->client_type){
-										$clnt = App\Models\client\Client::find($clientC->client_id);
+										$clnt = App\Models\Client\Client::find($clientC->client_id);
 								 
 										if($clnt){
 											$dontSave = 0;
