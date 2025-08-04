@@ -124,10 +124,10 @@ class AuthController extends Controller
 		 
 		if(!empty(trim($request->input('email'))) && trim($request->input('password'))){
  
-		if($request->has('email')&& $request->has('password')){	
+		if($request->has('email')&& $request->has('password')){
  
 			$user = User::where('email',$request->input('email'))->select('email','password','user_name','role','id','remember_token')->first();
-				  $remember=1;			  
+				  $remember=1;
 			if ($user) {
 				if (Hash::check(trim($request->input('password')), $user->password)) {
 				 

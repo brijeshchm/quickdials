@@ -84,21 +84,26 @@ class BusinessOwnerController extends Controller
 							->withErrors($validator)
 							->withInput();
 			}else{
-				// GENERATING SLUG
-				// ***************
+				
+			 
 				$business_slug = NULL;
-				$business_slug = trim(generate_slug(trim($request->input('business_name'))));
+				$string = $request->input('business_name');
+				$string = filter_var($string, FILTER_SANITIZE_STRING);
+				$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+				$businessName = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+				$business_slug = trim(generate_slug(trim($businessName)));
+				 
 				if(is_null($business_slug)){
 					return redirect("/business-owners")
 								->withErrors($validator)
-								->withInput();					
+								->withInput();
 				}
 				$slugExists = DB::table('clients')
 					->select(DB::raw('business_slug'))
 					->where('business_slug', 'like', '%'.$business_slug.'%')
 					->orderBy('id','desc')
 					->get();
-				if(count($slugExists)>0){
+				if(!empty($slugExists) && $slugExists>count()>0){
 					$business_slug = $slugExists[0]->business_slug;
 					$business_slug = explode("-",$business_slug);
 					$end = end($business_slug);
@@ -112,10 +117,9 @@ class BusinessOwnerController extends Controller
 					$business_slug = implode("-",$business_slug);
 				}
 			}
-			
-			$client->business_name = trim($request->input('business_name'));
-			$client->business_slug = $business_slug;
-		 
+						
+			$client->business_name = $businessName;		 
+			$client->business_slug = $business_slug;		 
 			$pass = rand(000001,999999);
 			$client->password = bcrypt($pass);
 		//	$client->first_name = $request->input('first_name');

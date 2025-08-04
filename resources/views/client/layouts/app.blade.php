@@ -19,7 +19,7 @@
 <meta content="All, FOLLOW" name="BINGBots" />
 <meta content="All, FOLLOW" name="YAHOOBots" />
 <meta content="All, FOLLOW" name="GoogleBots" />
-<meta name="copyright" content="quickdials">
+<meta name="copyright" content="Quick Dials">
 <meta name="author" content="Quick Dials" />
 <meta http-equiv="CACHE-CONTROL" content="PUBLIC" />
 <meta name="publisher" content="" />

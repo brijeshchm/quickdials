@@ -170,7 +170,12 @@ class BackEndClientsController extends Controller
 				// GENERATING SLUG
 				// ***************
 				$business_slug = NULL;
-				$business_slug = trim(generate_slug($request->input('business_name')));
+				$string = $request->input('business_name');
+				$string = filter_var($string, FILTER_SANITIZE_STRING);
+				$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+				$string = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+				$business_slug = trim(generate_slug(trim($string)));
+
 				if(is_null($business_slug)){
 					return redirect("/developer/clients/register")
 								->withErrors($validator)
@@ -196,7 +201,10 @@ class BackEndClientsController extends Controller
 				}
 			}
 			
-			$client->business_name = trim($request->input('business_name'));
+			$string = filter_var($request->input('business_name'), FILTER_SANITIZE_STRING);
+			$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+			$businessName = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+			$client->business_name =$businessName;
 			$client->business_slug = $business_slug;
 	 
 			$pass = rand(000001,999999);
@@ -602,8 +610,13 @@ class BackEndClientsController extends Controller
 			 
 					$client = Client::withTrashed()->where('id',$id)->first();
 
-					if ($request->user()->current_user_can('administrator')) {	 
-						$client->business_name = trim($request->input('business_name'));
+					if ($request->user()->current_user_can('administrator')) {
+
+						$string = filter_var($request->input('business_name'), FILTER_SANITIZE_STRING);
+						$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+						$businessName = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+						$client->business_name =$businessName;	
+					 
 						$business_slug = trim(generate_slug($request->input('business_name')));
 					
 						$slugExists = DB::table('clients')
