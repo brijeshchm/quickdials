@@ -84,7 +84,7 @@ class BusinessOwnerController extends Controller
 							->withErrors($validator)
 							->withInput();
 			}else{
-				
+
 			 
 				$business_slug = NULL;
 				$string = $request->input('business_name');
@@ -103,7 +103,7 @@ class BusinessOwnerController extends Controller
 					->where('business_slug', 'like', '%'.$business_slug.'%')
 					->orderBy('id','desc')
 					->get();
-				if(!empty($slugExists) && $slugExists>count()>0){
+				if(!empty($slugExists) && $slugExists->count()>0){
 					$business_slug = $slugExists[0]->business_slug;
 					$business_slug = explode("-",$business_slug);
 					$end = end($business_slug);
