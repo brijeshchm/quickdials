@@ -325,7 +325,7 @@ Route::get('/password/reset/{token?}',[App\Http\Controllers\Auth\PasswordControl
 	Route::post('/clients/editSaveClientLocation/{id}',[App\Http\Controllers\BackEndClientsController::class, 'editSaveClientLocation'])->middleware('auth:developer');
 	Route::post('/clients/ediSaveContactInfo/{id}',[App\Http\Controllers\BackEndClientsController::class, 'ediSaveContactInfo'])->middleware('auth:developer');
 	Route::post('/clients/clientConversionStatus/{id}',[App\Http\Controllers\BackEndClientsController::class, 'clientConversionStatus'])->middleware('auth:developer');
-	 
+	  
 	Route::post('/clients/editSaveUploadPics/{id}',[App\Http\Controllers\BackEndClientsController::class, 'editSaveUploadPics'])->middleware('auth:developer');
 	 
 	Route::post('/clients/assignClientToEmployee/{id}',[App\Http\Controllers\BackEndClientsController::class, 'assignClientToEmployee'])->middleware('auth:developer');

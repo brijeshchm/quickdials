@@ -6029,6 +6029,7 @@ $(document).ready(function(){
 		keyword.submitCountBasedSubsForm($(this));
 		//alert(keyword.getProperties());
 	});
+
 	$(document).on('change','.client_type',function(e){
 		e.preventDefault();
 		var $value = $(this).val();
@@ -6109,15 +6110,16 @@ $(document).ready(function(){
 			$('#ass_kw_wrapper').show();
 		} */
 	});
-	
+
+	 
 	
 	$(document).on('change','.assign_client',function(e){
 		e.preventDefault();
 		var $value = $(this).val();
-		initDatePicker();
+	 
 		$.ajax({
-			type: "POST",
-			url: $('#submitAssignClient').attr('action'),
+			type: "POST",		 
+			url:"/developer/clients/assignClientToEmployee/"+$value,
 			data: $('#submitAssignClient').serialize(),
 			dataType: 'json',
 			success: function(response) {

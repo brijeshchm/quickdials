@@ -546,8 +546,6 @@
 				</div>
 			</form>
 
-
-
 			<div>
 				<form id="submitPaidStatus" class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
 					{{csrf_field()}}
@@ -580,7 +578,52 @@
 						</div>
 					</form>
 				</div>
-							 
+							
+				<div>
+
+					<?php
+					$userList = getUserList();				 
+					?>
+					<form id="submitAssignClient" class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
+						{{csrf_field()}}
+					<input type="hidden" name="client_id" id="clientIDASSKW" value="{{$client->username}}">
+						
+						<div class="form-group">
+							<div class="col-md-6">
+								<label>Assign Client:</label>
+									@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('client_package_name'))
+								<select class="select2-single form-control assign_client" name="created_by">
+									<?php
+										foreach($userList as $user){
+											$selected = "";
+											if($user->id == $client->created_by):
+												$selected = "selected";
+											endif;
+											?>
+											<option value="{{ $user->id }}" <?php echo $selected; ?>>{{ $user->first_name.' '.$user->last_name; }}</option>
+											<?php
+										}
+									?>
+								</select>
+								@else
+									<?php
+										foreach($userList as $user){
+											if($user->id == $client->created_by):
+												echo "<p>".$user->first_name.' '.$user->last_name."</p>";
+											endif;
+										}
+									?>
+								@endif
+							</div>
+							<div class="col-md-1">
+								 
+								<input type="hidden" name="submit_client_assign" value="1" />
+								 
+							</div>
+						</div>
+					</form>
+				</div>
+						
 				<div>
 
 					<?php

@@ -1156,15 +1156,15 @@ class BackEndClientsController extends Controller
      */
     public function assignClientToEmployee(Request $request, $id)
     {
-		
+		 
 		if(!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('client_update') )){
 				return view('errors.unauthorised');
 			} 
   
-			if($request->has('submit_assign_client')){
+			if($request->has('submit_client_assign')){
 			 
-				$client = Client::withTrashed()->where('username',$id)->first();
-				$client->created_by = $request->input('assign_client');
+				$client = Client::withTrashed()->where('username',$request->input('client_id'))->first();
+				$client->created_by = $request->input('created_by');
 				if($client->save()){
 					return response()->json(['status'=>1,'message'=>'Created by client updated successfully !!']);
 				}else{
