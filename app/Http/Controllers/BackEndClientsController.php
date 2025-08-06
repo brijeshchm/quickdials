@@ -35,6 +35,7 @@ use App\Models\ChildCategory; //Model
 use App\Models\PaymentHistory; //Model
 use App\Models\Modesdetails; //Model
 use App\Models\Banksdetails; //Model
+use App\Models\State; 
 use App\Models\Zone; //Model
 use Exception;
 
@@ -573,9 +574,9 @@ class BackEndClientsController extends Controller
 		 
 			 $moderesults =Modesdetails::get();
 			 $banksdetails = Banksdetails::all();
-			 
-			 
-			return view('admin.client_update',['client'=>$client,'kwds'=>$kwds,'request'=>$request,'distinctCities'=>$distinctCities,'clientCategories'=>$clientCategories,'assignedClientCategories'=>$assignedClientCategories,'citylist'=>$citylist,'parentCategory'=>$parentCategory,'moderesults'=>$moderesults]);
+			 $statesis = Citieslists::groupby('state')->get();
+			//echo "<pre>";print_r($states);die;
+			return view('admin.client_update',['client'=>$client,'kwds'=>$kwds,'request'=>$request,'distinctCities'=>$distinctCities,'clientCategories'=>$clientCategories,'assignedClientCategories'=>$assignedClientCategories,'citylist'=>$citylist,'parentCategory'=>$parentCategory,'moderesults'=>$moderesults,'statesis'=>$statesis]);
 		}
          
     }
@@ -590,15 +591,15 @@ class BackEndClientsController extends Controller
      */
     public function editSaveClientLocation(Request $request, $id)
     {
-		//echo"<pre>";print_r($_POST);die;
+	//	echo"<pre>";print_r($_POST);die;
 		if($request->ajax()){ 
 		try{
  	
 				$validator = Validator::make($request->all(),[					
 					'business_name' => 'required',
-					'city' => 'required',
-					'state' => 'required',
-					'country' => 'required|regex:/[a-zA-z ]+$/',				 	
+					'cityid' => 'required',
+					'state_id' => 'required',
+					'country' => 'required',
 				
 				]);
 				
@@ -642,13 +643,13 @@ class BackEndClientsController extends Controller
 					}
 					$client->address = $request->input('address');
 					$client->landmark = $request->input('landmark');
-					$citydetails = Citieslists::where('city',$request->input('city'))->first();
+					$citydetails = Citieslists::where('city',$request->input('cityid'))->first();
 					if($citydetails){
 						$client->city_id = $citydetails->id;
 					}
-					$client->city = $request->input('city');
+					$client->city = $request->input('cityid');
 
-					$client->state = $request->input('state');
+					$client->state = $request->input('state_id');
 					$client->country = $request->input('country');
 				 
 					if($client->save()){						
@@ -3334,8 +3335,9 @@ class BackEndClientsController extends Controller
 	 *
 	 */
 	public function addZoneToClient(Request $request, $id){
-		
-		if($request->ajax()){ 
+	 
+	if($request->ajax()){
+
 		try{
 			if(!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('client_update') )){
 				 $status = false;
@@ -3344,70 +3346,124 @@ class BackEndClientsController extends Controller
 			} 
 		$client_username = $id;
 		$client = Client::where('id',$id)->first();
-		 
-
 		$validator = Validator::make($request->all(),[					
-			'zone_id'=>'required|unique:assigned_zones,zone_id,NULL,id,client_id,'.$client->id,		 
-			'city_id'=>'required',			 	
-
+			'zone_id'=>'unique:assigned_zones,zone_id,NULL,id,client_id,'.$client->id,		 
+			'state_id'=>'required',			 	
+			'country'=>'required',			 	
+			'cityid'=>'required',
 		]);
-
 
 		if ($validator->fails()) {
 				$errorsBag = $validator->getMessageBag()->toArray();
 				return response()->json(['status'=>1,'errors'=>$errorsBag],400);
-		} 
+		}
+	
+		if(!$request->input('zone_id') && !empty($request->input('cityid'))){
 
- 
- 
-		
-		
-		$assignedZone = new AssignedZone;
-		
-		$city = Citieslists::where('city',$request->input('city_id'))->first();
-		 
-		$assignedZone->city_id = $city->id;
-		if($request->input('zone_id') == "Other"){
-			$checkZone = Zone::where('zone',$request->input('other'))->where('city_id',$city->id)->first();
-				if(empty($checkZone)){
-					$zone = New Zone;
-					$zone->city_id = $city->id;
-					$zone->zone = ucfirst($request->input('other'));
-					$zone->save();
-					$zone_id = $zone->id;
-				}else{
-					$zone_id = $checkZone->id;
+			$city = Citieslists::where('city',$request->input('cityid'))->first();				
+			$zones = Zone::where('city_id',$city->id)->get();
+			if(!empty($zones)){
+				foreach($zones as $zone){
+
+				$assignedZone = new AssignedZone;	
+				$assignedZone->city_id = $city->id;			 
+				$assignedZone->zone_id = $zone->id;
+				$assignedZone->client_id = $client->id;	 
+				$state = State::where('name',$request->input('state_id'))->first();
+				if($state){
+					$assignedZone->state_id = $state->id;
 				}
+				if($assignedZone->save()){
 
-			}else{
-				$zone_id = $request->input('zone_id');
-			}
-			$assignedZone->zone_id = $zone_id;
- 
-
-		$assignedZone->client_id = $client->id;
-		if($assignedZone->save()){
-			$areas = DB::table('areas');
-			$areas = $areas->where('areas.zone_id','=',$assignedZone->zone_id);
-			$areas = $areas->select('areas.id','areas.area');
-			$areas = $areas->get();
-			if(!empty($areas)){
-				foreach($areas as $area){
-					$assigneddArea = new AssigneddArea;
-					$assigneddArea->assigned_zone_id = $assignedZone->id;
-					$assigneddArea->area_id = $area->id;
-					$assigneddArea->save();
-				}
-			}
-			 
+					$areas = DB::table('areas');
+					$areas = $areas->where('areas.zone_id','=',$zone->id);
+					$areas = $areas->select('areas.id','areas.area');
+					$areas = $areas->get();
+					if(!empty($areas)){
+						foreach($areas as $area){
+							$assigneddArea = new AssigneddArea;
+							$assigneddArea->client_id = $client->id;
+							$assigneddArea->state_id = $state->id;
+							$assigneddArea->city_id = $city->id;
+							$assigneddArea->assigned_zone_id = $zone->id;
+							$assigneddArea->area_id = $area->id;					
+							$assigneddArea->save();
+							$add = 1;
+						}
+					}					 
+				} 
+		}
+		}
+			if($add){
 			$status= true;
-			$msg = 'Zone assgined successfully ';
-			$code = 200;
+				$msg = 'Zone assgined successfully ';
+				$code = 200;
+			}else{				
+				$status= false;
+				$msg = 'Zone not assigned';
+				$code = 400;
+			}
+
 		}else{
-			 
-			$status= false;
-			$msg = 'Zone not assigned';
-			$code = 400;
+
+				$validator = Validator::make($request->all(),[					
+				'zone_id'=>'required|unique:assigned_zones,zone_id,NULL,id,client_id,'.$client->id,		 
+				'state_id'=>'required',			 	
+				'country'=>'required',			 	
+				'cityid'=>'required',
+				]);
+
+				if ($validator->fails()) {
+				$errorsBag = $validator->getMessageBag()->toArray();
+				return response()->json(['status'=>1,'errors'=>$errorsBag],400);
+				}
+		
+			$assignedZone = new AssignedZone;	
+			$city = Citieslists::where('city',$request->input('cityid'))->first();		 
+			$assignedZone->city_id = $city->id;
+			if($request->input('zone_id') == "Other"){
+				$checkZone = Zone::where('zone',$request->input('other'))->where('city_id',$city->id)->first();
+					if(empty($checkZone)){
+						$zone = New Zone;
+						$zone->city_id = $city->id;
+						$zone->zone = ucfirst($request->input('other'));
+						$zone->save();
+						$zone_id = $zone->id;
+					}else{
+						$zone_id = $checkZone->id;
+					}
+
+				}else{
+					$zone_id = $request->input('zone_id');
+				}
+			$assignedZone->zone_id = $zone_id;
+			$assignedZone->client_id = $client->id;
+			$state = State::where('name',$request->input('state_id'))->first();
+			if($state){
+			$assignedZone->state_id = $state->id;
+			}
+			if($assignedZone->save()){
+				$areas = DB::table('areas');
+				$areas = $areas->where('areas.zone_id','=',$assignedZone->zone_id);
+				$areas = $areas->select('areas.id','areas.area');
+				$areas = $areas->get();
+				if(!empty($areas)){
+					foreach($areas as $area){
+						$assigneddArea = new AssigneddArea;
+						$assigneddArea->assigned_zone_id = $assignedZone->id;
+						$assigneddArea->area_id = $area->id;
+						$assigneddArea->save();
+					}
+				}			 
+				$status= true;
+				$msg = 'Zone assgined successfully ';
+				$code = 200;
+			}else{
+				
+				$status= false;
+				$msg = 'Zone not assigned';
+				$code = 400;
+			}
 		}
 
 		}catch(Exception $e){

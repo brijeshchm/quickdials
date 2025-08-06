@@ -176,6 +176,7 @@ Route::post('/update-user/{id}',[App\Http\Controllers\userController::class, 'up
 	Route::get('/zone/update/{id}',[App\Http\Controllers\ZoneController::class,'edit'])->middleware('auth');
 	Route::post('/zone/update/{id}',[App\Http\Controllers\ZoneController::class,'update'])->middleware('auth');
 	Route::get('/zone/delete/{id}',[App\Http\Controllers\ZoneController::class,'destroy'])->middleware('auth:developer');
+	Route::get('/state/get-cityes/{state_id}',[App\Http\Controllers\ZoneController::class,'getState'])->middleware('auth');
 	Route::get('/zone/get-zones/{city_id}',[App\Http\Controllers\ZoneController::class,'getZones'])->middleware('auth');
 /* Zone */
 

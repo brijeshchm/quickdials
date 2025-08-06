@@ -616,21 +616,20 @@ color: #fff;
 		</div>
 		@endif
 	 
-	 
+
       @if(!empty($keyword))
       <div class="container">
           <div class="col-sm-9 col-md-9 reviews-box-main mainContainer">
 	  <div class="category-box">
 	   <div class="course-program">
 	     <h4>Find <?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> other Location</h4>
-	   	<ul class="row">	
+	   	<ul class="row">
 	   	<?php $cities = getCity(); ?>
 		@if(!empty($cities))
 			@foreach($cities as $city)
 	   <li class="col-sm-3 col-md-3"><a href="{{url(strtolower($city->city))}}/<?php if(!empty($keyword->keyword)) { echo generate_slug($keyword->keyword); } ?>"  title="<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{$city->city}}">@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif in {{$city->city}}</a></li>	   
 	   @endforeach
 	   @endif
-	   
 	   </ul>
 	   </div>
 	 </div>

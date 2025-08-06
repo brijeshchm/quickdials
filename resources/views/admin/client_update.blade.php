@@ -133,7 +133,7 @@
             <i>📞</i> Contact Information
         </div>
         <div class="sidebar-item" onclick="showContent('other')">
-            <i>ℹ️</i>Other Information
+            <i>ℹ️</i>Business Location
         </div>
         <div class="sidebar-item" onclick="showContent('uploadProfile')">
             <i>📷</i> Company Logo
@@ -183,15 +183,42 @@
 							<input type="text" class="form-control" name="landmark" value="{{ old('landmark',(isset($client)) ? $client->landmark:"")}}">
 						</div>
 					</div>
-
- 
-
-
-
 					<div class="form-group col-md-6">
 						<div class="col-md-12"> 
+						<label>Country:</label>
+							<select class="form-control" name="country">
+								<option value="">Select Country</option>
+								<option value="101" @if ('101'== old('country'))
+								selected="selected"	
+							@else
+							{{ (isset($client) && $client->country == '101' ) ? "selected":"" }} @endif>India</option>
+						
+						 
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<div class="col-md-12"> 
+						<label>State: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>						 
+							<select class="form-control select2-single-state" name="state_id">
+								<?php
+									$selected = '';
+									if($statesis){
+									foreach($statesis as $state){
+										$selected = ($state->state ==$client->state)?"selected":"";
+										echo "<option value=\"".$state->state."\" ".$selected.">".$state->state."</otpion>";
+									} }
+								?>
+							</select>
+							 
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+					 
+						<div class="col-md-12"> 
 						<label>City: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>							
-						<select class="dropdown-arrow dropdown-arrow-inverse city-form select2_single city" name="city">
+						<select class="dropdown-arrow dropdown-arrow-inverse city-form select2_single city" name="cityid">
 						<option value="">Select City</option>
 
 						  @if(!empty($citylist))
@@ -205,31 +232,7 @@
 
 						</select>
 						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<div class="col-md-12"> 
-						<label>State: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
-						
-							<?php $states = getStates(); ?>
-							<select class="form-control select2-single-state" name="state">
-								<?php
-									$selected = '';
-									foreach($states as $state){
-										$selected = ($state['state_name']==$client->state)?"selected":"";
-										echo "<option value=\"".$state['state_name']."\" ".$selected.">".$state['state_name']."</otpion>";
-									}
-								?>
-							</select>
-							 
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-							<div class="col-md-12"> 
-						<label>Country:</label>
-					
-							<input type="text" class="form-control" name="country" value="{{ old('country',(isset($client)) ? $client->country:"")}}">
-						</div>
-					</div>
+					</div>					
 					<div class="form-group col-md-12">
 						<div class="col-sm-12"> 
 						<label>Address: </label>
@@ -237,19 +240,25 @@
 							<textarea class="form-control" name="address" rows="4" id="address">{{ old('address',(isset($client)) ? $client->address:"")}}</textarea>
 						</div>
 					</div>
-					<input type="hidden" name="location_info" value="location_info" >
+					 
+
 					<div class="form-group"> 
-						<div class="col-sm-offset-2 col-sm-4 text-right">
-							<input type="submit" name="submit" value="SAVE" class="btn btn-warning">
-						</div>
+					<div class="col-sm-12"> 
+					<input type="hidden" name="location_info" value="location_info">
+					<div class="col-sm-offset-2 col-sm-4 text-right">
+						<input type="submit" value="SAVE" class="btn btn-warning">
 					</div>
+					</div>
+				</div>
+
+
 				</form>
 		 
              
         </div>
     </div>
 
-    <!-- Placeholder Content for Other Sections -->
+    <!-- Placeholder Content for Sections -->
     <div class="section-content" id="contact">
         <div class="form-container">
             <h4>Contact Information</h4>
@@ -318,70 +327,95 @@
 					</div>
 				</div>
 			</form>
-							</p>
+						 
         </div>
     </div>
+
+
     <div class="section-content" id="other">
         <div class="form-container">
-            <h4>Other Information</h4>
-            
-				<form id="submitConversionClient" class="form-horizontal" method="POST">
-					{{csrf_field()}}
-					<div class="form-group col-md-12">
-						<div class="col-md-12"></div>
-						<label>Conversion Client: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
-													 
-						<select class="form-control conversion_status" name="conversion_status">
-						<option value="">Select Conversion</option>				
-							
-						<option value="1" <?php if(isset($client->conversion_status) && $client->conversion_status==1){ echo "selected"; } ?>>Conversion</option>
-						
-						<option value="0" <?php if(isset($client->conversion_status) && $client->conversion_status==0){ echo "selected"; } ?> >Non Conversion</option>			 	
-						</select>
-						
-						</div>
-						<div class=" form-group col-md-1">
-							<input type="hidden" name="id" id="client_id" value="<?php echo (isset($client->username)? $client->username:""); ?>"
-							 
-							<input type="hidden" name="submit_conversion_client" value="1" />
-						</div>
-					 
-				</form>
+            <h4>Business Location</h4>
+         
 
-					<div class="row">
+				 
 					<form method="POST" action="#" id="assignedZone" onsubmit="return assignedZoneController.submit(this,<?php echo (isset($client->id)? $client->id:""); ?>)">
-					{{ csrf_field() }}					
-				
-					<div class="form-group">
-						<div class="col-md-4">
-						<labelfor="">City:</label>
-						<select name="city_id" class="form-control"></select>
-						 
+					{{ csrf_field() }}
+	 
+					
+				 
+					<div class="form-group col-md-6">
+						<div class="col-md-12"> 
+						<label>Country:</label>
+							<select class="form-control" name="country">
+								<option value="">Select Country</option>
+								<option value="India" @if ('101'== old('country'))
+								selected="selected"	
+							@else
+							{{ (isset($client) && $client->country == 'India' ) ? "selected":"" }} @endif>India</option>
+						
+							<option value="United States" @if ('United States'== old('country'))
+								selected="selected"	
+							@else
+							{{ (isset($client) && $client->country == 'United States' ) ? "selected":"" }} @endif>United States</option>
+
+							</select>
+						</div>
 					</div>
+					<div class="form-group col-md-6">
+						<div class="col-md-12"> 
+						<label>State: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>						 
+							<select class="form-control select2-single-state" name="state_id">
+								<?php
+									$selected = '';
+									if($statesis){
+									foreach($statesis as $state){
+									 
+										echo "<option value=\"".$state->state."\" >".$state->state."</otpion>";
+									} }
+								?>
+							</select>
+							 
+						</div>
 					</div>
-									
-					<div class="col-md-4">
-					<div class="form-group">
+					<div class="form-group col-md-6">
+						<div class="col-md-12"> 
+							
+						<label>City:</label>							
+						<select class="dropdown-arrow dropdown-arrow-inverse city-form select2_single city" name="cityid">
+						<option value="">Select City</option>
+
+
+						</select>
+						</div>
+					</div>	
+								
+					
+					<div class="form-group col-md-6">
+						<div class="col-md-12"> 
 						<label for="">Zone:</label>
-						<select name="zone_id" class="form-control"></select>
+						<select name="zone_id" class="form-control">
+							<option value="">Select Zone</option>
+						</select>
 					  
 					</div>
 					</div>
-					<div class="col-md-4">
-					<div class="form-group">
+					
+					<div class="form-group col-md-6 other-zone">
+						<div class="col-md-12"> 
+						 
 						<div class="show_otherInput"></div>
 					  
 					</div>
 					</div>
 									 
-					<div class="col-md-4">
-					<div class="form-group">					 
+					<div class="col-md-3">
+					<div class="form-group">
 						<input type="submit" class="btn btn-warning" value="Submit" style="margin-top:20px;">
 					</div>
 					</div>
-									 
-								</form>
-								</div>
+								 
+					</form>
+				 
 
 
 					<div class="col-md-12">

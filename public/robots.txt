@@ -2,5 +2,6 @@ User-agent: *
 User-agent:GoogleSearchBot
 user-agent:BingSearchBot
 user-agent:YahooSearchBot
+Sitemap: https://www.quickdials.com/sitemap
 Disallow: /https://quickdials.in/
 Disallow: /https://quickdials.in

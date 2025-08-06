@@ -75,7 +75,7 @@ table.dataTable thead .sorting_desc_disabled {
  
 
 table.dataTable thead > tr > th {
-	padding-left: 18px;
+	padding-left: 10px;
 	padding-right: 18px;
 }
 

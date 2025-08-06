@@ -10,6 +10,9 @@ Find Best It Training Centre near You, Find Best It Training Institute near You,
 Find Only Certified Training Institutes, Coaching Centers near you on Quick Dials and Get Free counseling, Free Demo Classes, and Get Placement Assistence.
 @endsection
 @section('content')	
+ 
+
+  
 <style>
     .help-block{  
     color: #ff0000;
@@ -22,6 +25,53 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
     height: 46px !important;
     line-height: 1.42857143;
     padding: 6px 24px 6px 12px;
+}
+
+
+div.dataTables_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap;
+}
+
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.pagination>li {
+    display: inline;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span {
+    margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+
+.pagination>li>a, .pagination>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+ 
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
 }
 </style>
   <main id="main" class="main">
@@ -39,28 +89,35 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
               <div class="tab-content pt-2">
                 <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
                
-                     <form class="buss_location" method="POST" onsubmit="return businessController.saveBusinessLocation(this,<?php echo (isset($client->id)? $client->id:""); ?>)">
-                        <input type="hidden" name="client_id" value="{{$client->id}}">                 
-                 
+                  <form class="buss_location" method="POST" onsubmit="return businessController.saveBusinessLocation(this,<?php echo (isset($client->id)? $client->id:""); ?>)">
+                  <input type="hidden" name="client_id" value="{{$client->id}}"> 
                 <div class="form-group">
-                    <label>City:</label>
-                    <select class="form-control select2-city" name="city_id" onchange="get_zone(this.value);">
-
-                      <option value="">Select City</option>
-                        @if(!empty($citylist))
-                          @foreach($citylist as $city)                       
-                        <option value="{{ $city->id}}">{{$city->city}}</option>
-                        @endforeach
-                        @endif
-                      
+                    <label for="state"> State:</label>
+                    <select class="form-control select2-single-state" name="state_id" onchange="get_city(this.value);">
+                      <option value="">Select State</option>
+                    <?php
+                      $selected = '';
+                      if($statesis){
+                        foreach($statesis as $state){
+                          echo "<option value=\"".$state->id."\" >".$state->name."</otpion>";
+                        }
+                      }
+                      ?>
                     </select>
-                    <label>Zone:</label>
+
+                    </div>
+                  <div class="form-group">
+                    <label for="city">City:</label>
+                    <select class="form-control show_cityList" name="cityiesid" onchange="get_zone(this.value);">
+                
+                    </select>
+                    <label for="zone">Zone:</label>
                      <select class="form-control show_zoneList" name="zone_id" onchange="get_otherZone(this.value);">
                      
                     </select>
                     <div class="show_otherInput" ></div>
 
-                </div>                            
+                </div>
                 
             <div class="text-center"> 
                  <input type="hidden" name="savePersonal" value="savePersonalForm">
@@ -73,18 +130,25 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                   </form><!-- End Profile Edit Form -->
 
                 </div>
-	<div class="row"> 
-      <table class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="datatable-assigned-zones" role="grid" aria-describedby="datatable-assigned-zones_info" style="width: 100%;">
-					<thead>
-					<tr role="row">
-            <th>City</th><th>Zone</th><th>Action</th></tr>
-					</thead>
-					 
-      
-      </table>
-                
-              </div> 
-              </div> 
+                <div class="row pt-2" style="border-top: 2px solid rgb(235, 238, 244);    margin-top: 40px;"> 
+                  <div class="table-responsive table-virtical-grid" >
+                    <table class="table table-striped table-bordered table-hover" id="datatable-assigned-zones" >
+                        <thead>
+                        <tr role="row">
+                         <th><input type="checkbox" id="check-all" class="check-box"></th>
+                          <th>City</th>
+                          <th>Zone</th><th>Action</th></tr>
+                        </thead>
+                  </table>
+                </div>
+	            <div class="form-group">
+                <div class="col-md-2">
+							    <button type="button" class="btn btn-success  btn-block" onclick="javascript:enquiryController.selectDeleteParmanent()" >Delete All </button>
+							  </div>
+              </div>
+
+              </div>
+              </div>
 
             </div>
           </div>
@@ -94,8 +158,33 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
     </section>
 
   </main><!-- End #main -->
+ <script>	
+	// window.onload = function()
+	// {
+	// get_city(sid,cid);	 
 
+	// }	 
+	</script> 
 <script>
+
+
+
+function get_city(state,city){
+
+	var token = $('input[name=_token]').val();
+	$.ajax({
+	type: "post",	 
+	url: "{{URl('business/state/getAjaxSate')}}",
+	data: {state:state,city:city},
+	headers: {'X-CSRF-TOKEN': token},		
+	cache: false,
+	success: function(data)
+	{
+    console.log(data);
+		$(".show_cityList").html(data);
+	}
+	});
+}
 
 function get_zone(city,zone){
 
@@ -126,4 +215,6 @@ function get_otherZone(other){
 	 
 }
 </script>
+ 
+	
  @endsection

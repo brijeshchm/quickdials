@@ -8,30 +8,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Models\Client\Client; //model
-use Validator;
-use Illuminate\Support\Facades\Input;
-use Image;
+use Validator; 
 use DB;
-use Mail;
-use Excel;
-use session;
-use App\Http\Controllers\SitemapsController as SMC;
-use App\Models\PaymentHistory;  
-use Illuminate\Support\Facades\Auth;
+use Mail; 
 use Exception;
-use App\Models\Zone;
-use App\Models\Lead;
-use App\Models\User;
-use App\Models\Keyword;
-use App\Models\LeadFollowUp;
-use App\Models\Status;
-use App\Models\AssignedLead;
- 
-use App\Models\Occupation;
-use App\Models\Citieslists;
-use App\Models\AssignedZone;
-use App\Models\KeywordSellCount;
-use App\Models\Client\AssignedKWDS;
+use App\Models\AssigneddArea;
+use App\Models\AssignedZone; 
 class BusinessController extends Controller
 {
 	protected $danger_msg = '';
@@ -55,7 +37,7 @@ class BusinessController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
+    {
 		return view('client.business-owners');
     }
 
@@ -182,8 +164,17 @@ class BusinessController extends Controller
 	 {
 		if($request->ajax()){
 			$clientID = auth()->guard('clients')->user()->id;
-			$leads = DB::table('assigned_zones')
-				->join('zones','assigned_zones.zone_id','=','zones.id')
+			$leads = DB::table('assigned_zones');
+			
+			if($request->input('search.value')!=''){
+
+				$leads = $leads->where(function($query) use($request){
+					$query->orWhere('citylists.city','LIKE','%'.$request->input('search.value').'%')
+						  ->orWhere('zones.zone','LIKE','%'.$request->input('search.value').'%');
+						 // ->orWhere('leads.email','LIKE','%'.$request->input('search.value').'%');
+				});
+			}
+				$leads = $leads->join('zones','assigned_zones.zone_id','=','zones.id')
 				->join('citylists','assigned_zones.city_id','=','citylists.id')			 
 				->select('assigned_zones.*','citylists.city','zones.zone','assigned_zones.id as assign_id')
 				->orderBy('assigned_zones.id','desc')
@@ -197,7 +188,7 @@ class BusinessController extends Controller
 	  
 			foreach($leads as $lead){
 			    
-			    $action ='<a href="javascript:businessController.assignZoneDelete('.$lead->id.')" title="Delete" class="btn btn-danger"><i class="bi bi-trash" aria-hidden="true"></i></a>';	
+			    $action ='<a href="javascript:businessController.assignZoneDelete('.$lead->assign_id.')" title="Delete" class="btn btn-danger"><i class="bi bi-trash" aria-hidden="true"></i></a>';	
 			
 				if(!empty($lead->zone)){
 					$zonename= $lead->zone;
@@ -206,8 +197,9 @@ class BusinessController extends Controller
 					
 				}
 				$data[] = [
-					$lead->city,	
-					$zonename,									 
+					"<th><input type='checkbox' class='check-box' value='$lead->id'></th>",
+					$lead->city,
+					$zonename,
 					$action,
 		 
 				 
@@ -227,17 +219,57 @@ class BusinessController extends Controller
      */
     public function assignZoneDelete(Request $request, $id)
     { 
-		$assignedZone = AssignedZone::findOrFail($id);	
-		if($assignedZone->delete()){
-		$status=1;							 
-		$msg="Assigned Zone Successfully!";	
-		}else{
-		$status=0;							 
-		$msg="Assigned Zone could not be Deleted!";	
-		}
-		return response()->json(['status'=>$status,'msg'=>$msg],200); 
-    }
+		$assignedZone = AssignedZone::findOrFail($id);
+		if(!empty($assignedZone)){
+			AssigneddArea::where('assigned_zone_id',$assignedZone->zone_id)->where('client_id',$assignedZone->client_id)->where('state_id',$assignedZone->state_id)->where('city_id',$assignedZone->city_id)->delete();		 
+					 
+			if($assignedZone->delete()){
+				$status=1;							 
+				$msg="Assigned Zone Successfully!";	
+			}else{
+				$status=0;							 
+				$msg="Assigned Zone could not be Deleted!";	
+			}
+			return response()->json(['status'=>$status,'msg'=>$msg],200); 
+    	}
+	}
 	
+	 /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function selectAssignZoneDelete(Request $request)
+    { 
+ 
+		$ids = $request->input('ids');
+		 try{
+			if(!empty($ids)){
+			foreach($ids as $id){
+			
+				$assignedZone = AssignedZone::findOrFail($id);
+				if(!empty($assignedZone)){
+					AssigneddArea::where('assigned_zone_id',$assignedZone->zone_id)->where('client_id',$assignedZone->client_id)->where('state_id',$assignedZone->state_id)->where('city_id',$assignedZone->city_id)->delete();
+					$assignedZone->delete();
+					$delete = 1;
+				}
+			}
+			}
+			if(!empty($delete)){
+				$status=1;
+				$msg="Assigned Zone Successfully!";	
+			}else{
+				$status=0;
+				$msg="Assigned Zone could not be Deleted!";	
+			}
+   			
+	}catch(Exception $e){
+		$status = 0;
+		$msg =  $e->getMessage();
+		}
+	return response()->json(['status'=>$status,'msg'=>$msg],200); 
+	}
 	
 
 	public function getAjaxCities(Request $request)
@@ -276,6 +308,25 @@ class BusinessController extends Controller
 
 		}
 		echo '<option value="Other">Other</option>';
+		} else { 
+		echo'<option value="">No record found</option>';
+		}
+		
+	
+    }
+	
+
+	public function getAjaxSate(Request $request)
+    { 
+		$sid = $request->input('state');		 
+		$cid = $request->input('city');
+		$cityes= DB::table('citylists')->where('state_id',$sid)->get();
+		if($cityes){ 
+		echo '<option value="">Select City</option>';
+		foreach($cityes as $city){ 
+		$selected = ($cid ==$city->id)?"selected":'';
+		echo'<option value="'.$city->id.'" '.$selected.' >'.$city->city.'</option>';
+		}		 
 		} else { 
 		echo'<option value="">No record found</option>';
 		}

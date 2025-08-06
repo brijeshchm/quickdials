@@ -692,12 +692,12 @@ color: #fff;
 	 
 		@if(!empty($kwdsList))
 		<?php $i = 0; $x = 5; ?>
-			@foreach($kwdsList as $keyword)
+			@foreach($kwdsList as $keyicon)
 			 
 	   <li class="col-sm-3 col-md-3">
-            <?php  if(!empty($keyword->icon)){
+            <?php  if(!empty($keyicon->icon)){
             
-            $data = json_decode($keyword->icon, true);
+            $data = json_decode($keyicon->icon, true);
             if (!empty($data)) {
             ?>
             
@@ -705,7 +705,7 @@ color: #fff;
             
             <?php  }   } ?>
 	       
-	       <a href="{{url(strtolower(Request::segment(1)))}}/<?php echo generate_slug($keyword->keyword) ?>" title="<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}" >{{$keyword->keyword}}</a></li>
+	       <a href="{{url(strtolower(Request::segment(1)))}}/<?php echo generate_slug($keyicon->keyword) ?>" title="<?php if(!empty($keyicon->keyword)) { echo $keyicon->keyword; } ?> in {{Request::segment(1)}}" >{{$keyicon->keyword}}</a></li>
 	   
 	   @endforeach
 	   @endif
@@ -717,7 +717,6 @@ color: #fff;
 	 </div>
       @endif
 	  @endif
-
 
 
 		
@@ -814,7 +813,7 @@ color: #fff;
 		</div>
 		@endif
 	 
-	 
+	 	
 	 
       @if(!empty($keyword))
       <div class="container">

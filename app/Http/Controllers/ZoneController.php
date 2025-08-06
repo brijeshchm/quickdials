@@ -232,9 +232,42 @@ class ZoneController extends Controller
      * @param  int  $id
      * @return JSON Payload
      */
+    public function getState(Request $request, $state_id)
+    {	
+		$id = $state_id;
+		$cities = Citieslists::where('state','LIKE',$state_id)->get();
+		// echo "<pre>";print_r($cities);die;
+		if($cities){
+			return response()->json([
+				"statusCode"=>1,
+				"data"=>[
+					"responseCode"=>200,
+					"payload"=>$cities,
+					"message"=>"Populated the zone dropdown successfully !!"
+				]
+			],200);
+		}else{
+			return response()->json([
+				"statusCode"=>0,
+				"data"=>[
+					"responseCode"=>404,
+					"payload"=>"",
+					"message"=>"Zones not found associated to the selected city !!"
+				]
+			],200);			
+		}
+    }
+    /**
+     * Return the zones(id,name) associated to the specified city id.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return JSON Payload
+     */
     public function getZones(Request $request, $city_id)
     {	
 		$id = $city_id;
+		 
 		$city = Citieslists::where('city','LIKE',$id)->first();
 		$zones = Zone::where('city_id',$city->id)->select('id','zone')->get();	 
 		if($zones){

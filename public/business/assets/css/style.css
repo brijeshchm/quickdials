@@ -512,10 +512,10 @@ footer {
   max-height: 50px;
   margin-right: 6px;
 }
-div.dataTables_paginate{
+/* div.dataTables_paginate{
 
   display:none;
-}
+} */
 .logo span {
   font-size: 26px;
   font-weight: 700;

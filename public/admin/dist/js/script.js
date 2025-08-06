@@ -1175,18 +1175,24 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 							 
 							mainSpinner.stop();							
 						
-							dataTableAssignedZones.ajax.reload(null,false);
-							$('.alert').addClass('hide');
-							$('.alert-success').removeClass('hide').html(data.msg);
+							
+					 
 							$this.find('button[type="reset"]').click();
+							$('#messagemodel .modal-title').text("update");	
+							$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
+							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+							$('#messagemodel').css({'width':'100%'});
+							dataTableAssignedZones.ajax.reload(null,false);
+
 							setInterval(function() {
 							$("#messagemodel").modal("hide");
 							}, 1000);
 						}else{
 							mainSpinner.stop();
-							alert(data.msg);
-							$('.alert').addClass('hide');
-							$('.alert-danger').removeClass('hide').html(data.msg);							
+							$('#messagemodel .modal-title').text("update");	
+							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
+							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+							$('#messagemodel').css({'width':'100%'});							
 						}  
 						 
 						
@@ -5559,19 +5565,51 @@ $(document).ready(function(){
 		datatablePendingLeadsDashboard.ajax.reload(null,false);
 	});
 	 
-	// ***********************
-	// DOCUMENT ON CHANGE CITY
-		$(document).on('change','*[name="city_id"]',function(e){
+
+	$(document).on('change','*[name="state_id"]',function(e){
 			 
 			e.preventDefault();
 			var $this = $(this),
-				val = $this.val();
-				
-			if(val==null || val=='' || $.isNumeric(val)){
-				$('*[name="zone_id"]').html("");
-				return;
-			}
+				val = $this.val(); 
 			
+			mainSpinner.start();
+			$.ajax({
+				"url":"/developer/state/get-cityes/"+val,
+				"type":"GET",
+				"success":function(data,textStatus,jqXHR){
+					if(data.statusCode){
+						mainSpinner.stop();
+						$('.alert').addClass('hide');
+						$('.alert-success').removeClass('hide').html(data.data.message);
+						var payload = data.data.payload;
+						var $html = "";
+						if(payload.length>0){
+							var $html = "<option value=''>Select City</option>";						 
+							for(var i in payload){
+								$html += "<option value='"+payload[i].city+"'>"+payload[i].city+"</option>";
+							}						 
+							$('*[name="cityid"]').html($html);
+						}					
+					}else{
+						mainSpinner.stop();
+						alert(data.data.message);				
+					}
+				},
+				"error":function(jqXHR,textStatus,errorThrown){
+					mainSpinner.stop();
+					alert("Something went wrong !!");
+				}
+			});
+		});
+		
+
+	// ***********************
+	// DOCUMENT ON CHANGE CITY
+		$(document).on('change','*[name="cityid"]',function(e){
+			 
+			e.preventDefault();
+			var $this = $(this),
+				val = $this.val();		 
 			mainSpinner.start();
 			$.ajax({
 				"url":"/developer/zone/get-zones/"+val,
@@ -5588,8 +5626,7 @@ $(document).ready(function(){
 						 
 							for(var i in payload){
 								$html += "<option value='"+payload[i].id+"'>"+payload[i].zone+"</option>";
-							}
-						 
+							}						 
 							$('*[name="zone_id"]').html($html);
 						}					
 					}else{
@@ -5604,6 +5641,7 @@ $(document).ready(function(){
 			});
 		});
 		
+
 	// ***********************
 	// DOCUMENT ON CHANGE CITY
 		$(document).on('change','*[name="assigncity_id"]',function(e){
@@ -5657,11 +5695,11 @@ $(document).ready(function(){
 			if(val==null || val==''){
 				$('*[name="area_id"]').html("");
 				return;
-			}
-
+			}			
 			if(val == 'Other'){
-			$(".show_otherInput").html('<input class="form-control" value="" name="other" style="   margin-top: 20px;">');
+				$(".show_otherInput").html('<input class="form-control" value="" name="other" style="   margin-top: 20px;">');
 			}else{
+				 
 				$(".show_otherInput").html('');
 			}
 

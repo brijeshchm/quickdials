@@ -16,16 +16,13 @@
  <link href="{{asset('/vendor/select2/css/select2.min.css')}}" rel="stylesheet">
 <link href="{{asset('/vendor/select2/css/select2-bootstrap.css')}}" rel="stylesheet">
  
-    <link href="{{asset('vendor/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
-    
-    	<link href="{{asset('admin/vendor/datepicker/jquery-ui.css')}}" rel="stylesheet">
-  
-  <link href="{{asset('business/assets/css/style.css')}}" rel="stylesheet">  
-    <link href="{{asset('business/assets/css/daterangepicker.css')}}" rel="stylesheet">  
-   <link href="{{asset('/admin/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
+<link href="{{asset('vendor/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">    
+<link href="{{asset('admin/vendor/datepicker/jquery-ui.css')}}" rel="stylesheet">
+<link href="{{asset('business/assets/css/daterangepicker.css')}}" rel="stylesheet">  
+<link href="{{asset('/admin/vendor/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
 <!-- DataTables Responsive CSS -->
 <link href="{{asset('/admin/vendor/datatables-responsive/dataTables.responsive.css')}}" rel="stylesheet">
-
+<link href="{{asset('business/assets/css/style.css')}}" rel="stylesheet">  
 </head>
 <body>
 
@@ -438,15 +435,20 @@
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
    
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+   
+       <script src="{{asset('/business/assets/js/moment.min.js')}}"></script>
+    <script src="{{asset('/business/assets/js/daterangepicker.js')}}"></script>
+
 <script src="{{asset('admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('/admin/vendor/datatables-plugins/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{asset('/admin/vendor/datatables-responsive/dataTables.responsive.js')}}"></script>
+ 	
+
+    
   <script src="{{asset('business/assets/js/main.js')}}"></script>
    <script src="{{asset('/vendor/select2/js/select2.full.js')}}"></script>
    
  
-       <script src="{{asset('/business/assets/js/moment.min.js')}}"></script>
-    <script src="{{asset('/business/assets/js/daterangepicker.js')}}"></script>
     <script>
     $(".select2-single").select2({
         theme: "bootstrap",

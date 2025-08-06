@@ -447,7 +447,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 					 
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);	
+						}, 3000);	
 						}else{
                                	$('#messaged .modal-title').text("Profile Information");	
 						$('#messaged .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
@@ -491,7 +491,8 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 					success:function(data){
 					  	
 						if(data.status){
-                           $("#messaged").modal("show");                        							 
+                        
+						$("#messaged").modal("show");                        							 
 						$('#messaged .modal-title').text("Business Location");	
 						$('#messaged .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
 						$('#messaged').modal({keyboard:false,backdrop:'static'});
@@ -499,7 +500,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 						dataTableAssignedZones.ajax.reload( null, false );  
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);	 
+						}, 3000);	 
 							 
 						}else{
 							$("#messaged").modal("show");                        							 
@@ -518,7 +519,6 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 							$('.buss_location').find('.help-block').remove();
 							for (var key in errors) {
 							if(errors.hasOwnProperty(key)){	
-
 							var el = $('.buss_location').find('*[name="'+key+'"]');
 							$('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el);
 							el.closest('.form-group').addClass('has-error');
@@ -555,7 +555,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 						dataTableViewAllkeywords.ajax.reload( null, false );  
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);	 
+						}, 3000);	 
 							 
 					}else{
 							$("#messaged").modal("show");                        							 
@@ -607,7 +607,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 						dataTableAssignedZones.ajax.reload( null, false );  
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);
+						}, 3000);
 					}else{
 						$("#messaged").modal("show");                        							 
 						$('#messaged .modal-title').text("Assign Zone Delete");	
@@ -642,7 +642,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 						dataTableViewAllkeywords.ajax.reload( null, false );  
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);
+						}, 3000);
 					}else{
 						$("#messaged").modal("show");                        							 
 						$('#messaged .modal-title').text("Assign Keyword Delete");	
@@ -681,7 +681,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 				 
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);	 
+						}, 3000);	 
 						window.location.href = "/business/billing-history";	
 						
 					}else{
@@ -737,7 +737,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 				 
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);	 
+						}, 3000);	 
 						window.location.href = "/business/billing-history";	
 						
 					}else{
@@ -800,7 +800,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 						$('#messaged').css({'width':'100%'});
 						setInterval(function() {
 						$("#messaged").modal("hide");
-						}, 1000);
+						}, 3000);
 						}else{
 						 
 						$("#messaged").modal("show");      
@@ -857,7 +857,7 @@ jQuery(document).on('click', '#razor-pay-now', function (e) {
 								$('#messaged').css({'width':'100%'});	
 								setInterval(function() {
 								$("#messaged").modal("hide");
-								}, 1000);									 	
+								}, 3000);									 	
 								window.location.href = "/business/profile-logo";			
 						
 						}else{
@@ -1028,6 +1028,56 @@ var enquiryController  = (function(){
 				dataTableFollowUps.ajax.reload( null, false );
 				return false;
 			},
+			selectDeleteParmanent:function(){
+				var $this = this;
+				$this.checked_Ids = [];
+				$('.check-box:checked').each(function(){
+					if(!(new String("on").valueOf() == $(this).val())){
+						$this.checked_Ids.push($(this).val());
+					}
+				});
+
+				if($this.checked_Ids.length == 0){
+					alert('Please select data to Delete Permanently!');
+					return false;
+				}	 
+			 
+				$.ajax({
+					url:"/business/assignLocation/selectAssignZoneDelete",
+					type:"POST",
+					dataType:"json",
+					data:{
+						ids:$this.checked_Ids
+					},
+					success:function(data,textStatus,jqXHR){
+				    	if(data.status){					 				
+							
+							$("#messaged").modal("show");                        							 
+							$('#messaged .modal-title').text("Business Location Delete");	
+							$('#messaged .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
+							$('#messaged').modal({keyboard:false,backdrop:'static'});
+							$('#messaged').css({'width':'100%'});					
+
+							setInterval(function() {
+							$("#messaged").modal("hide");
+							}, 3000);
+							dataTableAssignedZones.ajax.reload(null,false);								 
+						}else{
+
+							$("#messaged").modal("show");                        							 
+							$('#messaged .modal-title').text("Business Location Delete");	
+							$('#messaged .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
+							$('#messaged').modal({keyboard:false,backdrop:'static'});
+							$('#messaged').css({'width':'100%'});	
+								 
+							}
+					},
+					error:function(jqXHR,textStatus,errorThrown){
+						
+					}
+				});
+				return false;				
+			},
 			  
 			
 			
@@ -1089,23 +1139,44 @@ var enquiryController  = (function(){
 		}
 	}).api();
  
- var dataTableAssignedZones = $('#datatable-assigned-zones').dataTable({
-		"fixedHeader": true,
-		"processing":true,
-		"serverSide":true,
-		"paging":true,
-		"responsive":true,
-		"searching":false,
-		"ajax":{
-			url:"/business/get-assigned-zones",
-			data:function(d){
-				d.page = (d.start/d.length)+1;
-				d.columns = null;
-				d.order = null;
-			}
+
+
+
+	
+var dataTableAssignedZones = $('#datatable-assigned-zones').on('draw.dt',function(e,settings){
+	//$('#datatable-assigned-zones').find('[data-toggle="popover"]').popover({html:true,container:'body'});
+	$('#datatable-assigned-zones').find('#check-all').on('change',function(){
+		if(this.checked){
+			$('.check-box').prop('checked',true);
+		}else{
+			$('.check-box').prop('checked',false);
 		}
-	}).api();
- 
+	});
+})
+.dataTable({
+	"fixedHeader": true,
+	"processing":true,
+	"serverSide":true,
+	"paging":true,
+	"ordering":false,	
+"lengthMenu": [ 10, 25, 50, 75, 100 ],	
+	"ajax":{
+		url:"/business/get-assigned-zones",
+		data:function(d){
+			d.page = (d.start/d.length)+1;
+		 	 
+			d.columns = null;
+			d.order = null;
+		},
+		dataSrc:function(json){
+			recordCollection = json.recordCollection;			
+			return json.data;
+		}
+		 
+	}
+}).api();
+
+   
 
 	var dataTableViewAllhistory = $('#datatable-payment-billing-history').dataTable({
 		"fixedHeader": true,

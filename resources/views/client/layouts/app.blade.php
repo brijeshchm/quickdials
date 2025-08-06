@@ -40,7 +40,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:title" content="@yield('title')" />
 <meta property="og:description" content="@yield('description')" />
-<meta property="og:url" content="https://www.quickdials.com/" />
+<meta property="og:url" content="{{ URL::current() }}" />
 <meta property="og:site_name" content="Quick Dials" />
 <meta property="fb:app_id" content="https://www.facebook.com/quickindofficial/" />
 <meta property="og:image" content="{{asset('client/images/small-logo.png')}}" />
@@ -49,7 +49,12 @@
 <meta property="og:image:height" content="628" />
 <meta property="og:image:alt" content="Quick Dials" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:description" content="@yield('keyword')" />
+<meta name="twitter:title" content="@yield('title')" />
+<meta name="twitter:keyword" content="@yield('keyword')" />
+<meta name="twitter:description" content="@yield('description')" />
+<meta name="twitter:image" content="{{asset('client/images/small-logo.png')}}" /> 
+<meta name="twitter:url" content="{{ URL::current() }}" /> 
+
 <meta name="rating" content="general">
 <meta name="robots" content="ALL">
 <meta name="googlebot" content=" index, follow ">

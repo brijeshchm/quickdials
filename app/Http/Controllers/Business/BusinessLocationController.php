@@ -7,31 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Models\Client\Client; //model
+use App\Models\Client\Client;  
 use Validator;
-use Illuminate\Support\Facades\Input;
-use Image;
-use DB;
-use Mail;
-use Excel;
-use session;
-use App\Http\Controllers\SitemapsController as SMC;
-use App\Models\PaymentHistory;  
-use Illuminate\Support\Facades\Auth;
-use Exception;
 use App\Models\Zone;
-use App\Models\Lead;
-use App\Models\User;
-use App\Models\Keyword;
-use App\Models\LeadFollowUp;
-use App\Models\Status;
-use App\Models\AssignedLead;
- 
-use App\Models\Occupation;
 use App\Models\Citieslists;
 use App\Models\AssignedZone;
-use App\Models\KeywordSellCount;
-use App\Models\Client\AssignedKWDS;
+use App\Models\State;
+ 
 class BusinessLocationController extends Controller
 {
 	protected $danger_msg = '';
@@ -65,7 +47,7 @@ class BusinessLocationController extends Controller
 	
     public function saveBusinessLocation(Request $request,$id)
     {
-		 
+	 
 	 
         if($request->ajax()){
 	 
@@ -90,10 +72,10 @@ class BusinessLocationController extends Controller
 			if($validator->fails()){
 			$errorsBag = $validator->getMessageBag()->toArray();
 			return response()->json(['status'=>1,'errors'=>$errorsBag],400);
-			}	
+			}
 
  
-			$assignedZone = New AssignedZone;				
+			$assignedZone = New AssignedZone;
 			$assignedZone->city_id = $request->input('city_id');
 			if($request->input('zone_id') == "Other"){
 			$checkZone = Zone::where('zone',$request->input('other'))->where('city_id',$request->input('city_id'))->first();
@@ -183,7 +165,9 @@ class BusinessLocationController extends Controller
 		if($request->has('search')){
 			$search = $request->input('search');
 		}
-			$citylist = Citieslists::get();
-        return view('business.business-location',['search'=>$search,'client'=>$client,'citylist'=>$citylist]);
+		//$citylist = Citieslists::get();
+		$statesis = State::get();
+
+        return view('business.business-location',['search'=>$search,'client'=>$client,'statesis'=>$statesis]);
     }
 }

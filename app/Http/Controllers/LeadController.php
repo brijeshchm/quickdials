@@ -2275,7 +2275,7 @@ class LeadController extends Controller
  
  
   
-			foreach($leads as $lead){			
+			foreach($leads as $lead){
 				
 				$owner_name = '';
 				if($lead->created_by != null && isset($owner[$lead->created_by])){
@@ -2290,19 +2290,20 @@ class LeadController extends Controller
 					$lead_from = "Advertise";
 				}else if($lead->b_end==3){
 					$leadname = $lead->name;
-					$lead_from = "Leads";					
+					$lead_from = "Leads";
 				}else{
 					$leadname = $lead->name;
 					$lead_from = "External";
 				}
 				 
 				$assignedLeadsCount = AssignedLead::where('lead_id','=',$lead->id)->get();
-				$meetingsHtml = '';
+				$meetingsHtml = '<ul>';
+
 				foreach($assignedLeadsCount as $assignedLeads){
-					$meetingsHtml .= $clientname[$assignedLeads->client_id].', ';
+					$meetingsHtml .= '<li>'.$clientname[$assignedLeads->client_id].'</li>';
 				}
 				
-	 
+				$meetingsHtml .= '</ul>';
 				
 				$action = '';
 				$separator = ''; 

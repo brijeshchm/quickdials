@@ -83,11 +83,11 @@ Route::post('/business/readLead',[App\Http\Controllers\Business\EnquiryControlle
 Route::post('/business/favoritleads',[App\Http\Controllers\Business\EnquiryController::class, 'favoritleads']);
 
 Route::post('/business/cities/getajaxcities',[App\Http\Controllers\Client\BusinessController::class, 'getAjaxCities']);
+Route::post('/business/state/getAjaxSate',[App\Http\Controllers\Client\BusinessController::class, 'getAjaxSate']);
 Route::post('/business/zone/getAjaxZone',[App\Http\Controllers\Client\BusinessController::class, 'getAjaxZone']);
 Route::get('/business/get-assigned-zones',[App\Http\Controllers\Client\BusinessController::class, 'getAssignedZonesPagination']);
 Route::get('/business/assignZone/delete/{id}',[App\Http\Controllers\Client\BusinessController::class, 'assignZoneDelete']);
-
-
+Route::post('/business/assignLocation/selectAssignZoneDelete',[App\Http\Controllers\Client\BusinessController::class, 'selectAssignZoneDelete']);
 
 
 Route::get('/business/package',[App\Http\Controllers\Business\AccountController::class, 'package']);
