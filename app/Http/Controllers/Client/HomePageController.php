@@ -89,7 +89,7 @@ class HomePageController extends Controller
 		if ($request->ajax()) {
 			$validator = Validator::make($request->all(), [
 				'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:32',
-				'email' => 'required|regex:/^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i',
+				'email' => 'required|email|regex:/^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i',
 				'mobile' => 'required|numeric',
 				'kw_text' => 'required',
 			]);
@@ -100,7 +100,11 @@ class HomePageController extends Controller
 				return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
 			}
 			$lead = new Lead;
-			$lead->name = $request->input('name');
+		 
+			$string = filter_var($request->input('name'), FILTER_SANITIZE_STRING);
+			$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+			$name = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+			$lead->name = $name;
 			$lead->email = $request->input('email');
 
 			$lead->lead_form = $request->input('lead_form');
@@ -203,14 +207,13 @@ class HomePageController extends Controller
 			}
 
 			$lead = new Lead;
-			$lead->name = $request->input('name');
+			$string = filter_var($request->input('name'), FILTER_SANITIZE_STRING);
+			$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+			$name = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+			$lead->name = $name;
 			$lead->email = $request->input('email');
-
 			$lead->lead_form = $request->input('lead_form');
-
-
 			$cityname = ucwords(str_replace("-", " ", $request->input('city_id')));
-
 			$city = Citieslists::where('city', ucwords(str_replace("-", " ", $request->input('city_id'))))->first();
 
 			if (!empty($city->id)) {
@@ -231,7 +234,10 @@ class HomePageController extends Controller
 			$mobile = trim($mobile);
 			$newmobile = preg_replace('/\s+/', '', $mobile);
 			$lead->mobile = $newmobile;
-			$keyword = Keyword::where('keyword', $request->input('kw_text'))->first();
+			$kw_text = filter_var($request->input('kw_text'), FILTER_SANITIZE_STRING);
+			$kw_text = preg_replace('/[^A-Za-z0-9]/', ' ', $kw_text);
+			$kw_text = preg_replace('/\s+/', ' ', str_replace('&', '', trim($kw_text)));			 
+			$keyword = Keyword::where('keyword', $kw_text)->first();
 
 			if (!empty($keyword)) {
 				$lead->kw_id = $keyword->id;
@@ -281,14 +287,8 @@ class HomePageController extends Controller
 				], 200);
 
 			}
-
-
-
 		}
-
 	}
-
-
 
 	public function saveTwoEnquiry(Request $request)
 	{
@@ -307,9 +307,11 @@ class HomePageController extends Controller
 			}
 
 			$lead = new Lead;
-			$lead->name = $request->input('name');
+			$string = filter_var($request->input('name'), FILTER_SANITIZE_STRING);
+			$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+			$name = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+			$lead->name = $name;
 			$lead->email = $request->input('email');
-
 			$lead->lead_form = $request->input('lead_form');
 			$cityname = ucwords(str_replace("-", " ", $request->input('city_id')));
 			$city = Citieslists::where('city', ucwords(str_replace("-", " ", $request->input('city_id'))))->first();
@@ -332,7 +334,10 @@ class HomePageController extends Controller
 			$mobile = trim($mobile);
 			$newmobile = preg_replace('/\s+/', '', $mobile);
 			$lead->mobile = $newmobile;
-			$keyword = Keyword::where('keyword', $request->input('kw_text'))->first();
+			$kw_text = filter_var($request->input('kw_text'), FILTER_SANITIZE_STRING);
+			$kw_text = preg_replace('/[^A-Za-z0-9]/', ' ', $kw_text);
+			$kw_text = preg_replace('/\s+/', ' ', str_replace('&', '', trim($kw_text)));	
+			$keyword = Keyword::where('keyword', $kw_text)->first();
 
 			if (!empty($keyword)) {
 				$lead->kw_id = $keyword->id;
@@ -405,8 +410,11 @@ class HomePageController extends Controller
 					$lead->city_name = 'none';
 				}
 			}
-
-			$lead->name = $request->input('name');
+			$string = filter_var($request->input('name'), FILTER_SANITIZE_STRING);
+			$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+			$name = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+			$lead->name = $name;
+			 
 			if ($request->input('email') != '') {
 
 				$lead->email = $request->input('email');
@@ -462,8 +470,10 @@ class HomePageController extends Controller
 					$lead->city_name = 'none';
 				}
 			}
-
-			$lead->name = $request->input('name');
+			$string = filter_var($request->input('name'), FILTER_SANITIZE_STRING);
+			$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+			$name = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+			$lead->name = $name;
 			if ($request->input('email') != '') {
 
 				$lead->email = $request->input('email');
@@ -495,9 +505,6 @@ class HomePageController extends Controller
 				//$followUp->remark_by =Auth::user()->id;
 				$followUp->save();
 				leadassignWithoutZoneCounsellor($lead);
-
-
-
 				return response()->json(['status' => 1, 'msg' => 'Lead added successfully'], 200);
 			}
 
@@ -636,7 +643,7 @@ class HomePageController extends Controller
 					} else {
 
 						$html .= '<li><a data-city="' . strtolower($data->city) . '">' . ucwords($data->city) . '</a>
-			</li>';
+						</li>';
 
 					}
 				}
@@ -660,7 +667,7 @@ class HomePageController extends Controller
 						$strong_str = "<strong>" . $str . "</strong>";
 						$final_str = str_replace($str, $strong_str, $zone->zone);
 						$html .= '<li><a data-city="' . strtolower($zone->city) . '" data-zone="">' . ucwords($final_str) . ', ' . ucwords($zone->city) . '</a>
-			</li>';
+						</li>';
 					} else {
 
 						$html .= '<li><a data-city="' . strtolower($zone->city) . '">' . ucwords($zone->zone) . ', ' . ucwords($zone->city) . '></a></li>';

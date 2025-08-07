@@ -908,10 +908,10 @@ $value = Cookie::get('showPopup');
 	   <h4>Need Expert Advice ?</h4>
         <div class="jbt"> Fill this form to Grab the best Deals on "<span class="orng"><?php echo $searchedKW." in "; ?>{{Request::segment(1)}}</span>"</div>
         <div class="bdc">
-            <!--{{url('/client/lead/add-lead')}}-->
+           
             <form class="form-inline" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
                 <aside>
-			<!--<input type="hidden" name="_token" value="{{ csrf_token() }}">-->
+		 
                     <p><label for="yn">Your Name <span>*</span></label>
 						<input type="hidden" name="lead_form" value="1" />
 						<input type="hidden" name="kw_text" value="<?php echo $searchedKW; ?>" />
