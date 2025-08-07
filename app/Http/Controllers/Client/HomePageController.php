@@ -579,7 +579,7 @@ class HomePageController extends Controller
 		}
 		$html = "";
 		foreach ($query as $q) {
-			$html .= "<li><a href='#'><i class='fa fa-search'></i>" . $q->keyword . "</a></li>";
+			$html .= "<li><a href='#'><i class='fa fa-search'></i>" . trim($q->keyword) . "</a></li>";
 		}
 		$query = DB::table('clients')
 			->select('clients.business_name');
@@ -592,7 +592,7 @@ class HomePageController extends Controller
 		}
 
 		foreach ($query as $q) {
-			$html .= "<li><a href='#'><i class='fa fa-search'></i>" . $q->business_name . "</a></li>";
+			$html .= "<li><a href='#'><i class='fa fa-search'></i>" . trim($q->business_name) . "</a></li>";
 		}
 		return response()->json(['status' => 1, 'message' => $html]);
 	}
