@@ -10,14 +10,16 @@ use Auth;
 
 class LogoutController extends Controller
 {
-    //
-	public function index(){
+	
+	public function index()
+	{
 		Auth::logout();
 		return "logged out";
 	}
+
 	
-    //
-	public function clientLogout(){
+	public function clientLogout()
+	{
 		Auth::guard('clients')->logout();
 		return redirect('business-owners');
 	}

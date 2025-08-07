@@ -250,8 +250,6 @@
 					</div>
 					</div>
 				</div>
-
-
 				</form>
 		 
              
@@ -334,106 +332,98 @@
 
     <div class="section-content" id="other">
         <div class="form-container">
-            <h4>Business Location</h4>
-         
+            <h4>Business Location</h4>			 
+			<form method="POST" action="#" id="assignedZone" onsubmit="return assignedZoneController.submit(this,<?php echo (isset($client->id)? $client->id:""); ?>)">
+				{{ csrf_field() }}					
+		<input type="hidden" name="client_id" value="<?php echo (isset($client->id)? $client->id:""); ?>" >
+			<div class="form-group col-md-6">
+				<div class="col-md-12"> 
+				<label>Country:</label>
+					<select class="form-control" name="country">
+						<option value="">Select Country</option>
+						<option value="101" selected>India</option>
+					<!-- 						
+					<option value="United States" @if ('United States'== old('country'))
+						selected="selected"	
+					@else
+					{{ (isset($client) && $client->country == 'United States' ) ? "selected":"" }} @endif>United States</option> -->
 
-				 
-					<form method="POST" action="#" id="assignedZone" onsubmit="return assignedZoneController.submit(this,<?php echo (isset($client->id)? $client->id:""); ?>)">
-					{{ csrf_field() }}
-	 
-					
-				 
-					<div class="form-group col-md-6">
-						<div class="col-md-12"> 
-						<label>Country:</label>
-							<select class="form-control" name="country">
-								<option value="">Select Country</option>
-								<option value="India" @if ('101'== old('country'))
-								selected="selected"	
-							@else
-							{{ (isset($client) && $client->country == 'India' ) ? "selected":"" }} @endif>India</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<div class="col-md-12"> 
+				<label for="state">State: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
+					<select class="form-control select2-single-state" name="state_id">
+						<?php
+							$selected = '';
+							if($statesis){
+							foreach($statesis as $state){
+								echo "<option value=\"".$state->id."\" >".$state->name."</otpion>";
+							} }
+						?>
+					</select>
 						
-							<option value="United States" @if ('United States'== old('country'))
-								selected="selected"	
-							@else
-							{{ (isset($client) && $client->country == 'United States' ) ? "selected":"" }} @endif>United States</option>
-
-							</select>
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<div class="col-md-12"> 
-						<label>State: <sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>						 
-							<select class="form-control select2-single-state" name="state_id">
-								<?php
-									$selected = '';
-									if($statesis){
-									foreach($statesis as $state){
-									 
-										echo "<option value=\"".$state->state."\" >".$state->state."</otpion>";
-									} }
-								?>
-							</select>
-							 
-						</div>
-					</div>
-					<div class="form-group col-md-6">
-						<div class="col-md-12"> 
-							
-						<label>City:</label>							
-						<select class="dropdown-arrow dropdown-arrow-inverse city-form select2_single city" name="cityid">
-						<option value="">Select City</option>
-
-
-						</select>
-						</div>
-					</div>	
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<div class="col-md-12"> 
+					
+				<label for="city">City:</label>
+				<select class="dropdown-arrow dropdown-arrow-inverse city-form select2_single" name="cityid">
+				<option value="">Select City</option>
+				</select>
+				</div>
+			</div>	
+						
+			
+			<div class="form-group col-md-6">
+				<div class="col-md-12"> 
+				<label for="zone">Zone:</label>
+				<select name="zone_id" class="form-control">
+					<option value="">Select Zone</option>
+				</select>
+				
+			</div>
+			</div>
+			
+			<div class="form-group col-md-6 other-zone">
+				<div class="col-md-12"> 					
+				<div class="show_otherInput"></div>
+				
+			</div>
+			</div>
 								
-					
-					<div class="form-group col-md-6">
-						<div class="col-md-12"> 
-						<label for="">Zone:</label>
-						<select name="zone_id" class="form-control">
-							<option value="">Select Zone</option>
-						</select>
-					  
-					</div>
-					</div>
-					
-					<div class="form-group col-md-6 other-zone">
-						<div class="col-md-12"> 
-						 
-						<div class="show_otherInput"></div>
-					  
-					</div>
-					</div>
-									 
-					<div class="col-md-3">
-					<div class="form-group">
-						<input type="submit" class="btn btn-warning" value="Submit" style="margin-top:20px;">
-					</div>
-					</div>
-								 
-					</form>
-				 
+			<div class="col-md-3">
+			<div class="form-group">
+				<input type="submit" class="btn btn-warning" value="Submit" style="margin-top:20px;">
+			</div>
+			</div>
+							
+			</form>
+			
+			<div class="col-md-12">
+			<div class="row">
+			<div class=" table-responsive">
+			<table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-zones">
+			<thead>
+			<tr>
+			<th><input type="checkbox" id="check-all" class="check-box"></th>
+			<th>City</th>
+			<th>Zone</th>
+			<th>Action</th>
+			</tr>
+			</thead>
+			</table>
+			</div>
 
-
-					<div class="col-md-12">
-					<div class="row">
-					<div class=" table-responsive">
-					<table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-zones">
-					<thead>
-					<tr>
-					
-					<th>Zone</th>
-					<th>City</th>
-					<th>Action</th>
-					</tr>
-					</thead>
-					</table>
-					</div>
-					</div>
-					</div>
+			 <div class="form-group">
+                <div class="col-md-3">
+				<button type="button" class="btn btn-success  btn-block" onclick="javascript:assignedZoneController.selectDeleteParmanent()" >Delete All </button>
+				</div>
+              </div>
+			</div>
+			</div>
 
 				 
         </div>

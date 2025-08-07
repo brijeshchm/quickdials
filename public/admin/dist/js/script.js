@@ -362,21 +362,32 @@ var dataTableCitylist = $('#datatable-citylist').on('draw.dt',function(e,setting
 		}
 	}
 }).api(); 
- 
-var dataTableAssignedZones = $('#datatable-assigned-zones').dataTable({
+  	
+var dataTableAssignedZones = $('#datatable-assigned-zones').on('draw.dt',function(e,settings){
+	$('#datatable-assigned-zones').find('[data-toggle="popover"]').popover({html:true,container:'body'});
+	$('#datatable-assigned-zones').find('#check-all').on('change',function(){
+		if(this.checked){
+			$('.check-box').prop('checked',true);
+		}else{
+			$('.check-box').prop('checked',false);
+		}
+	});
+})
+.dataTable({
 	"fixedHeader": true,
 	"processing":true,
 	"serverSide":true,
 	"paging":true,
-	"responsive":true,
-	"searching":false,
-	"ajax":{
+	"ordering":false,	
+	"lengthMenu": [ 10, 25, 50, 75, 100 ],	
+	"ajax":{		 
 		url:removeHashFromURL(window.location.href)+"/get-assigned-zones",
 		data:function(d){
-			d.page = (d.start/d.length)+1;
+			d.page = (d.start/d.length)+1;		 	 
 			d.columns = null;
 			d.order = null;
-		}
+		} 
+		 
 	}
 }).api();
 
@@ -1154,11 +1165,10 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 			}
 		};
 	})();
-// ASSIGNED AREA CONTROLLER
-// ************************
 
-// ************************
-// ASSIGNED ZONE CONTROLLER
+
+// ASSIGNED AREA CONTROLLERassignedZoneController 
+ 
 	var assignedZoneController = (function(){
 		return {
 			submit:function(THIS,id){
@@ -1173,10 +1183,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 					 console.log(data);
 						if(data.status){
 							 
-							mainSpinner.stop();							
-						
-							
-					 
+							mainSpinner.stop();							 
 							$this.find('button[type="reset"]').click();
 							$('#messagemodel .modal-title').text("update");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
@@ -1247,7 +1254,60 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 					});
 				}
 				return false;
+			},
+			selectDeleteParmanent:function(){
+				var $this = this;
+				if (confirm("Are you sure Delete??")) {
+					$this.checked_Ids = [];
+					$('.check-box:checked').each(function(){
+						if(!(new String("on").valueOf() == $(this).val())){
+							$this.checked_Ids.push($(this).val());
+						}
+					});
+
+					if($this.checked_Ids.length == 0){
+						alert('Please select data to Delete Permanently!');
+						return false;
+					}	 
+			 
+					$.ajax({
+						url:"/developer/assignLocation/selectAssignZoneDelete",
+						type:"POST",
+						dataType:"json",
+						data:{
+							ids:$this.checked_Ids
+						},
+						success:function(data,textStatus,jqXHR){
+							if(data.status){					 				
+								
+								$("#messagemodel").modal("show");                        							 
+								$('#messagemodel .modal-title').text("Business Location Delete");	
+								$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
+								$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+								$('#messagemodel').css({'width':'100%'});					
+
+								setInterval(function() {
+								$("#messagemodel").modal("hide");
+								}, 3000);
+								dataTableAssignedZones.ajax.reload(null,false);								 
+							}else{
+
+								$("#messagemodel").modal("show");                        							 
+								$('#messagemodel .modal-title').text("Business Location Delete");	
+								$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
+								$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+								$('#messagemodel').css({'width':'100%'});	
+									
+								}
+						},
+						error:function(jqXHR,textStatus,errorThrown){
+							
+						}
+					});
 			}
+				return false;				
+			},
+
 		};
 	})();
 // ASSIGNED ZONE CONTROLLER
@@ -5571,7 +5631,7 @@ $(document).ready(function(){
 			e.preventDefault();
 			var $this = $(this),
 				val = $this.val(); 
-			
+		 
 			mainSpinner.start();
 			$.ajax({
 				"url":"/developer/state/get-cityes/"+val,
@@ -5586,7 +5646,7 @@ $(document).ready(function(){
 						if(payload.length>0){
 							var $html = "<option value=''>Select City</option>";						 
 							for(var i in payload){
-								$html += "<option value='"+payload[i].city+"'>"+payload[i].city+"</option>";
+								$html += "<option value='"+payload[i].id+"'>"+payload[i].city+"</option>";
 							}						 
 							$('*[name="cityid"]').html($html);
 						}					
@@ -5603,13 +5663,12 @@ $(document).ready(function(){
 		});
 		
 
-	// ***********************
+	// *************get/city**********
 	// DOCUMENT ON CHANGE CITY
-		$(document).on('change','*[name="cityid"]',function(e){
-			 
+		$(document).on('change','*[name="cityid"]',function(e){			 
 			e.preventDefault();
 			var $this = $(this),
-				val = $this.val();		 
+			val = $this.val();		 
 			mainSpinner.start();
 			$.ajax({
 				"url":"/developer/zone/get-zones/"+val,

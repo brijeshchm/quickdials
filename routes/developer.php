@@ -322,6 +322,7 @@ Route::get('/password/reset/{token?}',[App\Http\Controllers\Auth\PasswordControl
 	
 	Route::get('/clients/update/{id}/area/delete/{assigned_area_id}',[App\Http\Controllers\BackEndClientsController::class, 'destroyAreaFromClient'])->middleware('auth');
 	Route::get('/clients/update/{id}/zone/delete/{assigned_zone_id}',[App\Http\Controllers\BackEndClientsController::class, 'destroyZoneFromClient'])->middleware('auth');
+	Route::post('/assignLocation/selectAssignZoneDelete',[App\Http\Controllers\BackEndClientsController::class, 'selectAssignZoneDelete'])->middleware('auth');
 	Route::post('/clients/update/{id}',[App\Http\Controllers\BackEndClientsController::class, 'update'])->middleware('auth');
 	Route::post('/clients/editSaveClientLocation/{id}',[App\Http\Controllers\BackEndClientsController::class, 'editSaveClientLocation'])->middleware('auth:developer');
 	Route::post('/clients/ediSaveContactInfo/{id}',[App\Http\Controllers\BackEndClientsController::class, 'ediSaveContactInfo'])->middleware('auth:developer');

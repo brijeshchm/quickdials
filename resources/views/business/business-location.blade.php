@@ -142,7 +142,7 @@ div.dataTables_paginate ul.pagination {
                   </table>
                 </div>
 	            <div class="form-group">
-                <div class="col-md-2">
+                <div class="col-md-3">
 							    <button type="button" class="btn btn-success  btn-block" onclick="javascript:enquiryController.selectDeleteParmanent()" >Delete All </button>
 							  </div>
               </div>

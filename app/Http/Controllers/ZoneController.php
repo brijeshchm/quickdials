@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Models\Zone;
 use App\Models\City;
 use App\Models\Citieslists; //Model
+use App\Models\State; //Model
 use Validator;
 use DB;
 
@@ -235,7 +236,7 @@ class ZoneController extends Controller
     public function getState(Request $request, $state_id)
     {	
 		$id = $state_id;
-		$cities = Citieslists::where('state','LIKE',$state_id)->get();
+		$cities = Citieslists::where('state_id','LIKE',$state_id)->get();
 		// echo "<pre>";print_r($cities);die;
 		if($cities){
 			return response()->json([
@@ -268,8 +269,8 @@ class ZoneController extends Controller
     {	
 		$id = $city_id;
 		 
-		$city = Citieslists::where('city','LIKE',$id)->first();
-		$zones = Zone::where('city_id',$city->id)->select('id','zone')->get();	 
+	
+		$zones = Zone::where('city_id',$city_id)->get();
 		if($zones){
 			return response()->json([
 				"statusCode"=>1,

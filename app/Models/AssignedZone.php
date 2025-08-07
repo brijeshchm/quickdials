@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssignedZone extends Model
 {
+    protected $table = 'assigned_zones';
     protected $guarded = [];
 
     public function client()

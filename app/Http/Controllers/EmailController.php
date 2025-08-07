@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;  
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use App\Models\Blogdetails;
 use Image;
 use Mail;
- 
+
 class EmailController extends Controller
 {
     /**
@@ -28,22 +28,20 @@ class EmailController extends Controller
      */
     public function index()
     {
-		 $template = 'emails.email-connected';
-	 
-				$client="Students";
-			$check=  Mail::send($template, ['client'=>$client], function ($m) use ($client) {   
-         
-            $m->from('info@quickdials.in', 'quickdials');             
-            //$client->email
-            $m->to('infon@quickdials.in', '')->subject('Learning course');
-        });	 
-		if($check){
-			echo "Success";
-		}			
-		 
-        
-    } 
- 
-	
-	 
+        $template = 'emails.email-connected';
+        $client = "Students";
+        $check = Mail::send($template, ['client' => $client], function ($m) use ($client) {
+
+        $m->from('info@quickdials.com', 'quickdials');      
+        $m->to('infon@quickdials.com', '')->subject('Learning course');
+        });
+        if ($check) {
+            echo "Success";
+        }
+
+
+    }
+
+
+
 }

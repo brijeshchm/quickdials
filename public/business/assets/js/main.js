@@ -1030,6 +1030,7 @@ var enquiryController  = (function(){
 			},
 			selectDeleteParmanent:function(){
 				var $this = this;
+				if(confirm("Are you sure Delete??")){
 				$this.checked_Ids = [];
 				$('.check-box:checked').each(function(){
 					if(!(new String("on").valueOf() == $(this).val())){
@@ -1076,6 +1077,7 @@ var enquiryController  = (function(){
 						
 					}
 				});
+			}
 				return false;				
 			},
 			  

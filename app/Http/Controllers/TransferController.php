@@ -19,133 +19,133 @@ use Session;
 
 class TransferController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        
-		$keyword = Keyword::all();
-		$statuss = Status::where('lead_filter',1)->get();
-		$users = [];
-		if($request->user()->current_user_can('administrator')){
-			$users = User::select('id','first_name','last_name')->orderBy('first_name','ASC')->get();
-		}else{
-			$users = User::select('first_name','last_name')->where('id',$request->user()->id)->get();
-		}
-		return view('admin.transfer.transfer',['keyword'=>$keyword,'users'=>$users,'statuss'=>$statuss]);
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index(Request $request)
+	{
 
-    /**
-     * Transfer the resources
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function transfer(Request $request)
-    {
-		
+		$keyword = Keyword::all();
+		$statuss = Status::where('lead_filter', 1)->get();
+		$users = [];
+		if ($request->user()->current_user_can('administrator')) {
+			$users = User::select('id', 'first_name', 'last_name')->orderBy('first_name', 'ASC')->get();
+		} else {
+			$users = User::select('first_name', 'last_name')->where('id', $request->user()->id)->get();
+		}
+		return view('admin.transfer.transfer', ['keyword' => $keyword, 'users' => $users, 'statuss' => $statuss]);
+	}
+
+	/**
+	 * Transfer the resources
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function transfer(Request $request)
+	{
+
 		//echo "<pre>";print_r($_POST); 
-        $validator = Validator::make($request->all(),[
-			'transfer'=>'required',
-			'transfer_from'=>'required',
-			'transfer_to'=>'required',
-			
+		$validator = Validator::make($request->all(), [
+			'transfer' => 'required',
+			'transfer_from' => 'required',
+			'transfer_to' => 'required',
+
 		]);
-		if($validator->fails()){
-            return redirect('/developer/permanent-transfer')
-                        ->withErrors($validator)
-                        ->withInput();
+		if ($validator->fails()) {
+			return redirect('/developer/permanent-transfer')
+				->withErrors($validator)
+				->withInput();
 		}
-		switch($request->input('transfer')){
+		switch ($request->input('transfer')) {
 			case 'all_leads':
-				$transfer='leads';				 
-			break;
-			 
+				$transfer = 'leads';
+				break;
+
 			case 'all_demos':
-				$transfer='demos';
-			break;
-			 
+				$transfer = 'demos';
+				break;
+
 		}
-		 
-		 
-		if(isset($transfer) && $transfer=='leads'){
+
+
+		if (isset($transfer) && $transfer == 'leads') {
 			// echo "<pre>";print_r($_POST); 
 			$leads = DB::table('leads as leads');			 // generating raw query to make join
-			
-		 
-			$leads = $leads->where('created_by',$request->transfer_from);
-			if($request->input('leaddf') !=''){
-				$leads = $leads->whereDate('leads.created_at','>=',date_format(@date_create($request->input('leaddf')),'Y-m-d'));
-				$leads = $leads->whereDate('leads.created_at','<=',date_format(@date_create($request->input('leaddt')),'Y-m-d'));
+
+
+			$leads = $leads->where('created_by', $request->transfer_from);
+			if ($request->input('leaddf') != '') {
+				$leads = $leads->whereDate('leads.created_at', '>=', date_format(@date_create($request->input('leaddf')), 'Y-m-d'));
+				$leads = $leads->whereDate('leads.created_at', '<=', date_format(@date_create($request->input('leaddt')), 'Y-m-d'));
 			}
 			//echo "<pre>";print_r($request->input('course')); 
-			if($request->input('course')!=''){
+			if ($request->input('course') != '') {
 				$courses = $request->input('course');
-				foreach($courses as $course){
+				foreach ($courses as $course) {
 					$courseList[] = $course;
-				}				 
-				$leads = $leads->whereIn('leads.kw_text',$courseList);
+				}
+				$leads = $leads->whereIn('leads.kw_text', $courseList);
 			}
-			
-			
-			if($request->input('status')!=''){
+
+
+			if ($request->input('status') != '') {
 				$status_data = $request->input('status');
-				
-				foreach($status_data as $status){
+
+				foreach ($status_data as $status) {
 					$statusList[] = $status;
 				}
-				$leads = $leads->whereIn('leads.status_id',$statusList);
+				$leads = $leads->whereIn('leads.status_id', $statusList);
 			}
-		// echo "<pre>";print_r($statusList);die;
+			// echo "<pre>";print_r($statusList);die;
 			$leads = $leads->get();
-	//echo "<pre>";print_r($leads);die;
-			if(count($leads)){
-				$users = User::select('id','first_name')->get();
-				$usr=[];
-				foreach($users as $user){
-					$usr[$user->id]=$user->first_name;
-				} 
+			//echo "<pre>";print_r($leads);die;
+			if (count($leads)) {
+				$users = User::select('id', 'first_name')->get();
+				$usr = [];
+				foreach ($users as $user) {
+					$usr[$user->id] = $user->first_name;
+				}
 				$leadsUpdate = DB::table('leads as leads');
-				 
+
 				$leadsUpdate = $leadsUpdate->where('created_by', $request->transfer_from);
-				
-				if($request->input('course')!=''){
-				$courses = $request->input('course');
-				foreach($courses as $course){
-					$courseList[] = $course;
+
+				if ($request->input('course') != '') {
+					$courses = $request->input('course');
+					foreach ($courses as $course) {
+						$courseList[] = $course;
+					}
+					$leadsUpdate = $leadsUpdate->whereIn('leads.kw_text', $courseList);
 				}
-				$leadsUpdate = $leadsUpdate->whereIn('leads.kw_text',$courseList);
+				if ($request->input('status') != '') {
+					$status_data = $request->input('status');
+					foreach ($status_data as $status) {
+						$statusList[] = $status;
+					}
+					$leadsUpdate = $leadsUpdate->whereIn('leads.status_id', $statusList);
 				}
-				if($request->input('status')!=''){
-				$status_data = $request->input('status');				 
-				foreach($status_data as $status){
-					$statusList[] = $status;
+				if ($request->input('leaddf') != '') {
+					$leadsUpdate = $leadsUpdate->whereDate('leads.created_at', '>=', date_format(date_create($request->input('leaddf')), 'Y-m-d'));
+					$leadsUpdate = $leadsUpdate->whereDate('leads.created_at', '<=', date_format(date_create($request->input('leaddt')), 'Y-m-d'));
 				}
-				$leadsUpdate = $leadsUpdate->whereIn('leads.status_id',$statusList);
-				}
-				if($request->input('leaddf')  !=''){
-					$leadsUpdate = $leadsUpdate->whereDate('leads.created_at','>=',date_format(date_create($request->input('leaddf')),'Y-m-d'));
-					$leadsUpdate = $leadsUpdate->whereDate('leads.created_at','<=',date_format(date_create($request->input('leaddt')),'Y-m-d'));
-				}				
-			//echo "<pre>";print_r($leadsUpdate);die;
+				//echo "<pre>";print_r($leadsUpdate);die;
 				$leadsUpdate = $leadsUpdate->update(['created_by' => $request->transfer_to]);
-				 
-				
-				if($leadsUpdate){
-				$request->session()->flash('alert-success','Lead successfully transfer!');				
-				  return redirect('/developer/permanent-transfer')->with('alert-success','Lead successfully transfer!');
-				 
+
+
+				if ($leadsUpdate) {
+					$request->session()->flash('alert-success', 'Lead successfully transfer!');
+					return redirect('/developer/permanent-transfer')->with('alert-success', 'Lead successfully transfer!');
+
 				}
-			}else{
+			} else {
 				return redirect('/developer/permanent-transfer')
-							->withErrors(['No lead(s) found for transfer'])
-							->withInput();				
+					->withErrors(['No lead(s) found for transfer'])
+					->withInput();
 			}
 		}
-		 
 
-		 }
-	
+
+	}
+
 }

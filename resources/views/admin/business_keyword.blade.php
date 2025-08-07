@@ -54,7 +54,7 @@ foreach($keywords as $keyword){
 											<option value="<?php echo $parent_category->id; ?>"><?php echo $parent_category->parent_category; ?></option>
 											<?php endforeach; ?>
 										</select>
-										<!--input type="text" class="form-control" name="parent_category_id" id="parent_category_id" placeholder="Enter Parent Category" value="{{ old('child_category') }}"-->
+										 
 									</div>
 									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 										<label for="child_category_id">Select Child Category:</label>

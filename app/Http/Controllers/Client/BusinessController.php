@@ -48,8 +48,7 @@ class BusinessController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-         
+    {         
 		if($request->has('initial_form_submit')){
 			$client = new Client;
 			$messages = ['mobile.regex' => 'Mobile number cannot start with 0.'];
@@ -94,8 +93,7 @@ class BusinessController extends Controller
 			}
 			
 			$client->business_name = trim($request->input('business_name'));
-			$client->business_slug = $business_slug;
-		 
+			$client->business_slug = $business_slug;		 
 			$pass = rand(000001,999999);
 			$client->password = bcrypt($pass);
 			$client->first_name = $request->input('first_name');
@@ -116,7 +114,7 @@ class BusinessController extends Controller
 				$client->save(); 
 				$client = Client::find($clientID);
 			 
-				$smsMessage = "Thanks for registering with Quickind.
+				$smsMessage = "Thanks for registering with QuickDials.
 				%0D%0ALogin %26 Update your profile to get more leads to grow your business.
 				%0D%0A%0D%0ABusiness Name:".$client->business_name."
 				%0D%0AURL:www.quickdials.com
@@ -124,7 +122,7 @@ class BusinessController extends Controller
 				%0D%0APassword:".$pass."
 				%0D%0A--
 				%0D%0ARegards
-				%0D%0AQuickind Team";
+				%0D%0AQuickDials Team";
 			 
 				sendSMS($client->mobile,$smsMessage);
 				$this->success_msg .= 'Business registered successfully!';
@@ -148,8 +146,8 @@ class BusinessController extends Controller
     public function sendUandP($client,$usr,$pass)
     {
         Mail::send('emails.register', ['client'=>$client,'usr'=>$usr,'pass'=>$pass], function ($m) use ($client) {
-            $m->from('care@quickdials.in', 'quickdials');
-            $m->to($client->email, $client->first_name." ".$client->last_name)->subject('quickdials Login Credentials')->cc('clients@quickdials.in');
+            $m->from('leads@quickdials.com', 'quickdials');
+            $m->to($client->email, $client->first_name." ".$client->last_name)->subject('QuickDials Login Credentials')->cc('clients@quickdials.com');
         });
     }
 
@@ -162,24 +160,23 @@ class BusinessController extends Controller
 	 */
 	 public function getAssignedZonesPagination(Request $request)
 	 {
-		if($request->ajax()){
+		if ($request->ajax()) {
 			$clientID = auth()->guard('clients')->user()->id;
 			$leads = DB::table('assigned_zones');
 			
-			if($request->input('search.value')!=''){
+			if ($request->input('search.value')!='') {
 
 				$leads = $leads->where(function($query) use($request){
 					$query->orWhere('citylists.city','LIKE','%'.$request->input('search.value').'%')
-						  ->orWhere('zones.zone','LIKE','%'.$request->input('search.value').'%');
-						 // ->orWhere('leads.email','LIKE','%'.$request->input('search.value').'%');
+						  ->orWhere('zones.zone','LIKE','%'.$request->input('search.value').'%');						  
 				});
 			}
-				$leads = $leads->join('zones','assigned_zones.zone_id','=','zones.id')
-				->join('citylists','assigned_zones.city_id','=','citylists.id')			 
-				->select('assigned_zones.*','citylists.city','zones.zone','assigned_zones.id as assign_id')
-				->orderBy('assigned_zones.id','desc')
-				->where('assigned_zones.client_id',$clientID)
-				->paginate($request->input('length'));
+			$leads = $leads->join('zones','assigned_zones.zone_id','=','zones.id')
+			->join('citylists','assigned_zones.city_id','=','citylists.id')			 
+			->select('assigned_zones.*','citylists.city','zones.zone','assigned_zones.id as assign_id')
+			->orderBy('assigned_zones.id','desc')
+			->where('assigned_zones.client_id',$clientID)
+			->paginate($request->input('length'));
 					   
 			$returnLeads = $data = [];
 			$returnLeads['draw'] = $request->input('draw');
@@ -190,19 +187,17 @@ class BusinessController extends Controller
 			    
 			    $action ='<a href="javascript:businessController.assignZoneDelete('.$lead->assign_id.')" title="Delete" class="btn btn-danger"><i class="bi bi-trash" aria-hidden="true"></i></a>';	
 			
-				if(!empty($lead->zone)){
+				if (!empty($lead->zone)) {
 					$zonename= $lead->zone;
-				}else{
+				} else {
 					$zonename="";
 					
 				}
 				$data[] = [
-					"<th><input type='checkbox' class='check-box' value='$lead->id'></th>",
+					"<th><input type='checkbox' class='check-box' value='$lead->assign_id'></th>",
 					$lead->city,
 					$zonename,
-					$action,
-		 
-				 
+					$action,				 
 				];
 			}
 			$returnLeads['data'] = $data;
@@ -220,10 +215,9 @@ class BusinessController extends Controller
     public function assignZoneDelete(Request $request, $id)
     { 
 		$assignedZone = AssignedZone::findOrFail($id);
-		if(!empty($assignedZone)){
-			AssigneddArea::where('assigned_zone_id',$assignedZone->zone_id)->where('client_id',$assignedZone->client_id)->where('state_id',$assignedZone->state_id)->where('city_id',$assignedZone->city_id)->delete();		 
-					 
-			if($assignedZone->delete()){
+		if (!empty($assignedZone)) {
+			AssigneddArea::where('assigned_zone_id',$assignedZone->zone_id)->where('client_id',$assignedZone->client_id)->where('state_id',$assignedZone->state_id)->where('city_id',$assignedZone->city_id)->delete();		 					 
+			if ($assignedZone->delete()) {
 				$status=1;							 
 				$msg="Assigned Zone Successfully!";	
 			}else{
@@ -241,47 +235,40 @@ class BusinessController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function selectAssignZoneDelete(Request $request)
-    { 
- 
-		$ids = $request->input('ids');
-		 try{
-			if(!empty($ids)){
+    {  
+		$ids = $request->input('ids');		 
+		if (!empty($ids)) {
 			foreach($ids as $id){
 			
 				$assignedZone = AssignedZone::findOrFail($id);
-				if(!empty($assignedZone)){
+				if (!empty($assignedZone)) {
 					AssigneddArea::where('assigned_zone_id',$assignedZone->zone_id)->where('client_id',$assignedZone->client_id)->where('state_id',$assignedZone->state_id)->where('city_id',$assignedZone->city_id)->delete();
 					$assignedZone->delete();
 					$delete = 1;
 				}
 			}
-			}
-			if(!empty($delete)){
-				$status=1;
-				$msg="Assigned Zone Successfully!";	
-			}else{
-				$status=0;
-				$msg="Assigned Zone could not be Deleted!";	
-			}
-   			
-	}catch(Exception $e){
-		$status = 0;
-		$msg =  $e->getMessage();
 		}
-	return response()->json(['status'=>$status,'msg'=>$msg],200); 
+		if (!empty($delete)) {
+			$status=1;
+			$msg="Assigned Zone Successfully!";	
+		} else {
+			$status=0;
+			$msg="Assigned Zone could not be Deleted!";	
+		}  		
+	 
+		return response()->json(['status'=>$status,'msg'=>$msg],200); 
 	}
 	
 
 	public function getAjaxCities(Request $request)
-    {
-         
+    {         
 		$sid = $request->input('sid');
 		$cid = $request->input('cid');
 		$citys= DB::table('citylists')->where('state',$sid)->get();
  
-		if($citys){ 
+		if ($citys) { 
 			echo '<option value="">Select City</option>';
-			foreach($citys as $city){ 
+			foreach ($citys as $city) { 
 			$selected = ($cid==$city->city)?"selected":'';
 
 			echo'<option value="'.$city->city.'" '.$selected.' >'.$city->city.'</option>';
