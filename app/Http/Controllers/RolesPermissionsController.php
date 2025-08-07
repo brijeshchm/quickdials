@@ -250,7 +250,7 @@ class RolesPermissionsController extends Controller
 			$returnPermissions['draw'] = $request->input('draw');
 			$returnPermissions['recordsTotal'] = $permissions->total();
 			$returnPermissions['recordsFiltered'] = $permissions->total();
-			//echo "<pre>";print_r($permissions);die;
+		 
 			foreach ($permissions as $permission) {
 				$html = '';
 				$permissionss = unserialize($permission->permissions);
@@ -330,7 +330,7 @@ class RolesPermissionsController extends Controller
 	 */
 	public function updateRolePermission(Request $request, $id)
 	{
-		//	echo "<pre>";print_r($_POST);die;
+		 
 		if ($request->user()->current_user_can('administrator')) {
 			$validator = Validator::make($request->all(), [
 				'role' => 'required|unique:roles_permissions,role,' . $id
@@ -343,7 +343,7 @@ class RolesPermissionsController extends Controller
 			$rolePermission = RolePermission::find($id);
 			$rolePermission->role = $request->input('role');
 			$rolePermission->permissions = serialize($request->input('permission'));
-			//echo "<pre>";print_r($rolePermission);die;
+		 
 			if ($rolePermission->save()) {
 				$request->session()->flash('alert-success', 'Permission successful updated !!');
 				return redirect(url('/developer/role-permission'));

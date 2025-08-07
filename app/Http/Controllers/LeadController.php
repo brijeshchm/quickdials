@@ -1234,7 +1234,7 @@ class LeadController extends Controller
 												//$this->intimateDefaulterClients($client, $lead);
 												continue;
 											} else {
-												//echo "<pre>";print_r($clnt);die;
+											 
 												$clnt->save();
 											}
 										}
@@ -1655,43 +1655,6 @@ class LeadController extends Controller
 		}
 	}
 
-
-
-
-	/**
-	 * Send mail and sms to defaulter cleints
-	 *
-	 * @param $client - Client Model
-	 * @param $lead - Lead Model
-	 */
-
-	/*public function intimateDefaulterClients($client,$lead){
-		$leadDetail = DB::table('leads')
-						->join('cities','leads.city_id','=','cities.id')
-						->select('leads.*','cities.city')
-						->where('leads.id',$lead->id)
-						->first();
-		if(!empty($client->email)){
-
-			$this->sendLeadEmail($client,$leadDetail,'defaulter');
-		}
-		$smsMessage = "Dear Institute,";
-		$smsMessage .= "%0D%0A%0D%0A";
-		$smsMessage .= $leadDetail->name." enquired for ".$leadDetail->kw_text." Training.";
-		if(!empty($leadDetail->email)){
-			$smsMessage .= "%0D%0AEmail: ".getStarCodedStr($leadDetail->email,'email');
-		}
-		$smsMessage .= "%0D%0AMob: ".getStarCodedStr($leadDetail->mobile,'number');
-		$smsMessage .= "%0D%0ACity: ".$leadDetail->city;
-		$smsMessage .= "%0D%0AArea: ".$leadDetail->area;
-		$smsMessage .= "%0D%0A- Quick Dials Team";
-		$smsMessage .= "%0D%0A%0D%0ATo get complete information, upgrade to paid account.";
-
-		sendSMS($client->mobile,$smsMessage);
-		if(!empty($client->sec_mobile))
-			sendSMS($client->sec_mobile,$smsMessage);
-	}*/
-
 	public function intimateDefaulterClients($client, $lead)
 	{
 		$leadDetail = DB::table('leads')
@@ -1699,10 +1662,7 @@ class LeadController extends Controller
 			->select('leads.*', 'citylists.city')
 			->where('leads.id', $lead->id)
 			->first();
-		echo "<pre>";
-		print_r($leadDetail);
-		echo "defaule";
-		die;
+		 
 
 		$assignvalidation = AssignedLead::where('client_id', $client->id)->where('kw_id', $leadDetail->kw_id)->where('lead_id', $leadDetail->id)->get()->count();
 		if ($assignvalidation == 0) {
@@ -1848,13 +1808,7 @@ class LeadController extends Controller
 			}
 		}
 
-		/* 	if($request->input('search.city')!=''){
-				echo "<pre>";print_r($request->input('search.city'));die;
-				$leads = $leads->where('leads.city_name','=',$request->input('search.city'));
-			}
-			if($request->input('search.course')!=''){
-				$leads = $leads->where('leads.kw_text','LIKE',$request->input('search.course'));
-			} */
+	 
 
 		if ($request->input('search.datef') != '') {
 			$leads = $leads->whereDate('leads.created_at', '>=', date_format(date_create($request->input('search.datef')), 'Y-m-d'));
@@ -1867,11 +1821,7 @@ class LeadController extends Controller
 
 		$returnLeads = [];
 		$arr = [];
-		// $returnLeads['draw'] = $request->input('draw');
-		// $returnLeads['recordsTotal'] = $leads->total();
-		// $returnLeads['recordsFiltered'] = $leads->total();
-
-		//echo "<pre>";print_r($leads);die;
+	 
 		foreach ($leads as $lead) {
 			$arr[] = [
 				"Name" => $lead->name,
@@ -2901,8 +2851,7 @@ class LeadController extends Controller
 			$lead->city_id = $cityObj->id;
 			$lead->city_name = $cityObj->city;
 			$lead->remark = $request->input('remark');
-			$lead->lead_joined = $request->input('client');
-			// echo "<pre>";print_r($lead);die;
+			$lead->lead_joined = $request->input('client');		 
 
 			if ($request->input('area_zone') != '') {
 				$lead->zone_id = $request->input('area_zone');

@@ -55,17 +55,13 @@ class razorpayController extends Controller
 	}
 	public function payDeposit(Request $request)
 	{
-		//echo "<pre>";print_r($this->dataDecodeJsonBase64($_GET['o']));die;
-
-
 		if (isset($_GET['status'], $_GET['o']) && !empty($_GET['o'])) {
 			$o = base64_decode($_GET['o'], $strict = false);
 			$data = json_decode($o);
 			$status = $_GET['status'];
 		} else {
 			$data = array();
-		}
-		//	echo "<pre>";print_r($data);die;
+		}		 
 		return view('business.razorpay.pay-checkout', ['data' => $data]);
 
 	}
@@ -165,16 +161,9 @@ class razorpayController extends Controller
 	 * @return Json Response
 	 */
 	public function checkOut(Request $request)
-	{
-
-		//ss	echo "<pre>";print_r($_GET);die;
-
-		//echo "<pre>";print_r($_GET);die;
-		$data = $this->dataDecodeJsonBase64($_GET['o']);
-		//echo "<pre>";print_r($data);die;
+	{	 
+		$data = $this->dataDecodeJsonBase64($_GET['o']);	 
 		return view('business.razorpay.pay-checkout', ['data' => $data]);
-
-
 	}
 
 
@@ -202,20 +191,13 @@ class razorpayController extends Controller
 
 	public function razorPayCheckout(Request $request)
 	{
-
-
-		//echo "<pre>";print_r($_POST);
-
 		if (!empty($_POST['razorpay_payment_id']) && !empty($_POST['merchant_order_id'])) {
 
 			$json = array();
 			$razorpay_payment_id = $_POST['razorpay_payment_id'];
 			$merchant_order_id = $_POST['merchant_order_id'];
 			$currency_code = $_POST['currency_code_id'];
-
-			//$cityname =City::where('city_id',$_POST['city'])->first()->city_name;
-//$countryname =Country::where('country_id',$_POST['billing_country'])->first()->country_name;
-// store temprary data
+		 
 			$dataFlesh = array(
 				'card_holder_name' => $_POST['card_holder_name_id'],
 				'merchant_amount' => $_POST['merchant_amount'],
@@ -386,8 +368,7 @@ class razorpayController extends Controller
 		} else {
 			$data = "";
 		}
-		//echo "<pre>";print_r($data);die;
-
+		 
 		return view('business.razorpay.success', ['data' => $data]);
 	}
 
@@ -405,7 +386,7 @@ class razorpayController extends Controller
 
 				$order_id = $_POST['pid'];
 				$paydetails = RazorpayHistory::where('order_id', $order_id)->first();
-				//echo "<pre>";print_r($paydetails);die;
+				 
 				return response()->view("site.feesrazorpay.getPayPrintSlipInvoiceRazorpay", ['paydetails' => $paydetails]);
 
 				die;
@@ -432,8 +413,6 @@ class razorpayController extends Controller
 			$data = array();
 		}
 		$paymentMode = PaymentMode::where('status', 1)->get();
-		//echo "<pre>";print_r($paymentMode);die;
-
 		return view('business.razorpay.fees-pay-page-out', ['paymentMode' => $paymentMode, 'id' => $id, 'data' => $data]);
 	}
 
@@ -519,24 +498,23 @@ class razorpayController extends Controller
 						</tr>
 						 
 						';
-					//$to="quickdialsleads@gmail.com";
+				 
 
 
 					$stdemail = "";
 					$codemail = "";
 					$coordinator = "";
 
-					// echo "<pre>";print_r($_FILES);die;
-					//	$to="accounts@quickdials.in";
+				 
 					Mail::send('mails.send_payment_inquiry', ['msg' => $message], function ($m) use ($message, $request, $subject, $stdemail, $codemail, $data) {
-						$m->from('info@quickdials.in', $data->name);
+						$m->from('info@quickdials.com', $data->name);
 						if ($request->file('photoimg')) {
 							$m->attach($request->file('photoimg')->getRealPath(), [
 								'as' => $request->file('photoimg')->getClientOriginalName(),
 								'mime' => $request->file('photoimg')->getMimeType()
 							]);
 						}
-						$m->to('quickdials.ashish@gmail.com', "")->subject($subject)->cc($data->email);
+						$m->to('quickdials1@gmail.com', "")->subject($subject)->cc($data->email);
 					});
 
 
@@ -883,12 +861,11 @@ class razorpayController extends Controller
 
 	}
 	public function saveSubscribeFree(Request $request, $id)
-	{
-		//echo "<pre>";print_r($request->input('merchant_order_id'));die;
+	{		 
 		if ($request->ajax()) {
 			$oo = base64_decode($_POST['oo'], $strict = false);
 			$data = json_decode($oo);
-			//echo "<pre>";print_r($data);die;		 
+		 
 
 			$clientdeatails = Client::find($data->id);
 			if ($clientdeatails->coins_free == '0') {

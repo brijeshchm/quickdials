@@ -206,7 +206,7 @@ a.new-payment-type {position: relative;}
 	}else{
 		$data=array();
 	}
-	//echo "<pre>";print_r($data);
+	 
 	?>
 	<form action="{{url('/save-processing')}}" method="post" autocomplete="off">
 	<div class="form-row form-avd-first-box">

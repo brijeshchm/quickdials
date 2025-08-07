@@ -1115,11 +1115,9 @@ Quick Dials- Training in {{$client->business_name}}
 					localStorage.getItem('keyword');
 				 
 				</script>
-				<?php  
-				// echo "<pre>";print_r($client);
-				?>
+				 
 				<ul>
-				<?php				 
+				<?php
 					$relKeywords  = App\Models\Keyword::select('keyword')->where('child_category_id','1')->get();
 					if($relKeywords){
 						foreach($relKeywords as $relKeyword){

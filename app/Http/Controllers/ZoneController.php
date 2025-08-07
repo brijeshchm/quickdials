@@ -237,7 +237,7 @@ class ZoneController extends Controller
     {	
 		$id = $state_id;
 		$cities = Citieslists::where('state_id','LIKE',$state_id)->get();
-		// echo "<pre>";print_r($cities);die;
+	 
 		if($cities){
 			return response()->json([
 				"statusCode"=>1,

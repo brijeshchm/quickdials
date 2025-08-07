@@ -323,12 +323,6 @@ class KeywordController extends Controller
 				//->orderby('comment_count','desc')
 				//->tosql();
 				->get();
-
-			// echo "<pre>";print_r($clientsList);die;
-
-			//if($zonebucketlist){
-			// foreach($zonebucketlist as $key => $value){
-
 			$max = $mCount = 5;
 			$i = 0;
 			$totalClients = count($clientsList);

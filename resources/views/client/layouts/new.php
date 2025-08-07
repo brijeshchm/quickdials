@@ -68,7 +68,7 @@
                 <!-- Brand -->
                 <a class="navbar-brand page-scroll sticky-logo" href="{{asset('home')}}">     
                   <?php $sitesettings = App\Models\Sitesetting::find('1'); 
-				  //echo "<pre>";print_r($sitesettings);die;
+				 
 				  ?>
 				  @if(!empty($sitesettings->logo))
                    <img src="{{asset('upload/'.$sitesettings->logo)}}" style="width:140px;">  

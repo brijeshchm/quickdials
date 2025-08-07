@@ -119,9 +119,7 @@ class BlogController extends Controller
 
 
 		$data['edit_data'] = Blogdetails::find($id);
-		$data['button'] = "Update";
-
-		//echo "<pre>";print_r($data['edit_data']);die;
+		$data['button'] = "Update";	 
 		if ($request->isMethod('post') && $request->input('submit') == "Update") {
 
 
@@ -193,9 +191,7 @@ class BlogController extends Controller
 				$blogdetails->image = serialize($image);
 			}
 
-			//echo "<pre>";print_r($blogdetails);die;	 		
-
-			if ($blogdetails->save()) {
+		 	if ($blogdetails->save()) {
 
 				if (isset($oldLogoImages)) {
 					foreach ($oldLogoImages as $oldImage) {
@@ -241,10 +237,8 @@ class BlogController extends Controller
 			$recordCollection['draw'] = $request->input('draw');
 			$recordCollection['recordsTotal'] = $blogdetails->total();
 			$recordCollection['recordsFiltered'] = $blogdetails->total();
-			// echo "<pre>";print_r($modesdetails);die;
+		 
 			foreach ($blogdetails as $blog) {
-				// echo "<pre>";print($blog->image);die;
-
 				$image = '';
 				$action = '';
 				$status = '';

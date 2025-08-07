@@ -114,8 +114,7 @@ class BanksController extends Controller
 			$data = [];
 			$recordCollection['draw'] = $request->input('draw');
 			$recordCollection['recordsTotal'] = $banksdetails->total();
-			$recordCollection['recordsFiltered'] = $banksdetails->total();
-			// echo "<pre>";print_r($modesdetails);die;
+			$recordCollection['recordsFiltered'] = $banksdetails->total();		 
 			foreach ($banksdetails as $banks) {
 
 				$data[] = [

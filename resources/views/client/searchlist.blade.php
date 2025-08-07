@@ -115,25 +115,17 @@ if(!empty($keyword) || !empty($clientsList)  ){ ?>
                 </div>    
                 </div>
                 @endif
-        <div class="keyword-cotegory-text">
-
-	 	 			
+        <div class="keyword-cotegory-text">	 			
 		
 			 @if(!empty($keyword))
-			<a href="{{url(strtolower(str_replace(' ','-',$city)).'/categories/'.$keyword->parent_slug.'/'.$keyword->child_slug)}}" title="<?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?>"><?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?></a> / <?php if(!empty($keyword->keyword)){  echo $keyword->keyword; }  ?> in <?php echo $city; ?> 
-			 
-			 @endif
-			 
+			<a href="{{url('child/'.$keyword->child_slug)}}" title="<?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?>"><?php if(!empty($keyword->child_category)){  echo $keyword->child_category; } ?></a> / <?php if(!empty($keyword->keyword)){  echo $keyword->keyword; }  ?> in <?php echo $city; ?>			 
+			 @endif			 
 			 </div>
 			 </div>
             </div>
-           
-            
-
-        </div>
+		</div>
 		@if(isset($keyword) && null!=$keyword->top_description)
-		<div class="col-xs-12" style="margin-top:20px;color:#033967">
-		    
+		<div class="col-xs-12" style="margin-top:20px;color:#033967">		    
 		<p title="<?php if(!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}"><?php  if(!empty($keyword->top_description)){
 		$keydescription = preg_replace('/{{city}}/i',ucfirst(Request::segment(1)),$keyword->top_description);
 		echo trim($keydescription); } ?></p>
@@ -612,7 +604,9 @@ color: #fff;
      
      </div>
  
-        <?php  $rowCount =0; ?>
+        <?php
+		
+		$rowCount =0; ?>
 			@if(!empty($subcategory))
 				@foreach($subcategory as $child)
 				<?php $rowCount++; 
@@ -621,7 +615,7 @@ color: #fff;
 				
 					<div class="side-row-1">
 						<div class="side-data-txt-1">
-						<a href="{{url(strtolower($city).'/categories/'.$child->parent_slug.'/'.$child->child_slug)}}" title="<?php if(!empty($child->child_category)){  echo $child->child_category; } ?>" ><?php if(!empty($child->child_category)){  echo $child->child_category; } ?></a>
+						<a href="{{url('child/'.$child->child_slug)}}" title="<?php if(!empty($child->child_category)){  echo $child->child_category; } ?>" ><?php if(!empty($child->child_category)){  echo $child->child_category; } ?></a>
 						</div>
 						<div class="side-txt">
 						<span class="expert-count"><?php 	$assignKeyword = DB::table('keyword')->where('child_category_id', $child->id)->count(); 

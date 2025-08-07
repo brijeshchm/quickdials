@@ -53,9 +53,6 @@ class BackEndClientsController extends Controller
 	 */
 	public function index(Request $request, $id = null)
 	{
-
-		//echo "<pre>";print_r($_GET);echo "index";die;
-
 		if (!is_null($id)) {
 			$clients = Client::where('username', $id)->get();
 			return view('admin.client_detail', ['clients' => $clients, 'request' => $request]);
@@ -568,8 +565,7 @@ class BackEndClientsController extends Controller
 
 			$moderesults = Modesdetails::get();
 			$banksdetails = Banksdetails::all();
-			$statesis = State::get();
-			//echo "<pre>";print_r($states);die;
+			$statesis = State::get();			 
 			return view('admin.client_update', ['client' => $client, 'kwds' => $kwds, 'request' => $request, 'distinctCities' => $distinctCities, 'clientCategories' => $clientCategories, 'assignedClientCategories' => $assignedClientCategories, 'citylist' => $citylist, 'parentCategory' => $parentCategory, 'moderesults' => $moderesults, 'statesis' => $statesis]);
 		}
 
@@ -1209,7 +1205,7 @@ class BackEndClientsController extends Controller
 			// SAVE CLIENT submit_conversion_client client 
 			// *************************
 			if ($request->has('submit_conversion_client')) {
-				//echo "<pre>";print_r($_POST);echo $id; die;
+				 
 				$client = Client::withTrashed()->where('username', $id)->first();
 				$client->conversion_status = $request->input('conversion_status');
 				if ($client->save()) {
@@ -1578,7 +1574,7 @@ class BackEndClientsController extends Controller
 			$returnLeads['recordsTotal'] = $leads->total();
 			$returnLeads['recordsFiltered'] = $leads->total();
 			$returnLeads['recordCollection'] = [];
-			//echo "<pre>";print_r($leads);die;
+			 
 			foreach ($leads as $lead) {
 				$zone = Zone::where('id', $lead->zone_id)->first();
 				if (!empty($zone)) {
@@ -1771,9 +1767,7 @@ class BackEndClientsController extends Controller
 					->where('keyword.parent_category_id', $request->input('parent_cat'))
 					->groupBy('child_category_id')
 					//	->distinct()
-					->get();
-
-				//echo "<pre>";print_r($child_cat);die;
+					->get();		 
 				return response()->json(['status' => 1, 'result' => $child_cat]);
 			}
 
@@ -1984,9 +1978,7 @@ class BackEndClientsController extends Controller
 			$returnLeads['draw'] = $request->input('draw');
 			$returnLeads['recordsTotal'] = $leads->total();
 			$returnLeads['recordsFiltered'] = $leads->total();
-
-			//echo "<pre>";print_r($leads);die;
-			foreach ($leads as $lead) {
+		 	foreach ($leads as $lead) {
 
 				$action = '';
 				$separator = '';
@@ -2294,10 +2286,8 @@ class BackEndClientsController extends Controller
 				];
 				unset($user);
 			}
-			$returnLeads['data'] = $data;
-			//echo "<pre>";print_r($returnLeads['data']);die;
-			return response()->json($returnLeads);
-			//return $leads->links();
+			$returnLeads['data'] = $data;		 
+			return response()->json($returnLeads);			 
 		}
 	}
 
@@ -2551,8 +2541,7 @@ class BackEndClientsController extends Controller
 
 
 		if ($request->ajax()) {
-
-			//echo "<pre>";print_r($_POST);die;
+		 
 			$id = $request->input('client-id');
 			if (null == $id) {
 				return response()->json(['msg' => 'Client Not Found'], 400);
@@ -2584,12 +2573,9 @@ class BackEndClientsController extends Controller
 
 
 			if ($request->input('pay-submit') == 'savepay' && !empty($request->input('paid_amount'))) {
-				//echo "<pre>";print_r($_POST);die;
+			 
 				$client = Client::withTrashed()->where('username', $id)->first();
-				// $updateClient = Client::findOrFail($client->id);
-				// $updateClient->coins_amt = $updateClient->coins_amt + $request->input('coins_amt');
-				// $updateClient->save();
-
+				
 				$paymenthistory = new PaymentHistory;
 				$paymenthistory->client_id = $client->id;
 				$paymenthistory->customer_name = $client->first_name . ' ' . $client->last_name;
@@ -2919,13 +2905,7 @@ class BackEndClientsController extends Controller
 			->where('keyword.parent_category_id', $assignedKwd->parent_cat_id)
 			->groupBy('child_category_id')
 			//->distinct()
-			->get();
-
-
-
-		//	$child_cats = ChildCategory::where('parent_category_id',$assignedKwd->parent_cat_id)->get();
-		//echo "<pre>";print_r($child_cats);
-		//echo $assignedKwd->child_cat_id;die;
+			->get(); 
 		$childCatOptions = "<option value=''>Select Child</option>";
 		if (count($child_cats) > 0) {
 			foreach ($child_cats as $child_cat) {
@@ -3099,22 +3079,7 @@ class BackEndClientsController extends Controller
 	{
 		if ($request->ajax()) {
 			$client = Client::withTrashed()->where('username', $id)->first();
-			//echo "<pre>";print_r($_POST);die;
-			/* if($client->client_type=="free_subscription" || $client->client_type=="general"){
-				$kwds = DB::table('assigned_kwds')
-							->join('citylists','assigned_kwds.city_id','=','citylists.id')
-							->join('parent_category','assigned_kwds.parent_cat_id','=','parent_category.id')
-							->join('child_category','assigned_kwds.child_cat_id','=','child_category.id')
-							->join('keyword','assigned_kwds.kw_id','=','keyword.id')
-							->select('assigned_kwds.*','citylists.city','parent_category.parent_category','child_category.child_category','keyword.keyword')
-							->where('assigned_kwds.client_id',$client->id)
-							->get();
-				if(count($kwds)>=$client->max_kw){
-					return response()->json(['status'=>0,'message'=>'You can\'t add more than '.$client->max_kw.' keywords']);
-				}
-			} */
-			//	echo "<pre>";print_r($_POST);die;
-
+			 
 			$validator = Validator::make($request->all(), [
 
 				'city' => 'required',
@@ -3845,7 +3810,7 @@ class BackEndClientsController extends Controller
 
 
 				$assignedZone = AssignedZone::findOrFail($assigned_zone_id);
-				//echo "<pre>";print_r($assignedZone);die;
+	 
 				DB::table(DB::raw("(SELECT * FROM assigned_zones WHERE id={$assigned_zone_id} ) as aa"));
 				$assignedZone = DB::table(DB::raw("(SELECT * FROM assigned_zones WHERE id={$assigned_zone_id} ) as aa"));
 				$assignedZone = $assignedZone->join('zones', 'zones.id', '=', DB::raw('`aa`.`zone_id`'));
@@ -4050,15 +4015,14 @@ class BackEndClientsController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function geteditpayment(Request $request, $id)
-	{
-		//
+	{		
 		if ($request->ajax()) {
 			if (!$request->user()->current_user_can('administrator|admin|gb_associate')) {
 				return response()->json(['status' => 0, 'message' => 'Unauthorised access'], 200);
 			}
 			$paymentHistory = PaymentHistory::find($id);
 			$request->session()->put('keywordToUpdate', $paymentHistory->id);
-			//echo "<pre>";print_r($paymentHistory);die;
+		 
 			return response()->json(['status' => 1, 'paymentHistory' => $paymentHistory]);
 		}
 	}

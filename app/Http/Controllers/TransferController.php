@@ -44,9 +44,7 @@ class TransferController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function transfer(Request $request)
-	{
-
-		//echo "<pre>";print_r($_POST); 
+	{	 
 		$validator = Validator::make($request->all(), [
 			'transfer' => 'required',
 			'transfer_from' => 'required',
@@ -71,7 +69,7 @@ class TransferController extends Controller
 
 
 		if (isset($transfer) && $transfer == 'leads') {
-			// echo "<pre>";print_r($_POST); 
+			 
 			$leads = DB::table('leads as leads');			 // generating raw query to make join
 
 
@@ -80,7 +78,7 @@ class TransferController extends Controller
 				$leads = $leads->whereDate('leads.created_at', '>=', date_format(@date_create($request->input('leaddf')), 'Y-m-d'));
 				$leads = $leads->whereDate('leads.created_at', '<=', date_format(@date_create($request->input('leaddt')), 'Y-m-d'));
 			}
-			//echo "<pre>";print_r($request->input('course')); 
+			 
 			if ($request->input('course') != '') {
 				$courses = $request->input('course');
 				foreach ($courses as $course) {
@@ -98,9 +96,9 @@ class TransferController extends Controller
 				}
 				$leads = $leads->whereIn('leads.status_id', $statusList);
 			}
-			// echo "<pre>";print_r($statusList);die;
+		 
 			$leads = $leads->get();
-			//echo "<pre>";print_r($leads);die;
+		 
 			if (count($leads)) {
 				$users = User::select('id', 'first_name')->get();
 				$usr = [];
@@ -129,9 +127,8 @@ class TransferController extends Controller
 					$leadsUpdate = $leadsUpdate->whereDate('leads.created_at', '>=', date_format(date_create($request->input('leaddf')), 'Y-m-d'));
 					$leadsUpdate = $leadsUpdate->whereDate('leads.created_at', '<=', date_format(date_create($request->input('leaddt')), 'Y-m-d'));
 				}
-				//echo "<pre>";print_r($leadsUpdate);die;
+		 
 				$leadsUpdate = $leadsUpdate->update(['created_by' => $request->transfer_to]);
-
 
 				if ($leadsUpdate) {
 					$request->session()->flash('alert-success', 'Lead successfully transfer!');

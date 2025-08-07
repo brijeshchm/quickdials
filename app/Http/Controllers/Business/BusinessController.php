@@ -76,12 +76,8 @@ class BusinessController extends Controller
 			->leftjoin('areas', 'leads.area_id', '=', 'areas.id')
 			->leftjoin('zones', 'leads.zone_id', '=', 'zones.id')
 			->select('leads.*', 'assigned_leads.client_id', 'assigned_leads.lead_id', 'assigned_leads.created_at as created', 'areas.area', 'zones.zone')
-
 			->orderBy('assigned_leads.created_at', 'desc')
-			//  ->where('assigned_leads.readLead','0')
 			->where('assigned_leads.client_id', $clientID)->get();
-		//	echo "<pre>";print_r($clientDetails);	   die;
-
 		return view('business.dashboard', ['leads' => $leads, 'clientDetails' => $clientDetails]);
 	}
 

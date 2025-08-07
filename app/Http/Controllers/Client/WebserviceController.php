@@ -82,9 +82,7 @@ class WebserviceController extends Controller
 
 		$base_path = $request->root();
 		$jsonData = json_decode(trim(file_get_contents('php://input')), true);
-		echo "<pre>";
-		print_r($jsonData);
-		die;
+	 
 		if ($jsonData) {
 			$name = $jsonData['name'];
 

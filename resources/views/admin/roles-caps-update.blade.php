@@ -1,7 +1,7 @@
 <?php
 $danger = $success = $info = $warning = 0;
 $danger_msg = $success_msg = $info_msg = $warning_msg = '';
-//echo "<pre>";print_r($rolesCaps);echo "</pre>";die;
+ 
 ?>
 <?php echo View::make('admin/header'); ?>
         <div id="page-wrapper">

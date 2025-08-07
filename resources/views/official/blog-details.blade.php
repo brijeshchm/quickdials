@@ -20,10 +20,8 @@
  
 
   <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
-<!--<div class="about-bg page-hearder-area">
-    <div class="official-overly"></div> 
-  </div>-->
-  <?php //echo "<pre>";print_r($blogdetails); ?>
+ 
+  
   <!-- END Header -->
   <div class="blog-page area-padding">
     <div class="container">
