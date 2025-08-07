@@ -21,11 +21,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                $user = Auth::guard($guard)->user();            
+                $user = Auth::guard($guard)->user();
 				if(empty(Auth::guard('clients')->check())){
 				return redirect()->route('business.dashboard');
-				} 
-				
+				}
+                
 				if(empty(Auth::guard('developer')->check())){
 				return redirect()->route('developer.dashboard');
 				} 

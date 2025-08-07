@@ -191,7 +191,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="img-items">  
          <div class="items">
             <a href="{{url('child/wedding-planning')}}" >
-            <img src="{{asset('img/wedding.jpeg')}}"></a>
+            <img src="{{asset('img/wedding.png')}}"></a>
              </div>
             <span class="title-serv"><a href="{{url('child/wedding-planning')}}" >Wedding Planning </a></span>
          </div>

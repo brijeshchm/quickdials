@@ -44,7 +44,7 @@
 <meta property="og:site_name" content="Quick Dials" />
 <meta property="fb:app_id" content="https://www.facebook.com/quickindofficial/" />
 <meta property="og:image" content="{{asset('client/images/small-logo.png')}}" />
-<meta property="og:image:secure_url" content="{{asset('client/images/logo.png')}}" />
+<meta property="og:image:secure_url" content="{{asset('client/images/small-logo.png')}}" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="628" />
 <meta property="og:image:alt" content="Quick Dials" />

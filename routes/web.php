@@ -251,8 +251,8 @@ Route::post('/client-login', [App\Http\Controllers\ClientAuth\AuthController::cl
 	Route::get('/category', [App\Http\Controllers\Client\HomePageController::class, 'category']);
 	Route::get('/categories/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'categories']);
 	Route::get('/child/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'child']);
-	Route::get('/{city}/categories/{slug}/', [App\Http\Controllers\Client\HomePageController::class, 'cityCategories']);
-	Route::get('/{city}/categories/{parentslug}/{childslug}/', [App\Http\Controllers\Client\HomePageController::class, 'subcategories']);
+	//Route::get('/{city}/categories/{slug}/', [App\Http\Controllers\Client\HomePageController::class, 'cityCategories']);
+	//Route::get('/{city}/categories/{parentslug}/{childslug}/', [App\Http\Controllers\Client\HomePageController::class, 'subcategories']);
 	Route::get('/clients/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'clients']);
 	Route::get('/{city}/', [App\Http\Controllers\Client\HomePageController::class, 'city']);
 	 
