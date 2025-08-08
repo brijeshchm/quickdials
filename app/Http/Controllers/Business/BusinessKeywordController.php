@@ -63,15 +63,15 @@ class BusinessKeywordController extends Controller
 	 * @return JSON object containing payload
 	 */
 	public function getPaginatedAssignedKeywords(Request $request)
-	{
+	{		 
 		if ($request->ajax()) {
 			$clientID = auth()->guard('clients')->user()->id;
 			$leads = DB::table('assigned_kwds')
-				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
+			//	->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('parent_category', 'assigned_kwds.parent_cat_id', '=', 'parent_category.id')
 				->join('child_category', 'assigned_kwds.child_cat_id', '=', 'child_category.id')
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-				->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
+				->select('assigned_kwds.*','parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
 				->orderBy('assigned_kwds.created_at', 'desc')
 				->where('assigned_kwds.client_id', $clientID)
 				->paginate($request->input('length'));
@@ -95,7 +95,7 @@ class BusinessKeywordController extends Controller
 					$lead->keyword,
 					$lead->parent_category,
 					$lead->child_category,
-					$lead->city,
+					// $lead->city,
 					$action
 				];
 			}
@@ -126,29 +126,35 @@ class BusinessKeywordController extends Controller
 
 
 			$validator = Validator::make($request->all(), [
-				'city' => 'required',
-				'keyword' => 'required',
-				//'keyword' => 'required|unique:assigned_kwds,city_id,'.$request->input('city').',client_id,'.$client->id.',kw_id,'.$request->input('keyword'),
+				//'city' => 'required',
+				//'keyword' => 'required',
+			//	'zone_id' => 'required',
+				'keyword' => 'required|unique:assigned_kwds,kw_id,NULL,id,client_id,' . $client->id . ',kw_id,' . $request->input('keyword'),
+
+			 	
 
 			]);
 			if ($validator->fails()) {
 				$errorsBag = $validator->getMessageBag()->toArray();
 				return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
 			}
+		 
 
+
+			
 			$data = [];
 			$keyw = Keyword::find($request->input('keyword'));
 
 			if (!empty($keyw)) {
 
-				$assignvalidation = AssignedKWDS::where('city_id', $request->input('city'))->where('parent_cat_id', $keyw->parent_category_id)->where('child_cat_id', $keyw->child_category_id)->where('kw_id', $keyw->id)->where('client_id', $client->id)->get()->count();
+				$assignvalidation = AssignedKWDS::where('parent_cat_id', $keyw->parent_category_id)->where('child_cat_id', $keyw->child_category_id)->where('kw_id', $keyw->id)->where('client_id', $client->id)->get()->count();
 
 				if ($assignvalidation == 0) {
 
 					$assignedKWDS = new AssignedKWDS;
 					$assignedKWDS->client_id = $client->id;
-					$assignedKWDS->city_id = $request->input('city');
-					$assignedKWDS->zone_id = $request->input('zone_id');
+				//	$assignedKWDS->city_id = $request->input('city');
+				//	$assignedKWDS->zone_id = $request->input('zone_id');
 					$assignedKWDS->parent_cat_id = $keyw->parent_category_id;
 					$assignedKWDS->child_cat_id = $keyw->child_category_id;
 					$assignedKWDS->kw_id = $keyw->id;

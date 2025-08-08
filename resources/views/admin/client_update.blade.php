@@ -758,7 +758,7 @@
 							
 				<input type="hidden" name="client_id" id="clientIDASSKW" value="{{$client->username}}">
 						
-				<div class="col-md-3">
+				<!-- <div class="col-md-3">
 						<label>City:</label>
 						<select class="select2-single form-control city" name="city"  >
 							@if(!empty($citylist))
@@ -768,18 +768,18 @@
 								@endforeach
 							@endif
 						</select>
-					</div>
+					</div> -->
 						
 						
-						<div class="col-md-3">									 
+						<!-- <div class="col-md-3">									 
 							<label for="">Zone:</label>
 							<select name="zone_id" class="form-control zone" ></select>		 
 						
-						</div>
+						</div> -->
 											
 
 						<div class="col-md-3">
-							<label>Parent:</label>
+							<label for="Parent">Parent:</label>
 								<select class="select2-single form-control parent" id="parentv" name="parent">
 								@if(!empty($parentCategory))
 										<option value="">Select Parent</option>
@@ -791,31 +791,31 @@
 							
 						</div>
 							<div class="col-md-3">
-								<label>Child:</label>
+								<label for="child">Child:</label>
 								<select class="select2-single form-control child" name="child" id="childv" >
 								</select>
 							</div>
 							
 							<div class="col-md-3">
-								<label>Keywords:</label>
+								<label for="keyword">Keywords:</label>
 								<select class="form-control kw" name="kw" id="kwv" >
 								
 								</select>
 							</div>
 							 
-							<!-- <div class="col-md-3">
-								<label>Position:</label>
+							<div class="col-md-3">
+								<label for="position">Position:</label>
 								<select class="select2-single form-control position" name="position" id="positionv">
 					 
 								</select>
 							</div>
 							<div class="col-md-3">
-								<label>Price:</label>
+								<label for="price">Price:</label>
 								<input type="text" class="form-control price" disabled>
-							</div> -->
+							</div>
 							<input type="hidden" name="kw-submit" value="kw-submit">
 							<div class="col-md-3">
-								<label style="visibility:hidden">Submit:</label>
+								<label for="submit" style="visibility:hidden">Submit:</label>
 								<input type="reset" class="btn btn-default hide reset_kw_submit" />
 								<button type="submit" class="btn btn-warning btn-block kw-submit"><i class="fa fa-plus fa-fw" aria-hidden="true"></i></button>
 							</div>
@@ -831,7 +831,8 @@
 					}
 					</style>
 					<div class="table-responsive col-md-12">
-						<table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-keywords"><!--dataTables-example-->
+						<table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-keywords">
+							 
 							<caption>Assigned Keywords</caption>
 							<thead>
 								<tr>
@@ -839,8 +840,8 @@
 									<th>KW</th>
 									<th>Child Category</th>
 									<th>Parent Category</th>
-									<th>City</th>
-									<th>Zone</th>
+									<!-- <th>City</th>
+									<th>Zone</th> -->
 									<th>Position</th>
 									<!--<th>Price</th>-->
 									<th>Action</th>

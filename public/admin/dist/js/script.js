@@ -4032,15 +4032,15 @@ var keyword = {
 				if(''==this.parent_cat){
 					return;
 				}
-				if(null==this.city){
-					alert('please select city');
-				}				
-				if(null==this.zone){
-					alert('please select Zone');
-				}
+				// if(null==this.city){
+				// 	alert('please select city');
+				// }				
+				// if(null==this.zone){
+				// 	alert('please select Zone');
+				// }
 				//this.child_cat = this.kw = this.position = null;
 				var data = {
-					'city':this.city,
+					// 'city':this.city,
 					'parent_cat':this.parent_cat
 				};
 				$.post(
@@ -4072,7 +4072,7 @@ var keyword = {
 				}
 				//this.kw = this.position = null;
 				var data = {
-					'city':this.city,
+				//	'city':this.city,
 					'parent_cat':this.parent_cat,
 					'child_cat':this.child_cat
 				};
@@ -4083,25 +4083,14 @@ var keyword = {
 						
 						if(response.status){							
 							var html = "<option value=''>Select Keyword</option>";
-							//var html = "";
+						 
 							for(var i in response.result){
 								html += "<option value='"+response.result[i]['id']+"'>"+response.result[i]['keyword']+"</option>";
 							}
 							
-							//$('#source').html(html);
-							/*$('.source').html(html).select2({
-								theme: "bootstrap",
-								placeholder: "Select Keyword",
-								maximumSelectionSize: 6,
-								containerCssClass: ':all:'
-							}); */
+							 
 							 $('.kw').html(html);
-							/* $('.kw').html(html).select2({
-								theme: "bootstrap",
-								placeholder: "Select Keyword",
-								maximumSelectionSize: 6,
-								containerCssClass: ':all:'
-							});  */
+							 
 						}else{
 							alert("No Keyword Found");
 						}
@@ -4114,18 +4103,16 @@ var keyword = {
 					return;
 				}			
  			
-				if(null==this.city){
-					alert('please select city');
-				}
+				// if(null==this.city){
+				// 	alert('please select city');
+				// }
 				
-				if(null==this.zone){
-					alert('please select Zone');
-				}
+				// if(null==this.zone){
+				// 	alert('please select Zone');
+				// }
 			//	this.position = null;
 				var data = {
-					'client_id':client_id,
-					'city':this.city,
-					'zone':this.zone,
+					'client_id':client_id,					 
 					'parent_cat':this.parent_cat,
 					'child_cat':this.child_cat,
 					'kw':this.kw
@@ -4134,7 +4121,7 @@ var keyword = {
 					"/developer/clients/get/kw/"+this.kw,
 					data,
 					function(response,status){
-						//alert(response,status);
+					 
 						if(response.status){
 							var html = "<option value=''>Select Position</option>";
 							for(var i in response.result){

@@ -371,12 +371,10 @@ class BackEndClientsController extends Controller
 			// **********************
 			if ($request->has('kw-submit')) {
 				$client = Client::withTrashed()->where('username', $id)->first();
-
+ 
 
 				$validator = Validator::make($request->all(), [
-
-					'city' => 'required',
-					//'zone_id'=>'required',
+ 
 					'parent' => 'required',
 					'child' => 'required',
 					'kw' => 'required',
@@ -390,22 +388,19 @@ class BackEndClientsController extends Controller
 				}
 
 				if ($client->client_type == "free_subscription" || $client->client_type == "general") {
-					$kwds = DB::table('assigned_kwds')
-						->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
+					$kwds = DB::table('assigned_kwds')						 
 						->join('parent_category', 'assigned_kwds.parent_cat_id', '=', 'parent_category.id')
 						->join('child_category', 'assigned_kwds.child_cat_id', '=', 'child_category.id')
 						->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-						->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
+						->select('assigned_kwds.*','parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
 						->where('assigned_kwds.client_id', $client->id)
 						->get();
 					if (count($kwds) >= $client->max_kw) {
 						return response()->json(['status' => 0, 'message' => 'You can\'t add more than ' . $client->max_kw . ' keywords']);
 					}
 				}
-
-
 				$validator = Validator::make($request->all(), [
-					'kw' => 'required|unique:assigned_kwds,kw_id,NULL,id,child_cat_id,' . $request->input('child') . ',parent_cat_id,' . $request->input('parent') . ',city_id,' . $request->input('city') . ',client_id,' . $client->id . ',kw_id,' . $request->input('kw'),
+					'kw' => 'required|unique:assigned_kwds,kw_id,NULL,id,child_cat_id,' . $request->input('child') . ',parent_cat_id,' . $request->input('parent') . ',client_id,' . $client->id . ',kw_id,' . $request->input('kw'),
 
 				]);
 
@@ -414,19 +409,15 @@ class BackEndClientsController extends Controller
 
 				}
 				$data = [];
-
 				$keyw = $request->input('kw');
-
 				if (!empty($keyw)) {
-
-
-					$assignvalidation = AssignedKWDS::where('city_id', $request->input('city'))->where('parent_cat_id', $request->input('parent'))->where('child_cat_id', $request->input('child'))->where('kw_id', $keyw)->where('zone_id', $request->input('zone_id'))->where('client_id', $client->id)->get()->count();
+					$assignvalidation = AssignedKWDS::where('parent_cat_id', $request->input('parent'))->where('child_cat_id', $request->input('child'))->where('kw_id', $keyw)->where('client_id', $client->id)->get()->count();
 
 					if ($assignvalidation == 0) {
 						$assignedKWDS = new AssignedKWDS;
 						$assignedKWDS->client_id = $client->id;
-						$assignedKWDS->city_id = $request->input('city');
-						$assignedKWDS->zone_id = $request->input('zone_id');
+						$assignedKWDS->city_id = '0';
+						$assignedKWDS->zone_id = '0';
 						$assignedKWDS->parent_cat_id = $request->input('parent');
 						$assignedKWDS->child_cat_id = $request->input('child');
 						$assignedKWDS->kw_id = $keyw;
@@ -466,39 +457,13 @@ class BackEndClientsController extends Controller
 								case 'platinum':
 									$keyword->platinum_pos_sold = $keyword->platinum_pos_sold + 1;
 									break;
-
 							}
 							$keyword->save();
-
-							$assignedKWDSre = DB::table('assigned_kwds')
-								->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
-								->join('parent_category', 'assigned_kwds.parent_cat_id', '=', 'parent_category.id')
-								->join('child_category', 'assigned_kwds.child_cat_id', '=', 'child_category.id')
-								->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-								->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
-								->where('assigned_kwds.id', $assignedKWDS->id)
-								->get();
-
-
-
 						}
-
-
 					}
-
-
-
 					$resulsu = "add";
-
-
-
 				}
-
-
-
 				return response()->json(['status' => 1, 'result' => $resulsu]);
-
-
 			}
 
 			// EXPORT LEADS LIST
@@ -1552,18 +1517,17 @@ class BackEndClientsController extends Controller
 				$clientID = $client->id;
 			}
 			$leads = DB::table('assigned_kwds as assigned_kwds')
-				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
+			//	->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				//->join('zones','assigned_kwds.zone_id','=','zones.id')
 				->join('parent_category', 'assigned_kwds.parent_cat_id', '=', 'parent_category.id')
 				->join('child_category', 'assigned_kwds.child_cat_id', '=', 'child_category.id')
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-				->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
+				->select('assigned_kwds.*','parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
 				->orderBy('assigned_kwds.created_at', 'desc')
 				->where('assigned_kwds.client_id', $clientID);
 
 
 			if ($request->input('search.value') != '') {
-
 				$leads = $leads->where('keyword.keyword', 'LIKE', '%' . $request->input('search.value') . '%');
 			}
 
@@ -1576,13 +1540,7 @@ class BackEndClientsController extends Controller
 			$returnLeads['recordCollection'] = [];
 			 
 			foreach ($leads as $lead) {
-				$zone = Zone::where('id', $lead->zone_id)->first();
-				if (!empty($zone)) {
-					$zonename = $zone->zone;
-				} else {
-					$zonename = "";
-
-				}
+				 
 				$action = '';
 				$separator = '';
 				if ($request->user()->current_user_can('administrator') || $request->user()->current_user_can('edit_assign_keyword')) {
@@ -1597,18 +1555,14 @@ class BackEndClientsController extends Controller
 					"<th class='text-center'><input type='checkbox' class='check-box' value='$lead->id'></th>",
 					$lead->keyword,
 					$lead->child_category,
-					$lead->parent_category,
-					$lead->city,
-					$zonename,
-					ucfirst($lead->sold_on_position),
-					//	$lead->sold_on_price,
+					$lead->parent_category,					 
+					ucfirst($lead->sold_on_position),				 
 					$action
 				];
 				$returnLeads['recordCollection'][] = $lead->id;
 			}
 			$returnLeads['data'] = $data;
-			return response()->json($returnLeads);
-			//return $leads->links();
+			return response()->json($returnLeads);			 
 		}
 	}
 
@@ -1759,11 +1713,11 @@ class BackEndClientsController extends Controller
 			}
 			if ("parent_cat" === $what) {
 
-
+ 
 				$child_cat = DB::table('keyword')
 					->join('child_category', 'keyword.child_category_id', '=', 'child_category.id')
-					->select('child_category.id', 'child_category.child_category', 'keyword.city_id', 'keyword.parent_category_id', 'keyword.child_category_id')
-					//->where('keyword.city_id',$request->input('city'))
+					->select('child_category.id', 'child_category.child_category','keyword.parent_category_id', 'keyword.child_category_id')
+					 
 					->where('keyword.parent_category_id', $request->input('parent_cat'))
 					->groupBy('child_category_id')
 					//	->distinct()
@@ -1774,8 +1728,7 @@ class BackEndClientsController extends Controller
 
 			if ("child_cat" === $what) {
 
-				$child_cat = DB::table('keyword')
-					//	->where('city_id',$request->input('city'))
+				$child_cat = DB::table('keyword')					
 					->where('parent_category_id', $request->input('parent_cat'))
 					->where('child_category_id', $request->input('child_cat'))
 					->get();
@@ -1784,16 +1737,16 @@ class BackEndClientsController extends Controller
 			}
 			if ("kw" === $what) {
 
-
-				$city_id = $request->input('city');
-				$zone = $request->input('zone');
+ 
+				// $city_id = $request->input('city');
+				 $keyw = $request->input('kw');
 				$result = [];
-				if (!empty($zone)) {
+				if (!empty($keyw)) {
 					$keyword = Keyword::find($request->input('kw'));
-					$assKWDSC = AssignedKWDS::where('city_id', $request->input('city'))->where('kw_id', $request->input('kw'))->where('zone_id', $request->input('zone'))->where('sold_on_position', 'platinum')->get()->count();
-					//echo $assKWDSC;die;
+					$assKWDSC = AssignedKWDS::where('kw_id', $request->input('kw'))->where('sold_on_position', 'platinum')->get()->count();
+					 
 					$keywordSellCount = KeywordSellCount::all();
-
+ 
 					foreach ($keywordSellCount as $ksc) {
 						switch ($ksc->slug) {
 							case 'platinum':
@@ -1806,12 +1759,12 @@ class BackEndClientsController extends Controller
 									$result['diamond'] = 'Diamond';
 
 								break;
-							case 'Gold':
+							case 'gold':
 								if ($ksc->count - $keyword->diamond_pos_sold > 0)
 									$result['Gold'] = 'Gold';
 
 								break;
-							case 'Silver':
+							case 'silver':
 								if ($ksc->count - $keyword->diamond_pos_sold > 0)
 									$result['Silver'] = 'Silver';
 								break;
@@ -2869,13 +2822,11 @@ class BackEndClientsController extends Controller
 				$cityOptions .= "<option value=\"{$distinctCity->id}\" {$selected}>{$distinctCity->city}</option>";
 			}
 		}
-
-
 		$zonelist = DB::table('zones')
 			->select('zones.*')
 			->where('zones.city_id', $assignedKwd->city_id)
 			->get();
-
+			
 		$zoneOptions = "<option value=\"\">Select Zone</option>";
 		if (count($zonelist) > 0) {
 			foreach ($zonelist as $zone) {

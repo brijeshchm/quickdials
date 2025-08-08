@@ -835,7 +835,6 @@ color: #fff;
                 });
             }
         }
-
         document.getElementById('name').addEventListener('input', sendData);
        // document.getElementById('email').addEventListener('input', sendData);
         document.getElementById('mobile').addEventListener('input', sendData);

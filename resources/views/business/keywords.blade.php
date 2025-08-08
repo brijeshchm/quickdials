@@ -14,13 +14,23 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
 
   <main id="main" class="main">
 <style>
-    .help-block{  
+    /* .help-block{  
     color: #ff0000;
     position: relative;
     margin-top: 61px;
     display: block;
     margin-left: -207px;
+    } */
+    .help-block{  
+      color: #ff0000;
+      display: block;
+      margin-top: 64px;
+      text-align: center;
+      position: absolute;
+      margin-left: 170px;
     }
+
+
     .select2-container--bootstrap .select2-selection--single {
     height: 46px !important;
     line-height: 1.42857143;
@@ -101,8 +111,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                   
  
                  
-                 <div class="form-group">
-                    <label>City:</label>
+                 <!-- <div class="form-group">
+                    <label for="city">City:</label>
                     <select class="form-control select2-city" name="city" onchange="get_zone(this.value);">
 
                       <option value="">Select City</option>
@@ -113,16 +123,16 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                         @endif
                       
                     </select>
-                    <label>Zone:</label>
+                    <label for="zone">Zone:</label>
                      <select class="form-control show_zoneList" name="zone_id">
                      
                     </select>
                     
 
-                </div>  
+                </div>   -->
                 
                   <div class="form-group">
-                    <label>Keyword:</label>
+                    <label for="keyword">Keyword:</label>
                     <select class="form-control select2-keyword" name="keyword">
                       <option value="">Select Keyword</option>
                         @if(!empty($keywordlist))
@@ -140,36 +150,22 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
             <div class="text-center"> 
                  <input type="hidden" name="savePersonal" value="savePersonalForm">
                 <button type="submit" class="btn btn-primary">Save & Continue</button>
-        
               </div>
- 
-
-                  
-                  </form><!-- End Profile Edit Form -->
-
-                </div>
-	
-				<div class="row">
-				    
-				    
+              </form>
+              </div>	
+				    <div class="row">
               <table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-keywords">
                 <thead>
                   <tr>
-                      
                     <th>Keywords</th>
                     <th>Parent Category</th>
                     <th>Child Category</th>
-                    <th>City</th>
+                 
                     <th>Action</th>
-                     
-                      
                   </tr>
                 </thead>
-                
-                 </table>
-            
- 
-</div>
+                 </table> 
+              </div>
             </div>
           </div>
 
