@@ -326,8 +326,7 @@ var homeController = (function(){
 			},
 			saveEnquiryContact:function(THIS){				
 				var $this = $(THIS), 
-				data  = $this.serialize();		
-		 
+				data  = $this.serialize();				 
 			$.ajax({
 					url:"/client/lead/saveEnquiryContact",
 					type:"POST",
