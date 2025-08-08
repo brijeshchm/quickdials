@@ -84,7 +84,12 @@
         <li>Roles & Permissions</li>
         <li class="coins">Coins(1111)Free First Time</li>
       </ul>
+
+      <?php 	if(!Auth::guard('clients')->check()){ ?>
       <a href="{{ url('business-owners') }}" class="signup">Sign up now</a>
+      <?php  }else{ ?>
+      <a href="{{ url('business/package') }}" class="signup">Pay Now</a>
+      <?php  } ?>
     </div>
 
 
@@ -99,7 +104,11 @@
         <li>Roles & Permissions</li>
         <li class="coins">Coins(2272)</li>
       </ul>
+       <?php 	if(!Auth::guard('clients')->check()){ ?>
       <a href="{{ url('business-owners') }}" class="signup">Sign up now</a>
+      <?php  }else{ ?>
+      <a href="{{ url('business/package') }}" class="signup">Pay Now</a>
+      <?php  } ?>
     </div>
     <div class="plan">
     
@@ -112,7 +121,11 @@
         <li>Roles & Permissions</li>
         <li class="coins">Coins(3529)</li>
       </ul>
+       <?php 	if(!Auth::guard('clients')->check()){ ?>
       <a href="{{ url('business-owners') }}" class="signup">Sign up now</a>
+      <?php  }else{ ?>
+      <a href="{{ url('business/package') }}" class="signup">Pay Now</a>
+      <?php  } ?>
     </div>
     <div class="plan">
      
@@ -125,7 +138,11 @@
         <li>Roles & Permissions</li>
         <li class="coins">Coins(6099)</li>
       </ul>
+       <?php 	if(!Auth::guard('clients')->check()){ ?>
       <a href="{{ url('business-owners') }}" class="signup">Sign up now</a>
+      <?php  }else{ ?>
+      <a href="{{ url('business/package') }}" class="signup">Pay Now</a>
+      <?php  } ?>
     </div>
     <div class="plan">
        
@@ -138,7 +155,11 @@
         <li>Roles & Permissions</li>
         <li class="coins">Coins(12500)</li>
       </ul>
+       <?php 	if(!Auth::guard('clients')->check()){ ?>
       <a href="{{ url('business-owners') }}" class="signup">Sign up now</a>
+      <?php  }else{ ?>
+      <a href="{{ url('business/package') }}" class="signup">Pay Now</a>
+      <?php  } ?>
     </div>
      
 

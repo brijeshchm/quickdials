@@ -37,8 +37,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
  
             <div class="tab-content active" id="all">
                 @if(!empty($leads))
-                @foreach($leads as $lead)
-                 
+                @foreach($leads as $lead)                  
                 <div class="enquiry-item assignedLeadsClick"  data-assigned_leads= "{{ $lead->assignId }}" data-client_id= "{{ $lead->clientId }}" style="<?php  if(!$lead->readLead){ echo "background:#ddd"; } ?>">
                     <div class="avatar"><?php  echo ucfirst(substr($lead->name,0,1)); ?>
                     </div>

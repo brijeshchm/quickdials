@@ -40,7 +40,7 @@ class BusinessDashboardController extends Controller
 			->leftjoin('citylists', 'leads.city_id', '=', 'citylists.id')
 			->leftjoin('areas', 'leads.area_id', '=', 'areas.id')
 			->leftjoin('zones', 'leads.zone_id', '=', 'zones.id')
-			->select('leads.*', 'assigned_leads.client_id', 'assigned_leads.lead_id', 'assigned_leads.created_at as created', 'areas.area', 'zones.zone')
+			->select('leads.*','assigned_leads.*','assigned_leads.client_id', 'assigned_leads.lead_id', 'assigned_leads.created_at as created', 'areas.area', 'zones.zone')
 
 			->orderBy('assigned_leads.created_at', 'desc')
 			->where('assigned_leads.client_id', $clientID)->get();

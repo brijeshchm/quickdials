@@ -47,13 +47,27 @@ background-color: #ffffff;
         
           @if (!empty($leads)) 
             @foreach($leads as $lead)
+
+            <?php //echo "<pre>";print_r($lead); ?>
         <div class="lead-details ">
             <div class="lead enquiry-item">
                 <div class="img-cls">
                   <i class="fa fa-uaser"></i> <?php  echo ucfirst(substr($lead->name,0,1)); ?>
                 </div>
                 <div class="info enquiry-details">
-                    <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} </h4>
+                    <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} 
+                
+                 <i class="bi bi-coin"></i> 
+                <?php    $coins= "";
+                if(!empty($lead->scrapLead)) { 
+                $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
+                }else if($lead->coins){ 
+                $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
+                }  
+                echo $coins;
+                ?>
+                </h4>
+
                     <p><span class="icon" >
                       <i class="bi bi-clock"></i>
                     <?php  get_time(strtotime($lead->created)); ?> ago</span></p>

@@ -13,7 +13,7 @@ use DB;
 class LeadBusinessController extends Controller
 {
     public function dashboard(Request $request)
-    {
+    { echo "test";die;
         try {
 
             if (!Auth::guard('sanctum')->check()) {

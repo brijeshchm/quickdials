@@ -40,7 +40,17 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                 <div class="enquiry-item assignedLeadsClick">
                     <div class="avatar"><?php  echo ucfirst(substr($lead->name,0,1)); ?></div>
                     <div class="enquiry-details">
-                        <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">Favorite</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favoriteLead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" "></i></h4>
+                        <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">Favorite</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favoriteLead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" "></i>
+                        <i class="bi bi-coin"></i> 
+                        <?php    $coins= "";
+                        if(!empty($lead->scrapLead)) { 
+                        $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
+                        }else if($lead->coins){ 
+                        $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
+                        }  
+                        echo $coins;
+                        ?>
+                    </h4>
                         <p><i class="bi bi-book"></i> {{$lead->kw_text}}</p>
                         <p>Online Class</p>
                         <p>@if($lead->city_name) <i class="bi bi-pin-map-fill"></i>{{$lead->city_name}}@endif @if($lead->zone)<i class="bi bi-pin-map-fill"></i> {{$lead->zone}} @endif</p>

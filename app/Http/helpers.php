@@ -488,17 +488,17 @@ function leadassignWithoutZoneCounsellor($leads)
 		 
 				if($keyword){
 				  
-				$bucketIndex = $keyword->bucket;		
+				$bucketIndex = $keyword->bucket;
 				$clientsList = DB::table('clients');
-				//$clientsList = $clientsList->join('assigned_zones','clients.id','=','assigned_zones.client_id');
+				$clientsList = $clientsList->join('assigned_zones','clients.id','=','assigned_zones.client_id');
 				//$clientsList = $clientsList->join('assignedd_areas','assignedd_areas.assigned_zone_id','=','assigned_zones.id');
 						
                 $clientsList = $clientsList->join('assigned_kwds','clients.id','=','assigned_kwds.client_id');
                 $clientsList = $clientsList->join('keyword','assigned_kwds.kw_id','=','keyword.id');
                 $clientsList = $clientsList->join('keyword_sell_count','keyword_sell_count.slug','=','assigned_kwds.sold_on_position');
-                $clientsList = $clientsList->select('clients.*','assigned_kwds.*','assigned_kwds.city_id as assgn_city_id','keyword.keyword','keyword.category','keyword.bucket','keyword_sell_count.cat1_price','keyword_sell_count.cat2_price','keyword_sell_count.cat3_price');
+                $clientsList = $clientsList->select('clients.*','assigned_kwds.*','assigned_zones.*','assigned_zones.city_id as assgn_city_id','keyword.keyword','keyword.category','keyword.bucket','keyword_sell_count.*','keyword_sell_count.cat1_price','keyword_sell_count.cat2_price','keyword_sell_count.cat3_price','keyword_sell_count.cat4_price','keyword_sell_count.cat5_price');
                 $clientsList = $clientsList->where('keyword.id','=',$lead->kw_id);
-                $clientsList = $clientsList->where('assigned_kwds.city_id','=',$lead->city_id);
+                $clientsList = $clientsList->where('assigned_zones.city_id','=',$lead->city_id);
                 
                 //$clientsList = $clientsList->where('assigned_zones.zone_id','=',$request->input('area_zone'))
                 //	$clientsList = $clientsList->where('assigned_zones.zone_id','=',$lead->zone_id);
@@ -528,13 +528,10 @@ function leadassignWithoutZoneCounsellor($leads)
                 ->where('clients.leads_remaining','>','0');
                 }); */
 					 
+				$clientsList = $clientsList->groupby('clients.id');
 				$clientsList = $clientsList->where('active_status','1');
-				$clientsList = $clientsList->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'),'asc');
-				//$clientsList = $clientsList->orderby(DB::raw('(CASE `clients`.`client_type` WHEN \'Platinum\' THEN 1 WHEN \'Diamond\' THEN 2 END)'),'asc');
-						//->orderby('comment_count','desc')
-						//->tosql();
-				$clientsList = $clientsList->get();
-		 
+				$clientsList = $clientsList->orderBy(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'diamond\' THEN 1 WHEN \'platinum\' THEN 2 WHEN \'gold\' THEN 3 WHEN \'silver\' THEN 4 END)'), 'asc');				$clientsList = $clientsList->get();
+	 
 					$defaulterClientsList = DB::table('clients');
 					//	$defaulterClientsList = $defaulterClientsList->join('assigned_zones','clients.id','=','assigned_zones.client_id');
 					//$defaulterClientsList = $defaulterClientsList->join('assignedd_areas','assignedd_areas.assigned_zone_id','=','assigned_zones.id');
@@ -594,14 +591,23 @@ function leadassignWithoutZoneCounsellor($leads)
 						}
 						if($client->sold_on_position=='diamond'){
 							$buckets[$i]['diamond'][] = $client;
-						}				
+						}
+						 
+						if($client->sold_on_position=='gold'){
+							$buckets[$i]['gold'][] = $client;
+						}
+						 
+						if($client->sold_on_position=='silver'){
+							$buckets[$i]['silver'][] = $client;
+						}
 						 
 						 
 						--$mCount;
 					}
+
 					$i = 0;
 					$bucketCount = count($buckets);
-					 
+				 	 
 					 
 					 if(!empty($clientsList)){
 					foreach($buckets as $bucket){
@@ -611,9 +617,9 @@ function leadassignWithoutZoneCounsellor($leads)
 						 
 						if($bucketIndex==$i){
 							foreach($bucket as $position=>$clientss){
-								 
+							
 								foreach($clientss as $clientC){								
-								
+						 
 									if($clientC->client_type){
 										$clnt = App\Models\Client\Client::find($clientC->client_id);
 								 
@@ -715,62 +721,62 @@ function leadassignWithoutZoneCounsellor($leads)
 											 
 												 
 											}
-										  switch($client->category){
+										  switch($clientC->category){
 												case 'Category 1':
-													if($client->coins_amt-$client->cat1_price<0){
+													if($clientC->coins_amt-$clientC->cat1_price<0){
 														$dontSave = 1;
 													}else{
-														$clnt->coins_amt = $client->coins_amt - $client->cat1_price;
+														$clnt->coins_amt = $clnt->coins_amt - $clientC->cat1_price;
 													}
 												break;
 												case 'Category 2':
-													if($client->coins_amt-$client->cat2_price<0){
+													if($clientC->coins_amt-$clientC->cat2_price<0){
 														$dontSave = 1;
 													}else{
-														$clnt->coins_amt = $client->coins_amt - $client->cat2_price;
+														$clnt->coins_amt = $clientC->coins_amt - $client->cat2_price;
 													}
 												break;
 												case 'Category 3':
-													if($client->coins_amt-$client->cat3_price<0){
+													if($clientC->coins_amt-$clientC->cat3_price<0){
 														$dontSave = 1;
 													}else{
-														$clnt->coins_amt = $client->coins_amt - $client->cat3_price;
+														$clnt->coins_amt = $clientC->coins_amt - $clientC->cat3_price;
 													}
 												break;
 												case 'Category 4':
-													if($client->coins_amt-$client->cat4_price<0){
+													if($clientC->coins_amt-$clientC->cat4_price<0){
 														$dontSave = 1;
 													}else{
-														$clnt->coins_amt = $client->coins_amt - $client->cat4_price;
+														$clnt->coins_amt = $clientC->coins_amt - $clientC->cat4_price;
 													}
 												break;
 												case 'Category 5':
-													if($client->coins_amt-$client->cat5_price<0){
+													if($clientC->coins_amt-$clientC->cat5_price<0){
 														$dontSave = 1;
 													}else{
-														$clnt->coins_amt = $client->coins_amt - $client->cat5_price;
+														$clnt->coins_amt = $clientC->coins_amt - $clientC->cat5_price;
 													}
 												break;
 												case 'Category X':
-													if($client->sold_on_position=='premium'){
-														$amtToDeduct = $client->premium_price;
+													if($clientC->sold_on_position=='premium'){
+														$amtToDeduct = $clientC->premium_price;
 													}
-													if($client->sold_on_position=='platinum'){
-														$amtToDeduct = $client->platinum_price;
+													if($clientC->sold_on_position=='platinum'){
+														$amtToDeduct = $clientC->platinum_price;
 													}
-													if($client->sold_on_position=='king'){
-														$amtToDeduct = $client->king_price;
+													if($clientC->sold_on_position=='king'){
+														$amtToDeduct = $clientC->king_price;
 													}
-													if($client->sold_on_position=='royal'){
-														$amtToDeduct = $client->royal_price;
+													if($clientC->sold_on_position=='royal'){
+														$amtToDeduct = $clientC->royal_price;
 													}
-													if($client->sold_on_position=='preferred'){
-														$amtToDeduct = $client->preferred_price;
+													if($clientC->sold_on_position=='preferred'){
+														$amtToDeduct = $clientC->preferred_price;
 													}
-													if($client->coins_amt-$amtToDeduct<0){
+													if($clientC->coins_amt-$amtToDeduct<0){
 														$dontSave = 1;
 													}else{
-														$clnt->coins_amt = $client->coins_amt - $amtToDeduct;
+														$clnt->coins_amt = $clientC->coins_amt - $amtToDeduct;
 													}
 												break;
 											} 
@@ -778,7 +784,6 @@ function leadassignWithoutZoneCounsellor($leads)
 												//$this->intimateDefaulterClients($client, $lead);
 												continue;
 											}else{
-												 
 												$clnt->save();
 											}
 										}
@@ -808,15 +813,17 @@ function leadassignWithoutZoneCounsellor($leads)
 									$assignedLead->kw_id = $lead->kw_id;
 									$assignedLead->client_id = $clientC->client_id;
 									$assignedLead->lead_id = $lead->id;
+									$assignedLead->coins = $coinsAmt;
+									
 									if($assignedLead->save()){
-									$lead->push_by=1;				
-									$lead->assign_status=1;				
-									$lead->save();	
-									$followUp = new App\Models\LeadFollowUp;
-									$followUp->status = App\Models\Status::where('name','LIKE','New Lead')->first()->id;
-									$followUp->lead_id = $lead->id;								 
-									$followUp->client_id = $clientC->client_id;
-									$followUp->save();	
+										$lead->push_by=1;
+										$lead->assign_status=1;
+										$lead->save();	
+										$followUp = new App\Models\LeadFollowUp;
+										$followUp->status = App\Models\Status::where('name','LIKE','New Lead')->first()->id;
+										$followUp->lead_id = $lead->id;
+										$followUp->client_id = $clientC->client_id;
+										$followUp->save();	
 										
 									}
 								}
