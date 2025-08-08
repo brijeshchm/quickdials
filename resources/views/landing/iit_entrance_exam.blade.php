@@ -683,7 +683,7 @@ required{
                         </div>
                         <div class="fieldblock">                           
                             <div class="col-xs-12 val">
-                                <input type="text" placeholder="+91 *" class="form-control city-form" name="mobile" >
+                                <input type="tel" placeholder="+91 *" class="form-control city-form" name="mobile" >
                             </div>
                         </div>
                    
@@ -1541,7 +1541,7 @@ quickdials.com is an extensive search engine for the students, parents, Professi
 					   <div class="fieldblock">
                             <div class="col-xs-3 col-sm-3 col-md-3">Mobile<required>*</required></div>
                             <div class="col-xs-8 col-sm-8 col-md-8">
-                                <input type="text" placeholder="+91" class="form-control city-form" name="mobile">
+                                <input type="tel" placeholder="+91" class="form-control city-form" name="mobile">
 					 
                             </div>
                         </div>                   

@@ -585,7 +585,7 @@ color: #fff;
                         <div class="fieldblock">
                              
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input type="text" placeholder="Your Mobile Number" class="form-control city-form" id="mobile" name="mobile">
+                                <input type="tel" placeholder="Your Mobile Number" class="form-control city-form" id="mobile" name="mobile">
                             </div>
                         </div>
                         

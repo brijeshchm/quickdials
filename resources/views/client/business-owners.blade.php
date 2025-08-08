@@ -177,7 +177,7 @@ display: block;
 <p><input type="text" placeholder="Business/Company Name" class="pull-left" autocomplete="off" name="business_name" value="{{old('business_name')}}"></p>
 
 <p><input type="email" class="field-style pull-left"  placeholder="Enter Email" name="email" value="{{old('email')}}"></p>
-<p><input type="text" class="field-style pull-right" placeholder="Enter Mobile Number" name="mobile" value="{{old('mobile')}}"></p> 
+<p><input type="tel" class="field-style pull-right" placeholder="Enter Mobile Number" name="mobile" value="{{old('mobile')}}"></p> 
 
 <p><input class="pull-left" type="submit" name="initial_form_submit" value="Start Your Business"></p>
 </form>

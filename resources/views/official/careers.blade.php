@@ -81,7 +81,7 @@
                   <div class="validation"></div>
                 </div>
 				<div class="form-group">
-                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Your Mobile" data-rule="mobile" data-msg="Please enter mobile" />
+                  <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Your Mobile" data-rule="mobile" data-msg="Please enter mobile" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">

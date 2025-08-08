@@ -66,7 +66,7 @@
                             <label for="mobile" class="col-md-4 control-label">Mobile</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="mobile"  value="{{ old('mobile',(isset($edit_data)) ? $edit_data->mobile:"")}}" placeholder="Enter Mobile">
+                                <input type="tel" class="form-control" name="mobile"  value="{{ old('mobile',(isset($edit_data)) ? $edit_data->mobile:"")}}" placeholder="Enter Mobile">
                             </div>
                         </div>
 						

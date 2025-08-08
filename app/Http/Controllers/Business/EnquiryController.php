@@ -103,7 +103,7 @@ class EnquiryController extends Controller
                         
                          <div class="col-md-4" style="display:flex;">
                          <label for=" " class="col-md-3 col-lg-3 col-form-label">Mobile :</label>
-                         <p name="mobile" type="text" class="form-control-static" > ' . $lead->mobile . '</p>
+                         <p name="mobile" type="tel" class="form-control-static" > ' . $lead->mobile . '</p>
                         </div>
                         
                     </div>

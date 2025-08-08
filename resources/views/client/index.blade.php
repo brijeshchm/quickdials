@@ -890,7 +890,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                </div>
                <label>Your Mobile<span>*</span></label>
                <div class="popup-form">
-                  <input class="form-control home-popup-form" type="text" placeholder="Enter Mobile" name="mobile" value="">
+                  <input class="form-control home-popup-form" type="tel" placeholder="Enter Mobile" name="mobile" value="">
                </div>
                <label>Your Email ID<span>*</span></label>
                <div class="popup-form">
@@ -946,7 +946,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
             </div>
             <label>Your Mobile<span>*</span></label>
             <div class="popup-form">
-               <input class="form-control city-form" type="text" placeholder="Enter Mobile" name="mobile" value="">
+               <input class="form-control city-form" type="tel" placeholder="Enter Mobile" name="mobile" value="">
             </div>
             <label>Your Email ID<span>*</span></label>
             <div class="popup-form">

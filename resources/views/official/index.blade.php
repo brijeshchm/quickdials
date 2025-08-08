@@ -540,7 +540,7 @@
                 </div>
                 <div class="form-group">
 				<label>Mobile</label>
-                  <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Your mobile" min="-10" max="10"  data-rule="mobile" data-msg="Please enter a valid mobile" />
+                  <input type="tel" class="form-control" name="mobile" id="mobile" placeholder="Your mobile" min="-10" max="10"  data-rule="mobile" data-msg="Please enter a valid mobile" />
                   <div class="validation"></div>
                 </div>
                 <div class="form-group">

@@ -80,7 +80,7 @@
 									<label for="mobile" class="col-md-3 control-label">Mobile<sup><i style="color:red" class="fa fa-asterisk fa-fw" aria-hidden="true"></i></sup></label>
 
 									<div class="col-md-6">
-										<input id="mobile" type="text" class="form-control" name="mobile" value="{{ $user->mobile }}">
+										<input id="mobile" type="tel" class="form-control" name="mobile" value="{{ $user->mobile }}">
 
 										@if ($errors->has('mobile'))
 											<span class="help-block">

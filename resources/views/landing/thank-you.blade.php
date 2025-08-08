@@ -909,7 +909,7 @@ required{
                     
 						<label>Your Mobile<required>*</required></label>
 						<div class="popup-form">
-                        <input class="form-control home-popup-form" type="text" placeholder="Enter Mobile" name="mobile" value="" >
+                        <input class="form-control home-popup-form" type="tel" placeholder="Enter Mobile" name="mobile" value="" >
 						</div>                     
 					 
                         <label>Your Email ID<required></required></label>

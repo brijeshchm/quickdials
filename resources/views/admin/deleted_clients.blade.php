@@ -38,7 +38,7 @@
 									</div>
 									<div class="col-lg-2">
 										<label for="mobile">Mobile:</label>
-										<input type="text" class="form-control" name="mobile" placeholder="" value="{{ $request->input('mobile') }}">
+										<input type="tel" class="form-control" name="mobile" placeholder="" value="{{ $request->input('mobile') }}">
 									</div>
 									<div class="col-lg-2">
 										<label for="" style="visibility:hidden">submit</label>

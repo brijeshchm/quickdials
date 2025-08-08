@@ -324,6 +324,70 @@ var homeController = (function(){
 				});
 				return false;
 			},
+			saveEnquiryContact:function(THIS){				
+				var $this = $(THIS), 
+				data  = $this.serialize();		
+		 
+			$.ajax({
+					url:"/client/lead/saveEnquiryContact",
+					type:"POST",
+					data:data,
+					dataType: 'json',
+					success:function(response,textStatus,jqXHR){
+					    					
+					  
+						if(response.statusCode){
+						
+						    $('.connectedclosebtn').click();
+						    $('.dealclosebtn').click();
+							$(".reset_lead_form").click();
+							$("#messagemodel").modal();
+							$('.imgclass').html('<img src="/images/Thanks.png" style="width: 100%;text-align: center;margin: auto;display: block;">');					
+							$('.successhtml').html("<p class='text-center' style='font-weight: 600;'>Your Submission has been received. <br> Our experts will reach out to you in the next 24 hours.</p>");
+							$('#messagemodel').modal({backdrop:"static",keyboard:false});
+						 
+							$this.find('.jinp').removeClass('has-error');
+							$this.find('.help-block').remove();
+							 
+							
+						}else{			
+                            $('.connectedclosebtn').click();
+						    $('.dealclosebtn').click();
+							$(".reset_lead_form").click();
+							$("#messagemodel").modal();
+							$('.imgclass').html('<img src="/images/message_alert.png" style="width: 50%;text-align: center;margin: auto;display: block;">');			
+							$('.failedhtml').html("<p class='text-center'>Some Error Please Try again.</p>");	
+							$('#messagemodel').modal({backdrop:"static",keyboard:false});							
+						}
+					},
+					error:function(jqXHR, textStatus, errorThrown){
+					   	var response = JSON.parse(jqXHR.responseText);
+						if(response.status){
+						   
+						var errors=response.errors;
+						$this.find('.contactForm').find('.form-group').removeClass('has-error');
+						$this.find('.help-block').remove();					 
+						for (var key in errors) {
+						if(errors.hasOwnProperty(key)){
+						var el = $this.find('*[name="'+key+'"]');
+						$('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el);
+						el.closest('.contactForm').find('.form-group').addClass('has-error');
+						}		
+						}
+
+						}else{
+                             
+							$(".reset_lead_form").click();
+							$("#messagemodel").modal();
+							$('.imgclass').html('<img src="/public/images/message_alert.png" style="width: 50%;text-align: center;margin: auto;display: block;">');			
+							$('.failedhtml').html("<p class='text-center'>Some Error Please Try Again.</p>");	
+							$('#messagemodel').modal({backdrop:"static",keyboard:false});
+						}
+						 
+					}
+				});
+				return false;
+			},
 		};
 	})();	
 			

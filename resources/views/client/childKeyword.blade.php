@@ -782,7 +782,7 @@ color: #fff;
                     </p>
                     <p>
                         <label for="ymn">Your Mobile <span>*</span></label>
-                        <input class="jinp" type="text" placeholder="Enter Mobile" name="mobile" value="">
+                        <input class="jinp" type="tel" placeholder="Enter Mobile" name="mobile" value="">
                     </p>
                     <p>
                         <label for="yei">Your Email ID <span></span></label>

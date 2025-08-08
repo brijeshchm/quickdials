@@ -102,7 +102,7 @@ class ChangePasswordController extends Controller
 								</div>
 								<div class="form-group">
 									<label>Primary Mobile</label>
-									<input type="text" class="form-control" name="mobile" value="" />
+									<input type="tel" class="form-control" name="mobile" value="" />
 								</div>
 								<div class="has-error">
 									<span class="help-block">

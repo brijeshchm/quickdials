@@ -701,7 +701,7 @@ required{
                         </div>
                         <div class="fieldblock">                           
                             <div class="col-xs-12 val">
-                                <input type="text" placeholder="+91 *" class="form-control city-form" name="mobile" >
+                                <input type="tel" placeholder="+91 *" class="form-control city-form" name="mobile" >
                             </div>
                         </div>
                    

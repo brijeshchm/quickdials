@@ -377,7 +377,7 @@ margin-bottom: 15px;
                         <div class="fieldblock">
                             <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">Mobile*</span></div>
                             <div class="col-xs-8 col-sm-8 col-md-8">
-                                <input type="text" placeholder="+91" class="form-control city-form" name="mobile">
+                                <input type="tel" placeholder="+91" class="form-control city-form" name="mobile">
                             </div>
                         </div>
                         <div class="fieldblock">
@@ -634,7 +634,7 @@ margin-bottom: 15px;
                     
 						<label>Your Mobile<span>*</span></label>
 						<div class="popup-form">
-                        <input class="form-control home-popup-form" type="text" placeholder="Enter Mobile" name="mobile" value="">
+                        <input class="form-control home-popup-form" type="tel" placeholder="Enter Mobile" name="mobile" value="">
 						</div> 
                      
 					 

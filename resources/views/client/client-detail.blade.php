@@ -103,7 +103,7 @@ Quick Dials- Training in {{$client->business_name}}
                         <div class="fieldblock">
                             <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">Mobile*</span></div>
                             <div class="col-xs-8 col-sm-8 col-md-8">
-                                <input type="text" placeholder="+91" class="form-control city-form" name="mobile">
+                                <input type="tel" placeholder="+91" class="form-control city-form" name="mobile">
                             </div>
                         </div>
                         <div class="fieldblock">
@@ -559,7 +559,7 @@ Quick Dials- Training in {{$client->business_name}}
                 <div class="fieldblock">
                 <div class="col-xs-4 col-sm-4 col-md-4"><span class="form-txt">Mobile*</span></div>
                 <div class="col-xs-8 col-sm-8 col-md-8">
-                <input type="text" placeholder="+91" class="form-control city-form" name="mobile">
+                <input type="tel" placeholder="+91" class="form-control city-form" name="mobile">
                 </div>
                 </div>
                 <div class="fieldblock">
@@ -963,7 +963,7 @@ Quick Dials- Training in {{$client->business_name}}
 														</div>
 														<div class="form-group">
 															<label for="mobile"><span class="glyphicon glyphicon-phone"></span> Mobile</label>
-															<input type="text" class="form-control" name="mobile" placeholder="Mobile Number">
+															<input type="tel" class="form-control" name="mobile" placeholder="Mobile Number">
 														</div>
 														<div class="form-group">
 															<label for="email"><span class="glyphicon glyphicon-envelope"></span> Email</label>

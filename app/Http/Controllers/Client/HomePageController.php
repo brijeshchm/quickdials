@@ -25,6 +25,7 @@ use App\Models\Blogdetails;
 use App\Models\Testimonialsdetail;
 use App\Models\LeadFollowUp;
 use App\Models\Status;
+use App\Models\Contacts;
 use App\Models\Client\Comment;
 class HomePageController extends Controller
 {
@@ -264,16 +265,71 @@ class HomePageController extends Controller
 				$followUp->lead_id = $lead->id;
 				$followUp->save();
 				leadassignWithoutZoneCounsellor($lead);
-
-
-
-
 				return response()->json([
 					'statusCode' => 1,
 					'response' => [
 						'responseCode' => 200,
 						'payload' => '',
 						'message' => 'Follow Up created successfully'
+					]
+				], 200);
+			} else {
+				return response()->json([
+					'statusCode' => 1,
+					'response' => [
+						'responseCode' => 200,
+						'payload' => '',
+						'message' => 'Some Error Follow up'
+					]
+				], 200);
+
+			}
+		}
+	}
+
+	public function saveEnquiryContact(Request $request)
+	{
+		 
+		if ($request->ajax()) {
+
+			$validator = Validator::make($request->all(), [
+				'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:32',
+				'email' => 'required|regex:/^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i',
+				'mobile' => 'required|numeric',
+				'subject' => 'required',
+
+
+			]);
+
+			if ($validator->fails()) {
+				$errorsBag = $validator->getMessageBag()->toArray();
+
+				return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
+			}
+
+			$lead = new Contacts;
+			$string = filter_var($request->input('name'), FILTER_SANITIZE_STRING);
+			$string = preg_replace('/[^A-Za-z0-9]/', ' ', $string);
+			$name = preg_replace('/\s+/', ' ', str_replace('&', '', trim($string)));
+			$lead->name = $name;
+			$lead->email = $request->input('email');
+			$lead->mobile = $request->input('mobile');
+			$lead->subject = filter_var($request->input('subject'), FILTER_SANITIZE_STRING);
+			  
+			$message = filter_var($request->input('message'), FILTER_SANITIZE_STRING);
+			$message = preg_replace('/[^A-Za-z0-9]/', ' ', $message);
+			$message = preg_replace('/\s+/', ' ', str_replace('&', '', trim($message)));			  
+			$lead->message = $message;
+	 
+
+			if ($lead->save()) {
+				 
+				return response()->json([
+					'statusCode' => 1,
+					'response' => [
+						'responseCode' => 200,
+						'payload' => '',
+						'message' => 'Form submited successfully'
 					]
 				], 200);
 			} else {

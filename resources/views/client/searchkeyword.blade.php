@@ -419,7 +419,7 @@ color: #fff;
                     <div class="fieldblock">
                          
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <input type="text" placeholder="Your Mobile Number" class="form-control city-form" id="mobile" name="mobile">
+                            <input type="tel" placeholder="Your Mobile Number" class="form-control city-form" id="mobile" name="mobile">
                         </div>
                     </div>
                      
@@ -772,7 +772,7 @@ color: #fff;
                     </p>
                     <p>
                         <label for="ymn">Your Mobile <span>*</span></label>
-                        <input class="jinp" type="text" placeholder="Enter Mobile" name="mobile" value="">
+                        <input class="jinp" type="tel" placeholder="Enter Mobile" name="mobile" value="">
                     </p>
                     <p>
                         <label for="yei">Your Email ID <span></span></label>
