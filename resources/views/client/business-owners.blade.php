@@ -1877,8 +1877,8 @@ textarea.form-control {
         <div class="features-grid">
           <!-- Feature 1 -->
           <div class="feature-card fade-in-left">
-            <div class="feature-icon">
-              <i class="fas fa-chart-line"></i>
+            <div class="feature-icon">             
+              <img src="{{ asset('img/google-maps.png')}}" alt="Google map">
             </div>
             <h3 class="feature-title">📍Google Maps Optimization</h3>
             <p class="feature-description">
@@ -1887,8 +1887,9 @@ textarea.form-control {
           </div>
           <!-- Feature 2 -->
           <div class="feature-card fade-in" style="transition-delay: 0.2s">
-            <div class="feature-icon">
-              <i class="fas fa-tasks"></i>
+            <div class="feature-icon">           
+                <img src="{{ asset('img/local-keyword.png')}}" alt="local-keyword">
+              
             </div>
             <h3 class="feature-title">🏷️Local Keyword Targeting</h3>
             <p class="feature-description">
@@ -1900,8 +1901,8 @@ textarea.form-control {
             class="feature-card fade-in-right"
             style="transition-delay: 0.4s"
           >
-            <div class="feature-icon">
-              <i class="fas fa-credit-card"></i>
+            <div class="feature-icon">              
+                <img src="{{ asset('img/call-form.png')}}" alt="call-form">
             </div>
             <h3 class="feature-title">📞 Call & Form Tracking</h3>
             <p class="feature-description">
@@ -1910,8 +1911,9 @@ textarea.form-control {
           </div>
           <!-- Feature 4 -->
           <div class="feature-card fade-in-left" style="transition-delay: 0.2s">
-            <div class="feature-icon">
-              <i class="fas fa-bell"></i>
+            <div class="feature-icon">             
+             <img src="{{ asset('img/lead-capture.png')}}" alt="lead-capture">
+              
             </div>
             <h3 class="feature-title">🛠️ Lead Capture Landing Pages</h3>
             <p class="feature-description">
@@ -1921,7 +1923,9 @@ textarea.form-control {
           <!-- Feature 5 -->
           <div class="feature-card fade-in" style="transition-delay: 0.4s">
             <div class="feature-icon">
-              <i class="fas fa-file-alt"></i>
+              
+                <img src="{{ asset('img/review-putation.png')}}" alt="review-putation">
+              
             </div>
             <h3 class="feature-title">⭐ Review & Reputation Management</h3>
             <p class="feature-description">
@@ -1934,7 +1938,9 @@ textarea.form-control {
             style="transition-delay: 0.6s"
           >
             <div class="feature-icon">
-              <i class="fas fa-lock"></i>
+
+            <img src="{{ asset('img/citation-building.png')}}" alt="citation-building">
+              
             </div>
             <h3 class="feature-title">🧭 Citation Building & Local Listings</h3>
             <p class="feature-description">
