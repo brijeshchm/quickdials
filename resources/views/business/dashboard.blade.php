@@ -40,17 +40,159 @@ background-color: #ffffff;
             <div class="card">
                 <h3>Remaining Coins</h3>
                 <p class="coins">
-                 <i class="bi bi-currency-rupee"></i> <?php  if($clientDetails->coins_amt) { echo $clientDetails->coins_amt; } ?> 
+                 <i class="bi bi-currency-rupee"></i><a href="{{ url('business/package') }}" ><?php  if($clientDetails->coins_amt) { echo $clientDetails->coins_amt; } ?> </a>
                 </p>
             </div>
         </div>
-        
+      
           @if (!empty($leads)) 
             @foreach($leads as $lead)
+  <?php  
+ 
+    // $businessName = $clientDetails->business_name ?? 'our company';
+    // $keyword = $val->kw_text ?? 'your enquiry';
+    // $addressText = $clientDetails->address ?? '';
+    // $mapText = !empty($clientDetails->business_map)
+    //     ? "\nDirections: " . $clientDetails->business_map
+    //     : '';
+    
+    // $profile_url = url('business-details/' . ($clientDetails->business_slug ?? ''));
+    //     $address_data = "Greetings from {$businessName},\n"
+    //             . "We’re following up on your enquiry made on Quickdials for {$keyword}.\n"
+    //             . "For more information"
+    //             . (!empty($addressText) ? ", you can visit us at {$addressText}" : "")
+    //             . "{$mapText}";
 
-            <?php //echo "<pre>";print_r($lead); ?>
+    //         $for_service = "Greetings from {$businessName},\n"
+    //             . "We’re following up on your enquiry made on Quickdials for {$keyword}.\n"
+    //             . "For more information about our services"
+    //             . (!empty($addressText) ? ", you can visit us at {$addressText}" : "")
+    //             . ", Or {$profile_url}";
+
+    //         $for_review = "Greetings from {$businessName}, Rated {$avgRating} Rating out of {$ratingCount} Votes.\n"
+    //             . "We’re following up on your enquiry made on Quickdials for {$keyword}.\n"
+    //             . "For more information"
+    //             . (!empty($addressText) ? ", visit us at {$addressText}" : "")
+    //             . ". Or {$profile_url}";
+
+    //         $share_lead = 
+    //             'Name: ' . trim($lead->name ?? '') . ', ' .
+    //             'Mobile: ' . trim($lead->mobile ?? '') . ', ' .
+    //             'Email: ' . trim($lead->email ?? '') . ', ' .
+    //             'Service: ' . trim($lead->kw_text ?? '') . ', ' .
+    //             'Location: ' . trim(($lead->city_name ?? '') . 
+    //                 (!empty($lead->zone) ? ', ' . $lead->zone : ''));
+
+    //                 $frmcheckText = '';
+
+    //         if (!empty($lead->frmcheck)) {
+    //             $frmcheckArray = is_array($lead->frmcheck)
+    //                 ? $lead->frmcheck
+    //                 : json_decode($lead->frmcheck, true);
+    //             if (is_array($frmcheckArray)) {
+    //                 $frmcheckText = implode(', ', $frmcheckArray);
+    //             }
+    //         }
+
+    //         $parts = array_filter([
+    //             $lead->kw_text ? "Interested in {$lead->kw_text}" : '',
+    //             $frmcheckText ? "Mode of {$frmcheckText}" : '',
+    //             $lead->zone ? "Location {$lead->zone}" : '',
+    //             $lead->plan ? "Plan {$lead->plan}" : '',
+    //             $lead->age ? "Age {$lead->age}" : '',
+    //             $lead->experience ? "Experience {$lead->experience}" : '',
+    //         ]);
+
+    //         $remark = implode(" • ", $parts);
+
+    //         if (!empty($lead->remark)) {
+    //             $remark .= " " . trim($lead->remark);
+    //         }
+
+  ?>
+
+  <style>
+.share-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hide checkbox */
+.share-toggle {
+    display: none;
+}
+
+/* Share Icon Button */
+.share-icon {
+    width: 40px;
+    height: 40px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.share-icon:hover {
+    background: #1e40af;
+    transform: scale(1.05);
+}
+
+/* Share Menu (Hidden by default) */
+.share-menu {
+    position: absolute;
+    top: 50px; /* 🔥 Downward open */
+    right: 0;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    padding: 8px 0;
+    min-width: 150px;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+/* Show when triggered */
+.share-toggle:checked + .share-icon + .share-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Menu Links */
+.share-menu a {
+    display: block;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.share-menu a:hover {
+    background: #f3f4f6;
+    color: #2563eb;
+}
+
+
+</style>
+            
         <div class="lead-details ">
+             
+ 
+
             <div class="lead enquiry-item">
+
+ 
+
                 <div class="img-cls">
                   <i class="fa fa-uaser"></i> <?php  echo ucfirst(substr($lead->name,0,1)); ?>
                 </div>
@@ -66,16 +208,45 @@ background-color: #ffffff;
                 }  
                 echo $coins;
                 ?>
+              
+              <div class="share-wrapper">
+
+    <input type="checkbox" id="shareToggle{{ $lead->assignId }}" class="share-toggle">
+
+    <label for="shareToggle{{ $lead->assignId }}" class="share-icon">
+        &#x1F517;  {{-- 🔗 icon --}}
+    </label>
+
+    <div class="share-menu">
+
+        <!-- <a href="https://wa.me/?text={{ urlencode($lead->share_address) }}" target="_blank">
+            📍 Address
+        </a>
+
+        <a href="https://wa.me/?text={{ urlencode($lead->share_review) }}" target="_blank">
+            ⭐ Review
+        </a> -->
+
+        <a href="https://wa.me/?text={{ urlencode($lead->share_lead) }}" target="_blank">
+            👤Share Lead
+        </a>
+
+    </div>
+
+</div>
+
                 </h4>
 
+               
+ 
                     <p><span class="icon" >
                       <i class="bi bi-clock"></i>
-                    <?php  get_time(strtotime($lead->created)); ?> ago</span></p>
+                    <?php echo get_time(strtotime($lead->created)); ?> ago</span></p>
                     <p><i class="bi bi-book"></i>  {{$lead->kw_text}}</p>
                      <div class="details-section">
                     <div class="title">Enquired for <strong>{{$lead->kw_text}}</strong> Send price and other details.</div>
                     <div class="source">@if($lead->email) <i class="bi bi-envelope"></i>{{$lead->email}}@endif</div>
-                     <p> </p>
+                     <p>@if($lead->remarks) {{$lead->remarks}} @endif</p>
                 </div>
                 <div class="show-details" onclick="toggleDetails(this)">Show details</div>
                 </div>
@@ -83,7 +254,7 @@ background-color: #ffffff;
                 <div class="map">
                     <h4>@if($lead->city_name)<i class="bi bi-pin-map-fill"></i> {{$lead->city_name}}@endif</h4>
                     <p>@if($lead->zone)<i class="bi bi-pin-map-fill"></i> {{$lead->zone}} @endif</p>
-                    <!-- <p>R Programming Training</p> -->
+                   
                 </div>
                 <div class="contact">
                     <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a>   <a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead->mobile}}</a>
