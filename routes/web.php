@@ -414,7 +414,9 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-blog')->header('Content-Type', 'text/xml');
 	});
  
- 
+ 	Route::get('/sitemap-online', function () {		
+		return response()->view('client.sitemap-online')->header('Content-Type', 'text/xml');
+	});
  
 	Route::get('/quickdialssitemap.xml', function () {
 		return response()->view('client.quickdialssitemap')->header('Content-Type', 'text/xml');

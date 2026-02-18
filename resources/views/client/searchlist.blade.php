@@ -165,10 +165,6 @@
 		});
 	</script>
 
-
-
-
-
 	<div class="container">
 
 		<div class="col-sm-9 col-md-9 reviews-box-main mainContainer">
@@ -192,20 +188,14 @@
 				} ?></p>
 				</div>
 			@endif
-
-
 			 
-<div class="services" >
-
-<div id="recentSearchContainer">
-</div>
-
-</div>
+		<div class="services">
+			<div id="recentSearchContainer">
+			</div>
+		</div>
  
 			@if(!empty($clientsList->count()))
-				<?php			
-
-								$n = 0;?>
+				<?php $n = 0; ?>
 				@foreach($clientsList as $client)
 
 					<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
@@ -217,11 +207,11 @@
 							$profilePic = unserialize($client->logo);
 													?><img loading="lazy" src="<?php echo asset('' . $profilePic['large']['src']); ?>" alt="{{$client->business_name}}"
 										title="{{$client->business_name}}" height="141" /><?php
-						} else {
-													?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo"
-										title="Business Logo" height="141" style="width:100%" /><?php
-						}
-												?>
+							} else {
+							?> <img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo"
+							title="Business Logo" height="141" style="width:100%" /><?php
+							}
+							?>
 									@if($client->client_type != 'FreeListing')
 										<p><a href="#"><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></a></p>
 									@endif
