@@ -1372,7 +1372,7 @@
         }
 
         .category-box .business-services ul li {
-            padding: 7px 4px;
+            /* padding: 7px 4px;
             margin: 5px 0px 10px 0px;
             display: flex;
             grid-gap: 0px 0px;
@@ -1382,7 +1382,21 @@
             width: 45%;
             margin-bottom: 10px;
             text-align: center;
-            background-color: #fbfbfb;
+            background-color: #fbfbfb; */
+
+
+                    padding: 7px 4px;
+        margin: 5px 0px 10px 0px;
+        display: block;
+        grid-gap: 0px 0px;
+        cursor: pointer;
+        font-size: 12px;
+        color: #000 !important;
+        /* width: 100%; */
+        /* margin-bottom: 10px; */
+        text-align: center;
+        background-color: #fff;
+        box-shadow: none;
         }
 
         .category-box .business-services ul li img {
@@ -1398,11 +1412,11 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
-            gap: 6px 9px;
+            gap: 2px 5px;
         }
 
         .course-program ul li {
-            padding: 7px 4px;
+            /* padding: 7px 4px;
             margin: 5px 0px 10px 0px;
             display: flex;
             grid-gap: 0px 0px;
@@ -1414,9 +1428,25 @@
             margin-bottom: 10px;
             text-align: center;
             background-color: #fbfbfb;
-            box-shadow: 0 0 10px 0 #e3e3e3;
-        }
+            box-shadow: 0 0 10px 0 #e3e3e3; */
 
+
+            padding: 0px;
+            margin: 5px 0px 0px 0px;
+            display: block;
+            grid-gap: 0px 0px;
+            cursor: pointer;
+            font-size: 12px;
+            /* color: #000 !important; */
+
+            text-align: center;
+            background-color: #fff;
+            box-shadow: none;
+        }
+.course-program a {
+    color: inherit;
+    font-size: 13px;
+}
         .course-program ul li:hover {
             background-color: #ddd;
         }
@@ -1475,11 +1505,16 @@
             margin-top: 38px;
             padding-top: 35px;
             padding-bottom: 10px;
+                    display: block;
         }
         .left-panel {
             display: none;
         }
 
+        .abt-accordion .card .card-header h2 button {
+       
+        font-size: 14px;
+        }
         .right-panel {
         width: 100%;
         padding: 3px 10px;
