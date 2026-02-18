@@ -1480,10 +1480,10 @@ $pictures = unserialize($client->pictures);
 		<?php  } ?>
 
 		<div class="col-xs-12">
-			<article class="jsx-5f2699f63e338e40">
+			<article class="">
 
-				<div class="jsx-5f2699f63e338e40 jdwrapper dtlboxleft_section jddtl_overview mt-20 mb-20 pl-20 pr-20">
-					<div class="jsx-5f2699f63e338e40 overview_content font16 fw400 color111">
+				<div class="">
+					<div class="">
 						<h2> <?php if ($client->business_name) {
 		echo $client->business_name;
 	} ?> located in

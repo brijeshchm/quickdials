@@ -14,16 +14,13 @@ Quick Dials-  Oops !Page Not Found
             <div class="col-xs-12 col-sm-12 col-md-12 third-add-section"><img loading="lazy" src="<?php echo asset('client/images/thirdAdd.jpg'); ?>" alt="thirdAdd"></div>
         </div>
 </div> 
-<div class="container">
-
-			
-			 <div class="row">
-                <div class="col-sm-12 col-md-12 banner-details">
-				<h4 class="Oops-txt">Oops! Page Not Found </h5>				 
-				  <h2 class="error-txt"><a href="{{url('/')}}">Home</a></h2>
-</div>
-</div>
-
+<div class="container">		
+	<div class="row">
+		<div class="col-sm-12 col-md-12 banner-details">
+		<h4 class="Oops-txt">Oops! Page Not Found </h5>				 
+		<h2 class="error-txt"><a href="{{url('/')}}">Home</a></h2>
+		</div>
+	</div>
 </div>
  <div class="clearfix"></div>
     <div class="container">
