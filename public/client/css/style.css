@@ -5559,4 +5559,7 @@ div.pagination span.ellipsis {
 	padding: 5px 30px 5px 5px;
 }
 
-
+.tm {
+    font-size: 10px;
+    vertical-align: super;
+}

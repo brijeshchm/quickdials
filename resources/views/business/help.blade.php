@@ -35,7 +35,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
               <div class="info-box card">
                 <i class="bi bi-telephone"></i>
                 <h3>Call Us</h3>
-                <p>+91 95-5943-5943</p>
+                <p>+91 75-5943-5943</p>
               </div>
             </div>
             <div class="col-lg-6">

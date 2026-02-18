@@ -746,6 +746,11 @@
                     <div class="footer-section">
                         <h3>Support & Contact</h3>
                         <div class="contact-info">
+                           <p><strong>QuickDials<span class="tm">TM</span></strong></p>
+                        
+                 <p><strong>CIN:</strong> U63112KA2026PTC215594</p>
+                 <p><strong>TAN:</strong> BLRQ01951F</p>
+
                             <p><strong>Email:</strong><a href="mailto:support@quickdials.com"
                                     class="email">support@quickdials.com</a></p>
                             <p><strong>Phone:</strong> <a href="tel:917559435943">+91-75-5943-5943</a></p>

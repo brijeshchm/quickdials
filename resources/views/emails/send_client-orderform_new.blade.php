@@ -39,7 +39,7 @@
                                 <td width="45%" style="border:none;padding:0in 7.5pt 0in 0in;height:60.0pt">
 									<p style="margin-bottom: -15px;"><strong>QuickDials Pvt Ltd</strong></p>
 									<p style="margin-bottom: -15px;">UNIT 101 OXFORD TOWERS, 139/88 HAL OLD AIRPORT RD, H.A.L II Stage, Bangalore North, Bangalore- 560008, Karnataka.</p>
-									<p style="margin-bottom: -15px;">Phone : +91-95-5943-5943</p>
+									<p style="margin-bottom: -15px;">Phone : +91-75-5943-5943</p>
 									<p style="margin-bottom: -15px;">Email : info@quickdials.com</p>
 									<p style="margin-bottom: -15px;">Website : www.quickdials.com</p>
                                 </td>
