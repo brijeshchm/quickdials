@@ -5563,3 +5563,73 @@ div.pagination span.ellipsis {
     font-size: 10px;
     vertical-align: super;
 }
+
+
+.success-popup {
+    background: #fff;
+    width: 400px;
+    max-width: 90%;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    animation: popupFade 0.4s ease-in-out;
+}
+
+@keyframes popupFade {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.success-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    background: #28a745;
+    color: #fff;
+    font-size: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-popup h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.success-popup p {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.sub-text {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.success-btn {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.success-btn:hover {
+    background: #218838;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}

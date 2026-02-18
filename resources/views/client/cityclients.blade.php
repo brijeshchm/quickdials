@@ -208,7 +208,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 								<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
 										class="sms-view common_popup_form"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
 										href="https://wa.me/917559435943" title="{{$client->business_name }}" class="whatsapp-view"
-										target="_blank" rel="noopener noreferrer"><span><i class="fa fa-whatsapp"></i>
+										target="_blank" rel="noopener noreferrer"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20">
 											WhatsApp</span></a> &nbsp;&nbsp;&nbsp;<a
 										href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a></div>
@@ -499,7 +499,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 									</span>
 								</a>
 							</div>
-							<button class="serchlist-btn">Best Offer</button>
+							<button class="serchlist-btn common_popup_form">Best Offer</button>
 						</div>
 
 						<div class="col-sm-12 col-md-12" style="padding-left:0;">

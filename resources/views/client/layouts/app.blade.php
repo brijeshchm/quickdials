@@ -1021,7 +1021,7 @@
         </div>
     </div>
 
-    <div id="messagemodel" class="modal fade" role="dialog" data-backdrop="static">
+    <!-- <div id="messagemodel" class="modal fade" role="dialog" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body" style="padding:0;"><button type="button" class="close" data-dismiss="modal"
@@ -1037,9 +1037,31 @@
                 </div>
             </div>
         </div>
+    </div> -->
+ 
+
+    <div id="messagemodel" class="modal fade" role="dialog" data-backdrop="static">
+    <div class="success-popup modal-dialog">
+        <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close"
+                        style="position: absolute; right: 4px; top: 4px;opacity: 1; width: 35px; height: 35px; background: #fff; border-radius: 0 0 0 10px;"><span
+                            aria-hidden="true">×</span></button>
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>Thank You!</h2>
+        <p>Your submission has been received successfully.</p>
+        <p class="sub-text">Our team will contact you within 24 hours.</p>
+
+        <button class="success-btn" data-dismiss="modal"
+                        aria-label="Close">Done</button>
     </div>
+</div>
+ 
 
-
+ 
     <script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
 
      <script src="<?php echo asset('vendor/validation/validation.min.js'); ?>" ></script>
@@ -1156,10 +1178,10 @@
                       $('.bestDealpopup').addClass('dealshowup');
               }, 3000); 	
               */
-            $('.serchlist-btn').click(function (e) {
-                $('<div class="loginoverlay"></div>').insertBefore('.searchPopup');
-                $('.searchPopup').addClass('dealshowup');
-            });
+            // $('.serchlist-btn').click(function (e) {
+            //     $('<div class="loginoverlay"></div>').insertBefore('.searchPopup');
+            //     $('.searchPopup').addClass('dealshowup');
+            // });
 
             $('.popup-btn').click(function (e) {
                 $('<div class="loginoverlay"></div>').insertBefore('.searchPopup');

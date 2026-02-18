@@ -411,7 +411,7 @@
 										</span>
 									</a>
 								</div>
-								<button class="serchlist-btn" title="Best Offer {{$client->business_name }}">Enquiry Now</button>
+								<button class="serchlist-btn popup-btn" title="Best Offer {{$client->business_name }}">Enquiry Now</button>
 							</div>
 							<div class="col-sm-12 col-md-12" style="padding-left:0;">
 								<div class="clickBlick"><a
@@ -901,7 +901,7 @@
 									</span>
 								</a>
 							</div>
-							<button class="serchlist-btn">Best Offer</button>
+							<button class="serchlist-btn popup-btn">Best Offer</button>
 						</div>
 
 						<div class="col-sm-12 col-md-12" style="padding-left:0;">

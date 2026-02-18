@@ -339,7 +339,7 @@
 								<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
 										class="sms-view open-popup"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
 										href="javascript:void(0);" title="{{$client->business_name }}"
-										class="whatsapp-view open-popup"><span><i class="fa fa-whatsapp"></i> WhatsApp</span></a>
+										class="whatsapp-view open-popup"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20"> WhatsApp</span></a>
 									&nbsp;&nbsp;&nbsp;<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a></div>
 
@@ -388,7 +388,7 @@
 									</a>
 
 								</div>
-								<button class="serchlist-btn" title="Best Offer {{$client->business_name }}">Enquiry Now</button>
+								<button class="serchlist-btn common_popup_form" title="Best Offer {{$client->business_name }}">Enquiry Now</button>
 							</div>
 
 							<div class="col-sm-12 col-md-12" style="padding-left:0;">
