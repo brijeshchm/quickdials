@@ -633,7 +633,7 @@ echo trim($paragraph6); ?>
 			 <div class="col-sm-3 col-md-3 ">
 			 <div class="reviews-client-box">
 					<div class="side-row-1">
-						<div class="side-data-txt-1"><a href="{{ url('training')."/".$client->business_slug }}" title="{{$client->business_name}}"><span>{{ $client->business_name}}</span></a></div>
+						<div class="side-data-txt-1"><a href="{{ url('business-details')."/".$client->business_slug }}" title="{{$client->business_name}}"><span>{{ $client->business_name}}</span></a></div>
 						<div class="side-txt">
 							<?php
 								$badge = $client->sold_on_position;
@@ -654,22 +654,22 @@ echo trim($paragraph6); ?>
 								$remain = 5-$whole;
 								for($i=0;$i<$whole;++$i){
 							
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar fullstar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar fullstar'></a>";
 								}
 								if($fraction>0&&$fraction<1){
 								
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar halfstar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar halfstar'></a>";
 									--$remain;
 								}
 								for($i=0;$i<$remain;++$i){
 								
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar'></a>";
 								}
 							}else{
 								$avgRating = 0.0;
 								for($i=0;$i<5;++$i){
 								
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar'></a>";
 								}									
 							}
 						?>
@@ -919,10 +919,10 @@ echo trim($paragraph6); ?>
 			 
 				<figure><img loading="lazy" class="" src="<?php echo url($image); ?>"  alt="{{ $client->business_name}}" style="width:100%;"></figure>
 				<div class="grid-info">
-					<h3><a href="{{url('training').'/'.generate_slug($client->business_slug)}}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
+					<h3><a href="{{url(path: 'business-details').'/'.generate_slug($client->business_slug)}}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
 				
 					<strong>{{ucfirst($client->city)}}</strong>
-					<a href="{{url('training').'/'.generate_slug($client->business_slug)}}" class="get-quotes" tabindex="0">View</a>
+					<a href="{{url('business-details').'/'.generate_slug($client->business_slug)}}" class="get-quotes" tabindex="0">View</a>
 				</div>
 				</div></div>
 				

@@ -25,9 +25,6 @@ class SearchListController extends Controller
 	public function index(Request $request, $city, $search_kw)
 	{  
 		$city = ucwords(str_replace("-", " ", $city));
-	 
-		 
-
 		$search_kw = ucwords(str_replace("-", " ", $search_kw));
 			
  
@@ -238,9 +235,12 @@ $keyword = DB::table('keyword as k')
 					return view('client.client-detail', ['client' => $client, 'cities' => $cities, 'comments' => $comments, 'count' => $count, 'sum' => $sum, 'avgRating' => number_format($avgRating, 1, '.', ''), 'graphQuery' => $graphQuery, 'barGraphQuery' => $barGraphQuery, 'assignedKwds' => $assignedKwds, 'clientLists' => $clientLists, 'clients' => $client, 'assignedCity' => $assignedCity,'zones'=>$zones]);
 				 
 			} else {
-					return view('client.errorpage');
+					// return view('client.errorpage');
+
+					return response()->view('client.errorpage', [], 404);
 
 				}
+
 		}
 	}
 

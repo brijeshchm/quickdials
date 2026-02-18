@@ -68,7 +68,7 @@ Estivaledge- Training in
 							<?php endif;						
 						}
 					?>
-					<!--a href="{{url('training').'/'.$client->business_slug}}" class="get-quotes" tabindex="0">View</a-->
+					 
 					<div class="text-left">
 						<a href="javascript:void(0)" style="color:#FC641B">
 							<?php

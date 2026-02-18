@@ -278,9 +278,9 @@ class CitiesController extends Controller
 					->join('citylists', 'citylists.id', '=', 'zones.city_id')
 					->where(function ($query) use ($request) {
 						$q = $request->input('q');
-						$query->where('zones.zone', 'LIKE', "%$q%")
-							->orWhere('citylists.city', 'LIKE', "%$q%")
-							->orWhere('zones.pincode', 'LIKE', "%$q%");
+						$query->where('zones.zone', 'LIKE', "$q%")
+							->orWhere('citylists.city', 'LIKE', "$q%")
+							->orWhere('zones.pincode', 'LIKE', "$q%");
 					})
 					->select('zones.id as zone_id', 'zones.zone', 'citylists.city', 'zones.pincode')
 					->distinct()
@@ -343,12 +343,12 @@ class CitiesController extends Controller
 			   1. Keyword table search
 			-------------------------*/
 			if (!empty($q)) {
-
+ 
 				$keywordData = DB::table('keyword')
-					->where('keyword', 'LIKE', "%{$q}%")
+					->where('keyword', 'LIKE', "{$q}%")
 					->select('keyword as keyword')
 					->distinct()
-					->limit(20)
+					->limit('40')
 					->get();
 
 			} else {
@@ -393,7 +393,7 @@ class CitiesController extends Controller
 			if (!empty($q)) {
 
 				$clientData = DB::table('clients')
-					->where('business_name', 'LIKE', "%{$q}%")
+					->where('business_name', 'LIKE', "{$q}%")
 					->select('business_name as keyword')
 					->distinct()
 					->limit(20)

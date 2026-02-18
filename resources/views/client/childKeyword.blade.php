@@ -455,7 +455,7 @@ color: #fff;
 			 <div class="col-sm-3 col-md-3 ">
 			 <div class="reviews-client-box">
 					<div class="side-row-1">
-						<div class="side-data-txt-1"><a href="{{ url('training')."/".$client->business_slug }}" title="{{$client->business_name }}"><span>{{ $client->business_name   }}</span></a></div>
+						<div class="side-data-txt-1"><a href="{{ url('business-details')."/".$client->business_slug }}" title="{{$client->business_name }}"><span>{{ $client->business_name   }}</span></a></div>
 						<div class="side-txt">
 							<?php
 								$badge = $client->sold_on_position;
@@ -476,60 +476,27 @@ color: #fff;
 								$remain = 5-$whole;
 								for($i=0;$i<$whole;++$i){
 							
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar fullstar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar fullstar'></a>";
 								}
 								if($fraction>0&&$fraction<1){
 								
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar halfstar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar halfstar'></a>";
 									--$remain;
 								}
 								for($i=0;$i<$remain;++$i){
 								
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar'></a>";
 								}
 							}else{
 								$avgRating = 0.0;
 								for($i=0;$i<5;++$i){
 								
-									echo "<a href='".url('training')."/".$client->business_slug."' class='emptystar'></a>";
+									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar'></a>";
 								}									
 							}
 						?>
-						<a href="{{ url('training')."/".$client->business_slug }}"><span class="serchlist-rating">{{$client->comment_count or "0"}} Reviews </span></a></div>
-						<!--<?php
-							$arr=[];
-							if(!empty($client->address)){
-								$arr['address'] = $client->address;
-							}
-							if(!empty($client->landmark)){
-								$arr['landmark'] = $client->landmark;
-							}
-							if(!empty($client->city)){
-								$arr['city'] = $client->city;
-							}
-							if(!empty($client->state)){
-								$arr['state'] = $client->state;
-							}
-							if(!empty($client->country)){
-								$arr['country'] = $client->country;
-							}
-							$addr = getAddress($arr,100);
-							if($addr->ispositiveresponse){
-							?>
-								<div class="serchlist-txt side-data-add">
-									<?php if($addr->issubstr): ?>
-										<a href="{{ url('training')."/".$client->business_slug }}">{{ $addr->substr }}</a>
-										<a href="{{ url('training')."/".$client->business_slug }}" data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</a>
-									<?php else: ?>
-										<a href="{{ url('training')."/".$client->business_slug }}">{{ $addr->substr }}</a>
-									<?php endif; ?>
-								</div>
-							<?php						
-							}
-						?>-->
-							<p><?php echo ucfirst(substr($client->comment_content,0,200));?></p>
-					<!--<div class="btn btn-primary side-data-btn">Send SMS To Business</div>-->
-				 
+						<a href="{{ url('business-details')."/".$client->business_slug }}"><span class="serchlist-rating">{{$client->comment_count or "0"}} Reviews </span></a></div>
+					 
 					  </div>
 					  </div>
 				@endforeach
@@ -769,10 +736,10 @@ color: #fff;
 			 
 				<figure><img loading="lazy" class="" src="<?php echo url($image); ?>" style="width:100%;" alt="<?php if($imagename){ echo $imagename; } ?>"></figure>
 				<div class="grid-info">
-					<h3><a href="{{url('training').'/'.generate_slug($client->business_slug)}}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
+					<h3><a href="{{url('business-details').'/'.generate_slug($client->business_slug)}}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
 				
 					<strong>{{ucfirst($client->city)}}</strong>
-					<a href="{{url('training').'/'.generate_slug($client->business_slug)}}" class="get-quotes" tabindex="0">View</a>
+					<a href="{{url('business-details').'/'.generate_slug($client->business_slug)}}" class="get-quotes" tabindex="0">View</a>
 				</div>
 				</div></div>
 				
