@@ -554,7 +554,7 @@ $pictures = unserialize($client->pictures);
 
 						if ($addr->ispositiveresponse) {
 							?>
-							<i class="fa fa-fw fa fa-street-view icon" aria-hidden="true"></i>
+							<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 							<div class="location-txt">
 
 								<script>var clientAddr = "<?php echo $client->address; ?>";</script>

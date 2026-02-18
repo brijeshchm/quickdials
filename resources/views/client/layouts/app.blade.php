@@ -67,7 +67,7 @@
 
     <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}">
     
-    
+     
     <script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
  
        <script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" ></script>

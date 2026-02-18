@@ -785,7 +785,7 @@ margin-bottom: 15px;
 		<div class="col-sm-6 col-xs-6 exam_categories_container" >		
 		<div class="exam_categories_wrap">
 		<div class="cat_icon col-sm-4 col-xs-12 text-center banner_botton">
-			<i class="fa fa-fw fa-university icon" aria-hidden="true"></i> 
+			<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="20">
 		 
 		<h3><a href="javascript:void(0);">University Level Entrance Exams</a></h3></div>
 		<div class="exams_list col-sm-8">

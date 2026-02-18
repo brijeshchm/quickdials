@@ -236,7 +236,8 @@
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}">
 										<span class="serchlist-txt-1">
-											<i class="fa fa-fw fa-university icon" aria-hidden="true"></i>
+										 
+											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18">
 											<?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?>
 										</span>
 										<?php
@@ -272,7 +273,8 @@
 						if ($addr->ispositiveresponse) {
 													?>
 									<div class="serchlist-txt">
-										<i class="fa fa-fw fa fa-street-view icon" aria-hidden="true"></i>
+									 
+										<img src="{{ asset('/img/map.png')}}" alt="map" loading="lazy" width="18">
 										<?php if ($addr->issubstr): ?>
 										<a
 											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
@@ -288,9 +290,7 @@
 												?>
 
 									@if(!empty($client->time))
-												<div class="serchlist-txt">
-
-													
+												<div class="serchlist-txt">													
 													<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 														title="{{ $client->business_name ?? '' }}"><span class="serchlist-txt">
 															<?php
@@ -308,7 +308,8 @@
 											) {
 
 											?>
-											<i class="fa fa-fw fa-clock-o serchlist-icon" aria-hidden="true"></i>
+										 		 
+											<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">
 											<?php
 												echo "Opening Hrs (" . $times->$today->from . " - " . $times->$today->to . ")";
 											}  
@@ -320,8 +321,8 @@
 												</div>
 									@endif
 
-									<div class="serchlist-txt">
-										<i class="fa fa-fw fa fa-cog icon" aria-hidden="true"></i>
+									<div class="serchlist-txt">									 
+										<img src="{{ asset('/img/service.png')}}" alt="service" loading="lazy" width="18">
 										<span class="serchlist-txt">
 											<div class="col-md-12 service-text">
 												<ul>
@@ -747,7 +748,7 @@
 							<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 								title="{{$client->business_name }}">
 								<span class="serchlist-txt-1">
-									<i class="fa fa-fw fa-university serchlist-icon" aria-hidden="true"></i>
+										<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18">
 									<?php echo ucfirst(substr($client->business_name, 0, 28));?>
 								</span>
 								<!-- 						 
@@ -779,7 +780,8 @@
 						if ($addr->ispositiveresponse) {
 													?>
 								<div class="serchlist-txt">
-									<i class="fa fa-fw fa fa-street-view icon" aria-hidden="true"></i>
+									 
+										<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 									<?php if ($addr->issubstr): ?>
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}">{{ $addr->substr }}</a>
 									<a href="#" data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</a>
@@ -792,9 +794,12 @@
 												?>
 
 
-								<div class="serchlist-txt"><i class="fa fa-fw fa-clock-o serchlist-icon" aria-hidden="true"></i>
+								<div class="serchlist-txt">
+								<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">	
+							 
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
-										title="{{$client->business_name }}"><span class="serchlist-txt">
+										title="{{$client->business_name }}">
+										<span class="serchlist-txt">
 											<?php
 						if (!empty($client->time)) {
 							$times = json_decode($client->time);
@@ -803,11 +808,14 @@
 						} else {
 							echo "No working hours available";
 						}
-													?>
-										</span></a>
+						?>
+						</span></a>
 								</div>
 								<div class="serchlist-txt">
-									<i class="fa fa-fw fa fa-cog serchlist-icon" aria-hidden="true"></i>
+								 
+
+									<img src="{{ asset('/img/service.png')}}" alt="service" loading="lazy" width="18">
+
 									<span class="serchlist-txt">
 										<div class="col-md-12 service-text">
 											<ul>

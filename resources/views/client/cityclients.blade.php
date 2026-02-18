@@ -100,7 +100,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}">
 										<span class="serchlist-txt-1">
-											<i class="fa fa-fw fa-university icon" aria-hidden="true"></i>
+											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="20">
 											<?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?>
 										</span>
 										<?php
@@ -136,7 +136,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						if ($addr->ispositiveresponse) {
 										?>
 									<div class="serchlist-txt">
-										<i class="fa fa-fw fa fa-street-view icon" aria-hidden="true"></i>
+										<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 										<?php if ($addr->issubstr): ?>
 										<a
 											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
@@ -153,8 +153,8 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 
 									@if(!empty($client->time))
 												<div class="serchlist-txt">
-
-													<i class="fa fa-fw fa-clock-o serchlist-icon" aria-hidden="true"></i>
+<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">
+													 
 													<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 														title="{{$client->business_name }}"><span class="serchlist-txt">
 															<?php
@@ -171,7 +171,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 									@endif
 
 									<div class="serchlist-txt">
-										<i class="fa fa-fw fa fa-cog icon" aria-hidden="true"></i>
+										<img src="{{ asset('/img/service.png')}}" alt="service" loading="lazy" width="18">
 										<span class="serchlist-txt">
 											<div class="col-md-12 service-text">
 												<ul>
@@ -352,7 +352,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 
 							<a href="{{ url('business-details') . "/" . $client->business_slug }}" title="{{$client->business_name }}">
 								<span class="serchlist-txt-1">
-									<i class="fa fa-fw fa-university serchlist-icon" aria-hidden="true"></i>
+									<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="20">
 									<?php echo ucfirst(substr($client->business_name, 0, 28));?>
 								</span>
 								<!-- 						 
@@ -384,7 +384,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						if ($addr->ispositiveresponse) {
 										?>
 								<div class="serchlist-txt">
-									<i class="fa fa-fw fa fa-street-view icon" aria-hidden="true"></i>
+									<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 									<?php if ($addr->issubstr): ?>
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}">{{ $addr->substr }}</a>
 									<a href="#" data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</a>
@@ -397,7 +397,8 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 									?>
 
 
-								<div class="serchlist-txt"><i class="fa fa-fw fa-clock-o serchlist-icon" aria-hidden="true"></i>
+								<div class="serchlist-txt"> 
+								<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}"><span class="serchlist-txt">
 											<?php
@@ -412,7 +413,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 										</span></a>
 								</div>
 								<div class="serchlist-txt">
-									<i class="fa fa-fw fa fa-cog serchlist-icon" aria-hidden="true"></i>
+									<img src="{{ asset('/img/service.png')}}" alt="service" loading="lazy" width="18">
 									<span class="serchlist-txt">
 										<div class="col-md-12 service-text">
 											<ul>
