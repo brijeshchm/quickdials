@@ -1970,7 +1970,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 					"type":"GET",
 					"success":function(data,textStatus,jqXHR){
 						//alert(JSON.stringify(data)+" => "+textStatus+" => "+JSON.stringify(jqXHR));
-						mainSpinner.stop();
+					 
 						if(data.statusCode){
 							alert(data.data.message);
 							pushedEl.attr('title','Pushed');
@@ -1978,6 +1978,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 							pushedEl.removeClass('btn-danger').addClass('btn-success');
 							mainSpinner.stop();
 							dataTablePendingNewLeads.ajax.reload(null,false);
+							dataTablePushLeads.ajax.reload(null,false);
 							
 						}else{
 							alert(data.data.message);
