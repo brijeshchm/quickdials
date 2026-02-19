@@ -1112,17 +1112,17 @@ class LeadController extends Controller
 											}
 											if (!empty($clnt->email)) {
 
-												/* $template = 'emails.assignleadtoclient';
+												$template = 'emails.assignleadtoclient';
 												$clientname=$client->business_name;
 												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-												$m->from('info@quickdials.com', 'quickdials');             
-												//$client->email
-												$m->to('info@quickdials.com', $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
+												$m->from('info@quickdials.com', 'QuickDials');             
+											 
+												$m->to($client->email, $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
 												});	
-												*/
+												
 
 											}
-
+ 										event(new LeadPush($lead,$clnt->id));
 
 										}
 									}

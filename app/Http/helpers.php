@@ -849,7 +849,7 @@ function leadassignWithoutZoneCounsellor($lead)
 									}
 
 									$clnt->save();	
-									// event(new LeadPush($lead,$clnt->id));
+									 event(new LeadPush($lead,$clnt->id));
 		 
 								}
 
