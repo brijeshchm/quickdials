@@ -319,8 +319,10 @@
                      </div>
                   </div>
                   <div class="entry-content">
-                   <p> {!!  $blogdetails->description !!}</p>
-                    
+                  @if(!empty($blogdetails->description))
+                    <p>{!! $blogdetails->description !!}</p>
+                @endif
+                          
 				 
                   </div>
 

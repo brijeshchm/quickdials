@@ -732,7 +732,7 @@
                             <li><a href="home-appliance-repair-training" class="keystore">Home Appliances Repair</a>
                             </li>
                             <li><a href="wedding-organisers" class="keystore">Wedding Organisers</a></li>
-                            <li><a href="ac-service" class="keystore">AC Services</a></li>
+                            <li><a href="ac-repair-service" class="keystore">AC Services</a></li>
                             <li><a href="security-guards-services" class="keystore">Security Guards</a></li>
                             <li><a href="cleaning-services" class="keystore">Cleaning Services</a></li>
                             <li><a href="{{ url('categories/repairs-services') }}">Repairs Services</a></li>
