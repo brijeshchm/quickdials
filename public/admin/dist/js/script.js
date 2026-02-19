@@ -2433,11 +2433,13 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 							mainSpinner.stop();
 							$('#pushlead-edit-modal').find('.alert-success').html("").hide();
 							$('#pushlead-edit-modal').find('.alert-danger').html(data.data.message).show();
+							dataTablePushLeads.ajax.reload(null,false);	
 						}
 					},
 					"error":function(jqXHR,textStatus,errorThrown){
 						mainSpinner.stop();
 						alert(data.data.message);
+						dataTablePushLeads.ajax.reload(null,false);	
 					}
 				});
 				return false;
