@@ -1970,6 +1970,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 					"type":"GET",
 					"success":function(data,textStatus,jqXHR){
 						//alert(JSON.stringify(data)+" => "+textStatus+" => "+JSON.stringify(jqXHR));
+						mainSpinner.stop();
 						if(data.statusCode){
 							alert(data.data.message);
 							pushedEl.attr('title','Pushed');
