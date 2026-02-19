@@ -6,7 +6,11 @@ use Illuminate\Support\Facades\Auth;
 Route::auth();	
 Auth::routes(); 
  
-
+use Illuminate\Support\Facades\Redis;
+Route::get('/redis-test', function () {
+    Redis::set('test_key', 'QuickDials');
+    return Redis::get('test_key');
+});
  
  
  //Clear Cache facade value:
