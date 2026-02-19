@@ -226,6 +226,9 @@ background-color: #ffffff;
         <a href="https://wa.me/?text={{ urlencode($lead->share_review) }}" target="_blank">
             ⭐ Review
         </a>
+        <a href="https://wa.me/?text={{ urlencode($lead->share_service) }}" target="_blank">
+            ⭐ Service
+        </a>
 
         <a href="https://wa.me/?text={{ urlencode($lead->share_lead) }}" target="_blank">
             👤Share Lead

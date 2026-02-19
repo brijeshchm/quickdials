@@ -415,7 +415,7 @@
                             tabindex="0">Tours &amp; Travels</a></li> |
                     <li><a title="Property" href="{{url('home-construction/property-dealer')}}" tabindex="0">Property
                             Dealer</a></li> |
-                    <li><a title="Rentals" href="{{url('Rentals')}}" tabindex="0">Rental Property</a></li> |
+                    <li><a title="Rentals" href="{{url('child/rent-or-buy')}}" tabindex="0">Rent & Buy</a></li> |
                     <li><a title="PG" href="{{url('pg-hostels')}}" tabindex="0">PG & Hostel</a></li> |
                     <li><a title="Computer Courses & Training" href="{{url('categories/computer-courses')}}"
                             tabindex="0">Computer Courses & Training</a></li> |

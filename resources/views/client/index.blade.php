@@ -95,9 +95,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       <div class="items-list">
          <div class="img-items">             
          <div class="items">
-            <a href="{{url('categories/professional-courses')}}" > <img loading="lazy" src="{{asset('img/IT-Training.png')}}" alt="computer courses"  ></a>
+            <a href="{{ route('categories.show', 'professional-courses') }}" > <img loading="lazy" src="{{asset('img/IT-Training.png')}}" alt="computer courses"  ></a>
              </div>
-            <span class="title-serv"><a href="{{url('categories/professional-courses')}}" >IT Courses </a></span>
+            <span class="title-serv"><a href="{{ route('categories.show', 'professional-courses') }}" >IT Courses</a></span>
          </div>
 
          <div class="img-items">  
@@ -119,10 +119,10 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="img-items">    
        
          <div class="items">
-            <a href="{{url('categories/entrance-exams-coaching')}}"  >
+            <a href="{{ route('categories.show', 'entrance-exams-coaching') }}"  >
             <img loading="lazy" src="{{asset('img/government-exam.png')}}" alt="government exam"></a>
              </div>
-            <span class="title-serv"><a href="{{url('categories/entrance-exams-coaching')}}"  >Government Exam</a> </span>
+            <span class="title-serv"><a href="{{ route('categories.show', 'entrance-exams-coaching') }}"  >Government Exam</a> </span>
          </div>
          <div class="img-items">     
          <div class="items">

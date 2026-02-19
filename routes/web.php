@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
- 
+use App\Http\Controllers\Client\HomePageController;
+use App\Http\Controllers\Client\SearchListController;
 Route::auth();	
 Auth::routes(); 
  
@@ -503,22 +504,38 @@ Route::post('/client-login', [App\Http\Controllers\ClientAuth\AuthController::cl
 	Route::post('/review',[App\Http\Controllers\Client\ReviewController::class, 'store']);
 	Route::get('/client/logout', [App\Http\Controllers\LogoutController::class, 'clientLogout']);
 	Route::get('/clients', [App\Http\Controllers\Client\HomePageController::class, 'clientCategories']);
-	Route::get('/category', [App\Http\Controllers\Client\HomePageController::class, 'category']);
-	Route::get('/categories/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'categories']);
-	Route::get('/child/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'child']);
-	//Route::get('/{city}/categories/{slug}/', [App\Http\Controllers\Client\HomePageController::class, 'cityCategories']);
-	//Route::get('/{city}/categories/{parentslug}/{childslug}/', [App\Http\Controllers\Client\HomePageController::class, 'subcategories']);
-	Route::get('/clients/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'clients']);
-	Route::get('/{city}/', [App\Http\Controllers\Client\HomePageController::class, 'city']);
+	//Route::get('/category', [App\Http\Controllers\Client\HomePageController::class, 'category']);
+	//Route::get('/categories/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'categories']);
+	//Route::get('/child/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'child']);
+	//Route::get('/clients/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'clients']);
 	 
-	Route::get('/get-zones/{city_id}', [App\Http\Controllers\Client\HomePageController::class, 'getZones']);
-
+	//Route::get('/get-zones/{city_id}', [App\Http\Controllers\Client\HomePageController::class, 'getZones']);
 	
- 
-	Route::get('/{city}/{search_kw}/', [App\Http\Controllers\Client\SearchListController::class, 'index']);
-	 
-	  
-	//Route::get('/{city}/{search_kw}/',['as'=>'search-list','uses'=>'Client\SearchListController@index']);
+Route::get('/categories', [HomePageController::class, 'category'])->name('category.list');
+Route::get('/child', [HomePageController::class, 'category'])->name('category.list');
+Route::get('/categories/{slug}', [HomePageController::class, 'categories'])->name('categories.show');
+Route::get('/child/{slug}', [HomePageController::class, 'child'])->name('child.show');
+Route::get('/clients/{slug}', [HomePageController::class, 'clients'])->name('clients.show');
+Route::get('/get-zones/{city_id}', [HomePageController::class, 'getZones'])->name('zones.get');
+
+
+	Route::get('/{city}/categories/{slug}', function($city, $slug){
+    return redirect('/categories/' . $slug, 301);
+	});
+
+
+	Route::get('/{city}/{search_kw}/', [SearchListController::class, 'index'])
+    ->name('search.city');
+
+// City home
+	Route::get('/{city}/', [HomePageController::class, 'city'])
+    ->name('city.home');
+
+	//Route::get('/{city}/{search_kw}/', [App\Http\Controllers\Client\SearchListController::class, 'index']);
+	//Route::get('/{city}/', [App\Http\Controllers\Client\HomePageController::class, 'city']);
+	
+	
+
 	Route::POST('/client/lead/add-lead/', [App\Http\Controllers\Client\HomePageController::class, 'store']);
 	Route::POST('/client/lead/saveTwoEnquiry', [App\Http\Controllers\Client\HomePageController::class, 'saveTwoEnquiry']);
 	Route::POST('/client/lead/saveEnquiry', [App\Http\Controllers\Client\HomePageController::class, 'saveEnquiryWithoutZone']);
