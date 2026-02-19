@@ -219,13 +219,13 @@ background-color: #ffffff;
 
     <div class="share-menu">
 
-        <!-- <a href="https://wa.me/?text={{ urlencode($lead->share_address) }}" target="_blank">
+        <a href="https://wa.me/?text={{ urlencode($lead->share_address) }}" target="_blank">
             📍 Address
         </a>
 
         <a href="https://wa.me/?text={{ urlencode($lead->share_review) }}" target="_blank">
             ⭐ Review
-        </a> -->
+        </a>
 
         <a href="https://wa.me/?text={{ urlencode($lead->share_lead) }}" target="_blank">
             👤Share Lead

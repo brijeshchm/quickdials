@@ -328,8 +328,11 @@
 
 
                    <div class="entry-content top_content">
-                    <p>{!! $blogdetails->top_content !!}</p>
                     
+                    
+                       @if(!empty($blogdetails->top_content))
+                    <p>{!! $blogdetails->top_content !!}</p>
+                @endif
 				 
                   </div>
 
@@ -352,8 +355,10 @@
 
 
                    <div class="entry-content bottom_content">
-                   <p> {!!$blogdetails->bottom_content!!}</p>
-                    
+                  
+                    @if(!empty($blogdetails->bottom_content))
+                        <p>{!! $blogdetails->bottom_content !!}</p>
+                    @endif
 				 
                   </div>
 
@@ -516,5 +521,5 @@
     </div>
   </div>
   <!-- End Blog Area -->
-  <div class="clearfix"></div>
+ 
 @endsection
