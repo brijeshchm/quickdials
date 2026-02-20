@@ -1525,6 +1525,17 @@ color:#000;
     display: none;
 }
 
+.lead-left {
+    display: flex;
+    gap: 15px;
+}
+.contact-cls span{
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+}
 /* Share Icon Button */
 .share-icon {
     width: 40px;

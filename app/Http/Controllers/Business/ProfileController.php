@@ -117,7 +117,7 @@ class ProfileController extends Controller
 			$client->business_name = $string;
 			$client->email = $request->input('email');
 			$client->mobile = $request->input('mobile');
-			$client->sec_mobile = $request->input('sec_mobile');
+			$client->whatsapp = $request->input('whatsapp');
 			$client->address = $request->input('address');
 			$client->landmark = $request->input('landmark');
 			$client->country = $request->input('country');

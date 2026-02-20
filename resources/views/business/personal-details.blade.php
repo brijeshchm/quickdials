@@ -192,7 +192,7 @@
 
 
                       </select>
-                      <label>Area:</label>       
+                      <label>Zone:</label>       
 
                   <select class="form-control select_zoneList search_zone" name="personal_zone">
                   <option value="">Select Zone</option>		
@@ -200,7 +200,7 @@
 
                     </div>
 
-                    <!-- <div class="form-group">
+                    <div class="form-group">
 
 
                       <label>Area:</label>
@@ -212,10 +212,10 @@
                       <input type="text" class="form-control" name="personal_pincode"
                         value="{{ old('personal_pincode', (isset($edit_data)) ? $edit_data->personal_pincode : "")}}"
                         maxlength="6" placeholder="Enter Personal Pincode">
-                    </div> -->
+                    </div>
 
                     <div class="form-group">
-                      <label>Address:</label>
+                     <label>Address:</label>
                       <textarea type="text" class="form-control" name="personal_address"
                         placeholder="Enter personal address">{{ old('personal_address', (isset($edit_data)) ? $edit_data->personal_address : "")}} </textarea>
 
@@ -228,6 +228,7 @@
                       </select>
                     </div>
 
+                    
                     <div class="text-center">
                       <input type="hidden" name="savePersonal" value="savePersonalForm">
                       <button type="submit" class="btn btn-primary">Save & Continue</button>
@@ -257,7 +258,9 @@
     window.onload = function () {
       var state = '<?php echo $edit_data->personal_state_id; ?>';
       var city = '<?php echo $edit_data->personal_city_id; ?>';
+      console.log(city);
       var zone = '<?php echo $edit_data->personal_zone_id; ?>';
+
       get_city(state, city);
       select_zone(city,zone);
     }

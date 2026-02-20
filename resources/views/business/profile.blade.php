@@ -113,9 +113,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                     <input type="text" class="form-control" name="mobile" value="{{ old('mobile',(isset($client)) ? $client->mobile:"")}}" placeholder="Enter Mobile" >
                 
                     
-                 <label> Sec Mobile:</label>
+                 <label> WhatsApp No:</label>
  
-                    <input type="text" class="form-control" name="sec_mobile" value="{{ old('sec_mobile',(isset($client)) ? $client->sec_mobile:"")}}" placeholder="Enter Sec Mobile">                   
+                    <input type="text" class="form-control" name="whatsapp" value="{{ old('whatsapp',(isset($client)) ? $client->whatsapp:"")}}" placeholder="Enter whats app no">                   
                    
             
                  
@@ -143,14 +143,12 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 
                 </div>
                <div class="form-group">                 
-                    <label>City d*:</label>
+                    <label>City*:</label>
                     <select class="form-control show_cityList search_city" name="city" onchange="select_zone(this.value);">
                       <option value="">Select City</option>
-                      <!-- @if(!empty($client->city_id))
-                      <option value="{{$client->city_id}}" selected>{{$client->city}}</option>
-                      @endif						 -->
+                     
                     </select>           
-                     <label>Area:</label>
+                     <label>Zone:</label>
                     <select class="form-control select_zoneList search_zone" name="zone">
                     <option value="">Select Zone</option>		
                     </select>
@@ -158,25 +156,19 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                 </div>
                 
 
-              <!-- <div class="form-group">
+              <div class="form-group">
                     <label>Area:</label>
                     <input type="text" class="form-control" name="area" value="{{ old('area',(isset($client->area)) ? $client->area:"")}}" placeholder="Enter Area">
-                
-                </div>  -->
-                
-                 <div class="form-group">
-                 <label>Address:</label>
-                     <textarea name="address" class="form-control" style="height: 100px"> {{ old('address',(isset($client)) ? $client->address:"")}}</textarea>
-                    <label>Landmark:</label>
-                    <input name="landmark" type="text" class="form-control"   value="{{ old('landmark',(isset($client)) ? $client->landmark:"")}}">
-                 
-                </div>
-                <div class="form-group">
-                   
-                       <label>Pincode*:</label>
+                   <label>Pincode*:</label>
                     <input type="text" name="pincode" class="form-control" value="{{ old('pincode',(isset($client->pincode)) ? $client->pincode:"")}}" placeholder="Enter Pincode" maxlength="6">
 
-                      <label>Year of Establishment:</label>              
+                </div> 
+                
+                 <div class="form-group">
+                   <label>Landmark:</label>
+                    <input name="landmark" type="text" class="form-control"   value="{{ old('landmark',(isset($client)) ? $client->landmark:"")}}">
+                 
+                     <label>Year of Establishment:</label>              
                     
                     <select class="form-control" id="year_of_estb" name="year_of_estb">
 
@@ -188,6 +180,13 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                     {{ (isset($client) && $client->year_of_estb == $i ) ? "selected":"" }} @endif><?php echo $i; ?></option>
                     <?php  } ?>
                     </select>
+                </div>
+                <div class="form-group">
+                                    <label>Address:</label>
+                     <textarea name="address" class="form-control" style="height: 100px"> {{ old('address',(isset($client)) ? $client->address:"")}}</textarea>
+                
+                    
+                     
                 </div>
                
                 <div class="form-group">
@@ -279,7 +278,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
 
  
               
-                   <div class="row mb-3">
+                   <!-- <div class="row mb-3">
                       <label for="Country" class="col-md-4 col-lg-3 col-form-label">Hours of Operation</label>
                       <div class="col-md-4 col-lg-4">
                          <label class="radio-inline"><input type="radio" name="display_hofo" value="1" <?php echo (!empty($client->display_hofo) || $client->display_hofo == '1')?"checked":""; ?>>Display Hours of Operation</label>
@@ -287,7 +286,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                        <div class="col-md-4 col-lg-5">
                          <label class="radio-inline"><input type="radio" name="display_hofo" value="0" <?php echo (empty($client->display_hofo) || $client->display_hofo == '0')?"checked":""; ?>>Do Not Display Hours of Operation</label>
                       </div>
-                    </div>
+                    </div> -->
                  
             <div class="text-center"> 
                  <input type="hidden" name="savePersonal" value="savePersonalForm">

@@ -39,6 +39,7 @@ class Client extends Authenticatable
     'profile_pic',
     'business_map',
     'pictures',
+    'whatsapp',
 
     // Contact
     'email',

@@ -26,8 +26,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
     </div> 
              <div class="status">
                 <span><a href="{{ url('business/myLead')}}">Total Lead</a> | </span>
-                <span><a href="{{ url('business/package')}}">Platinum</a></span>
-                <span>0h</span>
+                <span><a href="{{ url('business/package')}}">Package</a></span>
+                 
             </div>
         </div>
 
@@ -38,6 +38,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                 @if(!empty($leads))
                 @foreach($leads as $lead)
                 <div class="enquiry-item assignedLeadsClick">
+
+                 <div class="lead-left">
                     <div class="avatar"><?php  echo ucfirst(substr($lead->name,0,1)); ?></div>
                     <div class="enquiry-details">
                         <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">Favorite</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favorite_lead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" "></i>
@@ -50,24 +52,88 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                         }  
                         echo $coins;
                         ?>
+
+ <div class="share-wrapper">
+
+    <input type="checkbox" id="shareToggle{{ $lead->assignId }}" class="share-toggle">
+
+    <label for="shareToggle{{ $lead->assignId }}" class="share-icon">
+  
+
+          <i class="bi bi-share-fill"></i>
+    </label>
+
+    <div class="share-menu">
+
+        <a href="https://wa.me/?text={{ urlencode($lead->share_address) }}" target="_blank">
+          
+            <img src="{{ asset('img/map.png') }}" width="18"> Service
+          
+        </a>
+
+        <a href="https://wa.me/?text={{ urlencode($lead->share_review) }}" target="_blank">
+            ⭐ Review
+        </a>
+        <a href="https://wa.me/?text={{ urlencode($lead->share_service) }}" target="_blank">
+            <img src="{{ asset('img/service.png') }}" width="18"> Service
+        </a>
+      
+        <a href="https://wa.me/?text={{ urlencode($lead->share_lead) }}" target="_blank">
+        👤Share Lead
+        </a>
+
+    </div>
+
+</div>
+
+
+
+ <div class="followup" title="Followup">                            
+
+        <a href="javascript:void(0);" 
+        onclick="enquiryController.getLeadfollowUps(<?= $lead->lead_id ?>)" 
+        title="FollowUp">
+        <i class="bi bi-eye" aria-hidden="true"></i>
+
+
+        </a>
+
+        </div>
                     </h4>
                         <p><i class="bi bi-book"></i> {{$lead->kw_text}}</p>
                         <p>Online Class</p>
-                        <p>@if($lead->city_name) <i class="bi bi-pin-map-fill"></i>{{$lead->city_name}}@endif @if($lead->zone)<i class="bi bi-pin-map-fill"></i> {{$lead->zone}} @endif</p>
+                        <p>@if($lead->city_name) <i class="bi bi-pin-map-fill"></i>{{$lead->city_name}} @if($lead->zone !=$lead->city_name){{$lead->zone}} @endif @endif </p>
                        
                         <div class="details-section">
                     <div class="title">Enquired for <strong>{{$lead->kw_text}}</strong> Send price and other details.</div>
                     <div class="source">@if($lead->email) <i class="bi bi-envelope"></i>{{$lead->email}}@endif</div>
-                     <p> </p>
+                      <p>@if($lead->remarks) {{$lead->remarks}} @endif</p>
                 </div>
                 <div class="show-details" onclick="toggleDetails(this)">Show details</div>
                     </div>
+                    </div>
+                       <div class="lead-right">
                      
-                  <div class="cont-no">
-                    <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a>   <a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead->mobile}}</a>
+                  
+ <div class="cont-no">
+                  <div class="contact-cls">
+  <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a> 
+                  </div>
+                  <div class="contact-cls">
+  <a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead->mobile}}</a>
+                  </div>
+
+                 
+
+                   
+                    
+                   
                   </div>
                  
-                    <div class="enquiry-time"><i class="bi bi-clock"></i> <?php  echo get_time(strtotime($lead->created)); ?> ago</div>
+                    <div class="enquiry-time"><i class="bi bi-clock"></i> <?php echo get_time(strtotime($lead->created)); ?> ago</div>
+
+
+                </div>
                 </div>
                 @endforeach
                 @endif              

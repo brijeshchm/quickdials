@@ -27,17 +27,13 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
             
             <div class="status">
                 <span><a href="{{ url('business/myLead')}}">Total Lead</a> | </span>
-                <span><a href="{{ url('business/package')}}">Platinum</a></span>
-                <span>0h</span>
+                <span><a href="{{ url('business/package')}}">Package</a></span>
+                
             </div>
         </div>
 <style>
       
 
-.lead-left {
-    display: flex;
-    gap: 15px;
-}
 </style>
         <div class="enquiries-section">
  
@@ -54,17 +50,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                     </div>
 
                     <div class="enquiry-details">
-                        <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">My Lead</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favorite_lead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" "></i>
+                        <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">My Lead</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favorite_lead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" title="Favorite"></i>
                       
-                       <i class="bi bi-coin"></i> 
-                            <?php    $coins= "";
-                            if(!empty($lead->scrapLead)) { 
-                            $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
-                            }else if($lead->coins){ 
-                            $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
-                            }  
-                            echo $coins;
-                            ?>
+                     
                      
                       <div class="share-wrapper">
 
@@ -131,6 +119,17 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                 </div>
                 </div>
                    <div class="lead-right">
+<div class="contact-cls">
+                    <i class="bi bi-coin"></i> 
+                    <?php    $coins= "";
+                    if(!empty($lead->scrapLead)) { 
+                    $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
+                    }else if($lead->coins){ 
+                    $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
+                    }  
+                    echo $coins;
+                    ?>
+                    </div>
                 <div class="scrapLead">
                     
                 <?php if(empty($lead->scrapPay)){ ?>
