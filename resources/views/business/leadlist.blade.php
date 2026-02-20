@@ -75,61 +75,11 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
       </div>
     </section>
     
-    <div id="followUpModal" class="modal fade" role="" aria-hidden="false">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-				<!--	<button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>-->
-					
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					<h4 class="modal-title">Follow Up</h4>
-				</div>
-				<div class="modal-body" style="padding-top:0">
-				</div>
-			</div>
-		</div>
-	</div>
+    
 
 
-<style>
-.x_content{
-    padding: 0 5px 6px;
-    float: left;
-    clear: both;
-    margin-top: 5px;
-}
-.form-label-left .row {
-    margin-left: 5px;
-}
-.form-label-left .col-form-label {
-    font-weight: 700;
-}
-.form-label-left .col-md-4{
-    
-    
-}
-.modal-header{
-        display: block;
-    
-}
-.btn {
-    margin-right: 5px;
-}
-.close {
-    border: none;
-    background: #fff;
-}
-.form-control-static{
-    margin-top: 8px;
-    margin-bottom: 1rem;
-}
  
-</style>
-  </main><!-- End #main -->
+  </main>
   
- 
-
-<script>
- //$('.leaddf,.leaddt').datepicker({dateFormat:"yy-mm-dd"});
-</script>
+   
 @endsection

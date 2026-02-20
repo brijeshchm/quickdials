@@ -36,9 +36,10 @@
                                  <td width="45%" style="border:none;padding:0in 7.5pt 0in 0in;height:60.0pt">
 									<p style="margin:0px 0px 0px 0px"><strong>QuickDials Pvt Ltd</strong></p>
 									<p style="margin:0px 0px 0px 0px">UNIT 101 OXFORD TOWERS, 139/88 HAL OLD AIRPORT RD, H.A.L II Stage, Bangalore North, Bangalore- 560008, Karnataka.</p>
-									<p style="margin:0px 0px 0px 0px">Phone :+91-75-5943-5943</p>
-									<p style="margin:0px 0px 0px 0px">Email : info@quickdials.com</p>
+									
 									<p style="margin:0px 0px 0px 0px;">Website : www.quickdials.com</p>
+                                    <p style="margin:0px 0px 0px 0px;">CIN : U63112KA2026PTC215594</p>
+									<p style="margin:0px 0px 0px 0px;">TAN : BLRQ01951F</p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
                             </tr>
@@ -145,7 +146,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 0in 0in">
-                                                                                    <p class="MsoNormal"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact us on the above details for any confussion or clarification. </span><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Contact us on the above details for any confussion or clarification. </span></p>
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>

@@ -214,7 +214,9 @@ background-color: #ffffff;
     <input type="checkbox" id="shareToggle{{ $lead->assignId }}" class="share-toggle">
 
     <label for="shareToggle{{ $lead->assignId }}" class="share-icon">
-        &#x1F517;  {{-- 🔗 icon --}}
+  
+
+          <i class="bi bi-share-fill"></i>
     </label>
 
     <div class="share-menu">
@@ -255,11 +257,26 @@ background-color: #ffffff;
                 </div>
                 
                 <div class="map">
-                    <h4>@if($lead->city_name)<i class="bi bi-pin-map-fill"></i> {{$lead->city_name}}@endif</h4>
-                    <p>@if($lead->zone)<i class="bi bi-pin-map-fill"></i> {{$lead->zone}} @endif</p>
+                    <h4>@if($lead->city_name)<i class="bi bi-pin-map-fill"></i> {{$lead->city_name}} 
+
+                    @if($lead->zone !== $lead->city_name) {{$lead->zone}} @endif
+                    
+                    @endif</h4>
+                     
                    
                 </div>
                 <div class="contact">
+                    <div class="followup" title="Followup">                            
+
+                    <a href="javascript:void(0);" 
+                    onclick="enquiryController.getLeadfollowUps(<?= $lead->lead_id ?>)" 
+                    title="FollowUp">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+                  
+
+                    </a>
+                
+                </div>
                     <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a>   <a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead->mobile}}</a>
                 </div>
             </div>

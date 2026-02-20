@@ -2149,9 +2149,10 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 						
 					
 					success:function(data,textStatus,jqXHR){
-						mainSpinner.stop();
+					
 						if(data.status){	
-						 	alert('Successfully Assigned Leads');					 
+						 	alert('Successfully Assigned Leads');	
+								mainSpinner.stop();				 
 							dataTablePendingNewLeads.ajax.reload(null,false);
 											 
 							$('#leadAssignModel .alert').remove();

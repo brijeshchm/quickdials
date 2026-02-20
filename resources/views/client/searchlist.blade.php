@@ -1419,7 +1419,7 @@
 						</div>
 						<!-- STEP 2 -->
 						<div class="popup-step">
-							<span>Your Plan</span>
+							
 							<input type="hidden" name="kw_text" id="kw_text"
 								value="<?php echo isset($searchedKW) ? $searchedKW : ''; ?>" />
 							<div class="fieldblock">
@@ -1593,7 +1593,10 @@
 							<div class="btn-center">
 								<button type="button" onclick="prevPopupStep()">Back</button>
 								<button type="submit">Submit</button>
-
+							<div class="loaderForm" style="display:none;">
+							<img src="/public/client/images/btn-ajax-loader.gif" width="20">
+							Processing...
+							</div>
 							</div>
 						</div>
 

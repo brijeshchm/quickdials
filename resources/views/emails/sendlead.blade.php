@@ -44,6 +44,8 @@
 									<p style="margin:0px 0px 0px 0px;line-height: 22px;"> 203, Oxford Towers, 139, HAL Old Airport Rd, Kodihalli, Bengaluru, Karnataka, 560008.</p>
 								 
 									<p style="margin:0px 0px 0px 0px;">Website : www.quickdials.com</p>
+									<p style="margin:0px 0px 0px 0px;">CIN : U63112KA2026PTC215594</p>
+									<p style="margin:0px 0px 0px 0px;">TAN : BLRQ01951F</p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
                             </tr>
@@ -118,7 +120,7 @@
                                                                             <?php if($lead->remark){ ?>
 																			<tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in;padding: 0in 0in 7.5pt 0in;border-bottom: 1px dashed #ddd;">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Remark From Customer:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> <?php echo $lead->remark; ?></span><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Commet:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> <?php echo $lead->remarks; ?></span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <?php  } ?>

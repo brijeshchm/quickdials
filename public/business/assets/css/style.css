@@ -1449,16 +1449,67 @@ color:#000;
         }
 
         .lead-details .lead .contact {
-            display: flex;
-            gap: 10px;
+               padding: 0px;
+             margin-top: -7%;
         }
-
+.followup{
+      width: 40px;
+    height: 40px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
         .lead-details .lead .contact a {
             color: #3b82f6;
             text-decoration: none;
             font-size: 0.9rem;
         }
 
+        .lead-details .lead .contact .followup a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .x_content{
+    padding: 0 5px 6px;
+    float: left;
+    clear: both;
+    margin-top: 5px;
+}
+.form-label-left .row {
+    margin-left: 5px;
+}
+.form-label-left .col-form-label {
+    font-weight: 700;
+}
+.form-label-left .col-md-4{
+    
+    
+}
+.modal-header{
+        display: block;
+    
+}
+.btn {
+    margin-right: 5px;
+}
+.close {
+    border: none;
+    background: #fff;
+}
+.form-control-static{
+    margin-top: 8px;
+    margin-bottom: 1rem;
+}
+ 
         .lead-details .lead .contact a:hover {
             text-decoration: underline;
         }

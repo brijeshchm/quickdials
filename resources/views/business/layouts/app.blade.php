@@ -392,6 +392,22 @@
     <div class="successhtml"></div><div class="failedhtml"></div><div style="text-align:center;"></div></div></div></div>
   
   </div>
+
+
+  <div id="followUpModal" class="modal fade" role="" aria-hidden="false">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+				<!--	<button type="button" class="close" data-dismiss="modal" style="float: right;">&times;</button>-->
+					
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<h4 class="modal-title">Follow Up</h4>
+				</div>
+				<div class="modal-body" style="padding-top:0">
+				</div>
+			</div>
+		</div>
+	</div>
   <!-- Vendor JS Files -->
    
   <script src="{{asset('business/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script> 

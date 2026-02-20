@@ -652,7 +652,7 @@ class HomePageController extends Controller
 
 	public function saveTwoEnquiry(Request $request)
 	{
-//  dd($request->all());
+//   dd($request->all());
 		if ($request->ajax()) {
 
 			$validator = Validator::make(
@@ -692,36 +692,53 @@ class HomePageController extends Controller
 			if (!empty($request->location)) {
 
 			if (is_numeric($request->location)) {
-				$zone = Zone::find($request->location);
-
-				if ($zone) {
+				 
+				$zone = Zone::find($request->location); 
+				if (!empty($zone)) {
 					$lead->zone_id = $zone->id;
 					$lead->zone = $zone->zone;
 
 					$city = Citieslists::find($zone->city_id);
-					if ($city) {
+ 
+
+					if (!empty($city)) {
 						$lead->city_id = $city->id;
 						$lead->city_name = $city->city;
 					}
 				}
 			}else{
-
+ 
 					$city = Citieslists::where('city',$request->location)->first();
-					if ($city) {
+					if (!empty($city)) {
 						$lead->city_id = $city->id;
 						$lead->city_name = $city->city;
+
+					$zone = Zone::where('city_id',$city->id)->first();
+
+					if (!empty($zone)) {
+					$lead->zone_id = $zone->id;
+					$lead->zone = $zone->zone;
+
+					}
 					}
 			}
 
 			} else {
-
+ 
 				$city = $cityName
 					? Citieslists::where('city', $cityName)->first()
 					: null;
 
-				if ($city) {
+				if (!empty($city)) {
 					$lead->city_id = $city->id;
 					$lead->city_name = $city->city;
+
+					$zone = Zone::where('city_id',$city->id)->first();
+					if (!empty($zone)) {
+					$lead->zone_id = $zone->id;
+					$lead->zone = $zone->zone;
+					}
+
 				} else {
 					// fallback
 					$lead->city_name = $cityName ?: 'none';

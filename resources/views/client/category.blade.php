@@ -309,8 +309,7 @@ echo trim($descrip); } ?>
 	 
       @if(!empty($keyword->bottom_description))
 		<div class="container"> 		 
-		<disv class="category-description">  			
-		
+		<div class="category-description">  				
 		<?php  if(!empty($keyword->bottom_description)){
 		$keydescription = preg_replace('/{{city}}/i',ucwords(str_replace("-", " ", Request::segment(1))),$keyword->bottom_description);
 		echo trim($keydescription); } ?>	 

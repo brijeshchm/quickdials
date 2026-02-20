@@ -1395,6 +1395,63 @@ var enquiryController  = (function(){
 				return false;				
 			},
 			  
+			getLeadfollowUps:function(id){
+			//	mainSpinner.start();
+				$.ajax({
+					url:"/business/enquiry/follow-up/"+id,
+					type:"GET",
+					success:function(response){
+						$("#followUpModal").modal("show");
+						$('#followUpModal .modal-body').html(response.html);
+						 $('#expected_date_time').daterangepicker({
+							singleDatePicker: true,
+							autoUpdateInput: false,
+							timePicker: true,
+							minDate: new Date(),
+							//autoUpdateInput: false,
+							locale: {
+								format: 'DD-MMMM-YYYY h:mm A'
+							},
+							singleClasses: "picker_2"
+						});
+						$('#expected_date_time').on('apply.daterangepicker', function(ev, picker) {
+							$('#expected_date_time').val(picker.startDate.format('DD-MMMM-YYYY h:mm A'));
+						});
+					 
+						dataTableFollowUps = $('#datatable-enquiry-followups').dataTable({
+							"fixedHeader": true,
+							"processing":true,
+							"serverSide":true,
+							"paging":false,
+							"ordering":false,
+							"searching":false,
+							"lengthChange":false,
+							"info":false,
+							"autoWidth":false,
+							"ajax":{
+								url:"/business/enquiry/getfollowups/"+id,
+								data:function(d){
+									d.page = (d.start/d.length)+1;
+									d.columns = null;
+									d.order = null;
+									d.count = $(".follow-up-count").val();
+								}
+							}
+						}).api(); 
+						var prevNextHtml = '';	 	
+					 
+						 
+						$('#followUpModal .modal-title').html(prevNextHtml);
+						$('#followUpModal').modal({keyboard:false,backdrop:'static'});
+						$('#followUpModal .select2-container').css({'width':'100%'});
+						//mainSpinner.stop();
+					},
+					error:function(response){
+						//mainSpinner.stop();
+					}
+				});
+				 
+			},
 			
 			
 		};

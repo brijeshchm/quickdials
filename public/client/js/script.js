@@ -308,15 +308,23 @@ var homeController = (function () {
 			var $this = $(THIS),
 				data = $this.serialize();
  
+			 
 			$.ajax({
 				url: "/client/lead/saveTwoEnquiry",
 				type: "POST",
 				data: data,
 				dataType: 'json',
+				beforeSend: function () {
+				$(".loaderForm").show();
+			 
+				},
 				success: function (response, textStatus, jqXHR) {
 
-					if (response.statusCode) {
+					$(".loaderForm").hide();
+				 
 
+					if (response.statusCode) {
+ 
 						$('.connectedclosebtn').click();
 						$('.dealclosebtn').click();
 						// $(".reset_lead_form").click();
@@ -347,6 +355,7 @@ var homeController = (function () {
 					}
 				},
 				error: function (jqXHR, textStatus, errorThrown) {
+					  $(".loaderForm").hide();
 					var response = JSON.parse(jqXHR.responseText);
 					if (response.status) {
 

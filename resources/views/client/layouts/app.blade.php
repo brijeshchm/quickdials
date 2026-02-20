@@ -567,7 +567,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 col-md-12 col-sm-12">
-                    <h2>A Few Stats About <span> QuickDials </span></h2>
+                    <h2>A Few Stats About <span> QuickDials Pvt Ltd </span></h2>
                     <ul class="seoabout_listing">
                         <li>
                             <div class="image"><i class="fa fa-calendar" aria-hidden="true"></i></div>
@@ -746,10 +746,10 @@
                     <div class="footer-section">
                         <h3>Support & Contact</h3>
                         <div class="contact-info">
-                           <p><strong>QuickDials<span class="tm">TM</span></strong></p>
+                           <p><strong>QuickDials<span class="tm">TM</span> Pvt Ltd</strong></p>
                         
                  <p><strong>CIN:</strong> U63112KA2026PTC215594</p>
-                 <p><strong>TAN:</strong> BLRQ01951F</p>
+                
 
                             <p><strong>Email:</strong><a href="mailto:support@quickdials.com"
                                     class="email">support@quickdials.com</a></p>
@@ -1211,14 +1211,14 @@
                 $('.bestModalpopup').addClass('dealshowup');
             });
             $('.open-popup').click(function (e) {
-                $('<div class="loginoverlay"></div>').insertBefore('.bestDealpopup');
-                $('.bestDealpopup').addClass('dealshowup');
+                $('<div class="loginoverlay"></div>').insertBefore('.commonPopup');
+                $('.commonPopup').addClass('dealshowup');
             });
 
 
             $('.side-data-btn').click(function (e) {
-                $('<div class="loginoverlay"></div>').insertBefore('.bestDealpopup');
-                $('.bestDealpopup').addClass('dealshowup');
+                $('<div class="loginoverlay"></div>').insertBefore('.commonPopup');
+                $('.commonPopup').addClass('dealshowup');
             });
             $('.dealclosebtn').click(function (e) {
                 $('.bestDealpopup').removeClass('dealshowup');

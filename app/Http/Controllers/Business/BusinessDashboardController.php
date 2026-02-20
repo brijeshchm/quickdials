@@ -64,6 +64,7 @@ class BusinessDashboardController extends Controller
             ->where('assigned_leads.client_id', $client->id)
             ->orderBy('assigned_leads.created_at', 'desc')
             ->select(
+                'leads.id as lead_id',
                 'leads.name',
                 'leads.mobile',
                 'leads.email',

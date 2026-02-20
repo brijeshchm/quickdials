@@ -825,14 +825,42 @@ class LeadController extends Controller
 												}
 											}
 											if (!empty($clientC->email)) {
-												/* $template = 'emails.assignleadtoclient';
-												$clientname=$client->business_name;
-												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-												$m->from('info@quickdials.com', 'quickdials');             
-												//$client->email
-												$m->to('info@quicindia.com', $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
-												});	
-			 */
+												 
+
+											$frmcheckText = '';
+											if (!empty($lead->frmcheck)) {
+												$frmcheckArray = is_array($lead->frmcheck)
+													? $lead->frmcheck
+													: json_decode($lead->frmcheck, true);
+												if (is_array($frmcheckArray)) {
+													$frmcheckText = implode(', ', $frmcheckArray);
+												}
+											}
+
+											$parts = array_filter([
+											$lead->kw_text ? "Interested in {$lead->kw_text}" : '',
+											$frmcheckText ? "Mode of {$frmcheckText}" : '',
+											$lead->zone ? "Location {$lead->zone}" : '',
+											$lead->plan ? "Plan {$lead->plan}" : '',
+											$lead->age ? "Age {$lead->age}" : '',
+											$lead->experience ? "Experience {$lead->experience}" : '',
+											]);
+
+											$remark = implode(" • ", $parts);
+
+											if (!empty($lead->remark)) {
+											$remark .= " " . trim($lead->remark);
+											}
+
+											$lead->remarks = $remark;	
+												 
+												$template = 'emails.sendlead';
+												$clientname=$clientC->business_name;
+												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($clientC,$lead) {    
+												$m->from('leads@quickdials.com', 'QuickDials');             
+
+												$m->to($clientC->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
+												});
 
 											}
 
@@ -1093,17 +1121,17 @@ class LeadController extends Controller
 
 											$mobile = "1234556787";
 											if (!empty($clientC->mobile)) {
-												$smsMessage = "Dear," . $clnt->first_name . ' ' . $clnt->last_name;
-												$smsMessage .= "%0D%0A";
-												$smsMessage .= "%0D%0AName: " . ucfirst($lead->name);
-												$smsMessage .= "%0D%0ACourse: " . preg_replace('/&/', '', $lead->kw_text);
-												$smsMessage .= "%0D%0ACity: " . $lead->city_name;
-												if (!empty($lead->email)) {
-													$smsMessage .= "%0D%0AEmail: " . $lead->email;
-												}
+												// $smsMessage = "Dear," . $clnt->first_name . ' ' . $clnt->last_name;
+												// $smsMessage .= "%0D%0A";
+												// $smsMessage .= "%0D%0AName: " . ucfirst($lead->name);
+												// $smsMessage .= "%0D%0ACourse: " . preg_replace('/&/', '', $lead->kw_text);
+												// $smsMessage .= "%0D%0ACity: " . $lead->city_name;
+												// if (!empty($lead->email)) {
+												// 	$smsMessage .= "%0D%0AEmail: " . $lead->email;
+												// }
 
-												$smsMessage .= "%0D%0AMob: " . $lead->mobile;
-												$smsMessage .= "%0D%0A QuickDials Team";
+												// $smsMessage .= "%0D%0AMob: " . $lead->mobile;
+												// $smsMessage .= "%0D%0A QuickDials Team";
 												//sendSMS(trim($client->mobile),$smsMessage);
 												//sendSMS(trim($mobile),$smsMessage);
 												if (!empty($clnt->sec_mobile)) {
@@ -1112,17 +1140,45 @@ class LeadController extends Controller
 											}
 											if (!empty($clnt->email)) {
 
-												$template = 'emails.assignleadtoclient';
-												$clientname=$client->business_name;
-												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-												$m->from('info@quickdials.com', 'QuickDials');             
-											 
-												$m->to($client->email, $lead->name)->subject('quickdials Lead: '.$lead->kw_text)->cc('quickdials1@gmail.com');
-												});	
+											$frmcheckText = '';
+											if (!empty($lead->frmcheck)) {
+												$frmcheckArray = is_array($lead->frmcheck)
+													? $lead->frmcheck
+													: json_decode($lead->frmcheck, true);
+												if (is_array($frmcheckArray)) {
+													$frmcheckText = implode(', ', $frmcheckArray);
+												}
+											}
+
+											$parts = array_filter([
+											$lead->kw_text ? "Interested in {$lead->kw_text}" : '',
+											$frmcheckText ? "Mode of {$frmcheckText}" : '',
+											$lead->zone ? "Location {$lead->zone}" : '',
+											$lead->plan ? "Plan {$lead->plan}" : '',
+											$lead->age ? "Age {$lead->age}" : '',
+											$lead->experience ? "Experience {$lead->experience}" : '',
+											]);
+
+											$remark = implode(" • ", $parts);
+
+											if (!empty($lead->remark)) {
+											$remark .= " " . trim($lead->remark);
+											}
+
+											$lead->remarks = $remark;	
+												 
+												$template = 'emails.sendlead';
+												$clientname=$clnt->business_name;
+												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($clnt,$lead) {    
+												$m->from('leads@quickdials.com', 'QuickDials');             
+
+												$m->to($clnt->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
+												});
+											
 												
 
 											}
- 										event(new LeadPush($lead,$clnt->id));
+ 										//event(new LeadPush($lead,$clnt->id));
 
 										}
 									}
@@ -2183,15 +2239,42 @@ class LeadController extends Controller
 										$followUp->client_id = $client->id;
 										$followUp->save();
 
+							$frmcheckText = '';
+							if (!empty($lead->frmcheck)) {
+								$frmcheckArray = is_array($lead->frmcheck)
+									? $lead->frmcheck
+									: json_decode($lead->frmcheck, true);
+								if (is_array($frmcheckArray)) {
+									$frmcheckText = implode(', ', $frmcheckArray);
+								}
+							}
+
+							$parts = array_filter([
+							$lead->kw_text ? "Interested in {$lead->kw_text}" : '',
+							$frmcheckText ? "Mode of {$frmcheckText}" : '',
+							$lead->zone ? "Location {$lead->zone}" : '',
+							$lead->plan ? "Plan {$lead->plan}" : '',
+							$lead->age ? "Age {$lead->age}" : '',
+							$lead->experience ? "Experience {$lead->experience}" : '',
+							]);
+
+							$remark = implode(" • ", $parts);
+
+							if (!empty($lead->remark)) {
+							$remark .= " " . trim($lead->remark);
+							}
+
+							$lead->remarks = $remark;	
+
 								$template = 'emails.sendlead';
 								$clientname=$client->business_name;
 								$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
 								$m->from('leads@quickdials.com', 'QuickDials');             
 							 
-								$m->to($client->email, $lead->name)->subject($lead->kw_text.' - Quickdials.com');
+								$m->to($client->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
 								});	
 									 	
-								event(new LeadPush($lead,$cid));
+								//event(new LeadPush($lead,$cid));
 
 								// SendLeadMailJob::dispatch($lead, $client->email);
 

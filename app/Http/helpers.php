@@ -823,22 +823,39 @@ function leadassignWithoutZoneCounsellor($lead)
 											}
 											if (!empty($clnt->email)) {
 
-												//  $template = 'emails.assignleadtoclient';
-												// $clientname=$client->business_name;
-												// $check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-												// $m->from('leads@quickdials.com',"QuickDials");             
-												// //$client->email
-												// $m->to('info@quickdials.com', $lead->name)->subject('QuickDials Lead: '.$lead->kw_text);
-												
-												// // ->cc('quickdials1@gmail.com');
-												// });	
-												
+											$frmcheckText = '';
+											if (!empty($lead->frmcheck)) {
+												$frmcheckArray = is_array($lead->frmcheck)
+													? $lead->frmcheck
+													: json_decode($lead->frmcheck, true);
+												if (is_array($frmcheckArray)) {
+													$frmcheckText = implode(', ', $frmcheckArray);
+												}
+											}
+
+											$parts = array_filter([
+											$lead->kw_text ? "Interested in {$lead->kw_text}" : '',
+											$frmcheckText ? "Mode of {$frmcheckText}" : '',
+											$lead->zone ? "Location {$lead->zone}" : '',
+											$lead->plan ? "Plan {$lead->plan}" : '',
+											$lead->age ? "Age {$lead->age}" : '',
+											$lead->experience ? "Experience {$lead->experience}" : '',
+											]);
+
+											$remark = implode(" • ", $parts);
+
+											if (!empty($lead->remark)) {
+											$remark .= " " . trim($lead->remark);
+											}
+
+											$lead->remarks = $remark;
+										
 												$template = 'emails.sendlead';
 												$clientname=$clnt->business_name;
 												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($clnt,$lead) {    
 												$m->from('leads@quickdials.com', 'QuickDials');             
 
-												$m->to($clnt->email, $lead->name)->subject($lead->kw_text.' - Quickdials.com');
+												$m->to($clnt->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
 												});
 											
 
@@ -849,7 +866,7 @@ function leadassignWithoutZoneCounsellor($lead)
 									}
 
 									$clnt->save();	
-									 event(new LeadPush($lead,$clnt->id));
+									 //event(new LeadPush($lead,$clnt->id));
 		 
 								}
 

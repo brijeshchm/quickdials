@@ -69,7 +69,7 @@
 		</div>
 		<!-- STEP 2 -->
 		<div class="side-step-from">
-			<span>Your Plan</span>
+			
 
 			<div class="erbr">
 			What is your <strong>service?</strong>
@@ -243,7 +243,10 @@
 			<div class="btn-center">
 				<button type="button" onclick="prevSideStep()">Back</button>
 				<button type="submit">Submit</button>
-
+			<div class="loaderForm" style="display:none;">
+			<img src="/public/client/images/btn-ajax-loader.gif" width="20">
+			Processing...
+			</div>
 			</div>
 		</div>
 

@@ -1921,10 +1921,17 @@
     -moz-box-sizing: border-box;
          width: 1%;
 }
+
+.fieldblock-form .radio-item input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #057AEC;
+    transform: scale(1.5);
+     width: 15%;
+}
         .popup-box {
         background:#fff;
         width:auto;
-        padding:25px;
+        padding:0px 25px;
         border-radius:10px;
         position:relative;
         animation:scaleUp .3s;

@@ -92,7 +92,7 @@
 					</div>
 					<!-- STEP 2 -->
 					<div class="comm-popup-step">
-						<span>Your Plan</span>
+						
 					<div class="erbr">
 						What is your <strong>service?</strong>
 						<select name="kw_text" class="select2_service">
@@ -266,6 +266,10 @@
 							<button type="button" onclick="prevCommaPopupStep()">Back</button>
 							<button type="submit">Submit</button>
 
+					<div class="loaderForm" style="display:none;">
+					<img src="/public/client/images/btn-ajax-loader.gif" width="20">
+					Processing...
+					</div>
 						</div>
 					</div>
 

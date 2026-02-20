@@ -33,6 +33,8 @@
 									<p style="margin:0px 0px 0px 0px">Phone :+91-75-5943-5943</p>
 									<p style="margin:0px 0px 0px 0px">Email : info@quickdials.com</p>
 									<p style="margin:0px 0px 0px 0px;">Website : www.quickdials.com</p>
+                                    <p style="margin:0px 0px 0px 0px;">CIN : U63112KA2026PTC215594</p>
+									<p style="margin:0px 0px 0px 0px;">TAN : BLRQ01951F</p>
                                 </td>
                                 <td style="border:none;padding:0in 0in 0in 0in;height:60.0pt"></td>
                             </tr>

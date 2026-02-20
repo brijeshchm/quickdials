@@ -73,7 +73,7 @@
       </div>
      <!-- STEP 2 -->
       <div class="form-step">
-        <span>Your Plan</span>
+        
 
  			
  			<div class="erbr">		
@@ -241,8 +241,12 @@
 
         <div class="btn-center"> 
         <button type="button" onclick="prevStep()">Back</button>
+			
         <button type="submit" >Submit</button>
-
+ 			<div class="loaderForm" style="display:none;">
+			<img src="/public/client/images/btn-ajax-loader.gif" width="20">
+			Processing...
+			</div>
         </div>
       </div>
   

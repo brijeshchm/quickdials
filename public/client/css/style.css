@@ -4903,7 +4903,7 @@ margin-top: 70px;
 .popup-box {
   background:#fff;
   width:auto;
-  padding:25px;
+  padding:1px 25px;
   border-radius:10px;
   position:relative;
   animation:scaleUp .3s;
@@ -4962,7 +4962,7 @@ margin-top: 70px;
 .commonStep {
   display:flex;
   justify-content:space-between;
-  margin-bottom:20px;
+  margin-bottom:10px;
 }
 
 .commonStep span {
