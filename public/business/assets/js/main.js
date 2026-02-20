@@ -1467,6 +1467,17 @@ var enquiryController  = (function(){
 		target.find('.help-block').remove();
 	});	
 
+
+	  function toggleDetails(element) {
+            const detailsSection = element.previousElementSibling;
+            detailsSection.classList.toggle('visible');
+            element.textContent = detailsSection.classList.contains('visible') ? 'Hide details' : 'Show details';
+        }
+
+        function hideCard(element) {
+            const card = element.closest('.enquiry-item');
+            card.classList.add('hidden');
+        }
  //$('.leaddf,.leaddt').datepicker({dateFormat:"yy-mm-dd"});
  
 // ***********

@@ -122,7 +122,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
             <a href="{{ route('categories.show', 'entrance-exams-coaching') }}"  >
             <img loading="lazy" src="{{asset('img/government-exam.png')}}" alt="government exam"></a>
              </div>
-            <span class="title-serv"><a href="{{ route('categories.show', 'entrance-exams-coaching') }}"  >Government Exam</a> </span>
+            <span class="title-serv"><a href="{{url('categories/entrance-exams-coaching')}}"  >Government Exam</a> </span>
          </div>
          <div class="img-items">     
          <div class="items">

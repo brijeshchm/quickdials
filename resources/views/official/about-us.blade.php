@@ -311,7 +311,7 @@ background: #f4f7fb;
 <p>Quick Dials is a fast-growing service search and lead platform in India. It helps people find the
 right service providers in one place. The platform works on a simple match-making idea. Users
 search for a service, and Quick Dials connects them with the right providers. The website
-<strong>QuickDials<sup>™</sup></strong> makes it easy to search, compare, and contact service providers without
+<strong>QuickDials<span class="tm">TM</span></strong> makes it easy to search, compare, and contact service providers without
 confusion.</p>
 <p>Quick Dials works like a search engine for everyday services and professional needs. People
 use it to find trusted and verified service providers across many fields. The information on the

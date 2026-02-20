@@ -45,9 +45,6 @@ class BusinessDashboardController extends Controller
             ->where('id', $clientID)
             ->first();
 
-
-
-
         $rating = DB::table('comments')
             ->where('comment_client_ID', $client->id)
             ->selectRaw('COUNT(*) as total, COALESCE(SUM(rating),0) as sum')
@@ -95,12 +92,7 @@ class BusinessDashboardController extends Controller
 
 
             // 🔹 Share Lead Details
-            $lead->share_lead =
-                "Name: {$lead->name}\n" .
-                "Mobile: {$lead->mobile}\n" .
-                "Email: {$lead->email}\n" .
-                "Service: {$keyword}\n" .
-                "Location: {$location}";
+        
 
 
             $lead->share_address = "Greetings from {$businessName},\n"
@@ -147,12 +139,19 @@ class BusinessDashboardController extends Controller
                 $remark .= " " . trim($lead->remark);
             }
 
+        $lead->share_lead =
+        "Name: {$lead->name}\n" .
+        "Mobile: {$lead->mobile}\n" .
+        "Email: {$lead->email}\n" .
+        "Service: {$keyword}\n" .
+        "Location: {$location}\n" .
+        "remark: {$remark}";
 
             $lead->remarks = $remark;
             return $lead;
         });
 
-
+ 
 
 
 
