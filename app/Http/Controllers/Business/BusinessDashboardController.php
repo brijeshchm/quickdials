@@ -75,7 +75,11 @@ class BusinessDashboardController extends Controller
                 'leads.remark',
                 'assigned_leads.created_at as created',
                 'assigned_leads.coins',
-                'assigned_leads.id as assignId'
+                'assigned_leads.readLead',
+                'assigned_leads.scrapLead',
+                'assigned_leads.id as assignId',
+                'assigned_leads.favorite_lead'
+               
             )
             ->paginate(30);
 

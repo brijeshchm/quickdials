@@ -73,6 +73,25 @@ background-color: #ddd;
     padding: 15px;
 }
 @media (max-width: 767px) {
+
+  .lead-card {
+    
+    border-radius: 16px;
+    padding: 7px 20px;
+    width: 100% !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.lead-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 96px !important;
+    border-bottom: solid 1px #ddd;
+    padding: 0px 0px 5px;
+}
   #main {
   padding: 10px 20px;
   margin-left: 45px;
@@ -856,7 +875,7 @@ div.dataTables_paginate ul.pagination {
              
         }
 
-        .enquiry-details h4 {
+        .enquiry-details head {
             font-size: 16px;
             font-weight: 600;
             color: #2d3748;
@@ -1236,11 +1255,12 @@ div.dataTables_paginate ul.pagination {
  
 .scrapLead {
  
-  background: #007bff;
+  /* background: #007bff; */
   color: white;
   padding: 2px 8px;
   border-radius: 5px;
   font-size: 12px;
+  text-align: center;
  
 }
 .modal-body{
@@ -1274,7 +1294,7 @@ color:#000;
     margin-left: -1.5em;
 }
 .scrapLead .scrapbutton {
-    background: none;
+    background: #007bff;
     border: 1px solid #007bff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -1455,7 +1475,7 @@ color:#000;
 .followup{
       width: 40px;
     height: 40px;
-    background: #2563eb;
+    background: #5AB710;
     color: #fff;
     border-radius: 50%;
     display: flex;
@@ -1527,15 +1547,10 @@ color:#000;
 
 .lead-left {
     display: flex;
-    gap: 15px;
+     /* gap: 15px; */
+   
 }
-.contact-cls span{
-    color: #fff;
-    width: 40px;
-    height: 40px;
-    background: red;
-    border-radius: 50%;
-}
+ 
 /* Share Icon Button */
 .share-icon {
     width: 40px;
@@ -1888,7 +1903,7 @@ color:#000;
 @media (max-width: 1199px) {
   .sidebar {
    
-	width: 120px;
+	width: 180px;
 	background-color: #1a2b4c;
 	color: white;
 	padding: 20px;
@@ -2570,6 +2585,123 @@ display: flex;
     margin: 5px 0;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
+
+
+.lead-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;
+    border-bottom: solid 1px #ddd;
+    padding: 0px 0px 5px;
+}
+
+.amount {
+    font-size: 15px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.amount span {
+    color: #ef4444;
+    font-size: 20px;
+}
+
+.badge {
+    background: #e0f2fe;
+    color: #0284c7;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lead-card {
+    /* background: #ffffff; */
+    border-radius: 16px;
+       padding: 7px 15px;
+    width: 300px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.lead-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+}
+
+.lead-top {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.credit {
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+}
+
+.credit span {
+    color: #e63946;
+    font-size: 18px;
+}
+
+.scrap-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #1677ff, #0052cc);
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 15px 0;
+    transition: 0.3s;
+}
+
+.scrap-btn:hover {
+    opacity: 0.9;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.phone {
+    background: #e6f7ec;
+    color: #1ca44c;
+}
+
+.whatsapp {
+    background: #e9fbf0;
+    color: #25d366;
+}
+
+.time {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #888;
+    display: flex;
     align-items: center;
     gap: 6px;
 }

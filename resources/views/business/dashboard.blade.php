@@ -44,29 +44,105 @@ background-color: #ffffff;
                 </p>
             </div>
         </div>
-      
           @if (!empty($leads)) 
             @foreach($leads as $lead)
-  
-
-  
+ 
             
         <div class="lead-details ">
-             
- 
 
-            <div class="lead enquiry-item">
 
- 
 
-                <div class="img-cls">
-                  <i class="fa fa-uaser"></i> <?php  echo ucfirst(substr($lead->name,0,1)); ?>
-                </div>
-                <div class="info enquiry-details">
-                    <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} 
-                
-                 <i class="bi bi-coin"></i> 
-                <?php    $coins= "";
+            <div class="enquiry-item">
+
+
+            <div class="lead-left">
+
+            <div class="avatar"><?php  echo ucfirst(substr($lead->name,0,1)); ?>
+            </div>
+
+            <div class="info enquiry-details">
+            <div class="head"><i class="bi bi-person"></i> {{ucfirst($lead->name)}} 
+            <span class="tag"><?php if($lead->readLead=='0'){ echo "New Lead"; }else if($lead->favorite_lead== $lead->readLead){ echo "Favorite Lead";}else{ echo "My Lead"; } ?></span> 
+
+
+            <div class="share-wrapper">
+
+            <input type="checkbox" id="shareToggle{{ $lead->assignId }}" class="share-toggle" >
+
+            <label for="shareToggle{{ $lead->assignId }}" class="share-icon" title="Share lead">
+
+
+            <i class="bi bi-share-fill"></i>
+            </label>
+
+            <div class="share-menu">
+
+            <a href="https://wa.me/?text={{ urlencode($lead->share_address) }}" target="_blank">
+
+            <img src="{{ asset('img/map.png') }}" width="18"> Service
+
+            </a>
+
+            <a href="https://wa.me/?text={{ urlencode($lead->share_review) }}" target="_blank">
+            ⭐ Review
+            </a>
+            <a href="https://wa.me/?text={{ urlencode($lead->share_service) }}" target="_blank">
+            <img src="{{ asset('img/service.png') }}" width="18"> Service
+            </a>
+
+            <a href="https://wa.me/?text={{ urlencode($lead->share_lead) }}" target="_blank">
+            👤Share Lead
+            </a>
+            </div>
+            </div>
+
+
+            </div>
+
+
+
+            <p><i class="bi bi-book"></i>  {{$lead->kw_text}}</p>
+            <p>@if($lead->city_name) <i class="bi bi-pin-map-fill"></i>{{$lead->city_name}}
+            @if($lead->zone !=$lead->city_name) {{$lead->zone}} @endif @endif
+            <div class="details-section">
+            <div class="title">Enquired for <strong>{{$lead->kw_text}}</strong> Send price and other details.</div>
+            <div class="source">@if($lead->email) <i class="bi bi-envelope"></i>{{$lead->email}}@endif</div>
+            <p>@if($lead->remarks) {{$lead->remarks}} @endif</p>
+            </div>
+            <div class="show-details" onclick="toggleDetails(this)">Show details</div>
+            </div>
+
+
+
+            </div>
+
+            <div class="lead-right">
+
+
+
+
+
+            <div class="lead-card">
+
+            <div class="lead-top">
+                <div class="lead-header">
+                    <div class="amount">
+
+
+                    <div class="followup" title="Followup">                            
+
+                    <a href="javascript:void(0);" 
+                    onclick="enquiryController.getLeadfollowUps(<?= $lead->lead_id ?>)" 
+                    title="FollowUp">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+
+
+                    </a>
+
+                    </div>
+                    </div>
+                <div class="badge"> <i class="bi bi-currency-rupee"></i> <span>
+                <?php
                 if(!empty($lead->scrapLead)) { 
                 $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
                 }else if($lead->coins){ 
@@ -74,79 +150,57 @@ background-color: #ffffff;
                 }  
                 echo $coins;
                 ?>
-              
-              <div class="share-wrapper">
 
-    <input type="checkbox" id="shareToggle{{ $lead->assignId }}" class="share-toggle">
-
-    <label for="shareToggle{{ $lead->assignId }}" class="share-icon">
-  
-
-          <i class="bi bi-share-fill"></i>
-    </label>
-
-    <div class="share-menu">
-
-        <a href="https://wa.me/?text={{ urlencode($lead->share_address) }}" target="_blank">
-          
-            <img src="{{ asset('img/map.png') }}" width="18"> Service
-          
-        </a>
-
-        <a href="https://wa.me/?text={{ urlencode($lead->share_review) }}" target="_blank">
-            ⭐ Review
-        </a>
-        <a href="https://wa.me/?text={{ urlencode($lead->share_service) }}" target="_blank">
-            <img src="{{ asset('img/service.png') }}" width="18"> Service
-        </a>
-      
-        <a href="https://wa.me/?text={{ urlencode($lead->share_lead) }}" target="_blank">
-        👤Share Lead
-        </a>
-
-    </div>
-
-</div>
-
-                </h4>
-
-               
- 
-                    <p><span class="icon" >
-                      <i class="bi bi-clock"></i>
-                    <?php echo get_time(strtotime($lead->created)); ?> ago</span></p>
-                    <p><i class="bi bi-book"></i>  {{$lead->kw_text}}</p>
-                     <div class="details-section">
-                    <div class="title">Enquired for <strong>{{$lead->kw_text}}</strong> Send price and other details.</div>
-                    <div class="source">@if($lead->email) <i class="bi bi-envelope"></i>{{$lead->email}}@endif</div>
-                     <p>@if($lead->remarks) {{$lead->remarks}} @endif</p>
+                </span></div>
                 </div>
-                <div class="show-details" onclick="toggleDetails(this)">Show details</div>
-                </div>
-                
-                <div class="map">
-                    <h4>@if($lead->city_name)<i class="bi bi-pin-map-fill"></i> {{$lead->city_name}} 
+            </div>
 
-                    @if($lead->zone !== $lead->city_name) {{$lead->zone}} @endif
-                    
-                    @endif</h4>
-                     
-                   
-                </div>
-                <div class="contact">
-                    <div class="followup" title="Followup">                            
 
-                    <a href="javascript:void(0);" 
-                    onclick="enquiryController.getLeadfollowUps(<?= $lead->lead_id ?>)" 
-                    title="FollowUp">
-                    <i class="bi bi-eye" aria-hidden="true"></i>
-                  
 
-                    </a>
-                
-                </div>
-                    <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a>   <a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead->mobile}}</a>
-                </div>
+            <div class="contact-item">
+            <div class="icon phone">
+            <i class="bi bi-telephone-fill"></i>
+            </div>
+            <span><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a></span>
+            </div>
+
+            <div class="contact-item">
+            <div class="icon whatsapp">
+            <i class="bi bi-whatsapp"></i>
+            </div>
+            <span><a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup">{{$lead->mobile}}</a></span>
+            </div>
+
+            <div class="time">
+            <i class="bi bi-clock"></i>
+            <?php echo get_time(strtotime($lead->created)); ?> ago
+            </div>
+
+            </div>
+
+            <!-- <div class="cont-no">
+            <div class="contact-cls">
+            <i class="bi bi-currency-rupee"></i> 
+            <?php    $coins= "";
+            if(!empty($lead->scrapLead)) { 
+            $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
+            }else if($lead->coins){ 
+            $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
+            }  
+            echo $coins;
+            ?>
+            </div>
+            <div class="contact-cls">
+            <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a> 
+            </div>
+            <div class="contact-cls">
+            <a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead->mobile}}</a>
+            </div>
+            <div class="enquiry-time"><i class="bi bi-clock"></i> <?php echo get_time(strtotime($lead->created)); ?> ago</div>
+
+            </div> -->
+
+            </div>
             </div>
         </div>
         @endforeach

@@ -398,121 +398,134 @@ class EnquiryController extends Controller
 
 	public function newEnquiry(Request $request)
 	{
-		$clientID = auth()->guard('clients')->id();
+ 		$client = auth()->guard('clients')->user();
 
-		// =========================
-		// Get Leads
-		// =========================
-		$leads = DB::table('leads')
-			->join('assigned_leads', 'leads.id', '=', 'assigned_leads.lead_id')
-			->leftJoin('citylists', 'leads.city_id', '=', 'citylists.id')
-
-			->leftJoin('zones', 'leads.zone_id', '=', 'zones.id')
-			->select(
-				'leads.*',
-				'assigned_leads.*',
-				'assigned_leads.id as assignId',
-				'assigned_leads.created_at as created',
-				'citylists.city as city_name',
-				'zones.zone'
-			)
-			->where('assigned_leads.client_id', $clientID)
-			->where('assigned_leads.readLead', '0')
-			->orderByDesc('assigned_leads.created_at')
-
-			->limit(20)
-			->get();
-
-		// =========================
-		// Get Client
-		// =========================
-		$client = Client::select(
-			'id',
-			'address',
-			'business_name',
-			'business_slug',
-			'business_map'
-		)->find($clientID);
-
-		$businessName = $client->business_name ?? 'our company';
-		$addressText = $client->address ?? '';
-		$profile_url = url('business-details/' . $client->business_slug);
-		$mapText = $client->business_map ?? '';
-
-		// =========================
-		// Get Rating
-		// =========================
-		$rating = DB::table('comments')
-			->where('comment_client_ID', $clientID)
-			->selectRaw('COUNT(*) as count, COALESCE(SUM(rating),0) as total')
-			->first();
-
-		$ratingCount = $rating->count ?? 0;
-		$avgRating = $ratingCount > 0 ? round($rating->total / $ratingCount, 1) : 0;
-
-		// =========================
-		// Build Leads List
-		// =========================
-		$leads_list = [];
-
-		foreach ($leads as $val) {
-
-			$cityName = trim(($val->city_name ?? '') .
-				(!empty($val->zone) ? ', ' . $val->zone : ''));
-
-			$coins = !empty($val->scrapLead)
-				? ['color' => 'green', 'coin' => $val->coins]
-				: (!empty($val->coins)
-					? ['color' => 'red', 'coin' => $val->coins]
-					: null);
-
-			$remark = collect([
-				$val->kw_text ? "Interested in {$val->kw_text}" : null,
-				$val->zone ? "Location {$val->zone}" : null,
-				$val->plan ? "Plan {$val->plan}" : null,
-				$val->age ? "Age {$val->age}" : null,
-				$val->experience ? "Experience {$val->experience}" : null,
-				$val->remark ?? null,
-			])->filter()->implode(' • ');
-
-			$user_share = [
-				'address_share' =>
-					"Greetings from {$businessName},\n" .
-					"We’re following up on your enquiry made on Quickdials for {$val->kw_text}.\n" .
-					($addressText ? "Visit us at {$addressText}" : ""),
-
-				'for_service' =>
-					"Greetings from {$businessName},\n" .
-					"For more services visit {$profile_url}",
-
-				'for_review' =>
-					"Greetings from {$businessName}, Rated {$avgRating} out of {$ratingCount} votes.\n" .
-					"Visit our profile: {$profile_url}",
-
-				'share_lead' =>
-					"Name: {$val->name}, Mobile: {$val->mobile}, Email: {$val->email}, Service: {$val->kw_text}, Location: {$cityName}",
-			];
-
-			$leads_list[] = [
-				'lead_id' => $val->lead_id ?? null,
-				'assignId' => $val->assignId ?? null,
-				'favorite' => $val->favorite_lead ?? 0,
-				'readLead' => $val->readLead ?? 0,
-				'scrapLead' => $val->scrapLead ?? 0,
-				'primeLead' => $val->primeLead ?? 0,
-				'name' => trim($val->name ?? '') ?: null,
-				'mobile' => trim($val->mobile ?? '') ?: null,
-				'email' => trim($val->email ?? '') ?: null,
-				'remark' => $remark ?: null,
-				'cityName' => $cityName ?: null,
-				'kw_text' => trim($val->kw_text ?? '') ?: null,
-				'createdDate' => get_time(strtotime($val->created)) . ' ago',
-				'coins' => $coins,
-				'user_share' => $user_share,
-			];
+		if (!$client) {
+			return redirect()->route('login');
 		}
 
-		return view('business.new-enquiry', compact('leads_list'));
+		$clientID = $client->id;
+
+		$clientDetails = DB::table('clients')
+			->where('id', $clientID)
+			->first();
+
+		$rating = DB::table('comments')
+			->where('comment_client_ID', $client->id)
+			->selectRaw('COUNT(*) as total, COALESCE(SUM(rating),0) as sum')
+			->first();
+
+		$avgRating = ($rating->total > 0)
+			? round($rating->sum / $rating->total, 1)
+			: 0;
+
+		$ratingCount = $rating->total ?? 0;
+
+		$leads = DB::table('leads')
+			->join('assigned_leads', 'leads.id', '=', 'assigned_leads.lead_id')
+			->where('assigned_leads.client_id', $client->id)
+			->orderBy('assigned_leads.created_at', 'desc')	 
+			->where('assigned_leads.readLead', '0')
+			->select(
+				'leads.id as lead_id',
+				'leads.name',
+				'leads.mobile',
+				'leads.email',
+				'leads.kw_text',
+				'leads.zone',
+				'leads.city_name',
+				'leads.plan',
+				'leads.address',
+				'leads.age',
+				'leads.experience',
+				'leads.remark',
+				'assigned_leads.created_at as created',
+				'assigned_leads.coins',
+				'assigned_leads.id as assignId',
+				'assigned_leads.client_id as clientId',
+				'assigned_leads.readLead',
+				'assigned_leads.scrapLead',
+				'assigned_leads.scrapPay',
+				'assigned_leads.scrapValue',
+				'assigned_leads.favorite_lead',
+			)
+			->paginate(30);
+
+		$businessName = $clientDetails->business_name ?? 'Our Company';
+		$address = $clientDetails->address ?? '';
+		$map = $clientDetails->business_map ?? '';
+		$profileUrl = url('business-details/' . ($clientDetails->business_slug ?? ''));
+
+		// Transform Data (Fast Way)
+		$leads->getCollection()->transform(function ($lead) use ($businessName, $address, $map, $profileUrl, $avgRating, $ratingCount) {
+
+			$keyword = $lead->kw_text ?? 'your enquiry';
+			$location = trim(($lead->city_name ?? '') . (!empty($lead->zone) ? ', ' . $lead->zone : ''));
+
+
+			// 🔹 Share Lead Details
+
+
+
+			$lead->share_address = "Greetings from {$businessName},\n"
+				. "We’re following up on your enquiry made on Quickdials for {$keyword}.\n"
+				. "For more information"
+				. (!empty($addressText) ? ", you can visit us at {$addressText}" : "")
+				. "{$profileUrl}";
+
+			$lead->share_service = "Greetings from {$businessName},\n"
+				. "We’re following up on your enquiry made on Quickdials for {$keyword}.\n"
+				. "For more information of the services offered by our business please refer "
+				. (!empty($addressText) ? ", you can visit us at {$addressText}" : "")
+				. ", Or {$profileUrl}";
+			$lead->share_review = "Greetings from {$businessName}, Rated {$avgRating} Rating out of {$ratingCount} Votes.\n"
+				. "We’re following up on your enquiry made on Quickdials for {$keyword}.\n"
+				. "For more information about the services offered by our business"
+				. (!empty($addressText) ? ", you can visit us at {$addressText}" : "")
+				. ". Or visit our profile: {$profileUrl}";
+
+
+			$frmcheckText = '';
+
+			if (!empty($lead->frmcheck)) {
+				$frmcheckArray = is_array($lead->frmcheck)
+					? $lead->frmcheck
+					: json_decode($lead->frmcheck, true);
+				if (is_array($frmcheckArray)) {
+					$frmcheckText = implode(', ', $frmcheckArray);
+				}
+			}
+
+			$parts = array_filter([
+				$lead->kw_text ? "Interested in {$lead->kw_text}" : '',
+				$frmcheckText ? "Mode of {$frmcheckText}" : '',
+				$lead->zone ? "Location {$lead->zone}" : '',
+				$lead->plan ? "Plan {$lead->plan}" : '',
+				$lead->age ? "Age {$lead->age}" : '',
+				$lead->experience ? "Experience {$lead->experience}" : '',
+			]);
+
+			$remark = implode(" • ", $parts);
+
+			if (!empty($lead->remark)) {
+				$remark .= " " . trim($lead->remark);
+			}
+
+			$lead->share_lead =
+				"Name: {$lead->name}\n" .
+				"Mobile: {$lead->mobile}\n" .
+				"Email: {$lead->email}\n" .
+				"Service: {$keyword}\n" .
+				"Location: {$location}\n" .
+				"remark: {$remark}";
+
+			$lead->remarks = $remark;
+			return $lead;
+		});
+
+
+
+		return view('business.new-enquiry', ['leads' => $leads]);
 	}
 
 
@@ -678,18 +691,7 @@ class EnquiryController extends Controller
 	public function myLead(Request $request)
 	{
 
-		// $clientID = auth()->guard('clients')->user()->id;
-		// $leads = DB::table('leads')
-		// 	->join('assigned_leads', 'leads.id', '=', 'assigned_leads.lead_id')
-		// 	->leftjoin('citylists', 'leads.city_id', '=', 'citylists.id')
-		// 	->leftjoin('areas', 'leads.area_id', '=', 'areas.id')
-		// 	->leftjoin('zones', 'leads.zone_id', '=', 'zones.id')
-		// 	->select('leads.*', 'assigned_leads.*', 'assigned_leads.client_id as clientId', 'assigned_leads.lead_id', 'assigned_leads.id as assignId', 'assigned_leads.created_at as created', 'areas.area', 'zones.zone')
-
-		// 	->orderBy('assigned_leads.created_at', 'desc')
-		// 	->where('assigned_leads.favorite_lead', '!=', '1')
-
-		// 	->where('assigned_leads.client_id', $clientID)->limit('200')->get();
+		  
 
 		$client = auth()->guard('clients')->user();
 

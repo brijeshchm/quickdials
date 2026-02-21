@@ -28,7 +28,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
             <div class="status">
                 <span><a href="{{ url('business/myLead')}}">Total Lead</a> | </span>
                 <span><a href="{{ url('business/package')}}">Platinum</a></span>
-                <span>0h</span>
+                
             </div>
         </div>
 
@@ -42,72 +42,51 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
 
         <div class="tab-content active" id="all">
 
-    @forelse($leads_list ?? [] as $lead)
+    @forelse($leads as $lead)
 
     <div class="enquiry-item assignedLeadsClick"
-         data-assigned_leads="{{ $lead['assignId'] ?? '' }}"
-         data-client_id="{{ $lead['client_id'] ?? '' }}"
-         style="{{ empty($lead['readLead']) ? 'background:#f2f2f2;' : '' }}">
-
+         data-assigned_leads="{{ $lead->assignId ?? '' }}"
+         data-client_id="{{ $lead->clientId ?? '' }}"
+         style="{{ empty($lead->readLead) ? 'background:#f2f2f2;' : '' }}">
+ <div class="lead-left">
         {{-- Avatar --}}
         <div class="avatar">
-            {{ strtoupper(substr($lead['name'] ?? 'N', 0, 1)) }}
+            {{ strtoupper(substr($lead->name ?? 'N', 0, 1)) }}
         </div>
 
         <div class="enquiry-details">
 
-            <h4>
+            <div class="head"> 
                 <i class="bi bi-person"></i>
 
                 <span class="tag favorite_lead">NEW</span>
 
                 <i class="fa-regular bi-star favorite-icon 
-                   {{ !empty($lead['favorite']) ? 'favorited' : '' }}"
-                   data-favoritleads="{{ $lead['assignId'] ?? '' }}">
+                   {{ !empty($lead->favorite) ? 'favorited' : '' }}"
+                   data-favoritleads="{{ $lead->assignId ?? '' }}">
                 </i>
 
-                {{-- Coins --}}
-                @if(!empty($lead['coins']))
-                    <i class="bi bi-coin"></i>
-                    @if($lead['coins']['color'] === 'green')
-                        <span style="color:green">
-                            {{ $lead['coins']['coin'] }}
-                        </span>
-                    @else
-                        <span style="color:red">
-                            -{{ $lead['coins']['coin'] }}
-                        </span>
-                    @endif
-                @endif
-            </h4>
+             
+</div>
 
-            <p><i class="bi bi-book"></i> {{ $lead['kw_text'] ?? '' }}</p>
+            <p><i class="bi bi-book"></i> {{$lead->kw_text}}</p>
 
             <p>Online Class</p>
 
-            @if(!empty($lead['cityName']))
-                <p>
-                    <i class="bi bi-pin-map-fill"></i>
-                    {{ $lead['cityName'] }}
-                </p>
-            @endif
+           <p>@if($lead->city_name) <i class="bi bi-pin-map-fill"></i>{{$lead->city_name}}
+                        @if($lead->zone !=$lead->city_name) {{$lead->zone}} @endif
+                        
+                        @endif 
+                    </p>
 
             <div class="details-section">
                 <div class="title">
-                    Enquired for <strong>{{ $lead['kw_text'] ?? '' }}</strong>
+                    Enquired for <strong>{{ $lead->kw_text ?? '' }}</strong>
                     Send price and other details.
                 </div>
 
-                @if(!empty($lead['email']))
-                    <div class="source">
-                        <i class="bi bi-envelope"></i>
-                        {{ $lead['email'] }}
-                    </div>
-                @endif
-
-                @if(!empty($lead['remark']))
-                    <p>{{ $lead['remark'] }}</p>
-                @endif
+                  <div class="source">@if($lead->email) <i class="bi bi-envelope"></i>{{$lead->email}}@endif</div>
+                      <p>@if($lead->remarks) {{$lead->remarks}} @endif</p>
             </div>
 
             <div class="show-details" onclick="toggleDetails(this)">
@@ -116,26 +95,66 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
 
         </div>
 
-        {{-- Contact Section --}}
-        @if(!empty($lead['mobile']))
-        <div class="cont-no">
-            <i class="bi bi-telephone-fill"></i>
-            <a href="tel:91{{ $lead['mobile'] }}">
-                {{ $lead['mobile'] }}
-            </a>
-
-            <a href="https://wa.me/91{{ $lead['mobile'] }}"
-               target="_blank"
-               aria-label="Whatsapp">
-                <i class="bi bi-whatsapp" style="color:#14D73F"></i>
-                {{ $lead['mobile'] }}
-            </a>
         </div>
-        @endif
+            <div class="lead-right">
 
-        <div class="enquiry-time">
+             <div class="lead-card">
+
+            <div class="lead-top">
+                <div class="lead-header">
+                    <div class="amount">
+
+
+                    <div class="followup" title="Followup">                            
+
+                    <a href="javascript:void(0);" 
+                    onclick="enquiryController.getLeadfollowUps(<?= $lead->lead_id ?>)" 
+                    title="FollowUp">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+
+
+                    </a>
+
+                    </div>
+                    </div>
+                <div class="badge"> <i class="bi bi-currency-rupee"></i> <span>
+                <?php
+                if(!empty($lead->scrapLead)) { 
+                $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
+                }else if($lead->coins){ 
+                $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
+                }  
+                echo $coins;
+                ?>
+
+                </span></div>
+                </div>
+            </div>
+
+
+
+            <div class="contact-item">
+            <div class="icon phone">
+            <i class="bi bi-telephone-fill"></i>
+            </div>
+            <span><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a></span>
+            </div>
+
+            <div class="contact-item">
+            <div class="icon whatsapp">
+            <i class="bi bi-whatsapp"></i>
+            </div>
+            <span><a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup">{{$lead->mobile}}</a></span>
+            </div>
+
+            <div class="time">
             <i class="bi bi-clock"></i>
-            {{ $lead['createdDate'] ?? '' }}
+            <?php echo get_time(strtotime($lead->created)); ?> ago
+            </div>
+
+            </div>
+      
+
         </div>
 
     </div>
@@ -146,52 +165,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
 
 </div>
 
-<!--  
-            <div class="tab-content active" id="all">
-                @if(!empty($leads))
-                @foreach($leads as $lead)
  
-                <div class="enquiry-item assignedLeadsClick"  data-assigned_leads= "{{ $lead['assignId'] }}" data-client_id= "{{ $lead['client_id'] }}" style="<?php  if(!$lead['readLead']){ echo "background:#ddd"; } ?>">
-                    <div class="avatar"><?php  echo ucfirst(substr($lead['name'],0,1)); ?></div>
-                    
-                    <div class="enquiry-details">
-                        <h4><i class="bi bi-person"></i>   <span class="tag favorite_lead">NEW</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead['favorite_lead']){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead['assignId'] }}"></i>
-
-
-                        
-                     <i class="bi bi-coin"></i> 
-                        <?php    $coins= "";
-                        if(!empty($lead['scrapLead'])) { 
-                        $coins =    "<span style='color:green'>" . $lead['coins'] . "</span>"; 
-                        }else if($lead['coins']){ 
-                        $coins =  "<span style='color:red;'> -" . $lead['coins'] . " </span>"; 
-                        }  
-                        echo $coins;
-                        ?>
-                    
-                    </h4>
-                        <p><i class="bi bi-book"></i> {{ $lead['kw_text']??''}}</p>
-                        <p>Online Class</p>
-                        <p>@if($lead['cityName']) <i class="bi bi-pin-map-fill"></i>{{$lead['cityName']}}@endif @if($lead['zone'])<i class="bi bi-pin-map-fill"></i> {{$lead['zone']}} @endif</p>
-                       
-                        <div class="details-section">
-                    <div class="title">Enquired for <strong>{{$lead['kw_text']}}</strong> Send price and other details.</div>
-                    <div class="source">@if($lead['email']) <i class="bi bi-envelope"></i>{{$lead['email']}}@endif</div>
-                     <p> {{ $lead['remark'] }}</p>
-                </div>
-                <div class="show-details" onclick="toggleDetails(this)">Show details</div>
-                    </div>
-                     
-                  <div class="cont-no">
-                    <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead['mobile']}}"> {{$lead['mobile']}}</a>   <a href="https://wa.me/91{{$lead['mobile']}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead['mobile']}}</a>
-                  </div>
-                 
-                    <div class="enquiry-time"><i class="bi bi-clock"></i> <?php  echo $lead['createdDate']; ?></div>
-                </div>
-                @endforeach
-                @endif              
-                
-            </div> -->
 
            
         </div>

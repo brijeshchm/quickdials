@@ -42,16 +42,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                  <div class="lead-left">
                     <div class="avatar"><?php  echo ucfirst(substr($lead->name,0,1)); ?></div>
                     <div class="enquiry-details">
-                        <h4><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">Favorite</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favorite_lead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" "></i>
-                        <i class="bi bi-coin"></i> 
-                        <?php    $coins= "";
-                        if(!empty($lead->scrapLead)) { 
-                        $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
-                        }else if($lead->coins){ 
-                        $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
-                        }  
-                        echo $coins;
-                        ?>
+                        <div class="head"><i class="bi bi-person"></i> {{ucfirst($lead->name)}} <span class="tag">Favorite</span> <i class="fa-regular bi-star favorite-icon <?php  if($lead->favorite_lead){ echo "favorited"; } ?>" data-favoritleads= "{{ $lead->assignId }}" "></i>
+                   
+                       
 
  <div class="share-wrapper">
 
@@ -87,19 +80,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
 </div>
 
 
-
- <div class="followup" title="Followup">                            
-
-        <a href="javascript:void(0);" 
-        onclick="enquiryController.getLeadfollowUps(<?= $lead->lead_id ?>)" 
-        title="FollowUp">
-        <i class="bi bi-eye" aria-hidden="true"></i>
-
-
-        </a>
-
-        </div>
-                    </h4>
+ 
+</div>
                         <p><i class="bi bi-book"></i> {{$lead->kw_text}}</p>
                         <p>Online Class</p>
                         <p>@if($lead->city_name) <i class="bi bi-pin-map-fill"></i>{{$lead->city_name}} @if($lead->zone !=$lead->city_name){{$lead->zone}} @endif @endif </p>
@@ -113,26 +95,67 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                     </div>
                     </div>
                        <div class="lead-right">
-                     
-                  
- <div class="cont-no">
-                  <div class="contact-cls">
-  <i class="bi bi-telephone-fill"></i><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a> 
-                  </div>
-                  <div class="contact-cls">
-  <a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup"><i class="bi bi-whatsapp" style="color:#14D73F"></i>{{$lead->mobile}}</a>
-                  </div>
-
-                 
-
-                   
-                    
-                   
-                  </div>
-                 
-                    <div class="enquiry-time"><i class="bi bi-clock"></i> <?php echo get_time(strtotime($lead->created)); ?> ago</div>
 
 
+<div class="lead-card">
+
+            <div class="lead-top">
+                <div class="lead-header">
+                    <div class="amount">
+
+
+                    <div class="followup" title="Followup">                            
+
+                    <a href="javascript:void(0);" 
+                    onclick="enquiryController.getLeadfollowUps(<?= $lead->lead_id ?>)" 
+                    title="FollowUp">
+                    <i class="bi bi-eye" aria-hidden="true"></i>
+
+
+                    </a>
+
+                    </div>
+                    </div>
+                <div class="badge"> <i class="bi bi-currency-rupee"></i> <span>
+                <?php
+                 $coins= "";
+                if(!empty($lead->scrapLead)) { 
+                $coins =    "<span style='color:green'>" . $lead->coins . "</span>"; 
+                }else if($lead->coins){ 
+                $coins =  "<span style='color:red;'> -" . $lead->coins . " </span>"; 
+                }  
+                echo $coins;
+                ?>
+
+                </span></div>
+                </div>
+            </div>
+
+
+
+            <div class="contact-item">
+            <div class="icon phone">
+            <i class="bi bi-telephone-fill"></i>
+            </div>
+            <span><a href="tel:91{{$lead->mobile}}"> {{$lead->mobile}}</a></span>
+            </div>
+
+            <div class="contact-item">
+            <div class="icon whatsapp">
+            <i class="bi bi-whatsapp"></i>
+            </div>
+            <span><a href="https://wa.me/91{{$lead->mobile}}" target="_blank" aria-label="Whatsup">{{$lead->mobile}}</a></span>
+            </div>
+
+            <div class="time">
+            <i class="bi bi-clock"></i>
+            <?php echo get_time(strtotime($lead->created)); ?> ago
+            </div>
+
+            </div>
+
+
+ 
                 </div>
                 </div>
                 @endforeach
