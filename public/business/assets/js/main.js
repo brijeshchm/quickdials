@@ -1220,11 +1220,13 @@ var enquiryController  = (function(){
 			checked_Ids:[],
 			 
 			getfollowUps:function(id){
-			//	mainSpinner.start();
+				  showLoader();
 				$.ajax({
 					url:"/business/enquiry/follow-up/"+id,
 					type:"GET",
 					success:function(response){
+					 
+						$('#followUpModal').modal({keyboard:false,backdrop:'static'});
 						$("#followUpModal").modal("show");
 						$('#followUpModal .modal-body').html(response.html);
 						 $('#expected_date_time').daterangepicker({
@@ -1277,36 +1279,30 @@ var enquiryController  = (function(){
 								}
 							}
 						}
+						
 						$('#followUpModal .modal-title').html(prevNextHtml);
-						$('#followUpModal').modal({keyboard:false,backdrop:'static'});
+					 
+					
 						$('#followUpModal .select2-container').css({'width':'100%'});
-						//mainSpinner.stop();
+					 
+						 hideLoader();
 					},
 					error:function(response){
-						//mainSpinner.stop();
+						 hideLoader();
 					}
 				});
-				/* var dataTableFollowUps = $('#datatable-followups').dataTable({
-					"fixedHeader": true,
-					"processing":true,
-					"serverSide":true,
-					"paging":true,
-					"ajax":{
-						url:"/lead/getfollowups/",
-						data:function(d){
-							d.page = (d.start/d.length)+1;
-						}
-					}
-				}).api(); */
+				 
 			},
 			storeFollowUp:function(id,THIS){
 				var $this = $(THIS);
+  				showLoader();
 				$.ajax({
 					url:'/business/enquiry/store-follow-up/'+id,
 					type:"post",
 					data:$this.serialize(),
 					dataType:'json',
 					success:function(response){
+						 hideLoader();
 						if(response.status){
 						 
 							$this.find('*[name="remark"]').val('');
@@ -1315,6 +1311,9 @@ var enquiryController  = (function(){
 						 
 							dataTableLeadDashboard.ajax.reload(function(){
 								$('#datatable-lead-dashboard').find('[data-toggle="popover"]').popover({html:true,container:'body'});
+							},false);
+							dataTableViewAllStudent.ajax.reload(function(){
+								$('#datatable-view-all-students').find('[data-toggle="popover"]').popover({html:true,container:'body'});
 							},false);
 						 
 							removeValidationErrors($this);
@@ -1400,6 +1399,8 @@ var enquiryController  = (function(){
 					url:"/business/enquiry/follow-up/"+id,
 					type:"GET",
 					success:function(response){
+						
+						$('#followUpModal').modal({keyboard:false,backdrop:'static'});
 						$("#followUpModal").modal("show");
 						$('#followUpModal .modal-body').html(response.html);
 						 $('#expected_date_time').daterangepicker({
@@ -1441,7 +1442,7 @@ var enquiryController  = (function(){
 					 
 						 
 						$('#followUpModal .modal-title').html(prevNextHtml);
-						$('#followUpModal').modal({keyboard:false,backdrop:'static'});
+						// $('#followUpModal').modal({keyboard:false,backdrop:'static'});
 						$('#followUpModal .select2-container').css({'width':'100%'});
 						//mainSpinner.stop();
 					},
@@ -1494,6 +1495,17 @@ var enquiryController  = (function(){
 				d.page = (d.start/d.length)+1;
 				d.search['leaddf']=$('*[name="search[leaddf]"]').val();
 			    d.search['leaddt']=$('*[name="search[leaddt]"]').val();	
+				d.search['expdf']=$('*[name="search[expdf]"]').val();
+			    d.search['expdt']=$('*[name="search[expdt]"]').val();
+
+				d.search['service']=$('*[name="search[service][]"]').val();
+			 
+				var status = $('*[name="search[status][]"]').val();
+				if(status!=null && status.length=='1' && status[0]==''){
+					d.search['status']="";
+				}else{
+					d.search['status']=$('*[name="search[status][]"]').val();
+				}
 				d.columns = null;
 				d.order = null;
 			},
@@ -1828,6 +1840,8 @@ var dataTableReview = $('#datatable-business-review').on('draw.dt',function(e,se
   
 		$('.leaddf').datepicker();
 		$('.leaddt').datepicker();
+		$('.expdf').datepicker();
+		$('.expdt').datepicker();
 	 
 		$('.dob').datepicker({
 		maxDate: 0,           
@@ -1857,5 +1871,17 @@ var dataTableReview = $('#datatable-business-review').on('draw.dt',function(e,se
 function hideLoader() {
     $('#pageLoader').fadeOut(200);
 }
+
+
+	$(document).on('change','*[name="status"]',function(e){
+	var $this = $(this);
+	//if($this.find("option:selected").text()=="Not Interested"||$this.find("option:selected").text()=="Location Issue"){
+	if(!$this.find("option:selected").data('value')){
+	$('*[name="expected_date_time"]').prop({'disabled':true}).val('');
+	}else{
+	$('*[name="expected_date_time"]').prop({'disabled':false});
+	}
+	});
+
 /*
 })(); */

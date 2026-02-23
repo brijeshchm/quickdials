@@ -170,7 +170,7 @@ Route::get('/business/get-paginated-payment-history',[App\Http\Controllers\Busin
  Route::get('/business/help',[App\Http\Controllers\Client\BusinessController::class,'help']);
  Route::get('/business/businessActiveStatus/{id}/{val}',[App\Http\Controllers\Client\BusinessController::class,'businessActiveStatus']);
  
- Route::get('/business/get-enquiry',[App\Http\Controllers\Business\EnquiryController::class,'getEnquiry']);
+ Route::get('/business/get-enquiry',[App\Http\Controllers\Business\EnquiryController::class,'getPaginatedLeads']);
  Route::get('/business/enquiry/follow-up/{id}',[App\Http\Controllers\Business\EnquiryController::class,'followUp']);
  Route::post('/business/enquiry/store-follow-up/{id}',[App\Http\Controllers\Business\EnquiryController::class,'storeFollowUp']);
  Route::get('/business/enquiry/getfollowups/{id}',[App\Http\Controllers\Business\EnquiryController::class,'getFollowUps']);  

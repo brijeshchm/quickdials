@@ -29,21 +29,54 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
 				     <div id="leads_filter" class="col-md-12" style="border-bottom:2px solid #E6E9ED;margin-bottom:10px;padding-bottom:10px;">
 							<form method="GET" action="" novalidate autocomplete="off" class="row g-3">
 							    
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                             <label for="Date From" class="form-label">Date From </label>
                             <input type="text" class="form-control leaddf"  value="{{ old('search[leaddf]',(isset($search['leaddf'])) ? $search['leaddf']:"")}}" name="search[leaddf]" placeholder="Create Date From">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                             <label for="validationDefault02" class="form-label">Date To</label>
                             <input type="text" class="form-control leaddt"  value="{{ old('search[leaddt]',(isset($search['leaddt'])) ? $search['leaddt']:"")}}"  name="search[leaddt]" placeholder="Create Date To">
                             </div>
 								 
 
-                            
+                      <div class="col-md-3">
+                            <label for="Follow Up Date From" class="form-label">Follow Up Date From </label>
+                            <input type="text" class="form-control expdf"  value="{{ old('search[expdf]',(isset($search['expdf'])) ? $search['expdf']:"")}}" name="search[expdf]" placeholder="Enter Follow Up Date From">
+                            </div>
+                            <div class="col-md-3">
+                            <label for="Follow Up Date To" class="form-label">Follow Up Date To</label>
+                            <input type="text" class="form-control expdt"  value="{{ old('search[expdt]',(isset($search['expdt'])) ? $search['expdt']:"")}}"  name="search[expdt]" placeholder="Enter Follow Up Date To">
+                            </div>
+
+
+                             <div class="col-md-3">
+                      <label for="validationDefault02" class="form-label">Service</label>
+                      <select class="form-control select2-keyword" name="search[service][]" multiple>
+
+                        <option value="">Select Service</option>
+
+                        @if(!empty($services))
+                          @if(isset($search['service']))
+                            @foreach($search['service'] as $value)
+                              {{ $courseSelected[] = $value }}
+                            @endforeach
+                          @endif
+                          @foreach($services as $service)
+                            @if(isset($courseSelected) && in_array($service->id, $courseSelected))
+                              <option value="{{ $service->id }}" selected>{{ $service->keyword }}</option>
+                            @else
+                              <option value="{{ $service->id }}">{{ $service->keyword }}</option>
+                            @endif
+                          @endforeach
+                        @endif
+
+                      </select>
+                    </div> 
 
                              <div class="col-md-3">
                 <label for="validationDefault02" class="form-label">Status</label>
-                <select class="form-control select2-status"  >                @if(!empty($statues))
+                <select class="form-control select2-status" name="search[status][]"  multiple>     
+                             @if(!empty($statues))
           @if(isset($search['status']))
             @foreach($search['status'] as $value)
               {{ $courseSelected[] = $value }}
@@ -59,14 +92,14 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
         @endif
 
 </select>
- 	<button type="submit" class="form-control btn btn-block btn-info" style="margin-top: 7px;background:#0d6efd;color:#fff">Filter</button>
+ 	
                 </div>
 
 
-							  <!-- <div class="col-md-4">
+							  <div class="col-md-3">
                             <label for="filter" class="form-label"></label>
-                           	<button type="submit" class="form-control btn btn-block btn-info" style="margin-top: 7px;background:#0d6efd;color:#fff">Filter</button>
-                            </div> -->
+                           <button type="submit" class="form-control btn btn-block btn-info" style="margin-top: 7px;background:#0d6efd;color:#fff">Filter</button>
+                            </div>
 								 
 							 
 						 
@@ -81,10 +114,12 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                       <b>N</b>ame
                     </th>
                     <th>Mobile</th>
-                    <th>Email</th>
+                    <!-- <th>Email</th> -->
                     <th>Keyword</th>
                     <th>City</th>
-                     <th>Date</th>
+                    <th>Status</th>
+                     <th>Entry Date</th>
+                     <th>FollowUp Date</th>
                      <th>Action</th>
                   </tr>
                 </thead>
