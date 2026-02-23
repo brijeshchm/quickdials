@@ -365,6 +365,7 @@ class LeadController extends Controller
 				$followUp = new LeadFollowUp;
 				$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 				$followUp->remark = $request->input('remark');
+				$followUp->expected_date_time = date('Y-m-d H:i:s');
 				$followUp->lead_id = $lead->id;
 				$followUp->remark_by = Auth::user()->id;
 				$followUp->save();
@@ -451,7 +452,7 @@ class LeadController extends Controller
 				$followUp = new LeadFollowUp;
 				$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 				$followUp->remark = $request->input('remark');
-
+				$followUp->expected_date_time = date('Y-m-d H:i:s');
 				$followUp->lead_id = $lead->id;
 				$followUp->remark_by = Auth::user()->id;
 				$followUp->save();
@@ -2236,6 +2237,7 @@ class LeadController extends Controller
 										$followUp = new LeadFollowUp;
 										$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 										$followUp->lead_id = $lead->id;
+										$followUp->expected_date_time = date('Y-m-d H:i:s');
 										$followUp->client_id = $client->id;
 										$followUp->save();
 
@@ -2379,6 +2381,7 @@ class LeadController extends Controller
 									$followUp = new LeadFollowUp;
 									$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 									$followUp->lead_id = $lead->id;
+									$followUp->expected_date_time = date('Y-m-d H:i:s');
 									$followUp->client_id = $client->id;
 									$followUp->save();
 								}

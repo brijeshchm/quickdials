@@ -1,9 +1,37 @@
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link " href="{{url('business/dashboard')}}">
           <i class="bi bi-grid"></i>
           <span>Your Dashboard</span>
         </a>
-    </li> 
+    </li>  -->
+ 
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#enquiry-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-grid"></i><span>Home</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+           
+        <ul id="enquiry-nav" class="nav-content collapse <?php if(Request::segment(2)=='dashboard' || Request::segment(2)=='lead-follow-up' ){ echo  "show"; }   ?>" data-bs-parent="#sidebar-nav">
+            
+         <li>
+            <a class="<?php if(Request::segment(2)=='dashboard') { echo "active"; } ?>" href="{{url('business/dashboard')}}">
+              <i class="bi bi-grid"></i><span>Your Dashboard</span>
+            </a>
+          </li>
+        
+          
+           
+          <li>
+            <a class="<?php if(Request::segment(2)=='lead-follow-up') { echo "active"; } ?>" href="{{url('business/lead-follow-up')}}">
+              <i class="bi bi-envelope"></i><span>Lead Follow</span>
+            </a>
+          </li>
+          
+ 
+        
+         
+        </ul>
+    </li>
      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#enquiry-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-people"></i><span>Enquiry</span><i class="bi bi-chevron-down ms-auto"></i>

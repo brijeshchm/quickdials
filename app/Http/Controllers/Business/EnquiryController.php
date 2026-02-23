@@ -10,11 +10,12 @@ use Validator;
 use DB;
 use Excel;
 use App\Models\Lead;
-
+use Carbon\Carbon;
 use App\Models\LeadFollowUp;
 use App\Models\Status;
 use App\Models\AssignedLead;
-
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+use Illuminate\Support\Collection;
 class EnquiryController extends Controller
 {
 	protected $danger_msg = '';
@@ -1054,6 +1055,8 @@ class EnquiryController extends Controller
 			return response()->json($returnLeads);
 		}
 	}
+
+
 	/**
 	 * Export assigned leads.
 	 */
@@ -1104,6 +1107,292 @@ class EnquiryController extends Controller
 			->where('assigned_leads.client_id', $clientID)->limit('20')->get();
 
 		return view('business.manage-enquiry', ['leads' => $leads]);
+	}
+
+	public function leadFollowUp(Request $request)
+	{
+		$clientID = auth()->guard('clients')->user()->id;
+
+		$search = [];
+		if ($request->has('search')) {
+			$search = $request->input('search');
+		}
+
+		$statues = Status::where('lead_filter','1')->get();
+			$services = DB::table('assigned_kwds')				 
+				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
+				->select('keyword.id','keyword.keyword')
+				->orderBy('keyword.keyword', 'asc')
+				->where('assigned_kwds.client_id', $clientID)
+				->get();
+
+
+
+		return view('business.lead-dashboard', ['search' => $search,'statues'=>$statues,'services'=>$services]);
+	}
+
+
+		/**
+	 * Return paginated resources.
+	 *
+	 * @return JSON Payload.
+	 */
+	 
+
+public function getLeadFollow(Request $request)
+    {
+		if($request->ajax()){
+			 
+			$user_id = $request->user()->id;
+			 
+			 
+			$data = [];
+			 
+
+			$leads = DB::table('leads as leads');
+			$leads = $leads->join('assigned_leads', 'leads.id', '=', 'assigned_leads.lead_id');
+		
+			// generating raw query to make join
+			$rawQuery = "SELECT m1.*,m3.name as status_name FROM lead_follow_ups m1 LEFT JOIN lead_follow_ups m2 ON (m1.lead_id = m2.lead_id AND m1.id < m2.id) INNER JOIN status m3 ON m1.status = m3.id WHERE m2.id IS NULL";
+
+			if($request->input('search.status')!=''){
+
+			 
+				$statuses = $request->input('search.status');
+				$i=0;
+				foreach($statuses as $status){
+					if(!$i){
+						$rawQuery .= " AND (m1.status=".$status;
+						$i=1;
+					}else{
+						$rawQuery .= " || m1.status=".$status;
+					}
+				}
+				$rawQuery .= ")";
+			 
+			}else{
+				 
+				$rawQuery .= " AND m1.status NOT IN (SELECT id FROM `status` WHERE `name` LIKE 'not interested' || `name` LIKE 'Not Connected' || `name` LIKE 'Other Joined' || `name` LIKE 'Joined' || `name` LIKE 'Invalid Number'   )";
+			}
+			
+			if($request->input('search.expdf')!=''){
+				 
+				$rawQuery .= " AND DATE(m1.expected_date_time)>='".date('Y-m-d',strtotime($request->input('search.expdf')))."'";
+			}
+			
+			if($request->input('search.expdt')!=''){
+				 
+				$rawQuery .= " AND DATE(m1.expected_date_time)<='".date('Y-m-d',strtotime($request->input('search.expdt')))."'";
+			}
+			
+			if($request->input('search.expdf') =='' && $request->input('search.expdt') ==''){
+
+			 
+				$rawQuery .= " AND DATE(m1.expected_date_time)<='".date('Y-m-d')."'";
+			}
+			
+			$leads = $leads->join(DB::raw('('.$rawQuery.') as fu'),'leads.id','=',DB::raw('`fu`.`lead_id`'));
+			// generating raw query to make join
+			
+			$leads = $leads->select('leads.*',DB::raw('`fu`.`status_name`'),DB::raw('`fu`.`status`'),DB::raw('`fu`.`expected_date_time`'),DB::raw('`fu`.`remark`'));
+			$leads = $leads->orderBy('leads.id','desc');
+			$leads = $leads->where('assigned_leads.client_id', $user_id);
+			if($request->input('search.value')!=''){
+				$leads = $leads->where(function($query) use($request){
+					$query->orWhere('leads.name','LIKE','%'.$request->input('search.value').'%')
+						  ->orWhere('leads.mobile','LIKE','%'.$request->input('search.value').'%');
+				});
+			}
+			if($request->input('search.service')!=''){
+				$courses = $request->input('search.service');
+				foreach($courses as $course){
+					$courseList[] = $course;
+				}
+				$leads = $leads->whereIn('leads.kw_id',$courseList);
+			}
+			
+		 
+			$leads = $leads->get();
+			
+		 
+			if($leads){
+				//$data = [];
+				foreach($leads as $lead){
+					$data[] = [
+						'target_id'=>$lead->id,
+						'expected_date_time'=>($lead->expected_date_time==NULL)?"":$lead->expected_date_time,					 
+						'name'=>$lead->name,
+						'mobile'=>$lead->mobile,
+						'kw_text'=>$lead->kw_text,					 
+						'status_name'=>$lead->status_name,
+						'status'=>$lead->status,
+						'remark'=>$lead->remark
+					];
+				}
+				 
+			}
+			
+			
+			
+			usort($data,function($a,$b){
+				$t1 = strtotime($a['expected_date_time']);
+				$t2 = strtotime($b['expected_date_time']);
+				//return $t1 - $t2; //ascending
+				return $t2 - $t1; //descending
+			});
+		 
+			
+			$currentPage = Paginator::resolveCurrentPage();
+			$collection = new Collection($data);
+			$perPage = $request->input('length');
+			$currentPageSearchResults = $collection->slice($currentPage*$perPage-$perPage, $perPage)->all();
+			$leads = new Paginator($currentPageSearchResults,count($collection),$perPage,$currentPage);
+			
+			$returnLeads = [];
+			$data = [];
+			$returnLeads['draw'] = $request->input('draw');
+			$returnLeads['recordsTotal'] = $leads->total();
+			$returnLeads['recordsFiltered'] = $leads->total();
+			$returnLeads['recordCollection'] = []; 
+			
+			foreach($leads->items() as $lead){
+				$action = '';
+				$separator = '';
+			 
+				 
+					 
+
+						$action .= $separator . '<a href="javascript:enquiryController.getfollowUps(' . $lead['target_id'] . ')" title="followUp"><i class="bi bi-eye" aria-hidden="true"></i></a>';
+				 
+				$data[] = [
+				 
+				 
+					($lead['expected_date_time']=="")?"":(new Carbon($lead['expected_date_time']))->format('d-m-Y h:i A'),
+					$lead['name'],
+					$lead['mobile'],
+					$lead['mobile'],
+					$lead['kw_text'],
+					 
+					$lead['status_name'],
+					$action
+				];
+				 
+				$returnLeads['recordCollection'][] = $lead['target_id'];
+			}
+			
+			$returnLeads['data'] = $data;
+			return response()->json($returnLeads);
+		}
+    }
+	
+	public function getLeadFollow_old(Request $request)
+	{
+		if ($request->ajax()) {
+
+			$clientID = auth()->guard('clients')->user()->id;		 
+
+			// dd($request->input('search'));
+			$leads = DB::table('leads as leads');
+			 
+			$leads = $leads->join('assigned_leads', 'leads.id', '=', 'assigned_leads.lead_id');
+			$leads = $leads->where('assigned_leads.client_id', $clientID);
+
+			// generating raw query to make join
+			$rawQuery = "SELECT m1.*,m3.name as status_name FROM lead_follow_ups m1 LEFT JOIN lead_follow_ups m2 ON (m1.lead_id = m2.lead_id AND m1.id < m2.id) INNER JOIN status m3 ON m1.status = m3.id WHERE m2.id IS NULL";
+			
+			if($request->input('search.status')!=''){
+				
+				$statuses = $request->input('search.status');
+				$i=0;
+				foreach($statuses as $status){
+					if(!$i){
+						$rawQuery .= " AND (m1.status=".$status;
+						$i=1;
+					}else{
+						$rawQuery .= " || m1.status=".$status;
+					}
+				}
+				$rawQuery .= ")";
+				//$rawQuery .= " AND m1.status=".$request->input('search.status');
+			}else{
+				$rawQuery .= " AND m1.status NOT IN (SELECT id FROM `status` WHERE `name` LIKE 'not interested' || `name` LIKE 'Not Connected' || `name` LIKE 'Other Joined' || `name` LIKE 'Joined' || `name` LIKE 'Invalid Number'   )";
+			}
+			// dd($rawQuery);
+			if($request->input('search.expdf')!=''){
+				$rawQuery .= " AND DATE(m1.expected_date_time)>='".date('Y-m-d',strtotime($request->input('search.expdf')))."'";
+			}
+			
+			if($request->input('search.expdt')!=''){
+				$rawQuery .= " AND DATE(m1.expected_date_time)<='".date('Y-m-d',strtotime($request->input('search.expdt')))."'";
+			}
+			
+			if($request->input('search.expdf') =='' && $request->input('search.expdt') ==''){
+
+		 
+				$rawQuery .= " AND DATE(m1.expected_date_time) <='".date('Y-m-d')."'";
+			}
+
+			 			
+			$leads = $leads->join(DB::raw('('.$rawQuery.') as fu'),'leads.id','=',DB::raw('`fu`.`lead_id`'));
+			// generating raw query to make join
+			
+			$leads = $leads->select('leads.*',DB::raw('`fu`.`status_name`'),DB::raw('`fu`.`status`'),DB::raw('`fu`.`expected_date_time`'),DB::raw('`fu`.`remark`'),DB::raw('`fu`.`created_at` as follow_up_date'));
+			$leads = $leads->orderBy('leads.id','desc');
+		 
+ 
+			
+				 
+			if($request->input('search.value')!=''){
+				$leads = $leads->where(function($query) use($request){
+					$query->orWhere('leads.name','LIKE','%'.$request->input('search.value').'%')
+					      ->orWhere('leads.email','LIKE','%'.$request->input('search.value').'%')
+						  ->orWhere('leads.mobile','LIKE','%'.$request->input('search.value').'%')
+						  ->orWhere('leads.city_name','LIKE','%'.$request->input('search.value').'%');
+				});
+			}
+			 
+			
+		 
+			if($request->input('search.service')!=''){
+				$courses = $request->input('search.service');
+				foreach($courses as $course){
+					$courseList[] = $course;
+				}
+				$leads = $leads->whereIn('leads.course',$courseList);
+			}
+			 
+			$leads = $leads->paginate($request->input('length'));	 
+			 
+			$returnLeads = [];
+			$data = [];
+			$returnLeads['draw'] = $request->input('draw');
+			$returnLeads['recordsTotal'] = $leads->total();
+			$returnLeads['recordsFiltered'] = $leads->total();
+			$returnLeads['recordCollection'] = [];
+
+			foreach ($leads as $lead) {
+
+				$action = '';
+				$separator = '';
+
+				$action .= $separator . '<a href="javascript:enquiryController.getfollowUps(' . $lead->id . ')" title="followUp"><i class="bi bi-eye" aria-hidden="true"></i></a>';
+				$separator = ' | ';
+				$data[] = [
+					date_format(date_create($lead->expected_date_time), 'd M, Y H:i'),
+					$lead->name,
+					$lead->mobile,
+					$lead->email,
+					$lead->kw_text,
+					$lead->city_name,
+					$lead->status_name,
+					
+					$action
+				];
+				$returnLeads['recordCollection'][] = $lead->id;
+			}
+			$returnLeads['data'] = $data;
+			return response()->json($returnLeads);
+		}
 	}
 
 }

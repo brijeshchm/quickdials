@@ -245,6 +245,8 @@ class BulkUploadController extends Controller
 				$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 				$followUp->remark = "New Lead";
 				$followUp->lead_id = $lead->id;
+				$followUp->lead_id = $lead->id;
+				$followUp->expected_date_time = date('Y-m-d H:i:s');
 				$followUp->save();
 			}
 		}

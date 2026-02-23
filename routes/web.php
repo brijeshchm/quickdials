@@ -52,6 +52,7 @@ Route::middleware('auth:clients')->group(function () {
 Route::get('/business/dashboard',[App\Http\Controllers\Business\BusinessDashboardController::class, 'dashboard']);
 Route::get('/business-owners/get-leads',[EnquiryController::class, 'getLeads']);
 Route::get('/business/enquiry',[EnquiryController::class,'enquiry']);
+Route::get('/business/lead-follow-up',[EnquiryController::class,'leadFollowUp']);
 Route::get('/business/new-enquiry',[EnquiryController::class,'newEnquiry']);
 Route::get('/business/myLead',[EnquiryController::class,'myLead']);
 Route::get('/business/favorite-enquiry',[EnquiryController::class,'favoriteEnquiry']);
@@ -174,6 +175,9 @@ Route::get('/business/get-paginated-payment-history',[App\Http\Controllers\Busin
  Route::post('/business/enquiry/store-follow-up/{id}',[App\Http\Controllers\Business\EnquiryController::class,'storeFollowUp']);
  Route::get('/business/enquiry/getfollowups/{id}',[App\Http\Controllers\Business\EnquiryController::class,'getFollowUps']);  
 
+
+Route::get('/business/get-lead-follow',[App\Http\Controllers\Business\EnquiryController::class,'getLeadFollow']);
+  
 
  Route::get('/business/keywords',[App\Http\Controllers\Business\BusinessKeywordController::class,'keywords']); 
 

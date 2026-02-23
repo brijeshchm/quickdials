@@ -38,10 +38,35 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                             <input type="text" class="form-control leaddt"  value="{{ old('search[leaddt]',(isset($search['leaddt'])) ? $search['leaddt']:"")}}"  name="search[leaddt]" placeholder="Create Date To">
                             </div>
 								 
-							  <div class="col-md-4">
+
+                            
+
+                             <div class="col-md-3">
+                <label for="validationDefault02" class="form-label">Status</label>
+                <select class="form-control select2-status"  >                @if(!empty($statues))
+          @if(isset($search['status']))
+            @foreach($search['status'] as $value)
+              {{ $courseSelected[] = $value }}
+            @endforeach
+          @endif
+          @foreach($statues as $status)
+            @if(isset($courseSelected) && in_array($status->id,$courseSelected))
+              <option value="{{ $status->id }}" selected>{{ $status->name }}</option>
+            @else
+              <option value="{{ $status->id }}">{{ $status->name }}</option>
+            @endif
+          @endforeach
+        @endif
+
+</select>
+ 	<button type="submit" class="form-control btn btn-block btn-info" style="margin-top: 7px;background:#0d6efd;color:#fff">Filter</button>
+                </div>
+
+
+							  <!-- <div class="col-md-4">
                             <label for="filter" class="form-label"></label>
-                           	<button type="submit" class="form-control btn btn-block btn-info" style="margin-top: 7px;">Filter</button>
-                            </div>
+                           	<button type="submit" class="form-control btn btn-block btn-info" style="margin-top: 7px;background:#0d6efd;color:#fff">Filter</button>
+                            </div> -->
 								 
 							 
 						 

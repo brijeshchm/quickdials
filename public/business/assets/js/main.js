@@ -1308,14 +1308,13 @@ var enquiryController  = (function(){
 					dataType:'json',
 					success:function(response){
 						if(response.status){
-							//$this.find('*[name="status"]').val('');
-							//$this.find('*[name="expected_date_time"]').val('');
+						 
 							$this.find('*[name="remark"]').val('');
 							alert('Follow Up created successfully');
 							dataTableFollowUps.ajax.reload( null, false );
-						//	dataTableExpectedLead.ajax.reload( null, false );
-							dataTableLead.ajax.reload(function(){
-								$('#datatable-view-all-students').find('[data-toggle="popover"]').popover({html:true,container:'body'});
+						 
+							dataTableLeadDashboard.ajax.reload(function(){
+								$('#datatable-lead-dashboard').find('[data-toggle="popover"]').popover({html:true,container:'body'});
 							},false);
 						 
 							removeValidationErrors($this);
@@ -1495,6 +1494,37 @@ var enquiryController  = (function(){
 				d.page = (d.start/d.length)+1;
 				d.search['leaddf']=$('*[name="search[leaddf]"]').val();
 			    d.search['leaddt']=$('*[name="search[leaddt]"]').val();	
+				d.columns = null;
+				d.order = null;
+			},
+			dataSrc:function(json){
+			    recordCollection = json.recordCollection; 
+			    return json.data;
+		    }
+		}
+	}).api();
+	
+	var dataTableLeadDashboard = $('#datatable-lead-dashboard').dataTable({
+		"fixedHeader": true,
+		"processing":true,
+		"serverSide":true,
+		"paging":true,
+		"responsive":true,
+		"searching":false,
+		"ajax":{
+			url:"/business/get-lead-follow",
+			data:function(d){
+				d.page = (d.start/d.length)+1;
+				d.search['expdf']=$('*[name="search[expdf]"]').val();
+			    d.search['expdt']=$('*[name="search[expdt]"]').val();
+				d.search['service']=$('*[name="search[service][]"]').val();
+			 
+				var status = $('*[name="search[status][]"]').val();
+				if(status!=null && status.length=='1' && status[0]==''){
+					d.search['status']="";
+				}else{
+					d.search['status']=$('*[name="search[status][]"]').val();
+				}	
 				d.columns = null;
 				d.order = null;
 			},
@@ -1808,7 +1838,13 @@ var dataTableReview = $('#datatable-business-review').on('draw.dt',function(e,se
 		});
 		$(".select2-keyword").select2({
 		theme: "bootstrap",
-		placeholder: "Select keyword",
+		placeholder: "Select Service",
+		maximumSelectionSize: 6,
+		containerCssClass: ":all:"
+		});
+		$(".select2-status").select2({
+		theme: "bootstrap",
+		placeholder: "Select Status",
 		maximumSelectionSize: 6,
 		containerCssClass: ":all:"
 		});

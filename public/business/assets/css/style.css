@@ -2705,3 +2705,9 @@ display: flex;
     align-items: center;
     gap: 6px;
 }
+
+#leads_filter{
+
+  background-color: #003366;
+    color: #fff;
+}
