@@ -817,7 +817,7 @@ class HomePageController extends Controller
 					//$followUp->remark_by =Auth::user()->id;
 					$followUp->save();
 
-					//leadassignWithoutZoneCounsellor($lead);
+					leadassignWithoutZoneCounsellor($lead);
 
 					return response()->json([
 						'statusCode' => 1,
