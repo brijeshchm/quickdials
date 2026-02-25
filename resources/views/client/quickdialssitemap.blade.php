@@ -54,5 +54,7 @@
 <sitemap><loc>https://www.quickdials.com/sitemap-guwahati</loc></sitemap>
 <sitemap><loc>https://www.quickdials.com/sitemap-indore</loc></sitemap>
 <sitemap><loc>https://www.quickdials.com/sitemap-gorakhpur</loc></sitemap>
+<sitemap><loc>https://www.quickdials.com/sitemap-blog</loc></sitemap>
+<sitemap><loc>https://www.quickdials.com/sitemap-online</loc></sitemap>
 
 </sitemapindex>
