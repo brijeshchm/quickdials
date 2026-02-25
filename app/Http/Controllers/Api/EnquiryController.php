@@ -225,7 +225,7 @@ class EnquiryController extends Controller
 				}
 
 
-				$leadFollowUp->remark = trim($request->input('remark'));
+				$leadFollowUp->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 				$leadFollowUp->lead_id = $id;
 				$leadFollowUp->client_id = auth()->guard('clients')->user()->id;
 				$leadFollowUp->expected_date_time = NULL;

@@ -255,7 +255,7 @@ footer {
 	cursor: pointer;
 	padding: 5px;
 }
-.bi{
+.enquiry-details .bi{
   margin-right: 4px;
 }
 .footer-item i {
@@ -1306,9 +1306,9 @@ color:#000;
   
  
 
-.bi {
+/* .bi {
     margin-right: 5px;
-}
+} */
 .cont-no a {
     color: #333;
     text-decoration: none;

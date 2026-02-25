@@ -195,7 +195,7 @@ class PushLeadController extends Controller
 			}
 
 
-			$lead->remark = $request->input('remark');
+			$lead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 			if ($lead->save()) {
 				return response()->json([
 					"statusCode" => 1,
@@ -481,7 +481,7 @@ class PushLeadController extends Controller
 				}
 
 
-				$pushLead->remark = $request->input('remark');
+				$pushLead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 
 				if ($pushLead->save()) {
 					return response()->json([

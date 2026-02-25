@@ -223,7 +223,7 @@ class MeetingController extends Controller
 				$meeting->assign_id = $request->input('sales_manager');
 				$meeting->date_time = $request->input('expected_date_time');
 				$meeting->status = $request->input('status');
-				$meeting->remark = $request->input('remark');
+				$meeting->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 				$meeting->remark_by = Auth::user()->id;
 				if ($meeting->save()) {
 					return response()->json([

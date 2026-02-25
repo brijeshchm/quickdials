@@ -251,7 +251,7 @@ class LeadController extends Controller
 
 				}
 
-				$lead->remark = $request->input('remark');
+				$lead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 				if ($lead->save()) {
 					return response()->json([
 						"statusCode" => 1,
@@ -359,12 +359,12 @@ class LeadController extends Controller
 			$lead->status_id = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 			$lead->status_name = Status::where('name', 'LIKE', 'New Lead')->first()->name;
 
-			$lead->remark = $request->input('remark');
+			$lead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 
 			if ($lead->save()) {
 				$followUp = new LeadFollowUp;
 				$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
-				$followUp->remark = $request->input('remark');
+				$followUp->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 				$followUp->expected_date_time = date('Y-m-d H:i:s');
 				$followUp->lead_id = $lead->id;
 				$followUp->remark_by = Auth::user()->id;
@@ -446,12 +446,12 @@ class LeadController extends Controller
 			$lead->status_id = Status::where('name', 'LIKE', 'New Lead')->first()->id;
 			$lead->status_name = Status::where('name', 'LIKE', 'New Lead')->first()->name;
 
-			$lead->remark = $request->input('remark');
+			$lead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 
 			if ($lead->save()) {
 				$followUp = new LeadFollowUp;
 				$followUp->status = Status::where('name', 'LIKE', 'New Lead')->first()->id;
-				$followUp->remark = $request->input('remark');
+				$followUp->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 				$followUp->expected_date_time = date('Y-m-d H:i:s');
 				$followUp->lead_id = $lead->id;
 				$followUp->remark_by = Auth::user()->id;
@@ -858,7 +858,7 @@ class LeadController extends Controller
 												$template = 'emails.sendlead';
 												$clientname=$clientC->business_name;
 												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($clientC,$lead) {    
-												$m->from('leads@quickdials.com', 'QuickDials');             
+												$m->from('otp@quickdials.com', 'QuickDials');             
 
 												$m->to($clientC->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
 												});
@@ -1171,7 +1171,7 @@ class LeadController extends Controller
 												$template = 'emails.sendlead';
 												$clientname=$clnt->business_name;
 												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($clnt,$lead) {    
-												$m->from('leads@quickdials.com', 'QuickDials');             
+												$m->from('otp@quickdials.com', 'QuickDials');             
 
 												$m->to($clnt->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
 												});
@@ -1483,7 +1483,7 @@ class LeadController extends Controller
 
 				}
 
-				$lead->remark = $request->input('remark');
+				$lead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 				if ($lead->save()) {
 					return response()->json([
 						"statusCode" => 1,
@@ -2271,7 +2271,7 @@ class LeadController extends Controller
 								$template = 'emails.sendlead';
 								$clientname=$client->business_name;
 								$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($client,$lead) {    
-								$m->from('leads@quickdials.com', 'QuickDials');             
+								$m->from('otp@quickdials.com', 'QuickDials');             
 							 
 								$m->to($client->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
 								});	
@@ -2802,7 +2802,7 @@ class LeadController extends Controller
 			$cityObj = Citieslists::where('city', $request->input('city_id'))->first();
 			$lead->city_id = $cityObj->id;
 			$lead->city_name = $cityObj->city;
-			$lead->remark = $request->input('remark');
+			$lead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 			$lead->lead_joined = $request->input('client');
 
 			if ($request->input('area_zone') != '') {
@@ -2835,7 +2835,7 @@ class LeadController extends Controller
 				}
 
 				$leadFollowUp->remark_by = Auth::user()->id;
-				$leadFollowUp->remark = $request->input('remark');
+				$leadFollowUp->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 				$leadFollowUp->lead_id = $id;
 				$leadFollowUp->expected_date_time = NULL;
 				if ($request->input('expected_date_time') != '') {

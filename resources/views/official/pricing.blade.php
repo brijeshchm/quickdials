@@ -6,8 +6,22 @@
 @section('content') 
  <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
 <div class="about-bg page-hearder-area">
-    <div class="official-overly"></div> 
+  <div class="container">
+            <h1>Welcode to  <strong>QuickDials<span class="tm">TM</span></strong>.com</h1>
+            <p>Pick a plan that suits your business size and how fast you want to grow. Every package gives
+you easy system access and tools to manage your enquiries smoothly. Higher plans come with
+more user access and extra coins, which help you reach more customers and handle more
+requests. All plans are made to keep things simple, clear, and easy to use for your daily
+business needs.</p>
+        </div>
+
+    
   </div>   
+
+  
+ 
+
+
   <style>
     #pricing{ padding:40px 0px; }
   </style>
@@ -73,6 +87,27 @@
   </style>
   <div class="pricing-table">
     <h1>Package Details</h1>
+
+      <div class="plan">
+    
+      <div class="price">INR <i class="fa fa-rupee"></i> 0 Free</div>
+      <ul>
+        <li>Long time system login access</li>
+        <li>Online system</li>
+        <li>Full access</li>
+        <li>Push Notification</li>
+        <li>Roles & Permissions</li>
+        <li class="coins">Coins(555)Free First Time</li>
+      </ul>
+
+      <?php 	if(!Auth::guard('clients')->check()){ ?>
+      <a href="javascript:void(0);" class="signup login">Sign up now</a>
+      <?php  }else{ ?>
+      <a href="{{ url('business/package') }}" class="signup">Sign Now</a>
+      <?php  } ?>
+    </div>
+
+
     <div class="plan">
     
       <div class="price">INR <i class="fa fa-rupee"></i> 1000</div>
@@ -82,7 +117,7 @@
         <li>Full access</li>
         <li>Push Notification</li>
         <li>Roles & Permissions</li>
-        <li class="coins">Coins(1111)Free First Time</li>
+        <li class="coins">Coins(1111)</li>
       </ul>
 
       <?php 	if(!Auth::guard('clients')->check()){ ?>

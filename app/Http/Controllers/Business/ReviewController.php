@@ -183,7 +183,7 @@ class ReviewController extends Controller
 				$comments->comment_author = trim($request->input('name'));
 				$comments->comment_author_email = trim($request->input('email'));
 				$comments->comment_author_phone = trim($request->input('phone'));
-				$comments->comment_content = trim($request->input('remark'));		 
+				$comments->comment_content = htmlspecialchars(strip_tags(trim($request->input('remark'))));		 
 			//  dd($comments);
 
 			$comments->save();

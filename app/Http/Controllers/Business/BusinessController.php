@@ -203,7 +203,7 @@ class BusinessController extends Controller
 	public function sendUandP($client, $usr, $pass)
 	{
 		Mail::send('emails.register', ['client' => $client, 'usr' => $usr, 'pass' => $pass], function ($m) use ($client) {
-			$m->from('leads@quickdials.com', 'quickdials');
+			$m->from('otp@quickdials.com', 'quickdials');
 			$m->to($client->email, $client->first_name . " " . $client->last_name)->subject('quickdials Login Credentials')->cc('clients@quickdials.com');
 		});
 	}
