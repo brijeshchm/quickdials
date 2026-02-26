@@ -253,10 +253,7 @@ class CitiesController extends Controller
 
 			if ($request->has('q')) {
 				$cities = DB::table('citylists')->select('id', 'city')->where('city', 'LIKE', '%' . $request->input('q') . '%')->get();
-
-				if (!$cities) {
-					$cities = Zone::select('id', 'zone')->where('zone', 'LIKE', '%' . $request->input('q') . '%')->get();
-				}
+ 
 			} else {
 				$cities = Citieslists::select('id', 'city')->get();
 

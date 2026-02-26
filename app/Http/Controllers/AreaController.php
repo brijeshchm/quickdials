@@ -264,7 +264,45 @@ class AreaController extends Controller
 	 */
 	public function getAjaxAreas(Request $request)
 	{
+		header("Access-Control-Allow-Origin: *");
+		header('Access-Control-Allow-Credentials: true');
+		if ($request->wantsJson()) {
+		 
+			if ($request->has('q')) {
+				//$city = Citieslists::where('city', 'LIKE', $request->input('city'))->first();
+			 
+			$city = Citieslists::where('id',  $request->input('city'))->first();
+				if ($city) {
+				$zones = DB::table('zones')				 
+					->where('city_id',$city->id)
+					->where(function ($query) use ($request) {
+						$q = $request->input('q');
+						$query->where('zones.zone', 'LIKE', "%$q%")							 
+							->orWhere('zones.pincode', 'LIKE', "%$q%");
+					})
+					->select('zones.id as zone_id', 'zones.zone','zones.pincode')
+					->distinct()
+					->get();
 
+				}
+
+			}else{
+				$city = Citieslists::where('id',  $request->input('city'))->first();
+				if ($city) {
+					$zones = DB::table('zones')->select('zones.id as zone_id', 'zones.zone','zones.pincode');
+					$zones = $zones->where('city_id', $city->id);
+					$zones = $zones->get();
+				}
+			} 
+		}
+			return response()->json(['status' => 1, 'areas' => $zones]);
+
+	}
+	public function getAjaxAreas_old(Request $request)
+	{
+
+
+	
 		header("Access-Control-Allow-Origin: *");
 		header('Access-Control-Allow-Credentials: true');
 		if ($request->wantsJson()) {

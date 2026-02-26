@@ -1247,19 +1247,15 @@ class LeadController extends Controller
 						}
 					}
 				}
+
+				 
 				$areaZoneOptionHtml = "";
-				if (!empty($lead->area_id)) {
-					$area = DB::table('areas');
-					$area = $area->join('zones', 'areas.zone_id', '=', 'zones.id');
-					$area = $area->select('areas.*', 'zones.zone');
-					$area = $area->where('areas.id', $lead->area_id);
-					$area = $area->first();
-					if ($area) {
-						$areaZoneOptionHtml .= "<option value='{$area->id}' selected>{$area->zone} ({$area->area})</option>";
-					}
+				if (!empty($lead->zone_id)) {
+					$zonelists = Zone::where('id',$lead->zone_id)->orderBy('zone', 'ASC')->first();
+				if ($zonelists) {
+					$areaZoneOptionHtml .= "<option value='{$zonelists->id}' selected>{$zonelists->zone} ({$zonelists->pincode})</option>";
 				}
-
-
+				}
 
 				$keywordlists = Keyword::orderBy('keyword', 'ASC')->get();
 				$kwOptionHtml = '<option value="" >Select Keyword</option>';
@@ -2504,7 +2500,10 @@ class LeadController extends Controller
 	public function followUp(Request $request, $id = null)
 	{
 
-		$lead = Lead::findOrFail($id);
+	
+ 		$lead = Lead::findOrFail($id);
+
+
 		if ($lead) {
 			$leadLastFollowUp = DB::table('lead_follow_ups as lead_follow_ups')
 				->where('lead_follow_ups.lead_id', '=', $id)
@@ -2512,38 +2511,38 @@ class LeadController extends Controller
 				->orderBy('lead_follow_ups.id', 'desc')
 				->first();
 
-			$statuses = Status::where('lead_follow_up', 1)->orderBy('name', 'ASC')->get();
+			$statuses = Status::where('lead_follow_up', '1')->orderBy('name', 'ASC')->get();
 
 			$statusHtml = '';
 			$disabled = '';
 			$dateValue = '';
-
+ 
 			if (!empty($statuses)) {
 				foreach ($statuses as $status) {
-					if (strcasecmp($status->name, 'new lead')) {
-						$selected = '';
-						if (!empty($leadLastFollowUp)) {
-							if ($leadLastFollowUp->status == $status->id) {
+					if ($lead->status_id == $status->id) {
+						$selected = 'selected';
+					 
+						 
 
-								if ($leadLastFollowUp->status == 14) {
-									$leadJoind = 'display:block';
-								}
-								$selected = 'selected';
-								if (!$status->show_exp_date) {
-									$disabled = 'disabled';
-									if ($leadLastFollowUp->expected_date_time != NULL) {
-										$dateValue = date_format(date_create($leadLastFollowUp->expected_date_time), 'd-F-Y g:i A');
-									}
-								}
+							if ($status->id == 14) {
+							$leadJoind = 'display:block';
 							}
+
+							if (!$status->show_exp_date) {
+							$disabled = 'disabled';
+							if ($leadLastFollowUp->expected_date_time != NULL) {
+							$dateValue = date_format(date_create($leadLastFollowUp->expected_date_time), 'd-F-Y g:i A');
+							}
+							}
+						 
 
 
 							$statusHtml .= '<option data-value="' . $status->show_exp_date . '" value="' . $status->id . '" ' . $selected . '>' . $status->name . '</option>';
 
-						} else {
+						 
+					}else {
 							$statusHtml .= '<option data-value="' . $status->show_exp_date . '" value="' . $status->id . '" >' . $status->name . '</option>';
 						}
-					}
 				}
 			}
 
@@ -2589,25 +2588,21 @@ class LeadController extends Controller
 			$cityHtml = '';
 			if (!empty($citieslists)) {
 				foreach ($citieslists as $city) {
-
-					if ($city->id == $lead->city_id) {
-						$cityHtml .= '<option value="' . $city->city . '" selected>' . $city->city . '</option>';
+					if ($city->city == $lead->city_name) {
+						$cityHtml .= '<option value="' . $city->id . '" selected>' . $city->city . '</option>';
 					} else {
-						$cityHtml .= '<option value="' . $city->city . '">' . $city->city . '</option>';
+						$cityHtml .= '<option value="' . $city->id . '">' . $city->city . '</option>';
 					}
 				}
 			}
 
 
+
 			$areaZoneOptionHtml = "";
-			if (!empty($lead->area_id)) {
-				$area = DB::table('areas');
-				$area = $area->join('zones', 'areas.zone_id', '=', 'zones.id');
-				$area = $area->select('areas.*', 'zones.zone');
-				$area = $area->where('areas.id', $lead->area_id);
-				$area = $area->first();
-				if ($area) {
-					$areaZoneOptionHtml .= "<option value='{$area->id}' selected>{$area->zone} ({$area->area})</option>";
+			if (!empty($lead->zone_id)) {			 
+				$zonelists = Zone::where('id',$lead->zone_id)->orderBy('zone', 'ASC')->first();
+				if ($zonelists) {
+					$areaZoneOptionHtml .= "<option value='{$zonelists->id}' selected>{$zonelists->zone} ({$zonelists->pincode})</option>";
 				}
 			}
 
@@ -2689,7 +2684,7 @@ class LeadController extends Controller
 										<div class="col-md-4">
 										<label>Remark<span class="required">*</span></label>
 										<input type="hidden" name="lead_id" value="' . $lead->id . '">									 
-										<textarea name="remark" rows="2" class="form-control"></textarea>
+										<textarea name="remark" rows="2" class="form-control">'.$lead->remark.'</textarea>
 										</div>
 									</div>								 
 							 
@@ -2756,6 +2751,7 @@ class LeadController extends Controller
 	public function storeLeadFollowup(Request $request, $id)
 	{
 
+	// dd($request->all());
 		if ($request->ajax()) {
 			$validator = Validator::make($request->all(), [
 
@@ -2763,7 +2759,7 @@ class LeadController extends Controller
 				'course' => 'required',
 				'status' => 'required',
 				'remark' => 'required',
-				//'area_zone'=>'required',
+				'area_zone'=>'required',
 
 
 			]);
@@ -2797,54 +2793,28 @@ class LeadController extends Controller
 			$lead = Lead::find($id);
 			$statusObj = Status::find($request->input('status'));
 			$keywordObj = Keyword::find($request->input('course'));
-			$lead->kw_id = $request->input('course');
+			$lead->kw_id = $keywordObj->id;
 			$lead->kw_text = $keywordObj->keyword;
-			$cityObj = Citieslists::where('city', $request->input('city_id'))->first();
+			$cityObj = Citieslists::where('id', $request->input('city_id'))->first();
 			$lead->city_id = $cityObj->id;
 			$lead->city_name = $cityObj->city;
 			$lead->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
 			$lead->lead_joined = $request->input('client');
 
 			if ($request->input('area_zone') != '') {
-				$lead->zone_id = $request->input('area_zone');
-				$areas = DB::table(DB::raw("(SELECT * FROM areas WHERE id={$request->input('area_zone')}) as aa"));
-				$areas = $areas->join('zones', 'zones.id', '=', DB::raw('`aa`.`zone_id`'));
-				$areas = $areas->select('aa.id', 'aa.area', 'aa.zone_id', 'zones.zone');
-				$areas = $areas->first();
-				$lead->area = $areas->zone . " " . "(" . $areas->area . ")";
-				$lead->area_id = $areas->id;
-				$lead->zone_id = $areas->zone_id;
+			 
+				$zone = DB::table('zones')->where('id',$request->input('area_zone'))->select('id', 'zone')->first();	
+
+				$lead->zone_id = $zone->id;
+				$lead->zone = $zone->zone;
 			}
 
 
 			$lead->status_id = $request->input('status');
 			$lead->status_name = $statusObj->name;
 			if ($lead->save()) {
-				$leadFollowUp = new LeadFollowUp;
-				$status = Status::findorFail($request->input('status'));
-				if (!strcasecmp($status->name, 'npup')) {
-					$npupCount = LeadFollowUp::where('lead_id', $id)->where('status', $status->id)->count();
-					if ($npupCount >= 9) {
-						$status = Status::where('name', 'LIKE', 'Not Interested')->first();
-						$leadFollowUp->status = $status->id;
-					} else {
-						$leadFollowUp->status = $request->input('status');
-					}
-				} else {
-					$leadFollowUp->status = $request->input('status');
-				}
 
-				$leadFollowUp->remark_by = Auth::user()->id;
-				$leadFollowUp->remark = htmlspecialchars(strip_tags(trim($request->input('remark'))));
-				$leadFollowUp->lead_id = $id;
-				$leadFollowUp->expected_date_time = NULL;
-				if ($request->input('expected_date_time') != '') {
-					$leadFollowUp->expected_date_time = date('Y-m-d H:i:s', strtotime($request->input('expected_date_time')));
-				}
-				if ($leadFollowUp->save()) {
-
-
-					return response()->json([
+			return response()->json([
 						'statusCode' => 1,
 						'data' => [
 							'responseCode' => 200,
@@ -2852,8 +2822,11 @@ class LeadController extends Controller
 							'message' => 'Follow Up created successfully'
 						]
 					], 200);
-				} else {
-					return response()->json([
+
+				 
+			}else{
+
+return response()->json([
 						'statusCode' => 1,
 						'data' => [
 							'responseCode' => 200,
@@ -2861,8 +2834,6 @@ class LeadController extends Controller
 							'message' => 'Some Error Follow up'
 						]
 					], 200);
-
-				}
 			}
 		}
 	}

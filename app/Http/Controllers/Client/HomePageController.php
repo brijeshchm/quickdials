@@ -748,7 +748,6 @@ class HomePageController extends Controller
 				}
 			}
 
-
 			if ($request->has('b_end')) {
 				$lead->b_end = $request->input('b_end');
 			}

@@ -1970,8 +1970,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 					"type":"GET",
 					"success":function(data,textStatus,jqXHR){
 						//alert(JSON.stringify(data)+" => "+textStatus+" => "+JSON.stringify(jqXHR));
-					 console.log(data.statusCode);
-					 console.log(data.data.message);
+					 
 						if(data.statusCode){
 							alert(data.data.message);
 							pushedEl.attr('title','Pushed');
@@ -6025,6 +6024,7 @@ var keyword = {
 	},
 	setProperties:function(field,value){
 	var client_id= $('#clientIDASSKW').val();	 
+ 
 		switch(field){
 			case 'city':
 				this.city = value;
@@ -7533,10 +7533,18 @@ function bindSelect2OnAreaZone(){
 			processResults: function(data) {
 				return {
 					results: $.map(data.areas, function(obj) {
-						return {
-							id: obj.id,
-							text: obj.zone+" "+"("+obj.area+")"
-						};
+						// return {
+						// 	id: obj.id,
+						// 	text: obj.zone+" "+"("+obj.area+")"
+						// };
+
+
+						  return {
+                                    id: obj.zone_id,
+                                    text:
+                                        (obj.zone ? obj.zone + '' : '') +                                       
+                                        (obj.pincode ? ', ' + obj.pincode : '')
+                                };
 					})
 				}
 			},

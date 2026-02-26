@@ -243,17 +243,13 @@ class PushLeadController extends Controller
 
 			if ($pushLead) {
 
-
-
 				$areaZoneOptionHtml = "";
-				if (null != $pushLead->area_id) {
-					$area = DB::table('areas');
-					$area = $area->join('zones', 'areas.zone_id', '=', 'zones.id');
-					$area = $area->select('areas.*', 'zones.zone');
-					$area = $area->where('areas.id', $pushLead->area_id);
-					$area = $area->first();
-					if ($area) {
-						$areaZoneOptionHtml .= "<option value='{$area->id}' selected>{$area->zone} ({$area->area})</option>";
+				if (null != $pushLead->zone_id) {
+					$zones = DB::table('zones')->select('id', 'zone','pincode');
+					$zones = $zones->where('id', $pushLead->zone_id);
+					$zones = $zones->first();
+					if ($zones) {
+						$areaZoneOptionHtml .= "<option value='{$zones->id}' selected>{$zones->zone} ({$zones->pincode})</option>";
 					}
 				}
 				$kwOptionHtml = "";
@@ -267,9 +263,9 @@ class PushLeadController extends Controller
 					foreach ($citieslists as $city) {
 
 						if ($city->id == $pushLead->city_id) {
-							$cityHtml .= '<option value="' . $city->city . '" selected>' . $city->city . '</option>';
+							$cityHtml .= '<option value="' . $city->id . '" selected>' . $city->city . '</option>';
 						} else {
-							$cityHtml .= '<option value="' . $city->city . '">' . $city->city . '</option>';
+							$cityHtml .= '<option value="' . $city->id . '">' . $city->city . '</option>';
 						}
 					}
 				}
@@ -278,7 +274,7 @@ class PushLeadController extends Controller
 				$userOptionHtml = "";
 				if (null != $pushLead->created_by) {
 					$user = DB::table('users');
-					$user = $user->select('users.*');
+					$user = $user->select('id','first_name','last_name');
 					$user = $user->where('users.id', $pushLead->created_by);
 					$user = $user->first();
 					if ($user) {
@@ -411,16 +407,14 @@ class PushLeadController extends Controller
 	public function update(Request $request, $id)
 	{
 
-
+// dd($request->all());
 		$validator = Validator::make($request->all(), [
 			'name' => 'required|unique:leads,name,' . $id . ',id,mobile,' . $request->input('mobile'),
 			'mobile' => 'required',
 			'city_id' => 'required',
-			//	'area_zone'=>'required',
+			'area_zone'=>'required',
 			'kw_text' => 'required',
-
-
-			'created_by' => 'required',
+			// 'created_by' => 'required',
 		]);
 		if ($validator->fails()) {
 			$errorsBag = $validator->getMessageBag()->toArray();
@@ -443,9 +437,10 @@ class PushLeadController extends Controller
 			if ($pushLead) {
 
 
-				$city = Citieslists::where('city', 'like', $request->input('city_id'))->first();
+				$city = Citieslists::where('id',  $request->input('city_id'))->first();
 
 				$pushLead->city_id = $city->id;
+				$pushLead->city_name = $city->city;
 				$pushLead->name = $request->input('name');
 
 				$pushLead->email = $request->input('email');
@@ -454,14 +449,9 @@ class PushLeadController extends Controller
 				$pushLead->created_by = $request->input('created_by');
 
 				if ($request->input('area_zone')) {
-					$areas = DB::table(DB::raw("(SELECT * FROM areas WHERE id={$request->input('area_zone')}) as aa"));
-					$areas = $areas->join('zones', 'zones.id', '=', DB::raw('`aa`.`zone_id`'));
-					$areas = $areas->select('aa.id', 'aa.area', 'aa.zone_id', 'zones.zone');
-					$areas = $areas->first();
-
-					$pushLead->area = $areas->zone . " " . "(" . $areas->area . ")";
-					$pushLead->area_id = $areas->id;
-					$pushLead->zone_id = $areas->zone_id;
+					$zones = DB::table('zones')->select('id', 'zone', 'pincode')->where('id',$request->input('area_zone'))->first();
+					$pushLead->zone_id = $zones->id;
+					$pushLead->zone = $zones->zone;
 				}
 
 
