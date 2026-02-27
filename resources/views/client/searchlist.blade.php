@@ -430,6 +430,248 @@
 					</div>
 				@endforeach
 				<ul id="pagin"></ul>
+
+
+				<?php 
+						if (!empty($keyword->heading)) {
+
+					$i = 0;
+					$i++;	?>
+
+				<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
+					<div class="client-list-first">
+
+						<style>
+							.abt-accordion .card {
+								border-radius: 0;
+								border: 1px solid rgba(179, 179, 179, 0.45);
+								margin-bottom: 10px;
+								max-width: 960px;
+								border-radius: 0;
+								box-shadow: 0 0 5px 3px #d4d4d466;
+							}
+
+
+							.card {
+								position: relative;
+								display: -ms-flexbox;
+								display: flex;
+								-ms-flex-direction: column;
+								flex-direction: column;
+								min-width: 0;
+								word-wrap: break-word;
+								background-color: #fff;
+								background-clip: border-box;
+								border: 1px solid rgba(0, 0, 0, .125);
+								border-radius: .25rem;
+							}
+
+							.abt-accordion .card .card-header {
+								padding: 7px;
+								background: none;
+								border: none;
+							}
+
+							.card-header:first-child {
+								border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+							}
+
+							.abt-accordion .card .card-header h2 button {
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								width: 100%;
+								text-decoration: none;
+								border-radius: 0;
+								font-weight: 700;
+								margin-left: 3%;
+							}
+
+							.abt-accordion .card .collapse.show {
+								position: relative;
+							}
+
+							.card-body {
+								-ms-flex: 1 1 auto;
+								flex: 1 1 auto;
+								padding: 1.25rem;
+								font-weight: 400;
+								font-size: 13px !important;
+								margin-bottom: 0;
+								line-height: 1.7;
+								padding-left: 1.5em;
+								color: #212529 !important;
+							}
+
+							.about-accordian .card-body p {
+								padding-left: 0;
+								margin-bottom: 0;
+							}
+
+							.card-body p {
+								font-weight: 400;
+								font-size: 13px;
+								margin-bottom: 10px;
+								line-height: 1.7;
+								padding-left: 1.5em;
+							}
+
+							.about-accordian ul {
+								list-style: none;
+							}
+
+							.about-accordian .card-body ul li:first-child {
+								margin-top: 0;
+							}
+
+							.about-accordian .card-body ul li {
+								position: relative;
+								font-weight: 400;
+								font-size: 13px !important;
+								line-height: 1.7;
+								margin-left: 0;
+								margin-bottom: 11px;
+								margin-top: 10px;
+								text-align: justify;
+							}
+
+							.about-accordian .card-body ul ul {
+								position: relative;
+								font-weight: 400;
+								font-size: 13px !important;
+								line-height: 1.7;
+								margin-left: 22px;
+							}
+
+							.about-accordian ul {
+								list-style: none;
+							}
+
+							.abt-accordion .card .collapse.show::before {
+								content: '';
+								width: 94%;
+								height: 1px;
+								position: absolute;
+								top: 0;
+								left: 0;
+								background-color: #02b0af;
+								margin-left: 3%;
+							}
+
+							.about-accordian .card-body ul ul li {
+								margin-bottom: 0;
+								margin-top: 0;
+							}
+
+							.about-accordian ul ul p::before {
+								content: " ";
+								position: absolute;
+								top: 3px;
+								left: -16px;
+								display: inline-block;
+								-webkit-transform: rotate(45deg);
+								-ms-transform: rotate(45deg);
+								transform: rotate(45deg);
+								height: 1em;
+								width: .5em;
+								border-bottom: .2em solid #ff5f14;
+								border-right: .2em solid #ff5f14;
+							}
+						</style>
+
+						<div class="about-accordian">
+
+							<div class="abt-accordion" id="courseAcrdMain">
+
+								<div class="card">
+									<div class="card-header" id="abthdgOne">
+										<h2 class="mb-0"><button type="button" class="btn-link"
+												data-target="#heading_<?php echo $keyword->key_id; ?>"
+												data-parent="#courseAcrdMain">
+												<span>{!!$keyword->heading!!}</span> </button> </h2>
+									</div>
+									<div id="heading_<?php echo $keyword->key_id; ?>" class="collapse <?php if ($i == 1) {
+						echo "show";
+					} ?>" aria-labelledby="abthdgOne">
+										<div class="card-body">
+											<ul>
+
+												@if($keyword->courseabout)
+																			<li style="font-size: 13px;">
+																				<?php $courseabout = preg_replace('/{{city}}/i', ucfirst($city), $keyword->courseabout);
+													echo trim($courseabout); ?>
+
+																			</li>
+												@endif
+												<ul>
+													@if($keyword->paragraph1)
+																					<li>
+																						<p style="font-size: 13px;">
+																							<?php $paragraph1 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph1);
+														echo trim($paragraph1); ?>
+
+																						</p>
+																					</li>
+
+													@endif
+													@if($keyword->paragraph2)
+																					<li>
+																						<p style="font-size: 13px;">
+																							<?php $paragraph2 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph2);
+														echo trim($paragraph2); ?>
+
+																						</p>
+																					</li>
+													@endif
+
+													@if($keyword->paragraph3)
+																					<li>
+																						<p style="font-size: 13px;">
+																							<?php $paragraph3 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph3);
+														echo trim($paragraph3); ?>
+
+																						</p>
+																					</li>
+													@endif
+
+													@if($keyword->paragraph4)
+																					<li>
+																						<p style="font-size: 13px;">
+																							<?php $paragraph4 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph4);
+														echo trim($paragraph4); ?>
+																						</p>
+																					</li>
+													@endif
+
+													@if($keyword->paragraph5)
+																					<li>
+																						<p style="font-size: 13px;">
+																							<?php $paragraph5 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph5);
+														echo trim($paragraph5); ?>
+																						</p>
+																					</li>
+													@endif
+
+
+													@if($keyword->paragraph6)
+																					<li>
+																						<p style="font-size: 13px;">
+
+																							<?php $paragraph6 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph6);
+														echo trim($paragraph6); ?>
+																						</p>
+																					</li>
+													@endif
+												</ul>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php  } ?>
 			@else
 				<?php 
 						if (!empty($keyword->heading)) {
