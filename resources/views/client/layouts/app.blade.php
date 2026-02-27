@@ -39,7 +39,14 @@
     <meta name="geo.placename" content="Noida" />
     <meta name="geo.position" content="28.5802;77.3181" />
     <meta name="ICBM" content="28.5802, 77.3181" />
-    <meta name="robots" content="index, follow" />
+ 
+@if(View::hasSection('meta_robots'))
+    @yield('meta_robots')
+@else
+    <meta name="robots" content="index, follow">
+@endif
+
+ 
     <meta name="Revisit-after" content="7 Days" />
     <meta property="og:locale" content="en_IN" />
     <meta property="og:type" content="website" />
@@ -48,7 +55,7 @@
     <meta property="og:url" content="{{ URL::current() }}" />
     <meta property="og:site_name" content="Quick Dials" />
     <meta name="application-name" content="Quick Dials" />
-    <meta property="fb:app_id" content="https://www.facebook.com/quickindofficial/" />
+    <meta property="fb:app_id" content="https://www.facebook.com/profile.php?id=61579250014118" />
     <meta property="og:image" content="{{asset('client/images/favicon.png')}}" />
     <meta property="og:image:secure_url" content="{{asset('client/images/favicon.png')}}" />
     <meta property="og:image:width" content="1200" />
@@ -62,7 +69,7 @@
     <meta name="twitter:url" content="{{ URL::current() }}" />
     <meta itemprop="address" content="G-13, Sector 3, Noida, UP">
     <meta name="rating" content="general">
-    <meta name="robots" content="ALL">
+    
     <meta name="googlebot" content=" index, follow ">
     <meta name="bingbot" content=" index, follow ">
     <meta name="reply-to" content="info@quickdials.com">
@@ -105,7 +112,7 @@
     "contactType": "Customer service"
   }],
   "logo": "https://www.quickdials.com/client/images/small-logo.jpg",
-  "sameAs": ["https://www.facebook.com/quickdialssofficial/"]
+  "sameAs": ["https://www.facebook.com/profile.php?id=61579250014118"]
 }
 </script>
 

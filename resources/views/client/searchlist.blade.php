@@ -969,7 +969,7 @@
 					<div class="col-sm-12 col-md-12 reviews-box-1">
 						<div class="col-sm-4 col-md-4 serchlist-img "><a
 								href="{{ url('business-details') . "/" . $client->business_slug }}"
-								title="{{$client->business_name }}">
+								>
 								<?php if (!empty($client->logo)) {
 							$profilePic = unserialize($client->logo);
 													?><img loading="lazy" src="<?php echo asset($profilePic['large']['src']); ?>" alt="Logo" height="141" /><?php
@@ -988,7 +988,7 @@
 
 
 							<a href="{{ url('business-details') . "/" . $client->business_slug }}"
-								title="{{$client->business_name }}">
+								>
 								<span class="serchlist-txt-1">
 										<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18">
 									<?php echo ucfirst(substr($client->business_name, 0, 28));?>
@@ -1083,7 +1083,7 @@
 
 												<li>
 													<a href="{{url(Request::segment(1))}}/<?php echo generate_slug($assignedKwd->keyword) ?>"
-														title="{{$assignedKwd->keyword}}"><?php echo $assignedKwd->keyword; ?></a>
+														><?php echo $assignedKwd->keyword; ?></a>
 												</li>
 
 
@@ -1390,7 +1390,7 @@
 										echo generate_slug($keyword->keyword);
 									} ?>" title="<?php if (!empty($keyword->keyword)) {
 										echo $keyword->keyword;
-									} ?> in {{Request::segment(1)}}">@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
+									} ?> in {{$citys->city}}">@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
 											in {{$citys->city}} |</a></li>
 								@endforeach
 						@endif

@@ -107,7 +107,8 @@
     .scrollheadsearch input[type=submit] {
         width: 50px;
         background: url(../images/searchIcon.png) no-repeat center center;
-        background-color: inherit;
+        
+        background-color: #FF671F;
         border: 1px solid #ccc;
         border-left: 0;
         font-size: 0;

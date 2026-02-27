@@ -517,14 +517,14 @@ Route::get('/get-zones/{city_id}', [HomePageController::class, 'getZones'])->nam
 	Route::get('/{city}/categories/{slug}', function($city, $slug){
     return redirect('/categories/' . $slug, 301);
 	});
-
+// City home
+	Route::get('/{city}', [HomePageController::class, 'city'])
+    ->name('city.home');
 
 	Route::get('/{city}/{search_kw}', [SearchListController::class, 'index'])
     ->name('search.city');
 
-// City home
-	Route::get('/{city}', [HomePageController::class, 'city'])
-    ->name('city.home');
+
 
 	//Route::get('/{city}/{search_kw}/', [App\Http\Controllers\Client\SearchListController::class, 'index']);
 	//Route::get('/{city}/', [App\Http\Controllers\Client\HomePageController::class, 'city']);

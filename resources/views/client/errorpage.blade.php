@@ -8,7 +8,14 @@ Quick Dials- Oops !Page Not Found
 @section('description')
 Quick Dials-  Oops !Page Not Found
 @endsection
+
+@section('meta_robots')
+<meta name="robots" content="noindex, follow">
+@endsection
+
+
 @section('content')	
+
 <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 third-add-section"><img loading="lazy" src="<?php echo asset('client/images/thirdAdd.jpg'); ?>" alt="thirdAdd"></div>
