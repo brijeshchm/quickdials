@@ -331,7 +331,7 @@
                     
                     
                        @if(!empty($blogdetails->top_content))
-                    <p>{!! $blogdetails->top_content !!}</p>
+                    {!! $blogdetails->top_content !!}
                 @endif
 				 
                   </div>
@@ -357,7 +357,7 @@
                    <div class="entry-content bottom_content">
                   
                     @if(!empty($blogdetails->bottom_content))
-                        <p>{!! $blogdetails->bottom_content !!}</p>
+                        {!! $blogdetails->bottom_content !!}
                     @endif
 				 
                   </div>

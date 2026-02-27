@@ -5648,3 +5648,35 @@ div.pagination span.ellipsis {
     font-size: 22px;
     cursor: pointer;
 }
+
+.top_content{
+margin-bottom: 25px;
+
+}
+
+.top_content p{
+        line-height: 22px;
+
+}
+
+.top_content ul{
+        line-height: 22px;
+        margin-bottom: 20px;
+
+}
+
+.bottom_content{
+margin-bottom: 25px;
+
+}
+
+.bottom_content p{
+        line-height: 22px;
+
+}
+
+.bottom_content ul{
+        line-height: 22px;
+        margin-bottom: 20px;
+
+}
