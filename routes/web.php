@@ -430,27 +430,23 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 	Route::get('/quickdialssitemap.xml', function () {
 		return response()->view('client.quickdialssitemap')->header('Content-Type', 'text/xml');
 	});
- 
-
-
-
 
 Route::get('/ads/study-abroad',[App\Http\Controllers\Client\LandingPageController::class, 'studyabroad']);
 Route::post('/apiddd/lead/add',[App\Http\Controllers\Client\HomePageController::class, 'addLadsss']);
 
 
-Route::get('/coaching/distance-education',[App\Http\Controllers\Client\LandingPageController::class, 'distance_education']);
-Route::get('/coaching/foreign-language',[App\Http\Controllers\Client\LandingPageController::class, 'foreign_language']);
-Route::get('/coaching/multimedia',[App\Http\Controllers\Client\LandingPageController::class, 'multimedia']);
-Route::get('/coaching/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'it_training']);
-Route::get('/coaching/iit-entrance-exam',[App\Http\Controllers\Client\LandingPageController::class, 'iit_entrance_exam']);
-Route::get('/coaching/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entrance_exam_coaching']);
-Route::get('/coaching/thank',[App\Http\Controllers\Client\LandingPageController::class, 'thankyou']);
+// Route::get('/coaching/distance-education',[App\Http\Controllers\Client\LandingPageController::class, 'distance_education']);
+// Route::get('/coaching/foreign-language',[App\Http\Controllers\Client\LandingPageController::class, 'foreign_language']);
+// Route::get('/coaching/multimedia',[App\Http\Controllers\Client\LandingPageController::class, 'multimedia']);
+// Route::get('/coaching/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'it_training']);
+// Route::get('/coaching/iit-entrance-exam',[App\Http\Controllers\Client\LandingPageController::class, 'iit_entrance_exam']);
+// Route::get('/coaching/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entrance_exam_coaching']);
+// Route::get('/coaching/thank',[App\Http\Controllers\Client\LandingPageController::class, 'thankyou']);
 
-Route::get('/ads/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entranceexamcoaching']);
-Route::get('/ads/distance-education',[App\Http\Controllers\Client\LandingPageController::class, 'distanceeducation']);
-Route::get('/ads/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'ittraining']);
-Route::get('/free-course/landing',[App\Http\Controllers\Client\LandingPageController::class, 'index']);
+// Route::get('/ads/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entranceexamcoaching']);
+// Route::get('/ads/distance-education',[App\Http\Controllers\Client\LandingPageController::class, 'distanceeducation']);
+// Route::get('/ads/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'ittraining']);
+// Route::get('/free-course/landing',[App\Http\Controllers\Client\LandingPageController::class, 'index']);
 
 Route::get('/email', [App\Http\Controllers\EmailController::class, 'index']); 
   
@@ -508,12 +504,7 @@ Route::post('/client-login', [App\Http\Controllers\ClientAuth\AuthController::cl
 	Route::post('/review',[App\Http\Controllers\Client\ReviewController::class, 'store']);
 	Route::get('/client/logout', [App\Http\Controllers\LogoutController::class, 'clientLogout']);
 	Route::get('/clients', [App\Http\Controllers\Client\HomePageController::class, 'clientCategories']);
-	//Route::get('/category', [App\Http\Controllers\Client\HomePageController::class, 'category']);
-	//Route::get('/categories/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'categories']);
-	//Route::get('/child/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'child']);
-	//Route::get('/clients/{slug}', [App\Http\Controllers\Client\HomePageController::class, 'clients']);
 	 
-	//Route::get('/get-zones/{city_id}', [App\Http\Controllers\Client\HomePageController::class, 'getZones']);
 	
 Route::get('/categories', [HomePageController::class, 'category'])->name('category.list');
 Route::get('/child', [HomePageController::class, 'category'])->name('category.list');
@@ -528,11 +519,11 @@ Route::get('/get-zones/{city_id}', [HomePageController::class, 'getZones'])->nam
 	});
 
 
-	Route::get('/{city}/{search_kw}/', [SearchListController::class, 'index'])
+	Route::get('/{city}/{search_kw}', [SearchListController::class, 'index'])
     ->name('search.city');
 
 // City home
-	Route::get('/{city}/', [HomePageController::class, 'city'])
+	Route::get('/{city}', [HomePageController::class, 'city'])
     ->name('city.home');
 
 	//Route::get('/{city}/{search_kw}/', [App\Http\Controllers\Client\SearchListController::class, 'index']);

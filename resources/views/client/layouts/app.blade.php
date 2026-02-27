@@ -406,41 +406,41 @@
             <div>
                 <h4>Popular Categories</h4>
                 <ul>
-                    <li><a title="Coaching &amp; Tuitions" href="{{url('coaching-tuitions')}}" tabindex="0">Coaching
+                    <li><a href="{{url('coaching-tuitions')}}" tabindex="0">Coaching
                             &amp; Tuitions</a></li> |
-                    <li><a title="Business Services" href="{{url('business-services')}}" tabindex="0">Business
+                    <li><a href="{{url('business-services')}}" tabindex="0">Business
                             Services</a></li> |
-                    <li><a title="Home Construction &amp; Renovation" href="{{url('home-construction')}}"
+                    <li><a href="{{url('home-construction')}}"
                             tabindex="0">Home Construction &amp; Renovation</a></li> |
 
-                    <li><a title="Personal Finance Services" href="{{url('child/loan-service')}}"
+                    <li><a href="{{url('child/loan-service')}}"
                             tabindex="0">Personal Finance Services</a></li> |
-                    <li><a title="Tours &amp; Travels" href="{{url('categories/tours-travel-services')}}"
+                    <li><a href="{{url('categories/tours-travel-services')}}"
                             tabindex="0">Tours &amp; Travels</a></li> |
-                    <li><a title="Property" href="{{url('home-construction/property-dealer')}}" tabindex="0">Property
+                    <li><a href="{{url('home-construction/property-dealer')}}" tabindex="0">Property
                             Dealer</a></li> |
-                    <li><a title="Rentals" href="{{url('child/rent-or-buy')}}" tabindex="0">Rent & Buy</a></li> |
-                    <li><a title="PG" href="{{url('pg-hostels')}}" tabindex="0">PG & Hostel</a></li> |
-                    <li><a title="Computer Courses & Training" href="{{url('categories/computer-courses')}}"
+                    <li><a href="{{url('child/rent-or-buy')}}" tabindex="0">Rent & Buy</a></li> |
+                    <li><a href="{{url('pg-hostels')}}" tabindex="0">PG & Hostel</a></li> |
+                    <li><a href="{{url('categories/computer-courses')}}"
                             tabindex="0">Computer Courses & Training</a></li> |
 
-                    <li><a title="Study Abroad" href="{{url('study-abroad')}}" tabindex="0">Study Abroad</a></li> |
-                    <li><a title="Home Services" href="home-services" tabindex="0" class="keystore">Home Services</a>
+                    <li><a href="{{url('study-abroad')}}" tabindex="0">Study Abroad</a></li> |
+                    <li><a href="home-services" tabindex="0" class="keystore">Home Services</a>
                     </li> |
-                    <li><a title="Parties, Special Occasions &amp; Wedding" href="{{url('wedding-organizers')}}"
+                    <li><a href="{{url('wedding-organizers')}}"
                             tabindex="0">Parties, Special Occasions &amp; Wedding</a></li> |
-                    <li><a title="Electric Services" href="{{url('categories/electric-services')}}"
+                    <li><a href="{{url('categories/electric-services')}}"
                             tabindex="0">Electric Services</a></li> |
-                    <li><a title="Government Exam" href="{{url('categories/entrance-exams-coaching')}}"
+                    <li><a href="{{url('categories/entrance-exams-coaching')}}"
                             tabindex="0">Government Exam</a></li> |
-                    <li><a title="Electric Services" href="{{url('web-designers')}}" tabindex="0">Web Designers</a></li>
+                    <li><a href="{{url('web-designers')}}" tabindex="0">Web Designers</a></li>
                     |
-                    <li><a title="Medical" href="{{url('medical')}}" tabindex="0">Medical</a></li> |
-                    <li><a title="Carpenters" href="carpenters" tabindex="0" class="keystore">Carpenters</a></li> |
-                    <li><a title="Health & Wellness" href="health-wellness" tabindex="0" class="keystore">Health &
+                    <li><a href="{{url('medical')}}" tabindex="0">Medical</a></li> |
+                    <li><a href="carpenters" tabindex="0" class="keystore">Carpenters</a></li> |
+                    <li><a href="health-wellness" tabindex="0" class="keystore">Health &
                             Wellness</a></li> |
-                    <li><a title="Yoga" href="{{url('child/yoga-classes')}}" tabindex="0">Yoga</a></li> |
-                    <li><a title="tax Consultants" href="{{url('tax-consultants')}}" tabindex="0">CA & TAX
+                    <li><a href="{{url('child/yoga-classes')}}" tabindex="0">Yoga</a></li> |
+                    <li><a href="{{url('tax-consultants')}}" tabindex="0">CA & TAX
                             Consultants</a></li>
 
                 </ul>
@@ -448,25 +448,25 @@
             <div>
                 <h4>Business Services</h4>
                 <ul>
-                    <li><a title="Patient Care Service" href="patient-care-services" class="keystore"
+                    <li><a href="patient-care-services" class="keystore"
                             tabindex="0">Patient
                             Care Service</a></li> |
-                    <li><a title="Home Appliances Repair &amp; Services" href="home-appliances-repair-services"
+                    <li><a href="home-appliances-repair-services"
                             class="keystore" tabindex="0">Home Appliances Repair &amp;
                             Services</a></li> |
-                    <li><a title="Packers and Movers" href="packers-movers" tabindex="0" class="keystore">Packers and
+                    <li><a href="packers-movers" tabindex="0" class="keystore">Packers and
                             Movers</a></li> |
-                    <li><a title="AC Services" href="ac-repair-services" class="keystore" tabindex="0">AC Services</a>
+                    <li><a href="ac-repair-services" class="keystore" tabindex="0">AC Services</a>
                     </li> |
-                    <li><a title="Cleaning Services" href="cleaning-services" tabindex="0" class="keystore">Cleaning
+                    <li><a href="cleaning-services" tabindex="0" class="keystore">Cleaning
                             Services</a></li> |
 
-                    <li><a title="Security Guards" href="security-guards-services" tabindex="0"
+                    <li><a href="security-guards-services" tabindex="0"
                             class="keystore">Security Guards</a></li> |
-                    <li><a title="Architects" href="architects" class="keystore" tabindex="0">Architects</a></li> |
-                    <li><a title="Building Consultants &amp; Contractors" href="building-consultants-contractors"
+                    <li><a href="architects" class="keystore" tabindex="0">Architects</a></li> |
+                    <li><a href="building-consultants-contractors"
                             tabindex="0" class="keystore">Builders &amp; Contractors</a></li> |
-                    <li><a title="Interior Designers &amp; Decorators" href="interior-designers-decorators" tabindex="0"
+                    <li><a href="interior-designers-decorators" tabindex="0"
                             class="keystore">Interior Designers &amp; Decorators</a></li> |
                     <li><a title="Housekeeping Services" href="housekeeping-services" tabindex="0"
                             class="keystore">Housekeeping Services</a></li> |
@@ -506,7 +506,7 @@
             <div>
                 <h4>Personal Service</h4>
                 <ul>
-                    <li><a title="Loans" href="{{url('child/loan-service')}}" tabindex="0">Loans</a></li> |
+                    <li><a href="{{url('child/loan-service')}}" tabindex="0">Loans</a></li> |
                     <li><a title="Visa Consultants" href="visa-consultants" class="keystore" tabindex="0">Visa
                             Consultants</a>
                     </li> |
