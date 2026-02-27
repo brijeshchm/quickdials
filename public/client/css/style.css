@@ -5653,6 +5653,16 @@ div.pagination span.ellipsis {
 margin-bottom: 25px;
 
 }
+.top_content img{
+margin-bottom: 25px;
+}
+
+.top_content table{
+margin-bottom: 25px;
+}
+.entry-content img{
+margin-bottom: 25px;
+}
 
 .top_content p{
         line-height: 22px;
@@ -5666,6 +5676,16 @@ margin-bottom: 25px;
 }
 
 .bottom_content{
+margin-bottom: 25px;
+
+}
+
+.bottom_content img{
+margin-bottom: 25px;
+
+}
+
+.bottom_content table{
 margin-bottom: 25px;
 
 }
