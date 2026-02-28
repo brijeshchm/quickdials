@@ -28,7 +28,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 third-add-section">
 
 				<?php  
-
+ 
 							if (!empty($keyword->child_banner)) {
 		$cicons = unserialize($keyword->child_banner);
 		if (!empty($cicons)) {
@@ -124,21 +124,17 @@
 								</div>
 					@endif
 					<div class="keyword-cotegory-text">
-
 						@if(!empty($keyword))
-										<a href="{{url('child/' . $keyword->child_slug)}}" title="<?php if (!empty($keyword->child_category)) {
+							<a href="{{url('child/' . $keyword->child_slug)}}" title="<?php if (!empty($keyword->child_category)) {
 								echo $keyword->child_category;
 							} ?>"><?php if (!empty($keyword->child_category)) {
 								echo $keyword->child_category;
-							} ?></a>
-										/ <?php if (!empty($keyword->keyword)) {
+							} ?></a> / <?php if (!empty($keyword->keyword)) {
 								echo $keyword->keyword;
 							}  ?> in <?php echo $city; ?>
 						@endif
 					</div>
 				</div>
-
-
 			</div>
 			<div class="removeRightSpace">
 				<div class="btn btn-primary popup-btn top-btn">Send Enquiry</div>
@@ -197,7 +193,6 @@
 			@if(!empty($clientsList->count()))
 				<?php $n = 0; ?>
 				@foreach($clientsList as $client)
-
 					<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 						<div class="client-list-first">
 							<div class="col-sm-4 col-md-4 serchlist-img "><a
@@ -216,7 +211,6 @@
 										<p><a href="#"><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></a></p>
 									@endif
 								</a>
-
 							</div>
 							<div class="col-sm-6 col-md-6 aboutcomp">
 								@if($client->certified_status)
@@ -324,47 +318,43 @@
 									<div class="serchlist-txt">									 
 										<img src="{{ asset('/img/service.png')}}" alt="service" loading="lazy" width="18">
 										<span class="serchlist-txt">
-											<div class="col-md-12 service-text">
-												<ul>
-													<?php
 
-						$assignedKwds = DB::table('assigned_kwds')
-							->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
-							->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-							->select('keyword.keyword')
-							->where('assigned_kwds.client_id', '=', $client->client_id)
-							->limit(2)
-							->get();
-						$firstHalf = [];
-						$secondHalf = [];
-						$i = 1;
-						$inPopupArr = [];
-						foreach ($assignedKwds as $assignedKwd) {										 
-														?>
-
-													<li>
-														<a href="<?php echo generate_slug($assignedKwd->keyword) ?>"
-															title="{{$assignedKwd->keyword}}"
-															class="keystore"><?php echo $assignedKwd->keyword; ?></a>
-													</li>
-													<?php  }  ?>
-												</ul>
-											</div>
-
-
+									<div class="col-md-12 service-text">
+									<ul>
+									<?php
+									$assignedKwds = DB::table('assigned_kwds')
+									->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
+									->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
+									->select('keyword.keyword','keyword.slug')
+									->where('assigned_kwds.client_id', '=', $client->client_id)
+									->limit(2)
+									->get();
+									$firstHalf = [];
+									$secondHalf = [];
+									$i = 1;
+									$inPopupArr = [];
+									foreach ($assignedKwds as $assignedKwd) {										 
+									?>
+									<li>
+									<a href="<?php echo $assignedKwd->slug; ?>"
+									
+									class="keystore"><?php echo $assignedKwd->keyword; ?></a>
+									</li>
+									<?php  }  ?>
+									</ul>
+									</div>
 										</span>
 									</div>
 								</div>
-
-								<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
+								<div class="serchlist-txt-btn">
+									<a href="javascript:void(0);" title="{{$client->business_name }}"
 										class="sms-view popup-btn"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
 										href="https://wa.me/917559435943" title="{{$client->business_name }}" class="whatsapp-view"
 										target="_blank" rel="noopener noreferrer"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20">	
 											WhatsApp</span></a> &nbsp;&nbsp;&nbsp;<a
 										href="{{ url('business-details') . "/" . $client->business_slug }}"
-										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a></div>
-
-
+										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a>
+									</div>
 							</div>
 						</div>
 						<div class="client-list-second">
@@ -422,21 +412,16 @@
 										title="{{$client->business_name }}"><span>Click here to view your friend rating</span></a>
 
 								</div>
-
-
 							</div>
-
 						</div>
 					</div>
 				@endforeach
 				<ul id="pagin"></ul>
-
-
 				<?php 
-						if (!empty($keyword->heading)) {
-
+					if (!empty($keyword->heading)) {
 					$i = 0;
-					$i++;	?>
+					$i++;	
+					?>
 
 				<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 					<div class="client-list-first">
@@ -450,8 +435,6 @@
 								border-radius: 0;
 								box-shadow: 0 0 5px 3px #d4d4d466;
 							}
-
-
 							.card {
 								position: relative;
 								display: -ms-flexbox;
@@ -580,7 +563,6 @@
 						</style>
 
 						<div class="about-accordian">
-
 							<div class="abt-accordion" id="courseAcrdMain">
 
 								<div class="card">
@@ -681,7 +663,6 @@
 
 				<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 					<div class="client-list-first">
-
 						<style>
 							.abt-accordion .card {
 								border-radius: 0;
@@ -957,8 +938,8 @@
 				showPage(1);
 
 				$("#pagin li a").click(function () {
-					$("#pagin li a").removeClass("current btn btn-info");
-					$(this).addClass("current btn btn-info");
+					$("#pagin li a").removeClass("current btn-info");
+					$(this).addClass("current btn-info");
 					showPage(parseInt($(this).text()))
 				});
 			</script>
@@ -1066,7 +1047,7 @@
 						$assignedKwds = DB::table('assigned_kwds')
 							->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
 							->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-							->select('keyword.keyword', 'child_category.child_category as child_category_name')
+							->select('keyword.keyword','keyword.slug', 'child_category.child_category as child_category_name')
 							->where('assigned_kwds.client_id', '=', $client->id)
 							->limit(2)
 							->get();
@@ -1082,7 +1063,7 @@
 																		 ?>
 
 												<li>
-													<a href="{{url(Request::segment(1))}}/<?php echo generate_slug($assignedKwd->keyword) ?>"
+													<a href="{{url(Request::segment(1))}}/<?php echo $assignedKwd->slug; ?>"
 														><?php echo $assignedKwd->keyword; ?></a>
 												</li>
 
@@ -1222,10 +1203,8 @@
 										<?php  }
 										} ?>
 
-										<a href="{{url(strtolower(Request::segment(1)))}}/<?php echo generate_slug($keyicon->keyword) ?>"
-											title="<?php if (!empty($keyicon->keyword)) {
-											echo $keyicon->keyword;
-										} ?> in {{Request::segment(1)}}">{{$keyicon->keyword}}
+										<a href="{{url(path: strtolower(Request::segment(1)))}}/<?php echo $keyicon->slug; ?>"
+											 >{{$keyicon->keyword}}
 											| </a>
 									</li>
 
@@ -1386,11 +1365,9 @@
 							$x = 5; ?>
 								@foreach($cities as $citys)
 
-									<li><a href="{{url(strtolower($citys->city))}}/<?php if (!empty($keyword->keyword)) {
-										echo generate_slug($keyword->keyword);
-									} ?>" title="<?php if (!empty($keyword->keyword)) {
-										echo $keyword->keyword;
-									} ?> in {{$citys->city}}">@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
+									<li><a href="{{url(strtolower($citys->city))}}/<?php if (!empty($keyword->slug)) {
+										echo $keyword->slug;
+									} ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
 											in {{$citys->city}} |</a></li>
 								@endforeach
 						@endif
@@ -1441,14 +1418,14 @@
 						<figure><img loading="lazy" class="" src="<?php echo asset($image); ?>" alt="{{ $client->business_name }}"
 								style="width:100%;"></figure>
 						<div class="grid-info">
-							<h3><a href="{{url('business-details') . '/' . generate_slug($client->business_slug)}}"
+							<h3><a href="{{url('business-details') . '/' . $client->business_slug }}"
 									title="{{$client->business_name}}" tabindex="0">
 									<div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong>
 									</div>
 								</a></h3>
 
 							<strong>{{ucfirst($client->city)}}</strong>
-							<a href="{{url('business-details') . '/' . generate_slug($client->business_slug)}}"
+							<a href="{{url('business-details') . '/' . $client->business_slug }}"
 								class="get-quotes" tabindex="0">View</a>
 						</div>
 					</div>

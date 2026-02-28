@@ -87,7 +87,7 @@ Quick Dials- {!!$part_id->parent_category!!} Training in {{Request::segment(1)}}
 	    
 		@if(!empty($subcategory))
 			@foreach($subcategory as $child)
-		@if(!empty($child->keyword))
+		@if(!empty($child->slug))
 			<li class="">
 			<?php  if(!empty($child->icon)){
 						
@@ -98,7 +98,7 @@ Quick Dials- {!!$part_id->parent_category!!} Training in {{Request::segment(1)}}
 					<img loading="lazy" src="{{asset(''.$data['src'])}}" alt="{{ $data['name'] }}">
 
 					<?php  }   } ?>
-					<a href="{{generate_slug($child->keyword)}}" title="<?php if(!empty($child->keyword)) { echo $child->keyword; } ?>"  class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
+					<a href="{{ $child->slug }}"   class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
 				
 				
 				</li>

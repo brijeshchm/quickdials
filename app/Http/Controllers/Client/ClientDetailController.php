@@ -60,7 +60,7 @@ class ClientDetailController extends Controller
 				->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
 				 
 				->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-				->select('keyword.keyword', 'child_category.child_category as child_category_name', 'keyword.id as key_id', 'child_category.id as child_id')
+				->select('keyword.keyword', 'keyword.slug','child_category.child_category as child_category_name', 'keyword.id as key_id', 'child_category.id as child_id')
 				->where('assigned_kwds.client_id', '=', $client->id)
 				->groupBy('kw_id')
 				->get();

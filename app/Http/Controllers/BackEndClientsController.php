@@ -1513,7 +1513,7 @@ class BackEndClientsController extends Controller
 				->join('parent_category', 'assigned_kwds.parent_cat_id', '=', 'parent_category.id')
 				->join('child_category', 'assigned_kwds.child_cat_id', '=', 'child_category.id')
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-				->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
+				->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword','keyword.slug')
 				->where('assigned_kwds.client_id', $client->id)
 				->get();
 
@@ -2155,7 +2155,6 @@ class BackEndClientsController extends Controller
 				$leads = $leads->where('keyword.keyword', 'LIKE', '%' . $request->input('search.keyword') . '%');
 				$leads = $leads->groupBy('assigned_kwds.client_id');
 				$select = 'keyword.keyword';
-
 			}
 
 			if ($request->input('search.client_category') != '') {
@@ -2849,7 +2848,7 @@ class BackEndClientsController extends Controller
 					->join('parent_category', 'assigned_kwds.parent_cat_id', '=', 'parent_category.id')
 					->join('child_category', 'assigned_kwds.child_cat_id', '=', 'child_category.id')
 					->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-					->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
+					->select('assigned_kwds.*', 'citylists.city', 'parent_category.parent_category', 'child_category.child_category', 'keyword.keyword','keyword.slug')
 					->where('assigned_kwds.client_id', $client->id)
 					->get();
 

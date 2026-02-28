@@ -26,55 +26,53 @@ class SearchListController extends Controller
 	{  
 		$city = ucwords(str_replace("-", " ", $city));
 		$search_kw = ucwords(str_replace("-", " ", $search_kw));
+				
+		$keyword = DB::table('keyword as k')
+		->join('parent_category as p', 'k.parent_category_id', '=', 'p.id')
+		->join('child_category as c', 'k.child_category_id', '=', 'c.id')
+		->where('k.keyword', 'LIKE', $search_kw)
+		->select(
+			'k.id as key_id',
+			'k.keyword',
+			'k.slug',
+			'k.meta_title',
+			'k.meta_description',
+			'k.meta_keywords',
+			'k.top_description',
+			'k.bottom_description',
+			'k.ratingvalue',
+			'k.ratingcount',
+			'p.form_type',
+			'k.child_category_id',
+			'k.parent_category_id',
+			'k.faqq1', 
+			'k.faqa1',
+			'k.faqq2', 
+			'k.faqa2',
+			'k.faqq3', 
+			'k.faqa3',
+			'k.faqq4', 
+			'k.faqa4',
+			'k.faqq5', 
+			'k.faqa5',
+			'k.faqq6', 
+			'k.faqa6',
+			'k.heading',
+			'k.courseabout',
+			'k.paragraph1',
+			'k.paragraph2',
+			'k.paragraph3',
+			'k.paragraph4',
+			'k.paragraph5',
+			'k.paragraph6',
+			'p.parent_category as parent_category',
+			'c.child_category as child_category',
+			'c.child_slug as child_slug',
+			'c.child_banner',
+			'p.category_banner'
 			
- 
-$keyword = DB::table('keyword as k')
-    ->join('parent_category as p', 'k.parent_category_id', '=', 'p.id')
-    ->join('child_category as c', 'k.child_category_id', '=', 'c.id')
-   	->where('k.keyword', 'LIKE', $search_kw)
-    ->select(
-        'k.id as key_id',
-        'k.keyword',
-        'k.slug',
-        'k.meta_title',
-        'k.meta_description',
-        'k.meta_keywords',
-        'k.top_description',
-        'k.bottom_description',
-        'k.ratingvalue',
-        'k.ratingcount',
-        'p.form_type',
-        'k.child_category_id',
-        'k.parent_category_id',
-        'k.faqq1', 
-        'k.faqa1',
-        'k.faqq2', 
-        'k.faqa2',
-        'k.faqq3', 
-        'k.faqa3',
-        'k.faqq4', 
-        'k.faqa4',
-        'k.faqq5', 
-        'k.faqa5',
-        'k.faqq6', 
-        'k.faqa6',
-        'k.heading',
-        'k.courseabout',
-        'k.paragraph1',
-        'k.paragraph2',
-        'k.paragraph3',
-        'k.paragraph4',
-        'k.paragraph5',
-        'k.paragraph6',
-        'p.parent_category as parent_category',
-        'c.child_category as child_category',
-        'c.child_slug as child_slug',
-        'c.child_banner',
-        'p.category_banner'
-        
-    )
-    ->first();
-			 
+		)
+		->first();			 
 
 		$clientscheck = DB::table('clients')
 			->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
@@ -85,14 +83,20 @@ $keyword = DB::table('keyword as k')
 			->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count','assigned_zones.*')
 			->where('citylists.city', 'LIKE', $city)
 			->where('clients.active_status', '1')
-			->where('keyword.keyword', 'LIKE', $search_kw)
-			//->where('assigned_kwds.sold_on_position','!=','king')
-			->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 WHEN \'FreeListing\' THEN 3 END)'), 'asc')
-			->groupBy('client_id')
-			//->orderby(DB::raw('(CASE `clients`.`certified_status` WHEN \'1\' THEN 1 END)'),'DESC')		
+			->where('keyword.keyword', 'LIKE', $search_kw)			 
+			->orderByRaw("
+				CASE clients.client_type
+				WHEN 'platinum' THEN 1
+				WHEN 'diamond' THEN 2
+				WHEN 'gold' THEN 3
+				WHEN 'silver' THEN 4
+				ELSE 5
+				END
+				")
+			->groupBy('client_id')			 		
 			->get();
 
-			// dd($clientscheck);
+		 
 		if (!empty($clientscheck->count())) {
 
 			$clientsList = $clientscheck;
@@ -107,14 +111,19 @@ $keyword = DB::table('keyword as k')
 				->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
 				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count','assigned_zones.*')
 
-				//->where('clients.active_status','1')
+				 
 				->where('keyword.keyword', 'LIKE', $search_kw)
 
-				->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 WHEN \'FreeListing\' THEN 3 END)'), 'asc')
-				//	->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'),'asc')
-				//->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'premium\' THEN 1 WHEN \'platinum\' THEN 2 WHEN \'royal\' THEN 3 WHEN \'preferred\' THEN 4 END)'),'asc')
-				->groupBy('client_id')
-				//->orderby(DB::raw('(CASE `clients`.`certified_status` WHEN \'1\' THEN 1 END)'),'DESC')		
+			->orderByRaw("
+				CASE clients.client_type
+				WHEN 'platinum' THEN 1
+				WHEN 'diamond' THEN 2
+				WHEN 'gold' THEN 3
+				WHEN 'silver' THEN 4
+				ELSE 5
+				END
+				")				 
+				->groupBy('client_id')			 	
 				->get();
 		}
 
@@ -129,15 +138,7 @@ $keyword = DB::table('keyword as k')
 				->get();
 
 
-			$kingClientsList = DB::table('clients')
-				->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
-				->join('assigned_zones', 'clients.id', '=', 'assigned_zones.client_id')
-				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-				->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
-				->rightJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count,comment_content  FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'c.comment_content','assigned_zones.*')
-				->where('citylists.city', 'LIKE', $city)
-				->where('keyword.keyword', 'LIKE', $search_kw)->get();
+		 
 
 			$reviewsClientsList = DB::table('clients')
 				->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
@@ -162,19 +163,12 @@ $keyword = DB::table('keyword as k')
            
             $kwdsList = Keyword::where('child_category_id', $keyword->child_category_id)
             ->where('parent_category_id', $keyword->parent_category_id)
-            ->select('keyword', 'icon')
+            ->select('keyword','slug', 'icon')
             ->distinct()
             ->get();
             
             }  
-           
-         
-            
-				
-				
- 				$zones = DB::table('citylists') ->join('zones', 'zones.city_id', '=', 'citylists.id') ->where('citylists.city', 'LIKE', $city) ->select('zones.id', 'zones.zone') ->distinct() ->get();
-
-
+            $zones = DB::table('citylists') ->join('zones', 'zones.city_id', '=', 'citylists.id') ->where('citylists.city', 'LIKE', $city) ->select('zones.id', 'zones.zone') ->distinct() ->get();
 	
 			return view('client.searchlist', ['clientsList' => $clientsList, 'subcategory' => $subcategory, 'reviewsClientsList' => $reviewsClientsList, 'searchedKW' =>  $search_kw, 'searchedInCity' => $searchInCity, 'onlyClients' => $onlyClients, 'keyword' => $keyword, 'city' => $city, 'citiesList' => $cities,'zones'=>$zones,'kwdsList'=>$kwdsList]);
 		} else {
@@ -201,7 +195,7 @@ $keyword = DB::table('keyword as k')
 					$avgRating = 0;
 					if ($count != 0)
 						$avgRating = ($sum / ($count * 5)) * 5;
-					//'(SELECT COUNT(*) as count, SUM(`rating`) as sum_rating, MONTH(DATE(`created_at`)) as month, DATE(`created_at`) as created_at FROM `comments` WHERE `comment_client_ID`='.$client->id.' AND `comment_approved`=1 AND DATE(`created_at`)>=\':date\' GROUP BY MONTH(DATE(`created_at`)) ORDER BY created_at desc LIMIT 0,3) AS temp'
+					 
 					$graphQuery = Comment::select(DB::raw('*'))
 						->from(DB::raw('(SELECT COUNT(*) as count, SUM(`rating`) as sum_rating, MONTH(DATE(`created_at`)) as month, DATE(`created_at`) as created_at FROM `comments` WHERE `comment_client_ID`=' . $client->id . ' AND `comment_approved`=1 GROUP BY MONTH(DATE(`created_at`)) ORDER BY created_at desc LIMIT 0,3) AS temp'))
 						->orderBy('created_at')
@@ -217,7 +211,7 @@ $keyword = DB::table('keyword as k')
 						->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
 							
 						->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-						->select('keyword.keyword', 'child_category.child_category as child_category_name', 'keyword.id as key_id', 'child_category.id as child_id')
+						->select('keyword.keyword','keyword.slug', 'child_category.child_category as child_category_name', 'keyword.id as key_id', 'child_category.id as child_id')
 						->where('assigned_kwds.client_id', '=', $client->id)
 						->groupBy('kw_id')
 						->get();
@@ -227,7 +221,7 @@ $keyword = DB::table('keyword as k')
 						->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
 						->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 						->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-						->select('keyword.keyword', 'citylists.city', 'child_category.child_category as child_category_name')
+						->select('keyword.keyword','keyword.slug', 'citylists.city', 'child_category.child_category as child_category_name')
 						->where('assigned_kwds.client_id', '=', $client->id)
 						->groupBy('assigned_kwds.city_id')
 						->get();
@@ -236,8 +230,7 @@ $keyword = DB::table('keyword as k')
 					return view('client.client-detail', ['client' => $client, 'cities' => $cities, 'comments' => $comments, 'count' => $count, 'sum' => $sum, 'avgRating' => number_format($avgRating, 1, '.', ''), 'graphQuery' => $graphQuery, 'barGraphQuery' => $barGraphQuery, 'assignedKwds' => $assignedKwds, 'clientLists' => $clientLists, 'clients' => $client, 'assignedCity' => $assignedCity,'zones'=>$zones]);
 				 
 			} else {
-					// return view('client.errorpage');
-
+					 
 					return response()->view('client.errorpage', [], 404);
 
 				}
@@ -264,11 +257,17 @@ $keyword = DB::table('keyword as k')
 			->where('citylists.city', 'LIKE', $city)
 			->where('clients.active_status', '1')
 			->where('keyword.keyword', 'LIKE', ucwords(str_replace("-", " ", $search_kw)))
-			//->where('assigned_kwds.sold_on_position','!=','king')
-			->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 WHEN \'FreeListing\' THEN 3 END)'), 'asc')
-			//->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'premium\' THEN 1 WHEN \'platinum\' THEN 2 WHEN \'royal\' THEN 3 WHEN \'preferred\' THEN 4 END)'),'asc')
-			->groupBy('client_id')
-			//->orderby(DB::raw('(CASE `clients`.`certified_status` WHEN \'1\' THEN 1 END)'),'DESC')		
+			 
+			->orderByRaw("
+				CASE clients.client_type
+				WHEN 'platinum' THEN 1
+				WHEN 'diamond' THEN 2
+				WHEN 'gold' THEN 3
+				WHEN 'silver' THEN 4
+				ELSE 5
+				END
+				")			 
+			->groupBy('client_id')			 	
 			->get();
 
 		$onlyClients = DB::table('clients')

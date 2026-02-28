@@ -632,7 +632,7 @@ $pictures = unserialize($client->pictures);
 
 			
 		echo "<span class='service'>
-        <a href='" . generate_slug($assignedKwd->keyword) . "' class='keystore'>
+        <a href='" . $assignedKwd->slug . "' class='keystore'>
             " . $assignedKwd->keyword . "
         </a>
       </span>";
@@ -1454,13 +1454,15 @@ $pictures = unserialize($client->pictures);
 		$relKeywords = App\Models\Keyword::where(
 			'child_category_id',
 			$assignedKwds[0]->child_id
-		)->pluck('keyword');
-
+		)->pluck('keyword','slug');
+	 
 		if ($relKeywords->isNotEmpty()) {
-			foreach ($relKeywords as $keyword) {
+			foreach ($relKeywords as $slug=>$keyword) {
+
+			 
 				?>
 					<li>
-						<a href="<?php echo generate_slug($keyword) ?>" class="keystore">
+						<a href="<?php echo $slug; ?>" class="keystore">
 							{{ $keyword }} |
 						</a>
 					</li>

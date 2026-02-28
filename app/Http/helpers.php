@@ -915,14 +915,9 @@ function leadassignWithoutZoneCounsellor_old($leads)
 						$clientsList = $clientsList->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id');
 						$clientsList = $clientsList->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id');
 						$clientsList = $clientsList->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position');
-						$clientsList = $clientsList->select('clients.*', 'assigned_kwds.*', 'assigned_zones.*', 'assigned_zones.city_id as assgn_city_id', 'keyword.keyword', 'keyword.category', 'keyword.bucket', 'keyword_sell_count.*', 'keyword_sell_count.cat1_price', 'keyword_sell_count.cat2_price', 'keyword_sell_count.cat3_price', 'keyword_sell_count.cat4_price', 'keyword_sell_count.cat5_price');
+						$clientsList = $clientsList->select('clients.*', 'assigned_kwds.*', 'assigned_zones.*', 'assigned_zones.city_id as assgn_city_id', 'keyword.keyword', 'keyword.slug','keyword.category', 'keyword.bucket', 'keyword_sell_count.*', 'keyword_sell_count.cat1_price', 'keyword_sell_count.cat2_price', 'keyword_sell_count.cat3_price', 'keyword_sell_count.cat4_price', 'keyword_sell_count.cat5_price');
 						$clientsList = $clientsList->where('keyword.id', '=', $lead->kw_id);
 						$clientsList = $clientsList->where('assigned_zones.city_id', '=', $lead->city_id);
-
-						//$clientsList = $clientsList->where('assigned_zones.zone_id','=',$request->input('area_zone'))
-						//	$clientsList = $clientsList->where('assigned_zones.zone_id','=',$lead->zone_id);
-						//	$clientsList = $clientsList->where('assignedd_areas.area_id','=',$lead->area_id);
-
 						$clientsList = $clientsList->whereNull('clients.deleted_at');
 						$clientsList = $clientsList->where('clients.coins_amt', '>', '0');
 						//$clientsList = $clientsList->where('clients.coins_amt','>',50);
@@ -949,21 +944,29 @@ function leadassignWithoutZoneCounsellor_old($leads)
 
 						$clientsList = $clientsList->groupby('clients.id');
 						$clientsList = $clientsList->where('active_status', '1');
-						$clientsList = $clientsList->orderBy(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'diamond\' THEN 1 WHEN \'platinum\' THEN 2 WHEN \'gold\' THEN 3 WHEN \'silver\' THEN 4 END)'), 'asc');
+					 
+						$clientsList = $clientsList->orderByRaw("
+							CASE clients.client_type
+							WHEN 'platinum' THEN 1
+							WHEN 'diamond' THEN 2
+							WHEN 'gold' THEN 3
+							WHEN 'silver' THEN 4
+							ELSE 5
+							END
+							");	
+
 						$clientsList = $clientsList->get();
 
 						$defaulterClientsList = DB::table('clients');
-						//	$defaulterClientsList = $defaulterClientsList->join('assigned_zones','clients.id','=','assigned_zones.client_id');
-						//$defaulterClientsList = $defaulterClientsList->join('assignedd_areas','assignedd_areas.assigned_zone_id','=','assigned_zones.id');
+					 
 
 						$defaulterClientsList = $defaulterClientsList->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id');
 						$defaulterClientsList = $defaulterClientsList->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id');
 						$defaulterClientsList = $defaulterClientsList->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position');
-						$defaulterClientsList = $defaulterClientsList->select('clients.*', 'assigned_kwds.*', 'keyword.keyword', 'keyword.category', 'keyword.bucket');
+						$defaulterClientsList = $defaulterClientsList->select('clients.*', 'assigned_kwds.*', 'keyword.keyword','keyword.slug', 'keyword.category', 'keyword.bucket');
 						$defaulterClientsList = $defaulterClientsList->where('keyword.id', '=', $lead->kw_id);
 
-						//	$defaulterClientsList = $defaulterClientsList->where('assigned_zones.zone_id','=',$lead->zone_id);
-						//$defaulterClientsList = $defaulterClientsList->where('assignedd_areas.area_id','=',$lead->area_id);
+					 
 
 						$defaulterClientsList = $defaulterClientsList->whereNull('clients.deleted_at');
 						$defaulterClientsList = $defaulterClientsList->where(function ($query) {

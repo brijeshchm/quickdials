@@ -312,7 +312,7 @@
 						$assignedKwds = DB::table('assigned_kwds')
 							->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
 							->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-							->select('keyword.keyword', 'child_category.child_category as child_category_name')
+							->select('keyword.keyword','keyword.slug', 'child_category.child_category as child_category_name')
 							->where('assigned_kwds.client_id', '=', $client->id)
 							->limit(2)
 							->get();
@@ -323,8 +323,8 @@
 						foreach ($assignedKwds as $assignedKwd) {
 																	?>
 													<li>
-														<a href="<?php echo generate_slug($assignedKwd->keyword) ?>"
-															title="{{$assignedKwd->keyword}}"
+														<a href="<?php echo $assignedKwd->slug; ?>"
+															
 															class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 													</li>
 													<?php  }  ?>
@@ -748,7 +748,7 @@
 	@if(!empty($keyword))
 		<?php   $kwdsList = App\Models\Keyword::where('child_category_id', $keyword->child_category_id)
 					->where('parent_category_id', $keyword->parent_category_id)
-					->select('keyword', 'icon')
+					->select('keyword', 'icon','slug')
 					->distinct()
 					->get(); 			  
 
@@ -782,9 +782,7 @@
 										<?php  }
 										} ?>
 
-										<a href="<?php echo generate_slug($keywords->keyword) ?>" title="<?php if (!empty($keywords->keyword)) {
-											echo $keywords->keyword;
-										} ?>" class="keystore">{{$keywords->keyword}}</a>
+										<a href="<?php echo $keywords->slug; ?>" class="keystore">{{$keywords->keyword}}</a>
 									</li>
 
 								@endforeach
@@ -941,11 +939,9 @@
 							<?php $cities = getCity(); ?>
 							@if(!empty($cities))
 								@foreach($cities as $city)
-										<li class="col-sm-3 col-md-3"><a href="{{url(strtolower($city->city))}}/<?php if (!empty($keyword->keyword)) {
-										echo generate_slug($keyword->keyword);
-									} ?>" title="<?php if (!empty($keyword->keyword)) {
-										echo $keyword->keyword;
-									} ?> in {{$city->city}}">@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
+										<li class="col-sm-3 col-md-3"><a href="{{url(strtolower($city->city))}}/<?php if (!empty($keyword->slug)) {
+										echo $keyword->slug;
+									} ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
 												in {{$city->city}}</a></li>
 								@endforeach
 							@endif

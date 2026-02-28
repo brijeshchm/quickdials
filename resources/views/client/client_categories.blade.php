@@ -28,7 +28,7 @@ Estivaledge- Institute list
 				<div class="grid-info">
 					<h3><a href="javascript:void(0)" title="{{$clientCategory->name}}" tabindex="0"><abbr title="{{$clientCategory->name}}"><b>{{$clientCategory->name}}</b></abbr></a></h3>
 					<span>501 verified partners</span>
-					<a href="{{url('clients').'/'.generate_slug($clientCategory->name)}}" class="get-quotes" tabindex="0">View All</a>
+					<a href="{{url('business-details').'/'.$clientCategory->business_slug}}" class="get-quotes" tabindex="0">View All</a>
 				</div>
 				</div></div>
 			<?php endforeach; ?>

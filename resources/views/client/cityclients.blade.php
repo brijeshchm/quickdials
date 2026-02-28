@@ -109,7 +109,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 
 
 									</a>
-									<!-- <img loading="lazy" src="<?php echo asset('client/images/preferred.png'); ?>" alt="preferred" > -->
+									 
 								</div>
 
 								<div class="certified" <?php if ($client->certified_status == '1') { ?>
@@ -180,7 +180,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						$assignedKwds = DB::table('assigned_kwds')
 							->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
 							->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-							->select('keyword.keyword')
+							->select('keyword.keyword','keyword.slug')
 							->where('assigned_kwds.client_id', '=', $client->client_id)
 							->limit(2)
 							->get();
@@ -192,8 +192,8 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 											?>
 
 													<li>
-														<a href="<?php echo generate_slug($assignedKwd->keyword) ?>"
-															title="{{$assignedKwd->keyword}}"
+														<a href="<?php echo $assignedKwd->slug; ?>"
+															 
 															class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 													</li>
 													<?php  }  ?>
@@ -422,7 +422,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						$assignedKwds = DB::table('assigned_kwds')
 							->join('keyword', 'keyword.id', '=', 'assigned_kwds.kw_id')
 							->join('child_category', 'child_category.id', '=', 'assigned_kwds.child_cat_id')
-							->select('keyword.keyword', 'child_category.child_category as child_category_name')
+							->select('keyword.keyword','keyword.slug', 'child_category.child_category as child_category_name')
 							->where('assigned_kwds.client_id', '=', $client->id)
 							->limit(2)
 							->get();
@@ -438,8 +438,8 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 															 ?>
 
 												<li>
-													<a href="{{url(Request::segment(1))}}/<?php echo generate_slug($assignedKwd->keyword) ?>"
-														title="{{$assignedKwd->keyword}}"><?php echo $assignedKwd->keyword; ?></a>
+													<a href="{{url(Request::segment(1))}}/<?php echo $assignedKwd->slug; ?>"
+														><?php echo $assignedKwd->keyword; ?></a>
 												</li>
 
 

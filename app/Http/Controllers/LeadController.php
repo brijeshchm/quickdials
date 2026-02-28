@@ -550,7 +550,7 @@ class LeadController extends Controller
 				$clientsList = $clientsList->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id');
 				$clientsList = $clientsList->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id');
 				$clientsList = $clientsList->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'clients.client_type');
-				$clientsList = $clientsList->select('clients.*', 'assigned_kwds.*', 'assigned_kwds.city_id as assgn_city_id', 'keyword.keyword', 'keyword.category', 'keyword.bucket');
+				$clientsList = $clientsList->select('clients.*', 'assigned_kwds.*', 'assigned_kwds.city_id as assgn_city_id', 'keyword.keyword','keyword.slug', 'keyword.category', 'keyword.bucket');
 				$clientsList = $clientsList->where('keyword.id', '=', $lead->kw_id);
 				$clientsList = $clientsList->where('assigned_kwds.city_id', '=', $lead->city_id);
 
@@ -583,10 +583,16 @@ class LeadController extends Controller
 				}); */
 
 				$clientsList = $clientsList->where('active_status', '1');
-				$clientsList = $clientsList->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'), 'asc');
-				//	$clientsList = $clientsList->orderby(DB::raw('(CASE `clients`.`client_type` WHEN \'Platinum\' THEN 1 WHEN \'Diamond\' THEN 2 END)'),'asc');
-				//->orderby('comment_count','desc')
-				//->tosql();
+			 
+				$clientsList = $clientsList->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					");
 				$clientsList = $clientsList->get();
 
 				$defaulterClientsList = DB::table('clients');
@@ -597,7 +603,7 @@ class LeadController extends Controller
 				$defaulterClientsList = $defaulterClientsList->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id');
 				$defaulterClientsList = $defaulterClientsList->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id');
 				$defaulterClientsList = $defaulterClientsList->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position');
-				$defaulterClientsList = $defaulterClientsList->select('clients.*', 'assigned_kwds.*', 'keyword.keyword', 'keyword.category', 'keyword.bucket');
+				$defaulterClientsList = $defaulterClientsList->select('clients.*', 'assigned_kwds.*', 'keyword.keyword','keyword.slug', 'keyword.category', 'keyword.bucket');
 				$defaulterClientsList = $defaulterClientsList->where('keyword.id', '=', $lead->kw_id);
 
 				$defaulterClientsList = $defaulterClientsList->where('assigned_zones.zone_id', '=', $lead->zone_id);
@@ -625,10 +631,18 @@ class LeadController extends Controller
 
 
 				});
-				$defaulterClientsList = $defaulterClientsList->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'), 'asc');
-				//$defaulterClientsList = $defaulterClientsList->orderby(DB::raw('(CASE `clients`.`client_type` WHEN \'Platinum\' THEN 1 WHEN \'Diamond\' THEN 2 END)'),'asc');
-				//->orderby('comment_count','desc')
-				//->tosql();
+				 
+
+				$defaulterClientsList = $defaulterClientsList->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					");
+			 
 				$defaulterClientsList = $defaulterClientsList->get();
 
 				foreach ($defaulterClientsList as $defaulterClient) {

@@ -414,14 +414,13 @@ class EnquiryController extends Controller
 		$statues = Status::where('lead_filter', '1')->get();
 		$services = DB::table('assigned_kwds')
 			->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-			->select('keyword.id', 'keyword.keyword')
+			->select('keyword.id', 'keyword.keyword','keyword.slug')
 			->orderBy('keyword.keyword', 'asc')
 			->where('assigned_kwds.client_id', $clientID)
 			->get();
 		return view('business.leadlist', [
 			'search' => $search,
 			'statues' => $statues,
-
 			'services' => $services
 		]);
 	}
@@ -1280,7 +1279,7 @@ class EnquiryController extends Controller
 		$statues = Status::where('lead_filter', '1')->get();
 		$services = DB::table('assigned_kwds')
 			->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-			->select('keyword.id', 'keyword.keyword')
+			->select('keyword.id', 'keyword.keyword','keyword.slug')
 			->orderBy('keyword.keyword', 'asc')
 			->where('assigned_kwds.client_id', $clientID)
 			->get();

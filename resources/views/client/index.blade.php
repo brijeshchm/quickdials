@@ -1278,7 +1278,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                      @if($study->child_slug !='overseas-journalism-education-consultants' && $study->child_slug !='overseas-engineering-education-consultant')
                       <div class="crs-items">
                      <div class="course-items">
-                        <a href="{{url('/child/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" >
+                        <a href="{{url('/child/'.$study->child_slug)}}"  >
                         <?php  if(!empty($study->pc_icon)){
                            $abicons= unserialize($study->pc_icon); ?> 
                         <img loading="lazy" src="{{asset(''.$abicons['pc_icon']['src'])}}" width="100" alt="{{$abicons['pc_icon']['name']}}">	 <?php 
@@ -1287,7 +1287,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                         <?php  } ?>
                         </a>
                         </div>
-                        <span class="course-title"><a href="{{url('/child/'.$study->child_slug)}}" title="<?php if(!empty($study->child_category)){  echo $study->child_category; } ?>" ><?php if(!empty($study->child_category)){  echo substr($study->child_category,0,16); } ?></a></span>
+                        <span class="course-title"><a href="{{url('/child/'.$study->child_slug)}}"  ><?php if(!empty($study->child_category)){  echo substr($study->child_category,0,16); } ?></a></span>
                      </div>
                      @endif
                      @endforeach

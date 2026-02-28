@@ -105,10 +105,7 @@ class ClientCategoryController extends Controller
 			// ***************
 			// PROFILE PICTURE
 
-			//$clientCategory->slug = generate_slug($request->input('client_category_name'));
-			/* if($request->has('client_category_slug') && null==$request->input('client_category_slug')){
-				$clientCategory->slug = generate_slug($request->input('client_category_name'));
-			} */
+			 
 			if ($clientCategory->save()) {
 				return response()->json(['status' => 1, 'clientCategory' => $clientCategory]);
 			}
@@ -212,13 +209,7 @@ class ClientCategoryController extends Controller
 			}
 			$clientCategory->image = serialize($image);
 		}
-		// ***************
-		// PROFILE PICTURE
-
-		//$clientCategory->slug = generate_slug($request->input('client_category_name'));
-		/* if($request->has('client_category_slug') && null==$request->input('client_category_slug')){
-			$clientCategory->slug = generate_slug($request->input('client_category_name'));
-		} */
+		 
 		if ($clientCategory->save()) {
 			if (isset($oldImages)) {
 				foreach ($oldImages as $oldImage) {

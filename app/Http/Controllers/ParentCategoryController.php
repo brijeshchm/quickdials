@@ -68,29 +68,7 @@ class ParentCategoryController extends Controller
 		$parent_category->parent_category = $request->input('parent_category');
 		$parent_category->parent_slug = generate_slug($request->input('parent_category'));
 		$alt = $request->input('parent_category');
-		// if ($request->hasFile('category_icon')) {
-		// 	$image = [];
-		// 	$filePath = getFolderCategoryStructure();
-		// 	$file = $request->file('category_icon');
-		// 	$filename = $file->getClientOriginalName();
-		// 	$destinationPath = public_path($filePath);
-		// 	$nameArr = explode('.', $filename);
-		// 	$ext = array_pop($nameArr);
-		// 	$name = implode('_', $nameArr);
-		// 	if (file_exists($destinationPath . '/' . $filename)) {
-		// 		$filename = $name . "_" . time() . '.' . $ext;
-		// 	}
-		// 	$file->move($destinationPath, $filename);
-
-		// 	$image['category_icon'] = array(
-		// 		'name' => $filename,
-		// 		'alt' => $alt,
-		// 		'src' => $filePath . "/" . $filename
-		// 	);
-
-		// 	$parent_category->category_icon = serialize($image);
-		// }
-
+	 
 
 		if ($request->hasFile('category_icon')) {
 			$filePath = getFolderCategoryStructure();

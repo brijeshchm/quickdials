@@ -264,7 +264,7 @@ if(!empty($city)){ ?>
 						$assignedKwds = DB::table('assigned_kwds')
 							  ->join('keyword','keyword.id','=','assigned_kwds.kw_id')
 							  ->join('child_category','child_category.id','=','assigned_kwds.child_cat_id')
-							  ->select('keyword.keyword','child_category.child_category as child_category_name')
+							  ->select('keyword.keyword','keyword.slug','child_category.child_category as child_category_name')
 							  ->where('assigned_kwds.client_id','=',$client->id)
 							  ->limit(2)
 							  ->get();
@@ -276,7 +276,7 @@ if(!empty($city)){ ?>
 								?>
 								
 								<li>
-								<a href="<?php echo generate_slug($assignedKwd->keyword) ?>" title="{{$assignedKwd->keyword}}" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
+								<a href="<?php echo $assignedKwd->slug; ?>" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 								</li>
 											 <?php  }  ?>
 							</ul>
@@ -647,7 +647,7 @@ color: #fff;
 	   	<ul class="">		
 		@if(!empty($keywordlist))
 			@foreach($keywordlist as $keywords)
-	   <li class="col-sm-3 col-md-3"><a href="{{url('/')}}/<?php echo generate_slug($keywords->child_slug) ?>" title="<?php if(!empty($keywords->child_category)) { echo $keywords->child_category; } ?> ">{{$keywords->child_category}}</a></li>
+	   <li class="col-sm-3 col-md-3"><a href="{{url('/')}}/<?php echo $keywords->child_slug ?>" >{{$keywords->child_category}}</a></li>
 	   
 	   @endforeach
 	   @endif
@@ -736,10 +736,10 @@ color: #fff;
 			 
 				<figure><img loading="lazy" class="" src="<?php echo url($image); ?>" style="width:100%;" alt="<?php if($imagename){ echo $imagename; } ?>"></figure>
 				<div class="grid-info">
-					<h3><a href="{{url('business-details').'/'.generate_slug($client->business_slug)}}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
+					<h3><a href="{{url('business-details').'/'.$client->business_slug}}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
 				
 					<strong>{{ucfirst($client->city)}}</strong>
-					<a href="{{url('business-details').'/'.generate_slug($client->business_slug)}}" class="get-quotes" tabindex="0">View</a>
+					<a href="{{url('business-details').'/'.$client->business_slug}}" class="get-quotes" tabindex="0">View</a>
 				</div>
 				</div></div>
 				

@@ -105,7 +105,7 @@ class BusinessKeywordController extends Controller
 				->join('parent_category', 'assigned_kwds.parent_cat_id', '=', 'parent_category.id')
 				->join('child_category', 'assigned_kwds.child_cat_id', '=', 'child_category.id')
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-				->select('assigned_kwds.*','parent_category.parent_category', 'child_category.child_category', 'keyword.keyword')
+				->select('assigned_kwds.*','parent_category.parent_category', 'child_category.child_category', 'keyword.keyword','keyword.slug')
 				->orderBy('assigned_kwds.created_at', 'desc')
 				->where('assigned_kwds.client_id', $clientID)
 				->paginate($request->input('length'));

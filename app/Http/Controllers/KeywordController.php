@@ -133,6 +133,7 @@ class KeywordController extends Controller
 
 
 		$keyword->keyword = $request->input('keyword');
+		$keyword->slug = generate_slug($request->input('keyword'));
 		$keyword->parent_category_id = $request->input('parent_category_id');
 		$keyword->child_category_id = $request->input('child_category_id');
 		$keyword->category = $request->input('category');
@@ -221,11 +222,19 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.*', 'citylists.*', 'zones.*', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword_sell_count.cat1_price', 'keyword_sell_count.cat2_price', 'keyword_sell_count.cat3_price', 'keyword.premium_price', 'keyword.platinum_price', 'keyword.king_price', 'keyword.royal_price', 'keyword.preferred_price')
+				->select('clients.*', 'citylists.*', 'zones.*', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword_sell_count.cat1_price', 'keyword_sell_count.cat2_price', 'keyword_sell_count.cat3_price', 'keyword.premium_price', 'keyword.platinum_price', 'keyword.king_price', 'keyword.royal_price', 'keyword.preferred_price','keyword.slug')
 				->where('keyword.id', '=', $id)
 				->whereNull('clients.deleted_at')
 				->where('clients.leads_remaining', '>', '0')
-				->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'), 'asc')
+				->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					")	
 				->get();
 
 
@@ -349,15 +358,22 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword')
+				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
 				->where('keyword.id', '=', $kwid)
 				->where('citylists.id', '=', $cityid)
 				->where('zones.id', '=', $zoneid)
 				->whereNull('clients.deleted_at')
-				->where('clients.leads_remaining', '>', '0')
-				->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'), 'asc')
-				//->orderby('comment_count','desc')
-				//->tosql();
+				->where('clients.leads_remaining', '>', '0')				 
+				->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					")
+
 				->get();
 			$max = $mCount = 5;
 			$i = 0;
@@ -610,14 +626,21 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword')
+				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
 				->where('keyword.id', '=', $kwid)
 				->where('citylists.id', '=', $cityid)
 				->where('zones.id', '=', $zoneid)
 				->whereNull('clients.deleted_at')
 				->where('clients.leads_remaining', '>', '0')
-				->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'), 'asc')
-
+				->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					")
 				->get();
 			// BUCKET CALCULATION
 			// ******************
@@ -773,13 +796,19 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword')
+				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
 				->where('keyword.id', '=', $kw_id)
 				->whereNull('clients.deleted_at')
 				->where('clients.leads_remaining', '>', '0')
-				->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'), 'asc')
-				//->orderby('comment_count','desc')
-				//->tosql();
+				->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					")
 				->get();
 
 			$cityvals = [];
@@ -882,12 +911,20 @@ class KeywordController extends Controller
 			->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 			->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 			->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-			->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword')
+			->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
 			->where('keyword.id', '=', $kwid)
 			->where('citylists.id', '=', $city_id)
 			->whereNull('clients.deleted_at')
 			->where('clients.leads_remaining', '>', '0')
-			->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'), 'asc')
+			->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					")
 
 			->get();
 
@@ -1015,6 +1052,7 @@ class KeywordController extends Controller
 			if ($keywordToUpdate == $request->input('id')) {
 				$keyword = Keyword::find($keywordToUpdate);
 				$keyword->keyword = $request->input('keyword');
+				$keyword->slug = generate_slug($request->input('keyword'));
 				$keyword->parent_category_id = $request->input('parent_category_id');
 				$keyword->child_category_id = $request->input('child_category_id');
 				$keyword->category = $request->input('category');
@@ -1183,9 +1221,7 @@ class KeywordController extends Controller
 					$query->orWhere('keyword.keyword', 'LIKE', '%' . $request->input('search.value') . '%');
 				});
 			}
-			/* if($request->input('search.city')!=''){
-				$leads = $leads->where('keyword.city_id','=',$request->input('search.city'));
-			} */
+		 
 			if ($request->input('search.pc') != '') {
 				$leads = $leads->where('keyword.parent_category_id', '=', $request->input('search.pc'));
 			}

@@ -219,35 +219,19 @@ class SitemapsController extends Controller
 				$sitemap->add(URL::to('/' . $file), (new \DateTime())->format(DATE_ATOM), '0.80', 'weekly');
 			}
 		}
-		// GETTING STATIC FILES
-		// ********************
-
-		// *************
-		// CLIENTS LINKS
-		/* $clients = Client::all();
-		foreach($clients as $client){
-			$sitemap->add(URL::to('/client-detail/'.$client->business_slug), $client->updated_at, '0.80', 'daily');
-		} */
-		// CLIENTS LINKS
-		// *************
+		 
 
 		// ****************************************
 		// SEARCHLIST URL BASED ON CITY AND KEYWORD
 		$keywords = DB::table('keyword');
 		$keywords = $keywords->join('cities', 'cities.id', '=', 'keyword.city_id');
-		$keywords = $keywords->select('keyword.*', 'cities.city');
-		/* $keywords = $keywords->orWhere('cities.city','LIKE','noida');
-		$keywords = $keywords->orWhere('cities.city','LIKE','delhi');
-		$keywords = $keywords->orWhere('cities.city','LIKE','gurgaon');
-		$keywords = $keywords->orWhere('cities.city','LIKE','faridabad');
-		$keywords = $keywords->orWhere('cities.city','LIKE','ghaziabad');
-		$keywords = $keywords->orWhere('cities.city','LIKE','greater noida'); */
+		$keywords = $keywords->select('keyword.keyword','keyword.slug', 'cities.city');
+		 
 		$keywords = $keywords->get();
 		foreach ($keywords as $keyword) {
-			$sitemap->add(URL::to('/' . generate_slug($keyword->city) . '/' . generate_slug($keyword->keyword)), $keyword->updated_at, '0.80', 'weekly');
+			$sitemap->add(URL::to('/' . generate_slug($keyword->city) . '/' . $keyword->slug), $keyword->updated_at, '0.80', 'weekly');
 		}
-		// SEARCHLIST URL BASED ON CITY AND KEYWORD
-		// ****************************************
+	 
 		$sitemap->store('xml', 'sitemap');
 	}
 

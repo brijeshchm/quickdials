@@ -86,7 +86,7 @@ Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)
 		@if(!empty($kwdsList))
 		<?php $i = 0; $x = 5; ?>
 			@foreach($kwdsList as $keyword)
-	   <li class=""><a href="<?php echo generate_slug($keyword->keyword) ?>" class="keystore">{{$keyword->keyword}}</a></li>
+	   <li class=""><a href="<?php echo $keyword->slug; ?>" class="keystore">{{$keyword->keyword}}</a></li>
 	   
 	   @endforeach
 	   @endif
@@ -198,14 +198,11 @@ Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)
 						$assignedKwds = DB::table('assigned_kwds')
 							  ->join('keyword','keyword.id','=','assigned_kwds.kw_id')
 							  ->join('child_category','child_category.id','=','assigned_kwds.child_cat_id')
-							  ->select('keyword.keyword','child_category.child_category as child_category_name')
+							  ->select('keyword.keyword','keyword.slug','child_category.child_category as child_category_name')
 							  ->where('assigned_kwds.client_id','=',$client->id)
 							  ->limit(2)
 							  ->get();
-
- 
-
-					  
+				  
 									$firstHalf = [];
 									$secondHalf = [];
 									$i = 1;
@@ -214,7 +211,7 @@ Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)
 												 ?>
 								
 										 <li>
-											<a href="<?php echo generate_slug($assignedKwd->keyword) ?>" title="{{$assignedKwd->keyword}}" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
+											<a href="<?php echo $assignedKwd->slug; ?>" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 										</li>
 												 
 												 
