@@ -35,11 +35,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
 								<input type="hidden" name="b_end" value="2" />
                                 <select class="dropdown-arrow dropdown-arrow-inverse city-form select2-single city" name="city_id">
 									<option value="">Select City</option>
-									@if(count($cities)>0)
-										@foreach($cities as $city)
-											<option value="{{strtolower($city->city)}}">{{$city->city}}</option>
-										@endforeach
-									@endif
+									 
 								</select>
                             </div>
                         </div>
@@ -567,11 +563,7 @@ margin-bottom: 15px;
 								<input type="hidden" name="b_end" value="2" />
                                 <select class="dropdown-arrow dropdown-arrow-inverse city-form select2-single city" name="city_id">
 									<option value="">Select City</option>
-									@if(count($cities)>0)
-										@foreach($cities as $city)
-											<option value="{{strtolower($city->city)}}">{{$city->city}}</option>
-										@endforeach
-									@endif
+								 
 								</select>
                             </div>
                         </div>
@@ -1044,8 +1036,7 @@ margin-bottom: 15px;
 
 			</div>
 			 
-			</div>
-		 
+			</div>		 
 			</div>
 			<div class="col-md-6">
 			<div class="features-right">			              
@@ -1111,11 +1102,7 @@ margin-bottom: 15px;
 								<input type="hidden" name="b_end" value="2" />
                                 <select class="dropdown-arrow dropdown-arrow-inverse city-form select2-single city" name="city_id">
 									<option value="">Select City</option>
-									@if(count($cities)>0)
-										@foreach($cities as $city)
-											<option value="{{strtolower($city->city)}}">{{$city->city}}</option>
-										@endforeach
-									@endif
+								 
 								</select>
                             </div>
                         </div>

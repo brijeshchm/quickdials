@@ -1996,11 +1996,7 @@ quickdials.com is an extensive search engine for the students, parents, Professi
 								<input type="hidden" name="b_end" value="2" />
                                 <select class="dropdown-arrow dropdown-arrow-inverse city-form select2-single city form-control" name="city_id">		 
 									<option value="">Select City</option>
-									@if(count($cities)>0)
-										@foreach($cities as $city)
-											<option value="{{strtolower($city->city)}}">{{$city->city}}</option>
-										@endforeach
-									@endif
+								 
 								</select>
                             </div>
                         </div>

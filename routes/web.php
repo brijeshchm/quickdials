@@ -440,12 +440,12 @@ Route::post('/apiddd/lead/add',[App\Http\Controllers\Client\HomePageController::
 // Route::get('/coaching/multimedia',[App\Http\Controllers\Client\LandingPageController::class, 'multimedia']);
 // Route::get('/coaching/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'it_training']);
 // Route::get('/coaching/iit-entrance-exam',[App\Http\Controllers\Client\LandingPageController::class, 'iit_entrance_exam']);
-// Route::get('/coaching/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entrance_exam_coaching']);
+ Route::get('/coaching/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entrance_exam_coaching']);
 // Route::get('/coaching/thank',[App\Http\Controllers\Client\LandingPageController::class, 'thankyou']);
 
-// Route::get('/ads/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entranceexamcoaching']);
+ Route::get('/ads/entrance-exam-coaching',[App\Http\Controllers\Client\LandingPageController::class, 'entranceexamcoaching']);
 // Route::get('/ads/distance-education',[App\Http\Controllers\Client\LandingPageController::class, 'distanceeducation']);
-// Route::get('/ads/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'ittraining']);
+ Route::get('/ads/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'ittraining']);
 // Route::get('/free-course/landing',[App\Http\Controllers\Client\LandingPageController::class, 'index']);
 
 Route::get('/email', [App\Http\Controllers\EmailController::class, 'index']); 
