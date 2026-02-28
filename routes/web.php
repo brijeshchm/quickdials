@@ -229,6 +229,9 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 	Route::get('/business-owners',[App\Http\Controllers\Client\BusinessOwnerController::class, 'index'])->name('login');
 	Route::post('/business-owners',[App\Http\Controllers\Client\BusinessOwnerController::class, 'store']);
 	
+  	Route::get('/sitemap-keyword.xml', [App\Http\Controllers\SitemapsController::class, 'index']);
+
+
   	Route::get('/sitemap.xml', [App\Http\Controllers\SitemapsController::class, 'index']);
   	
   	Route::get('/sitemap-noida.xml',[App\Http\Controllers\SitemapsController::class, 'noida']);
@@ -427,8 +430,8 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-online')->header('Content-Type', 'text/xml');
 	});
  
-	Route::get('/quickdialssitemap.xml', function () {
-		return response()->view('client.quickdialssitemap')->header('Content-Type', 'text/xml');
+	Route::get('/sitemap.xml', function () {
+		return response()->view('client.sitemap')->header('Content-Type', 'text/xml');
 	});
 
 Route::get('/ads/study-abroad',[App\Http\Controllers\Client\LandingPageController::class, 'studyabroad']);

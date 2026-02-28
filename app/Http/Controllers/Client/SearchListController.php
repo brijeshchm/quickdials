@@ -35,6 +35,7 @@ $keyword = DB::table('keyword as k')
     ->select(
         'k.id as key_id',
         'k.keyword',
+        'k.slug',
         'k.meta_title',
         'k.meta_description',
         'k.meta_keywords',

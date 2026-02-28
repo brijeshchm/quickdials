@@ -1498,14 +1498,22 @@ $clients = Client::get()->count();
 					->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'keyword.*')
 
 					->where('keyword.keyword', 'LIKE', ucwords(str_replace("-", " ", $city)))
-
-					->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 WHEN \'FreeListing\' THEN 3 END)'), 'asc')
-					//	->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'platinum\' THEN 1 WHEN \'diamond\' THEN 2 END)'),'asc')
-					//->orderby(DB::raw('(CASE `assigned_kwds`.`sold_on_position` WHEN \'premium\' THEN 1 WHEN \'platinum\' THEN 2 WHEN \'royal\' THEN 3 WHEN \'preferred\' THEN 4 END)'),'asc')
+					->orderByRaw("
+					CASE clients.client_type
+					WHEN 'platinum' THEN 1
+					WHEN 'diamond' THEN 2
+					WHEN 'gold' THEN 3
+					WHEN 'silver' THEN 4
+					ELSE 5
+					END
+					")				 
 					->groupBy('client_id')
-					//->orderby(DB::raw('(CASE `clients`.`certified_status` WHEN \'1\' THEN 1 END)'),'DESC')		
+					 		
 					->get();
 
+
+	
+ 
 				$reviewsClientsList = DB::table('clients')
 					->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
 					->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')

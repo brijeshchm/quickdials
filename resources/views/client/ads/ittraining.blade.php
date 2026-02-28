@@ -353,14 +353,7 @@ margin-bottom: 15px;
                             <div class="col-xs-8 col-sm-8 col-md-8" id="select-city-proceed">
 								<input type="hidden" name="lead_form" value="IT Training Advertise" />
 								 
-                                <select class="dropdown-arrow dropdown-arrow-inverse city-form select2-single city" name="city_id">
-									<option value="">Select City</option>
-									@if(count($cities)>0)
-										@foreach($cities as $city)
-											<option value="{{strtolower($city->city)}}">{{$city->city}}</option>
-										@endforeach
-									@endif
-								</select>
+                          
                             </div>
                         </div>
                         <div class="fieldblock">

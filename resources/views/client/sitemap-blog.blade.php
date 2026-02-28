@@ -7,7 +7,7 @@
         ?>
     @foreach ($blogs as $blog)
     <url>
-        <loc>{{ url('/') }}/blog/<?php echo generate_slug($blog->slug) ?></loc>
+        <loc>https://www.quickdials.com/blog/<?php echo generate_slug($blog->slug) ?></loc>
         <lastmod><?php 
         echo gmdate(DATE_ATOM,mktime(0,0,0,date('m',strtotime($blog->updated_at)),date('d',strtotime($blog->updated_at)),date('Y',strtotime($blog->updated_at)) ));
         ?>

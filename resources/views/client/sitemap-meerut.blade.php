@@ -2,7 +2,7 @@
  
     @foreach ($keywords as $keyword)
     <url>
-        <loc>{{ url('/') }}/meerut/<?php echo generate_slug($keyword->keyword) ?></loc>
+        <loc>https://www.quickdials.com/meerut/<?php echo $keyword->slug; ?></loc>
         <lastmod><?php 
         echo gmdate(DATE_ATOM,mktime(0,0,0,date('m',strtotime($keyword->updated_at)),date('d',strtotime($keyword->updated_at)),date('Y',strtotime($keyword->updated_at)) ));
         ?>

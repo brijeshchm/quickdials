@@ -1,2 +1,5 @@
 User-agent: *
-Sitemap: https://www.quickdials.com/quickdialssitemap.xml
+Sitemap: https://www.quickdials.com/sitemap.xml
+Disallow: /developer/login
+Disallow: /google-login
+Disallow: /auth/google/callback
