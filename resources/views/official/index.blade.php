@@ -4,9 +4,7 @@
 @endsection
 @section('content')
 
-<style>
-.nivo-main-image:none;
-</style>
+ 
   <!-- Start Slider Area -->
   <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
@@ -572,8 +570,7 @@
   </div>
 </div>
   
-  <script>
- 
-  </script>
+  
+
   @endsection
    

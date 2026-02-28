@@ -689,6 +689,58 @@
 
     @media(max-width:767px) {
 
+
+        .course-program .course-items img {
+    width: 40px;
+    height: 30px;
+}
+
+ .well-text>h2 {
+    color: #fff;
+    font-size: 24px !important;
+
+ }
+ .wellcome-text {
+    margin: 20px 0 !important;
+    padding: 15px !important;
+}
+.single-services{
+    padding: 15px;
+}
+
+.footer-links li {
+    display: inline-block;
+    margin-bottom: 7px;
+    position: relative;
+    /* display: inline-grid; */
+}
+
+.footer-links li::after {
+    content: " |";
+    margin-left: 8px;
+    color: #999;
+}
+
+/* Last item ke baad pipe remove karein */
+.footer-links li:last-child::after {
+    content: "";
+}
+
+.footer-section h3 {
+    font-size: 16px !important;
+    font-weight: 700;
+
+}
+
+.about-card{
+padding: 15px !important;
+
+}
+
+.services {
+    background: #f9f9f9;
+    padding: 20px 0 !important;
+}
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1866,7 +1918,7 @@
          justify-content: center;
          flex-wrap: wrap;
          display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
+         /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important; */
          gap: 10px;
          margin-bottom: 20px;
          }
@@ -2205,9 +2257,7 @@
             font-size: 20px !important;
         }
 
-        .services-icon img {
-            margin-left: 100%;
-        }
+        
 
         .footer-new ul.seoabout_listing li {
             display: block;

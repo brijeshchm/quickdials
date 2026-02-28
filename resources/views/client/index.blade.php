@@ -1027,6 +1027,40 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
 
     </section>
 
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+
+            <div class="stat-box">
+                <h3 class="counter" data-count="{{ $clients }}">0</h3>
+                <p>Registered Businesses</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 class="counter" data-count="160520">0</h3>
+                <p>Monthly Users</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 class="counter" data-count="{{ $keyword }}">0</h3>
+                <p>Service Keyword</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 class="counter" data-count="{{ $citieslists }}">0</h3>
+                <p>Cities Covered</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 class="counter" data-count="99">0</h3>
+                <p>Customer Satisfaction</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
  <!-- Services Section -->
     <section class="services-section">
         <div class="container">
@@ -1047,53 +1081,65 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="patient-care-service" class="keystore">
+                     <a href="packers-movers" class="keystore">
                     <div class="service-icon">📦</div>
                     <h4>Packers Movers</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="patient-care-service" class="keystore">
+                     <a href="ac-repair-service" class="keystore">
                     <div class="service-icon">❄️</div>
                     <h4>AC Services</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="patient-care-service" class="keystore">
+                     <a href="cleaning-services" class="keystore">
                     <div class="service-icon">🧹</div>
                     <h4>Cleaning</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="patient-care-service" class="keystore">
+                     <a href="security-guards-services" class="keystore">
                     <div class="service-icon">🛡️</div>
                     <h4>Security Guards</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="patient-care-service" class="keystore"></a>
+                     <a href="architects" class="keystore">
                     <div class="service-icon">🏗️</div>
                     <h4>Architects</h4>
+                    </a>
                 </div>
                 <div class="service-item">
+                  
+                  <a href="civil-contractors" class="keystore">
                     <div class="service-icon">🔨</div>
                     <h4>Contractors</h4>
+                    </a>
                 </div>
                 <div class="service-item">
+                     <a href="interior-designer" class="keystore">
                     <div class="service-icon">🎨</div>
                     <h4>Interior Design</h4>
+                    </a>
                 </div>
                 <div class="service-item">
+                    <a href="kitchen-and-dining" class="keystore"> 
                     <div class="service-icon">🍳</div>
                     <h4>Modular Kitchen</h4>
+                    </a>
                 </div>
                 <div class="service-item">
+                  <a href="digital-marketing-training" class="keystore"> 
                     <div class="service-icon">🎯</div>
                     <h4>Digital Marketing</h4>
+                     </a>
                 </div>
                 <div class="service-item">
+                  <a href="electric-services" class="keystore"> 
                     <div class="service-icon">💡</div>
                     <h4>Electric Services</h4>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1354,7 +1400,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
 
 <div class="connectedpopup">
    <a href="javascript:void(0);" class="connectedclosebtn">&nbsp;</a>
-   <div class="jbt"> Fill this form and get best deals from "<span class="orng">QuickInd</span>"</div>
+   <div class="jbt"> Fill this form and get best deals from "<span class="orng">QuickDials</span>"</div>
    <div class="popup">
       <form class="lead_form" onsubmit="return homeController.saveEnquiry(this)" >
          <aside>
@@ -1416,6 +1462,32 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
 </style>
  
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200; 
+
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+
+            const increment = Math.ceil(target / speed);
+
+            if (count < target) {
+                counter.innerText = count + increment;
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = target.toLocaleString();
+            }
+        };
+
+        updateCount();
+    });
+
+});
+</script>
 
 @endsection
 

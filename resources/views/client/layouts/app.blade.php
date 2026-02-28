@@ -96,7 +96,7 @@
   "@context": "http://schema.org",
   "@type": "Organization",
   "name": "QuickDials",
-  "alternateName": "Quickdials", 
+  "alternateName": "QuickDials", 
   "description": "A Local Search Engine for Businesses | QuickDials.",
   "url": "https://www.quickdials.com/",
   "address": {
@@ -651,8 +651,8 @@
             }
 
             .footer-section h3 {
-                font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-                font-weight: 600;
+                font-size: 16px;
+                font-weight: 700;
                 margin-bottom: 20px;
                 color: #000;
                 padding: 0px 24px;

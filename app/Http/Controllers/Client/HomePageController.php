@@ -142,17 +142,19 @@ class HomePageController extends Controller
 			->limit(24)
 			->get();
 
-
+$clients = Client::get()->count();
+		$keyword = Keyword::get()->count();
+		$citieslists = Citieslists::get()->count();
 		 
 		
 		
 		return view('client.index', compact(
 			 
 			'featuredClient',
-// 			'cities',
+			'clients',
 			'blogdetails',
-// 			'testimonialsdetails',
-// 			'subcategory',
+			'keyword',
+			'citieslists',
 // 			'entranceExam',
 			'studyAbroad'
 		));

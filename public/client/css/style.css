@@ -5700,3 +5700,41 @@ margin-bottom: 25px;
         margin-bottom: 20px;
 
 }
+
+
+.stats {
+    padding: 60px 0;
+    background: #f8f9fa;
+          background: linear-gradient(to right, #0460b9, #057AEC);
+        margin-top: 50px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.stat-box p {
+    font-size: 14px;
+    color: #fff;
+}
+
+.service-item a:hover{
+    color:#fff;
+}
+
+.contact-info{
+    padding: 15px;
+}
+.follow-sticker{
+    padding: 10px 0px 51px;
+}

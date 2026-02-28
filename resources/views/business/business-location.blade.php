@@ -111,6 +111,7 @@ div.dataTables_paginate ul.pagination {
                     <select class="form-control show_cityList search_city" name="cityiesid" onchange="get_zone(this.value);">
                 
                     </select>
+                    OR 
                     <label for="zone">Area:</label>
                      <select class="form-control show_zoneList search_zone" name="zone_id" onchange="get_otherZone(this.value);">
                      

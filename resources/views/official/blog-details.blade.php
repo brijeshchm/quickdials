@@ -237,6 +237,7 @@
                     	@if(!empty($blogdetails->ratingvalue))	
         <?php
         $rating = $blogdetails->ratingvalue;
+ 
         $stars = 'star_4.75_new.png';
         $ext = '.png'; 
         switch($rating){
