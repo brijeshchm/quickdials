@@ -247,7 +247,8 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
     Route::get('/sitemap-bangalore.xml',[App\Http\Controllers\SitemapsController::class, 'bangalore']);
     Route::get('/sitemap-ahmedabad.xml',[App\Http\Controllers\SitemapsController::class, 'ahmedabad']);
     Route::get('/sitemap-patna.xml',[App\Http\Controllers\SitemapsController::class, 'patna']);
-    Route::get('/sitemap-chennai.xml',[App\Http\Controllers\SitemapsController::class, 'chennai']);
+
+    Route::get('/sitemap-blog.xml',[App\Http\Controllers\SitemapsController::class, 'blog']);
   			
   	Route::get('/sitemap-moradabad.xml', function () {
 		return response()->view('client.sitemap-common',['city'=>'moradabad'])->header('Content-Type', 'text/xml');
@@ -422,9 +423,7 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-common',['city'=>'hyderabad'])->header('Content-Type', 'text/xml');
 	});
   
-	Route::get('/sitemap-blog.xml', function () {		
-		return response()->view('client.sitemap-blog')->header('Content-Type', 'text/xml');
-	});
+ 
  
  	Route::get('/sitemap-online.xml', function () {		
 		return response()->view('client.sitemap-online')->header('Content-Type', 'text/xml');

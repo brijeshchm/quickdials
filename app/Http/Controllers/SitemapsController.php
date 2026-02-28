@@ -250,4 +250,18 @@ class SitemapsController extends Controller
 		// ****************************************
 		$sitemap->store('xml', 'sitemap');
 	}
+
+
+	public function blog()
+	{
+ 
+		$blogs = DB::table('blogdetails');
+		$blogs = $blogs->select('title', 'slug','updated_at');
+		$blogs = $blogs->get();
+
+		return response()->view('client.sitemap-blog', ['blogs' => $blogs])->header('Content-Type', 'text/xml');
+	}
+
+
+
 }
