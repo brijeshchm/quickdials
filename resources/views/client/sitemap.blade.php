@@ -14,6 +14,13 @@
 <lastmod>2025-05-09T09:59:21+00:00</lastmod>
 <priority>0.80</priority>
 </url>
+<url>
+<loc>https://www.quickdials.com/sitemap-blog.xml</loc>
+<lastmod>2025-05-09T09:59:21+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+
+
  @foreach ($keywords as $keyword)
     <url>
         <loc>{{ url('/') }}/<?php echo generate_slug($keyword->keyword) ?></loc>
