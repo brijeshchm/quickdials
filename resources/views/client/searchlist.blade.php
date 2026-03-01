@@ -1,26 +1,19 @@
 @extends('client.layouts.app')
 @section('title')
-	<?php  if (!empty($keyword->meta_title)) {
-		$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_title);
-		echo trim($key);
-	} else {
-		$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
-		echo trim($key);
-	}
-		?>
-
+<?php  if (!empty($keyword->meta_title)) {
+$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_title);
+echo trim($key);
+} else {
+$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
+echo trim($key);
+}
+?>
 @endsection
 @section('keyword')
-	<?php if (!empty($keyword->meta_keywords)) {
-		$msg = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_keywords);
-		echo trim($msg);
-	} ?>
+<?php if (!empty($keyword->meta_keywords)) { $msg = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_keywords); echo trim($msg); } ?>
 @endsection
 @section('description')
-	<?php if (!empty($keyword->meta_description)) {
-		$descrip = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_description);
-		echo trim($descrip);
-	}   ?>
+<?php if (!empty($keyword->meta_description)) { $descrip = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_description); echo trim($descrip); }   ?>
 @endsection
 @section('content')
 	<div class="container">
