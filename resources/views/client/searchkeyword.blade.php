@@ -1,33 +1,33 @@
 @extends('client.layouts.app')
 @section('title')
-	@if(!empty($keyword->meta_title))
-		<?php   
-
-						$key = preg_replace('/in {{city}}/i', ucfirst($city), $keyword->meta_title);
-			echo trim($key);   ?>
-	@else
-		@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
-
-	@endif
+@if(!empty($keyword->meta_title))
+<?php   
+$key = preg_replace('/in {{city}}/i', '', $keyword->meta_title);
+echo trim($key); ?>
+@else
+@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
+@endif
 @endsection
 @section('keyword')
-	<?php if (!empty($keyword->meta_keywords)) {
-		$msg = preg_replace('/in {{city}}/i', ' ', $keyword->meta_keywords);
-		echo trim($msg);
-	} ?>
+<?php if (!empty($keyword->meta_keywords)) {	
+$msg = preg_replace('/in {{city}}/i', '', $keyword->meta_keywords);
+$msg = preg_replace('/\s+,/', ',', $msg);
+$msg = preg_replace('/\s+/', ' ', $msg);
+echo trim($msg);
+} ?>
 @endsection
 @section('description')
-	<?php if (!empty($keyword->meta_description)) {
-		$descrip = preg_replace('/{{city}}/i', ' ', $keyword->meta_description);
-		echo trim($descrip);
-	} ?>
+<?php if (!empty($keyword->meta_description)) {
+$descrip = preg_replace('/in {{city}}/i', '', $keyword->meta_description);
+echo trim($descrip);
+} ?>
 @endsection
 @section('content')
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 third-add-section">
 				<?php  
-
+ 
 					if (!empty($keyword->child_banner)) {
 		$cicons = unserialize($keyword->child_banner);
 		if (!empty($cicons)) {
@@ -109,11 +109,7 @@
 						?>
 								<div itemscope itemtype="https://schema.org/Product" style="font-size: 12px;font-weight: 500;">
 									<div class="text-primary" itemprop="name">
-										<h1><?php  if (!empty($keyword->keyword)) {
-							$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
-							echo trim($key);
-						} ?>
-										</h1>
+										<h1><?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword); echo trim($key); } ?> </h1>
 									</div>
 									<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
 										<img loading="lazy" itemprop="image" src="{{ asset('client/images/' . $stars) }}"
@@ -178,12 +174,7 @@
 
 			@if(isset($keyword) && null != $keyword->top_description)
 				<div class="col-xs-12 top_description" style="margin-top:20px;color:#033967">
-					<h2>Top
-						<?php  if (!empty($keyword->keyword)) {
-					$top_key = preg_replace('/{{city}}/i', strtoupper($city), $keyword->keyword);
-					echo trim($top_key);
-				} ?>
-					</h2>
+					<h2>Top <?php  if (!empty($keyword->keyword)) { $top_key = preg_replace('/{{city}}/i', strtoupper($city), $keyword->keyword); echo trim($top_key); } ?> </h2>
 					<p title="<?php if (!empty($keyword->keyword)) {
 					echo $keyword->keyword;
 				} ?> in {{Request::segment(1)}}"><?php  if (!empty($keyword->top_description)) {

@@ -9,12 +9,13 @@ echo trim($key);
 }
 ?>
 @endsection
-@section('keyword')
-<?php if (!empty($keyword->meta_keywords)) { $msg = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_keywords); echo trim($msg); } ?>
-@endsection
 @section('description')
 <?php if (!empty($keyword->meta_description)) { $descrip = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_description); echo trim($descrip); }   ?>
 @endsection
+@section('keyword')
+<?php if (!empty($keyword->meta_keywords)) { $msg = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_keywords); echo trim($msg); } ?>
+@endsection
+
 @section('content')
 	<div class="container">
 		<div class="row">
@@ -97,11 +98,9 @@ echo trim($key);
 										?>
 								<div itemscope itemtype="https://schema.org/Product" style="font-size: 12px;font-weight: 500;">
 									<div class="text-primary" itemprop="name">
-										<h1><?php  if (!empty($keyword->keyword)) {
+										<h1><?php  if (!empty($keyword->keyword)) { 
 							$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
-							echo trim($key);
-						} ?>
-											in <?php echo ucfirst($city); ?> </h1>
+							echo trim($key); } ?> in <?php echo ucfirst($city); ?> </h1>
 									</div>
 									<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
 										<img loading="lazy" itemprop="image" src="{{ asset('client/images/' . $stars) }}"
@@ -161,20 +160,9 @@ echo trim($key);
 
 			@if(isset($keyword) && null != $keyword->top_description)
 				<div class="col-xs-12 top_description" style="margin-top:20px;color:#033967">
-					<h2>Trusted
-						<?php  if (!empty($keyword->keyword)) {
-					$key = preg_replace('/{{city}}/i', ucwords(str_replace("-", "", $city)), $keyword->keyword);
-					echo trim($key);
-				} ?>
-						in <?php echo ucwords(str_replace("-", " ", Request::segment(1))); ?>
-					</h2>
-
-					<p title="<?php if (!empty($keyword->keyword)) {
-					echo $keyword->keyword;
-				} ?> in {{Request::segment(1)}}"><?php  if (!empty($keyword->top_description)) {
-					$keydescription = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->top_description);
-					echo trim($keydescription);
-				} ?></p>
+					<h2>Trusted <?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucwords(str_replace("-", "", $city)), $keyword->keyword); echo trim($key); } ?> in <?php echo ucwords(str_replace("-", " ", Request::segment(1))); ?></h2>
+					<p title="<?php if (!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}"><?php  if (!empty($keyword->top_description)) {
+					$keydescription = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->top_description); echo trim($keydescription); } ?></p>
 				</div>
 			@endif
 			 

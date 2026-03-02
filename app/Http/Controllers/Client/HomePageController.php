@@ -1445,6 +1445,7 @@ class HomePageController extends Controller
 
 	public function city(Request $request, $city = null)
 	{
+		 
 		try {
 
 			$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->limit(12)->get();
