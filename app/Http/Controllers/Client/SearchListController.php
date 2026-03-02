@@ -169,7 +169,7 @@ class SearchListController extends Controller
             
             }  
             $zones = DB::table('citylists') ->join('zones', 'zones.city_id', '=', 'citylists.id') ->where('citylists.city', 'LIKE', $city) ->select('zones.id', 'zones.zone') ->distinct() ->get();
-	dd($cities);
+	 
 			return view('client.searchlist', ['clientsList' => $clientsList, 'subcategory' => $subcategory, 'reviewsClientsList' => $reviewsClientsList, 'searchedKW' =>  $search_kw, 'searchedInCity' => $searchInCity, 'onlyClients' => $onlyClients, 'keyword' => $keyword, 'city' => $city, 'citiesList' => $cities,'zones'=>$zones,'kwdsList'=>$kwdsList]);
 		} else {
  
