@@ -4,16 +4,16 @@
 $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_title);
 echo trim($key);
 } else {
-$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
+$key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->keyword);
 echo trim($key);
 }
 ?>
 @endsection
 @section('description')
-<?php if (!empty($keyword->meta_description)) { $descrip = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_description); echo trim($descrip); }   ?>
+<?php if (!empty($keyword->meta_description)) { $descrip = preg_replace('/{{city}}/i', ucfirst($area), $keyword->meta_description); echo trim($descrip); }   ?>
 @endsection
 @section('keyword')
-<?php if (!empty($keyword->meta_keywords)) { $msg = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_keywords); echo trim($msg); } ?>
+<?php if (!empty($keyword->meta_keywords)) { $msg = preg_replace('/{{city}}/i', ucfirst($area), $keyword->meta_keywords); echo trim($msg); } ?>
 @endsection
 
 @section('content')
@@ -159,9 +159,9 @@ echo trim($key);
 
 			@if(isset($keyword) && null != $keyword->top_description)
 				<div class="col-xs-12 top_description" style="margin-top:20px;color:#033967">
-					<h2>Trusted <?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucwords(str_replace("-", "", $city)), $keyword->keyword); echo trim($key); } ?> in <?php echo ucwords(str_replace("-", " ", Request::segment(1))); ?></h2>
+					<h2>Trusted <?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucwords(str_replace("-", "", $area)), $keyword->keyword); echo trim($key); } ?> in <?php echo ucwords(str_replace("-", " ", Request::segment(1))); ?></h2>
 					<p title="<?php if (!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}"><?php  if (!empty($keyword->top_description)) {
-					$keydescription = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->top_description); echo trim($keydescription); } ?></p>
+					$keydescription = preg_replace('/{{city}}/i', $area, $keyword->top_description); echo trim($keydescription); } ?></p>
 				</div>
 			@endif
 			 
@@ -560,7 +560,7 @@ echo trim($key);
 
 												@if($keyword->courseabout)
 																			<li style="font-size: 13px;">
-																				<?php $courseabout = preg_replace('/{{city}}/i', ucfirst($city), $keyword->courseabout);
+																				<?php $courseabout = preg_replace('/{{city}}/i', ucfirst($area), $keyword->courseabout);
 													echo trim($courseabout); ?>
 
 																			</li>
@@ -569,7 +569,7 @@ echo trim($key);
 													@if($keyword->paragraph1)
 																					<li>
 																						<p style="font-size: 13px;">
-																							<?php $paragraph1 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph1);
+																							<?php $paragraph1 = preg_replace('/{{city}}/i', ucfirst($area), $keyword->paragraph1);
 														echo trim($paragraph1); ?>
 
 																						</p>
@@ -800,7 +800,7 @@ echo trim($key);
 
 												@if($keyword->courseabout)
 																			<li style="font-size: 13px;">
-																				<?php $courseabout = preg_replace('/{{city}}/i', ucfirst($city), $keyword->courseabout);
+																				<?php $courseabout = preg_replace('/{{city}}/i', ucfirst($area), $keyword->courseabout);
 													echo trim($courseabout); ?>
 
 																			</li>
@@ -809,7 +809,7 @@ echo trim($key);
 													@if($keyword->paragraph1)
 																					<li>
 																						<p style="font-size: 13px;">
-																							<?php $paragraph1 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph1);
+																							<?php $paragraph1 = preg_replace('/{{city}}/i', ucfirst($area), $keyword->paragraph1);
 														echo trim($paragraph1); ?>
 
 																						</p>
@@ -1130,7 +1130,7 @@ echo trim($key);
 		<div class="container">
 			<div class="category-description">
 				<?php  if (!empty($keyword->bottom_description)) {
-					$keydescription = preg_replace('/{{city}}/i', ucwords(str_replace("-", " ", Request::segment(1))), $keyword->bottom_description);
+					$keydescription = preg_replace('/{{city}}/i', ucwords(str_replace("-", " ", $area)), $keyword->bottom_description);
 					echo $keydescription;
 				}
 						  ?>
@@ -1206,22 +1206,22 @@ echo trim($key);
 			<div class="category-description">
 				<h4>FAQ:-
 					<?php  if (!empty($keyword->keyword)) {
-					$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
+					$key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->keyword);
 					echo trim($key);
 				} ?>
-					in <?php echo ucfirst(Request::segment(1)); ?>
+					in <?php echo $area; ?>
 				</h4>
 				<div itemscope itemtype="https://schema.org/FAQPage">
 					<?php if (!empty($keyword->faqq1)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq1)) {
-						$faqq1 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqq1);
+						$faqq1 = preg_replace('/{{city}}/i', $area, $keyword->faqq1);
 						echo trim($faqq1);
 					} ?>?</strong></h5>
 						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: block;">
 							<div itemprop="text">
 								<?php  if (!empty($keyword->faqa1)) {
-						$faqa1 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqa1);
+						$faqa1 = preg_replace('/{{city}}/i', $area, $keyword->faqa1);
 						echo trim($faqa1);
 					} ?>
 
@@ -1235,13 +1235,13 @@ echo trim($key);
 					<?php if (!empty($keyword->faqq2)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq2)) {
-						$faqq2 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqq2);
+						$faqq2 = preg_replace('/{{city}}/i', $area, $keyword->faqq2);
 						echo trim($faqq2);
 					} ?>?</strong></h5>
 						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 							<div itemprop="text">
 								<?php  if (!empty($keyword->faqa2)) {
-						$faqa2 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqa2);
+						$faqa2 = preg_replace('/{{city}}/i', $area, $keyword->faqa2);
 						echo trim($faqa2);
 					} ?>
 
@@ -1252,13 +1252,13 @@ echo trim($key);
 					<?php if (!empty($keyword->faqq3)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq3)) {
-						$faqq3 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqq3);
+						$faqq3 = preg_replace('/{{city}}/i', $area, $keyword->faqq3);
 						echo trim($faqq3);
 					} ?>?</strong></h5>
 						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 							<div itemprop="text">
 								<?php  if (!empty($keyword->faqa3)) {
-						$faqa3 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqa3);
+						$faqa3 = preg_replace('/{{city}}/i', $area, $keyword->faqa3);
 						echo trim($faqa3);
 					} ?>
 
@@ -1269,13 +1269,13 @@ echo trim($key);
 					<?php if (!empty($keyword->faqq4)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq4)) {
-						$faqq4 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqq4);
+						$faqq4 = preg_replace('/{{city}}/i', $area, $keyword->faqq4);
 						echo trim($faqq4);
 					} ?>?</strong></h5>
 						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 							<div itemprop="text">
 								<?php  if (!empty($keyword->faqa4)) {
-						$faqa4 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqa4);
+						$faqa4 = preg_replace('/{{city}}/i', $area, $keyword->faqa4);
 						echo trim($faqa4);
 					} ?>
 
@@ -1286,13 +1286,13 @@ echo trim($key);
 					<?php if (!empty($keyword->faqq5)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq5)) {
-						$faqq5 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqq5);
+						$faqq5 = preg_replace('/{{city}}/i', $area, $keyword->faqq5);
 						echo trim($faqq5);
 					} ?>?</strong></h5>
 						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 							<div itemprop="text">
 								<?php  if (!empty($keyword->faqa5)) {
-						$faqa5 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqa5);
+						$faqa5 = preg_replace('/{{city}}/i', $area, $keyword->faqa5);
 						echo trim($faqa5);
 					} ?>
 
@@ -1303,13 +1303,13 @@ echo trim($key);
 					<?php if (!empty($keyword->faqq6)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq6)) {
-						$faqq6 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqq6);
+						$faqq6 = preg_replace('/{{city}}/i', $area, $keyword->faqq6);
 						echo trim($faqq6);
 					} ?>?</strong></h5>
 						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 							<div itemprop="text">
 								<?php  if (!empty($keyword->faqa6)) {
-						$faqa6 = preg_replace('/{{city}}/i', ucfirst(Request::segment(1)), $keyword->faqa6);
+						$faqa6 = preg_replace('/{{city}}/i', $area, $keyword->faqa6);
 						echo trim($faqa6);
 					} ?>
 
