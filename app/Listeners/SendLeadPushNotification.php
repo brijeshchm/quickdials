@@ -48,11 +48,11 @@ class SendLeadPushNotification
                 'kw_text' => (string) ($lead->kw_text ?? ''),
             ]);
 
-            if ($response) {
-                echo "true";
-            } else {
-                echo "true";
-            }
+            // if ($response) {
+            //     echo "true";
+            // } else {
+            //     echo "true";
+            // }
 
         }
     }
