@@ -98,8 +98,7 @@ echo trim($key);
 										?>
 								<div itemscope itemtype="https://schema.org/Product" style="font-size: 12px;font-weight: 500;">
 									<div class="text-primary" itemprop="name">
-										<h1><?php  if (!empty($keyword->keyword)) { 
-							$key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
+										<h1><?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
 							echo trim($key); } ?> in <?php echo ucfirst($city); ?> </h1>
 									</div>
 									<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">

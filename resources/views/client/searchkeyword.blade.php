@@ -19,6 +19,8 @@ echo trim($msg);
 @section('description')
 <?php if (!empty($keyword->meta_description)) {
 $descrip = preg_replace('/in {{city}}/i', '', $keyword->meta_description);
+$descrip = preg_replace('/\s+,/', ',', $descrip);
+$descrip = preg_replace('/\s+/', ' ', $descrip);
 echo trim($descrip);
 } ?>
 @endsection

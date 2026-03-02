@@ -1,97 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@yield('title')</title>
-    <meta name="keywords" content="@yield('keyword')">
-    <meta name="description" content="@yield('description')">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">  
-    @if (Request::is('/'))
-    <link rel="canonical" href="{{ url('/') }}/" />
-    @else
-        <link rel="canonical" href="{{ url()->current() }}" />
-    @endif    
-    <link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" />
-    <meta http-equiv="content-language" content="en-IN">
-    <meta name="classification" content="directory portal" />
-    <meta name="distribution" content="local" />
-    <meta content="All" name="WebCrawlers" />
-    <meta content="All, FOLLOW" name="MSNBots" />
-    <meta content="All" name="Googlebot-Image" />
-    <meta content="All, FOLLOW" name="BINGBots" />
-    <meta content="All, FOLLOW" name="YAHOOBots" />
-    <meta content="All, FOLLOW" name="GoogleBots" />
-    <meta name="copyright" content="Quick Dials">
-    <meta name="author" content="Quick Dials" />
-    <meta http-equiv="CACHE-CONTROL" content="PUBLIC" />
-    <meta name="publisher" content="Quick Dials" />
-    <meta name="identifier-URL" content="{{url('/')}}">
-    <meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
-   
-    <meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
-    <meta name="url" content="{{url('/')}}" />
-    <meta name="DC.title" content="@yield('keyword')" />
-    <meta name="distribution" content="global" />
-    <meta name="geo.region" content="IN-UP" />
-    <meta name="geo.placename" content="Noida" />
-    <meta name="geo.position" content="28.5802;77.3181" />
-    <meta name="ICBM" content="28.5802, 77.3181" />
- 
-@if(View::hasSection('meta_robots'))
-    @yield('meta_robots')
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>@yield('title')</title><meta name="keywords" content="@yield('keyword')"><meta name="description" content="@yield('description')"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="csrf-token" content="{{ csrf_token() }}">  
+@if (Request::is('/'))
+<link rel="canonical" href="{{ url('/') }}/" />
 @else
-    <meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ url()->current() }}" />
+@endif    
+<link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" /><meta http-equiv="content-language" content="en-IN"><meta name="classification" content="directory portal" /><meta name="distribution" content="local" /><meta content="All" name="WebCrawlers" /><meta content="All, FOLLOW" name="MSNBots" /><meta content="All" name="Googlebot-Image" /><meta content="All, FOLLOW" name="BINGBots" />
+<meta content="All, FOLLOW" name="YAHOOBots" /><meta content="All, FOLLOW" name="GoogleBots" /><meta name="copyright" content="Quick Dials"><meta name="author" content="Quick Dials" /><meta http-equiv="CACHE-CONTROL" content="PUBLIC" /><meta name="publisher" content="Quick Dials" /><meta name="identifier-URL" content="{{url('/')}}"><meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
+<meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
+<meta name="url" content="{{url('/')}}" />
+<meta name="DC.title" content="@yield('keyword')" />
+<meta name="distribution" content="global" />
+<meta name="geo.region" content="IN-UP" />
+<meta name="geo.placename" content="Noida" />
+<meta name="geo.position" content="28.5802;77.3181" />
+<meta name="ICBM" content="28.5802, 77.3181" /> 
+@if(View::hasSection('meta_robots'))
+@yield('meta_robots')
+@else
+<meta name="robots" content="index,follow">
 @endif
 
- 
-    <meta name="Revisit-after" content="7 Days" />
-    <meta property="og:locale" content="en_IN" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="@yield('title')" />
-    <meta property="og:description" content="@yield('description')" />
-    <meta property="og:url" content="{{ URL::current() }}" />
-    <meta property="og:site_name" content="Quick Dials" />
-    <meta name="application-name" content="Quick Dials" />
-    <meta property="fb:app_id" content="https://www.facebook.com/profile.php?id=61579250014118" />
-    <meta property="og:image" content="{{asset('client/images/favicon.png')}}" />
-    <meta property="og:image:secure_url" content="{{asset('client/images/favicon.png')}}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="628" />
-    <meta property="og:image:alt" content="Quick Dials" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="@yield('title')" />
-    <meta name="twitter:keyword" content="@yield('keyword')" />
-    <meta name="twitter:description" content="@yield('description')" />
-    <meta name="twitter:image" content="{{asset('client/images/small-logo.jpg')}}" />
-    <meta name="twitter:url" content="{{ URL::current() }}" />
-    <meta itemprop="address" content="G-13, Sector 3, Noida, UP">
-    <meta name="rating" content="general">
-    
-    <meta name="googlebot" content=" index, follow ">
-    <meta name="bingbot" content=" index, follow ">
-    <meta name="reply-to" content="info@quickdials.com">
-    <meta name="expires" content="never">
-    <link rel="alternate" href="https://www.quickdials.com/" hreflang="en-in" />
 
-    <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}">
-    
-     
-    <script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
- 
-       <script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" ></script>
+<meta name="Revisit-after" content="7 Days" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="@yield('title')" />
+<meta property="og:description" content="@yield('description')" />
+<meta property="og:url" content="{{ URL::current() }}" />
+<meta property="og:site_name" content="Quick Dials" />
+<meta name="application-name" content="Quick Dials" />
+<meta property="fb:app_id" content="https://www.facebook.com/profile.php?id=61579250014118" />
+<meta property="og:image" content="{{asset('client/images/favicon.png')}}" />
+<meta property="og:image:secure_url" content="{{asset('client/images/favicon.png')}}" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="628" />
+<meta property="og:image:alt" content="Quick Dials" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="@yield('title')" />
+<meta name="twitter:keyword" content="@yield('keyword')" />
+<meta name="twitter:description" content="@yield('description')" />
+<meta name="twitter:image" content="{{asset('client/images/small-logo.jpg')}}" />
+<meta name="twitter:url" content="{{ URL::current() }}" />
+<meta itemprop="address" content="G-13, Sector 3, Noida, UP">
+<meta name="rating" content="general">
 
-    <link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" >
-    
- 
-    
-    <link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
-
-
+<meta name="googlebot" content=" index, follow ">
+<meta name="bingbot" content=" index, follow ">
+<meta name="reply-to" content="info@quickdials.com">
+<meta name="expires" content="never">
+<link rel="alternate" href="https://www.quickdials.com/" hreflang="en-in" />
+<link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}">
+<script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
+<script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" ></script>
+<link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" >
+<link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
     <!------Google Analytic Script End----->
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Organization",

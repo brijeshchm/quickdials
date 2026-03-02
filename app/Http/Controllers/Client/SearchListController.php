@@ -169,7 +169,7 @@ class SearchListController extends Controller
             
             }  
             $zones = DB::table('citylists') ->join('zones', 'zones.city_id', '=', 'citylists.id') ->where('citylists.city', 'LIKE', $city) ->select('zones.id', 'zones.zone') ->distinct() ->get();
-	
+	dd($cities);
 			return view('client.searchlist', ['clientsList' => $clientsList, 'subcategory' => $subcategory, 'reviewsClientsList' => $reviewsClientsList, 'searchedKW' =>  $search_kw, 'searchedInCity' => $searchInCity, 'onlyClients' => $onlyClients, 'keyword' => $keyword, 'city' => $city, 'citiesList' => $cities,'zones'=>$zones,'kwdsList'=>$kwdsList]);
 		} else {
  
@@ -304,6 +304,7 @@ class SearchListController extends Controller
 			->join('child_category', 'keyword.child_category_id', '=', 'child_category.id')
 			->select('keyword.*', 'parent_category.*', 'child_category.*', 'keyword.id as key_id', 'keyword.faqq1', 'keyword.faqa1', 'keyword.faqq2', 'keyword.faqa2', 'keyword.faqq3', 'keyword.faqa3', 'keyword.faqq4', 'keyword.faqa4', 'keyword.faqq5', 'keyword.faqa5', 'keyword.meta_title', 'keyword.meta_description', 'keyword.meta_keywords', 'keyword.top_description', 'keyword.bottom_description', 'keyword.ratingvalue', 'keyword.ratingcount')
 			->where('keyword', 'LIKE', ucwords(str_replace("-", " ", $search_kw)))->first();
+ 
 		return view('client.searchlist', ['clientsList' => $clientsList, 'kingClientsList' => $kingClientsList, 'reviewsClientsList' => $reviewsClientsList, 'searchedKW' => ucwords(str_replace("-", " ", $search_kw)), 'searchedInCity' => $searchInCity, 'onlyClients' => $onlyClients, 'keyword' => $keyword, 'city' => $city, 'clientLists' => $clientLists]);
 	}
 }
