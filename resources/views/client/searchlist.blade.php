@@ -174,52 +174,31 @@ echo trim($key);
 				<?php $n = 0; ?>
 				@foreach($clientsList as $client)
 					<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
-						<div class="client-list-first">
-							<div class="col-sm-4 col-md-4 serchlist-img "><a
-									href="{{ url('business-details') . "/" . $client->business_slug }}"
-									title="{{$client->business_name }}">
-									<?php if (null != $client->logo) {
-							$profilePic = unserialize($client->logo);
-													?><img loading="lazy" src="<?php echo asset('' . $profilePic['large']['src']); ?>" alt="{{$client->business_name}}"
-										title="{{$client->business_name}}" height="141" /><?php
-							} else {
-							?> <img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo"
-							title="Business Logo" height="141" style="width:100%" /><?php
-							}
-							?>
-									@if($client->client_type != 'FreeListing')
-										<p><a href="#"><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></a></p>
+						<div class="client-list-first"><div class="col-sm-4 col-md-4 serchlist-img ">
+							<a href="{{ url('business-details') . "/" . $client->business_slug }}" title="{{$client->business_name }}"><?php if (null != $client->logo) { $profilePic = unserialize($client->logo); ?><img loading="lazy" src="<?php echo asset('' . $profilePic['large']['src']); ?>" alt="{{$client->business_name}}" title="{{$client->business_name}}" height="141" /><?php } else { ?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo" title="Business Logo" height="141" style="width:100%" /><?php } ?> 
+						@if($client->client_type != 'FreeListing') <p><a href="#"><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></a></p>
 									@endif
 								</a>
 							</div>
 							<div class="col-sm-6 col-md-6 aboutcomp">
 								@if($client->certified_status)
-									<div class="client-trusted">
-										@if($client->certified_status)
-											<img loading="lazy" src="{{ asset('img/q_verified.gif')}}">
+									<div class="client-trusted">@if($client->certified_status)
+										<img loading="lazy" src="{{ asset('img/q_verified.gif')}}">
 										@endif
 										@if($client->trusted_status)
-											<img loading="lazy" src="{{ asset('img/q_trust.gif')}}">
+										<img loading="lazy" src="{{ asset('img/q_trust.gif')}}">
 										@endif
 										@if($client->gst_status)
-											<img loading="lazy" src="{{ asset('img/q_gst.gif')}}">
+										<img loading="lazy" src="{{ asset('img/q_gst.gif')}}">
 										@endif
 									</div>
 								@endif
 								<div class="serchlist-txt">
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}">
-										<span class="serchlist-txt-1">
-										 
-											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18">
-											<?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?>
-										</span>
-										<?php
-						$badge = $client->sold_on_position;
-													?>
-
-
-									</a>
+										<span class="serchlist-txt-1">										 
+											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18"><?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?></span>
+										 	</a>
 									<!-- <img loading="lazy" src="<?php echo asset('client/images/preferred.png'); ?>" alt="preferred" > -->
 								</div>
 
@@ -1146,31 +1125,19 @@ echo trim($key);
 
 		</div>
 	@endif
-
-
-
 	@if(!empty($keyword))
-	 
- 
-		
-		@if(!empty($keyword) && $kwdsList->isNotEmpty())
-
+	 	@if(!empty($keyword) && $kwdsList->isNotEmpty())
 			<div class="container">
-
 				<div class="category-box">
 					<div class="course-program">
-
 						<h5>Find Services Related to <?php if (!empty($keyword->keyword)) {
 							echo $keyword->keyword;
 						} ?> </h5>
 						<ul class="">
-
-
 							@if(!empty($kwdsList))
 								<?php $i = 0;
 								$x = 5; ?>
 								@foreach($kwdsList as $keyicon)
-
 									<li>
 										<?php  if (!empty($keyicon->icon)) {
 
@@ -1187,150 +1154,83 @@ echo trim($key);
 											 >{{$keyicon->keyword}}
 											| </a>
 									</li>
-
 								@endforeach
 							@endif
 						</ul>
 					</div>
 				</div>
-
-
 			</div>
 		@endif
 	@endif
-
-
-
 	@if(!empty($keyword->faqq1))
 		<div class="container">
 			<div class="category-description">
-				<h4>FAQ:-
-					<?php  if (!empty($keyword->keyword)) {
-					$key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->keyword);
-					echo trim($key);
-				} ?>
-					in <?php echo $area; ?>
-				</h4>
+				<h4>FAQ:- <?php  if (!empty($keyword->keyword)) {
+					$key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->keyword); echo trim($key); } ?> in <?php echo $area; ?></h4>
 				<div itemscope itemtype="https://schema.org/FAQPage">
 					<?php if (!empty($keyword->faqq1)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq1)) {
 						$faqq1 = preg_replace('/{{city}}/i', $area, $keyword->faqq1);
 						echo trim($faqq1);
-					} ?>?</strong></h5>
-						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: block;">
-							<div itemprop="text">
-								<?php  if (!empty($keyword->faqa1)) {
+					} ?>?</strong></h5><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" style="display: block;"><div itemprop="text"><?php  if (!empty($keyword->faqa1)) {
 						$faqa1 = preg_replace('/{{city}}/i', $area, $keyword->faqa1);
 						echo trim($faqa1);
-					} ?>
-
-
-							</div>
-						</div>
-					</div>
-					<?php } ?>
-
-
-					<?php if (!empty($keyword->faqq2)) { ?>
+					} ?></div></div></div>
+					<?php } ?><?php if (!empty($keyword->faqq2)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq2)) {
 						$faqq2 = preg_replace('/{{city}}/i', $area, $keyword->faqq2);
 						echo trim($faqq2);
-					} ?>?</strong></h5>
-						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-							<div itemprop="text">
-								<?php  if (!empty($keyword->faqa2)) {
+					} ?>?</strong></h5><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+						<div itemprop="text"><?php  if (!empty($keyword->faqa2)) {
 						$faqa2 = preg_replace('/{{city}}/i', $area, $keyword->faqa2);
 						echo trim($faqa2);
-					} ?>
-
-							</div>
-						</div>
-					</div>
-					<?php } ?>
-					<?php if (!empty($keyword->faqq3)) { ?>
+					} ?></div></div></div>
+					<?php } ?><?php if (!empty($keyword->faqq3)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq3)) {
 						$faqq3 = preg_replace('/{{city}}/i', $area, $keyword->faqq3);
 						echo trim($faqq3);
-					} ?>?</strong></h5>
-						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-							<div itemprop="text">
-								<?php  if (!empty($keyword->faqa3)) {
+					} ?>?</strong></h5><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+							<div itemprop="text"><?php  if (!empty($keyword->faqa3)) {
 						$faqa3 = preg_replace('/{{city}}/i', $area, $keyword->faqa3);
 						echo trim($faqa3);
-					} ?>
-
-							</div>
-						</div>
-					</div>
-					<?php } ?>
-					<?php if (!empty($keyword->faqq4)) { ?>
+					} ?></div></div></div>
+					<?php } ?><?php if (!empty($keyword->faqq4)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq4)) {
 						$faqq4 = preg_replace('/{{city}}/i', $area, $keyword->faqq4);
 						echo trim($faqq4);
 					} ?>?</strong></h5>
 						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-							<div itemprop="text">
-								<?php  if (!empty($keyword->faqa4)) {
+							<div itemprop="text"><?php  if (!empty($keyword->faqa4)) {
 						$faqa4 = preg_replace('/{{city}}/i', $area, $keyword->faqa4);
 						echo trim($faqa4);
-					} ?>
-
-							</div>
-						</div>
-					</div>
-					<?php } ?>
-					<?php if (!empty($keyword->faqq5)) { ?>
+					} ?></div></div></div>
+					<?php } ?><?php if (!empty($keyword->faqq5)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq5)) {
 						$faqq5 = preg_replace('/{{city}}/i', $area, $keyword->faqq5);
 						echo trim($faqq5);
-					} ?>?</strong></h5>
-						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-							<div itemprop="text">
-								<?php  if (!empty($keyword->faqa5)) {
+					} ?>?</strong></h5><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+						<div itemprop="text"><?php  if (!empty($keyword->faqa5)) {
 						$faqa5 = preg_replace('/{{city}}/i', $area, $keyword->faqa5);
 						echo trim($faqa5);
-					} ?>
-
-							</div>
-						</div>
-					</div>
-					<?php } ?>
-					<?php if (!empty($keyword->faqq6)) { ?>
+					} ?></div></div></div>
+					<?php } ?><?php if (!empty($keyword->faqq6)) { ?>
 					<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 						<h5 itemprop="name"><strong><?php  if (!empty($keyword->faqq6)) {
 						$faqq6 = preg_replace('/{{city}}/i', $area, $keyword->faqq6);
 						echo trim($faqq6);
-					} ?>?</strong></h5>
-						<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-							<div itemprop="text">
-								<?php  if (!empty($keyword->faqa6)) {
+					} ?>?</strong></h5><div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+						<div itemprop="text"><?php  if (!empty($keyword->faqa6)) {
 						$faqa6 = preg_replace('/{{city}}/i', $area, $keyword->faqa6);
 						echo trim($faqa6);
-					} ?>
-
-							</div>
-						</div>
-					</div>
+					} ?></div></div></div>
 					<?php } ?>
-
-
-
-
-				</div>
-
-			</div>
-
-
-		</div>
+				</div></div></div>
 	@endif
-
-
-
 	@if(!empty($keyword))
 		<div class="container">
 			<div class="category-box">
@@ -1338,80 +1238,44 @@ echo trim($key);
 					<h5>Find <?php if (!empty($keyword->keyword)) {
 					echo $keyword->keyword;
 				} ?> other Location</h5>
-					<ul class="">
-						<?php $cities = getCity(); ?>
+					<ul class=""><?php $cities = getCity(); ?>
 						@if(!empty($cities))
-								<?php $i = 0;
-							$x = 5; ?>
-								@foreach($cities as $citys)
-
-									<li><a href="{{url(strtolower($citys->city))}}/<?php if (!empty($keyword->slug)) {
-										echo $keyword->slug;
-									} ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
-											in {{$citys->city}} |</a></li>
+							<?php $i = 0; $x = 5; ?>
+								@foreach($cities as $citys) <li><a href="{{url(strtolower($citys->city))}}/<?php if (!empty($keyword->slug)) { echo $keyword->slug; } ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif in {{$citys->city}} |</a></li>
 								@endforeach
 						@endif
-
 					</ul>
 				</div>
 			</div>
 		</div>
 	@endif
-
-
-
 	<div class="clearfix"></div>
 	<br>
-
-
 	<?php } else { ?>
-
-
 	<div class="container">
-
-		<div class="row">
-			<div class="col-sm-12 col-md-12 banner-details">
-				<h4 class="Oops-txt">Oops! No Result Found </h4>
-				<h2 class="error-txt"></h2>
-			</div>
-		</div>
-
+		<div class="row"><div class="col-sm-12 col-md-12 banner-details"><h4 class="Oops-txt">Oops! No Result Found </h4><h2 class="error-txt"></h2></div></div>
 	</div>
 	<div class="clearfix"></div>
 	<div class="container">
-
 		<div class="add-section">
 			<div class="col-xs-12">
-
 				<?php if (!empty($clientLists)): ?>
 				<?php foreach ($clientLists as $client):
 				$image = '';
 				if ($client->logo != ''):
 					$image = unserialize($client->logo);
 					$image = $image['large']['src'];
-
 					?>
-
 				<div class="col-md-3">
 					<div class="inner-client-div">
-
-						<figure><img loading="lazy" class="" src="<?php echo asset($image); ?>" alt="{{ $client->business_name }}"
-								style="width:100%;"></figure>
-						<div class="grid-info">
+						<figure><img loading="lazy" class="" src="<?php echo asset($image); ?>" alt="{{ $client->business_name }}" style="width:100%;"></figure><div class="grid-info">
 							<h3><a href="{{url('business-details') . '/' . $client->business_slug }}"
 									title="{{$client->business_name}}" tabindex="0">
-									<div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong>
-									</div>
-								</a></h3>
-
-							<strong>{{ucfirst($client->city)}}</strong>
-							<a href="{{url('business-details') . '/' . $client->business_slug }}"
-								class="get-quotes" tabindex="0">View</a>
+									<div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3><strong>{{ucfirst($client->city)}}</strong>
+							<a href="{{url('business-details') . '/' . $client->business_slug }}" class="get-quotes" tabindex="0">View</a>
 						</div>
 					</div>
 				</div>
-
-
 				<?php 
 					endif;
 			endforeach;
