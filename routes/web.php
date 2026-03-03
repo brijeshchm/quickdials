@@ -423,6 +423,10 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-common',['city'=>'hyderabad'])->header('Content-Type', 'text/xml');
 	});
   
+	Route::get('/sitemap-chennai.xml', function () {
+		return response()->view('client.sitemap-common',['city'=>'chennai'])->header('Content-Type', 'text/xml');
+	});
+  
  
  
  	Route::get('/sitemap-online.xml', function () {		
