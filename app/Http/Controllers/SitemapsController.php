@@ -19,14 +19,10 @@ class SitemapsController extends Controller
 {
 	public function index()
 	{
-
-
-		$keywords = DB::table('keyword');
-		 
+		$keywords = DB::table('keyword');		 
 		$keywords = $keywords->select('updated_at','slug');		 
 		$keywords = $keywords->get();
 		return response()->view('client.sitemap_keyword', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
-
  
 	}
 
