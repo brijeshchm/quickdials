@@ -14,12 +14,118 @@
 <loc>https://www.quickdials.com/business-owners/</loc>
 <lastmod>2025-05-09T09:59:21+00:00</lastmod>
 <priority>0.80</priority>
-</url>
- 
- 
+</url> 
 @foreach ($keywords as $keyword)
 <url>
     <loc>{{ url($keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+<loc>{{ url('noida/'.$keyword->slug) }}</loc>
+<lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+    <loc>{{ url('greater-noida/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('delhi/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('gurgaon/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('bangalore/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('mumbai/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('chandigarh/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('pune/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('meerut/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach
+ 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('ahmedabad/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach
+ 
+ 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('prayagraj/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('nagpur/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach
+ 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('indore/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

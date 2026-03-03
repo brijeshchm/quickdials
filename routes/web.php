@@ -234,18 +234,18 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 
   	// Route::get('/sitemap.xml', [App\Http\Controllers\SitemapsController::class, 'index']);
   	
-  	Route::get('/sitemap-noida.xml',[App\Http\Controllers\SitemapsController::class, 'noida']);
-	Route::get('/sitemap-delhi.xml',[App\Http\Controllers\SitemapsController::class, 'delhi']);
-    Route::get('/sitemap-gurgaon.xml',[App\Http\Controllers\SitemapsController::class, 'gurgaon']);
+ // 	Route::get('/sitemap-noida.xml',[App\Http\Controllers\SitemapsController::class, 'noida']);
+	//Route::get('/sitemap-delhi.xml',[App\Http\Controllers\SitemapsController::class, 'delhi']);
+   // Route::get('/sitemap-gurgaon.xml',[App\Http\Controllers\SitemapsController::class, 'gurgaon']);
     Route::get('/sitemap-faridabad.xml',[App\Http\Controllers\SitemapsController::class, 'faridabad']);
     Route::get('/sitemap-ghaziabad.xml',[App\Http\Controllers\SitemapsController::class, 'ghaziabad']);
-    Route::get('/sitemap-mumbai.xml',[App\Http\Controllers\SitemapsController::class, 'mumbai']);
-    Route::get('/sitemap-pune.xml',[App\Http\Controllers\SitemapsController::class, 'pune']);				
-	Route::get('/sitemap-greaterNoida.xml',[App\Http\Controllers\SitemapsController::class, 'greaterNoida']);
-    Route::get('/sitemap-chandigarh.xml',[App\Http\Controllers\SitemapsController::class, 'chandigarh']);
-    Route::get('/sitemap-meerut.xml',[App\Http\Controllers\SitemapsController::class, 'meerut']);
-    Route::get('/sitemap-bangalore.xml',[App\Http\Controllers\SitemapsController::class, 'bangalore']);
-    Route::get('/sitemap-ahmedabad.xml',[App\Http\Controllers\SitemapsController::class, 'ahmedabad']);
+    //Route::get('/sitemap-mumbai.xml',[App\Http\Controllers\SitemapsController::class, 'mumbai']);
+    //Route::get('/sitemap-pune.xml',[App\Http\Controllers\SitemapsController::class, 'pune']);				
+	//Route::get('/sitemap-greaterNoida.xml',[App\Http\Controllers\SitemapsController::class, 'greaterNoida']);
+   // Route::get('/sitemap-chandigarh.xml',[App\Http\Controllers\SitemapsController::class, 'chandigarh']);
+    //Route::get('/sitemap-meerut.xml',[App\Http\Controllers\SitemapsController::class, 'meerut']);
+   // Route::get('/sitemap-bangalore.xml',[App\Http\Controllers\SitemapsController::class, 'bangalore']);
+   // Route::get('/sitemap-ahmedabad.xml',[App\Http\Controllers\SitemapsController::class, 'ahmedabad']);
     Route::get('/sitemap-patna.xml',[App\Http\Controllers\SitemapsController::class, 'patna']);
 
     Route::get('/sitemap-blog.xml',[App\Http\Controllers\SitemapsController::class, 'blog']);
@@ -303,9 +303,9 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-common',['city'=>'dhanbad'])->header('Content-Type', 'text/xml');
 	});
 
-  	Route::get('/sitemap-prayagraj.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'prayagraj'])->header('Content-Type', 'text/xml');
-	});
+  	// Route::get('/sitemap-prayagraj.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'prayagraj'])->header('Content-Type', 'text/xml');
+	// });
 	
   	Route::get('/sitemap-raipur.xml', function () {
 		return response()->view('client.sitemap-common',['city'=>'raipur'])->header('Content-Type', 'text/xml');
@@ -371,9 +371,9 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-common',['city'=>'nashik'])->header('Content-Type', 'text/xml');
 	});
 
-	Route::get('/sitemap-nagpur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'nagpur'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-nagpur.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'nagpur'])->header('Content-Type', 'text/xml');
+	// });
 	Route::get('/sitemap-mysuru.xml', function () {
 		return response()->view('client.sitemap-s',['city'=>'mysuru'])->header('Content-Type', 'text/xml');
 	});
@@ -408,10 +408,10 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 	});
  
  
- 
-	Route::get('/sitemap-indore.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'indore'])->header('Content-Type', 'text/xml');
-	});
+
+	// Route::get('/sitemap-indore.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'indore'])->header('Content-Type', 'text/xml');
+	// });
  
  
 	Route::get('/sitemap-gorakhpur.xml', function () {
