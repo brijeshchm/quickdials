@@ -303,9 +303,9 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-common',['city'=>'dhanbad'])->header('Content-Type', 'text/xml');
 	});
 
-  	// Route::get('/sitemap-prayagraj.xml', function () {
-	// 	return response()->view('client.sitemap-common',['city'=>'prayagraj'])->header('Content-Type', 'text/xml');
-	// });
+  	Route::get('/sitemap-prayagraj.xml', function () {
+		return response()->view('client.sitemap-common',['city'=>'prayagraj'])->header('Content-Type', 'text/xml');
+	});
 	
   	Route::get('/sitemap-raipur.xml', function () {
 		return response()->view('client.sitemap-common',['city'=>'raipur'])->header('Content-Type', 'text/xml');
@@ -371,9 +371,9 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 		return response()->view('client.sitemap-common',['city'=>'nashik'])->header('Content-Type', 'text/xml');
 	});
 
-	// Route::get('/sitemap-nagpur.xml', function () {
-	// 	return response()->view('client.sitemap-common',['city'=>'nagpur'])->header('Content-Type', 'text/xml');
-	// });
+	Route::get('/sitemap-nagpur.xml', function () {
+		return response()->view('client.sitemap-common',['city'=>'nagpur'])->header('Content-Type', 'text/xml');
+	});
 	Route::get('/sitemap-mysuru.xml', function () {
 		return response()->view('client.sitemap-s',['city'=>'mysuru'])->header('Content-Type', 'text/xml');
 	});
@@ -409,9 +409,9 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
  
  
 
-	// Route::get('/sitemap-indore.xml', function () {
-	// 	return response()->view('client.sitemap-common',['city'=>'indore'])->header('Content-Type', 'text/xml');
-	// });
+	Route::get('/sitemap-indore.xml', function () {
+		return response()->view('client.sitemap-common',['city'=>'indore'])->header('Content-Type', 'text/xml');
+	});
  
  
 	Route::get('/sitemap-gorakhpur.xml', function () {
