@@ -401,6 +401,70 @@ class BackEndClientsController extends Controller
 					return response()->json(['status' => 0, 'message' => 'Maximum Keywords field not updated successfully']);
 				}
 			}
+			if ($request->has('submit_free_amt')) {
+
+		 
+				$clientdeatails = Client::withTrashed()->where('username', $id)->first();
+				if (!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('manager'))) {
+					return response()->json(['status' => 0, 'message' => 'Unauthorised to update max. kw field']);
+				}
+			
+
+			 if ($clientdeatails->coins_free == '0') {
+				$paymenthistory = new PaymentHistory;
+				$paymenthistory->client_id = $clientdeatails->id;
+				$paymenthistory->customer_name = $clientdeatails->business_name;
+				$paymenthistory->business_name = $clientdeatails->business_name;
+				$paymenthistory->mobile = $clientdeatails->mobile;
+				$paymenthistory->email = $clientdeatails->email;
+				$paymenthistory->package_name = $clientdeatails->client_type;
+				$paymenthistory->coins_amt = '555';
+				$paymenthistory->selectproofid = "";
+				$paymenthistory->proofid = "";
+				$paymenthistory->paid_amount = '0';
+				$paymenthistory->tds_status = "No";
+				$paymenthistory->tds_amount = "0";
+				$paymenthistory->gst_tax = '0';
+				$paymenthistory->gst_total_amount = '0';
+				$paymenthistory->gst_status = "Yes";
+				$paymenthistory->total_amount = '0';
+				$paymenthistory->transactionid = 'FREE-'.time();;
+				$paymenthistory->order_number = 'FREE-'.time();
+				$paymenthistory->paymentcollect = 0;
+				$paymenthistory->payment_mode = "free subscribe";
+				$paymenthistory->payment_bank = "";
+				$paymenthistory->invoice_status = '1';
+				$paymenthistory->save();
+
+
+				$clientdeatails->coins_amt = $clientdeatails->coins_amt + 555;
+				if ($clientdeatails->expired_on == '0000-00-00 00:00:00' || $clientdeatails->expired_on == 'NULL') {
+
+					$newDate = date('Y-m-d', strtotime(now() . ' +365 days'));
+
+				} else if (strtotime($clientdeatails->expired_on) > strtotime(date('Y-m-d'))) {
+					$newDate = date('Y-m-d', strtotime($clientdeatails->expired_on . ' +365 days'));
+
+				} else if (strtotime($clientdeatails->expired_on) < strtotime(date('Y-m-d'))) {
+					$newDate = date('Y-m-d', strtotime(now() . ' +365 days'));
+
+				} else {
+					$newDate = date('Y-m-d', strtotime(now() . ' +365 days'));
+				}
+				$clientdeatails->expired_on = $newDate;
+				$clientdeatails->active_status = "1";
+				$clientdeatails->paid_status = "1";
+				$clientdeatails->coins_free = "1";
+							  
+				if ($clientdeatails->save()) {
+					return response()->json(['status' => 1, 'message' => 'Free subscribed successfully']);
+				} else {
+					return response()->json(['status' => 0, 'message' => 'Not subscribed successfully']);
+				}
+			}
+			}
+
+
 			// SAVE ASSIGNED KEYWORDS
 			// **********************
 			if ($request->has('kw-submit')) {

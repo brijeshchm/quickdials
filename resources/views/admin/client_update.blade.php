@@ -129,28 +129,32 @@
   <div id="page-content"> 
   <div id="sidebar">
         <div class="sidebar-item active" onclick="showContent('personalDetails')">
-            <i>📍</i> <a href="#personalDetails">Personal Details</a>
+            <i class="fa fa-user"></i> <a href="#personalDetails">Personal Details</a>
         </div>
         <div class="sidebar-item" onclick="showContent('information')">
-            <i>📞</i><a href="#information"> Business Information</a>
+            <i class="fa fa-phone"></i><a href="#information"> Business Information</a>
         </div>
         <div class="sidebar-item" onclick="showContent('businessLocation')">
-            <i>ℹ️</i><a href="#businessLocation">Business Location</a>
+            <i class="fa fa-map-marker"></i><a href="#businessLocation">Business Location</a>
         </div>
         <div class="sidebar-item" onclick="showContent('uploadProfile')">
-            <i>📷</i> <a href="#uploadProfile">Company Logo</a>
+            <i class="fa fa-camera"></i> <a href="#uploadProfile">Company Logo</a>
         </div>
         <div class="sidebar-item" onclick="showContent('uploadGallery')">
-            <i> 📷</i> <a href="#uploadGallery">Upload Gallery</a>
+            <i class="fa fa-image"></i> <a href="#uploadGallery">Upload Gallery</a>
         </div>
         <div class="sidebar-item" onclick="showContent('certificate')">
-            <i> 📷</i> <a href="#certificate">Certificate</a>
+            <i class="fa fa-certificate"></i> <a href="#certificate">Certificate</a>
         </div>
         <div class="sidebar-item" onclick="showContent('award')">
-            <i> 📷</i> <a href="#award">Award</a>
+            <i class="fa fa-trophy"></i> <a href="#award">Award</a>
         </div>
         <div class="sidebar-item" onclick="showContent('keywords')">
-            <i>🔑</i> <a href="#keywords">Assigned Keywords</a>
+            <i class="fa fa-key"></i> <a href="#keywords">Assigned Keywords</a>
+        </div>
+        
+        <div class="sidebar-item" onclick="showContent('accountSettings')">
+            <i class="fa fa-cog"></i> <a href="#accountSettings">Account Settings</a>
         </div>
         <div class="sidebar-item" onclick="showContent('leads')">
             <i>📋</i><a href="#leads"> View All Lead</a>
@@ -1674,6 +1678,96 @@
 	<div class="section-content" id="keywords">
         <div class="form-container">
             <h4>Assigned Keywords</h4>
+          
+
+
+				<div id="ass_kw_wrapper" style="display:<?php echo ($client->client_type==="general")?"block":"block"; ?>;">
+									 
+				<form class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST" id="kw_form" name="kw_form" >
+						{{csrf_field()}}
+						<div class="form-group">
+							
+				<input type="hidden" name="client_id" id="clientIDASSKW" value="{{$client->username}}">									
+				 
+							
+							<div class="col-md-12">
+								<label for="keyword">Keywords:</label>
+								<select class="form-control select2_single keyword_m" name="keyword[]"  multiple>
+								<option value=""></option>
+								@if($keywordlist)
+								@foreach($keywordlist as $key)
+									<option value="{{ $key->id }}">{{ $key->keyword}} </option>
+								@endforeach
+								@endif
+								</select>
+							</div>							 						 
+							<input type="hidden" name="kw-submit" value="kw-submit">
+							<div class="col-md-3">
+								<label for="submit" style="visibility:hidden">Submit:</label>
+								<input type="reset" class="btn btn-default hide reset_kw_submit" />
+								<button type="submit" class="btn btn-warning btn-block kw-submit">Submit</button>
+							</div>
+						</div>
+						<div class="form-group">
+						</div>
+					</form>
+
+				 
+					<style>
+					.check-box{
+						height:18px;
+						width:20px;
+						cursor:pointer;
+					}
+					</style>
+					<div class="table-responsive col-md-12">
+						<table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-keywords">
+							 
+							<caption>Assigned Keywords</caption>
+							<thead>
+								<tr>
+									<th><input type="checkbox" id="check-all" class="check-box"></th></th>											 
+									<th>KW</th>
+									<th>Child Category</th>
+									<th>Parent Category</th>
+									<!-- <th>City</th>
+									<th>Zone</th> -->
+									<th>Position</th>
+									<!--<th>Price</th>-->
+									<th>Action</th>
+								</tr>
+							</thead>
+							 
+						</table>
+						<form class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
+							{{csrf_field()}}
+							<div class="form-group">
+							@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('export_assign_keyword'))
+								<div class="col-md-2">
+									<input type="submit" class="btn btn-success btn-block" name="kw-export" value="Export">
+								</div>	 
+								@endif
+									@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('assign_keyword_delete'))
+								<div class="col-md-4">
+									<button type="button" class="btn btn-success btn-block" onclick="javascript:assignedKeywordController.deleteSelectedAssignedKwds()">Delete Selected</button>
+								</div>
+								@endif
+								 
+							</div>
+						</form>
+					</div>
+
+								 
+							</div>
+
+
+			 
+        </div>
+    </div>
+    
+	<div class="section-content" id="accountSettings">
+        <div class="form-container">
+            <h4>Account Settings</h4>
          
 			<form id="submitActiveStatus" class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
 				{{csrf_field()}}
@@ -1902,93 +1996,45 @@
 							</div>
 						</form>
 						
-					</div>
-
-
-				<div id="ass_kw_wrapper" style="display:<?php echo ($client->client_type==="general")?"block":"block"; ?>;">
-									 
-				<form class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST" id="kw_form" name="kw_form" >
-						{{csrf_field()}}
-						<div class="form-group">
-							
-				<input type="hidden" name="client_id" id="clientIDASSKW" value="{{$client->username}}">									
-				 
-							
-							<div class="col-md-12">
-								<label for="keyword">Keywords:</label>
-								<select class="form-control select2_single keyword_m" name="keyword[]"  multiple>
-								<option value=""></option>
-								@if($keywordlist)
-								@foreach($keywordlist as $key)
-									<option value="{{ $key->id }}">{{ $key->keyword}} </option>
-								@endforeach
-								@endif
-								</select>
-							</div>							 						 
-							<input type="hidden" name="kw-submit" value="kw-submit">
-							<div class="col-md-3">
-								<label for="submit" style="visibility:hidden">Submit:</label>
-								<input type="reset" class="btn btn-default hide reset_kw_submit" />
-								<button type="submit" class="btn btn-warning btn-block kw-submit">Submit</button>
-							</div>
-						</div>
-						<div class="form-group">
-						</div>
-					</form>
-
-				 
-					<style>
-					.check-box{
-						height:18px;
-						width:20px;
-						cursor:pointer;
-					}
-					</style>
-					<div class="table-responsive col-md-12">
-						<table width="100%" class="table table-striped table-bordered table-hover" id="datatable-assigned-keywords">
-							 
-							<caption>Assigned Keywords</caption>
-							<thead>
-								<tr>
-									<th><input type="checkbox" id="check-all" class="check-box"></th></th>											 
-									<th>KW</th>
-									<th>Child Category</th>
-									<th>Parent Category</th>
-									<!-- <th>City</th>
-									<th>Zone</th> -->
-									<th>Position</th>
-									<!--<th>Price</th>-->
-									<th>Action</th>
-								</tr>
-							</thead>
-							 
-						</table>
-						<form class="form-horizontal" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
+						@if($client->coins_free=='0')
+						<form class="form-horizontal" id="max_kw_form" enctype="multipart/form-data" action="{{ url('developer/clients/update')."/".$client->username }}" method="POST">
 							{{csrf_field()}}
 							<div class="form-group">
-							@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('export_assign_keyword'))
-								<div class="col-md-2">
-									<input type="submit" class="btn btn-success btn-block" name="kw-export" value="Export">
-								</div>	 
-								@endif
-									@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('assign_keyword_delete'))
+								<div class="col-md-3">
+									<label>₹ 0 : 555 Coins:</label>
+									<input type="hidden" class="form-control" name="amt" value="555" />
+								</div>
+								@if($request->user()->current_user_can('administrator') || $request->user()->current_user_can('manager') )
 								<div class="col-md-4">
-									<button type="button" class="btn btn-success btn-block" onclick="javascript:assignedKeywordController.deleteSelectedAssignedKwds()">Delete Selected</button>
+									<label style="visibility:hidden">Submit:</label>
+									<input type="hidden" name="submit_free_amt" value="1" />
+									<button type="submit" class="btn btn-info btn-block kw-submit">Buy Package</button>
 								</div>
 								@endif
-								 
 							</div>
 						</form>
+						
+@endif
+
+						
 					</div>
 
-								 
-							</div>
+
+               
+
+                 
+								
 
 
 			 
         </div>
     </div>
-    <div class="section-content" id="leads">
+    
+	
+	
+	
+	
+	<div class="section-content" id="leads">
         <div class="form-container">
             <h4>View All Leads</h4>
            <div class="table-responsive col-md-12">
