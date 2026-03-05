@@ -1,162 +1,162 @@
 <?php
 
 namespace App\Http\Controllers\Official;
- 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
- 
+
 use App\LeadEnquery;
 use App\EnquiryFollowUp;
 use App\Subscribe;
 use App\Models\Blogdetails;
 use App\Models\Client\Client; //model
- use App\Models\Keyword;
- use App\Models\Citieslists;
+use App\Models\Keyword;
+use App\Models\Citieslists;
 class OfficialController extends Controller
 {
-	
-	 public function __construct()
+
+    public function __construct()
     {
-         
+
     }
-      /**
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {  
+    {
         return view('official.index');
-    } 
-	/**
+    }
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function about()
-    {    
-        	$clients = Client::get()->count();
-		$keyword = Keyword::get()->count();
-		$citieslists = Citieslists::get()->count();
-        return view('official.about-us',['clients'=>$clients,'keyword'=>$keyword,'citieslists'=>$citieslists]);
-    } 
-	/**
+    {
+        $clients = Client::get()->count();
+        $keyword = Keyword::get()->count();
+        $citieslists = Citieslists::get()->count();
+        return view('official.about-us', ['clients' => $clients, 'keyword' => $keyword, 'citieslists' => $citieslists]);
+    }
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function news()
-    {   
+    {
         return view('official.news');
-    } 
-	
-	/**
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function rss()
-    { 	
-		$blogrecents = Blogdetails::limit(8)->orderBy('id','DESC')->get();
-		return view('official.rss',['blogrecents'=>$blogrecents]);
-    } 
-	
-	/**
+    {
+        $blogrecents = Blogdetails::limit(8)->orderBy('id', 'DESC')->get();
+        return view('official.rss', ['blogrecents' => $blogrecents]);
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function features()
-    {   
+    {
         return view('official.features');
-    } 
-	/**
+    }
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function faq()
-    {   
+    {
         return view('official.faq');
-    } 
-	
-	public function contact()
-    {  
+    }
+
+    public function contact()
+    {
         return view('official.contact-us');
     }
 
-	/**
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function careers()
-    {  
+    {
         return view('official.careers');
-    } 
-	
-	/**
+    }
+
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
     public function pricing()
-    {  
+    {
         return view('official.pricing');
     } /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+      * Show the application dashboard.
+      *
+      * @return \Illuminate\Http\Response
+      */
     public function media()
-    {  
+    {
         return view('official.index');
     } /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+      * Show the application dashboard.
+      *
+      * @return \Illuminate\Http\Response
+      */
     public function advertise()
-    {  
+    {
         return view('official.advertise');
-    }   
-	
-	public function blog()
-    {  
-		$blogrecents = Blogdetails::where('status','1')->limit(20)->orderBy('id','DESC')->get();
-		$bloglist = Blogdetails::where('status','1')->orderBy('id','DESC')->paginate(10);
-		 
-        return view('official.blog',['bloglist'=>$bloglist,'blogrecents'=>$blogrecents]);
-    } 
-	public function blogdetails(Request $request, $slug)
-    {  
-	
-	$bloglist = Blogdetails::where('status','1')->limit(20)->orderBy('id','DESC')->get();
-	$blogdetails = Blogdetails::where('status','1')->where('slug',$slug)->first();
- 
-        return view('official.blog-details',['bloglist'=>$bloglist,'blogdetails'=>$blogdetails]);
-    } 
-	
-	public function testimonials()
-    {  
-		$testimonialsdetails = Testimonialsdetail::orderBy('id','DESC')->get();
-        return view('official.testimonials',['testimonialsdetails'=>$testimonialsdetails]);
-    }  
-	public function termsconditions()
-    {  
-	
-	
+    }
+
+    public function blog()
+    {
+        $blogrecents = Blogdetails::where('status', '1')->limit(20)->orderBy('id', 'DESC')->get();
+        $bloglist = Blogdetails::where('status', '1')->orderBy('id', 'DESC')->paginate(10);
+
+        return view('official.blog', ['bloglist' => $bloglist, 'blogrecents' => $blogrecents]);
+    }
+    public function blogdetails(Request $request, $slug)
+    {
+
+        $bloglist = Blogdetails::where('status', '1')->limit(20)->orderBy('id', 'DESC')->get();
+        $blogdetails = Blogdetails::where('status', '1')->where('slug', $slug)->first();
+
+        return view('official.blog-details', ['bloglist' => $bloglist, 'blogdetails' => $blogdetails]);
+    }
+
+    public function testimonials()
+    {
+        $testimonialsdetails = Testimonialsdetail::orderBy('id', 'DESC')->get();
+        return view('official.testimonials', ['testimonialsdetails' => $testimonialsdetails]);
+    }
+    public function termsconditions()
+    {
+
+
         return view('official.terms-conditions');
     }
 
-	public function privacypolicy()
-    {  
+    public function privacypolicy()
+    {
         return view('official.privacy-policy');
-    }  
-	public function copyrightpolicy()
-    {  
+    }
+    public function copyrightpolicy()
+    {
         return view('official.copyright-policy');
-    }  
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -164,33 +164,33 @@ class OfficialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   public function enquerystore(Request $request)
-    {	
-	 
-		$lead = new LeadEnquery;		 
-		 $lead->business= $request->input('business');
-		 $lead->name= $request->input('name');
-		 $lead->mobile= $request->input('mobile');
-		 $lead->email= $request->input('email');
-		 $lead->city= $request->input('city');
-		 
-		 if($lead->save()){
-			 $followUp = new EnquiryFollowUp;				 
-				$followUp->remark = $request->input('message');
-				$followUp->enquiry_id = $lead->id;
-				 
-				if($followUp->save()){	
-				    $headers  = 'MIME-Version: 1.0' . "\r\n";
-				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-				// Additional headers
-			
-				$headers .= 'From: QuickDials <info@quickdials.com>'. "\r\n";
-			$to="info@quickdials.com". "\r\n";
-			//	$to="care@quickdials.com". "\r\n";
-				$subject="New Enquiry". "\r\n";
-			//	$message=view('site.send_enquiry_mail_thanks');
-				
-				$message='<html>
+    public function enquerystore(Request $request)
+    {
+
+        $lead = new LeadEnquery;
+        $lead->business = $request->input('business');
+        $lead->name = $request->input('name');
+        $lead->mobile = $request->input('mobile');
+        $lead->email = $request->input('email');
+        $lead->city = $request->input('city');
+
+        if ($lead->save()) {
+            $followUp = new EnquiryFollowUp;
+            $followUp->remark = $request->input('message');
+            $followUp->enquiry_id = $lead->id;
+
+            if ($followUp->save()) {
+                $headers = 'MIME-Version: 1.0' . "\r\n";
+                $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                // Additional headers
+
+                $headers .= 'From: QuickDials <info@quickdials.com>' . "\r\n";
+                $to = "info@quickdials.com" . "\r\n";
+                //	$to="care@quickdials.com". "\r\n";
+                $subject = "New Enquiry" . "\r\n";
+                //	$message=view('site.send_enquiry_mail_thanks');
+
+                $message = '<html>
 <body>
 <table class="m_-3031551356041827469MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100.0%">
     <tbody>
@@ -261,37 +261,37 @@ class OfficialController extends Controller
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Campany Name:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-																					'.$request->input('business').'</span><u></u><u></u></p>
+																					' . $request->input('business') . '</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
 																			
 																			<tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Name:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-																					'.$request->input('name').'</span><u></u><u></u></p>
+																					' . $request->input('name') . '</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in">
                                                                                     <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Email:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">
-																					'.$request->input('email').'</span><u></u><u></u></p>
+																					' . $request->input('email') . '</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Mobile:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('mobile').'</span><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Mobile:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> ' . $request->input('mobile') . '</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                             
                                                                            
 																			<tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">City:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('city').'</span><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">City:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> ' . $request->input('city') . '</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
 																			<tr>
                                                                                 <td style="padding:0in 0in 7.5pt 0in">
-                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Message:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> '.$request->input('message').'</span><u></u><u></u></p>
+                                                                                    <p class="MsoNormal"><strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333">Message:</span></strong><span style="font-size:10.5pt;font-family:&quot;Tahoma&quot;,&quot;sans-serif&quot;;color:#333333"> ' . $request->input('message') . '</span><u></u><u></u></p>
                                                                                 </td>
                                                                             </tr>
                                                                        
@@ -366,28 +366,28 @@ class OfficialController extends Controller
 </table>
 </body>
 </html>';
-				
-		//	$message=file_get_contents($message);
-		    	/*$message=preg_replace('NA',$request->input('name'),$message);
-			$message=preg_replace('EM',$request->input('email'),$message);
-				$message=preg_replace('MB',$request->input('mobile'),$message);
-				$message=preg_replace('CI',$request->input('city'),$message);
-				$message=preg_replace('ME',$request->input('message'),$message);*/
-				 
-				mail($to,$subject,$message,$headers);	
-			
-			
-			if($lead->email){
-					
-					$headers  = 'MIME-Version: 1.0' . "\r\n";
-				$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"; 
-				// Additional headers
-				//	$headers .= 'From: enquiry@quickdials.com' . "\r\n";
-				$headers .= 'From: quickdials <care@quickdials.com>';
-				//$headers .= "CC: info@gmail.com\r\n";
-				$to=$lead->email;
-				$subject="Thanks for quickdials Enquiry";
-					$message ='<html>
+
+                //	$message=file_get_contents($message);
+                /*$message=preg_replace('NA',$request->input('name'),$message);
+            $message=preg_replace('EM',$request->input('email'),$message);
+                $message=preg_replace('MB',$request->input('mobile'),$message);
+                $message=preg_replace('CI',$request->input('city'),$message);
+                $message=preg_replace('ME',$request->input('message'),$message);*/
+
+                mail($to, $subject, $message, $headers);
+
+
+                if ($lead->email) {
+
+                    $headers = 'MIME-Version: 1.0' . "\r\n";
+                    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+                    // Additional headers
+                    //	$headers .= 'From: enquiry@quickdials.com' . "\r\n";
+                    $headers .= 'From: quickdials <care@quickdials.com>';
+                    //$headers .= "CC: info@gmail.com\r\n";
+                    $to = $lead->email;
+                    $subject = "Thanks for quickdials Enquiry";
+                    $message = '<html>
 <body>
 <table class="m_-3031551356041827469MsoNormalTable" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100.0%">
     <tbody>
@@ -530,72 +530,72 @@ class OfficialController extends Controller
 </table>
 </body>
 </html>';
-					mail($to,$subject,$message,$headers);	
-				}
+                    mail($to, $subject, $message, $headers);
+                }
 
-					return response()->json(['status'=>1],200);
-			 
-			 }else{
-					 
-					return response()->json(['status'=>0,'errors'=>'Enquiry not added'],400);
-				}
-		 }else{
-			return response()->json(['status'=>0],200);
-			 
-		 }
-		 
-		  
+                return response()->json(['status' => 1], 200);
+
+            } else {
+
+                return response()->json(['status' => 0, 'errors' => 'Enquiry not added'], 400);
+            }
+        } else {
+            return response()->json(['status' => 0], 200);
+
+        }
+
+
     }
-  /**
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function contactform(Request $request)
-    {	
-		 
-		$lead = new LeadEnquery;		 
-		 $lead->business= $request->input('subject');
-		 $lead->name= $request->input('name');
-		 $lead->mobile= $request->input('mobile');
-		 $lead->email= $request->input('email');
-		 $lead->city= $request->input('city');
-		 
-		 if($lead->save()){
-		      $followUp = new EnquiryFollowUp;				 
-				$followUp->remark = $request->input('message');
-				$followUp->enquiry_id = $lead->id;				 
-				$followUp->save();
-			 return response()->json(['status'=>1],200);
-		 }else{
-			return response()->json(['status'=>0],200);
-			 
-		 }
-		 
-		  
+    {
+
+        $lead = new LeadEnquery;
+        $lead->business = $request->input('subject');
+        $lead->name = $request->input('name');
+        $lead->mobile = $request->input('mobile');
+        $lead->email = $request->input('email');
+        $lead->city = $request->input('city');
+
+        if ($lead->save()) {
+            $followUp = new EnquiryFollowUp;
+            $followUp->remark = $request->input('message');
+            $followUp->enquiry_id = $lead->id;
+            $followUp->save();
+            return response()->json(['status' => 1], 200);
+        } else {
+            return response()->json(['status' => 0], 200);
+
+        }
+
+
     }
- 
- 
- /**
+
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function subscribe(Request $request)
-    {	
-		 
-		$subscribe = new Subscribe;		 
-		 $subscribe->email= $request->input('email');		 
-		 if($subscribe->save()){
-			 return response()->json(['status'=>1],200);
-		 }else{
-			return response()->json(['status'=>0],200);
-			 
-		 }
-		 
-		  
+    {
+
+        $subscribe = new Subscribe;
+        $subscribe->email = $request->input('email');
+        if ($subscribe->save()) {
+            return response()->json(['status' => 1], 200);
+        } else {
+            return response()->json(['status' => 0], 200);
+
+        }
+
+
     }
-	 
+
 }
