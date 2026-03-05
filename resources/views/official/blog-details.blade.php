@@ -1,10 +1,8 @@
 @extends('client.layouts.app')
 @section('title')@if(!empty($blogdetails->meta_title)){{$blogdetails->meta_title}}@endif
 @endsection
-@section('keyword')@if (!empty($blogdetails->meta_keywords)){{$blogdetails->meta_keywords}} @endif 
-@endsection 
-@section('description')@if(!empty($blogdetails->meta_description)){{$blogdetails->meta_description}}@endif 
-@endsection
+@section('keyword')@if (!empty($blogdetails->meta_keywords)){{$blogdetails->meta_keywords}} @endif @endsection 
+@section('description')@if(!empty($blogdetails->meta_description)){{$blogdetails->meta_description}} @endif @endsection
 @section('content')
 <link href="{{asset('official/css/style.css')}}" rel="stylesheet">
  <style>

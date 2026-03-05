@@ -1,4 +1,5 @@
 <?php echo View::make('admin/header'); ?>
+<link rel="stylesheet" href="{{ asset('drag_drop/jquery.ezdz.min.css')}}">
 <style>
 #btnAllRight,#btnRight,#btnLeft,#btnAllLeft{
 	display:block;
@@ -8,12 +9,11 @@
 </style>     
  
    <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                     <h1 class="page-header">Update "{{{ ucwords($client->business_name) }}}"</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+	<div class="row">
+		<div class="col-lg-12">
+				<h1 class="page-header">Update "{{{ ucwords($client->business_name) }}}"</h1>
+		</div>               
+	</div>
 <style>
 
 
@@ -46,12 +46,14 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
-
-        .sidebar-item:hover {
+		.sidebar-item a{
+			color:#fff;
+		}
+        .sidebar-item a:hover {
             background-color: #2a3b6c;
         }
 
-        .sidebar-item.active {
+        .sidebar-item a.active {
             background-color: #3b5998;
         }
 
@@ -126,37 +128,43 @@
     </style>
   <div id="page-content"> 
   <div id="sidebar">
-        <div class="sidebar-item active" onclick="showContent('location')">
-            <i>📍</i> Personal Details
+        <div class="sidebar-item active" onclick="showContent('personalDetails')">
+            <i>📍</i> <a href="#personalDetails">Personal Details</a>
         </div>
-        <div class="sidebar-item" onclick="showContent('contact')">
-            <i>📞</i> Business Information
+        <div class="sidebar-item" onclick="showContent('information')">
+            <i>📞</i><a href="#information"> Business Information</a>
         </div>
-        <div class="sidebar-item" onclick="showContent('other')">
-            <i>ℹ️</i>Business Location
+        <div class="sidebar-item" onclick="showContent('businessLocation')">
+            <i>ℹ️</i><a href="#businessLocation">Business Location</a>
         </div>
         <div class="sidebar-item" onclick="showContent('uploadProfile')">
-            <i>📷</i> Company Logo
+            <i>📷</i> <a href="#uploadProfile">Company Logo</a>
         </div>
-        <div class="sidebar-item" onclick="showContent('upload')">
-            <i> 📷</i> Upload Gallery
+        <div class="sidebar-item" onclick="showContent('uploadGallery')">
+            <i> 📷</i> <a href="#uploadGallery">Upload Gallery</a>
+        </div>
+        <div class="sidebar-item" onclick="showContent('certificate')">
+            <i> 📷</i> <a href="#certificate">Certificate</a>
+        </div>
+        <div class="sidebar-item" onclick="showContent('award')">
+            <i> 📷</i> <a href="#award">Award</a>
         </div>
         <div class="sidebar-item" onclick="showContent('keywords')">
-            <i>🔑</i> Assigned Keywords
+            <i>🔑</i> <a href="#keywords">Assigned Keywords</a>
         </div>
         <div class="sidebar-item" onclick="showContent('leads')">
-            <i>📋</i> View All Lead
+            <i>📋</i><a href="#leads"> View All Lead</a>
         </div>
         <div class="sidebar-item" onclick="showContent('discussion')">
-            <i>💬</i> Discussion
+            <i>💬</i> <a href="#discussion">Discussion</a>
         </div>
         <div class="sidebar-item" onclick="showContent('payment')">
-            <i>💳</i> Payment Order
+            <i>💳</i> <a href="#payment"> Payment Order</a>
         </div>
     </div>
 
     <!-- Content Area -->
-    <div class="section-content active" id="location">
+    <div class="section-content active" id="personalDetails">
         <div class="form-container">
 			<h4>Personal Details</h4>
 		 
@@ -279,8 +287,6 @@
 						<select class="form-control select2-single-state" name="personal_state" onchange="per_select_city(this.value);">
 						@if($statesis)
 						@foreach($statesis as $state)
-
-
 						<option value="{{$state->id}}"  @if ($state->id== old('personal_state'))
 						selected="selected"	
 						@else
@@ -293,7 +299,7 @@
 					<div class="form-group col-md-6">
 						<div class="col-md-12"> 					 
                     	<label>City:</label>
-						<select class="form-control show_cityList search_city" name="personal_city" onchange="per_select_zone(this.value);">
+						<select class="form-control show_cityList" name="personal_city" onchange="per_select_zone(this.value);">
 						<option value="">Select City</option>					
 						</select>                   
 						</div>
@@ -302,9 +308,8 @@
 					<div class="form-group col-md-6">
 						<div class="col-md-12"> 
 						 <label>Zone:</label>
-						 <select class="form-control show_zoneList search_zone" name="personal_zone">
-						<option value="">Select Zone</option>
-									
+						 <select class="form-control show_zoneList" name="personal_zone">
+						<option value="">Select Zone</option>	
 						
 						</select>
                     
@@ -378,7 +383,7 @@
     </div>
 
     <!-- Placeholder Content for Sections -->
-    <div class="section-content" id="contact">
+    <div class="section-content" id="information">
         <div class="form-container">
             <h4>Business Information</h4>
            
@@ -408,9 +413,9 @@
 				</div>
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
-					<label>Secondary Mobile No: </label>
+					<label>WhatsApp: </label>
 					
-						<input type="text" class="form-control" name="sec_mobile" value="{{ old('sec_mobile',(isset($client)) ? $client->sec_mobile:"")}}" placeholder="Enter Secondary No">
+						<input type="text" class="form-control" name="whatsapp" value="{{ old('whatsapp',(isset($client)) ? $client->whatsapp:"")}}" placeholder="Enter whats app">
 					</div>
 				</div>
 				<div class="form-group col-md-6">
@@ -476,7 +481,7 @@
             
 					</div>
 				</div>
-				<div class="form-group col-md-12">
+				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					  <label>Address:</label>
                      <textarea name="address" class="form-control" style="height: 100px"> {{ old('address',(isset($client)) ? $client->address:"")}}</textarea>
@@ -494,25 +499,7 @@
             
 					</div>
 				</div>
-				<div class="form-group col-md-6">
-					<div class="col-sm-12"> 
-					  <label>Occupation:</label>
-                    <select class="form-control" name="occupation">
-                      @if($occupations)
-                      @foreach($occupations as $occupation)
-                        <option value="{{$occupation->name}}"  @if ($occupation->name== old('occupation'))
-                        selected="selected"	
-                      @else
-                      {{ (isset($client) && $client->occupation == $occupation->name ) ? "selected":"" }} @endif>{{$occupation->name}}</option>
-                        @endforeach
-                        @endif
-                         
-                      
-                    </select>
-               
-            
-					</div>
-				</div>
+				 
 				
 				<div class="form-group col-md-12">
 					<div class="col-sm-12"> 
@@ -526,36 +513,8 @@
             
 					</div>
 				</div>
-				<div class="form-group col-md-6">
-					<div class="col-sm-12"> 
-					<label>Year of Establishment:</label>           
-                    
-                    <select class="form-control" id="year_of_estb" name="year_of_estb">
-
-                    <option value="">Select Year</option>
-                    <?php for($i= 1970; $i<=2050; $i++){ ?>
-                    <option value="<?php echo $i; ?>"  @if ($i == old('year_of_estb'))
-                    selected="selected"	
-                    @else
-                    {{ (isset($client) && $client->year_of_estb == $i ) ? "selected":"" }} @endif><?php echo $i; ?></option>
-                    <?php  } ?>
-                    </select>
-               
-            
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<div class="col-sm-12"> 
-					
-                   <label>Certifications(Comma separated if more than 1):</label>
-                                
-                    <input name="certifications" type="text" class="form-control" value="{{ old('certifications', $client->certifications ?? '') }}">
-                    
-
-               
-            
-					</div>
-				</div>
+				 
+				 
 				<div class="form-group col-md-6">
 					<div class="col-sm-12"> 
 					
@@ -567,33 +526,9 @@
             
 					</div>
 				</div>
-				<div class="form-group col-md-6">
-					<div class="col-sm-12"> 
-					
-                    <label>GST No:</label>
-                                
-            		<input name="gst_no" type="text" class="form-control" value="{{ old('gst_no', $client->gst_no ?? '') }}" placeholder="Enter GST No">   
-            
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<div class="col-sm-12"> 
-					
-                    <label>CIN No :</label>
-                                
-                    <input name="cin_no" type="text" class="form-control" value="{{ old('cin_no', $client->cin_no ?? '') }}" placeholder="Enter CIN No">             
-            
-					</div>
-				</div>
-				<div class="form-group col-md-6">
-					<div class="col-sm-12"> 
-					
-                   <label>ISO No:</label>                                
-					<input name="iso_no" type="text" class="form-control" value="{{ old('iso_no', $client->iso_no ?? '') }}" placeholder="Enter ISO No">               
-                        
-            
-					</div>
-				</div>
+				 
+				 
+			
 			 
 
 				<div class="form-group col-md-6">
@@ -697,7 +632,7 @@
     </div>
 
 
-    <div class="section-content" id="other">
+    <div class="section-content" id="businessLocation">
         <div class="form-container">
             <h4>Business Location</h4>			 
 			<form class="form-horizontal" method="POST" action="#" id="assignedZone" onsubmit="return assignedZoneController.submit(this,<?php echo (isset($client->id)? $client->id:""); ?>)">
@@ -796,15 +731,11 @@
     <div class="section-content" id="uploadProfile">
         <div class="form-container">
             <h4>Company Logo</h4>
-           	<form class="form-horizontal" autocomplete="off" action="" onsubmit="return ClientController.editSaveClientProfileLogo(this,<?php echo (isset($client->id)? $client->id:""); ?>)" enctype="multipart/form-data" method="POST"> 
-			<div class="form-group">
-			<div class="col-md-12">
-					<label for="year_of_estb">Enter Business Introduction:</label>
-					<textarea class="form-control" rows="5" name="business_intro" placeholder="Enter Business Introduction Here...">{{ old('business_intro',(isset($client)) ? $client->business_intro:"")}}</textarea>
-				</div>
-			</div>
+           
+			<form class="profile-logo" id="profileLogo" action="" method="POST" enctype="multipart/form-data" > 
 		 
-			
+			  <input type="hidden" name="business_id" value="{{$client->id}}">
+                     <input type="hidden" name="upload_pics" value="upload_pics">
 			<div class="form-group">
 				<div class="col-md-12">
 					<label for="year_of_estb">Year of Establishment:</label>
@@ -831,6 +762,7 @@
 			</div>
 			<div class="form-group"> 
 				<div class="col-md-12">
+					
 					<label for="logo">Upload Logo:</label>					
 					<?php
 						if(!empty($client->logo)){
@@ -844,11 +776,11 @@
 					<img loading="lazy" src="{{asset('/'.$logo['thumbnail']['src'])}}" width="100">  
 					
 				<a href="{{url('developer/clients/update/profileLogo/logoDel/'.$client->username)}}" class="btn btn-danger btn-sm" title="Remove my profile image" width="100"><i class="fa fa-trash"></i></a>
-						<?php   }else{ ?>
-							
-								<input type="file" class="form-control" id="logo" name="logo" accept=".png,.jpeg,.jpg,.webp">
-							
-							<?php  	}  ?>
+				<?php   }else{ ?>
+					
+						<input type="file" class="form-control" id="logo" name="logo" accept=".png,.jpeg,.jpg,.webp">
+					
+					<?php  	}  ?>
 						
 				</div>
 				</div>
@@ -876,18 +808,13 @@
 				</div>
 			</div>
 
-			<input type="hidden" name="profile_logo" value="profile_logo" >
-					<div class="form-group"> 
-						<div class="col-sm-offset-2 col-sm-4 text-right">
-							<input type="submit" value="SAVE" class="btn btn-warning">
-						</div>
-			</div>
+		 
 
 			</form>
 
         </div>
     </div>
-    <div class="section-content" id="upload">
+    <div class="section-content" id="uploadGallery">
         <div class="form-container">
             <h2>Upload Gallery</h2>
              <?php if(!empty($client->pictures)):
@@ -902,35 +829,849 @@
 						$picture[$i]['large']['name'] = '';
 					}
 				endif; ?>
-					<form class="form-horizontal" enctype="multipart/form-data" onsubmit="return ClientController.uploadClientGalleryPics(this,<?php echo (isset($client->id)? $client->id:""); ?>)" method="POST" >
-						{{csrf_field()}}
-					<div class="form-group">
-					<?php for($i=0;$i<20;$i++): ?>
-						<div class="col-md-4 line-space" id="image{{$i+1}}">
-							@if(empty($picture[$i]['large']['name']))
-							<input type="file" class="form-control" name="image{{$i+1}}"  accept=".png, .jpg,.jpeg,.webp,.svg">
-							@endif
-							<span class="help-block">
-								@if(isset($picture[$i]['large']['src'])&&!empty($picture[$i]['large']['src']))
-								<img loading="lazy" src="{{asset('/'.$picture[$i]['large']['src'])}}" style="height:75px;width:75px;">
-								<a href="javascript:void(0)" class="remove-thumbnail" data-srno="image{{$i+1}}" title="remove"><i class="fa fa-times fa-fw" aria-hidden="true"></i></a>
-								@endif
-							</span>
-						</div>
-						<?php if(($i+1)%3==0){echo "<div class=\"clearfix\"></div>";} ?>
-					<?php endfor; ?>
-						<hr>
-						<input type="hidden" name="upload_pics" value="upload_pics">
-						<div class="col-md-4 col-md-offset-4">
-							<input type="submit" class="btn btn-info btn-block line-space" value="SAVE">
-						</div>
-					</div>
-				</form>
+					
+				<form id="imageform" method="post" enctype="multipart/form-data">
+                     {{csrf_field()}}
+                     <input type="hidden" name="business_id" value="{{$client->id}}">
+                     <input type="hidden" name="upload_pics" value="upload_pics">
+                    <div class="row mb-3">
+                        <?php for($i=0;$i<21;$i++){                          
+                      ?>
+                      <div class="col-md-4 col-lg-4" id="image{{$i+1}}">
+                      @if(empty($picture[$i]['large']['name']))
+                      <input type="file" class="form-control fff" name="image{{$i+1}}" accept=".png, .jpg,.jpeg,.webp,.svg">
+                      
+                      @endif
+                      <span class="img-help">
+                        @if(isset($picture[$i]['large']['src'])&&!empty($picture[$i]['large']['src']))
+                        <img loading="lazy" src="{{asset('/'.$picture[$i]['large']['src'])}}" style="height:75px;width:75px;">
+                        <a href="javascript:void(0)" class="remove-thumbnail btn btn-danger btn-sm" data-srno="image{{$i+1}}" title="remove"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        @endif
+                      </span>
+                       <div class="pt-2"></div>                        
+                      </div>
+                      <?php  } ?>
+                  </div>
+
+
+                  </form> 
+            
 
 
         </div>
     </div>
-    <div class="section-content" id="keywords">
+    
+	 <div class="section-content" id="certificate">
+        <div class="form-container">
+            <h2>Certificate</h2>
+              
+  <style>
+                  .help-block {
+                    color: #ff0000;
+                    position: relative;
+
+                    margin-top: 61px;
+                    display: block;
+                    margin-left: -207px;
+                  }
+
+                  .certificate_form img {
+
+                    width: 120px;
+                  }
+                </style>
+                <style>
+                  .award-box {
+                    border: 1px solid #e0e0e0;
+                    padding: 12px;
+                    border-radius: 6px;
+                    margin-bottom: 15px;
+                    height: 215px;
+
+                  }
+
+                  .award-box label {
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                    display: block;
+                  }
+
+                  .award-preview img {
+                    max-width: 100px;
+                    border: 1px solid #ddd;
+                    padding: 5px;
+                  }
+
+                  .pdf-box {
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid #ddd;
+                  }
+
+                  .btn-sm {
+                    height: 34px;
+                  }
+                </style>
+				 <form class="certificate_form" id="certificateForm" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="business_id"
+                      value="{{ old('middle_name', (isset($client)) ? $client->id : "")}}">
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <div class="row">
+                      <!-- pan no 1 -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>Pan no</label>
+                          <input type="text" name="pan_no" class="form-control"
+                            value="{{ old('pan_no', (isset($client)) ? $client->pan_no : "")}}"
+                            placeholder="Please pan no name">
+
+                          @php
+                            $pan_certificate = !empty($client->pan_certificate) ? json_decode($client->pan_certificate) : null;
+                            $panPath = $pan_certificate->large->src ?? '';
+                            $panUrl = $panPath ? asset($panPath) : '';
+                            $ext = strtolower(pathinfo($panPath, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($panPath)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $panUrl }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $panUrl }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $panUrl }}">
+                              @endif
+
+                              <a href="{{ url('developer/clients/certificate/pan_certificate/' . $client->id) }}" class="btn btn-danger btn-sm"
+                                title="Remove Award">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="pan_certificate" class="form-control" accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+
+                      <!-- ISO Certificate* -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>ISO Certificate*</label>
+                          <input type="text" name="iso_no" class="form-control"
+                            value="{{ old('iso_no', (isset($client)) ? $client->iso_no : "")}}"
+                            placeholder="Please iso no">
+                          @php
+                            $isofile = !empty($client->iso_certificate) ? json_decode($client->iso_certificate) : null;
+                            $isoPath = $isofile->large->src ?? '';
+                            $isoUrl = $isoPath ? asset($isoPath) : '';
+                            $ext = strtolower(pathinfo($isoPath, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($isoPath)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $isoUrl }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $isoUrl }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $isoUrl }}">
+                              @endif
+                              <a href="{{ url('developer/clients/certificate/iso_certificate/' . $client->id) }}" class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="iso_certificate" class="form-control" accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+                      <!-- GST Certificate -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>GST No</label>
+                          <input type="text" name="gst_no" class="form-control"
+                            value="{{ old('gst_no', (isset($client)) ? $client->gst_no : "")}}"
+                            placeholder="Please gst_no">
+                          @php
+                            $gstFile = !empty($client->gst_certificate) ? json_decode($client->gst_certificate) : null;
+                            $gstPath = $gstFile->large->src ?? '';
+                            $gstUrl = $gstPath ? asset($gstPath) : '';
+                            $ext = strtolower(pathinfo($gstPath, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($gstPath)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $gstUrl }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $gstUrl }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $gstUrl }}">
+                              @endif
+
+                              <a href="{{ url('developer/clients/certificate/gst_certificate/' . $client->id) }}"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="gst_certificate" class="form-control" accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+
+
+                    </div>
+
+
+                    <div class="row">
+                      <!-- cin_no -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>CIN No</label>
+                          <input type="text" name="cin_no" class="form-control"
+                            value="{{ old('cin_no', (isset($client)) ? $client->cin_no : "")}}"
+                            placeholder="Please cin no">
+                          @php
+                            $cinFile = !empty($client->cin_certificate) ? json_decode($client->cin_certificate) : null;
+                            $cinPath = $cinFile->large->src ?? '';
+                            $cinUrl = $cinPath ? asset($cinPath) : '';
+                            $ext = strtolower(pathinfo($cinPath, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($cinPath)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $cinUrl }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $cinUrl }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $cinUrl }}">
+                              @endif
+
+                              <a href="{{ url('developer/clients/certificate/cin_certificate/' . $client->id) }}"
+                                class="btn btn-danger btn-sm" title="Remove Award">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="cin_certificate" class="form-control" accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+
+                      <!-- msme_no -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>MSME No</label>
+                          <input type="text" name="msme_no" class="form-control"
+                            value="{{ old('msme_no', (isset($client)) ? $client->msme_no : "")}}"
+                            placeholder="Please msme no">
+                          @php
+                            $msmeFile = !empty($client->msme_certificate) ? json_decode($client->msme_certificate) : null;
+                            $msmePath = $msmeFile->large->src ?? '';
+                            $msmeUrl = $msmePath ? asset($msmePath) : '';
+                            $ext = strtolower(pathinfo($msmePath, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($msmePath)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $msmeUrl }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $msmeUrl }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $msmeUrl }}">
+                              @endif
+                              <a href="{{ url('developer/clients/certificate/msme_certificate/' . $client->id) }}"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="msme_certificate" class="form-control" accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+
+                      <!-- Certificate of Incorporation -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>Certificate of Incorporation no</label>
+                          <input type="text" name="coi_no" class="form-control"
+                            value="{{ old('coi_no', (isset($client)) ? $client->coi_no : "")}}"
+                            placeholder="Please Enter COI no">
+                          @php
+                            $coiFile = !empty($client->coi_certificate) ? json_decode($client->coi_certificate) : null;
+                            $coiPath = $coiFile->large->src ?? '';
+                            $coiUrl = $coiPath ? asset($coiPath) : '';
+                            $ext = strtolower(pathinfo($coiPath, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($coiPath)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $coiUrl }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $coiUrl }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $coiUrl }}">
+                              @endif
+
+                              <a href="{{ url('developer/clients/certificate/coi_certificate/' . $client->id) }}"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="coi_certificate" class="form-control" accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <!-- other_certificate1 -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>Other certificate 1</label>
+
+                          @php
+                            $certificate1File = !empty($client->other_certificate1) ? json_decode($client->other_certificate1) : null;
+                            $cert1Path = $certificate1File->large->src ?? '';
+                            $cert1Url = $cert1Path ? asset($cert1Path) : '';
+                            $ext = strtolower(pathinfo($cert1Path, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($cert1Path)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $cert1Url }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $cert1Url }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $cert1Url }}">
+                              @endif
+
+                              <a href="{{ url('developer/clients/certificate/other_certificate1/' . $client->id) }}"
+                                class="btn btn-danger btn-sm" title="Remove Award">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="other_certificate1" class="form-control"
+                              accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+
+                      <!-- Other Certificate 2 -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>Other Certificate 2</label>
+
+                          @php
+                            $cert2File = !empty($client->other_certificate2) ? json_decode($client->other_certificate2) : null;
+                            $other2Path = $cert2File->large->src ?? '';
+                            $other2Url = $other2Path ? asset($other2Path) : '';
+                            $ext = strtolower(pathinfo($other2Path, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($other2Path)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $other2Url }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $other2Url }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $other2Url }}">
+                              @endif
+                              <a href="{{ url('developer/clients/certificate/other_certificate2/' . $client->id) }}"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="other_certificate2" class="form-control"
+                              accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+                      <!-- Other Certificate 3 -->
+                      <div class="col-md-4">
+                        <div class="award-box">
+                          <label>Other Certificate 3</label>
+
+                          @php
+                            $other3File = !empty($client->other_certificate3) ? json_decode($client->other_certificate3) : null;
+                            $other3Path = $other3File->large->src ?? '';
+                            $other3Url = $other3Path ? asset($other3Path) : '';
+                            $ext = strtolower(pathinfo($other3Path, PATHINFO_EXTENSION));
+                          @endphp
+
+                          @if($other3Url)
+                            <div class="award-preview images-div">
+                              @if($ext === 'pdf')
+                                <embed src="{{ $other3Url }}" type="application/pdf" class="pdf-box">
+                                <a href="{{ $other3Url }}" target="_blank" class="btn btn-primary btn-sm mt-2">View</a>
+                              @else
+                                <img loading="lazy" src="{{ $other3Url }}">
+                              @endif
+
+                              <a href="{{ url('developer/clients/certificate/other_certificate3/' . $client->id) }}"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                              </a>
+                            </div>
+
+
+                          @else
+                            <input type="file" name="other_certificate3" class="form-control"
+                              accept=".jpg,.jpeg,.png,.webp">
+                          @endif
+                        </div>
+                      </div>
+                    </div>
+                  </form> 
+
+        </div>
+    </div>
+  
+	 <div class="section-content" id="award">
+        <div class="form-container">
+            <h2>Award</h2>
+             
+  <style>
+                  .help-block {
+                    color: #ff0000;
+                    position: relative;
+
+                    margin-top: 61px;
+                    display: block;
+                    margin-left: -207px;
+                  }
+
+                  .certificate_form img {
+
+                    width: 120px;
+                  }
+                </style>
+                <style>
+                  .award-box {
+                    border: 1px solid #e0e0e0;
+                    padding: 12px;
+                    border-radius: 6px;
+                    margin-bottom: 15px;
+                    height: 215px;
+
+                  }
+
+                  .award-box label {
+                    font-weight: 600;
+                    margin-bottom: 6px;
+                    display: block;
+                  }
+
+                  .award-preview img {
+                    max-width: 100px;
+                    border: 1px solid #ddd;
+                    padding: 5px;
+                  }
+
+                  .pdf-box {
+                    width: 100px;
+                    height: 100px;
+                    border: 1px solid #ddd;
+                  }
+
+                  .btn-sm {
+                    height: 34px;
+                  }
+                </style>
+				   <form class="award_form" id="awardFrom" method="POST"
+                                        enctype="multipart/form-data">
+                                        <input type="hidden" name="business_id"
+                                            value="{{ old('middle_name', (isset($client)) ? $client->id : "")}}">
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                        <div class="row">
+                                            <!-- AWARD 1 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 1 *</label>
+                                                    <input type="text" name="award_name1" class="form-control"
+                                                        value="{{ old('award_name1', (isset($client)) ? $client->award_name1 : "")}}"
+                                                        placeholder="Please Award name">
+
+                                                    @php
+                                                        $award_img1 = !empty($client->award_img1) ? json_decode($client->award_img1) : null;
+                                                        $award1Path = $award_img1->large->src ?? '';
+                                                        $award1Url = $award1Path ? asset($award1Path) : '';
+                                                        $ext = strtolower(pathinfo($award1Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award1Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award1Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award1Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award1Url }}">
+                                                            @endif
+
+                                                            <a href="{{ url('developer/clients/certificate/award_img1/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm" title="Remove Award">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img1" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <!-- AWARD 2 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 2</label>
+                                                    <input type="text" name="award_name2" class="form-control"
+                                                        value="{{ old('award_name2', (isset($client)) ? $client->award_name2 : "")}}"
+                                                        placeholder="Please Award name 2">
+                                                    @php
+                                                        $award2file = !empty($client->award_img2) ? json_decode($client->award_img2) : null;
+                                                        $award2Path = $award2file->large->src ?? '';
+                                                        $award2Url = $award2Path ? asset($award2Path) : '';
+                                                        $ext = strtolower(pathinfo($award2Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award2Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award2Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award2Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award2Url }}">
+                                                            @endif
+                                                            <a href="{{ url('developer/clients/certificate/award_img2/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img2" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <!-- AWARD 3 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 3</label>
+                                                    <input type="text" name="award_name3" class="form-control"
+                                                        value="{{ old('award_name3', (isset($client)) ? $client->award_name3 : "")}}"
+                                                        placeholder="Please Award name 3">
+                                                    @php
+                                                        $award3File = !empty($client->award_img3) ? json_decode($client->award_img3) : null;
+                                                        $award3Path = $award3File->large->src ?? '';
+                                                        $award3Url = $award3Path ? asset($award3Path) : '';
+                                                        $ext = strtolower(pathinfo($award3Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award3Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award3Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award3Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award3Url }}">
+                                                            @endif
+
+                                                            <a href="{{ url('developer/clients/certificate/award_img3/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img3" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="row">
+                                            <!-- AWARD 4 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 4 *</label>
+                                                    <input type="text" name="award_name4" class="form-control"
+                                                        value="{{ old('award_name4', (isset($client)) ? $client->award_name4 : "")}}"
+                                                        placeholder="Please Award name 4">
+                                                    @php
+                                                        $award4File = !empty($client->award_img4) ? json_decode($client->award_img4) : null;
+                                                        $award4Path = $award4File->large->src ?? '';
+                                                        $award4Url = $award4Path ? asset($award4Path) : '';
+                                                        $ext = strtolower(pathinfo($award4Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award4Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award4Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award4Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award4Url }}">
+                                                            @endif
+
+                                                            <a href="{{ url('developer/clients/certificate/award_img4/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm" title="Remove Award">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img4" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <!-- AWARD 5 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 5</label>
+                                                    <input type="text" name="award_name5" class="form-control"
+                                                        value="{{ old('award_name5', (isset($client)) ? $client->award_name5 : "")}}"
+                                                        placeholder="Please Award name 5">
+                                                    @php
+                                                        $award5File = !empty($client->award_img5) ? json_decode($client->award_img5) : null;
+                                                        $award5Path = $award5File->large->src ?? '';
+                                                        $award5Url = $award5Path ? asset($award5Path) : '';
+                                                        $ext = strtolower(pathinfo($award5Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award5Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award5Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award5Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award5Url }}">
+                                                            @endif
+                                                            <a href="{{ url('developer/clients/certificate/award_img5/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img5" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <!-- AWARD 6 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 6</label>
+                                                    <input type="text" name="award_name6" class="form-control"
+                                                        value="{{ old('award_name6', (isset($client)) ? $client->award_name6 : "")}}"
+                                                        placeholder="Please Award name 6">
+                                                    @php
+                                                        $award6File = !empty($client->award_img6) ? json_decode($client->award_img6) : null;
+                                                        $award6Path = $award6File->large->src ?? '';
+                                                        $award6Url = $award6Path ? asset($award6Path) : '';
+                                                        $ext = strtolower(pathinfo($award6Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award6Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award6Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award6Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award6Url }}">
+                                                            @endif
+
+                                                            <a href="{{ url('developer/clients/certificate/award_img6/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img6" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <!-- AWARD 7 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 7 *</label>
+                                                    <input type="text" name="award_name7" class="form-control"
+                                                        value="{{ old('award_name7', (isset($client)) ? $client->award_name7 : "")}}"
+                                                        placeholder="Please Award name 7">
+                                                    @php
+                                                        $award7File = !empty($client->award_img7) ? json_decode($client->award_img7) : null;
+                                                        $award7Path = $award7File->large->src ?? '';
+                                                        $award7Url = $award7Path ? asset($award7Path) : '';
+                                                        $ext = strtolower(pathinfo($award7Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award7Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award7Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award7Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award7Url }}">
+                                                            @endif
+
+                                                            <a href="{{ url('developer/clients/certificate/award_img7/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm" title="Remove Award">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img7" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <!-- AWARD 8 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 8</label>
+                                                    <input type="text" name="award_name8" class="form-control"
+                                                        value="{{ old('award_name8', (isset($client)) ? $client->award_name8 : "")}}"
+                                                        placeholder="Please Award name 8">
+                                                    @php
+                                                        $award8File = !empty($client->award_img8) ? json_decode($client->award_img8) : null;
+                                                        $award8Path = $award8File->large->src ?? '';
+                                                        $award8Url = $award8Path ? asset($award8Path) : '';
+                                                        $ext = strtolower(pathinfo($award8Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award8Path)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award8Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award8Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award8Url }}">
+                                                            @endif
+                                                            <a href="{{ url('developer/clients/certificate/award_img8/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img8" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <!-- AWARD 9 -->
+                                            <div class="col-md-4">
+                                                <div class="award-box">
+                                                    <label>Award 9</label>
+                                                    <input type="text" name="award_name9" class="form-control"
+                                                        value="{{ old('award_name9', (isset($client)) ? $client->award_name9 : "")}}"
+                                                        placeholder="Please Award name 9">
+                                                    @php
+                                                        $award9File = !empty($client->award_img9) ? json_decode($client->award_img9) : null;
+                                                        $award9Path = $award9File->large->src ?? '';
+                                                        $award9Url = $award9Path ? asset($award9Path) : '';
+                                                        $ext = strtolower(pathinfo($award9Path, PATHINFO_EXTENSION));
+                                                    @endphp
+
+                                                    @if($award9Url)
+                                                        <div class="award-preview images-div">
+                                                            @if($ext === 'pdf')
+                                                                <embed src="{{ $award9Url }}" type="application/pdf"
+                                                                    class="pdf-box">
+                                                                <a href="{{ $award9Url }}" target="_blank"
+                                                                    class="btn btn-primary btn-sm ">View</a>
+                                                            @else
+                                                                <img loading="lazy" src="{{ $award9Url }}">
+                                                            @endif
+
+                                                            <a href="{{ url('developer/clients/certificate/award_img9/' . $client->id) }}"
+                                                                class="btn btn-danger btn-sm">
+                                                                <i class="fa fa-trash"></i>
+                                                            </a>
+                                                        </div>
+
+
+                                                    @else
+                                                        <input type="file" name="award_img9" class="form-control"
+                                                            accept=".jpg,.jpeg,.png,.webp">
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                       
+
+                                    </form>
+
+        </div>
+    </div>
+  
+	<div class="section-content" id="keywords">
         <div class="form-container">
             <h4>Assigned Keywords</h4>
          
@@ -1722,4 +2463,397 @@ function per_select_zone(per_city,per_zone){
 	</div>
 </div>
  
+
+  <script type="text/javascript" src="{{asset('drag_drop/jquery-3.1.1.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('drag_drop/jquery.ezdz.min.js')}}"></script>
+  <script>
+
+
+    $('input[type="file"]').ezdz({
+      text: 'Drag & Drop Image',
+      validators: {
+        maxWidth: 6000,
+        maxHeight: 6000
+      },
+      reject: function (file, errors) {
+
+        if (errors.mimeType) {
+          alert(file.name + ' must be an image.');
+        }
+        if (errors.maxWidth) {
+          alert('Max width exceeded is greater than 6000');
+        }
+        if (errors.maxHeight) {
+          alert('Max height exceeded is greater than 6000');
+        }
+      }
+    });
+
+    // });
+
+  </script>
+
+
+
+  <script>
+    let autoSaveTimer = null;
+
+    const form = document.getElementById('certificateForm');
+
+    form.addEventListener('change', function () {
+      clearTimeout(autoSaveTimer);
+
+      autoSaveTimer = setTimeout(() => {
+        autoSaveForm();
+      }, 800); // debounce
+    });
+   
+    function autoSaveForm() {
+	const clientId = "{{ isset($client->id) ? $client->id : '' }}"; 
+    const formData = new FormData(form);     
+	mainSpinner.start();      
+		fetch("{{ url('developer/clients/save-certificate-auto') }}/" + clientId, {
+        method: "POST",
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+        },
+        body: formData
+      })
+        .then(async (res) => {
+          console.log(res);
+          if (!res.ok) {         
+            const errorData = await res.json();
+            throw errorData;
+          }
+          return res.json();
+        })
+        .then(data => {
+          console.log(data.status)
+          if (data.status) {
+
+            console.log('Auto-saved ✔');
+            // hideLoader();
+			mainSpinner.stop();
+            if (!form.dataset.saved) {
+              form.dataset.saved = "true";
+              setTimeout(() => {
+                // form.reset();              
+                // form.dataset.saved = "";    
+              }, 500);
+            }
+
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Successfully");
+            $('#messaged .modal-body').html("<div class='alert alert-success'>" + data.msg + "</div>");
+            $('#messaged').modal({ keyboard: false, backdrop: 'static' });
+            $('#messaged').css({ 'width': '100%' });
+            setInterval(function () {
+              $("#messaged").modal("hide");
+            }, 3000);
+
+          } else {
+            // hideLoader();
+			mainSpinner.stop();
+            console.warn('Auto-save failed');
+          }
+        })
+        .catch((err) => {
+			mainSpinner.stop();
+        //   hideLoader();
+          if (err.errors) {
+
+            let errorHtml = "<div class='alert alert-danger'><ul>";
+
+            Object.keys(err.errors).forEach(function (key) {
+              errorHtml += "<li>" + err.errors[key][0] + "</li>";
+            });
+
+            errorHtml += "</ul></div>";
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Validation Error");
+            $('#messaged .modal-body').html(errorHtml);
+
+          } else {
+            console.error("Unexpected Error:", err);
+          }
+
+
+        });
+    }
+  </script>
+
+  <script>
+ 
+
+    const awardFrom = document.getElementById('awardFrom');
+
+    awardFrom.addEventListener('change', function () {
+      clearTimeout(autoSaveTimer);
+
+      autoSaveTimer = setTimeout(() => {
+        autoSaveForm();
+      }, 800); // debounce
+    });
+   
+    function autoSaveForm() {
+	const clientId = "{{ isset($client->id) ? $client->id : '' }}"; 
+    const formData = new FormData(awardFrom);     
+	mainSpinner.start();      
+		fetch("{{ url('developer/clients/save-award-auto') }}/" + clientId, {
+        method: "POST",
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+        },
+        body: formData
+      })
+        .then(async (res) => {
+          console.log(res);
+          if (!res.ok) {         
+            const errorData = await res.json();
+            throw errorData;
+          }
+          return res.json();
+        })
+        .then(data => {
+          console.log(data.status)
+          if (data.status) {
+
+            console.log('Auto-saved ✔');
+            // hideLoader();
+			mainSpinner.stop();
+            if (!awardFrom.dataset.saved) {
+              awardFrom.dataset.saved = "true";
+              setTimeout(() => {
+                 
+              }, 500);
+            }
+
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Successfully");
+            $('#messaged .modal-body').html("<div class='alert alert-success'>" + data.msg + "</div>");
+            $('#messaged').modal({ keyboard: false, backdrop: 'static' });
+            $('#messaged').css({ 'width': '100%' });
+            setInterval(function () {
+              $("#messaged").modal("hide");
+            }, 3000);
+
+          } else {
+            // hideLoader();
+			mainSpinner.stop();
+            console.warn('Auto-save failed');
+          }
+        })
+        .catch((err) => {
+			mainSpinner.stop();
+        //   hideLoader();
+          if (err.errors) {
+
+            let errorHtml = "<div class='alert alert-danger'><ul>";
+
+            Object.keys(err.errors).forEach(function (key) {
+              errorHtml += "<li>" + err.errors[key][0] + "</li>";
+            });
+
+            errorHtml += "</ul></div>";
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Validation Error");
+            $('#messaged .modal-body').html(errorHtml);
+
+          } else {
+            console.error("Unexpected Error:", err);
+          }
+
+
+        });
+    }
+  </script>
+
+  <script>
+ 
+
+    const imageform = document.getElementById('imageform');
+
+    imageform.addEventListener('change', function () {
+      clearTimeout(autoSaveTimer);
+
+      autoSaveTimer = setTimeout(() => {
+        autoSaveForm();
+      }, 800); // debounce
+    });
+   
+    function autoSaveForm() {
+	const clientId = "{{ isset($client->id) ? $client->id : '' }}"; 
+    const formData = new FormData(imageform);     
+	mainSpinner.start();      
+		fetch("{{ url('developer/clients/uploadClientGalleryPics') }}/" + clientId, {
+        method: "POST",
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+        },
+        body: formData
+      })
+        .then(async (res) => {
+          console.log(res);
+          if (!res.ok) {         
+            const errorData = await res.json();
+            throw errorData;
+          }
+          return res.json();
+        })
+        .then(data => {
+          console.log(data.status)
+          if (data.status) {
+
+            console.log('Auto-saved ✔');
+            // hideLoader();
+			mainSpinner.stop();
+            if (!imageform.dataset.saved) {
+              imageform.dataset.saved = "true";
+              setTimeout(() => {
+                 
+              }, 500);
+            }
+
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Successfully");
+            $('#messaged .modal-body').html("<div class='alert alert-success'>" + data.msg + "</div>");
+            $('#messaged').modal({ keyboard: false, backdrop: 'static' });
+            $('#messaged').css({ 'width': '100%' });
+            setInterval(function () {
+              $("#messaged").modal("hide");
+            }, 3000);
+
+          } else {
+            // hideLoader();
+			mainSpinner.stop();
+            console.warn('Auto-save failed');
+          }
+        })
+        .catch((err) => {
+			mainSpinner.stop();
+        //   hideLoader();
+          if (err.errors) {
+
+            let errorHtml = "<div class='alert alert-danger'><ul>";
+
+            Object.keys(err.errors).forEach(function (key) {
+              errorHtml += "<li>" + err.errors[key][0] + "</li>";
+            });
+
+            errorHtml += "</ul></div>";
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Validation Error");
+            $('#messaged .modal-body').html(errorHtml);
+
+          } else {
+            console.error("Unexpected Error:", err);
+          }
+
+
+        });
+    }
+  </script>
+
+  <script>
+ 
+
+    const profileLogo = document.getElementById('profileLogo');
+
+    profileLogo.addEventListener('change', function () {
+      clearTimeout(autoSaveTimer);
+
+      autoSaveTimer = setTimeout(() => {
+        autoSaveForm();
+      }, 800); // debounce
+    });
+   
+    function autoSaveForm() {
+	const clientId = "{{ isset($client->id) ? $client->id : '' }}"; 
+    const formData = new FormData(profileLogo);     
+	mainSpinner.start();      
+		fetch("{{ url('developer/clients/editSaveClientProfileLogo') }}/" + clientId, {
+        method: "POST",
+        headers: {
+          'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+        },
+        body: formData
+      })
+        .then(async (res) => {
+          console.log(res);
+          if (!res.ok) {         
+            const errorData = await res.json();
+            throw errorData;
+          }
+          return res.json();
+        })
+        .then(data => {
+          
+          if (data.status) {
+
+            console.log('Auto-saved ✔');
+            // hideLoader();
+			mainSpinner.stop();
+            if (!profileLogo.dataset.saved) {
+              profileLogo.dataset.saved = "true";
+              setTimeout(() => {
+                 
+              }, 500);
+            }
+
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Successfully");
+            $('#messaged .modal-body').html("<div class='alert alert-success'>" + data.msg + "</div>");
+            $('#messaged').modal({ keyboard: false, backdrop: 'static' });
+            $('#messaged').css({ 'width': '100%' });
+            setInterval(function () {
+              $("#messaged").modal("hide");
+            }, 3000);
+
+          } else {
+            // hideLoader();
+			mainSpinner.stop();
+            console.warn('Auto-save failed');
+          }
+        })
+        .catch((err) => {
+			mainSpinner.stop();
+        //   hideLoader();
+          if (err.errors) {
+
+            let errorHtml = "<div class='alert alert-danger'><ul>";
+
+            Object.keys(err.errors).forEach(function (key) {
+              errorHtml += "<li>" + err.errors[key][0] + "</li>";
+            });
+
+            errorHtml += "</ul></div>";
+
+            $("#messaged").modal("show");
+            $('#messaged .modal-title').text("Validation Error");
+            $('#messaged .modal-body').html(errorHtml);
+
+          } else {
+            console.error("Unexpected Error:", err);
+          }
+
+
+        });
+    }
+
+
+	window.addEventListener("load", function(){
+    if(window.location.hash){
+        let section = window.location.hash.substring(1);		 
+        showContent(section);
+    }
+});
+  </script>
+
 <?php echo View::make('admin/footer'); ?>

@@ -42,11 +42,11 @@ class BlogController extends Controller
 	 */
 	public function add(Request $request)
 	{
- 
+
 		$data['button'] = "Save";
 		if ($request->isMethod('post') && $request->input('submit') == "Save") {
- 
-			 
+
+
 
 			$validator = Validator::make($request->all(), [
 				'name' => 'required|string|min:10|max:165',
@@ -74,13 +74,13 @@ class BlogController extends Controller
 			$blogdetails->meta_title = $request->input('meta_title');
 			$blogdetails->meta_keywords = $request->input('meta_keywords');
 			$blogdetails->meta_description = $request->input('meta_description');
-	 
 
-		 
 
-			 
- 
-			
+
+
+
+
+
 			if ($blogdetails->save()) {
 				return redirect('/developer/blog/blogdetails')->with('success', 'Blog Details successfully added!');
 			} else {
@@ -98,44 +98,44 @@ class BlogController extends Controller
 	 */
 	public function addBlog(Request $request)
 	{
-  
+
 		if ($request->ajax()) {
- 		
-
-		try{
-			$validator = Validator::make($request->all(), [
-				'name' => 'required|string|min:3|max:165',
-				'ratingvalue' => 'required|numeric|min:0|max:99999',
-				'ratingcount' => 'required|integer|min:0',
-				'title' => 'required|string|min:10|max:175',
-			 
-				'meta_title' => 'required|string',
-				'meta_keywords' => 'required|string|max:255',
-				'meta_description' => 'required|string',
-				 
-			]);
-
-			if ($validator->fails()) {
-				$errorsBag = $validator->getMessageBag()->toArray();
-				return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
-			}
 
 
-			$blogdetails = new Blogdetails;
-			$blogdetails->name = $request->input('name');
-			$blogdetails->title = $request->input('title');
-			$blogdetails->slug = generate_slug($request->input('title'));
-			$blogdetails->description = $request->input('description');
-			$blogdetails->meta_title = $request->input('meta_title');
-			$blogdetails->meta_keywords = $request->input('meta_keywords');
-			$blogdetails->meta_description = $request->input('meta_description');
-	 	
-			if ($blogdetails->save()) {
-			return response()->json([
-					'status' => true,
-					'msg' => 'Blog Add successfully'
-				], 200);
-			}
+			try {
+				$validator = Validator::make($request->all(), [
+					'name' => 'required|string|min:3|max:165',
+					'ratingvalue' => 'required|numeric|min:0|max:99999',
+					'ratingcount' => 'required|integer|min:0',
+					'title' => 'required|string|min:10|max:175',
+
+					'meta_title' => 'required|string',
+					'meta_keywords' => 'required|string|max:255',
+					'meta_description' => 'required|string',
+
+				]);
+
+				if ($validator->fails()) {
+					$errorsBag = $validator->getMessageBag()->toArray();
+					return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
+				}
+
+
+				$blogdetails = new Blogdetails;
+				$blogdetails->name = $request->input('name');
+				$blogdetails->title = $request->input('title');
+				$blogdetails->slug = generate_slug($request->input('title'));
+				$blogdetails->description = $request->input('description');
+				$blogdetails->meta_title = $request->input('meta_title');
+				$blogdetails->meta_keywords = $request->input('meta_keywords');
+				$blogdetails->meta_description = $request->input('meta_description');
+
+				if ($blogdetails->save()) {
+					return response()->json([
+						'status' => true,
+						'msg' => 'Blog Add successfully'
+					], 200);
+				}
 
 			} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
 
@@ -152,7 +152,7 @@ class BlogController extends Controller
 				], 500);
 			}
 		}
-		 
+
 	}
 
 	private function saveImageSmart($file, $destinationPath, $width = null, $height = null)
@@ -237,7 +237,7 @@ class BlogController extends Controller
 			$this->validate($request, [
 				'name' => 'required|max:200',
 				'description' => 'required',
-				'image' => 'required',
+				// 'image' => 'required',
 				'meta_title' => 'required',
 				'meta_keywords' => 'required',
 				'meta_description' => 'required',
@@ -403,7 +403,7 @@ class BlogController extends Controller
 		}
 
 	}
-	
+
 	/**
 	 * Edit services
 	 * Show the application dashboard.
@@ -418,14 +418,14 @@ class BlogController extends Controller
 
 			$validator = Validator::make($request->all(), [
 				// 'heading' => 'required|string|min:10|max:1065',			 
-				'description' => 'required|string',			 
+				'description' => 'required|string',
 				// 'paragraph1' => 'required|string|max:255',
 				// 'paragraph2' => 'nullable|string|max:255',
 				// 'paragraph3' => 'nullable|string|max:255',
 				// 'paragraph4' => 'nullable|string|max:255',
 				// 'paragraph5' => 'nullable|string|max:255',
 				// 'paragraph6' => 'nullable|string|max:255',
-				 
+
 			]);
 
 			if ($validator->fails()) {
@@ -440,7 +440,7 @@ class BlogController extends Controller
 
 				$blogdetails->update([
 					// 'heading' => $request->heading,
-					'description' => $request->description,					 			 
+					'description' => $request->description,
 				]);
 
 				return response()->json([
@@ -467,7 +467,7 @@ class BlogController extends Controller
 		}
 
 	}
-	 
+
 	/**
 	 * Edit services
 	 * Show the application dashboard.
@@ -476,15 +476,15 @@ class BlogController extends Controller
 	 */
 	public function updatePageContent(Request $request, $id)
 	{
- 
+
 		if ($request->ajax()) {
 
 
 			$validator = Validator::make($request->all(), [
-				 
+
 				'top_content' => 'nullable|string',
-				'bottom_content' => 'nullable|string',				 
-				 
+				'bottom_content' => 'nullable|string',
+
 			]);
 
 			if ($validator->fails()) {
@@ -499,7 +499,7 @@ class BlogController extends Controller
 
 				$blogdetails->update([
 					'top_content' => $request->top_content,
-					'bottom_content' => $request->bottom_content,					 				 
+					'bottom_content' => $request->bottom_content,
 				]);
 
 				return response()->json([
@@ -526,7 +526,7 @@ class BlogController extends Controller
 		}
 
 	}
-	 
+
 	/**
 	 * Edit services
 	 * Show the application dashboard.
@@ -535,23 +535,23 @@ class BlogController extends Controller
 	 */
 	public function updateFaqBlog(Request $request, $id)
 	{
- 
+
 		if ($request->ajax()) {
 
 
 			$validator = Validator::make($request->all(), [
-				 
+
 				'faqq1' => 'nullable|string|max:1999',
-				'faqa1' => 'nullable|string|max:1999',				 
+				'faqa1' => 'nullable|string|max:1999',
 				'faqq2' => 'nullable|string|max:1999',
-				'faqa2' => 'nullable|string|max:1999',				 
+				'faqa2' => 'nullable|string|max:1999',
 				'faqq3' => 'nullable|string|max:1999',
-				'faqa3' => 'nullable|string|max:1999',				 
+				'faqa3' => 'nullable|string|max:1999',
 				'faqq4' => 'nullable|string|max:1999',
-				'faqa4' => 'nullable|string|max:1999',				 
+				'faqa4' => 'nullable|string|max:1999',
 				'faqq5' => 'nullable|string|max:1999',
-				'faqa5' => 'nullable|string|max:1999',				 
-				 
+				'faqa5' => 'nullable|string|max:1999',
+
 			]);
 
 			if ($validator->fails()) {
@@ -566,15 +566,15 @@ class BlogController extends Controller
 
 				$blogdetails->update([
 					'faqq1' => $request->faqq1,
-					'faqa1' => $request->faqa1,					 				 
+					'faqa1' => $request->faqa1,
 					'faqq2' => $request->faqq2,
-					'faqa2' => $request->faqa2,					 				 
+					'faqa2' => $request->faqa2,
 					'faqq3' => $request->faqq3,
-					'faqa3' => $request->faqa3,					 				 
+					'faqa3' => $request->faqa3,
 					'faqq4' => $request->faqq4,
-					'faqa4' => $request->faqa4,					 				 
+					'faqa4' => $request->faqa4,
 					'faqq5' => $request->faqq5,
-					'faqa5' => $request->faqa5,					 				 
+					'faqa5' => $request->faqa5,
 				]);
 
 				return response()->json([
@@ -601,7 +601,7 @@ class BlogController extends Controller
 		}
 
 	}
-	 
+
 	/**
 	 * Edit services
 	 * Show the application dashboard.
@@ -610,26 +610,29 @@ class BlogController extends Controller
 	 */
 	public function updateBlogImage(Request $request, $id)
 	{
- 
+
 
 		if ($request->ajax()) {
+			if ($request->hasFile('image') && $request->hasFile('image_banner')) {
+				$validator = Validator::make($request->all(), [
 
-			$validator = Validator::make($request->all(), [
-				 
-			'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-			'image_banner' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',			 
-				 
-			]);
+					'image' => 'nullable|mimes:jpg,jpeg,png,webp|max:2048',
+					'image_banner' => 'nullable|mimes:jpg,jpeg,png,webp|max:4096',
 
-			if ($validator->fails()) {
-				$errorsBag = $validator->getMessageBag()->toArray();
-				return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
+				]);
+				if ($validator->fails()) {
+					$errorsBag = $validator->getMessageBag()->toArray();
+					return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
+				}
+
 			}
 
 
+
+
 			try {
-				$blogdetails = Blogdetails::find($id);	 
-			 
+				$blogdetails = Blogdetails::find($id);
+
 				// LOGO Pictures
 				// *************
 				$filePath = getFolderBlogStructure();
@@ -698,10 +701,10 @@ class BlogController extends Controller
 							}
 						}
 					}
-						return response()->json([
-					'status' => true,
-					'msg' => 'Blog Description updated successfully'
-				], 200);
+					return response()->json([
+						'status' => true,
+						'msg' => 'Blog Description updated successfully'
+					], 200);
 				}
 
 			} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

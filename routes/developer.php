@@ -421,7 +421,16 @@ Route::get('/password/reset/{token?}',[App\Http\Controllers\Auth\PasswordControl
 	Route::post('/clients/clientConversionStatus/{id}',[App\Http\Controllers\BackEndClientsController::class, 'clientConversionStatus'])->middleware('auth:developer');
 	  
 	Route::post('/clients/editSaveUploadPics/{id}',[App\Http\Controllers\BackEndClientsController::class, 'editSaveUploadPics'])->middleware('auth:developer');
-	 
+	Route::post('/clients/save-certificate-auto/{id}',[App\Http\Controllers\BackEndClientsController::class, 'autoSaveCertificate'])->middleware('auth:developer');
+	Route::post('/clients/save-award-auto/{id}',[App\Http\Controllers\BackEndClientsController::class, 'autoSaveAward'])->middleware('auth:developer');
+	
+	
+	Route::get('/clients/certificate/{slug}/{id}',[App\Http\Controllers\BackEndClientsController::class, 'certificateDel']);
+	Route::get('/clients/award/{slug}/{id}',[App\Http\Controllers\BackEndClientsController::class, 'awardDel']);
+ 
+
+
+
 	Route::post('/clients/assignClientToEmployee/{id}',[App\Http\Controllers\BackEndClientsController::class, 'assignClientToEmployee'])->middleware('auth:developer');
 	Route::post('/clients/conversionClientStatus/{id}',[App\Http\Controllers\BackEndClientsController::class, 'conversionClientStatus'])->middleware('auth:developer');
 	Route::post('/clients/clientPaidStatus/{id}',[App\Http\Controllers\BackEndClientsController::class, 'conversionClientStatus'])->middleware('auth:developer');

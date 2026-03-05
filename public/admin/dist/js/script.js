@@ -5319,99 +5319,8 @@ var ClientController = (function(){
 			},
 
 		 	 
-			editSaveClientProfileLogo:function(THIS,id){	
-			  var $this = $(THIS);
-			var form = new FormData(THIS);				 
-				$.ajax({
-					url:"/developer/clients/editSaveClientProfileLogo/"+id,
-					type:"POST",					   
-					dataType:"json",	
-					data:form,
-					 cache: false,
-					contentType: false, 
-                    processData: false,                      
-					success:function(data){
-					 console.log(data);
-						if(data.status){						 					
-						$('#messagemodel .modal-title').text("update");	
-						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
-						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
-						$('#messagemodel').css({'width':'100%'});
-							removeValidationErrors($this);
-						setInterval(function() {
-						$("#messagemodel").modal("hide");
-						}, 1000);
-							//window.location.reload();
-						}else{
-							$('#messagemodel .modal-title').text("Course Content");	
-							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
-							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
-							$('#messagemodel').css({'width':'100%'});		 
-							
-						}
-					},
-					error:function(jqXHR, textStatus, errorThrown){					     			
-						var response = JSON.parse(jqXHR.responseText);
-						console.log(response);
-						if(response.status){ 
-							showValidationErrors($this,response.errors);						 
-						}else{
-							$('#messagemodel .modal-title').text("Update");	
-							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");			
-							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
-							$('#messagemodel').css({'width':'100%'});	
-						}
-						 
-					}
-				}); 
-				 return false;	
-			},
-			uploadClientGalleryPics:function(THIS,id){	
-			  var $this = $(THIS);
-			var form = new FormData(THIS);				 
-				$.ajax({
-					url:"/developer/clients/uploadClientGalleryPics/"+id,
-					type:"POST",					   
-					dataType:"json",	
-					data:form,
-					 cache: false,
-					contentType: false, 
-                    processData: false,                      
-					success:function(data){
-					
-						if(data.status){						 					
-						$('#messagemodel .modal-title').text("update");	
-						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
-						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
-						$('#messagemodel').css({'width':'100%'});
-							removeValidationErrors($this);
-						setInterval(function() {
-						$("#messagemodel").modal("hide");
-						}, 1000);
-						}else{
-							$('#messagemodel .modal-title').text("Course Content");	
-							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
-							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
-							$('#messagemodel').css({'width':'100%'});		 
-							
-						}
-					},
-					error:function(jqXHR, textStatus, errorThrown){					     			
-						var response = JSON.parse(jqXHR.responseText);
-						console.log(response);
-						if(response.status){ 
-							showValidationErrors($this,response.errors);						 
-						}else{
-							$('#messagemodel .modal-title').text("Update");	
-							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");			
-							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
-							$('#messagemodel').css({'width':'100%'});	
-						}
-						 
-					}
-				}); 
-				 return false;	
-			},
+		 
+			 
 			uploadClientKeyword:function(THIS,id){	
 			var $this = $(THIS);
 			var form = new FormData(THIS);				 
@@ -8507,7 +8416,7 @@ $(document).ready(function(){
 		var target = $('#'+srno); 
 		//alert($(this).data('srno'));
 		target.prepend("<input type=\"file\" class=\"form-control\" name=\""+srno+"\">");
-		target.find('.help-block').remove();
+		target.find('.img-help').remove();
 	});	
 
 // ACTION TOOK PLACE WHEN CLICK ON '.remove-blog-image'

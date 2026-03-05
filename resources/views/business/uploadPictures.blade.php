@@ -52,7 +52,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                       <input type="file" class="form-control fff" name="image{{$i+1}}" accept=".png, .jpg,.jpeg,.webp,.svg">
                       
                       @endif
-                      <span class="help-block">
+                      <span class="img-help">
                         @if(isset($picture[$i]['large']['src'])&&!empty($picture[$i]['large']['src']))
                         <img loading="lazy" src="{{asset('/'.$picture[$i]['large']['src'])}}" style="height:75px;width:75px;">
                         <a href="javascript:void(0)" class="remove-thumbnail btn btn-danger btn-sm" data-srno="image{{$i+1}}" title="remove"><i class="bi bi-trash" aria-hidden="true"></i></a>
