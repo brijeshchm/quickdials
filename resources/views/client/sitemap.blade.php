@@ -105,5 +105,15 @@
 </url>
 @endforeach
  
+ 
+@foreach ($keywords as $keyword)
+<url>     
+      <loc>{{ url('hyderabad/'.$keyword->slug) }}</loc>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+</url>
+@endforeach
+ 
     
 </urlset>

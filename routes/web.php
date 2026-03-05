@@ -234,143 +234,88 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
  
 
     Route::get('/sitemap-blog.xml',[App\Http\Controllers\SitemapsController::class, 'blog']);
+    Route::get('/sitemap-online.xml',[App\Http\Controllers\SitemapsController::class, 'online']);
   			
-  	 
-  	Route::get('/sitemap-coimbatore.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'coimbatore'])->header('Content-Type', 'text/xml');
-	});
+    
+ 
+ 
+	// Route::get('/sitemap-thane.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'thane'])->header('Content-Type', 'text/xml');
+	// });
+ 
+ 
+	// Route::get('/sitemap-tiruchirappalli.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'tiruchirappalli'])->header('Content-Type', 'text/xml');
+	// });
+ 
+	// Route::get('/sitemap-udaipur.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'udaipur'])->header('Content-Type', 'text/xml');
+	// });
+ 
+	// Route::get('/sitemap-vadodara.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'vadodara'])->header('Content-Type', 'text/xml');
+	// });
+ 
+	// Route::get('/sitemap-varanasi.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'varanasi'])->header('Content-Type', 'text/xml');
+	// });
 
-  	Route::get('/sitemap-dhanbad.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'dhanbad'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-nashik.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'nashik'])->header('Content-Type', 'text/xml');
+	// });
 
-  	Route::get('/sitemap-prayagraj.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'prayagraj'])->header('Content-Type', 'text/xml');
-	});
-	
-  	Route::get('/sitemap-raipur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'raipur'])->header('Content-Type', 'text/xml');
-	});
-
-   	Route::get('/sitemap-rajkot.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'rajkot'])->header('Content-Type', 'text/xml');
-	});
-
-   	Route::get('/sitemap-kota.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'kota'])->header('Content-Type', 'text/xml');
-	});
-	
-   	Route::get('/sitemap-kanpur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'kanpur'])->header('Content-Type', 'text/xml');
-	});
-
-   	Route::get('/sitemap-jodhpur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'jodhpur'])->header('Content-Type', 'text/xml');
-	});
-
-   	Route::get('/sitemap-jhansi.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'jhansi'])->header('Content-Type', 'text/xml');
-	});
- 
-	Route::get('/sitemap-ranchi.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'ranchi'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-nagpur.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'nagpur'])->header('Content-Type', 'text/xml');
+	// });
+	// Route::get('/sitemap-mysuru.xml', function () {
+	// 	return response()->view('client.sitemap-s',['city'=>'mysuru'])->header('Content-Type', 'text/xml');
+	// });
  
  
-	Route::get('/sitemap-srinagar.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'srinagar'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-vijayawada.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'vijayawada'])->header('Content-Type', 'text/xml');
+	// });
+ 
+	// Route::get('/sitemap-visakhapatnam.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'visakhapatnam'])->header('Content-Type', 'text/xml');
+	// });
  
  
-	Route::get('/sitemap-surat.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'surat'])->header('Content-Type', 'text/xml');
-	});
- 
- 
-	Route::get('/sitemap-thane.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'thane'])->header('Content-Type', 'text/xml');
-	});
- 
- 
-	Route::get('/sitemap-tiruchirappalli.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'tiruchirappalli'])->header('Content-Type', 'text/xml');
-	});
- 
-	Route::get('/sitemap-udaipur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'udaipur'])->header('Content-Type', 'text/xml');
-	});
- 
-	Route::get('/sitemap-vadodara.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'vadodara'])->header('Content-Type', 'text/xml');
-	});
- 
-	Route::get('/sitemap-varanasi.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'varanasi'])->header('Content-Type', 'text/xml');
-	});
-
-	Route::get('/sitemap-nashik.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'nashik'])->header('Content-Type', 'text/xml');
-	});
-
-	Route::get('/sitemap-nagpur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'nagpur'])->header('Content-Type', 'text/xml');
-	});
-	Route::get('/sitemap-mysuru.xml', function () {
-		return response()->view('client.sitemap-s',['city'=>'mysuru'])->header('Content-Type', 'text/xml');
-	});
- 
- 
-	Route::get('/sitemap-vijayawada.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'vijayawada'])->header('Content-Type', 'text/xml');
-	});
- 
-	Route::get('/sitemap-visakhapatnam.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'visakhapatnam'])->header('Content-Type', 'text/xml');
-	});
- 
- 
-	Route::get('/sitemap-jamshedpur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'jamshedpur'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-jamshedpur.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'jamshedpur'])->header('Content-Type', 'text/xml');
+	// });
  
  
  
-	Route::get('/sitemap-jabalpur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'jabalpur'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-jabalpur.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'jabalpur'])->header('Content-Type', 'text/xml');
+	// });
  
  
-	Route::get('/sitemap-gwalior.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'gwalior'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-gwalior.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'gwalior'])->header('Content-Type', 'text/xml');
+	// });
  
-	Route::get('/sitemap-guwahati.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'guwahati'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-guwahati.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'guwahati'])->header('Content-Type', 'text/xml');
+	// });
  
  
 
-	Route::get('/sitemap-indore.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'indore'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-indore.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'indore'])->header('Content-Type', 'text/xml');
+	// });
  
  
-	Route::get('/sitemap-gorakhpur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'gorakhpur'])->header('Content-Type', 'text/xml');
-	});
- 
- 
-	Route::get('/sitemap-hyderabad.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'hyderabad'])->header('Content-Type', 'text/xml');
-	});
-  
-	Route::get('/sitemap-chennai.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'chennai'])->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-gorakhpur.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'gorakhpur'])->header('Content-Type', 'text/xml');
+	// });
    
- 	Route::get('/sitemap-online.xml', function () {		
-		return response()->view('client.sitemap-online')->header('Content-Type', 'text/xml');
-	});
+	// Route::get('/sitemap-chennai.xml', function () {
+	// 	return response()->view('client.sitemap-common',['city'=>'chennai'])->header('Content-Type', 'text/xml');
+	// });
+   
+ 	
  
   
 

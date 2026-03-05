@@ -247,7 +247,21 @@ class SitemapsController extends Controller
 		$blogs = $blogs->select('title', 'slug','updated_at');
 		$blogs = $blogs->get();
 
-		return response()->view('client.sitemap-blog', ['blogs' => $blogs])->header('Content-Type', 'text/xml');
+		$keywords = DB::table('keyword');
+		$keywords = $keywords->select('slug', 'updated_at');
+		$keywords = $keywords->get();
+		return response()->view('client.sitemap-blog', ['blogs' => $blogs,'keywords'=>$keywords])->header('Content-Type', 'text/xml');
+	}
+
+
+	public function online()
+	{
+  
+
+		$keywords = DB::table('keyword');
+		$keywords = $keywords->select('slug', 'updated_at');
+		$keywords = $keywords->get();
+		return response()->view('client.sitemap-online', ['keywords'=>$keywords])->header('Content-Type', 'text/xml');
 	}
 
 
