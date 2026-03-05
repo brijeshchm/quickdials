@@ -130,8 +130,6 @@ class KeywordController extends Controller
 		}
 
 		$keyword = new Keyword;
-
-
 		$keyword->keyword = $request->input('keyword');
 		$keyword->slug = generate_slug($request->input('keyword'));
 		$keyword->parent_category_id = $request->input('parent_category_id');

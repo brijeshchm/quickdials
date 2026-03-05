@@ -22,7 +22,15 @@ class SitemapsController extends Controller
 		$keywords = DB::table('keyword');		 
 		$keywords = $keywords->select('updated_at','slug');		 
 		$keywords = $keywords->get();
-		return response()->view('client.sitemap_keyword', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+		return response()->view('client.sitemap', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
+ 
+	}
+	public function city()
+	{
+		$keywords = DB::table('keyword');		 
+		$keywords = $keywords->select('updated_at','slug');		 
+		$keywords = $keywords->get();
+		return response()->view('client.sitemap_city', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
  
 	}
 

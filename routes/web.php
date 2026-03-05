@@ -230,71 +230,12 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 	Route::post('/business-owners',[App\Http\Controllers\Client\BusinessOwnerController::class, 'store']);
 	
   	Route::get('/sitemap.xml', [App\Http\Controllers\SitemapsController::class, 'index']);
-
-
-  	// Route::get('/sitemap.xml', [App\Http\Controllers\SitemapsController::class, 'index']);
-  	
- // 	Route::get('/sitemap-noida.xml',[App\Http\Controllers\SitemapsController::class, 'noida']);
-	//Route::get('/sitemap-delhi.xml',[App\Http\Controllers\SitemapsController::class, 'delhi']);
-   // Route::get('/sitemap-gurgaon.xml',[App\Http\Controllers\SitemapsController::class, 'gurgaon']);
-    Route::get('/sitemap-faridabad.xml',[App\Http\Controllers\SitemapsController::class, 'faridabad']);
-    Route::get('/sitemap-ghaziabad.xml',[App\Http\Controllers\SitemapsController::class, 'ghaziabad']);
-    //Route::get('/sitemap-mumbai.xml',[App\Http\Controllers\SitemapsController::class, 'mumbai']);
-    //Route::get('/sitemap-pune.xml',[App\Http\Controllers\SitemapsController::class, 'pune']);				
-	//Route::get('/sitemap-greaterNoida.xml',[App\Http\Controllers\SitemapsController::class, 'greaterNoida']);
-   // Route::get('/sitemap-chandigarh.xml',[App\Http\Controllers\SitemapsController::class, 'chandigarh']);
-    //Route::get('/sitemap-meerut.xml',[App\Http\Controllers\SitemapsController::class, 'meerut']);
-   // Route::get('/sitemap-bangalore.xml',[App\Http\Controllers\SitemapsController::class, 'bangalore']);
-   // Route::get('/sitemap-ahmedabad.xml',[App\Http\Controllers\SitemapsController::class, 'ahmedabad']);
-    Route::get('/sitemap-patna.xml',[App\Http\Controllers\SitemapsController::class, 'patna']);
+  	Route::get('/sitemap-city.xml', [App\Http\Controllers\SitemapsController::class, 'city']);
+ 
 
     Route::get('/sitemap-blog.xml',[App\Http\Controllers\SitemapsController::class, 'blog']);
   			
-  	Route::get('/sitemap-moradabad.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'moradabad'])->header('Content-Type', 'text/xml');
-	});
-	
-  	Route::get('/sitemap-kochi.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'kochi'])->header('Content-Type', 'text/xml');
-	});
-
-	Route::get('/sitemap-jaipur.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'jaipur'])->header('Content-Type', 'text/xml');
-	});
-	Route::get('/sitemap-kolkata.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'kolkata'])->header('Content-Type', 'text/xml');
-	});
-  	Route::get('/sitemap-ballia.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'ballia'])->header('Content-Type', 'text/xml');
-	});
-
-  	Route::get('/sitemap-agra.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'agra'])->header('Content-Type', 'text/xml');
-	});
-	
-  	Route::get('/sitemap-amritsar.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'amritsar'])->header('Content-Type', 'text/xml');
-	});
-	
-  	Route::get('/sitemap-aurangabad.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'aurangabad'])->header('Content-Type', 'text/xml');
-	});
-	
-  	Route::get('/sitemap-bhopal.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'bhopal'])->header('Content-Type', 'text/xml');
-	});
-	
-  	Route::get('/sitemap-ludhiana.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'ludhiana'])->header('Content-Type', 'text/xml');
-	});
-	
-  	Route::get('/sitemap-bhubaneswar.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'bhubaneswar'])->header('Content-Type', 'text/xml');
-	});
-  	Route::get('/sitemap-madurai.xml', function () {
-		return response()->view('client.sitemap-common',['city'=>'madurai'])->header('Content-Type', 'text/xml');
-	});
-
+  	 
   	Route::get('/sitemap-coimbatore.xml', function () {
 		return response()->view('client.sitemap-common',['city'=>'coimbatore'])->header('Content-Type', 'text/xml');
 	});
@@ -426,16 +367,12 @@ Route::get('/interviews/restapi-interview-question-answer',[App\Http\Controllers
 	Route::get('/sitemap-chennai.xml', function () {
 		return response()->view('client.sitemap-common',['city'=>'chennai'])->header('Content-Type', 'text/xml');
 	});
-  
- 
- 
+   
  	Route::get('/sitemap-online.xml', function () {		
 		return response()->view('client.sitemap-online')->header('Content-Type', 'text/xml');
 	});
  
-	// Route::get('/sitemap.xml', function () {
-	// 	return response()->view('client.sitemap')->header('Content-Type', 'text/xml');
-	// });
+  
 
 Route::get('/ads/study-abroad',[App\Http\Controllers\Client\LandingPageController::class, 'studyabroad']);
 Route::post('/apiddd/lead/add',[App\Http\Controllers\Client\HomePageController::class, 'addLadsss']);
