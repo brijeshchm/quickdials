@@ -869,15 +869,7 @@
         <div class="form-container">
             <h2>Certificate</h2>
               
-  <style>
-                  .help-block {
-                    color: #ff0000;
-                    position: relative;
-
-                    margin-top: 61px;
-                    display: block;
-                    margin-left: -207px;
-                  }
+  <style>                
 
                   .certificate_form img {
 
@@ -1257,14 +1249,7 @@
             <h2>Award</h2>
              
   <style>
-                  .help-block {
-                    color: #ff0000;
-                    position: relative;
-
-                    margin-top: 61px;
-                    display: block;
-                    margin-left: -207px;
-                  }
+                   
 
                   .certificate_form img {
 
