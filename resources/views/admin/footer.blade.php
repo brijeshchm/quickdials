@@ -150,12 +150,7 @@
         containerCssClass: ":all:"
     });
 	
-    $(".select2-single-city").select2({
-        theme: "bootstrap",
-        placeholder: "Select city",
-        maximumSelectionSize: 6,
-        containerCssClass: ":all:"
-    });
+ 
 	
 	$(".select2-single-box").select2({
         theme: "bootstrap",
