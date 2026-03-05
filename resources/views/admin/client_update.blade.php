@@ -1717,7 +1717,7 @@
 									<th>Parent Category</th>
 									<!-- <th>City</th>
 									<th>Zone</th> -->
-									<th>Position</th>
+									<!-- <th>Position</th> -->
 									<!--<th>Price</th>-->
 									<th>Action</th>
 								</tr>

@@ -2107,7 +2107,7 @@ class BackEndClientsController extends Controller
 					$lead->keyword,
 					$lead->child_category,
 					$lead->parent_category,
-					ucfirst($lead->sold_on_position),
+					// ucfirst($lead->sold_on_position),
 					$action
 				];
 				$returnLeads['recordCollection'][] = $lead->id;
