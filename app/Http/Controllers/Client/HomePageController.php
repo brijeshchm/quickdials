@@ -1711,7 +1711,8 @@ class HomePageController extends Controller
 		 
 			return view('client.searchkeyword', ['clientskeyword' => $clientskeyword, 'keyword' => $keyword, 'reviewsClientsList' => $reviewsClientsList, 'clientLists' => $clientLists, 'city' => $city]);
 		} catch (\Exception $e) {
-			return view('client.errorpage');
+		 
+			return response()->view('client.errorpage', [], 404);
 		}
 
 	}
@@ -1818,7 +1819,7 @@ class HomePageController extends Controller
 			return view('client.category', ['businessServices' => $businessServices, 'parentCategories' => $parentCategories, 'childCategories' => $childCategories, 'keyword' => $keyword, 'clientsList' => $clientsList, 'city' => $city]);
 		} else {
 
-			return view('client.errorpage');
+			return response()->view('client.errorpage', [], 404);
 
 		}
 
@@ -1847,7 +1848,7 @@ class HomePageController extends Controller
 			$city = "";
 			return view('client.child', ['childCategory' => $childCategory, 'part_id' => $part_id, 'keyword' => $keyword, 'city' => $city]);
 		} else {
-			return view('client.errorpage');
+			return response()->view('client.errorpage', [], 404);
 		}
 	}
 
