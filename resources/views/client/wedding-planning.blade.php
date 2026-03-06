@@ -1135,39 +1135,39 @@ $value = Cookie::get('showPopup');
 
 
     <script>
-        function sendData() {
-            const name = document.getElementById('name').value;
-         //   const email = document.getElementById('email').value;
-            const mobile = document.getElementById('mobile').value;
-            const kw_text = document.getElementById('kw_text').value;
-            const city_id = document.getElementById('city_id').value;
-            const from_page = document.getElementById('from_page').value;
+        // function sendData() {
+        //     const name = document.getElementById('name').value;
+        //  //   const email = document.getElementById('email').value;
+        //     const mobile = document.getElementById('mobile').value;
+        //     const kw_text = document.getElementById('kw_text').value;
+        //     const city_id = document.getElementById('city_id').value;
+        //     const from_page = document.getElementById('from_page').value;
  
-            if ((name && mobile) && (mobile.length ===11)) {
-                fetch('lead/auto-form-save', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({ name: name, mobile: mobile,kw_text:kw_text,city_id:city_id,from_page:from_page })
-                })
-                .then(response => response.json())
-                .then(data => {
-                   // document.getElementById('message').textContent = `Saved: ${data.name} (${data.email})`;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('message').textContent = 'Error saving data';
-                    document.getElementById('message').style.color = 'red';
-                });
-            }
-        }
+        //     if ((name && mobile) && (mobile.length ===11)) {
+        //         fetch('lead/auto-form-save', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //                 'Accept': 'application/json',
+        //                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        //             },
+        //             body: JSON.stringify({ name: name, mobile: mobile,kw_text:kw_text,city_id:city_id,from_page:from_page })
+        //         })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //            // document.getElementById('message').textContent = `Saved: ${data.name} (${data.email})`;
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //             document.getElementById('message').textContent = 'Error saving data';
+        //             document.getElementById('message').style.color = 'red';
+        //         });
+        //     }
+        // }
  
       //  document.getElementById('name').addEventListener('input', sendData);
        // document.getElementById('email').addEventListener('input', sendData);
-        document.getElementById('mobile').addEventListener('input', sendData);
+        // document.getElementById('mobile').addEventListener('input', sendData);
      //   document.getElementById('kw_text').addEventListener('input', sendData);
         // document.getElementById('zone_id').addEventListener('input', getZoneData);
 
