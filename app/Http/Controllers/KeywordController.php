@@ -1217,6 +1217,7 @@ class KeywordController extends Controller
 			if ($request->input('search.value') != '') {
 				$leads = $leads->where(function ($query) use ($request) {
 					$query->orWhere('keyword.keyword', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('keyword.slug', 'LIKE', '%' . $request->input('search.value') . '%');
 				});
 			}
 		 
