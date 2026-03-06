@@ -190,17 +190,11 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						$inPopupArr = [];
 						foreach ($assignedKwds as $assignedKwd) {										 
 											?>
-
-													<li>
-														<a href="<?php echo $assignedKwd->slug; ?>"
-															 
-															class="keystore"><?php echo $assignedKwd->keyword; ?></a>
+											<li><a href="{{ url($assignedKwd->slug)}}" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 													</li>
 													<?php  }  ?>
 												</ul>
 											</div>
-
-
 										</span>
 									</div>
 								</div>

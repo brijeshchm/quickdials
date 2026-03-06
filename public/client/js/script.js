@@ -866,7 +866,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		 
 			e.preventDefault();
 			var slug = $(this).attr('href');				 		 
-			slug = slug.replace('https://www.quickdials.com/', '');	 	 
+			// slug = slug.replace('https://www.quickdials.com/', '');	 	
+			slug = slug.replace(window.location.origin + '/', ''); 
 			slug = slug.replace(/\s+/g, '-').toLowerCase();				
 			text = slug.replace(/-/g, ' ');
  
