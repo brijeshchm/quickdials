@@ -164,11 +164,12 @@ class SearchListController extends Controller
 				$kwdsList = Keyword::where('child_category_id', $keyword->child_category_id)
 					->where('parent_category_id', $keyword->parent_category_id)
 					->select('keyword', 'slug', 'icon')
+					->orderBy('keyword','asc')
 					->distinct()
 					->get();
 
 			}
-			$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city', 'LIKE', $city)->select('zones.id', 'zones.zone', 'zones.pincode')->distinct()->get();
+			$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city', 'LIKE', $city)->select('zones.id', 'zones.zone', 'zones.pincode')->distinct()->orderBy('zones.zone','asc')->get();
 
 			$firstZone = $zones->get(2);
 			$area =$city;

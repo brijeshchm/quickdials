@@ -35,7 +35,7 @@ echo trim($descrip);
 		if (!empty($cicons)) {
 					?>
 
-				<img loading="lazy" src="{{asset('' . $cicons['child_banner']['src'])}}" alt="{{ $cicons['child_banner']['name'] }}">
+				<img loading="lazy" src="{{asset('' . $cicons['child_banner']['src'])}}" alt="{{ $keyword->keyword }}">
 
 				<?php  } else { ?>
 
@@ -49,7 +49,7 @@ echo trim($descrip);
 			if ($cicons) {
 								?>
 
-				<img loading="lazy" src="{{asset('' . $cicons['category_banner']['src'])}}" alt="{{ $cicons['category_banner']['name']}}">
+				<img loading="lazy" src="{{asset('' . $cicons['category_banner']['src'])}}" alt="{{ $keyword->keyword }}">
 
 
 				<?php  }
@@ -741,44 +741,27 @@ echo trim($descrip);
 
 				<div class="category-box">
 					<div class="course-program">
-
 						<h5>Find Services Related to <?php if (!empty($keyword->keyword)) {
-							echo $keyword->keyword;
-						} ?> </h5>
+							echo $keyword->keyword; } ?> </h5>
 						<ul class="">
-
-
 							@if(!empty($kwdsList))
 								@foreach($kwdsList as $keywords)
-
 									<li class="">
 										<?php  if (!empty($keywords->icon)) {
-
 											$data = json_decode($keywords->icon, true);
-											if (!empty($data)) {
-																			?>
-
-										<img loading="lazy" src="{{asset('' . $data['src'])}}" alt="{{ $data['name'] }}">
-
-										<?php  }
-										} ?>
-
+											if (!empty($data)) ?>
+										<img loading="lazy" src="{{asset($data['src'])}}" alt="{{ $data['name'] }}">
+										<?php  }  ?>
 										<a href="<?php echo $keywords->slug; ?>" class="keystore">{{$keywords->keyword}}</a>
 									</li>
-
 								@endforeach
 							@endif
 						</ul>
 					</div>
 				</div>
-
-
 			</div>
 		@endif
 	@endif
-
-
-
 	<br>
 
 

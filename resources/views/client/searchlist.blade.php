@@ -13,7 +13,11 @@ echo trim($key);
 <?php if (!empty($keyword->meta_description)) { $descrip = preg_replace('/{{city}}/i', ucfirst($area), $keyword->meta_description); echo trim($descrip); }   ?>
 @endsection
 @section('keyword')
-<?php if (!empty($keyword->meta_keywords)) { $msg = preg_replace('/{{city}}/i', ucfirst($area), $keyword->meta_keywords); echo trim($msg); } ?>
+<?php if (!empty($keyword->meta_keywords)) { 	
+$msg = preg_replace('/{{city}}/i', ucfirst($area), $keyword->meta_keywords); 
+$msg = preg_replace('/\s+,/', ',', $msg);
+$msg = preg_replace('/\s+/', ' ', $msg);	
+echo trim($msg); } ?>
 @endsection
 
 @section('content')
@@ -28,7 +32,7 @@ echo trim($key);
 		if (!empty($cicons)) {
 							?>
 
-				<img loading="lazy" src="{{asset($cicons['child_banner']['src'])}}" alt="{{ $cicons['child_banner']['name'] }}">
+				<img loading="lazy" src="{{asset($cicons['child_banner']['src'])}}" alt="{{ $keyword->keyword }}">
 
 				<?php  } else { ?>
 
@@ -42,7 +46,7 @@ echo trim($key);
 			if ($cicons) {
 							?>
 
-				<img loading="lazy" src="{{asset($cicons['category_banner']['src'])}}" alt="{{$cicons['category_banner']['name']}}">
+				<img loading="lazy" src="{{asset($cicons['category_banner']['src'])}}" alt="{{ $keyword->keyword }}">
 
 
 				<?php  }
@@ -99,8 +103,8 @@ echo trim($key);
 								<div itemscope itemtype="https://schema.org/Product" style="font-size: 12px;font-weight: 500;">
 									<div class="text-primary" itemprop="name">
 										<h1 title="<?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
-							echo trim($key); } ?> in <?php echo ucfirst($area); ?> "><?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
-							echo trim($key); } ?> in <?php echo ucfirst($city); ?> </h1>
+							echo trim($key); } ?> in <?php echo ucfirst($area); ?>"><?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->keyword);
+							echo trim($key); } ?> in <?php echo ucfirst($area); ?></h1>
 									</div>
 									<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
 										<img loading="lazy" itemprop="image" src="{{ asset('client/images/' . $stars) }}"
@@ -109,9 +113,7 @@ echo trim($key);
 							echo number_format((float) $keyword->ratingvalue, 1, '.', '');
 						} else {
 							echo "1.0";
-						} ?></span>
-										out of <span itemprop="bestRating"></span>
-										based on <span itemprop="ratingCount">{{$keyword->ratingcount }}</span> ratings
+						} ?></span>out of <span itemprop="bestRating"></span>based on <span itemprop="ratingCount">{{$keyword->ratingcount }}</span> ratings
 									</div>
 								</div>
 					@endif
@@ -200,7 +202,7 @@ echo trim($key);
 										<span class="serchlist-txt-1">										 
 											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18"><?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?></span>
 										 	</a>
-									<!-- <img loading="lazy" src="<?php echo asset('client/images/preferred.png'); ?>" alt="preferred" > -->
+									 
 								</div>
 
 								<div class="certified" <?php if ($client->certified_status == '1') { ?>
@@ -934,8 +936,7 @@ echo trim($key);
 										<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18">
 									<?php echo ucfirst(substr($client->business_name, 0, 28));?>
 								</span>
-								<!-- 						 
-													<img loading="lazy" src="<?php echo asset('client/images/preferred.png'); ?>" alt="preferred"> -->
+								 
 
 							</a>
 

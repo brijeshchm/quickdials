@@ -1783,8 +1783,9 @@ class HomePageController extends Controller
 		$businessServices = DB::table('parent_category')
 			->join('child_category', 'child_category.parent_category_id', '=', 'parent_category.id')
 			->select('parent_category.*', 'child_category.*')
-			->where('parent_category.parent_slug', $slug)
+			->where('parent_category.parent_slug', $slug)			
 			->groupBy('child_slug')
+			->orderBy('child_category','asc')
 			->get();
 
 
@@ -1840,8 +1841,8 @@ class HomePageController extends Controller
 				->select('child_category.*', 'keyword.*')
 				->where('child_slug', $child_slug)
 				->groupBy('keyword')
+				->orderBy('keyword','asc')
 				->get();
-
 			$part_id = DB::table('parent_category')->where('id', operator: $keyword->parent_category_id)->first();
 			$city = "";
 			return view('client.child', ['childCategory' => $childCategory, 'part_id' => $part_id, 'keyword' => $keyword, 'city' => $city]);
