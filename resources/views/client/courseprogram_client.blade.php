@@ -1,12 +1,10 @@
 @extends('client.layouts.app')
-
 @section('title')
 @if(!empty($part_id->meta_title))
 <?php  
 $key = preg_replace('/in {{city}}/i','',$part_id->meta_title);
 echo trim($key);  ?>
 @else
-
 Quick Dials- {!!$part_id->parent_category or ""!!} Training in {{Request::segment(1)}} 
 @endif  
 @endsection 
@@ -15,19 +13,14 @@ Quick Dials- {!!$part_id->parent_category or ""!!} Training in {{Request::segmen
 $msg = preg_replace('/in {{city}}/i',' ',$part_id->meta_keywords);
 echo trim($msg); }else{ ?>
 Quick Dials- {!!$part_id->parent_category or ""!!} Training in {{Request::segment(1)}} 
-
 <?php  } ?>
 @endsection
 @section('description')
 <?php if(!empty($part_id->meta_description)){
 $descrip = preg_replace('/{{city}}/i',' ',$part_id->meta_description);
 echo trim($descrip); }else{ ?> 
-
-Quick Dials- {!!$part_id->parent_category!!} Training in {{Request::segment(1)}} 
-
-<?php  } ?>
-@endsection
- 
+Quick Dials- {!!$part_id->parent_category!!} Training in {{Request::segment(1)}} <?php  } ?>
+@endsection 
 @section('content')	
 	<style>
 		.inner-client-div .grid-info h3{
@@ -98,7 +91,7 @@ Quick Dials- {!!$part_id->parent_category!!} Training in {{Request::segment(1)}}
 					<img loading="lazy" src="{{asset(''.$data['src'])}}" alt="{{ $data['name'] }}">
 
 					<?php  }   } ?>
-					<a href="{{ $child->slug }}"   class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
+					<a href="{{ url($child->slug) }}"   class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
 				
 				
 				</li>

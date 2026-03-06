@@ -131,33 +131,33 @@ echo trim($descrip); }  ?>
 
     <div class="categories-grid" style="padding-top: 15px;">
       <div class="category-card Banquet Halls">
-        <a href="banquet-hall" class="keystore"><img loading="lazy" src="./popular/Banquet_Hall.jpg" alt="Banquet Halls" class="category-image" /></a>
-        <div class="category-label"><a href="banquet-hall" class="keystore">Banquet Halls</a></div>
+        <a href="{{ url('banquet-hall')}}" class="keystore"><img loading="lazy" src="./popular/Banquet_Hall.jpg" alt="Banquet Halls" class="category-image" /></a>
+        <div class="category-label"><a href="{{ url('banquet-hall')}}" class="keystore">Banquet Halls</a></div>
       </div>
 
       <div class="category-card Ghoda Baggi & Rath">
-       <a href="ghoda-baggi" class="keystore"> <img loading="lazy" src="./popular/Ghoda_Baggi.jpg" alt="Ghoda Baggi & Rath" class="category-image" /></a>
-        <div class="category-label"> <a href="ghoda-baggi" class="keystore"> Ghoda Baggi & Rath</a></div>
+       <a href="{{ url('ghoda-baggi')}}" class="keystore"> <img loading="lazy" src="./popular/Ghoda_Baggi.jpg" alt="Ghoda Baggi & Rath" class="category-image" /></a>
+        <div class="category-label"> <a href="{{ url('ghoda-baggi')}}" class="keystore"> Ghoda Baggi & Rath</a></div>
       </div>
 
       <div class="category-card Fire Works & Crackers">
-        <a href="fire-works-and-crackers" class="keystore">  <img loading="lazy" src="./popular/Fire_Works_&_Crackers.jpg" alt="Fire Works & Crackers" class="category-image" /></a>
+        <a href="{{ url('fire-works-and-crackers')}}" class="keystore">  <img loading="lazy" src="./popular/Fire_Works_&_Crackers.jpg" alt="Fire Works & Crackers" class="category-image" /></a>
         <div class="category-label"> <a href="fire-works-and-crackers" class="keystore"> Fire Works & Crackers </a></div>
       </div>
 
       <div class="category-card Photo and Videography">
-         <a href="photo-and-videography" class="keystore"> <img loading="lazy" src="./popular/Photo_and_Videography.jpg" class="category-image"></a>
-        <div class="category-label"> <a href="photo-and-videography" class="keystore"> Photo and Videography </a></div>
+         <a href="{{ url('photo-and-videography')}}" class="keystore"> <img loading="lazy" src="./popular/Photo_and_Videography.jpg" class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('photo-and-videography')}}" class="keystore"> Photo and Videography </a></div>
       </div>
 
       <div class="category-card Court Marriage">
-       <a href="court-marriage" class="keystore">   <img loading="lazy" src="./popular/Court_Marriage.jpg"   class="category-image"></a>
-        <div class="category-label"> <a href="court-marriage" class="keystore"> Court Marriage </a></div>
+       <a href="{{ url('court-marriage')}}" class="keystore">   <img loading="lazy" src="./popular/Court_Marriage.jpg"   class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('court-marriage')}}" class="keystore"> Court Marriage </a></div>
       </div>
 
       <div class="category-card corporate">
-        <a href="flower-decoration" class="keystore">  <img loading="lazy" src="./popular/Flower_Decoration.jpg"  class="category-image"></a>
-        <div class="category-label"> <a href="flower-decoration" class="keystore"> Flower Decoration</a></div>
+        <a href="{{ url('flower-decoration')}}" class="keystore">  <img loading="lazy" src="./popular/Flower_Decoration.jpg"  class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('flower-decoration')}}" class="keystore"> Flower Decoration</a></div>
       </div>
     </div>
   </div>
@@ -170,28 +170,28 @@ echo trim($descrip); }  ?>
 
     <div class="categories-grid-circle" style="padding-top: 15px;">
       <div class="category-card-cicle">
-        <a href="banquet-hall" class="keystore">  <img loading="lazy" src="./popular/Banquet-Halls.jpg" alt="Banquet Halls" class="category-image-circle" /></a>
-        <div class="category-label-circle"> <a href="banquet-hall" class="keystore"> Banquet Halls</a></div>
+        <a href="{{ url('banquet-hall')}}" class="keystore">  <img loading="lazy" src="./popular/Banquet-Halls.jpg" alt="Banquet Halls" class="category-image-circle" /></a>
+        <div class="category-label-circle"> <a href="{{ url('banquet-hall')}}" class="keystore"> Banquet Halls</a></div>
       </div>
 
       <div class="category-card-cicle">
-        <a href="banquet-hall" class="keystore">  <img loading="lazy" src="./popular/DJ_Sound_System.jpg" alt="DJ Sound Systems" class="category-image-circle" /></a>
-        <div class="category-label-circle"> <a href="banquet-hall" class="keystore"> DJ Sound Systems</a></div>
+        <a href="{{ url('banquet-hall')}}" class="keystore">  <img loading="lazy" src="./popular/DJ_Sound_System.jpg" alt="DJ Sound Systems" class="category-image-circle" /></a>
+        <div class="category-label-circle"> <a href="{{ url('banquet-hall')}}" class="keystore"> DJ Sound Systems</a></div>
       </div>
 
       <div class="category-card-cicle">
-         <a href="wedding-card" class="keystore"> <img loading="lazy" src="./popular/wedding_cards.jpg" alt="Wedding Card" class="category-image-circle" /></a>
-        <div class="category-label-circle"> <a href="wedding-card" class="keystore"> Wedding Card</a></div>
+         <a href="{{ url('wedding-card')}}" class="keystore"> <img loading="lazy" src="./popular/wedding_cards.jpg" alt="Wedding Card" class="category-image-circle" /></a>
+        <div class="category-label-circle"> <a href="{{ url('wedding-card')}}" class="keystore"> Wedding Card</a></div>
       </div>
 
       <div class="category-card-cicle">
-      <a href="party-organisers" class="keystore" target="_blank">    <img loading="lazy" src="./popular/Wedding_Organisers.jpg"  class="category-image-circle"></a>
-        <div class="category-label-circle"> <a href="party-organisers" class="keystore"> Party Organiser</a></div>
+      <a href="{{ url('party-organisers')}}" class="keystore" target="_blank">    <img loading="lazy" src="./popular/Wedding_Organisers.jpg"  class="category-image-circle"></a>
+        <div class="category-label-circle"> <a href="{{ url('party-organisers')}}" class="keystore"> Party Organiser</a></div>
       </div>
 
       <div class="category-card-cicle">
-       <a href="stage-decorators" class="keystore">   <img loading="lazy" src="./popular/stage-decoratorss.jpg" class="category-image-circle"></a>
-        <div class="category-label-circle"> <a href="stage-decorators" class="keystore"> Stage Decoration</a></div>
+       <a href="{{ url('stage-decorators')}}" class="keystore">   <img loading="lazy" src="./popular/stage-decoratorss.jpg" class="category-image-circle"></a>
+        <div class="category-label-circle"> <a href="{{ url('stage-decorators')}}" class="keystore"> Stage Decoration</a></div>
       </div>
     </div>
   </div>
@@ -204,33 +204,33 @@ echo trim($descrip); }  ?>
 
     <div class="categories-grid" style="padding-top: 15px;">
       <div class="category-card Makeup Artists">
-        <a href="makeup-artists" class="keystore">  <img loading="lazy" src="./popular/Makeup_artist.jpg" alt="Makeup Artists" class="category-image" /></a>
-        <div class="category-label"> <a href="makeup-artists" class="keystore"> Makeup Artists</a></div>
+        <a href="{{ url('makeup-artists')}}" class="keystore">  <img loading="lazy" src="./popular/Makeup_artist.jpg" alt="Makeup Artists" class="category-image" /></a>
+        <div class="category-label"> <a href="{{ url('makeup-artists')}}" class="keystore"> Makeup Artists</a></div>
       </div>
 
       <div class="category-card Mehendi Artists">
-        <a href="mehendi-artists" class="keystore">  <img loading="lazy" src="./popular/Mehandi_artist.jpg" alt="Mehendi Artists" class="category-image" /></a>
-        <div class="category-label"> <a href="mehendi-artists" class="keystore"> Mehendi Artists</a></div>
+        <a href="{{ url('mehendi-artists')}}" class="keystore">  <img loading="lazy" src="./popular/Mehandi_artist.jpg" alt="Mehendi Artists" class="category-image" /></a>
+        <div class="category-label"> <a href="{{ url('mehendi-artists')}}" class="keystore"> Mehendi Artists</a></div>
       </div>
 
       <div class="category-card Bridal Wear">
-        <a href="bridal-wear" class="keystore">  <img loading="lazy" src="./popular/Bridal-Wear.jpg" alt="Bridal Wear" class="category-image" /></a>
-        <div class="category-label"> <a href="bridal-wear" class="keystore"> Bridal Wear </a></div>
+        <a href="{{ url('bridal-wear')}}" class="keystore">  <img loading="lazy" src="./popular/Bridal-Wear.jpg" alt="Bridal Wear" class="category-image" /></a>
+        <div class="category-label"> <a href="{{ url('bridal-wear')}}" class="keystore"> Bridal Wear </a></div>
       </div>
 
       <div class="category-card Jewellery">
-        <a href="jewellery-designing" class="keystore">  <img loading="lazy" src="./popular/Jewellery.jpg"  class="category-image"></a>
-        <div class="category-label"> <a href="jewellery-designing" class="keystore"> Jewellery </a></div>
+        <a href="{{ url('jewellery-designing')}}" class="keystore">  <img loading="lazy" src="./popular/Jewellery.jpg"  class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('jewellery-designing')}}" class="keystore"> Jewellery </a></div>
       </div>
 
       <div class="category-card Salons">
-      <a href="salons" class="keystore"><img loading="lazy" src="./popular/salon.jpg" class="category-image"></a>
-        <div class="category-label"> <a href="salons" class="keystore"> Salons</a></div>
+      <a href="{{ url('salons')}}" class="keystore"><img loading="lazy" src="./popular/salon.jpg" class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('salons')}}" class="keystore"> Salons</a></div>
       </div>
 
       <div class="category-card corporate">
-         <a href="cosmetics" class="keystore"> <img loading="lazy" src="./popular/Cosmetic.jpg"  class="category-image"></a>
-        <div class="category-label"> <a href="cosmetics" class="keystore"> Cosmetics </a></div>
+         <a href="{{ url('cosmetics')}}" class="keystore"> <img loading="lazy" src="./popular/Cosmetic.jpg"  class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('cosmetics')}}" class="keystore"> Cosmetics </a></div>
       </div>
     </div>
   </div>
@@ -253,33 +253,33 @@ echo trim($descrip); }  ?>
 
     <div class="categories-grid " style="padding-top: 15px;">
       <div class="category-card Wedding Suit">
-         <a href="wedding-suit-for-groom" class="keystore"> <img loading="lazy" src="./popular/wedding_suit_for_groom.jpg" alt="Wedding Suit" class="category-image" /></a>
-        <div class="category-label"> <a href="wedding-suit-for-groom" class="keystore"> Wedding Suit </a></div>
+         <a href="{{ url('wedding-suit-for-groom')}}" class="keystore"> <img loading="lazy" src="./popular/wedding_suit_for_groom.jpg" alt="Wedding Suit" class="category-image" /></a>
+        <div class="category-label"> <a href="{{ url('wedding-suit-for-groom')}}" class="keystore"> Wedding Suit </a></div>
       </div>
 
       <div class="category-card Makeup Artist">
-         <a href="makeup-artist-for-groom" class="keystore"> <img loading="lazy" src="./popular/Makeup_artist_for_groom.jpg" alt="Makeup Artist" class="category-image" /></a>
-        <div class="category-label"> <a href="makeup-artist-for-groom" class="keystore"> Makeup Artist</a></div>
+         <a href="{{ url('makeup-artist-for-groom')}}" class="keystore"> <img loading="lazy" src="./popular/Makeup_artist_for_groom.jpg" alt="Makeup Artist" class="category-image" /></a>
+        <div class="category-label"> <a href="{{ url('makeup-artist-for-groom')}}" class="keystore"> Makeup Artist</a></div>
       </div>
 
       <div class="category-card Ghoda Baggi and Rath">
-         <a href="ghoda-baggi" class="keystore"> <img loading="lazy" src="./popular/Ghoda_Baggi.jpg" alt="Ghoda Baggi and Rath" class="category-image" /></a>
-        <div class="category-label"> <a href="ghoda-baggi" class="keystore"> Ghoda Baggi and Rath</a></div>
+         <a href="{{ url('ghoda-baggi')}}" class="keystore"> <img loading="lazy" src="./popular/Ghoda_Baggi.jpg" alt="Ghoda Baggi and Rath" class="category-image" /></a>
+        <div class="category-label"> <a href="{{ url('ghoda-baggi')}}" class="keystore"> Ghoda Baggi and Rath</a></div>
       </div>
 
       <div class="category-card Hair Salons">
-         <a href="hair-salons" class="keystore"> <img loading="lazy" src="./popular/Hair_salons_for_ groom.jpg" class="category-image"></a>
-        <div class="category-label"> <a href="hair-salons" class="keystore"> Hair Salons</a></div>
+         <a href="{{ url('hair-salons')}}" class="keystore"> <img loading="lazy" src="./popular/Hair_salons_for_ groom.jpg" class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('hair-salons')}}" class="keystore"> Hair Salons</a></div>
       </div>
 
       <div class="category-card Wedding Band Baja">
-        <a href="wedding-band" class="keystore">  <img loading="lazy" src="./popular/Wedding_Band.jpg" class="category-image"></a>
-        <div class="category-label"> <a href="wedding-band" class="keystore"> Wedding Band Baja</a></div>
+        <a href="{{ url('wedding-band')}}" class="keystore">  <img loading="lazy" src="./popular/Wedding_Band.jpg" class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('wedding-band')}}" class="keystore"> Wedding Band Baja</a></div>
       </div>
 
       <div class="category-card Transport">
-      <a href="car-decoration" class="keystore">    <img loading="lazy" src="./popular/Car_Decoration.jpg" class="category-image"></a>
-        <div class="category-label"> <a href="car-decoration" class="keystore"> Car Decoration	</a></div>
+      <a href="{{ url('car-decoration')}}" class="keystore">    <img loading="lazy" src="./popular/Car_Decoration.jpg" class="category-image"></a>
+        <div class="category-label"> <a href="{{ url('car-decoration')}}" class="keystore"> Car Decoration	</a></div>
       </div>
     </div>
   </div>
@@ -300,34 +300,34 @@ echo trim($descrip); }  ?>
       <div class="categories-wrapper-pre-wedding" style="border: none">
         <div class="categories-grid-pre-wedding">
           <div class="category-card-pre-wedding">
-            <a href="wedding-choreographer" class="keystore">  <img loading="lazy" src="./popular/wedding-choreographer.jpg" alt="Wedding choreographer" class="category-image-pre-wedding" /></a>
-            <div class="category-label-pre-wedding"> <a href="wedding-choreographer" class="keystore"> Wedding choreographer</a></div>
+            <a href="{{ url('wedding-choreographer')}}" class="keystore">  <img loading="lazy" src="./popular/wedding-choreographer.jpg" alt="Wedding choreographer" class="category-image-pre-wedding" /></a>
+            <div class="category-label-pre-wedding"> <a href="{{ url('wedding-choreographer')}}" class="keystore"> Wedding choreographer</a></div>
           </div>
 
           <div class="category-card-pre-wedding">
-             <a href="wedding-astrologer" class="keystore"> <img loading="lazy" src="./popular/wedding-astrologer.jpg" alt="Wedding Astrologer" class="category-image-pre-wedding" /></a>
-            <div class="category-label-pre-wedding"> <a href="wedding-astrologer" class="keystore"> Wedding Astrologer</a></div>
+             <a href="{{ url('wedding-astrologer')}}" class="keystore"> <img loading="lazy" src="./popular/wedding-astrologer.jpg" alt="Wedding Astrologer" class="category-image-pre-wedding" /></a>
+            <div class="category-label-pre-wedding"> <a href="{{ url('wedding-astrologer')}}" class="keystore"> Wedding Astrologer</a></div>
           </div>
 
           <div class="category-card-pre-wedding">
-           <a href="wedding-dancer-and-singer" class="keystore">   <img loading="lazy" src="./popular/wedding-dancer-and-singer.jpg" alt="Wedding Dancer And Singer"
+           <a href="{{ url('wedding-dancer-and-singer')}}" class="keystore">   <img loading="lazy" src="./popular/wedding-dancer-and-singer.jpg" alt="Wedding Dancer And Singer"
               class="category-image-pre-wedding" /></a>
-            <div class="category-label-pre-wedding"> <a href="wedding-dancer-and-singer" class="keystore"> Wedding Dancer And Singer </a></div>
+            <div class="category-label-pre-wedding"> <a href="{{ url('wedding-dancer-and-singer')}}" class="keystore"> Wedding Dancer And Singer </a></div>
           </div>
 
           <div class="category-card-pre-wedding">
-          <a href="pandits" class="keystore">    <img loading="lazy" src="./popular/pandit.jpg"  class="category-image-pre-wedding"></a>
-            <div class="category-label-pre-wedding"><Var> <a href="pandits" class="keystore"> Pandits</a></Var></div>
+          <a href="{{ url('pandits')}}" class="keystore">    <img loading="lazy" src="./popular/pandit.jpg"  class="category-image-pre-wedding"></a>
+            <div class="category-label-pre-wedding"><Var> <a href="{{ url('pandits')}}" class="keystore"> Pandits</a></Var></div>
           </div>
 
           <div class="category-card-pre-wedding">
-           <a href="honeymoon-packages" class="keystore">   <img loading="lazy" src="./popular/honeymoon-packages.jpg" class="category-image-pre-wedding"></a>
-            <div class="category-label-pre-wedding"> <a href="honeymoon-packages" class="keystore"> Honeymoon Packages </a></div>
+           <a href="{{ url('honeymoon-packages')}}" class="keystore">   <img loading="lazy" src="./popular/honeymoon-packages.jpg" class="category-image-pre-wedding"></a>
+            <div class="category-label-pre-wedding"> <a href="{{ url('honeymoon-packages')}}" class="keystore"> Honeymoon Packages </a></div>
           </div>
 
           <div class="category-card-pre-wedding">
-           <a href="stage-show-organizers" class="keystore">   <img loading="lazy" src="./popular/Stage_Show_Organisers.jpg"  class="category-image-pre-wedding"></a>
-            <div class="category-label-pre-wedding"> <a href="stage-show-organizers" class="keystore"> Stage Show Organisers</a></div>
+           <a href="{{ url('stage-show-organizers')}}" class="keystore">   <img loading="lazy" src="./popular/Stage_Show_Organisers.jpg"  class="category-image-pre-wedding"></a>
+            <div class="category-label-pre-wedding"> <a href="{{ url('stage-show-organizers')}}" class="keystore"> Stage Show Organisers</a></div>
           </div>
         </div>
       </div>

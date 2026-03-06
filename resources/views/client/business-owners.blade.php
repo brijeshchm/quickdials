@@ -1,18 +1,18 @@
 @extends('client.layouts.app')
 @section('title')
-    Quick Dials- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners
 @endsection
 @section('keyword')
-    Quick Dials- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners
 @endsection
 @section('description')
-    Quick Dials- Local search, IT Training, Playschool, overseas education
+Quick Dials- Local search, IT Training, Playschool, overseas education, Business owners
 @endsection
 @section('content')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <?php
-    $authClient = 0;
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<?php
+$authClient = 0;
 
     if (Auth::guard('clients')->check()) {
         $authClient = 1;

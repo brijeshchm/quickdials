@@ -1,18 +1,16 @@
 @extends('client.layouts.app')
 @section('title')
-	 {{$client->business_name}} | Quick Dials
+{{$client->business_name}} | Quick Dials
 @endsection
 @section('keyword')
-	{{$client->business_name}} | Quick Dials
+{{$client->business_name}} | Quick Dials
 @endsection
 @section('description')
- {{$client->business_name}} | Quick Dials
+{{$client->business_name}} | Quick Dials
 @endsection
 @section('content')
-
-	<div class="container">
-		<?php
-
+<div class="container">
+<?php
 	$profile_pic = [];
 	$profile_pic['large']['src'] = 'client/images/default_profile_pic.jpg';
 	if (null != $client->profile_pic) {
@@ -632,7 +630,7 @@ $pictures = unserialize($client->pictures);
 
 			
 		echo "<span class='service'>
-        <a href='" . $assignedKwd->slug . "' class='keystore'>
+        <a href='" . url($assignedKwd->slug) . "' class='keystore'>
             " . $assignedKwd->keyword . "
         </a>
       </span>";
@@ -1462,7 +1460,7 @@ $pictures = unserialize($client->pictures);
 			 
 				?>
 					<li>
-						<a href="<?php echo $slug; ?>" class="keystore">
+						<a href="{{ url($slug)}}" class="keystore">
 							{{ $keyword }} |
 						</a>
 					</li>

@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-Estivaledge- Institute list
+Quickdials- Institute list
 @endsection 
 @section('keyword')
-Estivaledge- Institute list
+Quickdials- Institute list
 @endsection
 @section('description')
-Estivaledge- Institute list
+Quickdials- Institute list
 @endsection
 @section('content')	
  

@@ -5,8 +5,7 @@
 $key = preg_replace('/in {{city}}/i','',$keyword->meta_title);
 echo trim($key);   ?>
 @else
-	@if(!empty($keyword->parent_category)){!!$keyword->parent_category!!}@endif  
-
+@if(!empty($keyword->parent_category)){!!$keyword->parent_category!!} @endif  
 @endif
 @endsection 
 @section('keyword')

@@ -1,6 +1,5 @@
 @extends('client.layouts.app')
 @section('title')
-
 <?php  if(!empty($keyword->meta_title)){
 $key = preg_replace('/{{city}}/i',ucfirst($city),$keyword->meta_title);
 echo trim($key); }
@@ -11,8 +10,7 @@ echo trim($key); }
 $msg = preg_replace('/{{city}}/i',ucfirst($city),$keyword->meta_keywords);
 echo trim($msg); } ?>
 @endsection
-@section('description'),  
- 
+@section('description') 
 <?php if(!empty($keyword->meta_description)){
 $descrip = preg_replace('/{{city}}/i',ucfirst($city),$keyword->meta_description);
 echo trim($descrip); } ?> 
@@ -181,7 +179,7 @@ echo trim($descrip); } ?>
             <img loading="lazy" src="{{asset(''.$data['src'])}}" alt="{{ $data['name'] }}" >
 
             <?php  }   } ?>
-            <a href="{{ $child->slug }}"  class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
+            <a href="{{ url($child->slug) }}"  class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
 
 
             </li>@endif

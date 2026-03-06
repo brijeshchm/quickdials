@@ -86,7 +86,7 @@ Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)
 		@if(!empty($kwdsList))
 		<?php $i = 0; $x = 5; ?>
 			@foreach($kwdsList as $keyword)
-	   <li class=""><a href="<?php echo $keyword->slug; ?>" class="keystore">{{$keyword->keyword}}</a></li>
+	   <li class=""><a href="{{ url($keyword->slug)}}" class="keystore">{{$keyword->keyword}}</a></li>
 	   
 	   @endforeach
 	   @endif
@@ -211,7 +211,7 @@ Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)
 												 ?>
 								
 										 <li>
-											<a href="<?php echo $assignedKwd->slug; ?>" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
+											<a href="{{ url($assignedKwd->slug)}}" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 										</li>
 												 
 												 

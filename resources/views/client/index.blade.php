@@ -160,10 +160,10 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="img-items">           
          <div class="items">
-            <a href="event-organisers" class="keystore">
+            <a href="{{ url('event-organisers')}}" class="keystore">
             <img loading="lazy" src="{{asset('img/Event-organizers.png')}}" alt="Event-organizers"></a>
              </div>
-            <span class="title-serv"> <a href="event-organisers" class="keystore">Event- Organizers</a> </span>
+            <span class="title-serv"> <a href="{{ url('event-organisers')}}" class="keystore">Event- Organizers</a> </span>
          </div>
          <div class="img-items">             
          <div class="items"><a href="{{url('child/professional')}}" >
@@ -178,17 +178,17 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
             <span class="title-serv"><a href="{{url('child/contractors')}}" >Contractors</a></span>
          </div>
          <div class="img-items">            
-         <div class="items"><a href="hotels" class="keystore" >
+         <div class="items"><a href="{{ url('hotels')}}" class="keystore" >
             <img loading="lazy" src="{{asset('img/Hotels.png')}}" alt="Hotels"></a>
              </div>
-            <span class="title-serv"><a href="hotels" class="keystore">Hotels</a></span>
+            <span class="title-serv"><a href="{{ url('hotels')}}" class="keystore">Hotels</a></span>
          </div>
          <div class="img-items">        
-         <div class="items"><a href="restaurants" class="keystore">
+         <div class="items"><a href="{{ url('restaurants')}}" class="keystore">
             <img loading="lazy" src="{{asset('img/Restaurants.png')}}" alt="Restaurants"></a>
              </div>
             <span class="title-serv">
-                <a href="restaurants" class="keystore">Restaurants</a></span>
+                <a href="{{ url('restaurants')}}" class="keystore">Restaurants</a></span>
          </div>
          <div class="img-items">          
          <div class="items"><a href="{{url('/categories/schools-and-colleges')}}" >
@@ -288,10 +288,10 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
             <span class="title-serv"><a href="{{ url('child/jobs-placements') }}" >Jobs & Placements</a></span>
          </div>
          <div class="img-items">     
-            <div class="items"><a href="tours-and-travels" class="keystore">
+            <div class="items"><a href="{{ url('tours-and-travels')}}" class="keystore">
             <img loading="lazy" src="{{asset('images/tour-travels.png')}}" alt="tour-travels"></a>
              </div>
-            <span class="title-serv"><a href="tours-and-travels" class="keystore">Tours & Travels</a></span>
+            <span class="title-serv"><a href="{{ url('tours-and-travels')}}" class="keystore">Tours & Travels</a></span>
          </div>
        
          <div class="img-items">    
@@ -354,21 +354,21 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="real-estate-agent" title="Estate Agents" class="keystore" tabindex="0">
+               <figure><a href="{{ url('real-estate-agent')}}" title="Estate Agents" class="keystore" tabindex="0">
                   <img loading="lazy" class="" src="popular/real-estate-agent.jpg"  alt="real-estate-agent" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="real-estate-agent" tabindex="0" class="keystore"> <span>Real Estate Agents</span> </a></h3>
+                  <h3><a href="{{ url('real-estate-agent')}}" tabindex="0" class="keystore"> <span>Real Estate Agents</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="carpenters" class="keystore" title="Carpenters" tabindex="0">
+               <figure><a href="{{ url('carpenters')}}" class="keystore" title="Carpenters" tabindex="0">
                   <img loading="lazy" class="" src="popular/carpenter.jpg"  alt="carpenter" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="carpenters" class="keystore"  tabindex="0"> <span>Carpenters</span> </a></h3>
+                  <h3><a href="{{ url('carpenters')}}" class="keystore"  tabindex="0"> <span>Carpenters</span> </a></h3>
                </div>
             </div>
          </div>
@@ -382,7 +382,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       <div class="popular-list">
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="ac-service" class="keystore" title="AC Service" tabindex="0">
+               <figure><a href="{{ url('ac-service')}}" class="keystore" title="AC Service" tabindex="0">
                   <img loading="lazy" class="" src="popular/AC-Service.jpg"  alt="AC-Service" ></a>
                </figure>
                <div class="grid-info ">
@@ -396,37 +396,37 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                   <img loading="lazy" class="" src="popular/car-services.jpg"  alt="car-services" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="car-service"  class="keystore" tabindex="0"> <span>Car Services</span> </a></h3>
+                  <h3><a href="{{ url('car-service')}}"  class="keystore" tabindex="0"> <span>Car Services</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="laundry-service" class="keystore" title="Laundry Services" tabindex="0">
+               <figure><a href="{{ url('laundry-service')}}" class="keystore" title="Laundry Services" tabindex="0">
                   <img loading="lazy" class="" src="popular/washing-machines.jpg"  alt="washing" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="laundry-service" class="keystore" tabindex="0"> <span>Laundry Services</span> </a></h3>
+                  <h3><a href="{{ url('laundry-service')}}" class="keystore" tabindex="0"> <span>Laundry Services</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="electricity-service" class="keystore" title="Electricity Services" tabindex="0">
+               <figure><a href="{{ url('electricity-service')}}" class="keystore" title="Electricity Services" tabindex="0">
                   <img loading="lazy" class="" src="popular/Electricity-Services.jpg"  alt="Electricity" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="electricity-service" class="keystore" tabindex="0"> <span>Electrician Services</span> </a></h3>
+                  <h3><a href="{{ url('electricity-service')}}" class="keystore" tabindex="0"> <span>Electrician Services</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="hotels" title="Hotel Services" tabindex="0" class="keystore">
+               <figure><a href="{{ url('hotels')}}" title="Hotel Services" tabindex="0" class="keystore">
                   <img loading="lazy" class="" src="popular/Hotel-Services.jpg"  alt="Hotel" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="hotels" tabindex="0" class="keystore"> <span>Hotels </span> </a></h3>
+                  <h3><a href="{{ url('hotels')}}" tabindex="0" class="keystore"> <span>Hotels </span> </a></h3>
                </div>
             </div>
          </div>
@@ -462,51 +462,51 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="banquet-hall" class="keystore" title="Banquet Halls" tabindex="0">
+               <figure><a href="{{ url('banquet-hall')}}" class="keystore" title="Banquet Halls" tabindex="0">
                   <img loading="lazy" class="" src="popular/Banquet-Halls.jpg"  alt="Banquet" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="banquet-hall" class="keystore" tabindex="0"> <span>Banquet Halls </span> </a></h3>
+                  <h3><a href="{{ url('banquet-hall')}}" class="keystore" tabindex="0"> <span>Banquet Halls </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="stage-decorators" class="keystore" title="Stage Decorators" tabindex="0">
+               <figure><a href="{{ url('stage-decorators')}}" class="keystore" title="Stage Decorators" tabindex="0">
                   <img loading="lazy" class="" src="popular/Stage-Decorators.jpg"  alt="Stage" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="stage-decorators"  class="keystore" tabindex="0"> <span>Stage Decorators</span> </a></h3>
+                  <h3><a href="{{ url('stage-decorators')}}"  class="keystore" tabindex="0"> <span>Stage Decorators</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="makeup-artists" class="keystore" title="Makeup Artists" tabindex="0">
+               <figure><a href="{{ url('makeup-artists')}}" class="keystore" title="Makeup Artists" tabindex="0">
                   <img loading="lazy" class="" src="popular/makeup-artists.jpg"  alt="makeup"></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="makeup-artists" class="keystore" tabindex="0"> <span>Makeup Artists</span> </a></h3>
+                  <h3><a href="{{ url('makeup-artists')}}" class="keystore" tabindex="0"> <span>Makeup Artists</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="mehendi-artists" class="keystore" title="Mehendi Artists" tabindex="0">
+               <figure><a href="{{ url('mehendi-artists')}}" class="keystore" title="Mehendi Artists" tabindex="0">
                   <img loading="lazy" class="" src="popular/Mehendi-Artists.jpg"  alt="Mehendi" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="mehendi-artists" class="keystore" tabindex="0"> <span>Mehendi Artists</span> </a></h3>
+                  <h3><a href="{{ url('mehendi-artists')}}" class="keystore" tabindex="0"> <span>Mehendi Artists</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="bridal-wear" class="keystore" title="Bridal Wear" tabindex="0">
+               <figure><a href="{{ url('bridal-wear')}}" class="keystore" title="Bridal Wear" tabindex="0">
                   <img loading="lazy" class="" src="popular/Bridal-Wear.jpg"  alt="Bridal" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="bridal-wear" class="keystore"  tabindex="0"> <span>Bridal Wear</span> </a></h3>
+                  <h3><a href="{{ url('bridal-wear')}}" class="keystore"  tabindex="0"> <span>Bridal Wear</span> </a></h3>
                </div>
             </div>
          </div>
@@ -540,41 +540,41 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="ssc-cgl" class="keystore" title="SSC CGL JEE" tabindex="0">
+               <figure><a href="{{ url('ssc-cgl')}}" class="keystore" title="SSC CGL JEE" tabindex="0">
                   <img loading="lazy" class="" src="popular/SSC-CGL-JEE.jpg"  alt="SSC-CGL" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="ssc-cgl" class="keystore" tabindex="0"> <span>SSC CGL JEE </span> </a></h3>
+                  <h3><a href="{{ url('ssc-cgl')}}" class="keystore" tabindex="0"> <span>SSC CGL JEE </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="rrb-ntpc-coaching" class="keystore" title="NTPC & RRB Railway" tabindex="0">
+               <figure><a href="{{ url('rrb-ntpc-coaching')}}" class="keystore" title="NTPC & RRB Railway" tabindex="0">
                   <img loading="lazy" class="" src="popular/NTPC-RRB-Railway.jpg"  alt="NTPC-RRB" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="rrb-ntpc-coaching" class="keystore" tabindex="0"> <span>NTPC & RRB Railway </span> </a></h3>
+                  <h3><a href="{{ url('rrb-ntpc-coaching')}}" class="keystore" tabindex="0"> <span>NTPC & RRB Railway </span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="cat-coaching" class="keystore" title="CAT" tabindex="0">
+               <figure><a href="{{ url('cat-coaching')}}" class="keystore" title="CAT" tabindex="0">
                   <img loading="lazy" class="" src="popular/CAT-exam.jpg"  alt="CAT-exam" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="cat-coaching" class="keystore"  tabindex="0"> <span>CAT/NEET</span> </a></h3>
+                  <h3><a href="{{ url('cat-coaching')}}" class="keystore"  tabindex="0"> <span>CAT/NEET</span> </a></h3>
                </div>
             </div>
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="ctet-coaching" class="keystore" title="CTET Super TET" tabindex="0">
+               <figure><a href="{{ url('ctet-coaching')}}" class="keystore" title="CTET Super TET" tabindex="0">
                   <img loading="lazy" class="" src="popular/CTET-Super-TET.jpg"  alt="CTET-Super" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="ctet-coaching" class="keystore" tabindex="0"> <span>CTET Super TET</span> </a></h3>
+                  <h3><a href="{{ url('ctet-coaching')}}" class="keystore" tabindex="0"> <span>CTET Super TET</span> </a></h3>
                </div>
             </div>
          </div>
@@ -592,7 +592,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
 				<div class="categories-grid">
                
 					<div class="category-card">
-                  <a href="coaching-tuitions" class="keystore">
+                  <a href="{{ url('coaching-tuitions')}}" class="keystore">
 						<span class="category-count">5,200+</span>
 						<div class="category-icon">🎓</div>
 						<h3>Coaching & Tuitions</h3>
@@ -1069,74 +1069,74 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
              <div class="title_icon"><img loading="lazy" src="/client/images/logo.png" alt="logo"></div>
             <div class="services-grid">
                 <div class="service-item">
-                  <a href="patient-care-service" class="keystore">
+                  <a href="{{ url('patient-care-service')}}" class="keystore">
                     <div class="service-icon">🏥</div>
                     <h4>Patient Care</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                    <a href="patient-care-service" class="keystore">
+                    <a href="{{ url('patient-care-service')}}" class="keystore">
                     <div class="service-icon">🔧</div>
                     <h4>Home Appliances</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="packers-movers" class="keystore">
+                     <a href="{{ url('packers-movers')}}" class="keystore">
                     <div class="service-icon">📦</div>
                     <h4>Packers Movers</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="ac-repair-service" class="keystore">
+                     <a href="{{ url('ac-repair-service')}}" class="keystore">
                     <div class="service-icon">❄️</div>
                     <h4>AC Services</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="cleaning-services" class="keystore">
+                     <a href="{{ url('cleaning-services')}}" class="keystore">
                     <div class="service-icon">🧹</div>
                     <h4>Cleaning</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="security-guards-services" class="keystore">
+                     <a href="{{ url('security-guards-services')}}" class="keystore">
                     <div class="service-icon">🛡️</div>
                     <h4>Security Guards</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="architects" class="keystore">
+                     <a href="{{ url('architects')}}" class="keystore">
                     <div class="service-icon">🏗️</div>
                     <h4>Architects</h4>
                     </a>
                 </div>
                 <div class="service-item">
                   
-                  <a href="civil-contractors" class="keystore">
+                  <a href="{{ url('civil-contractors')}}" class="keystore">
                     <div class="service-icon">🔨</div>
                     <h4>Contractors</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                     <a href="interior-designer" class="keystore">
+                     <a href="{{ url('interior-designer')}}" class="keystore">
                     <div class="service-icon">🎨</div>
                     <h4>Interior Design</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                    <a href="kitchen-and-dining" class="keystore"> 
+                    <a href="{{ url('kitchen-and-dining')}}" class="keystore"> 
                     <div class="service-icon">🍳</div>
                     <h4>Modular Kitchen</h4>
                     </a>
                 </div>
                 <div class="service-item">
-                  <a href="digital-marketing-training" class="keystore"> 
+                  <a href="{{ url('digital-marketing-training')}}" class="keystore"> 
                     <div class="service-icon">🎯</div>
                     <h4>Digital Marketing</h4>
                      </a>
                 </div>
                 <div class="service-item">
-                  <a href="electric-services" class="keystore"> 
+                  <a href="{{ url('electric-services')}}" class="keystore"> 
                     <div class="service-icon">💡</div>
                     <h4>Electric Services</h4>
                     </a>

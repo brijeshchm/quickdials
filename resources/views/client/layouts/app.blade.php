@@ -272,14 +272,14 @@
                     <li><a href="{{url('pg-hostels')}}" tabindex="0">PG & Hostel</a></li> |
                     <li><a href="{{url('categories/computer-courses')}}" tabindex="0">Computer Courses & Training</a></li> |
                     <li><a href="{{url('study-abroad')}}" tabindex="0">Study Abroad</a></li> |
-                    <li><a href="home-services" tabindex="0" class="keystore">Home Services</a></li> |
+                    <li><a href="{{ url('home-services')}}" tabindex="0" class="keystore">Home Services</a></li> |
                     <li><a href="{{url('wedding-organizers')}}" tabindex="0">Parties, Special Occasions &amp; Wedding</a></li> |
                     <li><a href="{{url('categories/electric-services')}}" tabindex="0">Electric Services</a></li> |
                     <li><a href="{{url('categories/entrance-exams-coaching')}}" tabindex="0">Government Exam</a></li> |
                     <li><a href="{{url('web-designers')}}" tabindex="0">Web Designers</a></li> |
                     <li><a href="{{url('medical')}}" tabindex="0">Medical</a></li> |
-                    <li><a href="carpenters" tabindex="0" class="keystore">Carpenters</a></li> |
-                    <li><a href="health-wellness" tabindex="0" class="keystore">Health & Wellness</a></li> |
+                    <li><a href="{{ url('carpenters')}}" tabindex="0" class="keystore">Carpenters</a></li> |
+                    <li><a href="{{ url('health-wellness')}}" tabindex="0" class="keystore">Health & Wellness</a></li> |
                     <li><a href="{{url('child/yoga-classes')}}" tabindex="0">Yoga</a></li> |
                     <li><a href="{{url('tax-consultants')}}" tabindex="0">CA & TAX Consultants</a></li>
                 </ul>
@@ -287,46 +287,46 @@
             <div>
                 <h4>Business Services</h4>
                 <ul>
-                    <li><a href="patient-care-services" class="keystore" tabindex="0">Patient Care Service</a></li> | 
-                    <li><a href="home-appliances-repair-services" class="keystore" tabindex="0">Home Appliances Repair &amp; Services</a></li> |
-                    <li><a href="packers-movers" tabindex="0" class="keystore">Packers and Movers</a></li> |
-                    <li><a href="ac-repair-services" class="keystore" tabindex="0">AC Services</a></li> |
-                    <li><a href="cleaning-services" tabindex="0" class="keystore">Cleaning Services</a></li> |
-                    <li><a href="security-guards-services" tabindex="0" class="keystore">Security Guards</a></li> |
-                    <li><a href="architects" class="keystore" tabindex="0">Architects</a></li> |
-                    <li><a href="building-consultants-contractors" tabindex="0" class="keystore">Builders &amp; Contractors</a></li> |
-                    <li><a href="interior-designers-decorators" tabindex="0" class="keystore">Interior Designers &amp; Decorators</a></li> |
-                    <li><a title="Housekeeping Services" href="housekeeping-services" tabindex="0" class="keystore">Housekeeping Services</a></li> |
-                    <li><a title="Painting Contractors" href="painting-contractors" tabindex="0" class="keystore">Painting Contractors</a></li> |
-                    <li><a title="Modular Kitchen Dealers" href="modular-kitchen-dealers" tabindex="0" class="keystore">Modular Kitchen Dealers</a></li> |
-                    <li><a title="Waterproofing Contractors" href="waterproofing-contractors" tabindex="0" class="keystore">Waterproofing Contractors</a></li>
+                    <li><a href="{{ url('patient-care-services')}}" class="keystore" tabindex="0">Patient Care Service</a></li> | 
+                    <li><a href="{{ url('home-appliances-repair-services')}}" class="keystore" tabindex="0">Home Appliances Repair &amp; Services</a></li> |
+                    <li><a href="{{ url('packers-movers')}}" tabindex="0" class="keystore">Packers and Movers</a></li> |
+                    <li><a href="{{ url('ac-repair-services')}}" class="keystore" tabindex="0">AC Services</a></li> |
+                    <li><a href="{{ url('cleaning-services')}}" tabindex="0" class="keystore">Cleaning Services</a></li> |
+                    <li><a href="{{ url('security-guards-services')}}" tabindex="0" class="keystore">Security Guards</a></li> |
+                    <li><a href="{{ url('architects')}}" class="keystore" tabindex="0">Architects</a></li> |
+                    <li><a href="{{ url('building-consultants-contractors')}}" tabindex="0" class="keystore">Builders &amp; Contractors</a></li> |
+                    <li><a href="{{ url('interior-designers-decorators')}}" tabindex="0" class="keystore">Interior Designers &amp; Decorators</a></li> |
+                    <li><a title="Housekeeping Services" href="{{ url('housekeeping-services')}}" tabindex="0" class="keystore">Housekeeping Services</a></li> |
+                    <li><a title="Painting Contractors" href="{{ url('painting-contractors')}}" tabindex="0" class="keystore">Painting Contractors</a></li> |
+                    <li><a title="Modular Kitchen Dealers" href="{{ url('modular-kitchen-dealers')}}" tabindex="0" class="keystore">Modular Kitchen Dealers</a></li> |
+                    <li><a title="Waterproofing Contractors" href="{{ url('waterproofing-contractors')}}" tabindex="0" class="keystore">Waterproofing Contractors</a></li>
                 </ul></div><div>
                 <h4>Education Training</h4>
                 <ul>
 
-                    <li><a title="School Tuitions" href="coaching-tuitions" tabindex="0" class="keystore">Schools & Colleges</a></li> |
+                    <li><a title="School Tuitions" href="{{ url('coaching-tuitions')}}" tabindex="0" class="keystore">Schools & Colleges</a></li> |
                     <li><a title="Entrance Exam Coaching" href="{{url('categories/entrance-exams-coaching')}}" tabindex="0">Entrance Exam Coaching</a></li> |
-                    <li><a title="Competitive Exam Coaching" href="competitive-exam-coaching" class="keystore" tabindex="0">Competitive Exam Coaching</a></li> |
-                    <li><a title="Distance Education" href="distance-education" class="keystore" tabindex="0">Distance Education</a></li> |
-                    <li><a title="Language Training" href="language-training" class="keystore" tabindex="0">Language Training</a></li> |
-                    <li><a title="Overseas Education" href="overseas-education-consultants" class="keystore" tabindex="0">Overseas Education</a></li> |
-                    <li><a title="College &amp; University Tuitions" href="college-tuition" class="keystore" tabindex="0">College &amp; University Tuitions</a></li> |
-                    <li><a title="Bank &amp; Insurance Exam Coaching" href="bank-insurance-exam-coaching" class="keystore" tabindex="0">Bank &amp; Insurance Exam Coaching</a></li> |
-                    <li><a title="Placement Consultancies" href="placement-consultants" class="keystore" tabindex="0">Placement Consultants</a></li>
+                    <li><a title="Competitive Exam Coaching" href="{{ url('competitive-exam-coaching')}}" class="keystore" tabindex="0">Competitive Exam Coaching</a></li> |
+                    <li><a title="Distance Education" href="{{ url('distance-education')}}" class="keystore" tabindex="0">Distance Education</a></li> |
+                    <li><a title="Language Training" href="{{ url('language-training')}}" class="keystore" tabindex="0">Language Training</a></li> |
+                    <li><a title="Overseas Education" href="{{ url('overseas-education-consultants')}}" class="keystore" tabindex="0">Overseas Education</a></li> |
+                    <li><a title="College &amp; University Tuitions" href="{{ url('college-tuition')}}" class="keystore" tabindex="0">College &amp; University Tuitions</a></li> |
+                    <li><a title="Bank &amp; Insurance Exam Coaching" href="{{ url('bank-insurance-exam-coaching')}}" class="keystore" tabindex="0">Bank &amp; Insurance Exam Coaching</a></li> |
+                    <li><a title="Placement Consultancies" href="{{ url('placement-consultants')}}" class="keystore" tabindex="0">Placement Consultants</a></li>
                 </ul></div>
             <div>
                 <h4>Personal Service</h4>
                 <ul>
                     <li><a href="{{url('child/loan-service')}}" tabindex="0">Loans</a></li> |
-                    <li><a title="Visa Consultants" href="visa-consultants" class="keystore" tabindex="0">Visa Consultants</a></li> |
-                    <li><a title="Beauty Parlour Services" href="beauty-parlour-services" class="keystore" tabindex="0">Beauty Parlour Services</a></li> |
-                    <li><a title="Event Organisers" href="event-organisers" class="keystore" tabindex="0">Event Organisers</a></li> |
-                    <li><a title="Catering Services" href="catering-services" class="keystore" tabindex="0">Catering Services</a></li> |
-                    <li><a title="Photographers &amp; Videographers" href="photographers-videographers" class="keystore" tabindex="0">Photographers &amp; Videographers</a></li> |
-                    <li><a title="Astrologers" href="astrologers" class="keystore" tabindex="0">Astrologers</a></li> |
-                    <li><a title="Vehicle Rentals" href="vehicle-rental" class="keystore" tabindex="0">Vehicle Rentals</a></li> |
-                    <li><a title="Massage Centres" href="massage-centres" class="keystore" tabindex="0">Massage Centres</a></li> |
-                    <li><a title="Advocates &amp; Lawyers" href="advocates-lawyers" class="keystore" tabindex="0">Advocates &amp; Lawyers</a></li></ul>
+                    <li><a title="Visa Consultants" href="{{ url('visa-consultants')}}" class="keystore" tabindex="0">Visa Consultants</a></li> |
+                    <li><a title="Beauty Parlour Services" href="{{ url('beauty-parlour-services')}}" class="keystore" tabindex="0">Beauty Parlour Services</a></li> |
+                    <li><a title="Event Organisers" href="{{ url('event-organisers')}}" class="keystore" tabindex="0">Event Organisers</a></li> |
+                    <li><a title="Catering Services" href="{{ url('catering-services')}}" class="keystore" tabindex="0">Catering Services</a></li> |
+                    <li><a title="Photographers &amp; Videographers" href="{{ url('photographers-videographers')}}" class="keystore" tabindex="0">Photographers &amp; Videographers</a></li> |
+                    <li><a title="Astrologers" href="{{ url('astrologers')}}" class="keystore" tabindex="0">Astrologers</a></li> |
+                    <li><a title="Vehicle Rentals" href="{{ url('vehicle-rental')}}" class="keystore" tabindex="0">Vehicle Rentals</a></li> |
+                    <li><a title="Massage Centres" href="{{ url('massage-centres')}}" class="keystore" tabindex="0">Massage Centres</a></li> |
+                    <li><a title="Advocates &amp; Lawyers" href="{{ url('advocates-lawyers')}}" class="keystore" tabindex="0">Advocates &amp; Lawyers</a></li></ul>
             </div><div>
                 <h4>Cities of (India)</h4>
                 <ul>
@@ -501,25 +501,25 @@
                             <li><a href="{{ url('categories/security-system') }}">Security System</a></li>
                             <li><a href="{{ url('categories/medical') }}">Medical</a></li>
                             <li><a href="{{ url('child/packers-and-movers') }}">Packers Movers</a></li>
-                            <li><a href="restaurants" class="keystore">Restaurants</a></li>
-                            <li><a href="hotels" class="keystore">Hotels</a></li>
-                            <li><a href="interior-designer" class="keystore">interior Design</a></li>
+                            <li><a href="{{ url('restaurants')}}" class="keystore">Restaurants</a></li>
+                            <li><a href="{{ url('hotels')}}" class="keystore">Hotels</a></li>
+                            <li><a href="{{ url('interior-designer')}}" class="keystore">interior Design</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-section">
                         <h3>Business Services</h3>
                         <ul class="footer-links">
-                            <li><a href="patient-care-service" class="keystore">Patient Care Service</a></li>
-                            <li><a href="home-appliance-repair-training" class="keystore">Home Appliances Repair</a></li>
-                            <li><a href="wedding-organisers" class="keystore">Wedding Organisers</a></li>
-                            <li><a href="ac-repair-service" class="keystore">AC Services</a></li>
-                            <li><a href="security-guards-services" class="keystore">Security Guards</a></li>
-                            <li><a href="cleaning-services" class="keystore">Cleaning Services</a></li>
+                            <li><a href="{{ url('patient-care-service')}}" class="keystore">Patient Care Service</a></li>
+                            <li><a href="{{ url('home-appliance-repair-training')}}" class="keystore">Home Appliances Repair</a></li>
+                            <li><a href="{{ url('wedding-organisers')}}" class="keystore">Wedding Organisers</a></li>
+                            <li><a href="{{ url('ac-repair-service')}}" class="keystore">AC Services</a></li>
+                            <li><a href="{{ url('security-guards-services')}}" class="keystore">Security Guards</a></li>
+                            <li><a href="{{ url('cleaning-services')}}" class="keystore">Cleaning Services</a></li>
                             <li><a href="{{ url('categories/repairs-services') }}">Repairs Services</a></li>
                             <li><a href="{{ url('categories/spa') }}">SPA Beauty</a></li>
                             <li><a href="{{ url('child/loan-service') }}">Loan</a></li>
-                            <li><a href="income-tax-consultants" class="keystore">Tax Consultants</a></li>
+                            <li><a href="{{ url('income-tax-consultants')}}" class="keystore">Tax Consultants</a></li>
                             <li><a href="{{ url('interviews') }}">Interviews Question</a></li>
                         </ul>
                     </div>

@@ -1,12 +1,12 @@
  @extends('client.layouts.app')
 @section('title')
-Estivaledge- Disclaimer
+QuickDials- Disclaimer
 @endsection 
 @section('keyword')
-Estivaledge- Disclaimer 
+QuickDials- Disclaimer 
 @endsection
 @section('description')
-Estivaledge- Disclaimer
+QuickDials- Disclaimer
 @endsection
 @section('content')	
 <div class="container">

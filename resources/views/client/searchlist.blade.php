@@ -298,7 +298,7 @@ echo trim($msg); } ?>
 									foreach ($assignedKwds as $assignedKwd) {										 
 									?>
 									<li>
-									<a href="<?php echo $assignedKwd->slug; ?>"
+									<a href="{{ url($assignedKwd->slug)}}"
 									
 									class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 									</li>

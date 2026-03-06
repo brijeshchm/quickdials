@@ -1,12 +1,12 @@
 @extends('client.layouts.app')
 @section('title')
-Estivaledge- Training in 
+QuickDials- Training in 
 @endsection 
 @section('keyword')
-Estivaledge- Training in 
+QuickDials- Training in 
 @endsection
 @section('description')
-Estivaledge- Training in 
+QuickDials- Training in 
 @endsection
 @section('content')	
 	

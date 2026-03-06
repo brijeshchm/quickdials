@@ -6,8 +6,7 @@
 $key = preg_replace('/in {{city}}/i','',$keyword->meta_title);
 echo trim($key);   ?>
 @else
-	@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif  
-
+@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif 
 @endif
 @endsection 
 @section('keyword')
@@ -276,7 +275,7 @@ if(!empty($city)){ ?>
 								?>
 								
 								<li>
-								<a href="<?php echo $assignedKwd->slug; ?>" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
+								<a href="{{ url($assignedKwd->slug)}}" class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 								</li>
 											 <?php  }  ?>
 							</ul>

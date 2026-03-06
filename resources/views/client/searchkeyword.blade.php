@@ -304,7 +304,7 @@ echo trim($descrip);
 						foreach ($assignedKwds as $assignedKwd) {
 																	?>
 													<li>
-														<a href="<?php echo $assignedKwd->slug; ?>"
+														<a href="{{ url($assignedKwd->slug)}}"
 															
 															class="keystore"><?php echo $assignedKwd->keyword; ?></a>
 													</li>
@@ -752,7 +752,7 @@ echo trim($descrip);
 											if (!empty($data)) ?>
 										<img loading="lazy" src="{{asset($data['src'])}}" alt="{{ $data['name'] }}">
 										<?php  }  ?>
-										<a href="<?php echo $keywords->slug; ?>" class="keystore">{{$keywords->keyword}}</a>
+										<a href="{{ url($keywords->slug)}}" class="keystore">{{$keywords->keyword}}</a>
 									</li>
 								@endforeach
 							@endif

@@ -865,11 +865,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		$(document).on('click', '.keystore', function (e) {
 		 
 			e.preventDefault();
-			var slug = $(this).attr('href');			 
-			slug = slug.replace(/\s+/g, '-').toLowerCase();		 
+			var slug = $(this).attr('href');				 
+			slug = slug.replace(window.location.href, '');	 	 
+			slug = slug.replace(/\s+/g, '-').toLowerCase();				
 			text = slug.replace(/-/g, ' ');
+ 
 			// capitalize first letter
-			text = text.charAt(0).toUpperCase() + text.slice(1);
+			text = text.charAt(0).toUpperCase() + text.slice(1);			 
 			localStorage.setItem('keyword', text);
 			var city = localStorage.getItem('city');
 			if (city) {
