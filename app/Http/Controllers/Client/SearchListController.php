@@ -238,7 +238,7 @@ class SearchListController extends Controller
 
 			} else {
 
-				return response()->view('client.errorpage', [], 404);
+				return response()->view('client.errorpage', [], 410);
 
 			}
 

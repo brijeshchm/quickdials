@@ -78,7 +78,7 @@ class ClientDetailController extends Controller
 
 			return view('client.client-detail', ['client' => $client, 'cities' => $cities, 'comments' => $comments, 'count' => $count, 'sum' => $sum, 'avgRating' => number_format($avgRating, 1, '.', ''), 'graphQuery' => $graphQuery, 'barGraphQuery' => $barGraphQuery, 'assignedKwds' => $assignedKwds, 'clientLists' => $clientLists, 'clients' => $clients, 'assignedCity' => $assignedCity]);
 		} else {
-			return response()->view('client.errorpage', [], 404);
+			return response()->view('client.errorpage', [], 410);
 		}
 	}
 
