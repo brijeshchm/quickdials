@@ -865,7 +865,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		$(document).on('click', '.keystore', function (e) {
 		 
 			e.preventDefault();
-			var slug = $(this).attr('href');				 
+			var slug = $(this).attr('href');	
+			console.log(window.location.href);			 
 			slug = slug.replace(window.location.href, '');	 	 
 			slug = slug.replace(/\s+/g, '-').toLowerCase();				
 			text = slug.replace(/-/g, ' ');
