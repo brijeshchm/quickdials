@@ -801,7 +801,7 @@ echo trim($msg); } ?>
 													@if($keyword->paragraph2)
 																					<li>
 																						<p style="font-size: 13px;">
-																							<?php $paragraph2 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph2);
+																							<?php $paragraph2 = preg_replace('/{{city}}/i', ucfirst($area), $keyword->paragraph2);
 														echo trim($paragraph2); ?>
 
 																						</p>
@@ -811,7 +811,7 @@ echo trim($msg); } ?>
 													@if($keyword->paragraph3)
 																					<li>
 																						<p style="font-size: 13px;">
-																							<?php $paragraph3 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph3);
+																							<?php $paragraph3 = preg_replace('/{{city}}/i', ucfirst($area), $keyword->paragraph3);
 														echo trim($paragraph3); ?>
 
 																						</p>
@@ -821,7 +821,7 @@ echo trim($msg); } ?>
 													@if($keyword->paragraph4)
 																					<li>
 																						<p style="font-size: 13px;">
-																							<?php $paragraph4 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph4);
+																							<?php $paragraph4 = preg_replace('/{{city}}/i', ucfirst($area), $keyword->paragraph4);
 														echo trim($paragraph4); ?>
 																						</p>
 																					</li>
@@ -830,7 +830,7 @@ echo trim($msg); } ?>
 													@if($keyword->paragraph5)
 																					<li>
 																						<p style="font-size: 13px;">
-																							<?php $paragraph5 = preg_replace('/{{city}}/i', ucfirst($city), $keyword->paragraph5);
+																							<?php $paragraph5 = preg_replace('/{{city}}/i', ucfirst($area), $keyword->paragraph5);
 														echo trim($paragraph5); ?>
 																						</p>
 																					</li>
@@ -857,11 +857,6 @@ echo trim($msg); } ?>
 				</div>
 				<?php  } ?>
 			@endif
-
-
-
-
-
 			<style>
 				.current .btn-info {
 					color: green;
@@ -1376,12 +1371,6 @@ echo trim($msg); } ?>
 		});
 	</script>
 
-
-
-
-
-
-
 	<div class="searchPopup">
 		<a href="javascript:void(0);" class="dealclosebtn">&nbsp;</a>
 
@@ -1550,9 +1539,6 @@ echo trim($msg); } ?>
 											<label class="radio-item">
 												<span>Appointment</span>
 											</label>
-
-
-
 											<div class="form-group input-icon">
 											<input type="hidden" name="frmcheck[]" value="none">	
 
@@ -1670,13 +1656,7 @@ echo trim($msg); } ?>
 
 			</div>
 		</div>
-
-
-
-
 	</div>
-
-
 	<script>
 
 		let currentPopupStep = 0;

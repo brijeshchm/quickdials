@@ -742,6 +742,9 @@ class BlogController extends Controller
 			if ($request->input('search.value') != '') {
 				$blogdetails = $blogdetails->where(function ($query) use ($request) {
 					$query->orWhere('name', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('title', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('slug', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('meta_title', 'LIKE', '%' . $request->input('search.value') . '%');
 
 				});
 			}
@@ -786,7 +789,7 @@ class BlogController extends Controller
 
 				$data[] = [
 					$blog->name,
-					$blog->meta_title,
+					$blog->title,
 					'<img loading="lazy" src="' . url($image) . '" width="50px">',
 					$status,
 					$action,

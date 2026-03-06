@@ -770,7 +770,7 @@ echo trim($descrip);
 			<div class="category-description">
 				<h4>FAQ:-
 					<?php  if (!empty($keyword->keyword)) {
-					$key = preg_replace('/{{city}}/i', strtoupper($city), $keyword->keyword);
+					$key = preg_replace('/{{city}}/i', strtoupper($area), $keyword->keyword);
 					echo trim($key);
 				} ?>
 					in <?php echo ucfirst(Request::segment(1)); ?>
