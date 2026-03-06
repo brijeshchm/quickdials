@@ -133,8 +133,12 @@ class OfficialController extends Controller
 
         $bloglist = Blogdetails::where('status', '1')->limit(20)->orderBy('id', 'DESC')->get();
         $blogdetails = Blogdetails::where('status', '1')->where('slug', $slug)->first();
+        if($blogdetails){
+                return view('official.blog-details', ['bloglist' => $bloglist, 'blogdetails' => $blogdetails]);
+        }else{
+            return response()->view('client.errorpage', [], 404);
 
-        return view('official.blog-details', ['bloglist' => $bloglist, 'blogdetails' => $blogdetails]);
+        }
     }
 
     public function testimonials()
