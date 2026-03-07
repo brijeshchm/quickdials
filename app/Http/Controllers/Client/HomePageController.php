@@ -1445,11 +1445,10 @@ class HomePageController extends Controller
 
 	public function city(Request $request, $city = null)
 	{		
-		// dd($city); 
-
-		 
+		 	 
 		try {
 			$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->limit(12)->get();
+		 
 			$checkcity = Client::where('logo', '<>', '')
 			->where('city',ucwords(str_replace("-", " ", $city)))
 			->where('active_status', '1')
@@ -1464,7 +1463,7 @@ class HomePageController extends Controller
 				return view('client.cityclients', ['cityclients' => $cityclients,'clientBanner'=>$clientBanner,'keyword'=>$keyword]);
 
 			} else {
- 
+
 				$clientskeyword = DB::table('clients')
 					->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
 					->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
@@ -1589,9 +1588,8 @@ class HomePageController extends Controller
 							->first();
 						if (!empty($keyword)) {
 							$keyword = $keyword;
-
-
 						} else {
+						 
 							$keyword = DB::table('keyword')
 								->join('child_category', 'keyword.child_category_id', '=', 'child_category.id')
 								->join('parent_category', 'child_category.parent_category_id', '=', 'parent_category.id') // Added join for parent_category
@@ -1628,18 +1626,22 @@ class HomePageController extends Controller
 									'keyword.paragraph5',
 									'keyword.paragraph6'
 								)
-								->where('keyword.child_slug',$city)  
+								->where('keyword.slug',$city)  
 								->first();
-
+ 
 							if (!empty($keyword)) {
 								$keyword = $keyword;
 							} else {
 
-
+ 
 								$clients = Client::where('business_slug', $city)->where('logo', '<>', '')->get();
+
+							
 								$cities = Citieslists::select('id', 'city')->get();
 
-								$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->where('city', 'noida')->where('paid_status', '1')->limit(12)->get();
+								$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->where('city', 'noida')->where('active_status', '1')->limit(12)->get();
+
+							 
 								if (count($clients) > 0) {
 									foreach ($clients as $c) {
 										$client = $c;
@@ -1687,12 +1689,13 @@ class HomePageController extends Controller
 										->where('assigned_kwds.client_id', '=', $client->id)
 										->groupBy('assigned_kwds.city_id')
 										->get();
-
+ 
 									if (!empty($clients) && count($clients) > 0) {
 										return view('client.client-detail', ['client' => $client, 'cities' => $cities, 'comments' => $comments, 'count' => $count, 'sum' => $sum, 'avgRating' => number_format($avgRating, 1, '.', ''), 'graphQuery' => $graphQuery, 'barGraphQuery' => $barGraphQuery, 'assignedKwds' => $assignedKwds, 'clientLists' => $clientLists, 'clients' => $clients, 'assignedCity' => $assignedCity]);
 
 									} else {
 
+									 
 										$parentCategories = ParentCategory::get();
 										$childCategories = ChildCategory::get();
 										$businessServices = DB::table('parent_category')
@@ -1702,6 +1705,13 @@ class HomePageController extends Controller
 
 										return view('client.businessServices', ['businessServices' => $businessServices, 'parentCategories' => $parentCategories, 'childCategories' => $childCategories]);
 									}
+								}else{
+ 
+					$cityclients = Client::where('logo', '<>', '')->where('active_status','1')->limit(12)->get();					
+					$clientBanner="";
+					$keyword="";
+				 
+							 return view('client.cityclients', ['cityclients' => $cityclients,'clientBanner'=>$clientBanner,'keyword'=>$keyword]);
 								}
 
 							}
@@ -1712,9 +1722,10 @@ class HomePageController extends Controller
 
 				}
 
-			}
-		 
+			} 
+	 
 			return view('client.searchkeyword', ['clientskeyword' => $clientskeyword, 'keyword' => $keyword, 'reviewsClientsList' => $reviewsClientsList, 'clientLists' => $clientLists, 'city' => $city]);
+
 		} catch (\Exception $e) {
 		 
 			return response()->view('client.errorpage', [], 410);

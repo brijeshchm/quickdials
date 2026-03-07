@@ -958,76 +958,115 @@ echo trim($descrip);
 			<form class="lead_form" action="" method="post" onsubmit="return homeController.saveEnquiry(this)">
 				<aside>
 					{{ csrf_field()}}
-					@if($keyword->form_type == 'form_edu')
-						<div class="fieldblock-form">
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="fresher">
-								<span>Fresher</span>
-							</label>
+					
+					  <div class="fieldblock">  
+				 
+				  @if(!empty($keyword) && !empty($keyword->form_type) && $keyword->form_type === 'form_edu')
+				<div class="fieldblock-form">
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="online">
-								<span>Online</span>
-							</label>
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="fresher">
+					<span>Fresher</span>
+					</label>
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="offline">
-								<span>Offline</span>
-							</label>
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="online" checked>
+					<span>Online</span>
+					</label>
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="crashcourse">
-								<span>Crash Course</span>
-							</label>
-						</div>
-					@elseif($keyword->form_type == 'form_pg')
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="offline">
+					<span>Offline</span>
+					</label>
 
-						<div class="fieldblock-form">
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="shared">
-								<span>Shared</span>
-							</label>
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="crashcourse">
+					<span>Crash Course</span>
+					</label>
+				</div>
+					@elseif( !empty($keyword) && !empty($keyword->form_type) && $keyword->form_type === 'form_pg')
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="single">
-								<span>Single</span>
-							</label>
+				<div class="fieldblock-form">
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="shared">
+					<span>Shared</span>
+					</label>
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="male">
-								<span>Male</span>
-							</label>
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="single">
+					<span>Single</span>
+					</label>
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="female">
-								<span>Female</span>
-							</label>
-						</div>
-					@elseif($keyword->form_type == 'form_serv')
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="male">
+					<span>Male</span>
+					</label>
 
-						<div class="fieldblock-form">
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="ac_split">
-								<span>AC Split</span>
-							</label>
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="female">
+					<span>Female</span>
+					</label>
+				</div>
+				@elseif(!empty($keyword) && !empty($keyword->form_type) && $keyword->form_type === 'form_doctor')
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="ac_window">
-								<span>AC Window</span>
-							</label>
+					<link href="{{asset('vendor/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">    
+					<link href="{{asset('admin/vendor/datepicker/jquery-ui.css')}}" rel="stylesheet">
+					<link href="{{asset('business/assets/css/daterangepicker.css')}}" rel="stylesheet">  
 
-							<label class="radio-item">
-								<input type="checkbox" name="frmcheck[]" value="freez_single_door">
-								<span>Freeze Single Door</span>
-							</label>
-						</div>
-					@else
-						<div class="fieldblock-form">
-							<input type="hidden" name="frmcheck[]" value="dummy">
 
-						</div>
+				<div class="fieldblock-form">
+					<label class="radio-item">					 
+					<span>Appointment</span>
+					</label>
 
-					@endif
+				 
+					
+        <div class="form-group input-icon">
+    	<input type="hidden" name="frmcheck[]" value="none">	
+           
+			  <input type="text" name="appointment" placeholder="Select Date" class="appointment" > 
+								
+			<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+			<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+				 <script>
+					$(document).ready(function () {
+					 $('.appointment').datepicker({
+							minDate: 0,                  
+							dateFormat: 'yy-mm-dd',
+							changeMonth: true,
+							changeYear: true
+					});
+					});
+				 </script>
+				</div>
+				</div>
+
+				@elseif(!empty($keyword) && !empty($keyword->form_type) && $keyword->form_type === 'form_serv' )
+
+				<div class="fieldblock-form">
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="ac_split">
+					<span>AC Split</span>
+					</label>
+
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="ac_window">
+					<span>AC Window</span>
+					</label>
+
+					<label class="radio-item">
+					<input type="checkbox" name="frmcheck[]" value="freez_single_door">
+					<span>Freeze Single Door</span>
+					</label>						 
+				</div>
+				@else
+				<div class="fieldblock-form">							 
+				<input type="hidden" name="frmcheck[]" value="none">					 
+												
+				</div>
+				@endif
+			</div>
 					<p><label for="yn">Your Name <span>*</span></label>
 						<input type="hidden" name="lead_form" value="1" />
 						<input type="hidden" name="kw_text"
