@@ -45,11 +45,11 @@
   "https://x.com/Quickdials",
   "https://www.linkedin.com/company/quickdialsoffical",
   "https://www.pinterest.com/quickdials12/",
-  "https://www.instagram.com/quickdials1/",
-  
+  "https://www.instagram.com/quickdials1/"  
   ]
 }
-</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-0B7X99VQ0W"></script>
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0B7X99VQ0W"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
