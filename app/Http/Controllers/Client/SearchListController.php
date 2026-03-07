@@ -25,12 +25,15 @@ class SearchListController extends Controller
 	public function index(Request $request, $city, $search_kw)
 	{
 		$city = ucwords(str_replace("-", " ", $city));
-		$search_kw = ucwords(str_replace("-", " ", $search_kw));
+		$checkCity = Citieslists::where('city',$city)->get()->count();			
+		if(!$checkCity){
+			return redirect('/'.$search_kw);			 
+		}	
 
 		$keyword = DB::table('keyword as k')
 			->join('parent_category as p', 'k.parent_category_id', '=', 'p.id')
 			->join('child_category as c', 'k.child_category_id', '=', 'c.id')
-			->where('k.keyword', 'LIKE', $search_kw)
+			->where('k.slug',$search_kw)
 			->select(
 				'k.id as key_id',
 				'k.keyword',
@@ -80,10 +83,10 @@ class SearchListController extends Controller
 			->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
 			->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
 			->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-			->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*')
+			->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*','keyword.slug')
 			->where('citylists.city', 'LIKE', $city)
 			->where('clients.active_status', '1')
-			->where('keyword.keyword', 'LIKE', $search_kw)
+			->where('keyword.slug',  $search_kw)
 			->orderByRaw("
 				CASE clients.client_type
 				WHEN 'platinum' THEN 1
@@ -109,10 +112,10 @@ class SearchListController extends Controller
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
 				->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
 				->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*')
+				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*','keyword.slug')
 
 
-				->where('keyword.keyword', 'LIKE', $search_kw)
+				->where('keyword.slug',$search_kw)
 
 				->orderByRaw("
 				CASE clients.client_type
@@ -133,22 +136,17 @@ class SearchListController extends Controller
 				->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
 				->select('clients.*', 'c.rating', 'c.comment_count')
 				->where('city', 'LIKE', $city)
-				->where('business_name', 'LIKE', $search_kw)
-
+				->where('business_slug', $search_kw)
 				->get();
-
-
-
-
 			$reviewsClientsList = DB::table('clients')
 				->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
 				->join('assigned_zones', 'clients.id', '=', 'assigned_zones.client_id')
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
 				->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
 				->rightJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count,comment_content  FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'c.comment_content')
+				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'c.comment_content','keyword.slug')
 				->where('citylists.city', 'LIKE', $city)
-				->where('keyword.keyword', 'LIKE', $search_kw)
+				->where('keyword.slug', $search_kw)
 				->get();
 
 			$searchInCity = Citieslists::where('city', 'LIKE', $city)->first();
@@ -181,7 +179,7 @@ class SearchListController extends Controller
 		} else {
 
 
-			$client = Client::where('business_name', $search_kw)->first();
+			$client = Client::where('business_slug', $search_kw)->first();
 
 			if (!empty($client)) {
 

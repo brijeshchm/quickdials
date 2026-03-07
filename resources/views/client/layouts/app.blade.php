@@ -26,7 +26,7 @@
   "@type": "Organization",
   "name": "QuickDials",
   "alternateName": "QuickDials", 
-  "description": "A Local Search Engine for Businesses | QuickDials.",
+  "description": "India's leading local business search & service directory | QuickDials.",
   "url": "https://www.quickdials.com/",
   "address": {
     "@type": "PostalAddress",
@@ -41,7 +41,13 @@
     "contactType": "Customer service"
   }],
   "logo": "https://www.quickdials.com/client/images/small-logo.jpg",
-  "sameAs": ["https://www.facebook.com/profile.php?id=61579250014118"]
+  "sameAs": ["https://www.facebook.com/profile.php?id=61579250014118",
+  "https://x.com/Quickdials",
+  "https://www.linkedin.com/company/quickdialsoffical",
+  "https://www.pinterest.com/quickdials12/"
+  "https://www.instagram.com/quickdials1/",
+  
+  ]
 }
 </script><script async src="https://www.googletagmanager.com/gtag/js?id=G-0B7X99VQ0W"></script>
     <script>
@@ -62,6 +68,8 @@
     <!-- End GoogleTagManager-->
 </head>
 <body><div id="spinnerBkgd"></div><div id="spinnerCntr"></div>
+
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5MNPW9F" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>

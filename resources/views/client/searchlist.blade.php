@@ -21,6 +21,18 @@ echo trim($msg); } ?>
 @endsection
 
 @section('content')
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "{{ $key ?? 'Quick Dials' }}",
+ "description": "{{ $descrip ?? $key .' in India' }}",
+ "url": "{{ url()->current() }}"
+}
+
+ 
+</script>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 third-add-section">
@@ -127,6 +139,33 @@ echo trim($msg); } ?>
 								echo $keyword->keyword;
 							}  ?> in <?php echo $city; ?>
 						@endif
+
+					<script type="application/ld+json">
+					{
+					"@context": "https://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement": [
+					{
+						"@type": "ListItem",
+						"position": 1,
+						"name": "Home",
+						"item": "{{ url('/') }}"
+					},
+					{
+						"@type": "ListItem",
+						"position": 2,
+						"name": "{{ $city }}",
+						"item": "{{ url(strtolower($city)) }}"
+					},
+					{
+						"@type": "ListItem",
+						"position": 3,
+						"name": "{{ $keyword->keyword }}",
+						"item": "{{ url(strtolower($city).'/'.$keyword->slug) }}"
+					}
+					]
+					}
+					</script>
 					</div>
 				</div>
 			</div>
@@ -1129,7 +1168,9 @@ echo trim($msg); } ?>
 					<div class="course-program">
 						<h5>Find Services Related to <?php if (!empty($keyword->keyword)) {
 							echo $keyword->keyword;
-						} ?> </h5>
+						} 
+														 
+						?> </h5>
 						<ul class="">
 							@if(!empty($kwdsList))
 								<?php $i = 0;
@@ -1147,7 +1188,7 @@ echo trim($msg); } ?>
 										<?php  }
 										} ?>
 
-										<a href="{{url(path: strtolower(Request::segment(1)))}}/<?php echo $keyicon->slug; ?>"
+										<a href="{{url(path: strtolower($city))}}/<?php echo $keyicon->slug; ?>"
 											 >{{$keyicon->keyword}}
 											| </a>
 									</li>
