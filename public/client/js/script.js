@@ -865,8 +865,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		$(document).on('click', '.keystore', function (e) {
 		 
 			e.preventDefault();
-			var slug = $(this).attr('href');				 		 
-			// slug = slug.replace('https://www.quickdials.com/', '');	 	
+			var slug = $(this).attr('href');		 	
 			slug = slug.replace(window.location.origin + '/', ''); 
 			slug = slug.replace(/\s+/g, '-').toLowerCase();				
 			text = slug.replace(/-/g, ' ');
