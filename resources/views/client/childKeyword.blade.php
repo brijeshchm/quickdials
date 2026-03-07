@@ -179,7 +179,7 @@ if(!empty($city)){ ?>
 							$profilePic = unserialize($client->logo);
 							?><img loading="lazy" src="<?php echo asset(''.$profilePic['large']['src']); ?>" alt="{{$client->business_name}}" title="{{$client->business_name}}" height="141" /><?php
 						}else{
-							?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.jpg'); ?>" alt="Business Logo" title="Business Logo" height="141" style="width:100%" /><?php
+							?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo" title="Business Logo" height="141" style="width:100%" /><?php
 						}
 						?>
 						@if($client->client_type != 'FreeListing')

@@ -912,7 +912,7 @@ echo trim($msg); } ?>
 							$profilePic = unserialize($client->logo);
 													?><img loading="lazy" src="<?php echo asset($profilePic['large']['src']); ?>" alt="Logo" height="141" /><?php
 						} else {
-													?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.jpg'); ?>" alt="Logo" height="141"
+													?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Logo" height="141"
 									style="width:100%" /><?php
 						}
 												?>
