@@ -76,6 +76,10 @@ class SearchListController extends Controller
 
 			)
 			->first();
+		if(!$keyword){
+			return redirect('/'.strtolower($city));	
+		}
+
 
 		$clientscheck = DB::table('clients')
 			->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')

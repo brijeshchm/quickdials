@@ -44,7 +44,7 @@
   "sameAs": ["https://www.facebook.com/profile.php?id=61579250014118",
   "https://x.com/Quickdials",
   "https://www.linkedin.com/company/quickdialsoffical",
-  "https://www.pinterest.com/quickdials12/"
+  "https://www.pinterest.com/quickdials12/",
   "https://www.instagram.com/quickdials1/",
   
   ]
