@@ -1444,11 +1444,14 @@ class HomePageController extends Controller
 
 
 	public function city(Request $request, $city = null)
-	{		 
+	{		
+		// dd($city); 
+
+		 
 		try {
 			$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->limit(12)->get();
 			$checkcity = Client::where('logo', '<>', '')
-			->where('city', $city)
+			->where('city',ucwords(str_replace("-", " ", $city)))
 			->where('active_status', '1')
 			->whereNull('deleted_at')
 			->get();
