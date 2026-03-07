@@ -155,13 +155,13 @@ echo trim($msg); } ?>
 						"@type": "ListItem",
 						"position": 2,
 						"name": "{{ $city }}",
-						"item": "{{ url(strtolower($city)) }}"
+						"item": "{{ url(generate_slug(strtolower($city))) }}"
 					},
 					{
 						"@type": "ListItem",
 						"position": 3,
 						"name": "{{ $keyword->keyword }}",
-						"item": "{{ url(strtolower($city).'/'.$keyword->slug) }}"
+						"item": "{{ url(generate_slug(strtolower($city)).'/'.$keyword->slug) }}"
 					}
 					]
 					}

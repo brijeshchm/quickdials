@@ -1444,12 +1444,14 @@ class HomePageController extends Controller
 
 
 	public function city(Request $request, $city = null)
-	{
-		 
+	{		 
 		try {
-
 			$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->limit(12)->get();
-			$checkcity = Client::where('logo', '<>', '')->where('city', $city)->get();
+			$checkcity = Client::where('logo', '<>', '')
+			->where('city', $city)
+			->where('active_status', '1')
+			->whereNull('deleted_at')
+			->get();
  
 			if ($checkcity->isNotEmpty()) {
 				$cityclients = $checkcity;				
@@ -1459,7 +1461,7 @@ class HomePageController extends Controller
 				return view('client.cityclients', ['cityclients' => $cityclients,'clientBanner'=>$clientBanner,'keyword'=>$keyword]);
 
 			} else {
-
+ 
 				$clientskeyword = DB::table('clients')
 					->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
 					->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
@@ -1467,7 +1469,7 @@ class HomePageController extends Controller
 					->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
 					->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'keyword.*')
 
-					->where('keyword.keyword', 'LIKE', ucwords(str_replace("-", " ", $city)))
+					->where('keyword.slug',$city)
 					->orderByRaw("
 					CASE clients.client_type
 					WHEN 'platinum' THEN 1
@@ -1490,7 +1492,7 @@ class HomePageController extends Controller
 					->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 					->rightJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count,comment_content  FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
 					->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'c.comment_content')
-					->where('keyword.keyword', 'LIKE', ucwords(str_replace("-", " ", $city)))
+					->where('keyword.slug', $city)
 					->groupBy('client_id')
 					->get();
 
@@ -1579,7 +1581,7 @@ class HomePageController extends Controller
 						$keyword = DB::table('keyword')
 							->join('parent_category', 'keyword.parent_category_id', '=', 'parent_category.id')
 							->join('child_category', 'keyword.child_category_id', '=', 'child_category.id')
-							->where('keyword', 'LIKE', ucwords(str_replace("-", " ", $city)))
+							->where('keyword.slug',$city)
 							->select('keyword.*', 'parent_category.*', 'child_category.*', 'keyword.id as key_id', 'keyword.faqq1', 'keyword.faqa1', 'keyword.faqq2', 'keyword.faqa2', 'keyword.faqq3', 'keyword.faqa3', 'keyword.faqq4', 'keyword.faqa4', 'keyword.faqq5', 'keyword.faqa5', 'keyword.meta_title', 'keyword.meta_description', 'keyword.meta_keywords', 'keyword.top_description', 'keyword.bottom_description', 'keyword.ratingvalue', 'keyword.ratingcount', 'keyword.heading', 'keyword.courseabout', 'keyword.paragraph1', 'keyword.paragraph2', 'keyword.paragraph3', 'keyword.paragraph4', 'keyword.paragraph5', 'keyword.paragraph6')
 							->first();
 						if (!empty($keyword)) {
@@ -1623,7 +1625,7 @@ class HomePageController extends Controller
 									'keyword.paragraph5',
 									'keyword.paragraph6'
 								)
-								->where('keyword.child_slug', str_replace('-', '', $city)) // Remove hyphen from $city
+								->where('keyword.child_slug',$city)  
 								->first();
 
 							if (!empty($keyword)) {
