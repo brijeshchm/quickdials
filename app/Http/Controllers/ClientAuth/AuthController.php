@@ -188,13 +188,13 @@ class AuthController extends Controller
 		 
 		 	 
 			 
-			$message = "{$otp} is QuickDials Verification Code for {$request->session()->get('client.email')} .";
-			$subject = "{$otp} is QuickDials Verification Code";
-			Mail::send('emails.sendotp_to_email', ['msg'=>$message], function ($m) use ($message,$request,$subject) {
-				$m->from('otp@quickdials.com', 'Login OTP');
-				$m->to($request->input('email'), "")->subject($subject);
-			});	
-		 
+					$message = "{$otp} is QuickDials Verification Code for {$request->session()->get('client.email')} .";
+					$subject = "{$otp} is QuickDials Verification Code";
+					Mail::send('emails.sendotp_to_email', ['msg'=>$message], function ($m) use ($message,$request,$subject) {
+						$m->from('leads.quickdials@gmail.com', 'Login OTP');
+						$m->to($request->input('email'), "")->subject($subject);
+					});	
+				
 		 
 		 
 					return response()->json([

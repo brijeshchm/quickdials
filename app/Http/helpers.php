@@ -853,7 +853,7 @@ function leadassignWithoutZoneCounsellor($lead)
 												$template = 'emails.sendlead';
 												$clientname=$clnt->business_name;
 												$check=  Mail::send($template, ['clientname'=>$clientname,'lead'=>$lead], function ($m) use ($clnt,$lead) {    
-												$m->from('otp@quickdials.com', 'QuickDials');             
+												$m->from('leads.quickdials@gmail.com', 'QuickDials');             
 
 												$m->to($clnt->email, $lead->name)->subject($lead->kw_text.' | '.$lead->name.' - Quickdials.com');
 												});

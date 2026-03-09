@@ -23,7 +23,6 @@ class SitemapsController extends Controller
 		$keywords = $keywords->select('updated_at','slug');		 
 		$keywords = $keywords->get();
 		return response()->view('client.sitemap', ['keywords' => $keywords])->header('Content-Type', 'text/xml');
- 
 	}
 	public function city()
 	{
