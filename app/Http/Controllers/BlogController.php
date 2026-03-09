@@ -160,7 +160,7 @@ class BlogController extends Controller
 		$ext = strtolower($file->getClientOriginalExtension());
 		$name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 		$name = str_replace(' ', '_', $name);
-		$filename = time();
+		$filename =  time() . rand(1000,9999);
 
 		// ✅ SVG → Save directly
 		if ($ext === 'svg') {
