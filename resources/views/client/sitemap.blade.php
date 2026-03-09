@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
 <loc>https://www.quickdials.com/</loc>
-<lastmod>2025-05-09T09:59:21+00:00</lastmod>
+<lastmod>2026-03-09T10:30:00+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>1.00</priority>
 </url>
 <url>
 <loc>https://www.quickdials.com/about-us/</loc>
-<lastmod>2025-05-09T09:59:21+00:00</lastmod>
+<lastmod>2026-03-09T10:30:00+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.80</priority>
 </url>
 <url>
 <loc>https://www.quickdials.com/business-owners/</loc>
-<lastmod>2025-05-09T09:59:21+00:00</lastmod>
+<lastmod>2026-03-09T10:30:00+00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.80</priority>
 </url> 
