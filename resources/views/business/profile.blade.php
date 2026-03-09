@@ -106,7 +106,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Quick Dial
                     
                        <input name="business_name" type="text" class="form-control" value="{{ old('business_name',(isset($client)) ? $client->business_name:"")}}" placeholder="Please enter business name">
                     <label>Email*:</label>
-                      <input name="email" type="email" class="form-control" id="Email" value="{{ old('email',(isset($client)) ? $client->email:"")}}" placeholder="Please enter Email" readonly>
+                      <input name="email" type="email" class="form-control" id="Email" value="{{ old('email',(isset($client)) ? $client->email:"")}}" placeholder="Please enter Email" >
                 </div>
                 <div class="form-group">
                   <label>Mobile*:</label>                   
