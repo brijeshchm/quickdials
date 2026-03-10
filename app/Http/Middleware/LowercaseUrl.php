@@ -21,11 +21,11 @@ class LowercaseUrl
     $cleanUrl = strtolower($uri);
 
     // remove index.php and public
-    $cleanUrl = str_replace(
-        ['index.php', 'public/index.php', 'public/', 'public'],
-        '',
-        $cleanUrl
-    );
+    // $cleanUrl = str_replace(
+    //     ['index.php', 'public/index.php', 'public/', 'public'],
+    //     '',
+    //     $cleanUrl
+    // );
 
     // remove trailing slash
     if ($cleanUrl !== '/') {
