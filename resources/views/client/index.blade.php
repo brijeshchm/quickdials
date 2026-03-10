@@ -194,7 +194,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="items"><a href="{{url('/categories/schools-and-colleges')}}" >
             <img loading="lazy" src="{{asset('img/Education.png')}}" alt="Education"></a>
              </div>
-            <span class="title-serv"><a href="{{url('/categories/schools-and-colleges')}}" >Education</a></span>
+            <span class="title-serv"><a href="{{url('/categories/schools-and-colleges')}}" >Schools & Colleges</a></span>
          </div>
          <div class="img-items">         
          <div class="items"><a href="{{url('/child/rent-or-buy')}}" >
@@ -233,10 +233,10 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
             <span class="title-serv"><a href="{{url('/real-estate-agent')}}" >Real Estate</a></span>
          </div>
          <div class="img-items">           
-            <div class="items"><a href="{{url('/categories/finance-services')}}" >
+            <div class="items"><a href="{{url('/child/loan-service')}}" >
             <img loading="lazy" src="{{asset('img/Loan.png')}}" alt="Loan"></a>
              </div>
-            <span class="title-serv"><a href="{{url('/categories/finance-services')}}" >Loan</a></span>
+            <span class="title-serv"><a href="{{url('/child/loan-service')}}" >Loan</a></span>
          </div>
          <div class="img-items">         
             <div class="items"><a href="{{url('/carpenters')}}" >
