@@ -42,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
     { 
         $this->mapApiRoutes();
         $this->mapWebRoutes();    
-        $this->removeIndexPhpFromUrl();
+       // $this->removeIndexPhpFromUrl();
 
         
     }
@@ -82,6 +82,9 @@ class RouteServiceProvider extends ServiceProvider
 	protected function removeIndexPhpFromUrl()
     {        
 		 
+
+
+    
        if (Str::contains(request()->getRequestUri(), '/index.php')  ) {
             $url = str_replace('index.php', '', request()->getRequestUri());
             $url = str_replace('public/', '', $url);

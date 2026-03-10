@@ -15,16 +15,26 @@ class LowercaseUrl
    */
   public function handle(Request $request, Closure $next): Response
   {
-    $path = $request->getRequestUri();
+    $uri = $request->getRequestUri();
 
-    if ($path !== strtolower($path)) {
-      return redirect(strtolower($path), 301);
+    // convert to lowercase
+    $cleanUrl = strtolower($uri);
+
+    // remove index.php and public
+    $cleanUrl = str_replace(
+        ['index.php', 'public/index.php', 'public/', 'public'],
+        '',
+        $cleanUrl
+    );
+
+    // remove trailing slash
+    if ($cleanUrl !== '/') {
+        $cleanUrl = rtrim($cleanUrl, '/');
     }
 
-    $cleanUrl = rtrim(strtolower($path), '/');
-
-    if ($path !== $cleanUrl) {
-      return redirect($cleanUrl, 301);
+    // redirect if URL changed
+    if ($uri !== $cleanUrl) {
+        return redirect($cleanUrl, 301);
     }
 
     return $next($request);
