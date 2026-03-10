@@ -15,6 +15,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\Authenticate::class,
         \App\Http\Middleware\RedirectIfNotClient::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+		\App\Http\Middleware\LowercaseUrl::class,
     ];
 
     protected $middlewareGroups = [
