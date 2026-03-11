@@ -1705,14 +1705,7 @@ class HomePageController extends Controller
 
 										return view('client.businessServices', ['businessServices' => $businessServices, 'parentCategories' => $parentCategories, 'childCategories' => $childCategories]);
 									}
-								}else{
- 
-					$cityclients = Client::where('logo', '<>', '')->where('active_status','1')->limit(12)->get();					
-					$clientBanner="";
-					$keyword="";
-				 
-							 return view('client.cityclients', ['cityclients' => $cityclients,'clientBanner'=>$clientBanner,'keyword'=>$keyword]);
-								}
+								} 
 
 							}
 
