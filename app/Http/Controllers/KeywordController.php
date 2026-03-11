@@ -131,7 +131,7 @@ class KeywordController extends Controller
 
 		$keyword = new Keyword;
 		$keyword->keyword = $request->input('keyword');
-		$keyword->slug = generate_slug(trim($request->input('keyword')));
+		$keyword->slug = generate_slug($request->input('keyword'));
 		$keyword->parent_category_id = $request->input('parent_category_id');
 		$keyword->child_category_id = $request->input('child_category_id');
 		$keyword->category = $request->input('category');
@@ -1050,7 +1050,7 @@ class KeywordController extends Controller
 			if ($keywordToUpdate == $request->input('id')) {
 				$keyword = Keyword::find($keywordToUpdate);
 				$keyword->keyword = $request->input('keyword');
-				$keyword->slug = generate_slug(trim($request->input('keyword')));
+				$keyword->slug = generate_slug($request->input('keyword'));
 				$keyword->parent_category_id = $request->input('parent_category_id');
 				$keyword->child_category_id = $request->input('child_category_id');
 				$keyword->category = $request->input('category');

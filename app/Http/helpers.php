@@ -65,11 +65,12 @@ function generate_slug($slug = null)
 	if (is_null($slug)) {
 		return null;
 	}
+ 
 	$slug = explode(" ", $slug);
 	$slug = array_map('trim', $slug);
-	$slug = array_map('remove_splchars', $slug);
+	// $slug = array_map('remove_splchars', $slug);
 	$slug = array_map('strtolower', $slug);
-	$slug = implode("-", $slug);
+	$slug = implode("-", $slug);	 
 	return $slug;
 }
 

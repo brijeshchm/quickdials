@@ -97,7 +97,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          <div class="items">
             <a href="{{ route('categories.show', 'professional-courses') }}" > <img loading="lazy" src="{{asset('img/IT-Training.png')}}" alt="computer courses"  ></a>
              </div>
-            <span class="title-serv"><a href="{{ route('categories.show', 'professional-courses') }}" >IT Courses</a></span>
+            <span class="title-serv"><a href="{{ route('categories.show', 'professional-courses') }}" >Professional Courses</a></span>
          </div>
 
          <div class="img-items">  
