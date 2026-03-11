@@ -76,9 +76,9 @@ class SearchListController extends Controller
 
 			)
 			->first();
-		if(!$keyword){
-			return redirect('/'.strtolower($city));	
-		}
+		// if(!$keyword){
+		// 	return redirect('/'.strtolower($city));	
+		// }
 
 
 		$clientscheck = DB::table('clients')
