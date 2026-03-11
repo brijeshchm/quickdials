@@ -18,14 +18,7 @@ class LowercaseUrl
     $uri = $request->getRequestUri();
 
     // convert to lowercase
-    $cleanUrl = strtolower($uri);
-
-    // remove index.php and public
-    // $cleanUrl = str_replace(
-    //     ['index.php', 'public/index.php', 'public/', 'public'],
-    //     '',
-    //     $cleanUrl
-    // );
+    $cleanUrl = strtolower($uri); 
 
     // remove trailing slash
     if ($cleanUrl !== '/') {
@@ -33,7 +26,7 @@ class LowercaseUrl
     }
 
     // redirect if URL changed
-    if ($uri !== $cleanUrl) {
+    if ($uri !== $cleanUrl) {       
         return redirect($cleanUrl, 301);
     }
 

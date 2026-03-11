@@ -97,4 +97,19 @@ class SitemapsController extends Controller
 		return response()->view('client.sitemap-online', ['keywords'=>$keywords])->header('Content-Type', 'text/xml');
 	}
 
+	public function keyword()
+	{
+		$keywords = DB::table('keyword');
+		$keywords = $keywords->select('slug', 'updated_at');
+		$keywords = $keywords->get();
+		return response()->view('client.sitemap_keyword', ['keywords'=>$keywords])->header('Content-Type', 'text/xml');
+	}
+	public function allcity()
+	{
+		$keywords = DB::table('keyword');
+		$keywords = $keywords->select('slug', 'updated_at');
+		$keywords = $keywords->get();
+		return response()->view('client.sitemap_allcity', ['keywords'=>$keywords])->header('Content-Type', 'text/xml');
+	}
+
 }
