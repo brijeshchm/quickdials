@@ -51,32 +51,31 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0B7X99VQ0W"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0B7X99VQ0W"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-0B7X99VQ0W');
-    </script>
+    </script> -->
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-P5MNPW9F');</script>
-
-    <!-- End GoogleTagManager-->
+          
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KZF3WGSW');</script>
+<!-- End Google Tag Manager -->
+ 
 </head>
-<body><div id="spinnerBkgd"></div><div id="spinnerCntr"></div>
+<body>
+    <!-- Google Tag Manager (noscript) -->  
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZF3WGSW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5MNPW9F" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager(noscript)-->
+<!-- End Google Tag Manager (noscript) -->
+<div id="spinnerBkgd"></div><div id="spinnerCntr"></div>
+ 
 <header id="header"><div class="container"><div class="head-list"><div class="logo"><div title="Quick Dials"><a href="{{url('/')}}"><img src="<?php echo asset('client/images/small-logo.png'); ?>" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch <?php echo (Route::getCurrentRoute()->uri() != '/') ? ' fixedform' : ''; ?>"><div class="filterForm"><form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city"><option value="">Search city & pincode</option></select>
                                 <div class="search-bar">
                                     <select name="search_kw" class="serviceneed home-search searchInput"
