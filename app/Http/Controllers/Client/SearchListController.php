@@ -26,9 +26,9 @@ class SearchListController extends Controller
 	{
 		$city = ucwords(str_replace("-", " ", $city));
 		$checkCity = Citieslists::where('city',$city)->get()->count();			
-		// if(!$checkCity){
-		// 	return redirect('/'.$search_kw);			 
-		// }	
+		if(!$checkCity){		
+			return response()->view('client.errorpage', [], 410); 
+		}	
 
 		$keyword = DB::table('keyword as k')
 			->join('parent_category as p', 'k.parent_category_id', '=', 'p.id')
@@ -76,10 +76,9 @@ class SearchListController extends Controller
 
 			)
 			->first();
-		// if(!$keyword){
-		// 	return redirect('/'.strtolower($city));	
-		// }
-
+		if(!$keyword){
+			return response()->view('client.errorpage', [], 410); 		
+		}
 
 		$clientscheck = DB::table('clients')
 			->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
