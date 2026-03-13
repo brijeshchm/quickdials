@@ -269,11 +269,6 @@
 		const commonSideSteps = document.querySelectorAll(".side-step-from");
 
 		const sideIndicators = document.querySelectorAll(".sidesteps span");
-
-	 
- 
-
-
 		function validateSidebar(THIS, step) {
 
 			var $this = $(THIS);

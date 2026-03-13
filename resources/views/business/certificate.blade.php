@@ -118,7 +118,7 @@
                                 <img loading="lazy" src="{{ $panUrl }}">
                               @endif
 
-                              <a href="{{ url('business/pan_image/panDel/' . $client->id) }}" class="btn btn-danger btn-sm"
+                              <a href="{{ url('business/certificate/pan_certificate/' . $client->id) }}" class="btn btn-danger btn-sm"
                                 title="Remove Award">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -153,7 +153,7 @@
                               @else
                                 <img loading="lazy" src="{{ $isoUrl }}">
                               @endif
-                              <a href="{{ url('business/iso_image/isoDel/' . $client->id) }}" class="btn btn-danger btn-sm">
+                              <a href="{{ url('business/certificate/iso_certificate/' . $client->id) }}" class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                               </a>
                             </div>
@@ -187,7 +187,7 @@
                                 <img loading="lazy" src="{{ $gstUrl }}">
                               @endif
 
-                              <a href="{{ url('business/gst_certificate/gstDel/' . $client->id) }}"
+                              <a href="{{ url('business/certificate/gst_certificate/' . $client->id) }}"
                                 class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -228,7 +228,7 @@
                                 <img loading="lazy" src="{{ $cinUrl }}">
                               @endif
 
-                              <a href="{{ url('business/cin_certificate/cinDel/' . $client->id) }}"
+                              <a href="{{ url('business/certificate/cin_certificate/' . $client->id) }}"
                                 class="btn btn-danger btn-sm" title="Remove Award">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -263,7 +263,7 @@
                               @else
                                 <img loading="lazy" src="{{ $msmeUrl }}">
                               @endif
-                              <a href="{{ url('business/msme_certificate/msmeDel/' . $client->id) }}"
+                              <a href="{{ url('business/certificate/msme_certificate/' . $client->id) }}"
                                 class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -299,7 +299,7 @@
                                 <img loading="lazy" src="{{ $coiUrl }}">
                               @endif
 
-                              <a href="{{ url('business/coi_certificate/coiDel/' . $client->id) }}"
+                              <a href="{{ url('business/certificate/coi_certificate/' . $client->id) }}"
                                 class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -336,7 +336,7 @@
                                 <img loading="lazy" src="{{ $cert1Url }}">
                               @endif
 
-                              <a href="{{ url('business/other_certificate1/other1Del/' . $client->id) }}"
+                              <a href="{{ url('business/certificate/other_certificate1/' . $client->id) }}"
                                 class="btn btn-danger btn-sm" title="Remove Award">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -370,7 +370,7 @@
                               @else
                                 <img loading="lazy" src="{{ $other2Url }}">
                               @endif
-                              <a href="{{ url('business/other_certificate2/other2Del/' . $client->id) }}"
+                              <a href="{{ url('business/certificate/other_certificate2/' . $client->id) }}"
                                 class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -404,7 +404,7 @@
                                 <img loading="lazy" src="{{ $other3Url }}">
                               @endif
 
-                              <a href="{{ url('business/other_certificate3/other3Del/' . $client->id) }}"
+                              <a href="{{ url('business/certificate/other_certificate3/' . $client->id) }}"
                                 class="btn btn-danger btn-sm">
                                 <i class="bi bi-trash"></i>
                               </a>
@@ -418,9 +418,6 @@
                         </div>
                       </div>
                     </div>
-
-
-
                     <!-- <div id="pageLoader" style="display:none;">
                       <div class="loader"></div>
                     </div> -->
@@ -451,8 +448,6 @@
   <script type="text/javascript" src="{{asset('drag_drop/jquery-3.1.1.min.js')}}"></script>
   <script type="text/javascript" src="{{asset('drag_drop/jquery.ezdz.min.js')}}"></script>
   <script>
-
-
     $('input[type="file"]').ezdz({
       text: 'Drag & Drop Image',
       validators: {
@@ -471,9 +466,7 @@
           alert('Max height exceeded is greater than 6000');
         }
       }
-    });
-
-    // });
+    });    
 
   </script>
 

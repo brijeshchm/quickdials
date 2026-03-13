@@ -87,25 +87,13 @@ Route::middleware('auth:clients')->group(function () {
 	Route::post('/business/save-certificate-auto', [App\Http\Controllers\Business\CertificateController::class, 'autoSaveCertificate']);
 
 	Route::post('/business/save-award-auto', [App\Http\Controllers\Business\CertificateController::class, 'saveBusinessAward']);
-	Route::get('/business/pan_image/panDel/{id}', [App\Http\Controllers\Business\CertificateController::class, 'panDel']);
-	Route::get('/business/iso_image/isoDel/{id}', [App\Http\Controllers\Business\CertificateController::class, 'isoDel']);
-	Route::get('/business/other_certificate1/other1Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'other1Del']);
-	Route::get('/business/other_certificate2/other2Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'other2Del']);
-	Route::get('/business/other_certificate3/other3Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'other3Del']);
-	Route::get('/business/other_certificate4/other4Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'other4Del']);
-	Route::get('/business/gst_certificate/gstDel/{id}', [App\Http\Controllers\Business\CertificateController::class, 'gstDel']);
-	Route::get('/business/cin_certificate/cinDel/{id}', [App\Http\Controllers\Business\CertificateController::class, 'cinDel']);
-	Route::get('/business/msme_certificate/msmeDel/{id}', [App\Http\Controllers\Business\CertificateController::class, 'msmeDel']);
-	Route::get('/business/award_img1/awd1Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd1Del']);
-	Route::get('/business/award_img2/awd2Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd2Del']);
-	Route::get('/business/award_img3/awd3Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd3Del']);
-	Route::get('/business/award_img4/awd4Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd4Del']);
-	Route::get('/business/award_img5/awd5Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd5Del']);
-	Route::get('/business/award_img6/awd6Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd6Del']);
-	Route::get('/business/award_img7/awd7Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd7Del']);
-	Route::get('/business/award_img8/awd8Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd8Del']);
-	Route::get('/business/award_img9/awd9Del/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awd9Del']);
+	 
 
+
+	Route::get('/business/certificate/{slug}/{id}',[App\Http\Controllers\Business\CertificateController::class, 'certificateDel']);
+	Route::get('/business/award/{slug}/{id}',[App\Http\Controllers\Business\CertificateController::class, 'awardDel']);
+ 
+		
 
 
 	Route::post('/business/savePersonalDetails/{id}', [App\Http\Controllers\Business\PersonalDetailsController::class, 'savePersonalDetails']);

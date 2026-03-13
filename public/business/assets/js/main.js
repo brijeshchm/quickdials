@@ -1463,8 +1463,8 @@ var enquiryController  = (function(){
 		e.preventDefault();
 		var srno = $(this).data('srno'); 
 		var target = $('#'+srno); 
-		target.prepend("<input type=\"file\" class=\"form-control\" name=\""+srno+"\">");
-		target.find('.help-block').remove();
+		target.prepend("<input type=\"file\" class=\"form-control\" name=\""+srno+"\" accept=\".jpg,.jpeg,.png,.webp,.svg\">");
+		target.find('.img-help').remove();
 	});	
 
 

@@ -49,7 +49,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on Estivaledg
                       ?>
                       <div class="col-md-4 col-lg-4" id="image{{$i+1}}">
                       @if(empty($picture[$i]['large']['name']))
-                      <input type="file" class="form-control fff" name="image{{$i+1}}" accept=".png, .jpg,.jpeg,.webp,.svg">
+                      <input type="file" class="form-control fff" name="image{{$i+1}}" accept=".jpg,.jpeg,.png,.webp,.svg">
                       
                       @endif
                       <span class="img-help">

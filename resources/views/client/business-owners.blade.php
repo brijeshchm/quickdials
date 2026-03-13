@@ -881,8 +881,7 @@ $authClient = 0;
 
         /* Features Section */
         .features-grid {
-            display: grid;
-            /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+            display: grid;           
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }

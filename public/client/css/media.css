@@ -743,7 +743,7 @@ padding: 15px !important;
 }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(1, minmax(300px, 1fr)) !important;
             gap: 2rem 20px;
         
         }
@@ -1535,7 +1535,7 @@ padding: 15px !important;
         .details-txt {
             font-weight: bold;
             color: #FFF;
-            font-size: 15px;
+            font-size: 15px !important;
         }
 
         .form-inline .help-block strong {
@@ -1884,6 +1884,9 @@ padding: 15px !important;
 
     @media(max-width:767px) {
 
+        .video-title{
+            font-size: 14px !important;
+        }
         .cache-itemslist {
     display: flex;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -1918,17 +1921,16 @@ padding: 15px !important;
          justify-content: center;
          flex-wrap: wrap;
          display: grid;
-         /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important; */
+         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
          gap: 10px;
          margin-bottom: 20px;
          }
 
-         .categories-grid {
+    .categories-grid {
     display: grid;
-   
     gap: 10px;
     grid-template-columns: repeat(auto-fit, minmax(137px, 1fr)) !important;
-}
+    }
         .enquiry-card {
             width: 100%;
         }

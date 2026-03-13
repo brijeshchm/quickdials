@@ -108,7 +108,7 @@
                                                                 <img loading="lazy" src="{{ $award1Url }}">
                                                             @endif
 
-                                                            <a href="{{ url('business/award_img1/awd1Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img1/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm" title="Remove Award">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -146,7 +146,7 @@
                                                             @else
                                                                 <img loading="lazy" src="{{ $award2Url }}">
                                                             @endif
-                                                            <a href="{{ url('business/award_img2/awd2Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img2/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -184,7 +184,7 @@
                                                                 <img loading="lazy" src="{{ $award3Url }}">
                                                             @endif
 
-                                                            <a href="{{ url('business/award_img3/awd3Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img3/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -228,7 +228,7 @@
                                                                 <img loading="lazy" src="{{ $award4Url }}">
                                                             @endif
 
-                                                            <a href="{{ url('business/award_img4/awd4Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img4/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm" title="Remove Award">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -266,7 +266,7 @@
                                                             @else
                                                                 <img loading="lazy" src="{{ $award5Url }}">
                                                             @endif
-                                                            <a href="{{ url('business/award_img5/awd5Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img5/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -303,8 +303,7 @@
                                                             @else
                                                                 <img loading="lazy" src="{{ $award6Url }}">
                                                             @endif
-
-                                                            <a href="{{ url('business/award_img6/awd6Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img6/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -346,7 +345,7 @@
                                                                 <img loading="lazy" src="{{ $award7Url }}">
                                                             @endif
 
-                                                            <a href="{{ url('business/award_img7/awd8Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img7/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm" title="Remove Award">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -384,7 +383,7 @@
                                                             @else
                                                                 <img loading="lazy" src="{{ $award8Url }}">
                                                             @endif
-                                                            <a href="{{ url('business/award_img8/awd8Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img8/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>
@@ -422,7 +421,7 @@
                                                                 <img loading="lazy" src="{{ $award9Url }}">
                                                             @endif
 
-                                                            <a href="{{ url('business/award_img9/awd9Del/' . $client->id) }}"
+                                                            <a href="{{ url('business/award/award_img9/' . $client->id) }}"
                                                                 class="btn btn-danger btn-sm">
                                                                 <i class="bi bi-trash"></i>
                                                             </a>

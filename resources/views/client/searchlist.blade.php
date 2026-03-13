@@ -29,9 +29,7 @@ echo trim($msg); } ?>
  "name": "{{ $key ?? 'Quick Dials' }}",
  "description": "{{ $descrip ?? $key .' in India' }}",
  "url": "{{ url()->current() }}"
-}
-
- 
+} 
 </script>
 	<div class="container">
 		<div class="row">
@@ -39,10 +37,10 @@ echo trim($msg); } ?>
 
 				<?php  
  
-							if (!empty($keyword->child_banner)) {
-		$cicons = unserialize($keyword->child_banner);
-		if (!empty($cicons)) {
-							?>
+				if (!empty($keyword->child_banner)) {
+				$cicons = unserialize($keyword->child_banner);
+				if (!empty($cicons)) {
+				?>
 
 				<img loading="lazy" src="{{asset($cicons['child_banner']['src'])}}" alt="{{ $keyword->keyword }}">
 
@@ -51,9 +49,9 @@ echo trim($msg); } ?>
 				<img loading="lazy" src="<?php echo asset('client/images/computer-courses-training.jpg'); ?>"
 					alt="computer-courses-training">
 				<?php  }
-	} else {
+			} else {
 
-		if (!empty($keyword->category_banner)) {
+			if (!empty($keyword->category_banner)) {
 			$cicons = unserialize($keyword->category_banner);
 			if ($cicons) {
 							?>
@@ -239,7 +237,9 @@ echo trim($msg); } ?>
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}">
 										<span class="serchlist-txt-1">										 
-											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18"><?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?></span>
+											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18"><?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?> 
+											@if($client->certified_status)	 
+											<img src="{{asset('crs/verified-badge.png')}}" alt="Verified" width="20" />@endif</span>
 										 	</a>
 									 
 								</div>
