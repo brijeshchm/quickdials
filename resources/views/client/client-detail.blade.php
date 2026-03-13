@@ -2701,7 +2701,7 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 								?>
 
 							<!-- ITEM 1 -->
-							<div class="gov-item"
+							<div class="gov-item gold"
 								data-img="<?php echo asset('/' . $pan_certificate); ?>"
 								data-title="PAN Recognition" onclick="triggerCert(this)">
 								<div class="gov-icon-wrap">
@@ -2916,7 +2916,7 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 								?>
 
 							<!-- ITEM 4 (gold) -->
-							<div class="gov-item gold"
+							<div class="gov-item "
 								data-img="<?php echo asset('/' . $cin_certificate); ?>"
 								data-title="MSME India" onclick="triggerCert(this)">
 								<div class="gov-icon-wrap">
@@ -2957,7 +2957,7 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 								
 							}
 								?>
-						<div class="gov-right">
+						<div class="gov-right ">
 							<div class="cert-badge">{{ $client->pan_no }}</div>
 							<h2 id="certTitle">PAN Recognition</h2>
 							<div class="cert-img-box">
@@ -2966,10 +2966,20 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 									alt="PAN">
 							</div>
 							<div class="cert-divider"></div>
-							<!-- <p id="certDesc">Officially recognized as a startup by the Department for Promotion of Industry and Internal Trade, Government of India. This recognition empowers us to avail exclusive startup benefits, tax exemptions, and access to government funding schemes.</p> -->
+							 
 						</div>
 						@else
-
+						<div class="gov-right ">
+						<div class="cert-badge">{{ $client->pan_no }}</div>
+						<h2 id="certTitle">PAN Recognition</h2>
+						<div class="cert-img-box">
+						<img id="certImage"
+						src="<?php echo asset('crs/company-pan-card.jpg'); ?>"
+						alt="PAN">
+						</div>
+						<div class="cert-divider"></div>
+							 
+						</div>
 
 
 
