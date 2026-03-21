@@ -432,15 +432,16 @@ Route::get('/clients/{slug}', [HomePageController::class, 'clients'])->name('cli
 Route::get('/get-zones/{city_id}', [HomePageController::class, 'getZones'])->name('zones.get');
 
 
-Route::get('/{city}/categories/{slug}', function ($city, $slug) {
-	return redirect('/categories/' . $slug, 301);
-});
-// City home
-Route::get('/{city}', [HomePageController::class, 'city'])
-	->name('city.home');
+// Route::get('/{city}/categories/{slug}', function ($city, $slug) {
+// 	return redirect('/categories/' . $slug, 301);
+// });
 
-Route::get('/{city}/{search_kw}', [SearchListController::class, 'index'])
-	->name('search.city');
+// City home
+Route::get('/{city}', [HomePageController::class, 'city']);
+	// ->name('city.home');
+
+Route::get('/{city}/{search_kw}', [SearchListController::class, 'index']);
+	// ->name('search.city');
 
 
 
