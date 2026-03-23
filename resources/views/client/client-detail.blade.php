@@ -3818,5 +3818,5 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 
 	</script>
 
-	 
+	 @include('client.layouts.model_popup')
 @endsection

@@ -78,8 +78,8 @@ class HomeSliderController extends Controller
 				$filename = $this->saveImageSmart(
 					$request->file('image'),
 					$destinationPath,
-					400,
-					300
+					null,
+					null
 				);
 
 				$image = array(
@@ -152,8 +152,8 @@ class HomeSliderController extends Controller
 				$filename = $this->saveImageSmart(
 				$request->file('image'),
 				$destinationPath,
-				150,
-				150
+				null,
+				null
 				);
 
 				$image= array(
@@ -254,15 +254,13 @@ class HomeSliderController extends Controller
 			 
 			$delet_data = HomeSlider::find($id);
 			if ($delet_data->image != '') {
-			$image = unserialize($delet_data->image);
-			$thumbnail = '' . $image['src'];
+			$image = json_decode($delet_data->image);			 
+			$thumbnail = ''. $image->src;		 
 			if (file_exists($thumbnail)) {
 				unlink($thumbnail);
 			}
 		}
-		
-		$homeSlider = HomeSlider::destroy($id);
-	 
+		 
 		
 		if (HomeSlider::destroy($id)) {
 				$status = true;

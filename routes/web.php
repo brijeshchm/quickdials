@@ -443,8 +443,6 @@ Route::get('/{city}', [HomePageController::class, 'city']);
 Route::get('/{city}/{search_kw}', [SearchListController::class, 'index']);
 	// ->name('search.city');
 
-
-
 //Route::get('/{city}/{search_kw}/', [App\Http\Controllers\Client\SearchListController::class, 'index']);
 //Route::get('/{city}/', [App\Http\Controllers\Client\HomePageController::class, 'city']);
 
