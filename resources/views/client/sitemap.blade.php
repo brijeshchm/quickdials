@@ -21,8 +21,7 @@
 @foreach ($keywords as $keyword)
 <url>
     <loc>{{ url($keyword->slug) }}</loc>
-    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->format('Y-m-d') }}
-    </lastmod>
+    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->format('Y-m-d') }}</lastmod>
    <changefreq>daily</changefreq>
     <priority>0.8</priority>
 </url>
