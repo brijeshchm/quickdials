@@ -121,7 +121,10 @@ Route::post('/update-user/{id}',[App\Http\Controllers\userController::class, 'up
 	Route::get('/keyword/showBucketcz/{kw_id}/{cityid}/{zoneid}/{bucket_id}', [App\Http\Controllers\KeywordController::class, 'showBucketcz'])->middleware('auth');
 	Route::get('/keyword/bucketCityZone/{kw_id}',[App\Http\Controllers\KeywordController::class, 'bucketCityZone'])->middleware('auth');
 	Route::get('/keyword/assigin-get-zones/{city_id}/{kwID}',[App\Http\Controllers\KeywordController::class, 'assigingetzones'])->middleware('auth');
-/* Keywords */
+	Route::get('/keyword/seoStatus/{id}/{val}', [App\Http\Controllers\KeywordController::class, 'seoStatus'])->middleware('auth:developer');
+	
+
+	/* Keywords */
 
 /* SEO */
 	Route::get('/seo-report',[App\Http\Controllers\KeywordController::class, 'seoReport'])->middleware('auth');

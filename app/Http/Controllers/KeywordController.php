@@ -220,7 +220,7 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.*', 'citylists.*', 'zones.*', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword_sell_count.cat1_price', 'keyword_sell_count.cat2_price', 'keyword_sell_count.cat3_price', 'keyword.premium_price', 'keyword.platinum_price', 'keyword.king_price', 'keyword.royal_price', 'keyword.preferred_price','keyword.slug')
+				->select('clients.*', 'citylists.*', 'zones.*', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword_sell_count.cat1_price', 'keyword_sell_count.cat2_price', 'keyword_sell_count.cat3_price', 'keyword.premium_price', 'keyword.platinum_price', 'keyword.king_price', 'keyword.royal_price', 'keyword.preferred_price', 'keyword.slug')
 				->where('keyword.id', '=', $id)
 				->whereNull('clients.deleted_at')
 				->where('clients.leads_remaining', '>', '0')
@@ -232,7 +232,7 @@ class KeywordController extends Controller
 					WHEN 'silver' THEN 4
 					ELSE 5
 					END
-					")	
+					")
 				->get();
 
 
@@ -356,12 +356,12 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
+				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword', 'keyword.slug')
 				->where('keyword.id', '=', $kwid)
 				->where('citylists.id', '=', $cityid)
 				->where('zones.id', '=', $zoneid)
 				->whereNull('clients.deleted_at')
-				->where('clients.leads_remaining', '>', '0')				 
+				->where('clients.leads_remaining', '>', '0')
 				->orderByRaw("
 					CASE clients.client_type
 					WHEN 'platinum' THEN 1
@@ -486,25 +486,25 @@ class KeywordController extends Controller
 		// 	$keyword->icon = $keyword->icon;
 		// }
 
-		if ($request->hasFile('icon')) {						 
+		if ($request->hasFile('icon')) {
 			$filePath = getFolderCourseStructure();
 			$destinationPath = public_path($filePath);
-				$filename = $this->saveImageSmart(
-					$request->file('icon'),
-					$destinationPath,
-					150,
-					150
-				);
+			$filename = $this->saveImageSmart(
+				$request->file('icon'),
+				$destinationPath,
+				150,
+				150
+			);
 
-				$image = array(
+			$image = array(
 				'name' => $filename,
 				'alt' => $filename,
 				'src' => $filePath . "/" . $filename
-				);
-			$keyword->icon = json_encode($image);				 
-		}else{
+			);
+			$keyword->icon = json_encode($image);
+		} else {
 			$keyword->icon = $keyword->icon;
-		} 
+		}
 
 
 		if ($keyword->save()) {
@@ -545,7 +545,7 @@ class KeywordController extends Controller
 	}
 
 
-		
+
 	private function saveImageSmart($file, $destinationPath, $width = null, $height = null)
 	{
 		$ext = strtolower($file->getClientOriginalExtension());
@@ -581,7 +581,7 @@ class KeywordController extends Controller
 				throw new \Exception('Unsupported image type');
 		}
 
-		$width  = $width ?? imagesx($src);
+		$width = $width ?? imagesx($src);
 		$height = $height ?? imagesy($src);
 
 		$dst = imagecreatetruecolor($width, $height);
@@ -589,10 +589,16 @@ class KeywordController extends Controller
 		imagesavealpha($dst, true);
 
 		imagecopyresampled(
-			$dst, $src,
-			0, 0, 0, 0,
-			$width, $height,
-			imagesx($src), imagesy($src)
+			$dst,
+			$src,
+			0,
+			0,
+			0,
+			0,
+			$width,
+			$height,
+			imagesx($src),
+			imagesy($src)
 		);
 
 		$finalName = $filename . '.webp';
@@ -624,7 +630,7 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
+				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword', 'keyword.slug')
 				->where('keyword.id', '=', $kwid)
 				->where('citylists.id', '=', $cityid)
 				->where('zones.id', '=', $zoneid)
@@ -794,7 +800,7 @@ class KeywordController extends Controller
 				->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 				->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 				->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
+				->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword', 'keyword.slug')
 				->where('keyword.id', '=', $kw_id)
 				->whereNull('clients.deleted_at')
 				->where('clients.leads_remaining', '>', '0')
@@ -909,7 +915,7 @@ class KeywordController extends Controller
 			->join('citylists', 'assigned_kwds.city_id', '=', 'citylists.id')
 			->join('zones', 'assigned_kwds.zone_id', '=', 'zones.id')
 			->join('keyword_sell_count', 'keyword_sell_count.slug', '=', 'assigned_kwds.sold_on_position')
-			->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword','keyword.slug')
+			->select('clients.id as clientid', 'clients.username', 'clients.business_slug', 'clients.business_name', 'clients.client_type', 'citylists.id as cityid', 'citylists.city as cityname', 'zones.id as zoneid', 'zones.zone as zonename', 'assigned_kwds.sold_on_position', 'keyword.category', 'keyword.keyword', 'keyword.slug')
 			->where('keyword.id', '=', $kwid)
 			->where('citylists.id', '=', $city_id)
 			->whereNull('clients.deleted_at')
@@ -1089,25 +1095,25 @@ class KeywordController extends Controller
 				// }
 
 
-				if ($request->hasFile('icon')) {						 
-				$filePath = getFolderCourseStructure();
-				$destinationPath = public_path($filePath);
-				$filename = $this->saveImageSmart(
-				$request->file('icon'),
-				$destinationPath,
-				150,
-				150
-				);
+				if ($request->hasFile('icon')) {
+					$filePath = getFolderCourseStructure();
+					$destinationPath = public_path($filePath);
+					$filename = $this->saveImageSmart(
+						$request->file('icon'),
+						$destinationPath,
+						150,
+						150
+					);
 
-				$image = array(
-				'name' => $filename,
-				'alt' => $filename,
-				'src' => $filePath . "/" . $filename
-				);
-				$keyword->icon = json_encode($image);				 
-				}else{
-				$keyword->icon = $keyword->icon;
-				} 
+					$image = array(
+						'name' => $filename,
+						'alt' => $filename,
+						'src' => $filePath . "/" . $filename
+					);
+					$keyword->icon = json_encode($image);
+				} else {
+					$keyword->icon = $keyword->icon;
+				}
 
 				if ($keyword->isDirty()) {
 					$originalValues = $keyword->getOriginal();
@@ -1220,7 +1226,7 @@ class KeywordController extends Controller
 					$query->orWhere('keyword.slug', 'LIKE', '%' . $request->input('search.value') . '%');
 				});
 			}
-		 
+
 			if ($request->input('search.pc') != '') {
 				$leads = $leads->where('keyword.parent_category_id', '=', $request->input('search.pc'));
 			}
@@ -1266,12 +1272,19 @@ class KeywordController extends Controller
 
 				if (!empty($lead->icon)) {
 					$vicons = json_decode($lead->icon, true);
-					 
+
 					$icons = '<img loading="lazy" src="' . asset('public/' . $vicons['src']) . '" width="70px">';
 				} else {
 					$icons = "";
 				}
+				if ($lead->seo_type == '1') {
+					$seo = '<a href="javascript:keywordController.seoStatus(' . $lead->id . ',0)" title="SEO status" class="btn btn-success">Yes</a>';
+				} else {
+					$seo = '<a href="javascript:keywordController.seoStatus(' . $lead->id . ',1)" title="SEO status" class="btn btn-danger">No</a>';
+				}
+
 				$data[] = [
+					$seo,
 					$lead->keyword,
 					isset($childCatArr[$lead->child_category_id]) ? $childCatArr[$lead->child_category_id] : "",
 					isset($parentCatArr[$lead->parent_category_id]) ? $parentCatArr[$lead->parent_category_id] : "",
@@ -1366,6 +1379,8 @@ class KeywordController extends Controller
 		if (!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('all_SEO'))) {
 			return view('errors.unauthorised');
 		}
+
+
 		if ($request->ajax()) {
 			$leads = DB::table('keyword as k');
 			if ($request->input('search.value') != '') {
@@ -1389,7 +1404,10 @@ class KeywordController extends Controller
 					$greenCount = Keyword::where('keyword', 'LIKE', $lead->keyword)->whereNotNull('meta_title')->whereNotNull('meta_description')->whereNotNull('meta_keywords')->count();
 					//whereNotNull('top_description')->whereNotNull('bottom_description')->count();
 					$redCount = $totalCount - $greenCount;
+
+
 					$data[] = [
+
 						$lead->keyword,
 						$lead->meta_title,
 						$lead->meta_keywords,
@@ -1499,7 +1517,7 @@ class KeywordController extends Controller
 						$lead->attributes,
 						$htmlreport,
 						$owner_name,
-						(date('Y-m-d',strtotime($lead->created_at))),
+						(date('Y-m-d', strtotime($lead->created_at))),
 					];
 				}
 				$returnLeads['data'] = $data;
@@ -2376,4 +2394,29 @@ class KeywordController extends Controller
 			return response()->json($courses, 200);
 		}
 	}
+
+	/**
+	 * Remove the specified resource from storage status.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function seoStatus(request $request, $id, $val)
+	{
+		if ($request->ajax()) {
+
+			$keyword = Keyword::findOrFail($id);
+			$keyword->seo_type = $val;
+
+			if ($keyword->save()) {
+				$status = 1;
+				$msg = "SEO status updated successfully !";
+			} else {
+				$status = 0;
+				$msg = "SEO status could not be successfully, Please try again !";
+			}
+			return response()->json(['status' => $status, 'msg' => $msg], 200);
+		}
+	}
+
 }

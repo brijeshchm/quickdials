@@ -225,6 +225,7 @@ foreach($keywords as $keyword){
                             <table width="100%" class="table table-striped table-bordered table-hover" id="datatable-view-all-kwds">
                                 <thead>
                                     <tr>
+                                        <th>SEO</th>
                                         <th>Keyword</th>
 										<!--<th>City</th>
                                         <th>KWC</th-->

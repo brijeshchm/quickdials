@@ -21,6 +21,7 @@ class Keyword extends Model
 
     'diamond_pos_sold',
     'platinum_pos_sold',
+    'seo_type',
     'bucket',
 
     'faqq1',
