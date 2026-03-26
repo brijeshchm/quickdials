@@ -237,6 +237,7 @@ Route::get('/sitemap-blog.xml', function () {
 
 		$keywords = DB::table('keyword')
 			->select('slug', 'updated_at')
+			->where('seo_type','1')
 			->get();
 
 		$blogs = DB::table('blogdetails')
@@ -260,6 +261,7 @@ Route::get('/sitemap.xml', function () {
 
 	$keywords = Cache::remember('sitemap', 3600, function () {
 		return DB::table('keyword')
+			->where('seo_type','1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -274,6 +276,7 @@ Route::get('/sitemap-online.xml', function () {
 
 	$keywords = Cache::remember('sitemap_online', 3600, function () {
 		return DB::table('keyword')
+			->where('seo_type','1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -288,6 +291,7 @@ Route::get('/sitemap-city.xml', function () {
 
 	$keywords = Cache::remember('sitemap_city', 3600, function () {
 		return DB::table('keyword')
+			->where('seo_type','1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -302,6 +306,7 @@ Route::get('/sitemap-allcity.xml', function () {
 
 	$keywords = Cache::remember('sitemap_allcity', 3600, function () {
 		return DB::table('keyword')
+			->where('seo_type','1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -315,6 +320,7 @@ Route::get('/sitemap-allcity.xml', function () {
 Route::get('/sitemap-keyword.xml', function () {
 
 	$keywords = DB::table('keyword')
+		->where('seo_type','1')
 		->select('slug', 'updated_at')
 		->get();
 	return response()
