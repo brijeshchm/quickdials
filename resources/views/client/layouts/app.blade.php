@@ -289,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a href="{{url('home-construction')}}" tabindex="0">Home Construction &amp; Renovation</a></li> |
                     <li><a href="{{url('child/loan-service')}}" tabindex="0">Personal Finance Services</a></li> |
                     <li><a href="{{url('categories/tours-travel-services')}}" tabindex="0">Tours &amp; Travels</a></li> |
-                    <li><a href="{{url('home-construction/property-dealer')}}" tabindex="0">Property Dealer</a></li> |
+                    <li><a href="{{url('property-dealer')}}" class="keystore" tabindex="0">Property Dealer</a></li> |
                     <li><a href="{{url('child/rent-or-buy')}}" tabindex="0">Rent & Buy</a></li> |
                     <li><a href="{{url('pg-hostels')}}" tabindex="0">PG & Hostel</a></li> |
                     <li><a href="{{url('categories/computer-courses')}}" tabindex="0">Computer Courses & Training</a></li> |
@@ -312,7 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a href="{{ url('patient-care-services')}}" class="keystore" tabindex="0">Patient Care Service</a></li> | 
                     <li><a href="{{ url('home-appliances-repair-services')}}" class="keystore" tabindex="0">Home Appliances Repair &amp; Services</a></li> |
                     <li><a href="{{ url('packers-movers')}}" tabindex="0" class="keystore">Packers and Movers</a></li> |
-                    <li><a href="{{ url('ac-repair-services')}}" class="keystore" tabindex="0">AC Services</a></li> |
+                    <li><a href="{{ url('ac-repair-service')}}" class="keystore" tabindex="0">AC Services</a></li> |
                     <li><a href="{{ url('cleaning-services')}}" tabindex="0" class="keystore">Cleaning Services</a></li> |
                     <li><a href="{{ url('security-guards-services')}}" tabindex="0" class="keystore">Security Guards</a></li> |
                     <li><a href="{{ url('architects')}}" class="keystore" tabindex="0">Architects</a></li> |
@@ -333,7 +333,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a title="Language Training" href="{{ url('language-training')}}" class="keystore" tabindex="0">Language Training</a></li> |
                     <li><a title="Overseas Education" href="{{ url('overseas-education-consultants')}}" class="keystore" tabindex="0">Overseas Education</a></li> |
                     <li><a title="College &amp; University Tuitions" href="{{ url('college-tuition')}}" class="keystore" tabindex="0">College &amp; University Tuitions</a></li> |
-                    <li><a title="Bank &amp; Insurance Exam Coaching" href="{{ url('bank-insurance-exam-coaching')}}" class="keystore" tabindex="0">Bank &amp; Insurance Exam Coaching</a></li> |
+                    <li><a title="Bank &amp; Insurance Exam Coaching" href="{{ url('bank-coaching')}}" class="keystore" tabindex="0">Bank &amp; Insurance Exam Coaching</a></li> |
                     <li><a title="Placement Consultancies" href="{{ url('placement-consultants')}}" class="keystore" tabindex="0">Placement Consultants</a></li>
                 </ul></div>
             <div>
@@ -341,7 +341,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <ul>
                     <li><a href="{{url('child/loan-service')}}" tabindex="0">Loans</a></li> |
                     <li><a title="Visa Consultants" href="{{ url('visa-consultants')}}" class="keystore" tabindex="0">Visa Consultants</a></li> |
-                    <li><a title="Beauty Parlour Services" href="{{ url('beauty-parlour-services')}}" class="keystore" tabindex="0">Beauty Parlour Services</a></li> |
+                    <li><a title="Beauty Parlour Services" href="{{ url('beauty-parlours')}}" class="keystore" tabindex="0">Beauty Parlour Services</a></li> |
                     <li><a title="Event Organisers" href="{{ url('event-organisers')}}" class="keystore" tabindex="0">Event Organisers</a></li> |
                     <li><a title="Catering Services" href="{{ url('catering-services')}}" class="keystore" tabindex="0">Catering Services</a></li> |
                     <li><a title="Photographers &amp; Videographers" href="{{ url('photographers-videographers')}}" class="keystore" tabindex="0">Photographers &amp; Videographers</a></li> |
@@ -502,7 +502,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
                             <li><a href="{{url('/pricing')}}">Pricing</a></li>
                             <li><a href="{{url('/careers')}}">Careers</a></li>
-                            <li><a href="{{url('blog')}}">Success Stories</a></li>
+                            <!-- <li><a href="{{url('blog')}}">Success Stories</a></li> -->
                             <li><a href="{{url('blog')}}">Blog</a></li>
                             <li><a href="{{url('business-owners')}}" rel="nofollow" title="Advertise on quickdials">Advertise on quickdials</a></li>
                             <li><a href="{{url('/privacy-policy')}}" title="Privacy Policy">Privacy Policy</a></li>

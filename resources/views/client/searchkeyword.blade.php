@@ -903,7 +903,7 @@ echo trim($descrip);
 							<?php $cities = getCity(); ?>
 							@if(!empty($cities))
 								@foreach($cities as $city)
-										<li class="col-sm-3 col-md-3"><a href="{{url(strtolower($city->city))}}/<?php if (!empty($keyword->slug)) {
+										<li class="col-sm-3 col-md-3"><a href="{{url(generate_slug(strtolower($city->city)))}}/<?php if (!empty($keyword->slug)) {
 										echo $keyword->slug;
 									} ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif
 												in {{$city->city}}</a></li>

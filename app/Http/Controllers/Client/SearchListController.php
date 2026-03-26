@@ -25,15 +25,15 @@ class SearchListController extends Controller
 	public function index(Request $request, $city, $search_kw)
 	{
 		$city = ucwords(str_replace("-", " ", $city));
-		$checkCity = Citieslists::where('city',$city)->get()->count();			
-		if(!$checkCity){		
-			return response()->view('client.errorpage', [], 410); 
-		}	
+		$checkCity = Citieslists::where('city', $city)->get()->count();
+		if (!$checkCity) {
+			return response()->view('client.errorpage', [], 410);
+		}
 
 		$keyword = DB::table('keyword as k')
 			->join('parent_category as p', 'k.parent_category_id', '=', 'p.id')
 			->join('child_category as c', 'k.child_category_id', '=', 'c.id')
-			->where('k.slug',$search_kw)
+			->where('k.slug', $search_kw)
 			->select(
 				'k.id as key_id',
 				'k.keyword',
@@ -76,9 +76,14 @@ class SearchListController extends Controller
 
 			)
 			->first();
-		if(!$keyword){
-			return response()->view('client.errorpage', [], 410); 		
-		}
+		// if (!$keyword) {
+
+		// 	$client = Client::where('business_slug', $search_kw)->first();
+
+		// 	if ($client) {
+		// 		return response()->view('client.errorpage', [], 410);
+		// 	}
+		// }
 
 		$clientscheck = DB::table('clients')
 			->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
@@ -86,10 +91,10 @@ class SearchListController extends Controller
 			->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
 			->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
 			->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-			->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*','keyword.slug')
+			->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*', 'keyword.slug')
 			->where('citylists.city', 'LIKE', $city)
 			->where('clients.active_status', '1')
-			->where('keyword.slug',  $search_kw)
+			->where('keyword.slug', $search_kw)
 			->orderByRaw("
 				CASE clients.client_type
 				WHEN 'platinum' THEN 1
@@ -115,10 +120,8 @@ class SearchListController extends Controller
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
 				->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
 				->leftJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*','keyword.slug')
-
-
-				->where('keyword.slug',$search_kw)
+				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*', 'keyword.slug')
+				->where('keyword.slug', $search_kw)
 
 				->orderByRaw("
 				CASE clients.client_type
@@ -147,7 +150,7 @@ class SearchListController extends Controller
 				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
 				->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
 				->rightJoin(DB::raw('(SELECT SUM(rating) AS rating,comment_client_ID,COUNT(comment_ID) AS comment_count,comment_content  FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'c.comment_content','keyword.slug')
+				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'c.comment_content', 'keyword.slug')
 				->where('citylists.city', 'LIKE', $city)
 				->where('keyword.slug', $search_kw)
 				->get();
@@ -165,15 +168,15 @@ class SearchListController extends Controller
 				$kwdsList = Keyword::where('child_category_id', $keyword->child_category_id)
 					->where('parent_category_id', $keyword->parent_category_id)
 					->select('keyword', 'slug', 'icon')
-					->orderBy('keyword','asc')
+					->orderBy('keyword', 'asc')
 					->distinct()
 					->get();
 
 			}
-			$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city', 'LIKE', $city)->select('zones.id', 'zones.zone', 'zones.pincode')->distinct()->orderBy('zones.zone','asc')->get();
+			$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city', 'LIKE', $city)->select('zones.id', 'zones.zone', 'zones.pincode')->distinct()->orderBy('zones.zone', 'asc')->get();
 
 			$firstZone = $zones->get(2);
-			$area =$city;
+			$area = $city;
 			if ($firstZone) {
 				$area = $city . ', ' . $firstZone->zone . ' ' . $firstZone->pincode;
 			}

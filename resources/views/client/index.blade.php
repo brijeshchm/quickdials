@@ -382,11 +382,11 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       <div class="popular-list">
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="{{ url('ac-service')}}" class="keystore" title="AC Service" tabindex="0">
+               <figure><a href="{{ url('ac-repair-service')}}" class="keystore" title="AC Service" tabindex="0">
                   <img loading="lazy" class="" src="popular/AC-Service.jpg"  alt="AC-Service" ></a>
                </figure>
                <div class="grid-info ">
-                  <h3><a href="{{url('/ac-service')}}"   tabindex="0"> <span>AC Service</span> </a></h3>
+                  <h3><a href="{{url('/ac-repair-service')}}"   tabindex="0"> <span>AC Service</span> </a></h3>
                </div>
             </div>
          </div>
