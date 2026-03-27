@@ -340,7 +340,7 @@ Route::get('/sitemap-keyword.xml', function () {
 
 });
 
-Route::get('/quickdialssitemap', function () {
+Route::get('/quickdialssitemap.xml', function () {
 	return response()->view('client.quickdialssitemap')->header('Content-Type', 'text/xml');
 });
 
