@@ -20,7 +20,12 @@
 <meta property="og:image:height" content="628" /><meta property="og:image:alt" content="Quick Dials" />
 <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="@yield('title')" /><meta name="twitter:keyword" content="@yield('keyword')" /><meta name="twitter:description" content="@yield('description')" /><meta name="twitter:image" content="{{asset('client/images/small-logo.jpg')}}" /><meta name="twitter:url" content="{{ URL::current() }}" /><meta itemprop="address" content="UNIT 101 OXFORD TOWERS, 139/88 HAL OLD AIRPORT RD, H.A.L II Stage, Bangalore North, Bangalore- 560008, Karnataka, India">
 <meta name="rating" content="general"><meta name="googlebot" content="index, follow"><meta name="bingbot" content="index, follow"><meta name="reply-to" content="info@quickdials.com"><meta name="expires" content="never">
-<link rel="alternate" href="https://www.quickdials.com/" hreflang="en-in" /><link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}"><script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script><script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" ></script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
+<link rel="alternate" href="https://www.quickdials.com/" hreflang="en-in" /><link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}"><script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
+<script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
+<script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" >
+
+
+</script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
     <!------Google Analytic Script End----->
 <script type="application/ld+json">
 {
@@ -271,97 +276,97 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div>
                 <h4>Popular Categories</h4>
                 <ul>
-                    <li><a href="{{url('coaching-tuitions')}}" tabindex="0">Coaching &amp; Tuitions</a></li> |
-                    <li><a href="{{url('business-services')}}" tabindex="0">Business Services</a></li> |
-                    <li><a href="{{url('home-construction')}}" tabindex="0">Home Construction &amp; Renovation</a></li> |
-                    <li><a href="{{url('child/loan-service')}}" tabindex="0">Personal Finance Services</a></li> |
-                    <li><a href="{{url('categories/tours-travel-services')}}" tabindex="0">Tours &amp; Travels</a></li> |
-                    <li><a href="{{url('property-dealer')}}" class="keystore" tabindex="0">Property Dealer</a></li> |
-                    <li><a href="{{url('child/rent-or-buy')}}" tabindex="0">Rent & Buy</a></li> |
-                    <li><a href="{{url('pg-hostels')}}" tabindex="0">PG & Hostel</a></li> |
-                    <li><a href="{{url('categories/computer-courses')}}" tabindex="0">Computer Courses & Training</a></li> |
-                    <li><a href="{{url('study-abroad')}}" tabindex="0">Study Abroad</a></li> |
-                    <li><a href="{{ url('home-services')}}" tabindex="0" class="keystore">Home Services</a></li> |
-                    <li><a href="{{url('wedding-organizers')}}" tabindex="0">Parties, Special Occasions &amp; Wedding</a></li> |
-                    <li><a href="{{url('categories/electric-services')}}" tabindex="0">Electric Services</a></li> |
-                    <li><a href="{{url('categories/entrance-exams-coaching')}}" tabindex="0">Government Exam</a></li> |
-                    <li><a href="{{url('web-designers')}}" tabindex="0">Web Designers</a></li> |
-                    <li><a href="{{url('medical')}}" tabindex="0">Medical</a></li> |
-                    <li><a href="{{ url('carpenters')}}" tabindex="0" class="keystore">Carpenters</a></li> |
-                    <li><a href="{{ url('health-wellness')}}" tabindex="0" class="keystore">Health & Wellness</a></li> |
-                    <li><a href="{{url('child/yoga-classes')}}" tabindex="0">Yoga</a></li> |
-                    <li><a href="{{url('tax-consultants')}}" tabindex="0">CA & TAX Consultants</a></li>
+                    <li><a href="{{url('coaching-tuitions')}}" >Coaching &amp; Tuitions</a></li> |
+                    <li><a href="{{url('business-services')}}" >Business Services</a></li> |
+                    <li><a href="{{url('home-construction')}}" >Home Construction &amp; Renovation</a></li> |
+                    <li><a href="{{url('child/loan-service')}}" >Personal Finance Services</a></li> |
+                    <li><a href="{{url('categories/tours-travel-services')}}" >Tours &amp; Travels</a></li> |
+                    <li><a href="{{url('property-dealer')}}" class="keystore" >Property Dealer</a></li> |
+                    <li><a href="{{url('child/rent-or-buy')}}" >Rent & Buy</a></li> |
+                    <li><a href="{{url('pg-hostels')}}" >PG & Hostel</a></li> |
+                    <li><a href="{{url('categories/computer-courses')}}" >Computer Courses & Training</a></li> |
+                    <li><a href="{{url('study-abroad')}}" >Study Abroad</a></li> |
+                    <li><a href="{{ url('home-services')}}"  class="keystore">Home Services</a></li> |
+                    <li><a href="{{url('wedding-organizers')}}" >Parties, Special Occasions &amp; Wedding</a></li> |
+                    <li><a href="{{url('categories/electric-services')}}" >Electric Services</a></li> |
+                    <li><a href="{{url('categories/entrance-exams-coaching')}}" >Government Exam</a></li> |
+                    <li><a href="{{url('web-designers')}}" >Web Designers</a></li> |
+                    <li><a href="{{url('medical')}}" >Medical</a></li> |
+                    <li><a href="{{ url('carpenters')}}"  class="keystore">Carpenters</a></li> |
+                    <li><a href="{{ url('health-wellness')}}"  class="keystore">Health & Wellness</a></li> |
+                    <li><a href="{{url('child/yoga-classes')}}" >Yoga</a></li> |
+                    <li><a href="{{url('tax-consultants')}}" >CA & TAX Consultants</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Business Services</h4>
                 <ul>
-                    <li><a href="{{ url('patient-care-services')}}" class="keystore" tabindex="0">Patient Care Service</a></li> | 
-                    <li><a href="{{ url('home-appliances-repair-services')}}" class="keystore" tabindex="0">Home Appliances Repair &amp; Services</a></li> |
-                    <li><a href="{{ url('packers-movers')}}" tabindex="0" class="keystore">Packers and Movers</a></li> |
-                    <li><a href="{{ url('ac-repair-service')}}" class="keystore" tabindex="0">AC Services</a></li> |
-                    <li><a href="{{ url('cleaning-services')}}" tabindex="0" class="keystore">Cleaning Services</a></li> |
-                    <li><a href="{{ url('security-guards-services')}}" tabindex="0" class="keystore">Security Guards</a></li> |
-                    <li><a href="{{ url('architects')}}" class="keystore" tabindex="0">Architects</a></li> |
-                    <li><a href="{{ url('building-consultants-contractors')}}" tabindex="0" class="keystore">Builders &amp; Contractors</a></li> |
-                    <li><a href="{{ url('interior-designers-decorators')}}" tabindex="0" class="keystore">Interior Designers &amp; Decorators</a></li> |
-                    <li><a title="Housekeeping Services" href="{{ url('housekeeping-services')}}" tabindex="0" class="keystore">Housekeeping Services</a></li> |
-                    <li><a title="Painting Contractors" href="{{ url('painting-contractors')}}" tabindex="0" class="keystore">Painting Contractors</a></li> |
-                    <li><a title="Modular Kitchen Dealers" href="{{ url('modular-kitchen-dealers')}}" tabindex="0" class="keystore">Modular Kitchen Dealers</a></li> |
-                    <li><a title="Waterproofing Contractors" href="{{ url('waterproofing-contractors')}}" tabindex="0" class="keystore">Waterproofing Contractors</a></li>
+                    <li><a href="{{ url('patient-care-services')}}" class="keystore" >Patient Care Service</a></li> | 
+                    <li><a href="{{ url('home-appliances-repair-services')}}" class="keystore" >Home Appliances Repair &amp; Services</a></li> |
+                    <li><a href="{{ url('packers-movers')}}"  class="keystore">Packers and Movers</a></li> |
+                    <li><a href="{{ url('ac-repair-service')}}" class="keystore" >AC Services</a></li> |
+                    <li><a href="{{ url('cleaning-services')}}"  class="keystore">Cleaning Services</a></li> |
+                    <li><a href="{{ url('security-guards-services')}}"  class="keystore">Security Guards</a></li> |
+                    <li><a href="{{ url('architects')}}" class="keystore" >Architects</a></li> |
+                    <li><a href="{{ url('building-consultants-contractors')}}"  class="keystore">Builders &amp; Contractors</a></li> |
+                    <li><a href="{{ url('interior-designers-decorators')}}"  class="keystore">Interior Designers &amp; Decorators</a></li> |
+                    <li><a title="Housekeeping Services" href="{{ url('housekeeping-services')}}"  class="keystore">Housekeeping Services</a></li> |
+                    <li><a title="Painting Contractors" href="{{ url('painting-contractors')}}"  class="keystore">Painting Contractors</a></li> |
+                    <li><a title="Modular Kitchen Dealers" href="{{ url('modular-kitchen-dealers')}}"  class="keystore">Modular Kitchen Dealers</a></li> |
+                    <li><a title="Waterproofing Contractors" href="{{ url('waterproofing-contractors')}}"  class="keystore">Waterproofing Contractors</a></li>
                 </ul></div><div>
                 <h4>Education Training</h4>
                 <ul>
 
-                    <li><a title="School Tuitions" href="{{ url('coaching-tuitions')}}" tabindex="0" class="keystore">Schools & Colleges</a></li> |
-                    <li><a title="Entrance Exam Coaching" href="{{url('categories/entrance-exams-coaching')}}" tabindex="0">Entrance Exam Coaching</a></li> |
-                    <li><a title="Competitive Exam Coaching" href="{{ url('competitive-exam-coaching')}}" class="keystore" tabindex="0">Competitive Exam Coaching</a></li> |
-                    <li><a title="Distance Education" href="{{ url('distance-education')}}" class="keystore" tabindex="0">Distance Education</a></li> |
-                    <li><a title="Language Training" href="{{ url('language-training')}}" class="keystore" tabindex="0">Language Training</a></li> |
-                    <li><a title="Overseas Education" href="{{ url('overseas-education-consultants')}}" class="keystore" tabindex="0">Overseas Education</a></li> |
-                    <li><a title="College &amp; University Tuitions" href="{{ url('college-tuition')}}" class="keystore" tabindex="0">College &amp; University Tuitions</a></li> |
-                    <li><a title="Bank &amp; Insurance Exam Coaching" href="{{ url('bank-coaching')}}" class="keystore" tabindex="0">Bank &amp; Insurance Exam Coaching</a></li> |
-                    <li><a title="Placement Consultancies" href="{{ url('placement-consultants')}}" class="keystore" tabindex="0">Placement Consultants</a></li>
+                    <li><a title="School Tuitions" href="{{ url('coaching-tuitions')}}"  class="keystore">Schools & Colleges</a></li> |
+                    <li><a title="Entrance Exam Coaching" href="{{url('categories/entrance-exams-coaching')}}" >Entrance Exam Coaching</a></li> |
+                    <li><a title="Competitive Exam Coaching" href="{{ url('competitive-exam-coaching')}}" class="keystore" >Competitive Exam Coaching</a></li> |
+                    <li><a title="Distance Education" href="{{ url('distance-education')}}" class="keystore" >Distance Education</a></li> |
+                    <li><a title="Language Training" href="{{ url('language-training')}}" class="keystore" >Language Training</a></li> |
+                    <li><a title="Overseas Education" href="{{ url('overseas-education-consultants')}}" class="keystore" >Overseas Education</a></li> |
+                    <li><a title="College &amp; University Tuitions" href="{{ url('college-tuition')}}" class="keystore" >College &amp; University Tuitions</a></li> |
+                    <li><a title="Bank &amp; Insurance Exam Coaching" href="{{ url('bank-coaching')}}" class="keystore" >Bank &amp; Insurance Exam Coaching</a></li> |
+                    <li><a title="Placement Consultancies" href="{{ url('placement-consultants')}}" class="keystore" >Placement Consultants</a></li>
                 </ul></div>
             <div>
                 <h4>Personal Service</h4>
                 <ul>
-                    <li><a href="{{url('child/loan-service')}}" tabindex="0">Loans</a></li> |
-                    <li><a title="Visa Consultants" href="{{ url('visa-consultants')}}" class="keystore" tabindex="0">Visa Consultants</a></li> |
-                    <li><a title="Beauty Parlour Services" href="{{ url('beauty-parlours')}}" class="keystore" tabindex="0">Beauty Parlour Services</a></li> |
-                    <li><a title="Event Organisers" href="{{ url('event-organisers')}}" class="keystore" tabindex="0">Event Organisers</a></li> |
-                    <li><a title="Catering Services" href="{{ url('catering-services')}}" class="keystore" tabindex="0">Catering Services</a></li> |
-                    <li><a title="Photographers &amp; Videographers" href="{{ url('photographers-videographers')}}" class="keystore" tabindex="0">Photographers &amp; Videographers</a></li> |
-                    <li><a title="Astrologers" href="{{ url('astrologers')}}" class="keystore" tabindex="0">Astrologers</a></li> |
-                    <li><a title="Vehicle Rentals" href="{{ url('vehicle-rental')}}" class="keystore" tabindex="0">Vehicle Rentals</a></li> |
-                    <li><a title="Massage Centres" href="{{ url('massage-centres')}}" class="keystore" tabindex="0">Massage Centres</a></li> |
-                    <li><a title="Advocates &amp; Lawyers" href="{{ url('advocates-lawyers')}}" class="keystore" tabindex="0">Advocates &amp; Lawyers</a></li></ul>
+                    <li><a href="{{url('child/loan-service')}}" >Loans</a></li> |
+                    <li><a title="Visa Consultants" href="{{ url('visa-consultants')}}" class="keystore" >Visa Consultants</a></li> |
+                    <li><a title="Beauty Parlour Services" href="{{ url('beauty-parlours')}}" class="keystore" >Beauty Parlour Services</a></li> |
+                    <li><a title="Event Organisers" href="{{ url('event-organisers')}}" class="keystore" >Event Organisers</a></li> |
+                    <li><a title="Catering Services" href="{{ url('catering-services')}}" class="keystore" >Catering Services</a></li> |
+                    <li><a title="Photographers &amp; Videographers" href="{{ url('photographers-videographers')}}" class="keystore" >Photographers &amp; Videographers</a></li> |
+                    <li><a title="Astrologers" href="{{ url('astrologers')}}" class="keystore" >Astrologers</a></li> |
+                    <li><a title="Vehicle Rentals" href="{{ url('vehicle-rental')}}" class="keystore" >Vehicle Rentals</a></li> |
+                    <li><a title="Massage Centres" href="{{ url('massage-centres')}}" class="keystore" >Massage Centres</a></li> |
+                    <li><a title="Advocates &amp; Lawyers" href="{{ url('advocates-lawyers')}}" class="keystore" >Advocates &amp; Lawyers</a></li></ul>
             </div><div>
                 <h4>Cities of (India)</h4>
                 <ul>
-                    <li><a title="Chennai" href="{{url('chennai')}}" tabindex="0">Chennai</a></li>
-                    <li><a title="Mumbai" href="{{url('mumbai')}}" tabindex="0">Mumbai</a></li>
-                    <li><a title="Hyderabad" href="{{url('hyderabad')}}" tabindex="0">Hyderabad</a></li>
-                    <li><a title="Bangalore" href="{{url('bangalore')}}" tabindex="0">Bangalore</a></li>
-                    <li><a title="Delhi" href="{{url('delhi')}}" tabindex="0">Delhi</a></li>
-                    <li><a title="Kolkata" href="{{url('kolkata')}}" tabindex="0">Kolkata</a></li>
-                    <li><a title="Pune" href="{{url('pune')}}" tabindex="0">Pune</a></li>
-                    <li><a title="Ahmedabad" href="{{url('ahmedabad')}}" tabindex="0">Ahmedabad</a></li>
-                    <li><a title="Faridabad" href="{{url('faridabad')}}" tabindex="0">Faridabad</a></li>
-                    <li><a title="Ghaziabad" href="{{url('ghaziabad')}}" tabindex="0">Ghaziabad</a></li>
-                    <li><a title="Noida" href="{{url('noida')}}" tabindex="0">Noida</a></li>
-                    <li><a title="Gurgaon" href="{{url('gurgaon')}}" tabindex="0">Gurgaon</a></li>
-                    <li><a title="Greater Noida" href="{{url('greaternoida')}}" tabindex="0">Greater Noida</a></li>
-                    <li><a title="Chandigarh" href="{{url('chandigarh')}}" tabindex="0">Chandigarh</a></li>
-                    <li><a title="Coimbatore" href="{{url('coimbatore')}}" tabindex="0">Coimbatore</a></li>
-                    <li><a title="Jaipur" href="{{url('jaipur')}}" tabindex="0">Jaipur</a></li>
-                    <li><a title="Nagpur" href="{{url('nagpur')}}" tabindex="0">Nagpur</a></li>
-                    <li><a title="Surat" href="{{url('surat')}}" tabindex="0">Surat</a></li>
-                    <li><a title="Vadodara" href="{{url('vadodara')}}" tabindex="0">Vadodara</a></li>
-                    <li><a title="Vijayawada" href="{{url('vijayawada')}}" tabindex="0">Vijayawada</a></li>
-                    <li><a title="Visakhapatnam" href="{{url('visakhapatnam')}}" tabindex="0">Visakhapatnam</a></li>
-                    <li><a title="Indore" href="{{url('indore')}}" tabindex="0">Indore</a></li>
-                    <li><a title="Lucknow" href="{{url('lucknow')}}" tabindex="0">Lucknow</a></li>
+                    <li><a title="Chennai" href="{{url('chennai')}}" >Chennai</a></li>
+                    <li><a title="Mumbai" href="{{url('mumbai')}}" >Mumbai</a></li>
+                    <li><a title="Hyderabad" href="{{url('hyderabad')}}" >Hyderabad</a></li>
+                    <li><a title="Bangalore" href="{{url('bangalore')}}" >Bangalore</a></li>
+                    <li><a title="Delhi" href="{{url('delhi')}}" >Delhi</a></li>
+                    <li><a title="Kolkata" href="{{url('kolkata')}}" >Kolkata</a></li>
+                    <li><a title="Pune" href="{{url('pune')}}" >Pune</a></li>
+                    <li><a title="Ahmedabad" href="{{url('ahmedabad')}}" >Ahmedabad</a></li>
+                    <li><a title="Faridabad" href="{{url('faridabad')}}" >Faridabad</a></li>
+                    <li><a title="Ghaziabad" href="{{url('ghaziabad')}}" >Ghaziabad</a></li>
+                    <li><a title="Noida" href="{{url('noida')}}" >Noida</a></li>
+                    <li><a title="Gurgaon" href="{{url('gurgaon')}}" >Gurgaon</a></li>
+                    <li><a title="Greater Noida" href="{{url('greaternoida')}}" >Greater Noida</a></li>
+                    <li><a title="Chandigarh" href="{{url('chandigarh')}}" >Chandigarh</a></li>
+                    <li><a title="Coimbatore" href="{{url('coimbatore')}}" >Coimbatore</a></li>
+                    <li><a title="Jaipur" href="{{url('jaipur')}}" >Jaipur</a></li>
+                    <li><a title="Nagpur" href="{{url('nagpur')}}" >Nagpur</a></li>
+                    <li><a title="Surat" href="{{url('surat')}}" >Surat</a></li>
+                    <li><a title="Vadodara" href="{{url('vadodara')}}" >Vadodara</a></li>
+                    <li><a title="Vijayawada" href="{{url('vijayawada')}}" >Vijayawada</a></li>
+                    <li><a title="Visakhapatnam" href="{{url('visakhapatnam')}}" >Visakhapatnam</a></li>
+                    <li><a title="Indore" href="{{url('indore')}}" >Indore</a></li>
+                    <li><a title="Lucknow" href="{{url('lucknow')}}" >Lucknow</a></li>
                 </ul>
             </div></div></div><div class="footer-new">
         <div class="container">
@@ -772,8 +777,11 @@ aria-hidden="true">×</span></button>
 <button class="success-btn" data-dismiss="modal"
 aria-label="Close">Done</button>
 </div>
-</div><script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script><script src="<?php echo asset('vendor/validation/validation.min.js'); ?>" ></script><script type="text/javascript" src="<?php echo asset('client/js/plugin.js'); ?>" ></script>
+</div>
+
+<script src="<?php echo asset('vendor/validation/validation.min.js'); ?>" ></script><script type="text/javascript" src="<?php echo asset('client/js/plugin.js'); ?>" ></script>
 <script type="text/javascript" src="<?php echo asset('client/js/script.js'); ?>" ></script>
+
 <script>
         const words = [
             "Search IT training",

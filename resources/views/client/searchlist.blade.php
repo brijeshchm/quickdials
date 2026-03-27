@@ -1318,9 +1318,9 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 					<div class="inner-client-div">
 						<figure><img loading="lazy" class="" src="<?php echo asset($image); ?>" alt="{{ $client->business_name }}" style="width:100%;"></figure><div class="grid-info">
 							<h3><a href="{{url('business-details') . '/' . $client->business_slug }}"
-									title="{{$client->business_name}}" tabindex="0">
+									title="{{$client->business_name}}" >
 									<div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3><strong>{{ucfirst($client->city)}}</strong>
-							<a href="{{url('business-details') . '/' . $client->business_slug }}" class="get-quotes" tabindex="0">View</a>
+							<a href="{{url('business-details') . '/' . $client->business_slug }}" class="get-quotes" >View</a>
 						</div>
 					</div>
 				</div>
