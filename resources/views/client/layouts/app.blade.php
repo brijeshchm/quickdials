@@ -14,7 +14,7 @@
 @if(View::hasSection('meta_robots'))
 @yield('meta_robots')
 @else
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index, follow">
 @endif
 <meta name="Revisit-after" content="7 Days" /><meta property="og:locale" content="en_IN" /><meta property="og:type" content="website" /><meta property="og:title" content="@yield('title')" /><meta property="og:description" content="@yield('description')" /><meta property="og:url" content="{{ URL::current() }}" /><meta property="og:site_name" content="Quick Dials" /><meta name="application-name" content="Quick Dials" /><meta property="fb:app_id" content="https://www.facebook.com/profile.php?id=61579250014118" /><meta property="og:image" content="{{asset('client/images/favicon.png')}}" /><meta property="og:image:secure_url" content="{{asset('client/images/favicon.png')}}" /><meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="628" /><meta property="og:image:alt" content="Quick Dials" />
@@ -51,27 +51,15 @@
   ]
 }
 </script>
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-0B7X99VQ0W"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-0B7X99VQ0W');
-    </script> -->
-
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KF6W10RN9L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-KF6W10RN9L');
 </script>
-    <!-- Google Tag Manager -->
-
-
-          
+    <!-- Google Tag Manager -->          
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -84,7 +72,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Google Tag Manager (noscript) -->  
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZF3WGSW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
 <!-- End Google Tag Manager (noscript) -->
 <div id="spinnerBkgd"></div><div id="spinnerCntr"></div>
  
