@@ -27,7 +27,7 @@ class SearchListController extends Controller
 		$city = ucwords(str_replace("-", " ", $city));
 		$checkCity = Citieslists::where('city', $city)->get()->count();
 		if (!$checkCity) {
-			return response()->view('client.errorpage', [], 410);
+			return response()->view('client.error410', [], 410);
 		}
 
 		$keyword = DB::table('keyword as k')
@@ -242,7 +242,7 @@ class SearchListController extends Controller
 
 			} else {
 
-				return response()->view('client.errorpage', [], 410);
+				return response()->view('client.error410', [], 410);
 
 			}
 

@@ -136,7 +136,7 @@ class OfficialController extends Controller
         if($blogdetails){
                 return view('official.blog-details', ['bloglist' => $bloglist, 'blogdetails' => $blogdetails]);
         }else{
-            return response()->view('client.errorpage', [], 410);
+            return response()->view('client.errorpage', [], 404);
         }
     }
 

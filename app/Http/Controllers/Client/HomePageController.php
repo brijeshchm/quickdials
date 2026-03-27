@@ -1721,7 +1721,7 @@ class HomePageController extends Controller
 
 		} catch (\Exception $e) {
 		 
-			return response()->view('client.errorpage', [], 410);
+			return response()->view('client.error410', [], 410);
 		}
 
 	}
@@ -1828,7 +1828,7 @@ class HomePageController extends Controller
 			return view('client.category', ['businessServices' => $businessServices, 'parentCategories' => $parentCategories, 'childCategories' => $childCategories, 'keyword' => $keyword, 'clientsList' => $clientsList, 'city' => $city]);
 		} else {
 
-			return response()->view('client.errorpage', [], 410);
+			return response()->view('client.errorpage', [], 404);
 
 		}
 
@@ -1857,7 +1857,7 @@ class HomePageController extends Controller
 			$city = "";
 			return view('client.child', ['childCategory' => $childCategory, 'part_id' => $part_id, 'keyword' => $keyword, 'city' => $city]);
 		} else {
-			return response()->view('client.errorpage', [], 410);
+			return response()->view('client.errorpage', [], 404);
 		}
 	}
 
