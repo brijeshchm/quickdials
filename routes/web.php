@@ -254,6 +254,20 @@ Route::get('/sitemap-blog.xml', function () {
 });
 
 
+Route::get('/sitemap', function () {
+
+	$keywords = Cache::remember('sitemap', 3600, function () {
+		return DB::table('keyword')
+			->where('seo_type', '1')
+			->select('slug', 'updated_at')
+			->get();
+	});
+
+	return response()
+		->view('client.sitemap', compact('keywords'))
+		->header('Content-Type', 'text/xml');
+
+});
 Route::get('/sitemap.xml', function () {
 
 	$keywords = Cache::remember('sitemap', 3600, function () {
