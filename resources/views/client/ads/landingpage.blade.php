@@ -485,7 +485,7 @@ margin-bottom: 15px;
 									<option value="">Select City</option>
 									@if(count($cities)>0)
 										@foreach($cities as $city)
-											<option value="{{strtolower($city->city)}}">{{$city->city}}</option>
+											<option value="{{generate_slug(strtolower($city->city))}}">{{$city->city}}</option>
 										@endforeach
 									@endif
 								</select>

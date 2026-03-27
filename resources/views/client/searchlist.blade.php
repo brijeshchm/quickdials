@@ -1288,7 +1288,7 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 					<ul class=""><?php $cities = getCity(); ?>
 						@if(!empty($cities))
 							<?php $i = 0; $x = 5; ?>
-								@foreach($cities as $citys) <li><a href="{{url(strtolower($citys->city))}}/<?php if (!empty($keyword->slug)) { echo $keyword->slug; } ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif in {{$citys->city}} |</a></li>
+								@foreach($cities as $citys) <li><a href="{{url(generate_slug(strtolower($citys->city)))}}/<?php if (!empty($keyword->slug)) { echo $keyword->slug; } ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif in {{$citys->city}} |</a></li>
 								@endforeach
 						@endif
 					</ul>

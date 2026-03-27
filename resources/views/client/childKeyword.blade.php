@@ -413,7 +413,7 @@ color: #fff;
 						<div class="side-data-txt-1">
 						    
 						   
-					<a href="{{url(strtolower($city).'/categories/'.$child->parent_slug.'/'.$child->child_slug)}}" title="<?php if(!empty($child->child_category)){  echo $child->child_category; } ?>" target="_blank"><?php if(!empty($child->child_category)){  echo $child->child_category; } ?></a>
+					<a href="{{url(generate_slug(strtolower($city)).'/categories/'.$child->parent_slug.'/'.$child->child_slug)}}" title="<?php if(!empty($child->child_category)){  echo $child->child_category; } ?>" target="_blank"><?php if(!empty($child->child_category)){  echo $child->child_category; } ?></a>
 						
 					
 						
@@ -621,7 +621,7 @@ color: #fff;
 	   	<ul class="">		
 		@if(!empty($cities))
 			@foreach($cities as $citys)
-	   <li class="col-sm-3 col-md-3"><a href="{{url(strtolower($citys->city))}}/<?php if(!empty($city)) { echo $city; } ?>"  title="<?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?> in {{$citys->city}}">@if(!empty($city)){!!ucwords(str_replace("-"," ",$city))!!}@endif in {{$citys->city}}</a></li>	   
+	   <li class="col-sm-3 col-md-3"><a href="{{url(generate_slug(strtolower($citys->city)))}}/<?php if(!empty($city)) { echo $city; } ?>"  title="<?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?> in {{$citys->city}}">@if(!empty($city)){!!ucwords(str_replace("-"," ",$city))!!}@endif in {{$citys->city}}</a></li>	   
 	   @endforeach
 	   @endif
 	    
