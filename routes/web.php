@@ -10,10 +10,7 @@ Route::auth();
 Auth::routes();
 
 use Illuminate\Support\Facades\Redis;
-Route::get('/redis-test', function () {
-	Redis::set('test_key', 'QuickDials');
-	return Redis::get('test_key');
-});
+
 
 
 //Clear Cache facade value:
@@ -87,13 +84,13 @@ Route::middleware('auth:clients')->group(function () {
 	Route::post('/business/save-certificate-auto', [App\Http\Controllers\Business\CertificateController::class, 'autoSaveCertificate']);
 
 	Route::post('/business/save-award-auto', [App\Http\Controllers\Business\CertificateController::class, 'saveBusinessAward']);
-	 
 
 
-	Route::get('/business/certificate/{slug}/{id}',[App\Http\Controllers\Business\CertificateController::class, 'certificateDel']);
-	Route::get('/business/award/{slug}/{id}',[App\Http\Controllers\Business\CertificateController::class, 'awardDel']);
- 
-		
+
+	Route::get('/business/certificate/{slug}/{id}', [App\Http\Controllers\Business\CertificateController::class, 'certificateDel']);
+	Route::get('/business/award/{slug}/{id}', [App\Http\Controllers\Business\CertificateController::class, 'awardDel']);
+
+
 
 
 	Route::post('/business/savePersonalDetails/{id}', [App\Http\Controllers\Business\PersonalDetailsController::class, 'savePersonalDetails']);
@@ -237,7 +234,7 @@ Route::get('/sitemap-blog.xml', function () {
 
 		$keywords = DB::table('keyword')
 			->select('slug', 'updated_at')
-			->where('seo_type','1')
+			->where('seo_type', '1')
 			->get();
 
 		$blogs = DB::table('blogdetails')
@@ -261,7 +258,7 @@ Route::get('/sitemap.xml', function () {
 
 	$keywords = Cache::remember('sitemap', 3600, function () {
 		return DB::table('keyword')
-			->where('seo_type','1')
+			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -276,7 +273,7 @@ Route::get('/sitemap-online.xml', function () {
 
 	$keywords = Cache::remember('sitemap_online', 3600, function () {
 		return DB::table('keyword')
-			->where('seo_type','1')
+			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -291,7 +288,7 @@ Route::get('/sitemap-city.xml', function () {
 
 	$keywords = Cache::remember('sitemap_city', 3600, function () {
 		return DB::table('keyword')
-			->where('seo_type','1')
+			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -306,7 +303,7 @@ Route::get('/sitemap-allcity.xml', function () {
 
 	$keywords = Cache::remember('sitemap_allcity', 3600, function () {
 		return DB::table('keyword')
-			->where('seo_type','1')
+			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
 	});
@@ -320,7 +317,7 @@ Route::get('/sitemap-allcity.xml', function () {
 Route::get('/sitemap-keyword.xml', function () {
 
 	$keywords = DB::table('keyword')
-		->where('seo_type','1')
+		->where('seo_type', '1')
 		->select('slug', 'updated_at')
 		->get();
 	return response()
@@ -329,26 +326,11 @@ Route::get('/sitemap-keyword.xml', function () {
 
 });
 
-
-
-// Route::get('/sitemap-allcity.xml', function () {
-
-//     $keywords = DB::table('keyword')
-//         ->select('slug','updated_at')
-//         ->get();
-//     return response()
-//         ->view('client.sitemap_allcity', compact('keywords'))
-//         ->header('Content-Type', 'text/xml');
-
-// });
-
 Route::get('/quickdialssitemap', function () {
 	return response()->view('client.quickdialssitemap')->header('Content-Type', 'text/xml');
 });
 
-// Route::get('/sitemap-chennai.xml', function () {
-// 	return response()->view('client.sitemap-common',['city'=>'chennai'])->header('Content-Type', 'text/xml');
-// });
+
 
 
 
@@ -398,14 +380,15 @@ Route::get('/', [App\Http\Controllers\Client\HomePageController::class, 'index']
 
 Route::post('/newsletter', [App\Http\Controllers\Client\HomePageController::class, 'newsletter']);
 
-Route::get('/{html}.html', [App\Http\Controllers\Client\HomePageController::class, 'callHtml']);
+// Route::get('/{html}.html', [App\Http\Controllers\Client\HomePageController::class, 'callsssHtml']);
 Route::get('/business-services', [App\Http\Controllers\Client\HomePageController::class, 'businessServices']);
 Route::get('/getKWList', [App\Http\Controllers\Client\HomePageController::class, 'getKWList']);
 Route::get('/getCityKWList', [App\Http\Controllers\Client\HomePageController::class, 'getCityKWList']);
 Route::get('/getCityList', [App\Http\Controllers\Client\HomePageController::class, 'getCountryCode']);
 
 Route::get('/disclaimer', function () {
-	return view('client.disclaimer'); });
+	return view('client.disclaimer');
+});
 
 
 
@@ -438,27 +421,15 @@ Route::get('/clients/{slug}', [HomePageController::class, 'clients'])->name('cli
 Route::get('/get-zones/{city_id}', [HomePageController::class, 'getZones'])->name('zones.get');
 
 
-// Route::get('/{city}/categories/{slug}', function ($city, $slug) {
-// 	return redirect('/categories/' . $slug, 301);
-// });
-
 // City home
 Route::get('/{city}', [HomePageController::class, 'city']);
-	// ->name('city.home');
-
 Route::get('/{city}/{search_kw}', [SearchListController::class, 'index']);
-	// ->name('search.city');
-
-//Route::get('/{city}/{search_kw}/', [App\Http\Controllers\Client\SearchListController::class, 'index']);
-//Route::get('/{city}/', [App\Http\Controllers\Client\HomePageController::class, 'city']);
-
-
 
 Route::POST('/client/lead/add-lead/', [App\Http\Controllers\Client\HomePageController::class, 'store']);
 Route::POST('/client/lead/saveTwoEnquiry', [App\Http\Controllers\Client\HomePageController::class, 'saveTwoEnquiry']);
 Route::POST('/client/lead/saveEnquiry', [App\Http\Controllers\Client\HomePageController::class, 'saveEnquiryWithoutZone']);
 Route::POST('/form/validate-step', [App\Http\Controllers\Client\HomePageController::class, 'validateStep'])->name('form.validate.step');
-;
+
 Route::POST('/client/lead/saveEnquiryContact', [App\Http\Controllers\Client\HomePageController::class, 'saveEnquiryContact']);
 
 
