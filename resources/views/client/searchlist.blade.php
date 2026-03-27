@@ -202,9 +202,9 @@ echo trim($msg); } ?>
 					<h2>Trusted <?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucwords(str_replace("-", "", $area)), $keyword->keyword); echo trim($key); } ?> in <?php echo ucwords(str_replace("-", " ", Request::segment(1))); ?></h2>
 					<p title="<?php if (!empty($keyword->keyword)) { echo $keyword->keyword; } ?> in {{Request::segment(1)}}"><?php  if (!empty($keyword->top_description)) {
 					$keydescription = preg_replace('/{{city}}/i', $area, $keyword->top_description); echo trim($keydescription); } ?>
-					Top {{ $keyword->keyword }} in {{ $city }} with verified businesses. 
+					Top {{ $keyword->keyword }} in {{ $area }} with verified businesses  
 					In {{ $city }}, you can find {{ rand(00,10) }} providers offering services.
-					and We provide best services in your {{ $city }} . Contact us now. <a href="tel:917559435943">+91-75-5943-5943</a>
+					and We provide best services in your {{ $area }} . Contact us now. <a href="tel:917559435943">+91-75-5943-5943</a>
 				</p>					 
 				</div>
 			@endif
@@ -1154,8 +1154,8 @@ echo trim($msg); } ?>
 				}
 						  ?>
 <p>
-Discover trusted {{ $keyword->keyword }} services in {{ $city }} with verified professionals and top-rated providers. 
-In {{ $city }}, you can explore multiple service options tailored to your needs, ensuring quality and reliability. 
+Discover trusted {{ $keyword->keyword }} services in {{ $area }} with verified professionals and top-rated providers. 
+In {{ $area }}, you can explore multiple service options tailored to your needs, ensuring quality and reliability. 
 Our platform connects you with experienced providers who offer competitive pricing and quick response. 
 Get the best service experience in {{ $city }} today. 
 Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
