@@ -1197,8 +1197,7 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 
 										<?php  }
 										} ?>
-
-										<a href="{{url(path: strtolower($city))}}/<?php echo $keyicon->slug; ?>"
+										<a href="{{url(generate_slug(strtolower($city)))}}/<?php echo $keyicon->slug; ?>"
 											 >{{$keyicon->keyword}}
 											| </a>
 									</li>
