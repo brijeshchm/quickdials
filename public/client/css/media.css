@@ -1890,8 +1890,11 @@ padding: 15px !important;
         width: 100%;
     }
     .post-thumbnail img{
-        height: 200px !important;
+        height: 175px !important;
         width: 100%;
+    }
+    .entry-content img{
+         height: 125px !important;
     }
         .video-title{
             font-size: 14px !important;
