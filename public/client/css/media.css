@@ -1522,7 +1522,10 @@ padding: 15px !important;
             display: flex;
             width: 50%;
         }
-
+    .single-blog-img img{
+    height: 200px !important;
+        width: 100%;
+    }
         .dropdown-menu {
             top: 93% !important;
             left: -16px;
