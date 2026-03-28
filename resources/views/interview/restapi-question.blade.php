@@ -19,8 +19,8 @@ Quick Dials- Business Services POPULAR CATEGORIES, B2B & BUSINESS SERVICES
        
 <h1>HTML<span class="color_h1"> Basic Examples</span></h1>
 <div class="clear nextprev">
-<a class="left btn" href="{{url('reactjs-interview-question-answer')}}">&#10094; Previous</a>
-<a class="right btn" href="{{url('php-interview-question-answer')}}">Next &#10095;</a>
+<a class="left btn" href="{{url('interviews/reactjs-interview-question-answer')}}">&#10094; Previous</a>
+<a class="right btn" href="{{url('interviews/php-interview-question-answer')}}">Next &#10095;</a>
 </div>
 <hr>
  <div class="light">

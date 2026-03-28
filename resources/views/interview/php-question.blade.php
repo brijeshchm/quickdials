@@ -20,7 +20,7 @@ Quick Dials- Business Services POPULAR CATEGORIES, B2B & BUSINESS SERVICES
 <h1>PHP<span class="color_h1"> Interview Question & Answer</span></h1>
 <div class="clear nextprev">
 <a class="left btn" href="{{url('interviews/php-interview-question-answer')}}">&#10094; Previous</a>
-<a class="right btn" href="{{url('mysql-interview-question-answer')}}">Next &#10095;</a>
+<a class="right btn" href="{{url('interviews/mysql-interview-question-answer')}}">Next &#10095;</a>
 </div>
 <hr>
  <div class="light">
@@ -826,7 +826,7 @@ $subject-&gt;notifyObservers("New state");<br>
 <br>
 <div class="clear nextprev">
 <a class="left btn" href="{{url('interviews/php-interview-question-answer')}}">&#10094; Previous</a>
-<a class="right btn" href="{{url('mysql-interview-question-answer')}}">Next &#10095;</a>
+<a class="right btn" href="{{url('interviews/mysql-interview-question-answer')}}">Next &#10095;</a>
 </div>
 </div>
  
