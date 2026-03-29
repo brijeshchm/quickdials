@@ -1,4 +1,4 @@
-<?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>
+<?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?> 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url>
 <loc>https://www.quickdials.com/online/sap-training</loc>
@@ -178,8 +178,8 @@
 <url>     
       <loc>{{ url('thane/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -187,8 +187,8 @@
 <url>     
       <loc>{{ url('tiruchirappalli/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -196,8 +196,8 @@
 <url>     
       <loc>{{ url('udaipur/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -205,8 +205,8 @@
 <url>     
       <loc>{{ url('vadodara/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -214,8 +214,8 @@
 <url>     
       <loc>{{ url('varanasi/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -223,8 +223,8 @@
 <url>     
       <loc>{{ url('nashik/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -232,8 +232,8 @@
 <url>     
       <loc>{{ url('nagpur/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -241,8 +241,8 @@
 <url>     
       <loc>{{ url('mysuru/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -250,8 +250,8 @@
 <url>     
       <loc>{{ url('vijayawada/'.$keyword->slug) }}</loc>
     <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
@@ -259,8 +259,8 @@
 <url>     
       <loc>{{ url('visakhapatnam/'.$keyword->slug) }}</loc>
      <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    
+    <priority>0.80</priority>
 </url>
 @endforeach
 
