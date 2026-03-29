@@ -50,6 +50,16 @@
 										@endif	
 									</div>			
 
+									<div class="col-lg-3">
+										<label for="State">Slug:</label>
+										
+									<input type="text" class="form-control" name="slug" placeholder="Enter slug" value="{{ old('slug',(isset($edit_data)) ? $edit_data->slug:"")}}">
+										@if ($errors->has('slug'))
+											<span class="help-block">
+												<strong>{{ $errors->first('slug') }}</strong>
+											</span>
+										@endif	
+									</div>
 									
 									<div class="col-lg-3">
 									 	<label for="pc_icon">Slider Image</label>
@@ -93,6 +103,7 @@
                                 <thead>
                                     <tr>
 									<th><input type="checkbox" id="check-all" class="check-box"></th>
+                                        <th>Slug</th>
                                         <th>Image</th>
 										<th>Status</th> 
                                         <th>Action</th>

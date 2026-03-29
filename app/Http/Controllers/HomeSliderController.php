@@ -67,9 +67,8 @@ class HomeSliderController extends Controller
 
 
 		$homeSlider = new HomeSlider;
-		$homeSlider->title = $request->input('title');
-		 
-		$alt = $request->input('title');
+		$homeSlider->slug = $request->input('slug');		 
+		$alt = $request->input('slug');
 		 
 
 		if ($request->hasFile('image')) {
@@ -133,19 +132,24 @@ class HomeSliderController extends Controller
 	 */
 	public function update(Request $request,$id)
 	{
-		 
-		 
-
+		 	 
+	if ($request->hasFile('image')) {
 			$validator = Validator::make($request->all(), [
 			'image' => 'required|mimes:jpeg,png,jpg,svg,webp',		 
 		]);
+	}else{
+
+		$validator = Validator::make($request->all(), [
+		'image' => 'nullable',
+		]);
+	}
 
 		if ($validator->fails()) {
 				$errorsBag = $validator->getMessageBag()->toArray();
 				return response()->json(['status' => 1, 'errors' => $errorsBag], 400);
 			}
 			$homeSlider = HomeSlider::find($id);	
-				$alt = $request->input('title');
+				$alt = $request->input('slug');
 				if ($request->hasFile('image')) {
 				$filePath = getFolderCategoryStructure();
 				$destinationPath = public_path($filePath);
@@ -165,7 +169,7 @@ class HomeSliderController extends Controller
 
 				} 
  
-	 
+	 			$homeSlider->slug = $request->input('slug');
 		
 		if ($homeSlider->save()) {
 				$status = true;
@@ -190,7 +194,7 @@ class HomeSliderController extends Controller
 			if ($request->input('search.value') != '') {
 
 				$homeSlider = $homeSlider->where(function ($query) use ($request) {
-					$query->where('title', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->where('slug', 'LIKE', '%' . $request->input('search.value') . '%');
 						 
 				});
 			}
@@ -229,6 +233,7 @@ class HomeSliderController extends Controller
 				}
 				$data[] = [
 					"<th><input type='checkbox' class='check-box' value='$slider->id'></th>",
+					$slider->slug,				 
 					$icons,				 
 					$status,				 
 					$action

@@ -182,6 +182,80 @@ class ParentCategoryController extends Controller
 		}
 	}
 
+
+	public function getParentCategoryPagination(Request $request)
+    {    
+        if($request->ajax()){
+			
+			$category = ParentCategory::orderBy('id','desc');
+			if($request->input('search.value')!=''){
+				$category = $category->where(function($query) use($request){
+				$query->orWhere('parent_category','LIKE','%'.$request->input('search.value').'%');
+			 
+				});
+			}
+			$category = $category->paginate($request->input('length'));
+			$recordCollection = [];
+			$data = [];
+			$recordCollection['draw'] = $request->input('draw');
+			$recordCollection['recordsTotal'] = $category->total();
+			$recordCollection['recordsFiltered'] = $category->total();
+	 
+			foreach($category as $categ){	 
+				$catImg = "";
+
+				if (!empty($categ->category_banner)) {
+
+				$cicons = @unserialize($categ->category_banner);
+
+				if (is_array($cicons) && isset($cicons['category_banner']['src'])) {
+					$imgPath = asset($cicons['category_banner']['src']);
+					$catImg = '<img loading="lazy" src="'.$imgPath.'" width="100">';
+				}
+				}
+
+
+					$catIcon = "";
+
+					if (!empty($categ->category_icon)) {
+
+					$vicons = @unserialize($categ->category_icon);
+
+					if (is_array($vicons) && isset($vicons['category_icon']['src'])) {
+					$iconPath = asset($vicons['category_icon']['src']);
+
+					$catIcon = '<img loading="lazy" src="'.$iconPath.'" width="100">';
+					}
+					}
+
+
+				$status = "";
+
+				if ($categ->status == '1') {
+				$status = '<a href="javascript:CategoryController.status('.$categ->id.',0)" 
+				title="category status" class="btn btn-success">Active</a>';
+				} else {
+				$status = '<a href="javascript:CategoryController.status('.$categ->id.',1)" 
+				title="category status" class="btn btn-danger">Inactive</a>';
+				}
+				$editLink = '<a href="'.url('developer/editCategory/'.$categ->id).'">
+                <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
+             </a>';
+				$data[] = [
+					$categ->parent_category,
+					$catImg,				  					
+					$catIcon,		
+					$categ->form_type,	
+					$status,
+					$editLink 
+				];
+			}
+			$recordCollection['data'] = $data;
+			return response()->json($recordCollection);
+			
+			
+		}
+    }
 	/**
 	 * Remove the specified resource from storage.
 	 *

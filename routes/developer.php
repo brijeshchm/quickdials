@@ -71,6 +71,7 @@ Route::post('/update-user/{id}',[App\Http\Controllers\userController::class, 'up
 
 /* Parent Category */
 	Route::get('/parent_category',[App\Http\Controllers\ParentCategoryController::class, 'index'])->middleware('auth');
+	Route::get('/get-parent-category',[App\Http\Controllers\ParentCategoryController::class, 'getParentCategoryPagination'])->middleware('auth');
 	Route::post('/parent_category', [App\Http\Controllers\ParentCategoryController::class, 'store'])->middleware('auth');
 	Route::get('/parent_category/delete/{id}', [App\Http\Controllers\ParentCategoryController::class, 'destroy'])->middleware('auth');
 	Route::get('/parent_category/update_parent_category/{id}',[App\Http\Controllers\ParentCategoryController::class, 'edit'])->middleware('auth');
@@ -85,6 +86,7 @@ Route::post('/update-user/{id}',[App\Http\Controllers\userController::class, 'up
 
 /* Child Category */
 	Route::get('/child_category',[App\Http\Controllers\ChildCategoryController::class, 'index'])->middleware('auth');
+	Route::get('/get-child-category',[App\Http\Controllers\ChildCategoryController::class, 'getchildCategoryPagination'])->middleware('auth');
 	Route::post('/child_category',[App\Http\Controllers\ChildCategoryController::class, 'store'])->middleware('auth');
 	Route::post('/updateAboutChildCategory/{id}',[App\Http\Controllers\ChildCategoryController::class, 'updateAboutChildCategory'])->middleware('auth');
 	 

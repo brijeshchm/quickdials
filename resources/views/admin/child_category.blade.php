@@ -84,50 +84,12 @@
                                        
                                     </tr>
                                 </thead>
-                                <tbody>
-								<?php if(isset($child_categories) && count($child_categories)>0): ?>
-									<?php foreach($child_categories as $child_category): ?>
-                                    <tr>
-                                        <td>{{ $child_category->child_category }}</td>
-                                        <td>{{ $child_category->parent_category }}</td>
-                                          <td> <?php  if(!empty($child_category->child_banner)){
-                                        $vicons= unserialize($child_category->child_banner); ?> 
-                                        <img src="{{asset(''.$vicons['child_banner']['src'])}}" width="100" alt="{{$vicons['child_banner']['name']}}">	 <?php 
-                                        } ?></td>
-                                        
-                                        
-                                        <td> <?php  if(!empty($child_category->pc_icon)){
-                                        $vicons= unserialize($child_category->pc_icon); ?> 
-                                        <img src="{{asset(''.$vicons['pc_icon']['src'])}}" width="100" alt="{{$vicons['pc_icon']['name']}}">	 <?php 
-                                        } ?></td>
-										<td>
-										<?php 
-									 
-										if($child_category->status=='1'){ ?>
-										<a href="javascript:ChildController.status({{ $child_category->id}},0)" title="category status" class="btn btn-success" >Active</a>
-									<?php 	}else{ ?>
-										 <a href="javascript:ChildController.status({{ $child_category->id}},1)" title="category status" class="btn btn-danger" >Inactive</a>
-									<?php 	}
-
-										?></td>
-                                        <td><a href="{{url('developer/editChildCategory/'.$child_category->id)}}" ><i class="fa fa-edit fa-fw" aria-hidden="true"></i></a> 
-										@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('delete_child_category'))                                       
-									   <a href="javascript:void(0)" onclick="javascript:deleteChildCategory({{$child_category->id}},this)"><i class="fa fa-trash fa-fw" aria-hidden="true"></i></a>
-									   	@endif
-									   </td>
-									
-                                    </tr>
-									<?php endforeach; ?>
-										<?php else: ?>
-                                </tbody>
+                               
                             </table>
 							</div>
-                            <!-- /.table-responsive -->
+                            
 						
-							<div class="alert alert-danger">
-								No Child Category Found !!
-							</div>
-							<?php endif; ?>
+							 
                         </div>
                         <!-- /.panel-body -->
                     </div>

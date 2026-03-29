@@ -301,44 +301,45 @@ var dataTableKeywordSellCounts = $('#dataTables-keywordSellCounts')
 	}
 }).api();
 
-var dataTableAllChild = $('#dataTables-child_categories').dataTable({
- 
 
-    "fixedHeader": true,
+var dataTableAllCategory = $('#dataTables-categories').on('draw.dt',function(e,settings){
+	$('#dataTables-categories').find('[data-toggle="popover"]').popover({html:true,container:'body'});
+})
+.dataTable({
+	"fixedHeader": true,
 	"processing":true,
-	"serverSide":false,
-	"responsive":true,
-	"paging":true,
+	"serverSide":true,
 	"ordering":false,
-	"columnDefs":[
-		{
-			orderable:false,
-			targets:[0]
+	"paging":true,
+	"ajax":{
+		url:"/developer/get-parent-category",
+		data:function(d){
+			d.page = (d.start/d.length)+1;		 
+			d.columns = null;
+			d.order = null;
 		}
-	],
-	
-});
+	}
+}).api();
 
-var dataTableAllChild = $('#dataTables-categories').dataTable({
- 
 
-    "fixedHeader": true,
+var dataTableAllChild = $('#dataTables-child_categories').on('draw.dt',function(e,settings){
+	$('#dataTables-child_categories').find('[data-toggle="popover"]').popover({html:true,container:'body'});
+})
+.dataTable({
+	"fixedHeader": true,
 	"processing":true,
-	"serverSide":false,
-	"responsive":true,
-	"paging":true,
+	"serverSide":true,
 	"ordering":false,
-	"columnDefs":[
-		{
-			orderable:false,
-			targets:[0]
+	"paging":true,
+	"ajax":{
+		url:"/developer/get-child-category",
+		data:function(d){
+			d.page = (d.start/d.length)+1;		 
+			d.columns = null;
+			d.order = null;
 		}
-	],
-	
-});
-
-
-
+	}
+}).api();
 
 
 /* var dataTableAllOrderHistory = $('#datatable-all-order-history').dataTable({
@@ -1287,6 +1288,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 				
             var $this = $(THIS);
             var form = new FormData(THIS);
+
 				$.ajax({
 					"url":"/developer/keyword/updateIcon/"+id,
 					"type":"POST",
@@ -1302,7 +1304,7 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 						
 							$('#messageModal').find('.alert-success').html(data.data.message).show();							 
 							dataTableViewAllKwds.ajax.reload(null,false);		
-							window.location.href ="/developer/keyword";
+							// window.location.href ="/developer/keyword";
 
 						}else{
 							mainSpinner.stop();
@@ -2329,14 +2331,14 @@ var dataTableAssignedKeywords = $('#datatable-assigned-keywords').dataTable({
 					"contentType": false, 
                     "processData": false,   
 					"success":function(data,textStatus,jqXHR){
-						//alert(data.data.message);
+						alert(data.data.message);
 						if(data.statusCode){
 							mainSpinner.stop();
 							$('#messageModal').show();
 						
 							$('#messageModal').find('.alert-success').html(data.data.message).show();							 
 							dataTableViewAllKwds.ajax.reload(null,false);		
-							window.location.href ="/developer/keyword";
+							// window.location.href ="/developer/keyword";
 
 						}else{
 							mainSpinner.stop();
@@ -5158,7 +5160,7 @@ var CategoryController = (function(){
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
-						dataTableAllCategory.ajax.reload( null, false );   
+						dataTableAllCategory.ajax.reload(null, false );   
 					}else{
 							$('#messagemodel .modal-title').text("doctor Delete");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
@@ -5215,7 +5217,7 @@ var CategoryController = (function(){
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
-						dataTableAllCategory.ajax.reload( null, false );   
+						dataTableAllCategory.ajax.reload(null, false );   
 					}else{
 							$('#messagemodel .modal-title').text("Status successfully update");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
@@ -5443,7 +5445,7 @@ var ClientController = (function(){
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
-						dataTableAllCategory.ajax.reload( null, false );  
+						dataTableAllCategory.ajax.reload(null, false );  
 						setInterval(function() {
 						$("#messagemodel").modal("hide");
 						}, 1000); 
@@ -5478,7 +5480,7 @@ var ClientController = (function(){
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
-						dataTableAllCategory.ajax.reload( null, false );   
+						dataTableAllCategory.ajax.reload(null, false);   
 						setInterval(function() {
 						$("#messagemodel").modal("hide");
 						}, 1000);
@@ -5729,7 +5731,7 @@ var ChildController = (function(){
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
-						dataTableAllChildCategory.ajax.reload( null, false );   
+						dataTableAllChild.ajax.reload( null, false );   
 					}else{
 							$('#messagemodel .modal-title').text("Status successfully update");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
@@ -5757,7 +5759,7 @@ var ChildController = (function(){
 						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
-						dataTableAllChildCategory.ajax.reload( null, false );   
+						dataTableAllChild.ajax.reload( null, false );   
 					}else{
 							$('#messagemodel .modal-title').text("Status successfully update");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		

@@ -58,7 +58,7 @@
 									
 								</form>
 							</div>
-							<?php if(isset($parent_categories) && count($parent_categories)>0): ?>
+						 
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-categories">
                                 <thead>
                                     <tr>
@@ -72,45 +72,9 @@
                                     
                                     </tr>
                                 </thead>
-                                <tbody>
-									<?php foreach($parent_categories as $parent_category): ?>
-                                    <tr>
-                                        <td>{{ $parent_category->parent_category }}</td>
-                                       
-                                          <td> <?php  if(!empty($parent_category->category_banner)){
-                                        $cicons= unserialize($parent_category->category_banner); ?> 
-                                        <img loading="lazy" src="{{asset(''.$cicons['category_banner']['src'])}}" width="100">	 <?php 
-                                        } ?></td>
-                                         <td> <?php  if(!empty($parent_category->category_icon)){
-                                        $vicons= unserialize($parent_category->category_icon); ?> 
-                                        <img loading="lazy" src="{{asset(''.$vicons['category_icon']['src'])}}" width="100">	 <?php 
-                                        } ?></td>
-
-										<td>{{ $parent_category->form_type }}</td>
-										<td>
-										<?php 
-										$status="";
-										if($parent_category->status=='1'){ ?>
-										<a href="javascript:CategoryController.status({{ $parent_category->id}},0)" title="category status" class="btn btn-success" >Active</a>
-									<?php 	}else{ ?>
-										 <a href="javascript:CategoryController.status({{ $parent_category->id}},1)" title="category status" class="btn btn-danger" >Inactive</a>
-									<?php 	}
-
-										?></td>
-                                        <td><a href="{{url('developer/editCategory/'.$parent_category->id)}}" ><i class="fa fa-edit fa-fw" aria-hidden="true"></i></a></td>
-											@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('delete_parent_category'))                                            
-									  
-								  @endif
-                                    </tr>
-									<?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            <!-- /.table-responsive -->
-							<?php else: ?>
-							<div class="alert alert-danger">
-								No Parent Category Found !!
-							</div>
-							<?php endif; ?>
+                                </table>
+                            
+							 
                         </div>
                         <!-- /.panel-body -->
                     </div>

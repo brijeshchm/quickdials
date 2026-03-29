@@ -84,96 +84,47 @@ class ChildCategoryController extends Controller
 		$child_category->parent_category_id = $request->input('parent_category_id');
 
 		if ($request->hasFile('pc_icon')) {
-			 
+
 			$alt = $request->input('child_category');
 			$filePath = getFolderCategoryStructure();
 			$destinationPath = public_path($filePath);
-				$filename = $this->saveImageSmart(
-					$request->file('pc_icon'),
-					$destinationPath,
-					150,
-					150
-				);
+			$filename = $this->saveImageSmart(
+				$request->file('pc_icon'),
+				$destinationPath,
+				150,
+				150
+			);
 
-				$image['pc_icon'] = array(
+			$image['pc_icon'] = array(
 				'name' => $filename,
 				'alt' => $alt,
 				'src' => $filePath . "/" . $filename
-				);
-			$child_category->pc_icon = serialize($image);				 
-		} 
-
-		// if ($request->hasFile('pc_icon')) {
-		// 	$image = [];
-		// 	$filePath = getFolderCourseStructure();
-
-		// 	$file = $request->file('pc_icon');
-		// 	$filename = $file->getClientOriginalName();
-		// 	$destinationPath = public_path($filePath);
-		// 	$nameArr = explode('.', $filename);
-		// 	$ext = array_pop($nameArr);
-		// 	$name = implode('_', $nameArr);
-		// 	if (file_exists($destinationPath . '/' . $filename)) {
-		// 		$filename = $name . "_" . time() . '.' . $ext;
-		// 	}
-		// 	$alt = $request->input('child_category');
-		// 	$file->move($destinationPath, $filename);
+			);
+			$child_category->pc_icon = serialize($image);
+		}
 
 
-		// 	$image['pc_icon'] = array(
-		// 		'name' => $filename,
-		// 		'alt' => $filename,
-		// 		'src' => $filePath . "/" . $filename
-		// 	);
-
-		// 	$child_category->pc_icon = serialize($image);
-		// }
 
 		if ($request->hasFile('child_banner')) {
 			$filePath = getFolderCategoryStructure();
 			$alt = $request->input('child_category');
 			$destinationPath = public_path($filePath);
-				$filename = $this->saveImageSmart(
-					$request->file('child_banner'),
-					$destinationPath,
-					1200,
-					190
-				);
+			$filename = $this->saveImageSmart(
+				$request->file('child_banner'),
+				$destinationPath,
+				1200,
+				190
+			);
 
-				$image['child_banner'] = array(
+			$image['child_banner'] = array(
 				'name' => $filename,
 				'alt' => $alt,
 				'src' => $filePath . "/" . $filename
-				);
+			);
 			$child_category->child_banner = serialize($image);
-				 
-			} 
 
-		// if ($request->hasFile('child_banner')) {
-		// 	$image = [];
-		// 	$filePath = getFolderCourseStructure();
+		}
 
-		// 	$file = $request->file('child_banner');
-		// 	$bannerfilename = $file->getClientOriginalName();
-		// 	$destinationPath = public_path($filePath);
-		// 	$nameArr = explode('.', $bannerfilename);
-		// 	$ext = array_pop($nameArr);
-		// 	$name = implode('_', $nameArr);
-		// 	if (file_exists($destinationPath . '/' . $bannerfilename)) {
-		// 		$bannerfilename = $name . "_" . time() . '.' . $ext;
-		// 	}
-		// 	$alt = $request->input('child_category');
-		// 	$file->move($destinationPath, $bannerfilename);
-
-
-		// 	$image['child_banner'] = array(
-		// 		'name' => $bannerfilename,
-		// 		'alt' => $bannerfilename,
-		// 		'src' => $filePath . "/" . $bannerfilename
-		// 	);
-
-		// 	$child_category->child_banner = serialize($image);
-		// }
 
 
 
@@ -182,6 +133,101 @@ class ChildCategoryController extends Controller
 		$request->session()->flash('success_msg', $this->success_msg);
 		return redirect("developer/child_category");
 	}
+
+
+	public function getchildCategoryPagination(Request $request)
+	{
+		if ($request->ajax()) {
+
+			$childCategory = ChildCategory::join('parent_category', 'child_category.parent_category_id', '=', 'parent_category.id')
+				->select('child_category.*', 'parent_category.parent_category')->orderBy('id', 'desc');
+			if ($request->input('search.value') != '') {
+				$childCategory = $childCategory->where(function ($query) use ($request) {
+					$query->orWhere('child_category', 'LIKE', '%' . $request->input('search.value') . '%');
+
+				});
+			}
+
+
+			$childCategory = $childCategory->paginate($request->input('length'));
+			$recordCollection = [];
+			$data = [];
+			$recordCollection['draw'] = $request->input('draw');
+			$recordCollection['recordsTotal'] = $childCategory->total();
+			$recordCollection['recordsFiltered'] = $childCategory->total();
+
+			foreach ($childCategory as $child) {
+				$catImg = "";
+
+				if (!empty($child->child_banner)) {
+
+					$cicons = @unserialize($child->child_banner);
+
+					if (is_array($cicons) && isset($cicons['child_banner']['src'])) {
+						$imgPath = asset($cicons['child_banner']['src']);
+						$catImg = '<img loading="lazy" src="' . $imgPath . '" width="100">';
+					}
+				}
+
+
+				$catIcon = "";
+
+				if (!empty($child->pc_icon)) {
+
+					$vicons = @unserialize($child->pc_icon);
+
+					if (is_array($vicons) && isset($vicons['pc_icon']['src'])) {
+						$iconPath = asset($vicons['pc_icon']['src']);
+
+						$catIcon = '<img loading="lazy" src="' . $iconPath . '" width="100">';
+					}
+				}
+
+
+				$status = "";
+				$action = "";
+
+				if ($child->status == '1') {
+					$status = '<a href="javascript:ChildController.status(' . $child->id . ',0)" 
+				title="category status" class="btn btn-success">Active</a>';
+				} else {
+					$status = '<a href="javascript:ChildController.status(' . $child->id . ',1)" 
+				title="category status" class="btn btn-danger">Inactive</a>';
+				}
+				$action = '';
+
+				// Edit button
+				$action .= '<a href="' . url('developer/editChildCategory/' . $child->id) . '">
+                <i class="fa fa-edit fa-fw" aria-hidden="true"></i>
+            </a>';
+
+				 
+				if (
+					Auth::user()->current_user_can('administrator') ||
+					Auth::user()->current_user_can('delete_child_category')
+				) {
+
+					$action .= ' <a href="javascript:void(0)" 
+                    onclick="deleteChildCategory(' . $child->id . ', this)">
+                    <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+                 </a>';
+				}
+				$data[] = [
+					$child->child_category,
+					$child->parent_category,
+					$catImg,
+					$catIcon,				 
+					$status,
+					$action
+				];
+			}
+			$recordCollection['data'] = $data;
+			return response()->json($recordCollection);
+
+
+		}
+	}
+
 
 	public function editChildCategory(Request $request, $id)
 	{
@@ -199,14 +245,14 @@ class ChildCategoryController extends Controller
 		return view('admin/editChildCategory', ['child_categories' => $child_categories, 'parent_categories' => $parent_categories, 'edit_data' => $edit_data]);
 	}
 
-		
+
 	private function saveImageSmart($file, $destinationPath, $width = null, $height = null)
 	{
 		$ext = strtolower($file->getClientOriginalExtension());
 		$name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 		$name = str_replace(' ', '_', $name);
 		$filename = time();
- 
+
 		// ✅ SVG → Save directly
 		if ($ext === 'svg') {
 			$finalName = $filename . '.svg';
@@ -235,7 +281,7 @@ class ChildCategoryController extends Controller
 				throw new \Exception('Unsupported image type');
 		}
 
-		$width  = $width ?? imagesx($src);
+		$width = $width ?? imagesx($src);
 		$height = $height ?? imagesy($src);
 
 		$dst = imagecreatetruecolor($width, $height);
@@ -243,10 +289,16 @@ class ChildCategoryController extends Controller
 		imagesavealpha($dst, true);
 
 		imagecopyresampled(
-			$dst, $src,
-			0, 0, 0, 0,
-			$width, $height,
-			imagesx($src), imagesy($src)
+			$dst,
+			$src,
+			0,
+			0,
+			0,
+			0,
+			$width,
+			$height,
+			imagesx($src),
+			imagesy($src)
 		);
 
 		$finalName = $filename . '.webp';
@@ -270,7 +322,7 @@ class ChildCategoryController extends Controller
 	public function storeChildCategory(Request $request)
 	{
 
-		if (!$request->user()->current_user_can('administrator') && (!$request->user()->current_user_can('seo_manager')) ) {
+		if (!$request->user()->current_user_can('administrator') && (!$request->user()->current_user_can('seo_manager'))) {
 			return view('errors.unauthorised');
 		}
 
@@ -297,50 +349,50 @@ class ChildCategoryController extends Controller
 		$child_category->child_category = $request->input('child_category');
 		$child_category->child_slug = generate_slug($request->input('child_category'));
 		$child_category->parent_category_id = $request->input('parent_category_id');
-		 		
+
 		if ($request->hasFile('pc_icon')) {
 			$filePath = getFolderCategoryStructure();
 			$alt = $request->input('child_category');
 			$destinationPath = public_path($filePath);
-				$filename = $this->saveImageSmart(
-					$request->file('pc_icon'),
-					$destinationPath,
-					90,
-					90
-				);
+			$filename = $this->saveImageSmart(
+				$request->file('pc_icon'),
+				$destinationPath,
+				90,
+				90
+			);
 
-				$image['pc_icon'] = array(
+			$image['pc_icon'] = array(
 				'name' => $filename,
 				'alt' => $alt,
 				'src' => $filePath . "/" . $filename
-				);
+			);
 			$child_category->pc_icon = serialize($image);
-				 
-			}
-			
-			// else{
-			// 	$child_category->pc_icon = $child_category->category_banner;
-			// }
+
+		}
+
+		// else{
+		// 	$child_category->pc_icon = $child_category->category_banner;
+		// }
 
 		if ($request->hasFile('child_banner')) {
 			$filePath = getFolderCategoryStructure();
 			$alt = $request->input('child_category');
 			$destinationPath = public_path($filePath);
-				$filename = $this->saveImageSmart(
-					$request->file('child_banner'),
-					$destinationPath,
-					1200,
-					190
-				);
+			$filename = $this->saveImageSmart(
+				$request->file('child_banner'),
+				$destinationPath,
+				1200,
+				190
+			);
 
-				$image['child_banner'] = array(
+			$image['child_banner'] = array(
 				'name' => $filename,
 				'alt' => $alt,
 				'src' => $filePath . "/" . $filename
-				);
+			);
 			$child_category->child_banner = serialize($image);
-				 
-			} 
+
+		}
 		// if ($request->hasFile('child_banner')) {
 		// 	$image = [];
 		// 	$filePath = getFolderCourseStructure();
@@ -517,8 +569,8 @@ class ChildCategoryController extends Controller
 		}
 	}
 
-	
-	 /**
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
@@ -526,7 +578,7 @@ class ChildCategoryController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function updateAboutChildCategory(Request $request, $id)
-	{ 
+	{
 		if (!($request->user()->current_user_can('administrator') || $request->user()->current_user_can('edit_SEO'))) {
 			return response()->json(['status' => 1, 'errors' => 'errors unauthorised'], 400);
 		}
