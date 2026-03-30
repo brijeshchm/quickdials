@@ -426,9 +426,9 @@ document.querySelectorAll(".hidden").forEach((el) => observer.observe(el));
 
 .category-image-circle {
     width: 199px;
-    height: 199px;
+    height: 155px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 5%;
 }
 
 .category-label-circle {
