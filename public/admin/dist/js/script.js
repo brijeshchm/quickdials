@@ -626,6 +626,22 @@ var dataTablehomeSlider = $('#datatable-home_slider').dataTable({
 	}
 }).api();
 
+var dataTableAuthor = $('#datatable-author').dataTable({
+	"fixedHeader": true,
+	"processing":true,
+	"serverSide":true,
+	"paging":true,
+	"responsive":true,
+	"ajax":{
+		url:"/developer/author/get-author",
+		data:function(d){
+			d.page = (d.start/d.length)+1;
+			d.columns = null;
+			d.order = null;
+		}
+	}
+}).api();
+
 
 
 var dataTableChildCategorySEO = $('#datatable-Childcategory-seo').dataTable({
@@ -4812,6 +4828,204 @@ var homeSliderController = (function(){
 						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
 						$('#messagemodel').css({'width':'100%'});
 						dataTablehomeSlider.ajax.reload( null, false );   
+					}else{
+							$('#messagemodel .modal-title').text("Status successfully update");	
+							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
+							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+							$('#messagemodel').css({'width':'100%'});
+					}						
+					},
+					error:function(response){
+					 	
+						 alert('some error');
+					}
+				});
+				}
+				}
+			}				 
+			
+	};
+	})(); 
+
+ 
+ 
+var AuthorController = (function(){
+		return {
+			checked_Ids:[],				  
+			saveAuthor:function(THIS){	
+			  var $this = $(THIS);
+			  var form = new FormData(THIS);		 
+				$.ajax({
+					url:"/developer/author/saveAuthor",
+					type:"POST",					   
+					dataType:"json",
+					data:form,
+					cache: false,
+					contentType: false, 
+                    processData: false,             
+					success:function(data){	
+					  
+						if(data.status){	
+						 
+						$('#messagemodel .modal-title').text("Seo Work");	
+						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
+						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+						$('#messagemodel').css({'width':'100%'});
+							removeValidationErrors($this);
+							window.location.href ="/developer/author"; 
+							
+						}else{
+							$('#messagemodel .modal-title').text("Seo Work");	
+							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
+							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+							$('#messagemodel').css({'width':'100%'});
+						}
+					},
+					error:function(jqXHR, textStatus, errorThrown){
+					 
+						var response = JSON.parse(jqXHR.responseText);
+						if(response.status){ 
+						
+                            var errors = response.errors;						 
+                            $('.form-type').find('.form-group').removeClass('has-error');
+                            $('.form-type').find('.help-block').remove();
+                            for (var key in errors) {
+                            if(errors.hasOwnProperty(key)){	
+                            
+                            var el = $('.form-type').find('*[name="'+key+'"]');
+                            $('<span class="help-block"><strong>'+errors[key][0]+'</strong></span>').insertAfter(el);
+                            el.closest('.form-group').addClass('has-error');
+                            }
+                            }
+						
+							//showValidationErrors($this,response.errors);						 
+						}else{
+							alert('Something went wrong');
+						}
+						 
+					}
+				}); 
+				 return false;	
+			},
+
+			editSaveAuthor:function(THIS,id){	
+			  var $this = $(THIS);
+			 
+			var form = new FormData(THIS);	
+			
+				$.ajax({
+					url:"/developer/author/editSaveAuthor/"+id,
+					type:"POST",					   
+					dataType:"json",	
+					data:form,
+					 cache: false,
+					contentType: false, 
+                    processData: false,                      
+					success:function(data){
+					 	
+						if(data.status){	
+					 					
+						$('#messagemodel .modal-title').text("Seo Work");	
+						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+data.msg+"</div>");			
+						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+						$('#messagemodel').css({'width':'100%'});
+							removeValidationErrors($this);
+							window.location.href ="/developer/author";
+						}else{
+							$('#messagemodel .modal-title').text("form type");	
+							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+data.msg+"</div>");			
+							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+							$('#messagemodel').css({'width':'100%'});		 
+							
+						}
+					},
+					error:function(jqXHR, textStatus, errorThrown){
+					 
+						var response = JSON.parse(jqXHR.responseText);
+						if(response.status){ 
+							showValidationErrors($this,response.errors);						 
+						}else{
+							alert('Something went wrong');
+						}
+						 
+					}
+				}); 
+				 return false;	
+			},		 	 
+			 
+			delete:function(id){
+		 
+			 	if( confirm("Are you sure you want to delete?") ) {	
+				  
+				$.ajax({
+					url:"/developer/author/delete/"+id,
+					type:"GET",
+				 
+					success:function(response){	
+					 
+					if(response.status){
+						$('#messagemodel .modal-title').text("SEO Work Delete");	
+						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
+						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+						$('#messagemodel').css({'width':'100%'});
+						dataTableAuthor.ajax.reload( null, false );   
+					}else{
+							$('#messagemodel .modal-title').text("seoCity Delete");	
+							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
+							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+							$('#messagemodel').css({'width':'100%'});
+					}						
+					},
+					error:function(response){
+					 	
+						 alert('some error');
+					}
+				});
+				}
+			},
+			status:function(id,val){		 
+			 if(val==true){
+				if(confirm("Are you sure you want to change the status to Active?")){		
+			 
+				$.ajax({
+					url:"/developer/author/status/"+id+"/"+val,
+					type:"GET",					
+					success:function(response){	
+				 
+					if(response.status){
+						$('#messagemodel .modal-title').text("status successfully update");	
+						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
+						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+						$('#messagemodel').css({'width':'100%'});
+						dataTableAuthor.ajax.reload( null, false );   
+					}else{
+							$('#messagemodel .modal-title').text("Status successfully update");	
+							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		
+							$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+							$('#messagemodel').css({'width':'100%'});
+					}						
+					},
+					error:function(response){
+				 
+						 alert('some error');
+					}
+				});
+				}
+				
+				}else{
+					if(confirm("Are you sure you want to change the status to Inactive?")){		
+			 
+				$.ajax({
+					url:"/developer/author/status/"+id+"/"+val,
+					type:"GET",					
+					success:function(response){	
+					 	
+					if(response.status){
+						$('#messagemodel .modal-title').text("status successfully update");	
+						$('#messagemodel .modal-body').html("<div class='alert alert-success'>"+response.msg+"</div>");			
+						$('#messagemodel').modal({keyboard:false,backdrop:'static'});
+						$('#messagemodel').css({'width':'100%'});
+						dataTableAuthor.ajax.reload( null, false );   
 					}else{
 							$('#messagemodel .modal-title').text("Status successfully update");	
 							$('#messagemodel .modal-body').html("<div class='alert alert-danger'>"+response.msg+"</div>");		

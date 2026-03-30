@@ -252,7 +252,7 @@
 								</ul>
 							</li>
 							@endif
-								@if(Auth::user()->current_user_can('administrator'))
+							@if(Auth::user()->current_user_can('administrator'))
 							<li>
 								<a href="#"><i class="fa fa-cap fa-fw"></i>Home Slider<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
@@ -260,6 +260,16 @@
 										<a href="{{url('/developer/home_slider')}}"><i class=""></i> All Home Slider</a>
 									</li>
 								
+								</ul>
+							</li>
+							@endif
+							@if(Auth::user()->current_user_can('administrator'))
+							<li>
+								<a href="#"><i class="fa fa-cap fa-fw"></i>Author<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li>
+										<a href="{{url('/developer/author')}}"><i class=""></i> All Author</a>
+									</li>								
 								</ul>
 							</li>
 							@endif
@@ -322,8 +332,6 @@
 								<a href="{{url('/developer/seo-report')}}"><i class=""></i> Seo Report</a>
 								</li>
 							@endif
-
-
 								</ul>
 							</li>
 													

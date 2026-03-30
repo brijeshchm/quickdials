@@ -212,10 +212,21 @@ Route::post('/update-user/{id}',[App\Http\Controllers\userController::class, 'up
 	Route::get('home_slider/delete/{id}', [App\Http\Controllers\HomeSliderController::class, 'destroy'])->middleware('auth:developer');
 	 
 /* form type */
+
+/* form type */
+ 
+	Route::get('author', [App\Http\Controllers\AuthorController::class, 'index'])->middleware('auth:developer');
+	Route::get('author/add', [App\Http\Controllers\AuthorController::class, 'authorAdd'])->middleware('auth:developer');
+	Route::post('author/saveAuthor', [App\Http\Controllers\AuthorController::class, 'store'])->middleware('auth:developer');
+	Route::get('author/edit/{id}', [App\Http\Controllers\AuthorController::class, 'edit'])->middleware('auth:developer');
+	Route::post('author/editSaveAuthor/{id}', [App\Http\Controllers\AuthorController::class, 'update'])->middleware('auth:developer');
+	Route::get('author/del_img/{id}', [App\Http\Controllers\AuthorController::class, 'imageDeleted'])->middleware('auth:developer'); 
+	Route::get('author/get-author', [App\Http\Controllers\AuthorController::class, 'getAuthorPagination'])->middleware('auth:developer');
+	Route::get('/author/status/{id}/{val}', [App\Http\Controllers\AuthorController::class, 'status'])->middleware('auth:developer');
+	Route::get('author/delete/{id}', [App\Http\Controllers\AuthorController::class, 'destroy'])->middleware('auth:developer');
+	 
+/* form type */
   
-
-		
-
 	Route::get('/category/seo',[App\Http\Controllers\KeywordController::class, 'indexCategotySEO'])->middleware('auth');
 	Route::get('/categoryEdit/seo/{id}',[App\Http\Controllers\KeywordController::class, 'editCategorySEO'])->middleware('auth');
 	Route::post('/updateCategorySEO/seo/{id}',[App\Http\Controllers\KeywordController::class, 'updateCategorySEO'])->middleware('auth');
