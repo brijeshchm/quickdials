@@ -52,9 +52,7 @@ class AuthorController extends Controller
 	public function store(Request $request)
 	{
 
-		if (!$request->user()->current_user_can('administrator')) {
-			return view('errors.unauthorised');
-		}
+		 
 		 
 		$validator = Validator::make($request->all(), [
 			'image' => 'required|mimes:jpeg,png,jpg,svg,webp',		 

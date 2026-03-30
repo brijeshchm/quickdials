@@ -126,7 +126,6 @@
                             <!-- /.table-responsive -->
 												 
                         </div>
-
 						@endif
 						
 						

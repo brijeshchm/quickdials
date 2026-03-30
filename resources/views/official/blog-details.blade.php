@@ -367,7 +367,7 @@
                     <img loading="lazy" src="<?php echo (isset($imageAuthor)?url($imageAuthor):"");  ?>"  alt="{{ $blogdetails->author_name ?? '' }}" class="avatar avatar-96 photo author-avatar border rounded-circle blur-up lazyloaded" height="96" width="96"/>
                  
                     <div class="name-and-date">
-                           <span class="author-name">{{ ucfirst($blogdetails->author_name) }} <a href="{{ $blogdetails->linkedin_url }}" title="author-name" rel="author" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true" style="color:#007bff;margin-left:5px"></i></a>  </span>
+                           <span class="author-name">{{ ucfirst($blogdetails->author_name) }} <a href="{{ $blogdetails->linkedin_url }}" title="author-name" rel="author" target="_blank"> <img src="{{ asset('client/linkedin.svg')}}" ></a>  </span>
                            <span class="author-bio d-xl-block d-lg-block">{{  $blogdetails->comment }}</span>
                         </div>
                      </div>
