@@ -10,7 +10,7 @@
 <meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
 
  
-<meta name="url" content="{{url('/')}}" /><meta name="DC.title" content="@yield('keyword')" /><meta name="distribution" content="global" /><meta name="geo.region" content="IN-UP" /><meta name="geo.placename" content="Noida" /><meta name="geo.position" content="28.5802;77.3181" /><meta name="ICBM" content="28.5802, 77.3181" /> 
+<meta name="url" content="{{url('/')}}" /><meta name="DC.title" content="@yield('keyword')" /><meta name="distribution" content="global" /><meta name="geo.region" content="IN-UP" /><meta name="geo.placename" content="Bangalore" /><meta name="geo.position" content="28.5802;77.3181" /><meta name="ICBM" content="28.5802, 77.3181" /> 
 @if(View::hasSection('meta_robots'))
     @yield('meta_robots')
 @else
@@ -357,7 +357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a title="Ghaziabad" href="{{url('ghaziabad')}}" >Ghaziabad</a></li>
                     <li><a title="Noida" href="{{url('noida')}}" >Noida</a></li>
                     <li><a title="Gurgaon" href="{{url('gurgaon')}}" >Gurgaon</a></li>
-                    <li><a title="Greater Noida" href="{{url('greaternoida')}}" >Greater Noida</a></li>
+                    <li><a title="Greater Noida" href="{{url('greater-noida')}}" >Greater Noida</a></li>
                     <li><a title="Chandigarh" href="{{url('chandigarh')}}" >Chandigarh</a></li>
                     <li><a title="Coimbatore" href="{{url('coimbatore')}}" >Coimbatore</a></li>
                     <li><a title="Jaipur" href="{{url('jaipur')}}" >Jaipur</a></li>
