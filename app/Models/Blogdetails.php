@@ -8,6 +8,7 @@ class Blogdetails extends Model
 {
      protected $fillable = [
     'name',
+    'author',
     'title',
     'slug',
     'description',

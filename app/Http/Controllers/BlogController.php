@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use App\Models\Blogdetails;
+use App\Models\Author;
 use Image;
 use Auth;
 use Validator;
@@ -44,6 +45,7 @@ class BlogController extends Controller
 	{
 
 		$data['button'] = "Save";
+		$data['authors'] = Author::where('status','1')->get();
 		if ($request->isMethod('post') && $request->input('submit') == "Save") {
 
 
@@ -68,18 +70,13 @@ class BlogController extends Controller
 
 			$blogdetails = new Blogdetails;
 			$blogdetails->name = $request->input('name');
+			$blogdetails->author = $request->input('author');
 			$blogdetails->title = $request->input('title');
 			$blogdetails->slug = generate_slug($request->input('title'));
 			$blogdetails->description = $request->input('description');
 			$blogdetails->meta_title = $request->input('meta_title');
 			$blogdetails->meta_keywords = $request->input('meta_keywords');
 			$blogdetails->meta_description = $request->input('meta_description');
-
-
-
-
-
-
 
 			if ($blogdetails->save()) {
 				return redirect('/developer/blog/blogdetails')->with('success', 'Blog Details successfully added!');
@@ -123,6 +120,7 @@ class BlogController extends Controller
 
 				$blogdetails = new Blogdetails;
 				$blogdetails->name = $request->input('name');
+				$blogdetails->author = $request->input('author');
 				$blogdetails->title = $request->input('title');
 				$blogdetails->slug = generate_slug($request->input('title'));
 				$blogdetails->description = $request->input('description');
@@ -230,6 +228,7 @@ class BlogController extends Controller
 
 
 		$data['edit_data'] = Blogdetails::find($id);
+		$data['authors'] = Author::where('status','1')->get();
 		$data['button'] = "Update";
 		if ($request->isMethod('post') && $request->input('submit') == "Update") {
 
@@ -246,6 +245,7 @@ class BlogController extends Controller
 
 			$blogdetails = Blogdetails::find($id);
 			$blogdetails->name = $request->input('name');
+			$blogdetails->author = $request->input('author');
 			$blogdetails->slug = generate_slug($request->input('meta_title'));
 			$blogdetails->description = $request->input('description');
 			$blogdetails->meta_title = $request->input('meta_title');
@@ -369,6 +369,7 @@ class BlogController extends Controller
 
 				$blogdetails->update([
 					'name' => $request->name,
+					'author' => $request->author,
 					'slug' => $request->slug,
 					'title' => $request->title,
 					// 'description' => $request->description,

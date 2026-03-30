@@ -80,6 +80,33 @@ padding:0px;
             <form class="form-horizontal" method="POST" onsubmit="return blogController.updateBlogMeta(this,<?php echo (isset($edit_data->id)? $edit_data->id:""); ?>)">
                 {{ csrf_field() }}
 
+
+                <div class="form-group">
+						<label for="name" class="col-md-2 control-label">Author</label>
+						<div class="col-md-8">
+							<select type="text" class="form-control" name="author" >
+								<option value="">Select Author</option>
+								@if($authors)
+									@foreach($authors as $author)
+
+									<option value="{{ $author->name}}" @if ($author->name== old('author'))
+                    selected="selected"	
+                    @else
+                    {{ (isset($edit_data) && $edit_data->author ==$author->name ) ? "selected":"" }} @endif>{{ $author->name}}</option>
+									@endforeach
+									@endif
+								
+
+							</select>
+							@if ($errors->has('author'))
+								<span class="error alert-danger">
+									<strong>{{ $errors->first('author') }}</strong>
+								</span>
+							@endif
+						</div>
+					</div>	
+
+                    
                 <div class="form-group">
                     <label class="col-md-2 control-label">Name</label>
                     <div class="col-md-8">
@@ -131,7 +158,7 @@ padding:0px;
                     $rating = array(1,2,3,3.5,4,4.5,4.75,5);
                     foreach($rating as $key=>$value){	
                     ?>
-                    <option value="<?php echo $value; ?>" @if ("$value"== old('ratingvalue'))
+                    <option value="<?php echo $value; ?>"  @if ("$value"== old('ratingvalue'))
                     selected="selected"	
                     @else
                     {{ (isset($edit_data) && $edit_data->ratingvalue ==$value ) ? "selected":"" }} @endif><?php echo $value; ?></option>
