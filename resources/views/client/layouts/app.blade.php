@@ -343,7 +343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a title="Massage Centres" href="{{ url('massage-centres')}}" class="keystore" >Massage Centres</a></li> |
                     <li><a title="Advocates &amp; Lawyers" href="{{ url('advocates-lawyers')}}" class="keystore" >Advocates &amp; Lawyers</a></li></ul>
             </div><div>
-                <h4>Cities of (India)</h4>
+                <!-- <h4>Cities of (India)</h4>
                 <ul>
                     <li><a title="Chennai" href="{{url('chennai')}}" >Chennai</a></li>
                     <li><a title="Mumbai" href="{{url('mumbai')}}" >Mumbai</a></li>
@@ -368,7 +368,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a title="Visakhapatnam" href="{{url('visakhapatnam')}}" >Visakhapatnam</a></li>
                     <li><a title="Indore" href="{{url('indore')}}" >Indore</a></li>
                     <li><a title="Lucknow" href="{{url('lucknow')}}" >Lucknow</a></li>
-                </ul>
+                </ul> -->
             </div></div></div><div class="footer-new">
         <div class="container">
             <div class="row">
