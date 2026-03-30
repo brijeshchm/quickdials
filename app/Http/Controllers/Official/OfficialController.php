@@ -132,7 +132,16 @@ class OfficialController extends Controller
     {
 
         $bloglist = Blogdetails::where('status', '1')->limit(20)->orderBy('id', 'DESC')->get();
-        $blogdetails = Blogdetails::where('status', '1')->where('slug', $slug)->first();
+      
+
+
+        $blogdetails = Blogdetails::where('blogdetails.status', '1')
+            ->where('blogdetails.slug', $slug)
+            ->leftJoin('authors', 'blogdetails.author', '=', 'authors.id')
+            ->select('blogdetails.*', 'authors.name as author_name','authors.image as author_image','authors.comment','authors.linkedin_url')  
+            ->first();
+ 
+
         if($blogdetails){
                 return view('official.blog-details', ['bloglist' => $bloglist, 'blogdetails' => $blogdetails]);
         }else{

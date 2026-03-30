@@ -85,10 +85,10 @@ padding:0px;
 								@if($authors)
 									@foreach($authors as $author)
 
-									<option value="{{ $author->name}}" @if ($author->name== old('author'))
+									<option value="{{ $author->id}}" @if ($author->id== old('author'))
                     selected="selected"	
                     @else
-                    {{ (isset($edit_data) && $edit_data->author ==$author->name ) ? "selected":"" }} @endif>{{ $author->name}}</option>
+                    {{ (isset($edit_data) && $edit_data->author ==$author->id ) ? "selected":"" }} @endif>{{ $author->name}}</option>
 									@endforeach
 									@endif
 								

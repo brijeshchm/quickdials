@@ -263,7 +263,7 @@
 								</ul>
 							</li>
 							@endif
-							@if(Auth::user()->current_user_can('administrator'))
+							@if(Auth::user()->current_user_can('administrator') || Auth::user()->current_user_can('all_SEO'))
 							<li>
 								<a href="#"><i class="fa fa-cap fa-fw"></i>Author<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">

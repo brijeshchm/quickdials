@@ -262,12 +262,10 @@
                 based on <span itemprop="ratingCount">{{$blogdetails->ratingcount }}</span> ratings
                 </div>    
                 </div>
-                  @endif
-                <div class="share-author">
-                <span class="author-meta"><i class="fa fa-user"></i> <a href="javascript:void(0)"></a></span>
-                    <span><i class="fa fa-clock-o"></i>  @if(!empty($blogdetails?->created_at))
-    {{ $blogdetails->created_at->format('d M Y') }}
-@endif</span>
+                 <div class="share-author">                
+                    <span>Last updated on   @if(!empty($blogdetails?->created_at))
+                        {{ $blogdetails->created_at->format('d M Y') }}
+                    @endif</span>
               
 
                    <div class="comment-box">
@@ -303,6 +301,81 @@
                          
                      </div>
                      </div>
+                  @endif
+<style>
+  .author-details {
+  
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 2px 0;
+}
+.author-details>.author-avatar {
+    width: 50px;
+    display: inline-block;
+    height: 50px;
+    border: 1px solid #dee2e6 !important;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.author-details>.name-and-date {
+    margin-left: 1rem;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    width: 86%;
+}
+
+.name-and-date .author-name {
+    display: flex;
+    color: #000;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.author-name>a {
+    display: flex;
+    font-weight: 600;
+    color: #000;
+    line-height: 1.2;
+}
+
+.pi-blog-heading span {
+    font-size: 13px;
+}
+
+.author-bio {
+    color: #000;
+    font-size: 12px;
+    display: block;
+}
+</style>
+                  <div class="author-details">
+                     <?php 
+                    $imageAuthor="client/images/user.png";
+                    if(!empty($blogdetails->author_image)){
+                     
+                    $image_author = json_decode($blogdetails->author_image);
+           
+                    $imageAuthor = $image_author->src;
+
+                    }
+                    ?>
+                    <img loading="lazy" src="<?php echo (isset($imageAuthor)?url($imageAuthor):"");  ?>"  alt="{{ $blogdetails->author_name ?? '' }}" class="avatar avatar-96 photo author-avatar border rounded-circle blur-up lazyloaded" height="96" width="96"/>
+                 
+                    <div class="name-and-date">
+                           <span class="author-name">{{ ucfirst($blogdetails->author_name) }} <a href="{{ $blogdetails->linkedin_url }}" title="author-name" rel="author" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true" style="color:#007bff;margin-left:5px"></i></a>  </span>
+                           <span class="author-bio d-xl-block d-lg-block">{{  $blogdetails->comment }}</span>
+                        </div>
+                     </div>
+
+
+               
+
+
                   </div>
                   <div class="entry-content">
                   @if(!empty($blogdetails->description))
