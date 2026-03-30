@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>@yield('title')</title><meta name="keywords" content="@yield('keyword')"><meta name="description" content="@yield('description')"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="csrf-token" content="{{ csrf_token() }}">  
 @if (Request::is('/'))
-<link rel="canonical" href="{{ url('/') }}/" />
+    <link rel="canonical" href="{{ url('/') }}/" />
 @else
-<link rel="canonical" href="{{ url()->current() }}" />
+    <link rel="canonical" href="{{ url()->current() }}" />
 @endif    
 <link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" /><meta http-equiv="content-language" content="en-IN"><meta name="classification" content="directory portal" /><meta name="distribution" content="local" /><meta content="All" name="WebCrawlers" /><meta content="All, FOLLOW" name="MSNBots" /><meta content="All" name="Googlebot-Image" /><meta content="All, FOLLOW" name="BINGBots" />
 <meta content="All, FOLLOW" name="YAHOOBots" /><meta content="All, FOLLOW" name="GoogleBots" /><meta name="copyright" content="Quick Dials"><meta name="author" content="Quick Dials" /><meta http-equiv="CACHE-CONTROL" content="PUBLIC" /><meta name="publisher" content="Quick Dials" /><meta name="identifier-URL" content="{{url('/')}}"><meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
@@ -12,9 +12,9 @@
  
 <meta name="url" content="{{url('/')}}" /><meta name="DC.title" content="@yield('keyword')" /><meta name="distribution" content="global" /><meta name="geo.region" content="IN-UP" /><meta name="geo.placename" content="Noida" /><meta name="geo.position" content="28.5802;77.3181" /><meta name="ICBM" content="28.5802, 77.3181" /> 
 @if(View::hasSection('meta_robots'))
-@yield('meta_robots')
+    @yield('meta_robots')
 @else
-<meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow">
 @endif
 <meta name="Revisit-after" content="7 Days" /><meta property="og:locale" content="en_IN" /><meta property="og:type" content="website" /><meta property="og:title" content="@yield('title')" /><meta property="og:description" content="@yield('description')" /><meta property="og:url" content="{{ URL::current() }}" /><meta property="og:site_name" content="Quick Dials" /><meta name="application-name" content="Quick Dials" /><meta property="fb:app_id" content="https://www.facebook.com/profile.php?id=61579250014118" /><meta property="og:image" content="{{asset('client/images/favicon.png')}}" /><meta property="og:image:secure_url" content="{{asset('client/images/favicon.png')}}" /><meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="628" /><meta property="og:image:alt" content="Quick Dials" />
@@ -145,7 +145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="{{url('business/dashboard')}}"
                                 aria-expanded="true">
-                                <?php echo ucfirst(auth()->guard('clients')->user()->business_name); ?>
+                                <?php    echo ucfirst(auth()->guard('clients')->user()->business_name); ?>
                                 <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-user">
@@ -229,6 +229,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </header>
     @yield('content')
+   
     <div class="modal fade" id="showKeywordsList" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -423,6 +424,190 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
+    <div class="container">
+
+    <div class="category-section">
+
+    <!-- Tabs -->
+    <div class="tabs">
+        @php
+            $categories = DB::table('parent_category')->get();
+            $i = 0;
+        @endphp
+
+        @foreach($categories as $cat)
+            @php $i++; @endphp
+            <button type="button" 
+                class="tab {{ $i == 1 ? 'active' : '' }}" 
+                data-tab="tab{{ $cat->id }}">
+                {{ $cat->parent_category }}
+            </button>
+        @endforeach
+    </div>
+<div class="tab-contents" id="tabContents"></div>
+<script>
+var categories = @json($categories);
+var keywords = @json(
+    DB::table('keyword')
+        ->where('seo_type', 1)
+        ->get()
+);
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    let container = document.getElementById("tabContents");
+
+    let html = "";
+    let i = 0;
+
+let baseUrl = "{{ url('') }}";
+let city = localStorage.getItem('city') || 'bangalore';
+    categories.forEach(cat => {
+        i++;
+
+        // Filter keywords by category
+        let catKeywords = keywords.filter(k => k.parent_category_id == cat.id);
+
+        html += `
+            <div class="tab-content ${i === 1 ? 'active' : ''}" id="tab${cat.id}">
+                <p>
+        `;
+
+        catKeywords.forEach(keyword => {
+            html += `
+                <a href="${baseUrl}/${city}/${keyword.slug}">
+                    ${keyword.keyword}
+                </a> |
+            `;
+        });
+
+        html += `
+                </p>
+            </div>
+        `;
+    });
+
+    container.innerHTML = html;
+
+});
+</script>
+    <!-- Tab Contents -->
+    
+    <!-- <div class="tab-contents">
+        @php $i = 0; @endphp
+
+        @foreach($categories as $cat)
+            @php
+                $i++;
+
+                $keywords = DB::table('keyword')
+                    ->where('seo_type', 1)
+                    ->where('parent_category_id', $cat->id)
+                    ->get();
+            @endphp
+
+            <div class="tab-content {{ $i == 1 ? 'active' : '' }}" id="tab{{ $cat->id }}">
+                <p>
+                    @foreach($keywords as $keyword)
+                        <a href="{{ url($keyword->slug) }}" class="keystore">
+                            {{ $keyword->keyword }}
+                        </a> |
+                    @endforeach
+                </p>
+            </div>
+        @endforeach
+    </div> -->
+
+    </div>
+
+ <style>
+.category-section {   
+    padding: 20px;
+    font-family: Arial;
+}
+
+.tabs {
+    display: flex;    
+    gap: 10px;
+    margin-bottom: 15px;
+	scroll-behavior: smooth;
+    overflow-x: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.tab {
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    background: #eee;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: #fff;
+    font-weight: bold;
+}
+
+/* Hide all content */
+.tab-content {
+    display: none;
+}
+
+/* Show active content */
+.tab-content.active {
+    display: block;
+}
+
+/* Links */
+.tab-content a {
+    text-decoration: none;
+    color: #555;
+    line-height: 17px;
+    padding: 5px;
+        display: inline-grid;
+}
+
+.tab-content a:hover {
+    color: #000;
+}
+ </style>
+<script>
+ 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const tabs = document.querySelectorAll(".tab");
+    const contents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function () {
+
+            // Remove active from all tabs
+            tabs.forEach(t => t.classList.remove("active"));
+
+            // Hide all content
+            contents.forEach(c => c.classList.remove("active"));
+
+            // Activate current tab
+            this.classList.add("active");
+
+            // Show related content
+            const tabId = this.getAttribute("data-tab");
+            document.getElementById(tabId).classList.add("active");
+
+        });
+    });
+
+});
+ 
+</script>
+
+   </div>
+
+
     <footer class="footer">
         <style>
             .footer {
@@ -562,6 +747,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
     </footer>
+  
+
+
     <footer>
         <section class="links-resp"><div class="container"><div class="copyright-box col-lg-5"><div class="row">
                         <p>Copyrights © 2025. All Rights Reserved.</p></div>

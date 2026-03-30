@@ -873,7 +873,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			// capitalize first letter
 			text = text.charAt(0).toUpperCase() + text.slice(1);			 
 			localStorage.setItem('keyword', text);
-			var city = localStorage.getItem('city');
+			var city = localStorage.getItem('city');		 
 			if (city) {
 				window.location.href = "/" + city + "/" + slug;
 			} else {

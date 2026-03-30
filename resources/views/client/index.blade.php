@@ -158,7 +158,9 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
              </div>
             <span class="title-serv"><a href="{{url('child/interior-designer')}}" > Interior Design</a> </span>
          </div>
-         <div class="img-items">           
+         <div class="img-items">    
+          
+
          <div class="items">
             <a href="{{ url('event-organisers')}}" class="keystore">
             <img loading="lazy" src="{{asset('img/Event-organizers.png')}}" alt="Event-organizers"></a>
