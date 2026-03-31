@@ -757,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			// var searchKW = $(this).find('.home-search').val();
 		 	var searchKW = $(this).find('.home-search option:selected').val();
-
+ 
 
 			localStorage.setItem('keyword', searchKW);
 			localStorage.setItem('city', city);

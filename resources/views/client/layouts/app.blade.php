@@ -84,11 +84,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="head-list"><div class="logo">
         <div title="Quick Dials"><a href="{{url('/')}}">
             <img src="<?php echo asset('client/images/small-logo.png'); ?>" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch <?php echo (Route::getCurrentRoute()->uri() != '/') ? ' fixedform' : ''; ?>"><div class="filterForm">
-                <form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city"><option value="">Search city & pincode</option></select>
+                <form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city" ><option value="">Search city & pincode</option></select>
                                 <div class="search-bar">
                                     <select name="search_kw" class="serviceneed home-search searchInput"
-                                        id="searchInput"><option value="">Search Service</option>
-                                    </select><input type="submit" class="col-md-2 submitbtn" value="GO"></div></div>
+                                        id="searchInput" ><option value="">Search Service</option>                               
+     
+                                    </select>
+                                    
+                                    
+                                    <input type="submit" class="col-md-2 submitbtn" value="GO"></div></div>
                         </form></div></div>
                 <?php 		 
 			if (!Auth::guard('clients')->check()) { ?>
@@ -435,7 +439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Tabs -->
     <div class="tabs">
         @php
-            $categories = DB::table('parent_category')->get();
+            $categories = DB::table('parent_category')->select('id','parent_category')->where('status','1')->get();
             $i = 0;
         @endphp
 
@@ -449,13 +453,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         @endforeach
     </div>
 <div class="tab-contents" id="tabContents"></div>
+ @php
+        $keywords=   DB::table('keyword')->select('slug','keyword','parent_category_id') 
+        ->where('seo_type', '1')
+        ->get()
+        @endphp
 <script>
 var categories = @json($categories);
-var keywords = @json(
-    DB::table('keyword')
-        ->where('seo_type', 1)
-        ->get()
-);
+var keywords = @json($keywords);
 
 </script>
 <script>
@@ -969,30 +974,68 @@ aria-label="Close">Done</button>
 
         let wordIndex = 0;
         let charIndex = 0;
-        let input = document.getElementById("searchInput");
+         let isErasing = false;
+        // let input = document.getElementById("searchInput");
+        const firstOption = document.querySelector("#searchInput option:first-child");
+        console.log(firstOption);
+   function typeEffect() {
+        const currentWord = words[wordIndex];
 
-        function typeEffect() {
-            if (charIndex < words[wordIndex].length) {
-                input.placeholder += words[wordIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(typeEffect, 80);
-            } else {
-                setTimeout(eraseEffect, 1500);
-            }
+        if (!isErasing && charIndex <= currentWord.length) {
+            // ✅ Typing — update first option text
+            firstOption.text = currentWord.substring(0, charIndex);
+            charIndex++;
+            setTimeout(typeEffect, 80);
+
+        } else if (!isErasing && charIndex > currentWord.length) {
+            // ✅ Pause then start erasing
+            isErasing = true;
+            setTimeout(typeEffect, 1500);
+
+        } else if (isErasing && charIndex > 0) {
+            // ✅ Erasing
+            firstOption.text = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(typeEffect, 40);
+
+        } else {
+            // ✅ Move to next word
+            isErasing = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(typeEffect, 400);
         }
+    }
 
-        function eraseEffect() {
-            if (charIndex > 0) {
-                input.placeholder = words[wordIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(eraseEffect, 40);
-            } else {
-                wordIndex = (wordIndex + 1) % words.length;
-                setTimeout(typeEffect, 400);
-            }
+    // ✅ Stop animation when user selects an option
+    document.getElementById("searchInput").addEventListener("change", function () {
+        if (this.value === "") {
+            typeEffect(); // restart if reset to default
         }
+    });
 
-        typeEffect();
+        // function typeEffect() {
+        //     if (charIndex < words[wordIndex].length) {
+
+        //         firstOption.placeholder += words[wordIndex].charAt(charIndex);
+        //         charIndex++;
+        //         setTimeout(typeEffect, 80);
+        //     } else {
+        //         setTimeout(eraseEffect, 1500);
+        //     }
+        // }
+
+        // function eraseEffect() {
+        //     if (charIndex > 0) {
+        //         firstOption.placeholder = words[wordIndex].substring(0, charIndex - 1);
+        //         charIndex--;
+        //         setTimeout(eraseEffect, 40);
+        //     } else {
+        //         wordIndex = (wordIndex + 1) % words.length;
+        //         setTimeout(typeEffect, 400);
+        //     }
+        // }
+
+         typeEffect();
        
     </script>
     <script>
@@ -1301,7 +1344,7 @@ aria-label="Close">Done</button>
                 processResults: function (data) {
                     return {
                         results: $.map(data.keywords, function (obj) {
-                            if (obj.keyword) {
+                            if (obj.keyword) {                              
                                 return {
                                     id: obj.slug,
                                     text: obj.keyword
@@ -1405,7 +1448,11 @@ aria-label="Close">Done</button>
                     success: function (location) {
                                        
                         var city = location.city.toLowerCase();
-                        var option = new Option(city, city, true, true);
+                        searchCity = city
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+                        var option = new Option(searchCity, city, true, true);
                         $citySelect.append(option).trigger('change');
 
 
@@ -1420,7 +1467,11 @@ aria-label="Close">Done</button>
                 dataType: "jsonp",
                 success: function (location) {
                     var city = location.city.toLowerCase();
-                    var option = new Option(city, city, true, true);
+                    searchCity = city
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+                    var option = new Option(searchCity, city, true, true);
                     $citySelect.append(option).trigger('change');
 
                 }
@@ -1432,11 +1483,13 @@ aria-label="Close">Done</button>
             fetch('https://ipapi.co/json/')
                 .then(res => res.json())
                 .then(data => {
-                    if (data.city) {
-
-                         
-                        var city = data.city.toLowerCase()
-                        var option = new Option(city, city, true, true);
+                    if (data.city) {                         
+                        var city = data.city.toLowerCase();
+                        searchCity = city
+                        .split('-')
+                        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                        .join(' ');
+                        var option = new Option(searchCity, city, true, true);
                         $citySelect.append(option).trigger('change');
 
                     }

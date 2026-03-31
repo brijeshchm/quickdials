@@ -207,7 +207,7 @@
 				</select>
 			</div>
 
-
+@if(!empty($keyword) && !empty($keyword->form_type) && $keyword->form_type === 'form_edu')
 			<div class="erbr">
 
 				<select name="experience">
@@ -219,7 +219,7 @@
 					@endfor
 				</select>
 			</div>
-
+@endif
 
 			<div class="btn-center">
 				<button type="button" onclick="prevSideStep()">Back</button>
