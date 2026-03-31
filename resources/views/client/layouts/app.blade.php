@@ -495,30 +495,7 @@ let city = localStorage.getItem('city') || 'bangalore';
 </script>
     <!-- Tab Contents -->
     
-    <!-- <div class="tab-contents">
-        @php $i = 0; @endphp
-
-        @foreach($categories as $cat)
-            @php
-                $i++;
-
-                $keywords = DB::table('keyword')
-                    ->where('seo_type', 1)
-                    ->where('parent_category_id', $cat->id)
-                    ->get();
-            @endphp
-
-            <div class="tab-content {{ $i == 1 ? 'active' : '' }}" id="tab{{ $cat->id }}">
-                <p>
-                    @foreach($keywords as $keyword)
-                        <a href="{{ url($keyword->slug) }}" class="keystore">
-                            {{ $keyword->keyword }}
-                        </a> |
-                    @endforeach
-                </p>
-            </div>
-        @endforeach
-    </div> -->
+     
 
     </div>
 

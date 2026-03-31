@@ -2670,7 +2670,7 @@ span.email-notes {
 	  background-color: #fff !important;
 }
 .official-overly{
-	background: #fff;
+	/*background: #fff;*/
     height: 10%;
     position: absolute;
     width: 100%;
