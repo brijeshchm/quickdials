@@ -80,7 +80,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <div id="spinnerBkgd"></div><div id="spinnerCntr"></div>
  
-<header id="header"><div class="container"><div class="head-list"><div class="logo"><div title="Quick Dials"><a href="{{url('/')}}"><img src="<?php echo asset('client/images/small-logo.png'); ?>" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch <?php echo (Route::getCurrentRoute()->uri() != '/') ? ' fixedform' : ''; ?>"><div class="filterForm"><form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city"><option value="">Search city & pincode</option></select>
+<header id="header"><div class="container">
+    <div class="head-list"><div class="logo">
+        <div title="Quick Dials"><a href="{{url('/')}}">
+            <img src="<?php echo asset('client/images/small-logo.png'); ?>" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch <?php echo (Route::getCurrentRoute()->uri() != '/') ? ' fixedform' : ''; ?>"><div class="filterForm">
+                <form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city"><option value="">Search city & pincode</option></select>
                                 <div class="search-bar">
                                     <select name="search_kw" class="serviceneed home-search searchInput"
                                         id="searchInput"><option value="">Search Service</option>
@@ -1159,6 +1163,7 @@ aria-label="Close">Done</button>
                 data: function (params) {
                    
                     if (params.term) {
+                       
                         return {
                             q: params.term
                         }
@@ -1167,6 +1172,7 @@ aria-label="Close">Done</button>
 
 
                         var city = localStorage.getItem('city');
+                        
                         if (city !== null &&
                             city !== undefined &&
                             city !== '' &&
@@ -1222,9 +1228,9 @@ aria-label="Close">Done</button>
                     return {
                         results: $.map(data.zones, function (obj) {
 
-                            if (obj.zone_id) {
+                            if (obj.zone_id) {                               
                                 return {
-                                    id: obj.city,
+                                    id: obj.city.replace(/[_\s]+/g, '-').toLowerCase(),
                                     text:
                                         (obj.zone ? obj.zone + ', ' : '') +
                                         (obj.city ? obj.city : '') +
@@ -1232,7 +1238,7 @@ aria-label="Close">Done</button>
                                 };
                             } else {
                                 return {
-                                    id: obj.city,
+                                    id: obj.city.replace(/[_\s]+/g, '-').toLowerCase(),
                                     text: obj.zone
                                 };
 
@@ -1263,12 +1269,12 @@ aria-label="Close">Done</button>
                         results: $.map(data.keywords, function (obj) {
                             if (obj.keyword) {
                                 return {
-                                    id: obj.keyword,
+                                    id: obj.slug,
                                     text: obj.keyword
                                 };
                             } else {
                                 return {
-                                    id: obj.keyword,
+                                    id: obj.slug,
                                     text: obj.keyword
                                 };
 
@@ -1297,12 +1303,12 @@ aria-label="Close">Done</button>
                         results: $.map(data.keywords, function (obj) {
                             if (obj.keyword) {
                                 return {
-                                    id: obj.keyword,
+                                    id: obj.slug,
                                     text: obj.keyword
                                 };
                             } else {
                                 return {
-                                    id: obj.keyword,
+                                    id: obj.slug,
                                     text: obj.keyword
                                 };
 
@@ -1357,10 +1363,15 @@ aria-label="Close">Done</button>
         if (keyword !== null &&
             keyword !== undefined &&
             keyword !== '' &&
-            keyword !== 'null') {
-            var option = new Option(keyword, keyword, true, true);
-            $keywordSelect.append(option).trigger('change');
+            keyword !== 'null') {              
 
+            searchKW = keyword
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' '); 
+           
+            var option = new Option(searchKW, keyword, true, true);          
+            $keywordSelect.append(option).trigger('change');
             $serviceSelect.append(option).trigger('change');
 
         }
@@ -1370,7 +1381,12 @@ aria-label="Close">Done</button>
             city !== undefined &&
             city !== '' &&
             city !== 'null') {
-            var option = new Option(city, city, true, true);
+            searchCity = city
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+            var option = new Option(searchCity, city, true, true);
+          
             $citySelect.append(option).trigger('change');
             $('.cityList').val(city);
             $locationSelect.append(option).trigger('change');

@@ -768,7 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			localStorage.setItem('cityData', JSON.stringify(cities));
 
 			if (searchKW) {
-				let keywords = localStorage.getItem('keywordData');
+				let keywords = localStorage.getItem('keywordData'); 
 				keywords = keywords ? JSON.parse(keywords) : [];
 				keywords.push(searchKW);
 				keywords = [...new Set(keywords)];
@@ -792,7 +792,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 			//	var searchKW = $(this).find('.home-search').val();
 			//var city = $(this).find('.city').val();		 
-			searchKW = searchKW.replace(/\s+/g, '-').toLowerCase();			 
+			searchKW = searchKW.replace(/\s+/g, '-').toLowerCase();		
+			 	 
 			if (city) {
 				city = city.replace(/[_\s]+/g, '-').toLowerCase();
 				localStorage.setItem('city', city);
@@ -871,7 +872,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			text = slug.replace(/-/g, ' ');
  
 			// capitalize first letter
-			text = text.charAt(0).toUpperCase() + text.slice(1);			 
+			text = text.charAt(0).toUpperCase() + text.slice(1);		
+			 	 
 			localStorage.setItem('keyword', text);
 			var city = localStorage.getItem('city');		 
 			if (city) {

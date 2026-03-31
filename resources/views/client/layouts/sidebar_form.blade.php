@@ -59,7 +59,7 @@
        
 		  	@if(!empty($zones))
 				@foreach($zones as $zone)
-					<option value="{{ $zone->id}}">{{ $zone->zone }}</option>
+					<option value="{{ $zone->id}}">{{ $zone->zone }} {{$zone->pincode}}</option>
 
 				@endforeach
 				@endif        

@@ -269,14 +269,16 @@ class CitiesController extends Controller
 		if ($request->wantsJson()) {
 
 			if ($request->has('q')) {
-
-
 				$zones = DB::table('zones')
 					->join('citylists', 'citylists.id', '=', 'zones.city_id')
 					->where(function ($query) use ($request) {
 						$q = $request->input('q');
+						$searchKW = implode(' ', array_map(function($word) {
+						return ucfirst($word);
+						}, explode('-', $request->input('q'))));
+
 						$query->where('zones.zone', 'LIKE', "%$q%")
-							->orWhere('citylists.city', 'LIKE', "%$q%")
+							->orWhere('citylists.city','LIKE',"%$searchKW%")
 							->orWhere('zones.pincode', 'LIKE', "%$q%");
 					})
 					->select('zones.id as zone_id', 'zones.zone', 'citylists.city', 'zones.pincode')
@@ -343,7 +345,7 @@ class CitiesController extends Controller
  
 				$keywordData = DB::table('keyword')
 					->where('keyword', 'LIKE', "%{$q}%")
-					->select('keyword as keyword')
+					->select('keyword','slug')
 					->distinct()
 					->limit('40')
 					->get();
@@ -376,7 +378,7 @@ class CitiesController extends Controller
 
 				$keywordData = DB::table('keyword')
 					->whereIn('keyword', $keywordList)
-					->select('keyword as keyword')
+					->select('keyword','slug')
 					->distinct()
 					->limit(20)
 					->get();
@@ -391,7 +393,7 @@ class CitiesController extends Controller
 
 				$clientData = DB::table('clients')
 					->where('business_name', 'LIKE', "%{$q}%")
-					->select('business_name as keyword')
+					->select('business_name as keyword','business_slug as slug')
 					->distinct()
 					->limit(20)
 					->get();
@@ -405,7 +407,7 @@ class CitiesController extends Controller
 			$keywords = $keywords
 				->unique('keyword')    
 				->values();          
-
+ 
 			return response()->json([
 				'status' => true,
 				'keywords' => $keywords

@@ -173,8 +173,8 @@ class SearchListController extends Controller
 					->get();
 
 			}
-			$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city', 'LIKE', $city)->select('zones.id', 'zones.zone', 'zones.pincode')->distinct()->orderBy('zones.zone', 'asc')->get();
-
+			$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city',$city)->select('zones.id', 'zones.zone', 'zones.pincode')->distinct()->orderBy('zones.zone', 'asc')->get();
+ 
 			$firstZone = $zones->get(2);
 			$area = $city;
 			if ($firstZone) {
@@ -237,7 +237,7 @@ class SearchListController extends Controller
 					->groupBy('assigned_kwds.city_id')
 					->get();
 
-				$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city', 'LIKE', $city)->select('zones.id', 'zones.zone')->distinct()->get();
+				$zones = DB::table('citylists')->join('zones', 'zones.city_id', '=', 'citylists.id')->where('citylists.city', $city)->select('zones.id', 'zones.zone')->distinct()->get();
 				return view('client.client-detail', ['client' => $client, 'cities' => $cities, 'comments' => $comments, 'count' => $count, 'sum' => $sum, 'avgRating' => number_format($avgRating, 1, '.', ''), 'graphQuery' => $graphQuery, 'barGraphQuery' => $barGraphQuery, 'assignedKwds' => $assignedKwds, 'clientLists' => $clientLists, 'clients' => $client, 'assignedCity' => $assignedCity, 'zones' => $zones]);
 
 			} else {
