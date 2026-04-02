@@ -123,7 +123,7 @@ echo trim($msg); } ?>
 							echo number_format((float) $keyword->ratingvalue, 1, '.', '');
 						} else {
 							echo "1.0";
-						} ?></span>out of <span itemprop="bestRating"></span>based on <span itemprop="ratingCount">{{$keyword->ratingcount }}</span> ratings
+						} ?></span> out of <span itemprop="bestRating"></span>based on <span itemprop="ratingCount">{{$keyword->ratingcount }}</span> ratings
 									</div>
 								</div>
 					@endif

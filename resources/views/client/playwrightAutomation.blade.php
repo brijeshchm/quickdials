@@ -87,8 +87,8 @@ echo trim($msg); } ?>
 										?>
 								<div itemscope itemtype="https://schema.org/Product" style="font-size: 12px;font-weight: 500;">
 									<div class="text-primary" itemprop="name">
-										<h1 title="<?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->keyword);
-							echo trim($key); } ?> "><?php  if (!empty($keyword->keyword)) { $key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->keyword);
+										<h1 title="<?php  if (!empty($keyword->h1)) { $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->h1);
+							echo trim($key); } ?> "><?php  if (!empty($keyword->h1)) { $key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->h1);
 							echo trim($key); } ?></h1>
 									</div>
 									<div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
@@ -98,12 +98,11 @@ echo trim($msg); } ?>
 							echo number_format((float) $keyword->ratingvalue, 1, '.', '');
 						} else {
 							echo "1.0";
-						} ?></span>out of <span itemprop="bestRating"></span>based on <span itemprop="ratingCount">{{$keyword->ratingcount }}</span> ratings
+						} ?></span> out of <span itemprop="bestRating"></span>based on <span itemprop="ratingCount">{{$keyword->ratingcount }}</span> ratings
 									</div>
 								</div>
 					@endif
-					<div class="keyword-cotegory-text">
-					 
+					<div class="keyword-cotegory-text">				 
 
 					<script type="application/ld+json">
 					{
@@ -166,12 +165,10 @@ echo trim($msg); } ?>
 
 			@if(isset($keyword) && null != $keyword->top_description)
 				<div class="col-xs-12 top_description" style="margin-top:20px;color:#033967">
-					<h2>Trusted <?php  if (!empty($keyword->keyword)) { $key = $keyword->keyword; echo trim($key); } ?> in <?php echo ucwords(str_replace("-", " ", Request::segment(1))); ?></h2>
+				 
 					<p title="<?php if (!empty($keyword->keyword)) { echo $keyword->keyword; } ?> "><?php  if (!empty($keyword->top_description)) {
 					$keydescription = $keyword->top_description; echo trim($keydescription); } ?>
-					Top {{ $keyword->keyword }} with verified businesses  
-					In noida, you can find {{ rand(00,10) }} providers offering services.
-					and We provide best services in your . Contact us now. <a href="tel:917559435943">+91-75-5943-5943</a>
+					 
 				</p>					 
 				</div>
 			@endif
@@ -413,6 +410,7 @@ echo trim($msg); } ?>
 													@endif
 												</ul>
 											</ul>
+											<p>The goal is simple: Make you job-ready, not just course-complete.</p>
 										</div>
 									</div>
 								</div>
@@ -451,21 +449,78 @@ echo trim($msg); } ?>
 
 	<div class="clearfix"></div>
 	<br>
-	@if(!empty($keyword->bottom_description))
+
+	 
 		<div class="container">
 			<div class="category-description">
-				<?php  if (!empty($keyword->bottom_description)) {
-					$keydescription = $keyword->bottom_description;
-					echo $keydescription;
-				}
-						  ?>
-<p>
-Discover trusted {{ $keyword->keyword }} services in noida with verified professionals and top-rated providers. 
-In noida, you can explore multiple service options tailored to your needs, ensuring quality and reliability. 
-Our platform connects you with experienced providers who offer competitive pricing and quick response. 
-Get the best service experience in noida today. 
-Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
-</p>
+				<h2>Why Choose the Playwright Automation Course?</h2>
+			 <div class="card-body">
+			<ul>
+
+		 
+						<li style="font-size: 13px;">
+							 
+A practical starting point for automation testing
+						</li>
+
+						<li>
+									
+										Clear understanding of real-world workflows 
+
+								
+								</li>
+
+			 
+								<li>
+									
+										Hands-on experience with scripting and execution
+
+									
+								</li>
+		 
+								<li>
+									
+									Strong foundation in modern automation tools
+
+								
+								</li>
+		 
+								<li>
+									
+										Better chances of landing roles in automation testing
+									
+								</li>
+		 
+			<ul>
+			 <h3>What You Get</h3>
+								<li>
+									Interactive live sessions
+								</li>
+
+			 
+								<li>
+								Recorded sessions for revision
+								</li>
+		 
+								<li>
+									Hands-on practice with real scenarios
+								</li>
+		 
+								<li>
+									Interview preparation support
+								</li>
+								<li>
+									Project guidance
+								</li>
+			  
+			 
+			 
+			</ul>
+ 
+										</div>
+
+
+ 
 
 
 
@@ -476,7 +531,324 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 
 
 		</div>
-	@endif
+	 
+		<div class="container">
+			<div class="category-description">
+				<h2>What Will You Learn in Playwright Automation Classes in Noida?</h2>
+			 <div class="card-body">
+			<ul>
+<p>In this course, you’ll focus on actual implementation, not just theory.</p>
+		 <strong>You will learn:</strong>
+						<li style="font-size: 13px;">
+							 How to write and execute automation scripts using Playwright
+						</li>
+
+						<li>
+									
+							How to handle dynamic elements, waits, and test failures 
+
+								
+								</li>
+
+			 
+								<li>
+									
+								How real-world test cases are designed and executed
+
+									
+								</li>
+		 
+								<li>
+									
+								How to debug automation scripts logically
+
+								
+								</li>
+		 
+								<li>
+									
+								How to build structured and maintainable automation frameworks
+									
+								</li>
+		 
+			<ul>
+			 <p>This Playwright Automation Course in Noida ensures that by the end, you can confidently handle real testing tasks in a job environment.</p>
+			 <h3>Playwright Automation Course Overview</h3>
+								<li>
+									<strong>Level: </strong>Beginner to Intermediate
+								</li>
+
+			 
+								<li>
+								<strong>Duration: </strong>4–8 weeks (depending on batch)
+								</li>
+		 
+								<li>
+									<strong>Session Type: </strong>Practical + Instructor-led
+								</li>
+		 
+								<li>
+									<strong>Mode: </strong>Online / Offline
+								</li>
+								<li>
+									<strong>Focus: </strong>Real-time automation testing using Playwright
+								</li>
+			  
+			 
+			 
+			</ul>
+ 
+										</div>
+
+
+ 
+
+
+
+
+
+
+			</div>
+
+
+		</div>
+	 
+		<div class="container">
+			<div class="category-description">
+				<h2>Why Most Playwright Automation Courses Don’t Work?</h2>
+			 <div class="card-body">
+			<ul>
+<p>Most<b> Playwright Automation Courses in Noida</b> follow a checklist approach.</p>
+		 
+						<li style="font-size: 13px;">
+							Topics covered
+						</li>
+
+						<li>
+									
+							Notes shared
+								
+								</li>
+
+			 
+								<li>
+									
+								Certificate provided
+									
+								</li>
+		 
+								 
+		 
+			<ul>
+			 <p>But when it comes to real work—handling dynamic elements, fixing broken scripts, managing failures, learners struggle.</p>
+			 <h3>What’s Different Here?</h3>
+								<li>
+								You practice in real-time
+								</li>
+
+			 
+								<li>
+								You understand why something works
+								</li>
+		 
+								<li>
+									You learn where to use it
+								</li>
+		 
+								<li>
+									You handle situations when scripts break
+								</li>
+								 
+			  
+			 
+			 
+			</ul>
+ <p>Because in real projects, things always break</p>
+										</div>
+
+
+ 
+
+
+
+
+
+
+			</div>
+
+
+		</div>
+	 
+		<div class="container">
+			<div class="category-description">
+				<h2>What You Will Actually Be Able to Do</h2>
+			 <div class="card-body">
+			<ul>
+<p>After completing the <strong> Playwright Automation Classes in Noida</strong>, you will be able to.</p>
+		 
+						<li style="font-size: 13px;">
+							Write automation scripts from scratch
+						</li>
+
+						<li>
+									
+						Handle complex scenarios like dynamic elements and flaky tests
+								
+								</li>
+
+			 
+								<li>
+									
+								Execute and manage real-world test cases
+									
+								</li>
+								<li>
+									
+								Debug failures with clarity
+									
+								</li>
+								<li>
+									
+								Design clean and structured automation code
+									
+								</li>
+								<li>
+									
+								Build a complete project for interviews
+									
+								</li>
+		 
+								 
+		 
+			<ul>
+				 <h3>Who Can Enroll? (Eligibility Criteria)</h3>
+			 <p>This Playwright Training Institute in Noida is suitable for.</p>
+			
+								<li>
+								Beginners starting a career in software testing
+								</li>
+
+			 
+								<li>
+								Manual testers moving into automation
+								</li>
+		 
+								<li>
+								Working professionals upgrading their skills
+								</li>
+		 
+								<li>
+								Graduates (technical or non-technical) with an interest in testing
+								</li>
+								<li>
+								Anyone with basic computer knowledge
+								</li>
+								 
+			  <p>You don’t need coding experience to start. Basic programming understanding is helpful but not mandatory</p>
+			 
+			 
+			</ul>
+ 
+										</div>
+
+
+ 
+
+
+
+
+
+
+			</div>
+
+
+		</div>
+	 
+		<div class="container">
+			<div class="category-description">
+				<h2>Why Learners Prefer This Playwright Training Institute in Noida?</h2>
+			 <div class="card-body">
+			<ul>
+<p>There are many options, but learners stay here for one reason: clarity</p>
+		 
+						<li style="font-size: 13px;">
+							Focus on real skills, not just certificates
+						</li>
+
+						<li>
+									
+					Practical learning, not scripted teaching		
+								</li>
+
+			 
+								<li>
+									
+							Sessions based on real industry experience
+									
+								</li>
+								<li>
+									
+							Flexible learning pace
+									
+								</li>
+								 
+		 
+								 
+		 
+			<ul>
+				 <h3>Course Availability</h3>
+			 <p>You can enroll in:</p>
+			
+								<li>
+								Playwright Automation Training in Noida
+								</li>
+
+			 
+								<li>
+								Playwright Automation Classes in Noida
+								</li>
+		 
+								<li>
+								Playwright Training Institute in Noida
+								</li>
+		 
+								 
+								 
+			  <p>Also available for learners in the <strong>Delhi and Gurgaon region</strong></p>
+			 
+			 <p>Modes available:</p>
+			 <ul>
+				<li>Online</li>
+				<li>Offline</li>
+							</ul>
+
+							
+			 <h3>Still Thinking? Start with a Demo</h3>
+			 <p>Before enrolling, you can:</p>
+			 <ul>
+				<li>Attend a demo session</li>
+				<li>Talk to a mentor</li>
+				<li>Understand how the training works</li>
+							</ul>
+
+
+			</ul>
+ 
+										</div>
+
+
+ 
+
+
+
+
+
+
+			</div>
+
+
+		</div>
+	  
 	 
 	@if(!empty($keyword->faqq1))
 		<div class="container">
