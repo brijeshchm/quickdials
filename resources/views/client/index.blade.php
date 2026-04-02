@@ -394,7 +394,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
          <div class="col-md-2">
             <div class="popular-div">
-               <figure><a href="car-service" title="Car Services" class="keystore" tabindex="0">
+               <figure><a href="{{ url('car-service')}}" title="Car Services" class="keystore" tabindex="0">
                   <img loading="lazy" class="" src="popular/car-services.jpg"  alt="car-services" ></a>
                </figure>
                <div class="grid-info ">
