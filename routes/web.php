@@ -283,6 +283,34 @@ Route::get('/sitemap.xml', function () {
 
 });
 
+Route::get('/sitemap', function () {
+
+	$keywords = Cache::remember('sitemap', 3600, function () {
+		return DB::table('keyword')
+			->where('seo_type', '1')
+			->select('slug', 'updated_at')
+			->get();
+	});
+
+	$categories = Cache::remember('categories', 3600, function () {
+		return DB::table('parent_category')
+			->where('status', '1')
+			->select('parent_slug', 'updated_at')
+			->get();
+	});
+	$childCategories = Cache::remember('child_category', 3600, function () {
+		return DB::table('child_category')
+			->where('status', '1')
+			->select('child_slug', 'updated_at')
+			->get();
+	});
+
+	return response()
+		->view('client.sitemap', compact('keywords','categories','childCategories'))
+		->header('Content-Type', 'text/xml');
+
+});
+
 Route::get('/sitemap-online.xml', function () {
 
 	$keywords = Cache::remember('sitemap_online', 3600, function () {
@@ -341,6 +369,10 @@ Route::get('/sitemap-keyword.xml', function () {
 });
 
 Route::get('/quickdialssitemap.xml', function () {
+	return response()->view('client.quickdialssitemap')->header('Content-Type', 'text/xml');
+});
+
+Route::get('/quickdialssitemap', function () {
 	return response()->view('client.quickdialssitemap')->header('Content-Type', 'text/xml');
 });
 
