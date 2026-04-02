@@ -36,8 +36,6 @@ echo trim($msg); } ?>
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 third-add-section">
 
-				 
-
 				<img loading="lazy" src="<?php echo asset('client/images/computer-courses-training.jpg'); ?>"
 					alt="computer-courses-training">
 				 
