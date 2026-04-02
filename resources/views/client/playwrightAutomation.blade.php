@@ -547,24 +547,7 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 					<?php } ?>
 				</div></div></div>
 	@endif
-	@if(!empty($keyword))
-		<div class="container">
-			<div class="category-box">
-				<div class="course-program">
-					<h5>Find <?php if (!empty($keyword->keyword)) {
-					echo $keyword->keyword;
-				} ?> other Location</h5>
-					<ul class=""><?php $cities = getCity(); ?>
-						@if(!empty($cities))
-							<?php $i = 0; $x = 5; ?>
-								@foreach($cities as $citys) <li><a href="{{url(generate_slug(strtolower($citys->city)))}}/<?php if (!empty($keyword->slug)) { echo $keyword->slug; } ?>" >@if(!empty($keyword->keyword)){!!$keyword->keyword!!}@endif in {{$citys->city}} |</a></li>
-								@endforeach
-						@endif
-					</ul>
-				</div>
-			</div>
-		</div>
-	@endif
+	 
 	<div class="clearfix"></div>
 	<br>
 	<?php } ?>
