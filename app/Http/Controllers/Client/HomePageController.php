@@ -1128,8 +1128,8 @@ class HomePageController extends Controller
 	public function playwrightAutomation(Request $request)
 	{
 		$keyword = array(
-			'ratingvalue'=>4.75,
-			'ratingcount'=>31,
+			'ratingvalue'=>'4.75',
+			'ratingcount'=>'314',
 			'slug'=>"playwright-automation-training-in-noida",
 			'meta_title'=>"Top Playwright Automation Training Institute in Noida",
 			'keyword'=>"playwright automation",
