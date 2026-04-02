@@ -671,7 +671,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <li><a href="{{url('/privacy-policy')}}" title="Privacy Policy">Privacy Policy</a></li>
                             <li><a href="{{url('terms-conditions')}}" title="Terms & Conditions">Terms & Conditions</a></li>
                             <li><a href="{{url('/copyright-policy')}}" title="Copyright Policy">Copyright Policy</a>
-                            <li><a href="{{url('/courses/playwright-automation-training-in-noida')}}" title="Playwright Automation training in Noida">Playwright Automation training in Noida</a>
+                            <li><a href="{{url('/courses/playwright-automation-training-in-noida')}}" title="Playwright Automation Training in Noida">Playwright Automation Training in Noida</a>
                             </li>
                         </ul>
                     </div>
