@@ -360,7 +360,7 @@ Route::post('/apiddd/lead/add', [App\Http\Controllers\Client\HomePageController:
 // Route::get('/coaching/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'it_training']);
 // Route::get('/coaching/iit-entrance-exam',[App\Http\Controllers\Client\LandingPageController::class, 'iit_entrance_exam']);
 Route::get('/coaching/entrance-exam-coaching', [App\Http\Controllers\Client\LandingPageController::class, 'entrance_exam_coaching']);
-// Route::get('/coaching/thank',[App\Http\Controllers\Client\LandingPageController::class, 'thankyou']);
+ // Route::get('/coaching/thank',[App\Http\Controllers\Client\LandingPageController::class, 'thankyou']);
 
 Route::get('/ads/entrance-exam-coaching', [App\Http\Controllers\Client\LandingPageController::class, 'entranceexamcoaching']);
 // Route::get('/ads/distance-education',[App\Http\Controllers\Client\LandingPageController::class, 'distanceeducation']);
@@ -407,6 +407,7 @@ Route::get('/disclaimer', function () {
 
 
 Route::post('/kw/search', [App\Http\Controllers\Client\HomePageController::class, 'searchKW']);
+Route::get('/courses/playwright-automation-training-in-noida', [App\Http\Controllers\Client\HomePageController::class, 'playwrightAutomation']);
 
 
 Route::get('/wedding-pannel', [App\Http\Controllers\Client\HomePageController::class, 'weddingPannel']);

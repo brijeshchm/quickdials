@@ -1118,6 +1118,54 @@ class HomePageController extends Controller
 		return response()->json(['status' => 1, 'message' => $html]);
 	}
 
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+
+	public function playwrightAutomation(Request $request)
+	{
+		$keyword = array(
+			'ratingvalue'=>5.75,
+			'ratingcount'=>31,
+			'slug'=>'playwright-automation-training-in-noida',
+			'meta_title'=>'Playwright Automation Training in Noida | Best Course & Certification',
+			'keyword'=>"playwright automation",
+			'meta_keywords'=>"playwright automation",
+			'meta_description'=>"Join Playwright Automation Training in Noida and learn end-to-end testing using Playwright, JavaScript, and CI/CD tools. Get hands-on projects, expert guidance, and job assistance.",
+			'h1'=>"Playwright Automation Training in Noida",
+			'top_description'=>"Playwright Automation Training in Noida",
+			'bottom_description'=>"Playwright Automation Training in Noida",
+			'description'=>"Our Playwright Automation Training in Noida is designed for beginners and professionals who want to build a strong career in software testing. Learn how to automate web applications using Playwright with real-time projects, modern frameworks, and industry best practices. This course covers JavaScript fundamentals, cross-browser testing, CI/CD integration, and interview preparation with placement support.",
+			'heading'=>".",
+			'courseabout'=>".",
+			'paragraph1'=>".",
+			'paragraph2'=>".",
+			'paragraph3'=>".",
+			'paragraph4'=>".",
+			'paragraph5'=>".",
+			'paragraph6'=>".",
+			'form_type'=>"form_edu",
+			'faqq1'=>".",
+			'faqa1'=>".",
+			'faqq2'=>".",
+			'faqa2'=>".",
+			'faqq3'=>".",
+			'faqa3'=>".",
+			'faqq4'=>".",
+			'faqa4'=>".",
+			'faqq5'=>".",
+			'faqa5'=>".",
+			'faqq6'=>".",
+			'faqa6'=>".",
+		);
+		$city= "noida";
+		$area= "Sector 62, noida";
+		return view('client.playwrightAutomation',['keyword'=>(object)$keyword,'city'=>$city,'area'=>$area]);
+	}
+
 
 	/**
 	 * Get matches trainers based on ajax.

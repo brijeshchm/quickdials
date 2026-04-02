@@ -41,7 +41,7 @@
 									</button>
           
                 <a class="navbar-brand page-scroll sticky-logo" href="javascript:void(0)">
-                  <h1><span>Quick</span>India</h1>
+                  <h1><span>Quick</span>Dials</h1>
 				  <sub>Your Carrer path begains here</sub>
                   
 								</a>
