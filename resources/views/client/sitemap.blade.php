@@ -59,6 +59,11 @@
 <loc>https://www.quickdials.com/business-owners</loc>
 <lastmod>2026-03-09T10:30:00+00:00</lastmod>
 <priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.quickdials.com/courses/playwright-automation-training-in-noida</loc>
+<lastmod>2026-04-03T10:30:00+00:00</lastmod>
+<priority>0.80</priority>
 </url> 
 @foreach ($categories as $category)
 <url>     
