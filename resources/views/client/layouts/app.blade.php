@@ -196,18 +196,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         <span>Manage Enquiry</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="">
-                                        <i class="bi bi-briefcase-fill"></i>
-                                        <span>Occupation</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="">
-                                        <i class="bi bi-shop"></i>
-                                        <span>My Business</span>
-                                    </a>
-                                </li>
+                                
+                               
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center"
                                         href="{{url('business/keywords')}}">
@@ -494,7 +484,7 @@ let city = localStorage.getItem('city') || 'bangalore';
 
         catKeywords.forEach(keyword => {
             html += `
-                <a href="${baseUrl}/${city}/${keyword.slug}">
+                <a href="${baseUrl}/${keyword.slug}">
                     ${keyword.keyword}
                 </a> |
             `;
@@ -715,6 +705,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             <li><a href="{{ url('child/loan-service') }}">Loan</a></li>
                             <li><a href="{{ url('income-tax-consultants')}}" class="keystore">Tax Consultants</a></li>
                             <li><a href="{{ url('interviews') }}">Interviews Question</a></li>
+                            <li><a href="{{ url('sitemap.xml') }}">Sitemap</a></li>
+ 
                         </ul>
                     </div>
 
@@ -1511,45 +1503,7 @@ aria-label="Close">Done</button>
     </script>
 
     
-
- <script>
  
-// $(document).ready(function () {
-
-//     let keywords = localStorage.getItem('keywordData');
-
-//     if (keywords) {
-//         let keywordArray = JSON.parse(keywords);
-
-//         let html = '<h3>Recent Search</h3><div class="cache-itemslist">';
-
-//         // Sirf first 8 items
-//         let limitedKeywords = keywordArray.slice(0, 9);
-
-//         $.each(limitedKeywords, function (index, value) {
- 
-
-//  	searchKW = value.replace(/\s+/g, '-').toLowerCase();	
-//             html += `
-//             <div class="text-items">             
-//                 <div class="cache-items">
-//                     <a href="${(searchKW)}" class="keystore">
-//                           ${value}
-//                     </a>
-//                 </div>
-                 
-//             </div>
-//             `;
-//         });
-
-//         html +='</div>';
-
-//         $('#recentSearchContainer').html(html);
-//     }
-
-// });
-</script>
-
 
     <div id="locationPopup" style="display:none;" class="location-popup">
         <h4>Location Access Required</h4>

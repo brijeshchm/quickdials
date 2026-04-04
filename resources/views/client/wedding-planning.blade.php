@@ -916,7 +916,7 @@ document.querySelectorAll(".hidden").forEach((el) => observer.observe(el));
         <a href="javascript:void(0);" class="dealclosebtn">&nbsp;</a> 
     <div class="bestDealpopup "> 
 		<?php 	
-
+        
 $value = Cookie::get('showPopup');	 
 	//	if(Auth::guard('clients')->check() || ($value =="yes"))
 			?>

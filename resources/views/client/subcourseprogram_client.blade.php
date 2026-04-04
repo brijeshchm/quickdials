@@ -78,7 +78,7 @@ Quick Dials- {!!$child_id->parent_category !!} Training in {{Request::segment(1)
 	
     <div class="container">
         <div class="clearfix"></div>
-        <h2 class="title">Service <span>  <a href="{{url(strtolower(str_replace(' ','-',$city)).'/categories/'.$part_id->parent_slug.'/'.$child_id->child_slug)}}">{{$child_id->child_category}}</a></span> </h2>
+        <h2 class="title">Service <span>  <a href="{{url('/categories/'.$part_id->parent_slug)}}">{{$child_id->child_category}}</a></span> </h2>
        <br>
 	   <div class="category-box">
 	   <div class="course-program">

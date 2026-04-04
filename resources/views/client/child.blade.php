@@ -125,7 +125,7 @@ echo trim($descrip); } ?>
 				</div>
 				<div class="keyword-cotegory-text">	 			
 		
-			 <a href="{{url('child/')}}/<?php if(!empty($keyword->child_slug)) { echo $keyword->child_slug; } ?>" >Categories / <?php if(!empty($keyword->child_category)) { echo $keyword->child_category; } ?></a> 
+			 <a href="{{url('child')}}/<?php if(!empty($keyword->child_slug)) { echo $keyword->child_slug; } ?>" >Categories / <?php if(!empty($keyword->child_category)) { echo $keyword->child_category; } ?></a> 
 
 			 </div>
 					 

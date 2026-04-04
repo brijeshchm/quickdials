@@ -1014,9 +1014,7 @@ echo trim($msg); } ?>
 								<?php
 						}
 												?>
-
-
-								<div class="serchlist-txt">
+					<div class="serchlist-txt">
 								<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">	
 							 
 									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
@@ -1061,9 +1059,7 @@ echo trim($msg); } ?>
 						foreach ($assignedKwds as $assignedKwd) {										 
 																		 ?>
 
-												<li>
-													<a href="{{url(Request::segment(1))}}/<?php echo $assignedKwd->slug; ?>"
-														><?php echo $assignedKwd->keyword; ?></a>
+												<li><a href="{{url($assignedKwd->slug)}}" class="keystore" ><?php echo $assignedKwd->keyword; ?></a>
 												</li>
 
 
@@ -1197,8 +1193,7 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 
 										<?php  }
 										} ?>
-										<a href="{{url(generate_slug(strtolower($city)))}}/<?php echo $keyicon->slug; ?>"
-											 >{{$keyicon->keyword}}
+										<a href="{{url($keyicon->slug)}}" class="keystore" >{{$keyicon->keyword}}
 											| </a>
 									</li>
 								@endforeach

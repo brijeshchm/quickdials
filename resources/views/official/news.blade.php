@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline services-head text-center">
-            <h2>News <span>Quick</span> India</h2>
+            <h2>News <span>Quick</span> Dials</h2>
           </div>
         </div>
       </div>
@@ -47,8 +47,8 @@
 					<ul class="about-text">
 					<li> <i class="fa fa-check"></i> A web-based application to give you full-proof transparency and effectiveness
 					</li>
-<li> <i class="fa fa-check"></i><a href="">Enabling the user to track their activities.</a> </li>
-<li> <i class="fa fa-check"></i><a href="">Offering an user-friendly dashboard </a></li>
+<li> <i class="fa fa-check"></i>Enabling the user to track their activities.</li>
+<li> <i class="fa fa-check"></i>Offering an user-friendly dashboard</li>
 <li> <i class="fa fa-check"></i>	Enabling the institute to create its own users as per its requirement.</li>
 <li> <i class="fa fa-check"></i>OTP based security to protect the data.</li>
 <li> <i class="fa fa-check"></i>Automation of capturing your leads i.e. pre-admission leads</li>

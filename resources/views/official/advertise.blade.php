@@ -30,9 +30,9 @@ Quick Dials- Local search, IT Training, Playschool, overseas education
 				<p>In neque lectus, lobortis a varius a, hendrerit eget dolor. Fusce scelerisque, sem ut viverra sollicitudin, est turpis blandit lacus,
 				in pretium lectus sapien at est. 
 				Integer pretium ipsum sit amet dui feugiat vitae dapibus odio eleifend.</p>
-				<a href="#">
+				 
                 <h4 class="sec-head">project Maintenance</h4>
-              </a>
+              
               <p>
                 Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
               </p>

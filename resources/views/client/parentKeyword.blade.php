@@ -66,7 +66,7 @@ if(!empty($city)){ ?>
         <div class="form-section">
             <div class="removeLeftSpace">
                 <h1 class="hdTitle">				 
-					<a href="{{url('')}}/<?php if(!empty($city)) { echo $city; } ?>" title="<?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?>">
+					<a href="{{url(generate_slug(strtolower($city)))}}" title="<?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?>">
 					    <?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?></a> 
 
 				@if(!empty($city))
@@ -805,7 +805,7 @@ echo trim($paragraph6); ?>
 	   	<ul class="">
 		@if(!empty($cities))
 			@foreach($cities as $citys)
-	   <li class="col-sm-3 col-md-3"><a href="{{url(generate_slug(strtolower($citys->city)))}}/<?php if(!empty($city)) { echo $city; } ?>"  title="<?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?> in {{$citys->city}}">@if(!empty($city)){!!ucwords(str_replace("-"," ",$city))!!}@endif in {{$citys->city}}</a></li>
+	   <li class="col-sm-3 col-md-3"><a href="{{url(generate_slug(strtolower($citys->city)))}}"  title="<?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?> in {{$citys->city}}">@if(!empty($city)){!!ucwords(str_replace("-"," ",$city))!!}@endif in {{$citys->city}}</a></li>
 	   @endforeach
 	   @endif
 	    
@@ -830,7 +830,7 @@ echo trim($paragraph6); ?>
 	   	<ul class="">
 		@if(!empty($keywordlist))
 			@foreach($keywordlist as $keywords)
-	   <li class="col-sm-3 col-md-3"><a href="{{url('/')}}/<?php echo $keywords->child_slug; ?>" >{{$keywords->child_category}}</a></li>
+	   <li class="col-sm-3 col-md-3"><a href="{{url($keywords->child_slug)}}" >{{$keywords->child_category}}</a></li>
 	   
 	   @endforeach
 	   @endif
@@ -918,7 +918,7 @@ echo trim($paragraph6); ?>
 			 
 				<figure><img loading="lazy" class="" src="<?php echo url($image); ?>"  alt="{{ $client->business_name}}" style="width:100%;"></figure>
 				<div class="grid-info">
-					<h3><a href="{{url(path: 'business-details').'/'.$client->business_slug }}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
+					<h3><a href="{{url('business-details').'/'.$client->business_slug }}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
 				
 					<strong>{{ucfirst($client->city)}}</strong>
 					<a href="{{url('business-details').'/'.$client->business_slug }}" class="get-quotes" tabindex="0">View</a>
