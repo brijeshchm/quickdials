@@ -1318,13 +1318,13 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
                   @foreach($blogdetails as $blog)
                   <?php
                      if($blog->image!=''){
-                     $image = unserialize($blog->image);
-                     $image = $image['large']['src'];
+                     $imageBlog = unserialize($blog->image);
+                     $imageImg = $imageBlog['large']['src'];
                      }	 
                      ?>
                   <div class="col-md-4">
                      <div class="reviews-left" >
-                        <h4> <a href="{{url('blog/'.$blog->slug)}}"><img loading="lazy" src="<?php echo (isset($image)?asset($image):"");  ?>" width="100%" height="150px" title="{{$blog->name}}" alt="{{$blog->name}}"></a></h4>
+                        <h4> <a href="{{url('blog/'.$blog->slug)}}"><img loading="lazy" src="<?php echo (isset($imageImg)?asset($imageImg):"");  ?>" width="100%" height="150px" title="{{$blog->name}}" alt="{{$blog->name}}"></a></h4>
                         <h3> <a href="{{url('blog/'.$blog->slug)}}">{{$blog->title}}</a></h3>
                         <p style="text-align: justify;font-weight: 500;padding: 0px 15px;"><?php echo ucfirst(substr($blog->description,0,220));?>.<a href="{{url('blog/'.$blog->slug)}}">View More...</a></p>
                      </div>
