@@ -267,7 +267,7 @@
 							<button type="submit">Submit</button>
 
 					<div class="loaderForm" style="display:none;">
-					<img src="/public/client/images/btn-ajax-loader.gif" width="20">
+					<img src="/public/client/images/btn-ajax-loader.gif" width="20" alt="Loader">
 					Processing...
 					</div>
 						</div>
