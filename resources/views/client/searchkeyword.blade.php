@@ -204,13 +204,13 @@ echo trim($descrip);
 								@if($client->certified_status)
 									<div class="client-trusted">
 										@if($client->certified_status)
-											<img loading="lazy" src="{{ asset('img/q_verified.gif')}}">
+											<img loading="lazy" src="{{ asset('img/q_verified.gif')}}" alt="certified_status">
 										@endif
 										@if($client->trusted_status)
-											<img loading="lazy" src="{{ asset('img/q_trust.gif')}}">
+											<img loading="lazy" src="{{ asset('img/q_trust.gif')}}" alt="trusted_status">
 										@endif
 										@if($client->gst_status)
-											<img loading="lazy" src="{{ asset('img/q_gst.gif')}}">
+											<img loading="lazy" src="{{ asset('img/q_gst.gif')}}" alt="gst_status">
 										@endif
 									</div>
 								@endif

@@ -227,13 +227,13 @@ echo trim($msg); } ?>
 							<div class="col-sm-6 col-md-6 aboutcomp">
 								@if($client->certified_status)
 									<div class="client-trusted">@if($client->certified_status)
-										<img loading="lazy" src="{{ asset('img/q_verified.gif')}}">
+										<img loading="lazy" src="{{ asset('img/q_verified.gif')}}" alt="Loading">
 										@endif
 										@if($client->trusted_status)
-										<img loading="lazy" src="{{ asset('img/q_trust.gif')}}">
+										<img loading="lazy" src="{{ asset('img/q_trust.gif')}}" alt="trusted_status">
 										@endif
 										@if($client->gst_status)
-										<img loading="lazy" src="{{ asset('img/q_gst.gif')}}">
+										<img loading="lazy" src="{{ asset('img/q_gst.gif')}}" alt="gst_status">
 										@endif
 									</div>
 								@endif
@@ -355,7 +355,7 @@ echo trim($msg); } ?>
 									<a href="javascript:void(0);" title="{{$client->business_name }}"
 										class="sms-view popup-btn"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
 										href="https://wa.me/917559435943" title="{{$client->business_name }}" class="whatsapp-view"
-										target="_blank" rel="noopener noreferrer"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20">	
+										target="_blank" rel="noopener noreferrer"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20" alt="whatsapp">	
 											WhatsApp</span></a> &nbsp;&nbsp;&nbsp;<a
 										href="{{ url('business-details') . "/" . $client->business_slug }}"
 										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a>

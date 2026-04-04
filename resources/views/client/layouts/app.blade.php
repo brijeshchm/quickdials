@@ -919,7 +919,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <!-- Google Login -->
                     <div class="google-login">
                         <a href="{{ url('/google-login') }}">
-                            <img loading="lazy" src="{{ asset('client/g-logo.png')}}" alt="">
+                            <img loading="lazy" src="{{ asset('client/g-logo.png')}}" alt="gogole login">
                             Login with Google
                         </a>
                     </div>
