@@ -89,7 +89,7 @@ class HomePageController extends Controller
 
 		/** ---------------- Blogs & Testimonials ---------------- */
 		$blogdetails = Blogdetails::where('status', '1')
-			->orderBy(desc)
+			->orderBy('id', 'desc')
 			->limit(3)
 			->get();
  
