@@ -17,7 +17,7 @@ Quick Dials-  Oops !Page Not Found
 <div class="container">		
 	<div class="row">
 		<div class="col-sm-12 col-md-12 banner-details">
-		<h4 class="Oops-txt">Oops! Page Not Found </h5>				 
+		<h1 class="Oops-txt">Oops! Page Not Found </h1>				 
 		<h2 class="error-txt"><a href="{{url('/')}}">Home</a></h2>
 		</div>
 	</div>

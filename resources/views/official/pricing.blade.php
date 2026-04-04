@@ -7,7 +7,7 @@
  <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
 <div class="about-bg page-hearder-area">
   <div class="container">
-            <h1>Welcode to  <strong>QuickDials<span class="tm">TM</span></strong>.com</h1>
+            <h2>Welcode to  <strong>QuickDials<span class="tm">TM</span></strong>.com</h2>
             <p>Pick a plan that suits your business size and how fast you want to grow. Every package gives
 you easy system access and tools to manage your enquiries smoothly. Higher plans come with
 more user access and extra coins, which help you reach more customers and handle more
@@ -35,7 +35,7 @@ business needs.</p>
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       margin-top: 50px;
     }
-    .pricing-table h1 {
+    .pricing-table h3 {
       font-size: 2em;
       margin-bottom: 20px;
     }
@@ -86,7 +86,7 @@ business needs.</p>
     }
   </style>
   <div class="pricing-table">
-    <h1>Package Details</h1>
+    <h3>Package Details</h3>
 
       <div class="plan">
     
