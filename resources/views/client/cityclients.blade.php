@@ -77,7 +77,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						}
 									?>
 									@if($client->client_type != 'FreeListing')
-										<p><a href="#"><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></a></p>
+										<p><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></p>
 									@endif
 								</a>
 
