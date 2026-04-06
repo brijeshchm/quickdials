@@ -793,10 +793,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			//	var searchKW = $(this).find('.home-search').val();
 			//var city = $(this).find('.city').val();		 
 			searchKW = searchKW.replace(/\s+/g, '-').toLowerCase();		
-			 	 
+			searchKW = searchKW.trim();
 			if (city) {
+				 city = city.trim();
 				city = city.replace(/[_\s]+/g, '-').toLowerCase();
 				localStorage.setItem('city', city);
+				
 				location.href = "/" + city + "/" + searchKW;
 			} else {
 				location.href = "/" + searchKW;
