@@ -115,47 +115,5 @@
     <priority>0.80</priority>
 </url>
 @endforeach 
-@foreach ($keywords as $keyword)
-<url>     
-      <loc>{{ url('gurgaon/'.$keyword->slug) }}</loc>
-    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    
-    <priority>0.80</priority>
-</url>
-@endforeach 
-@foreach ($keywords as $keyword)
-<url>     
-      <loc>{{ url('bangalore/'.$keyword->slug) }}</loc>
-    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    
-    <priority>0.80</priority>
-</url>
-@endforeach 
-@foreach ($keywords as $keyword)
-<url>     
-      <loc>{{ url('mumbai/'.$keyword->slug) }}</loc>
-    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    
-    <priority>0.80</priority>
-</url>
-@endforeach 
-@foreach ($keywords as $keyword)
-<url>     
-      <loc>{{ url('chandigarh/'.$keyword->slug) }}</loc>
-    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    
-    <priority>0.80</priority>
-</url>
-@endforeach 
-@foreach ($keywords as $keyword)
-<url>     
-      <loc>{{ url('pune/'.$keyword->slug) }}</loc>
-    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>
-    
-    <priority>0.80</priority>
-</url>
-@endforeach 
-
- 
     
 </urlset>
