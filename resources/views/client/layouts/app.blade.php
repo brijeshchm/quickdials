@@ -7,6 +7,7 @@
 @else
 <link name="identifier-URL" href="<?php echo trim(url()->current());?>" />
 @endif <meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ url('sitemap.xml') }}">
 <meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
 @if (Request::is('/'))
 <link name="url" href="{{url('/')}}/" />
@@ -16,7 +17,7 @@
 @if(View::hasSection('meta_robots'))
     @yield('meta_robots')
 @else
-    <meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 @endif
 <meta name="Revisit-after" content="7 Days" /><meta property="og:locale" content="en_IN" /><meta property="og:type" content="website" /><meta property="og:title" content="@yield('title')" /><meta property="og:description" content="@yield('description')" /><meta property="og:url" content="{{ URL::current() }}" /><meta property="og:site_name" content="Quick Dials" /><meta name="application-name" content="Quick Dials" /><meta property="fb:app_id" content="https://www.facebook.com/profile.php?id=61579250014118" /><meta property="og:image" content="{{asset('client/images/favicon.png')}}" /><meta property="og:image:secure_url" content="{{asset('client/images/favicon.png')}}" /><meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="628" /><meta property="og:image:alt" content="Quick Dials" />
@@ -26,6 +27,7 @@
 <script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
 <script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" >
 </script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
     <!------Google Analytic Script End----->
 <script type="application/ld+json">
 {
