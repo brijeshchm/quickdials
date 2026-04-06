@@ -1,32 +1,18 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>@yield('title')</title><meta name="keywords" content="@yield('keyword')"><meta name="description" content="@yield('description')"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="csrf-token" content="{{ csrf_token() }}">  
-@if (Request::is('/'))
-    <link rel="canonical" href="{{url('/')}}/" />
-@else
-    <link rel="canonical" href="{{trim(url()->current())}}" />
-@endif    
-<link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" /><meta http-equiv="content-language" content="en-IN"><meta name="classification" content="directory portal" /><meta name="distribution" content="local" /><meta content="All" name="WebCrawlers" /><meta content="All, FOLLOW" name="MSNBots" /><meta content="All" name="Googlebot-Image" /><meta content="All, FOLLOW" name="BINGBots" />
+@if (Request::is('/')) <link rel="canonical" href="{{url('/')}}/" />@else <link rel="canonical" href="<?php echo trim(url()->current());?>" />@endif <link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" /><meta http-equiv="content-language" content="en-IN"><meta name="classification" content="directory portal" /><meta name="distribution" content="local" /><meta content="All" name="WebCrawlers" /><meta content="All, FOLLOW" name="MSNBots" /><meta content="All" name="Googlebot-Image" /><meta content="All, FOLLOW" name="BINGBots" />
 <meta content="All, FOLLOW" name="YAHOOBots" /><meta content="All, FOLLOW" name="GoogleBots" /><meta name="copyright" content="Quick Dials"><meta name="author" content="Quick Dials" /><meta http-equiv="CACHE-CONTROL" content="PUBLIC" /><meta name="publisher" content="Quick Dials" />
 @if (Request::is('/'))
-    <link name="identifier-URL" href="{{url('/')}}/" />
+<link name="identifier-URL" href="{{url('/')}}/" />
 @else
-    <link name="identifier-URL" href="{{trim(url()->current())}}" />
-@endif   
-
-@if (Request::is('/'))
-    <link name="url" href="{{url('/')}}/" />
-@else
-    <link name="url" href="{{trim(url()->current())}}" />
-@endif   
- 
- 
-
-<meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
+<link name="identifier-URL" href="<?php echo trim(url()->current());?>" />
+@endif <meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
 <meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
- 
-
-
-<meta name="DC.title" content="@yield('keyword')" /><meta name="distribution" content="global" /><meta name="geo.region" content="IN-UP" /><meta name="geo.placename" content="Bangalore" /><meta name="geo.position" content="28.5802;77.3181" /><meta name="ICBM" content="28.5802, 77.3181" /> 
+@if (Request::is('/'))
+<link name="url" href="{{url('/')}}/" />
+@else
+<link name="url" href="<?php echo trim(url()->current());?>" />
+@endif <meta name="DC.title" content="@yield('keyword')" /><meta name="distribution" content="global" /><meta name="geo.region" content="IN-UP" /><meta name="geo.placename" content="Bangalore" /><meta name="geo.position" content="28.5802;77.3181" /><meta name="ICBM" content="28.5802, 77.3181" /> 
 @if(View::hasSection('meta_robots'))
     @yield('meta_robots')
 @else
@@ -39,8 +25,6 @@
 <link rel="alternate" href="https://www.quickdials.com/" hreflang="en-in" /><link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}"><script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
 <script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
 <script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" >
-
-
 </script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
     <!------Google Analytic Script End----->
 <script type="application/ld+json">
