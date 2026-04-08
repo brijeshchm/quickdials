@@ -614,18 +614,7 @@ color: #fff;
 		</div>
 		@endif
      
-	    
-	   </ul>
-	   </div>
-	 </div>
-	 </div>
-      @endif
-	  
-	  
-	   <div class="clearfix"></div>
-	 <br>
-	 
-	 
+		 
 		  
       <div class="container">
 	    
@@ -688,7 +677,7 @@ color: #fff;
 	 
 	   </div>
 	   </div>
-        <div class="clearfix"></div>
+        
     </div>
 	  
       <?php }else{ ?>
@@ -704,7 +693,7 @@ color: #fff;
 			</div>
 			 
 			</div>
- <div class="clearfix"></div>
+  
     <div class="container">
 	 
 	  <div class="add-section">
