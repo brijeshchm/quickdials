@@ -29,9 +29,9 @@ class SearchListController extends Controller
 
         // Validate city exists
         $checkCity = Citieslists::where('city', $city)->count();
-        // if (!$checkCity) {
-        //     return response()->view('client.error410', [], 410);
-        // }
+        if (!$checkCity) {
+             return response()->view('client.error410', [], 410);
+        }
 
         // Fetch keyword details
         $keyword = DB::table('keyword as k')
@@ -72,8 +72,7 @@ class SearchListController extends Controller
             ->first();
 
         // ✅ If keyword not found AND no business_slug match → 410
-        if (empty($keyword)) {
-   
+        if (empty($keyword)) {  
 
             $client = Client::where('business_slug', $search_kw)->first();
             if (empty($client)) {
