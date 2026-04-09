@@ -211,7 +211,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
             <span class="title-serv"><a href="{{url('child/sports-academy')}}" >Sport Academy</a></span>
          </div>
          <div class="img-items">   
-         <div class="items"><a href="{{('/pg-hostels')}}" >
+         <div class="items"><a href="{{url('/pg-hostels')}}" >
             <img loading="lazy" src="{{asset('img/PG hOTELS.png')}}" alt="PG hOTELS"></a>
              </div>
             <span class="title-serv"><a href="{{url('/pg-hostels')}}" >PG/Hostels</a></span>

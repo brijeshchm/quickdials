@@ -59,6 +59,53 @@
   ]
 }
 </script>
+<script>
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Quick Dials",
+  "image": "https://www.quickdials.com/logo.png",
+  "url": "https://www.quickdials.com",
+  "telephone": "+91-9876543210",
+  "email": "info@quickdials.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Your Office Address Here",
+    "addressLocality": "Meerut",
+    "addressRegion": "Uttar Pradesh",
+    "postalCode": "250001",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 28.9845,
+    "longitude": 77.7064
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/",
+    "https://www.instagram.com/",
+    "https://www.linkedin.com/"
+  ],
+  "priceRange": "₹₹",
+  "description": "Quick Dials provides business listing, digital marketing, and local SEO services in India.",
+  "areaServed": "India"
+}
+</script>
 
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -716,17 +763,29 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="footer-section">
                         <h3>Support & Contact</h3>
                         <div class="contact-info">
-                           <p><strong>QuickDials<span class="tm">TM</span> Pvt Ltd</strong></p><p><strong>CIN:</strong> U63112KA2026PTC215594</p><p><strong>Email:</strong><a href="mailto:support@quickdials.com" class="email">support@quickdials.com</a></p>
+                           <p><strong>QuickDials<span class="tm">TM</span> Pvt Ltd</strong></p><p><strong>CIN:</strong> U63112KA2026PTC215594</p><p><strong>Email:</strong>
+                           <span id="email"></span>
+                           
+                            </p>
                             <p><strong>Phone:</strong> <a href="tel:917559435943">+91-75-5943-5943</a></p>
                             <p>🕒 Mon-Sat: 9:00 AM - 7:00 PM</p>
                         </div>
+
+                        
+
+<script>
+  const user = "info";
+  const domain = "quickdials.com";
+  document.getElementById("emailTo").innerHTML =
+    `<a href="mailto:${user}@${domain}">${user}@${domain}</a>`;
+</script>
                         <div class="social-links">
                             <div class="follow-sticker">
                                 <h4 style="color:#000;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #aaa;">
                                     Follow Us</h4><ul class="list-inline"><li><a class="facebook" href="https://www.facebook.com/quickdialsofficial/" title="Like us on Facebook" target="_blank"><img src="{{ asset('client/Facebook_icon.svg') }}" alt="Facebook_icon"></a></li>
                                     <li><a class="twitter" href="https://x.com/Quickdials" title="Follow us on Twitter" target="_blank"><img src="{{ asset('client/twitter.svg') }}" alt="twitter"></a></li>
                                     <li><a class="linkedIn" href="https://www.linkedin.com/company/quickdialsofficial" title="Follow us on Linkedin" target="_blank"><img src="{{ asset('client/linkedin.svg')}}" alt="linkedin"></a></li>
-                                     <li><a class="youTube"  href="https://www.youtube.com/@quickdialsofficial/" title="Follow us on youTube" target="_blank"><i class="fa fa-youtube-play"></i></a></li> 
+                                     <li><a class="youTube"  href="https://www.youtube.com/@quickdialsofficial/" title="Follow us on youTube" target="_blank"><img src="{{ asset('client/youtube.svg') }}" alt="youtube"></i></a></li> 
                                     <li><a class="pinterest" href="https://www.pinterest.com/quickdialsofficial/" title="Follow us on Pinterest" target="_blank"><img src="{{ asset('client/pinterest.svg')}}" alt="pinterest"></i></a></li>
                                     <li><a class="instagram" href="https://www.instagram.com/quickdialsofficial/" title="Follow us on Instagram" target="_blank"><img src="{{ asset('client/instagram.svg')}}" alt="instagram" ></i></a></li>                                    
                                 </ul>

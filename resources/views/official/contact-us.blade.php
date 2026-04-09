@@ -186,10 +186,12 @@
         <p>Reach out to our offices for any inquiries or support.</p>
     </div>
  <div class="support">
-    <div>Customer Support India<br><i class="fa fa-envelope-o"></i> <a href="mailto:support@quickdials.com" class="email">support@quickdials.com</a></div>
+    <div>Customer Support India<br><i class="fa fa-envelope-o"></i>   <span class="emailTo"></span></div>
     <div>Customer Support<br><i class="fa fa-mobile"></i> <span class="phone">75-5943-5943</span> </div>
     <!-- <div>For Advertisement Call<br><button class="button">Advertise Now</button></div> -->
 </div>
+
+ 
 <div class="container">
         <div class="cnt-ck-scn">
             <!-- Corporate Office -->
