@@ -113,6 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="head-right-lout">
                     <?php    $clientID = auth()->guard('clients')->user()->id;
     $client = App\Models\Client\Client::find($clientID);
+	
     if (!empty($client->logo)) {
         $logo = unserialize($client->logo);
 
@@ -121,7 +122,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <img loading="lazy" src="<?php        echo asset('' . $image); ?>" alt="Profile" class="rounded-circle"
                         style="max-height: 36px;border-radius: 50% !important;">
 
-                    <?php    } ?>
+                    <?php    }else{ ?>
+					
+					<img loading="lazy" src="{{asset('client/images/user.png')}}" alt="Profile" class="rounded-circle"
+                        style="max-height: 36px;border-radius: 50% !important;">
+					
+					<?php } ?>
                     <style>
                         .dropdown-divider {
                             height: 0;
@@ -157,7 +163,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="{{url('business/dashboard')}}"
                                 aria-expanded="true">
-                                <?php    echo ucfirst(auth()->guard('clients')->user()->business_name); ?>
+                                <?php   if(!empty(auth()->guard('clients')->user()->business_name)){ echo ucfirst(auth()->guard('clients')->user()->business_name); }else{ echo "Name"; } ?>
                                 <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-user">
