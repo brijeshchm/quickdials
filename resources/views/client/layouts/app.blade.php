@@ -54,7 +54,7 @@
   "https://x.com/Quickdials",
   "https://www.linkedin.com/company/quickdialsoffical",
   "https://www.pinterest.com/quickdialsoffical/",
-  "https://www.instagram.com/quickdialsoffical/"  
+  "https://www.instagram.com/quickdialsoffical/",  
   "https://www.youtube.com/@quickdialsofficial/"  
   ]
 }
@@ -733,11 +733,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div></div>
                     </div>
                 </div>
-
             </div>
         </section>
-    </footer>
-  
+    </footer> 
 
 
     <footer>
