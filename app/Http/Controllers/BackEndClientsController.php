@@ -808,14 +808,14 @@ class BackEndClientsController extends Controller
 						],
 						 'whatsapp' => 'nullable|integer',
 
-						'country' => 'required|integer',
-						'state' => 'required|integer',
-						'city' => 'required|integer',
+						'country' => 'nullable|integer',
+						'state' => 'nullable|integer',
+						'city' => 'nullable|integer',
 						'zone' => 'nullable|integer',
 
-						'area' => 'required|string|max:255',
-						'pincode' => 'required|digits:6',
-						'address' => 'required|string|max:500',
+						'area' => 'nullable|string|max:255',
+						'pincode' => 'nullable|digits:6',
+						'address' => 'nullable|string|max:500',
 						'landmark' => 'nullable|string|max:255',
 
 					 
