@@ -710,7 +710,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <h3>Support & Contact</h3>
                         <div class="contact-info">
                            <p><strong>QuickDials<span class="tm">TM</span> Pvt Ltd</strong></p><p><strong>CIN:</strong> U63112KA2026PTC215594</p><p><strong>Email:</strong>
-                           <span id="email"></span>
+                           <a href="mailto:info@quickdials.com"> info@quickdials.com</a>
                            
                             </p>
                             <p><strong>Phone:</strong> <a href="tel:917559435943">+91-75-5943-5943</a></p>
@@ -719,12 +719,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         
 
-<script>
-  const user = "info";
-  const domain = "quickdials.com";
-  document.getElementById("emailTo").innerHTML =
-    `<a href="mailto:${user}@${domain}">${user}@${domain}</a>`;
-</script>
+ 
                         <div class="social-links">
                             <div class="follow-sticker">
                                 <h4 style="color:#000;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #aaa;">
