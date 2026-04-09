@@ -59,53 +59,7 @@
   ]
 }
 </script>
-<script>
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Quick Dials",
-  "image": "https://www.quickdials.com/logo.png",
-  "url": "https://www.quickdials.com",
-  "telephone": "+91-9876543210",
-  "email": "info@quickdials.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Your Office Address Here",
-    "addressLocality": "Meerut",
-    "addressRegion": "Uttar Pradesh",
-    "postalCode": "250001",
-    "addressCountry": "IN"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 28.9845,
-    "longitude": 77.7064
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ],
-      "opens": "09:00",
-      "closes": "18:00"
-    }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/",
-    "https://www.instagram.com/",
-    "https://www.linkedin.com/"
-  ],
-  "priceRange": "₹₹",
-  "description": "Quick Dials provides business listing, digital marketing, and local SEO services in India.",
-  "areaServed": "India"
-}
-</script>
+ 
 
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
