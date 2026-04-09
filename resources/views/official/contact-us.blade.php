@@ -3,6 +3,12 @@
 @section('title')
      Contact us
 @endsection
+@section('keyword')
+Quick Dials- Local search, IT Training, Playschool, overseas education
+@endsection
+@section('description')
+Quick Dials- Local search, IT Training, Playschool, overseas education
+@endsection
 @section('content') 
 
 <style>

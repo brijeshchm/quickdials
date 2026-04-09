@@ -2,8 +2,15 @@
 
 @extends('client.layouts.app')
 @section('title')
-     Blog  
+     Blog  Quickdials
 @endsection
+@section('keyword')
+   Blog  Quickdials
+@endsection 
+@section('description')
+  Blog  Quickdials
+@endsection
+
 @section('content')
 <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
 <div class="about-bg page-hearder-area">

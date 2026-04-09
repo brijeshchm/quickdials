@@ -517,7 +517,7 @@ class SearchListController extends Controller
 	public function keyword(Request $request, $search_kw)
 	{
 		$city = str_replace("-", " ", $search_kw);
-
+ 
 		$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->limit(12)->get();
 		$clientsList = DB::table('clients')
 			->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
@@ -527,7 +527,7 @@ class SearchListController extends Controller
 			->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count')
 			->where('citylists.city', 'LIKE', $city)
 			->where('clients.active_status', '1')
-			->where('keyword.keyword', 'LIKE', ucwords(str_replace("-", " ", $search_kw)))
+			->where('keyword.slug', ucwords(str_replace("-", " ", $search_kw)))
 
 			->orderByRaw("
 				CASE clients.client_type

@@ -3,6 +3,12 @@
 @section('title')
      Package Pricing
 @endsection
+@section('keyword')
+Quick Dials- Local search, IT Training, Playschool, overseas education
+@endsection
+@section('description')
+Quick Dials- Local search, IT Training, Playschool, overseas education
+@endsection
 @section('content') 
  <link href="{{asset('public/official/css/style.css')}}" rel="stylesheet">
 <div class="about-bg page-hearder-area">

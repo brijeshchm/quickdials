@@ -3,6 +3,12 @@
 @section('title')
      Copy Right Policy 
 @endsection
+@section('keyword')
+Quick Dials- Local search, IT Training, Playschool, overseas education
+@endsection
+@section('description')
+Quick Dials- Local search, IT Training, Playschool, overseas education
+@endsection
 @section('content') 
 <div class="about-bg page-hearder-area">
     <div class="official-overly"></div> 

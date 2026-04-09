@@ -399,7 +399,7 @@ Route::get('/quickdialssitemap', function () {
 
 
 
-Route::get('/ads/study-abroad', [App\Http\Controllers\Client\LandingPageController::class, 'studyabroad']);
+//Route::get('/ads/study-abroad', [App\Http\Controllers\Client\LandingPageController::class, 'studyabroad']);
 Route::post('/apiddd/lead/add', [App\Http\Controllers\Client\HomePageController::class, 'addLadsss']);
 
 
@@ -408,18 +408,18 @@ Route::post('/apiddd/lead/add', [App\Http\Controllers\Client\HomePageController:
 // Route::get('/coaching/multimedia',[App\Http\Controllers\Client\LandingPageController::class, 'multimedia']);
 // Route::get('/coaching/it-training',[App\Http\Controllers\Client\LandingPageController::class, 'it_training']);
 // Route::get('/coaching/iit-entrance-exam',[App\Http\Controllers\Client\LandingPageController::class, 'iit_entrance_exam']);
-Route::get('/coaching/entrance-exam-coaching', [App\Http\Controllers\Client\LandingPageController::class, 'entrance_exam_coaching']);
+//Route::get('/coaching/entrance-exam-coaching', [App\Http\Controllers\Client\LandingPageController::class, 'entrance_exam_coaching']);
  // Route::get('/coaching/thank',[App\Http\Controllers\Client\LandingPageController::class, 'thankyou']);
 
-Route::get('/ads/entrance-exam-coaching', [App\Http\Controllers\Client\LandingPageController::class, 'entranceexamcoaching']);
+//Route::get('/ads/entrance-exam-coaching', [App\Http\Controllers\Client\LandingPageController::class, 'entranceexamcoaching']);
 // Route::get('/ads/distance-education',[App\Http\Controllers\Client\LandingPageController::class, 'distanceeducation']);
-Route::get('/ads/it-training', [App\Http\Controllers\Client\LandingPageController::class, 'ittraining']);
+//Route::get('/ads/it-training', [App\Http\Controllers\Client\LandingPageController::class, 'ittraining']);
 // Route::get('/free-course/landing',[App\Http\Controllers\Client\LandingPageController::class, 'index']);
 
-Route::get('/email', [App\Http\Controllers\EmailController::class, 'index']);
+//Route::get('/email', [App\Http\Controllers\EmailController::class, 'index']);
 
 Route::get('/about-us', [App\Http\Controllers\Official\OfficialController::class, 'about']);
-Route::get('/news', [App\Http\Controllers\Official\OfficialController::class, 'news']);
+//Route::get('/news', [App\Http\Controllers\Official\OfficialController::class, 'news']);
 Route::get('/rss', [App\Http\Controllers\Official\OfficialController::class, 'rss']);
 Route::get('/features', [App\Http\Controllers\Official\OfficialController::class, 'features']);
 Route::get('/faq', [App\Http\Controllers\Official\OfficialController::class, 'faq']);
@@ -429,7 +429,7 @@ Route::get('/pricing', [App\Http\Controllers\Official\OfficialController::class,
 Route::get('/media', [App\Http\Controllers\Official\OfficialController::class, 'media']);
 Route::get('/advertise', [App\Http\Controllers\Official\OfficialController::class, 'advertise']);
 Route::get('/blog', [App\Http\Controllers\Official\OfficialController::class, 'blog']);
-Route::get('/official/blog-details', [App\Http\Controllers\Official\OfficialController::class, 'blogdetails']);
+//Route::get('/official/blog-details', [App\Http\Controllers\Official\OfficialController::class, 'blogdetails']);
 Route::get('/blog/{slug}', [App\Http\Controllers\Official\OfficialController::class, 'blogdetails']);
 Route::get('/subscribe', [App\Http\Controllers\Official\OfficialController::class, 'subscribe']);
 Route::get('/testimonials', [App\Http\Controllers\Official\OfficialController::class, 'testimonials']);
