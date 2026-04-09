@@ -19,7 +19,7 @@
 @else
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 @endif
-<meta name="Revisit-after" content="7 Days" /><meta property="og:locale" content="en_IN" /><meta property="og:type" content="website" /><meta property="og:title" content="@yield('title')" /><meta property="og:description" content="@yield('description')" /><meta property="og:url" content="{{ URL::current() }}" /><meta property="og:site_name" content="Quick Dials" /><meta name="application-name" content="Quick Dials" /><meta property="fb:app_id" content="https://www.facebook.com/profile.php?id=61579250014118" /><meta property="og:image" content="{{asset('client/images/small-logo.jpg')}}" /><meta property="og:image:secure_url" content="{{asset('client/images/quickdials-og.png')}}" /><meta property="og:image:width" content="1200" />
+<meta name="Revisit-after" content="7 Days" /><meta property="og:locale" content="en_IN" /><meta property="og:type" content="website" /><meta property="og:title" content="@yield('title')" /><meta property="og:description" content="@yield('description')" /><meta property="og:url" content="{{ URL::current() }}" /><meta property="og:site_name" content="Quick Dials" /><meta name="application-name" content="Quick Dials" /><meta property="fb:app_id" content="https://www.facebook.com/people/QuickDials-India/61579250014118/" /><meta property="og:image" content="{{asset('client/images/small-logo.jpg')}}" /><meta property="og:image:secure_url" content="{{asset('client/images/quickdials-og.png')}}" /><meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="628" /><meta property="og:image:alt" content="Quick Dials" />
 <meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="@yield('title')" /><meta name="twitter:keyword" content="@yield('keyword')" /><meta name="twitter:description" content="@yield('description')" /><meta name="twitter:image" content="{{asset('client/images/quickdials-og.png')}}" /><meta name="twitter:url" content="{{ URL::current() }}" /><meta itemprop="address" content="UNIT 101 OXFORD TOWERS, 139/88 HAL OLD AIRPORT RD, H.A.L II Stage, Bangalore North, Bangalore- 560008, Karnataka, India">
 <meta name="rating" content="general"><meta name="googlebot" content="index, follow"><meta name="bingbot" content="index, follow"><meta name="reply-to" content="info@quickdials.com"><meta name="expires" content="never">
@@ -50,7 +50,7 @@
     "contactType": "Customer service"
   }],
   "logo": "https://www.quickdials.com/client/images/small-logo.jpg",
-  "sameAs": ["https://www.facebook.com/profile.php?id=61579250014118",
+  "sameAs": ["https://www.facebook.com/people/QuickDials-India/61579250014118/",
   "https://x.com/Quickdials",
   "https://www.linkedin.com/company/quickdialsoffical",
   "https://www.pinterest.com/quickdials12/",
@@ -722,7 +722,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <div class="social-links">
                             <div class="follow-sticker">
                                 <h4 style="color:#000;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #aaa;">
-                                    Follow Us</h4><ul class="list-inline"><li><a class="facebook" href="https://www.facebook.com/profile.php?id=61579250014118" title="Like us on Facebook" target="_blank"><img src="{{ asset('client/Facebook_icon.svg') }}" alt="Facebook_icon"></a></li>
+                                    Follow Us</h4><ul class="list-inline"><li><a class="facebook" href="https://www.facebook.com/people/QuickDials-India/61579250014118/" title="Like us on Facebook" target="_blank"><img src="{{ asset('client/Facebook_icon.svg') }}" alt="Facebook_icon"></a></li>
                                     <li><a class="twitter" href="https://x.com/Quickdials" title="Follow us on Twitter" target="_blank"><img src="{{ asset('client/twitter.svg') }}" alt="twitter"></a></li>
                                     <li><a class="linkedIn" href="https://www.linkedin.com/company/quickdialsoffical" title="Follow us on Linkedin" target="_blank"><img src="{{ asset('client/linkedin.svg')}}" alt="linkedin"></a></li>
                                     <!-- <li><a class="youTube"  href="" title="Follow us on youTube" target="_blank"><i class="fa fa-youtube-play"></i></a></li> -->
