@@ -317,7 +317,7 @@ class AuthController extends Controller
 				'google_id'     => $googleUser->getId(),
 				'first_name'          => $firstName,
 				'last_name'          => $lastName,
-				'business_slug' => substr(bin2hex(random_bytes(3)), 0, 5);
+				'business_slug' => substr(bin2hex(random_bytes(3)), 0, 5),
 				'client_type'   => 'gold',
 				'active_status' => 1,
 				 
