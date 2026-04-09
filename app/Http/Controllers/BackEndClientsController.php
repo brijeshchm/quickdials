@@ -880,14 +880,23 @@ class BackEndClientsController extends Controller
 					$state = State::find($request->state);
 					$zone = Zone::find($request->zone);
 
+					// City
+					if ($city) {
 					$client->city_id = $city->id;
 					$client->city = $city->city;
+					}
 
+					// State
+					if ($state) {
 					$client->state_id = $state->id;
 					$client->state = $state->name;
+					}
 
+					// Zone
+					if ($zone) {
 					$client->zone_id = $zone->id;
 					$client->zone = $zone->zone;
+					}
 					$client->area = $request->input('area');
 					$client->pincode = $request->input('pincode');
 					$client->address = $request->input('address');
