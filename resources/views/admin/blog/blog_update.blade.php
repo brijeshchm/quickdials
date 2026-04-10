@@ -223,13 +223,13 @@ padding:0px;
                 <div class="form-group">
                     <label class="col-md-2 control-label">Page Top Description (max 500 chars)</label>
                     <div class="col-md-10">
-                        <textarea class="form-control" id="editor" name="top_content" rows="9" placeholder="Enter Page Top Description">{{ old('top_content', $edit_data->top_content ?? '') }}</textarea>
+                        <textarea class="form-control summernote" id="editor" name="top_content" rows="9" placeholder="Enter Page Top Description">{{ old('top_content', $edit_data->top_content ?? '') }}</textarea>
                     </div>
                 </div>
             <div class="form-group ">
                 <label for="bottom_content" class="col-md-2 control-label">Page Bottom Description</label>
                 <div class="col-md-10">
-                <textarea class="form-control" id="editor" name="bottom_content" placeholder="Enter Page Bottom Description" rows="15">{{ old('bottom_content', $edit_data->bottom_content ?? '') }}</textarea>
+                <textarea class="form-control summernote" id="editor" name="bottom_content" placeholder="Enter Page Bottom Description" rows="15">{{ old('bottom_content', $edit_data->bottom_content ?? '') }}</textarea>
                 </div>
             </div>	
             <div class="form-group text-center">
@@ -404,7 +404,7 @@ padding:0px;
         </div>
         <!-- /#page-wrapper -->
  
-<script src="https://cdn.tiny.cloud/1/cue4xs3ng16ijvqslyevyjgdvxbztv2ggd37ion2jf716pv7/tinymce/6/tinymce.min.js"
+/*<script src="https://cdn.tiny.cloud/1/cue4xs3ng16ijvqslyevyjgdvxbztv2ggd37ion2jf716pv7/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
 <script>
 tinymce.init({
@@ -417,6 +417,15 @@ tinymce.init({
 });
 
  
+</script>*/
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script type="text/javascript">
+$('.summernote').summernote({
+height: 200
+});
 </script>
-
 <?php echo View::make('admin/footer'); ?>
