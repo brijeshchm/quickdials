@@ -90,7 +90,7 @@
 }
  
 .top_content ul li::before {
-    content: "✔";
+    content: "➤";
     position: absolute;
     left: -18px;    
     font-weight: bold;
