@@ -5684,6 +5684,9 @@ margin-bottom: 25px;
 .top_content table{
        width:100% !important;
 }
+.bottom_content table{
+       width:100% !important;
+}
 
 .bottom_content{
 margin-bottom: 25px;
