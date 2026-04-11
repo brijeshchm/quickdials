@@ -169,7 +169,7 @@ class SearchListController extends Controller
                 ->orderBy('zones.zone', 'asc')
                 ->get();
 
-            $firstZone = $zones->get(2);
+            $firstZone = $zones->get(1);
             $area = $city;
             if ($firstZone) {
                 $area = $city . ', ' . $firstZone->zone . ' ' . $firstZone->pincode;
