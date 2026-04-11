@@ -1264,8 +1264,8 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
 
 
 
-   <div class="">
-      <div class="clearfix"></div>
+   <!-- <div class="">
+      
       <h2 class="title">Our <span>Study Abroad</a></span> </h2>
       <br>
       <div class="category-box">
@@ -1300,7 +1300,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
          </div>
       </div>
       <div class="clearfix"></div>
-   </div>
+   </div> -->
 
    	
  
