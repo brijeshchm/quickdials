@@ -439,27 +439,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Tabs -->
     <div class="tabs">
         @php
-            $categories = DB::table('parent_category')->select('id','parent_category')->where('status','1')->get();
+            $cities = DB::table('cities')->select('id','city')->where('popular','1')->get();
             $i = 0;
         @endphp
 
-        @foreach($categories as $cat)
+        @foreach($cities as $cat)
             @php $i++; @endphp
             <button type="button" 
                 class="tab {{ $i == 1 ? 'active' : '' }}" 
-                data-tab="tab{{ $cat->id }}">
-                {{ $cat->parent_category }}
+                data-tab="tab_{{ strtolower(str_replace(' ', '-', $cat->city)) }}">
+                {{ $cat->city }}
             </button>
         @endforeach
     </div>
 <div class="tab-contents" id="tabContents"></div>
  @php
-        $keywords=   DB::table('keyword')->select('slug','keyword','parent_category_id') 
+        $keywords=   DB::table('keyword')->select('slug','keyword') 
         ->where('seo_type', '1')
         ->get()
         @endphp
 <script>
-var categories = @json($categories);
+var cities = @json($cities);
 var keywords = @json($keywords);
 
 </script>
@@ -473,20 +473,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let baseUrl = "{{ url('') }}";
 let city = localStorage.getItem('city') || 'bangalore';
-    categories.forEach(cat => {
+    cities.forEach(cat => {
         i++;
 
-        // Filter keywords by category
-        let catKeywords = keywords.filter(k => k.parent_category_id == cat.id);
+      
 
         html += `
-            <div class="tab-content ${i === 1 ? 'active' : ''}" id="tab${cat.id}">
+            <div class="tab-content ${i === 1 ? 'active' : ''}" id="tab_${cat.city.toLowerCase().replace(/\s+/g, "-")}">
                 <p>
         `;
 
-        catKeywords.forEach(keyword => {
+        keywords.forEach(keyword => {
             html += `
-                <a href="${baseUrl}/${keyword.slug}">
+                <a href="${baseUrl}/${cat.city.toLowerCase().replace(/\s+/g, "-")}/${keyword.slug}">
                     ${keyword.keyword}
                 </a> |
             `;
