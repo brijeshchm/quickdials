@@ -1682,7 +1682,7 @@ display: block;
 					<div class="social-rights">
 						<ul class="list-social"><li><a class="facebook" href="https://www.facebook.com/quickdialsofficial/" title="Like us on Facebook" target="_blank"><img src="{{ asset('client/Facebook_icon.svg')}}" alt="Facebook_icon"></a></li>
 						<li><a class="twitter" href="https://x.com/Quickdials" title="Follow us on Twitter" target="_blank"><img src="{{ asset('client/twitter.svg')}}" alt="twitter"></a></li>
-						<li><a class="linkedIn" href="https://www.linkedin.com/company/quickdialsofficial" title="Follow us on Linkedin" target="_blank">
+						<li><a class="linkedIn" href="https://www.linkedin.com/company/quickdialsoffical/" title="Follow us on Linkedin" target="_blank">
 							<img src="{{ asset('client/linkedin.svg') }}" alt="linkedin"></a></li>
 						<li><a class="youTube"  href="https://www.youtube.com/@quickdialsofficial/" title="Follow us on youTube" target="_blank"><i class="fa fa-youtube-play"></i></a></li> 
 						<li><a class="pinterest" href="https://www.pinterest.com/quickdialsofficial/" title="Follow us on Pinterest" target="_blank"><img src="{{ asset('client/pinterest.svg') }}" alt="pinterest"></a></li>
