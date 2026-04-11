@@ -5687,6 +5687,12 @@ margin-bottom: 25px;
 .bottom_content table{
        width:100% !important;
 }
+.bottom_content table td{
+          border: 1pt solid rgb(57 56 56);
+}
+.top_content table td{
+          border: 1pt solid rgb(57 56 56);
+}
 
 .bottom_content{
 margin-bottom: 25px;
