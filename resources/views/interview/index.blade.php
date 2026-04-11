@@ -191,7 +191,7 @@ Quick Dials- Business Services POPULAR CATEGORIES, B2B & BUSINESS SERVICES
 		
 		
 		   <div class="crs-cont-box" style="--delay: 5;">
-            <img loading="lazy" src="{{asset('interview/tech/javascript.JPG')}}" alt="Javascript Interview Question Answer">
+            <img loading="lazy" src="{{asset('interview/tech/javascript.jpg')}}" alt="Javascript Interview Question Answer">
             <a href="{{url('interviews/javascript-interview-question-answer')}}">Javascript Interview Question Answer</a>
         </div>
 		
