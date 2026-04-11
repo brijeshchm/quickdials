@@ -541,7 +541,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a href="{{ url('ac-repair-service')}}" class="keystore">AC Services</a></li>
                             <li><a href="{{ url('security-guards-services')}}" class="keystore">Security Guards</a></li>
                             <li><a href="{{ url('cleaning-services')}}" class="keystore">Cleaning Services</a></li>
-                            <li><a href="{{ url('categories/repairs-services') }}">Repairs Services</a></li>
+                            <li><a href="{{ url('child/repair-services') }}">Repairs Services</a></li>
                             <li><a href="{{ url('categories/spa') }}">SPA Beauty</a></li>
                             <li><a href="{{ url('child/loan-service') }}">Loan</a></li>
                             <li><a href="{{ url('income-tax-consultants')}}" class="keystore">Tax Consultants</a></li>
