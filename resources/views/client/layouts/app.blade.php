@@ -52,7 +52,7 @@
   "logo": "https://www.quickdials.com/client/images/small-logo.jpg",
   "sameAs": ["https://www.facebook.com/quickdialsofficial/",
   "https://x.com/Quickdials",
-  "https://www.linkedin.com/company/quickdialsoffical",
+  "https://www.linkedin.com/company/quickdialsoffical/",
   "https://www.pinterest.com/quickdialsoffical/",
   "https://www.instagram.com/quickdialsoffical/",  
   "https://www.youtube.com/@quickdialsofficial/"  
@@ -571,7 +571,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <h4 style="color:#000;margin-bottom:10px;padding-bottom:5px;border-bottom:1px solid #aaa;">
                                     Follow Us</h4><ul class="list-inline"><li><a class="facebook" href="https://www.facebook.com/quickdialsofficial/" title="Like us on Facebook" target="_blank"><img src="{{ asset('client/Facebook_icon.svg') }}" alt="Facebook_icon"></a></li>
                                     <li><a class="twitter" href="https://x.com/Quickdials" title="Follow us on Twitter" target="_blank"><img src="{{ asset('client/twitter.svg') }}" alt="twitter"></a></li>
-                                    <li><a class="linkedIn" href="https://www.linkedin.com/company/quickdialsofficial" title="Follow us on Linkedin" target="_blank"><img src="{{ asset('client/linkedin.svg')}}" alt="linkedin"></a></li>
+                                    <li><a class="linkedIn" href="https://www.linkedin.com/company/quickdialsoffical/" title="Follow us on Linkedin" target="_blank"><img src="{{ asset('client/linkedin.svg')}}" alt="linkedin"></a></li>
                                      <li><a class="youTube"  href="https://www.youtube.com/@quickdialsofficial/" title="Follow us on youTube" target="_blank"><img src="{{ asset('client/youtube.svg') }}" alt="youtube"></i></a></li> 
                                     <li><a class="pinterest" href="https://www.pinterest.com/quickdialsofficial/" title="Follow us on Pinterest" target="_blank"><img src="{{ asset('client/pinterest.svg')}}" alt="pinterest"></i></a></li>
                                     <li><a class="instagram" href="https://www.instagram.com/quickdialsofficial/" title="Follow us on Instagram" target="_blank"><img src="{{ asset('client/instagram.svg')}}" alt="instagram" ></i></a></li>                                    
