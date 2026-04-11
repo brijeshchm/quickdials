@@ -521,7 +521,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><a href="{{ url('categories/professional-courses') }}">Coaching & Tuitions</a></li>
                             <li><a href="{{ url('child/wedding-planning') }}">Wedding Planning</a></li>
                             <li><a href="{{ url('category/health-wellness') }}">Healthcare</a></li>
-                            <li><a href="{{ url('category/real-estate-agent') }}">Real Estate</a></li>
+                            <li><a href="{{ url('real-estate-agent') }}">Real Estate</a></li>
                             <li><a href="{{ url('categories/electric-services') }}">Electric Services</a></li>
                             <li><a href="{{ url('categories/security-system') }}">Security System</a></li>
                             <li><a href="{{ url('categories/medical') }}">Medical</a></li>
