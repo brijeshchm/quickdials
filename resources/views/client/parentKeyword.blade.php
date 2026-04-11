@@ -632,7 +632,8 @@ echo trim($paragraph6); ?>
 			 <div class="col-sm-3 col-md-3 ">
 			 <div class="reviews-client-box">
 					<div class="side-row-1">
-						<div class="side-data-txt-1"><a href="{{ url('business-details')."/".$client->business_slug }}" title="{{$client->business_name}}"><span>{{ $client->business_name}}</span></a></div>
+						<div class="side-data-txt-1">
+							<a href="{{ url('business-details')."/".$client->business_slug }}" title="{{$client->business_name}}"><span>{{ $client->business_name}}</span></a></div>
 						<div class="side-txt">
 							<?php
 								$badge = $client->sold_on_position;
