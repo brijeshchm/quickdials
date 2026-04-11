@@ -169,11 +169,18 @@ class SearchListController extends Controller
                 ->orderBy('zones.zone', 'asc')
                 ->get();
 
-            $firstZone = $zones->get(1);
-            $area = $city;
-            if ($firstZone) {
-                $area = $city . ', ' . $firstZone->zone . ' ' . $firstZone->pincode;
-            }
+            
+			
+				$firstZone = $zones->get(1);
+				$area = $city;
+				if ($firstZone) {
+					$zone = $firstZone->zone ?? '';
+					$pincode = $firstZone->pincode ?? '';
+					$area = $city . ', ' . $zone;
+					if (!empty($pincode)) {
+						$area .= ' ' . $pincode;
+					}
+				}
 
             return view('client.searchlist', [
                 'clientsList'        => $clientsList,
