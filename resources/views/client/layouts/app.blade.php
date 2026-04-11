@@ -475,9 +475,6 @@ let baseUrl = "{{ url('') }}";
 let city = localStorage.getItem('city') || 'bangalore';
     cities.forEach(cat => {
         i++;
-
-      
-
         html += `
             <div class="tab-content ${i === 1 ? 'active' : ''}" id="tab_${cat.city.toLowerCase().replace(/\s+/g, "-")}">
                 <p>
@@ -984,7 +981,7 @@ aria-label="Close">Done</button>
          let isErasing = false;
         // let input = document.getElementById("searchInput");
         const firstOption = document.querySelector("#searchInput option:first-child");
-        console.log(firstOption);
+   
    function typeEffect() {
         const currentWord = words[wordIndex];
 
@@ -1019,30 +1016,7 @@ aria-label="Close">Done</button>
             typeEffect(); // restart if reset to default
         }
     });
-
-        // function typeEffect() {
-        //     if (charIndex < words[wordIndex].length) {
-
-        //         firstOption.placeholder += words[wordIndex].charAt(charIndex);
-        //         charIndex++;
-        //         setTimeout(typeEffect, 80);
-        //     } else {
-        //         setTimeout(eraseEffect, 1500);
-        //     }
-        // }
-
-        // function eraseEffect() {
-        //     if (charIndex > 0) {
-        //         firstOption.placeholder = words[wordIndex].substring(0, charIndex - 1);
-        //         charIndex--;
-        //         setTimeout(eraseEffect, 40);
-        //     } else {
-        //         wordIndex = (wordIndex + 1) % words.length;
-        //         setTimeout(typeEffect, 400);
-        //     }
-        // }
-
-         typeEffect();
+        typeEffect();
        
     </script>
     <script>
