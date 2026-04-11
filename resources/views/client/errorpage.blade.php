@@ -1,4 +1,4 @@
-@extends('client.layouts.app')
+@extends('client.layouts.appError')
 @section('title')
 Quick Dials-  Oops !Page Not Found
 @endsection 
@@ -14,7 +14,11 @@ Quick Dials-  Oops !Page Not Found
 @section('content')	
 <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 third-add-section"><img loading="lazy" src="<?php echo asset('client/images/thirdAdd.jpg'); ?>" alt="thirdAdd"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 third-add-section">
+				
+		 
+		
+		</div>
         </div>
 </div> 
 <div class="container">		

@@ -219,7 +219,7 @@ echo trim($msg); } ?>
 				@foreach($clientsList as $client)
 					<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 						<div class="client-list-first"><div class="col-sm-4 col-md-4 serchlist-img ">
-							<a href="{{ url('business-details') . "/" . $client->business_slug }}" title="{{$client->business_name }}"><?php if (null != $client->logo) { $profilePic = unserialize($client->logo); ?><img loading="lazy" src="<?php echo asset('' . $profilePic['large']['src']); ?>" alt="{{$client->business_name}}" title="{{$client->business_name}}" height="141" /><?php } else { ?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo" title="Business Logo" height="141" style="width:100%" /><?php } ?> 
+							<a href="{{ url('business-details/'. $client->business_slug) }}" title="{{$client->business_name }}"><?php if (null != $client->logo) { $profilePic = unserialize($client->logo); ?><img loading="lazy" src="<?php echo asset('' . $profilePic['large']['src']); ?>" alt="{{$client->business_name}}" title="{{$client->business_name}}" height="141" /><?php } else { ?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo" title="Business Logo" height="141" style="width:100%" /><?php } ?> 
 						@if($client->client_type != 'FreeListing') <p><a href="#"><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></a></p>
 									@endif
 								</a>
@@ -238,7 +238,7 @@ echo trim($msg); } ?>
 									</div>
 								@endif
 								<div class="serchlist-txt">
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+									<a href="{{ url('business-details/' . $client->business_slug) }}"
 										title="{{$client->business_name }}">
 										<span class="serchlist-txt-1">										 
 											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18"><?php echo ucfirst(strtolower(substr($client->business_name, 0, 28)));?> 
@@ -276,12 +276,12 @@ echo trim($msg); } ?>
 										<img src="{{ asset('/img/map.png')}}" alt="map" loading="lazy" width="18">
 										<?php if ($addr->issubstr): ?>
 										<a
-											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
+											href="{{ url('business-details/'. $client->business_slug) }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
 										<a href="#" data-toggle="tooltip" data-placement="bottom"
 											title="{{ $addr->fullstr }}">more</a>
 										<?php else: ?>
 										<a
-											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
+											href="{{ url('business-details/'. $client->business_slug) }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
 										<?php endif; ?>
 									</div>
 									<?php						
@@ -290,7 +290,7 @@ echo trim($msg); } ?>
 
 									@if(!empty($client->time))
 												<div class="serchlist-txt">													
-													<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+													<a href="{{ url('business-details/' . $client->business_slug) }}"
 														title="{{ $client->business_name ?? '' }}"><span class="serchlist-txt">
 															<?php
 										if (!empty($client->time)) {
@@ -357,14 +357,14 @@ echo trim($msg); } ?>
 										href="https://wa.me/917559435943" title="{{$client->business_name }}" class="whatsapp-view"
 										target="_blank" rel="noopener noreferrer"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20" alt="whatsapp">	
 											WhatsApp</span></a> &nbsp;&nbsp;&nbsp;<a
-										href="{{ url('business-details') . "/" . $client->business_slug }}"
+										href="{{ url('business-details/'. $client->business_slug) }}"
 										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a>
 									</div>
 							</div>
 						</div>
 						<div class="client-list-second">
 							<div class="col-sm-2 col-md-2 btnBox">
-								<a href="{{ url('business-details') . "/" . $client->business_slug }}"><span
+								<a href="{{ url('business-details/'. $client->business_slug) }}"><span
 										class="serchlist-txt-1">User Rating</span></a>
 								<div class="serchlist-txt">
 									<?php							 
@@ -410,10 +410,10 @@ echo trim($msg); } ?>
 							</div>
 							<div class="col-sm-12 col-md-12" style="padding-left:0;">
 								<div class="clickBlick"><a
-										href="{{ url('business-details') . '/' . $client->business_slug . '/#rewandrate' }}"
+										href="{{ url('business-details/' . $client->business_slug) . '/#rewandrate' }}"
 										title="{{$client->business_name }}"><i class="fa fa-fw fa fa-sun-o"
 											aria-hidden="true"></i></a><a
-										href="{{ url('business-details') . '/' . $client->business_slug . '' }}"
+										href="{{ url('business-details/' . $client->business_slug) }}"
 										title="{{$client->business_name }}"><span>Click here to view your friend rating</span></a>
 
 								</div>
@@ -949,7 +949,7 @@ echo trim($msg); } ?>
 				@foreach($onlyClients as $client)
 					<div class="col-sm-12 col-md-12 reviews-box-1">
 						<div class="col-sm-4 col-md-4 serchlist-img "><a
-								href="{{ url('business-details') . "/" . $client->business_slug }}"
+								href="{{ url('business-details/'. $client->business_slug) }}"
 								>
 								<?php if (!empty($client->logo)) {
 							$profilePic = unserialize($client->logo);
@@ -968,7 +968,7 @@ echo trim($msg); } ?>
 						<div class="col-sm-5 col-md-5 aboutcomp">
 
 
-							<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+							<a href="{{ url('business-details/'.$client->business_slug)  }}"
 								>
 								<span class="serchlist-txt-1">
 										<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="18">
@@ -1005,10 +1005,10 @@ echo trim($msg); } ?>
 									 
 										<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 									<?php if ($addr->issubstr): ?>
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}">{{ $addr->substr }}</a>
+									<a href="{{ url('business-details/'. $client->business_slug)}}">{{ $addr->substr }}</a>
 									<a href="#" data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</a>
 									<?php else: ?>
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}">{{ $addr->substr }}</a>
+									<a href="{{ url('business-details/'. $client->business_slug) }}">{{ $addr->substr }}</a>
 									<?php endif; ?>
 								</div>
 								<?php
@@ -1017,7 +1017,7 @@ echo trim($msg); } ?>
 					<div class="serchlist-txt">
 								<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">	
 							 
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+									<a href="{{ url('business-details/'. $client->business_slug) }}"
 										title="{{$client->business_name }}">
 										<span class="serchlist-txt">
 											<?php
@@ -1074,14 +1074,14 @@ echo trim($msg); } ?>
 
 							<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
 									class="sms-view common_popup_open"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
-									href="{{ url('business-details') . "/" . $client->business_slug }}"
+									href="{{ url('business-details/'.$client->business_slug) }}"
 									title="{{$client->business_name }}" class="sms-view"><span>View Details</span></a></div>
 
 
 						</div>
 
 						<div class="col-sm-2 col-md-2 btnBox">
-							<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+							<a href="{{ url('business-details/'. $client->business_slug) }}"
 								title="{{$client->business_name }}"><span class="serchlist-txt-1">User Rating</span></a>
 							<div class="serchlist-txt">
 								<?php
@@ -1094,22 +1094,22 @@ echo trim($msg); } ?>
 							$remain = 5 - $whole;
 							for ($i = 0; $i < $whole; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar fullstar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar fullstar'></a>";
 							}
 							if ($fraction > 0 && $fraction < 1) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar halfstar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar halfstar'></a>";
 								--$remain;
 							}
 							for ($i = 0; $i < $remain; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar'></a>";
 							}
 						} else {
 							$avgRating = 0.0;
 							for ($i = 0; $i < 5; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar'></a>";
 							}
 						}
 													?>
@@ -1125,7 +1125,7 @@ echo trim($msg); } ?>
 						<div class="col-sm-12 col-md-12" style="padding-left:0;">
 							<div class="clickBlick"><a href="{{ url('business-details') . '/' . $client->business_slug }}"><i
 										class="fa fa-fw fa fa-sun-o" aria-hidden="true"></i></a><a
-									href="{{ url('business-details') . '/' . $client->business_slug }}"
+									href="{{ url('business-details/'. $client->business_slug) }}"
 									title="{{$client->business_name }}"><span>Click here to view your friend rating</span></a></div>
 						</div>
 					</div>
@@ -1311,10 +1311,10 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 				<div class="col-md-3">
 					<div class="inner-client-div">
 						<figure><img loading="lazy" class="" src="<?php echo asset($image); ?>" alt="{{ $client->business_name }}" style="width:100%;"></figure><div class="grid-info">
-							<h3><a href="{{url('business-details') . '/' . $client->business_slug }}"
+							<h3><a href="{{url('business-details/'. $client->business_slug) }}"
 									title="{{$client->business_name}}" >
 									<div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3><strong>{{ucfirst($client->city)}}</strong>
-							<a href="{{url('business-details') . '/' . $client->business_slug }}" class="get-quotes" >View</a>
+							<a href="{{url('business-details/'. $client->business_slug) }}" class="get-quotes" >View</a>
 						</div>
 					</div>
 				</div>

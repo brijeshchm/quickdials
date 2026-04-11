@@ -182,7 +182,7 @@ echo trim($descrip);
 					<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 						<div class="client-list-first">
 							<div class="col-sm-4 col-md-4 serchlist-img "><a
-									href="{{ url('business-details') . "/" . $client->business_slug }}"
+									href="{{ url('business-details/'. $client->business_slug) }}"
 									title="{{$client->business_name }}">
 									<?php if (null != $client->logo) {
 							$profilePic = unserialize($client->logo);
@@ -214,7 +214,7 @@ echo trim($descrip);
 										@endif
 									</div>
 								@endif
-								<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+								<a href="{{ url('business-details/'. $client->business_slug) }}"
 									title="{{$client->business_name }}">
 									<span class="serchlist-txt-1">
 										<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="20">
@@ -252,12 +252,12 @@ echo trim($descrip);
 										<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 										<?php if ($addr->issubstr): ?>
 										<a
-											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
-										<a href="#" data-toggle="tooltip" data-placement="bottom"
-											title="{{ $addr->fullstr }}">more</a>
+											href="{{ url('business-details/'. $client->business_slug) }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
+										<span data-toggle="tooltip" data-placement="bottom"
+											title="{{ $addr->fullstr }}">more</span>
 										<?php else: ?>
 										<a
-											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
+											href="{{ url('business-details/'. $client->business_slug) }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
 										<?php endif; ?>
 									</div>
 									<?php
@@ -268,7 +268,7 @@ echo trim($descrip);
 									<div class="serchlist-txt">
 									<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">	
 									 
-										<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+										<a href="{{ url('business-details/'. $client->business_slug) }}"
 											title="{{$client->business_name }}"><span class="serchlist-txt">
 												<?php
 						if (!empty($client->time)) {
@@ -321,7 +321,7 @@ echo trim($descrip);
 										class="sms-view open-popup"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
 										href="javascript:void(0);" title="{{$client->business_name }}"
 										class="whatsapp-view open-popup"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20"> WhatsApp</span></a>
-									&nbsp;&nbsp;&nbsp;<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+									&nbsp;&nbsp;&nbsp;<a href="{{ url('business-details/'. $client->business_slug) }}"
 										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a></div>
 
 
@@ -329,7 +329,7 @@ echo trim($descrip);
 						</div>
 						<div class="client-list-second">
 							<div class="col-sm-2 col-md-2 btnBox">
-								<a href="{{ url('business-details') . "/" . $client->business_slug }}"><span
+								<a href="{{ url('business-details/'. $client->business_slug) }}"><span
 										class="serchlist-txt-1">User Rating</span></a>
 								<div class="serchlist-txt">
 									<?php
@@ -373,10 +373,10 @@ echo trim($descrip);
 							</div>
 
 							<div class="col-sm-12 col-md-12" style="padding-left:0;">
-								<div class="clickBlick"><a href="{{ url('business-details') . '/' . $client->business_slug . '' }}"
+								<div class="clickBlick"><a href="{{ url('business-details/'. $client->business_slug)}}"
 										title="{{$client->business_name}}"><i class="fa fa-fw fa fa-sun-o"
 											aria-hidden="true"></i></a><a
-										href="{{ url('business-details') . '/' . $client->business_slug }}"
+										href="{{ url('business-details/'. $client->business_slug) }}"
 										title="{{$client->business_name}}"><span>Click here to view your friend rating</span></a>
 								</div>
 							</div>

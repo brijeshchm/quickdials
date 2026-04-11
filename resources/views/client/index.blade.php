@@ -1339,6 +1339,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
    </div>
    
  
+
    
    
    <div class="banner_botton_open">
@@ -1463,7 +1464,6 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
    }
 </style>
  
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
