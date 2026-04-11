@@ -7,7 +7,6 @@
 @else
 <link name="identifier-URL" href="<?php echo trim(url()->current());?>" />
 @endif <meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
-<link rel="sitemap" type="application/xml" title="Sitemap" href="{{ url('sitemap.xml') }}">
 <meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
 @if (Request::is('/'))
 <link name="url" href="{{url('/')}}/" />
@@ -27,7 +26,7 @@
 <script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
 <script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" >
 </script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
-<link rel="dns-prefetch" href="https://www.google-analytics.com">
+
     <!------Google Analytic Script End----->
 <script type="application/ld+json">
 {
