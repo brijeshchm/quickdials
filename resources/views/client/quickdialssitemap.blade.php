@@ -3,6 +3,9 @@
 <sitemap><loc>https://www.quickdials.com/sitemap.xml</loc>
 <lastmod>2026-03-26</lastmod>
 </sitemap>
+<sitemap><loc>https://www.quickdials.com/sitemap_index.xml</loc>
+<lastmod>2026-03-26</lastmod>
+</sitemap>
 <sitemap><loc>https://www.quickdials.com/sitemap-blog.xml</loc>
 <lastmod>2026-03-26</lastmod>
 </sitemap>
@@ -14,13 +17,16 @@
 <lastmod>2026-03-26</lastmod>
 </sitemap>
 
-<sitemap><loc>https://www.quickdials.com/sitemap-allcity.xml</loc>
+<sitemap><loc>https://www.quickdials.com/sitemap-city-1.xml</loc>
 <lastmod>2026-03-26</lastmod>
 </sitemap>
 
-<sitemap><loc>https://www.quickdials.com/sitemap-keyword.xml</loc>
+<sitemap><loc>https://www.quickdials.com/sitemap-city-2.xml</loc>
 <lastmod>2026-03-26</lastmod>
 </sitemap>
  
+<sitemap><loc>https://www.quickdials.com/sitemap-city-3.xml</loc>
+<lastmod>2026-03-26</lastmod>
+</sitemap>
 
 </sitemapindex>

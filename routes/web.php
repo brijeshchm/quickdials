@@ -358,9 +358,9 @@ Route::get('/sitemap-city.xml', function () {
 
 });
 
-Route::get('/sitemap-allcity.xml', function () {
+Route::get('/sitemap-city-1.xml', function () {
 
-	$keywords = Cache::remember('sitemap_allcity', 3600, function () {
+	$keywords = Cache::remember('sitemap_city_1', 3600, function () {
 		return DB::table('keyword')
 			->where('seo_type', '1')
 			->select('slug', 'updated_at')
@@ -368,19 +368,31 @@ Route::get('/sitemap-allcity.xml', function () {
 	});
 
 	return response()
-		->view('client.sitemap_allcity', compact('keywords'))
+		->view('client.sitemap_city-1', compact('keywords'))
 		->header('Content-Type', 'text/xml');
 
 });
 
-Route::get('/sitemap-keyword.xml', function () {
+Route::get('/sitemap-city-2.xml', function () {
 
 	$keywords = DB::table('keyword')
 		->where('seo_type', '1')
 		->select('slug', 'updated_at')
 		->get();
 	return response()
-		->view('client.sitemap_keyword', compact('keywords'))
+		->view('client.sitemap_city-2', compact('keywords'))
+		->header('Content-Type', 'text/xml');
+
+});
+
+Route::get('/sitemap-city-3.xml', function () {
+
+	$keywords = DB::table('keyword')
+		->where('seo_type', '1')
+		->select('slug', 'updated_at')
+		->get();
+	return response()
+		->view('client.sitemap_city-3', compact('keywords'))
 		->header('Content-Type', 'text/xml');
 
 });
