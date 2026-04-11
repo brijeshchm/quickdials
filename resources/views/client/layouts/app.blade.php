@@ -501,14 +501,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <ul class="footer-links">
                             <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="{{url('/about-us')}}">About Us</a></li>
-                            <li><a href="{{ url('contact-us') }}">Contact Us</a></li>
+                            <li><a href="{{ url('/contact-us') }}">Contact Us</a></li>
                             <li><a href="{{url('/pricing')}}">Pricing</a></li>
                             <li><a href="{{url('/careers')}}">Careers</a></li>
-                            <!-- <li><a href="{{url('blog')}}">Success Stories</a></li> -->
-                            <li><a href="{{url('blog')}}">Blog</a></li>
-                            <li><a href="{{url('business-owners')}}" rel="nofollow" title="Advertise on quickdials">Advertise on quickdials</a></li>
+                         
+                            <li><a href="{{url('/blog')}}">Blog</a></li>
+                            <li><a href="{{url('/business-owners')}}" rel="nofollow" title="Advertise on quickdials">Advertise on quickdials</a></li>
                             <li><a href="{{url('/privacy-policy')}}" title="Privacy Policy">Privacy Policy</a></li>
-                            <li><a href="{{url('terms-conditions')}}" title="Terms & Conditions">Terms & Conditions</a></li>
+                            <li><a href="{{url('/terms-conditions')}}" title="Terms & Conditions">Terms & Conditions</a></li>
                             <li><a href="{{url('/copyright-policy')}}" title="Copyright Policy">Copyright Policy</a>
                             <li><a href="{{url('/courses/playwright-automation-training-in-noida')}}" title="Playwright Automation Training in Noida">Playwright Automation Training in Noida</a>
                             </li>
@@ -518,34 +518,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="footer-section">
                         <h3>Popular Categories</h3>
                         <ul class="footer-links">
-                            <li><a href="{{ url('categories/professional-courses') }}">Coaching & Tuitions</a></li>
-                            <li><a href="{{ url('child/wedding-planning') }}">Wedding Planning</a></li>
-                            <li><a href="{{ url('health-wellness') }}">Healthcare</a></li>
-                            <li><a href="{{ url('real-estate-agent') }}">Real Estate</a></li>
-                            <li><a href="{{ url('categories/electric-services') }}">Electric Services</a></li>
-                            <li><a href="{{ url('categories/security-system') }}">Security System</a></li>
-                            <li><a href="{{ url('categories/medical') }}">Medical</a></li>
-                            <li><a href="{{ url('child/packers-and-movers') }}">Packers Movers</a></li>
-                            <li><a href="{{ url('restaurants')}}" class="keystore">Restaurants</a></li>
-                            <li><a href="{{ url('hotels')}}" class="keystore">Hotels</a></li>
-                            <li><a href="{{ url('interior-designer')}}" class="keystore">interior Design</a></li>
+                            <li><a href="{{ url('/categories/professional-courses') }}">Coaching & Tuitions</a></li>
+                            <li><a href="{{ url('/child/wedding-planning') }}">Wedding Planning</a></li>
+                            <li><a href="{{ url('/health-wellness') }}">Healthcare</a></li>
+                            <li><a href="{{ url('/real-estate-agent') }}">Real Estate</a></li>
+                            <li><a href="{{ url('/categories/electric-services') }}">Electric Services</a></li>
+                            <li><a href="{{ url('/categories/security-system') }}">Security System</a></li>
+                            <li><a href="{{ url('/categories/medical') }}">Medical</a></li>
+                            <li><a href="{{ url('/child/packers-and-movers') }}">Packers Movers</a></li>
+                            <li><a href="{{ url('/restaurants')}}" class="keystore">Restaurants</a></li>
+                            <li><a href="{{ url('/hotels')}}" class="keystore">Hotels</a></li>
+                            <li><a href="{{ url('/interior-designer')}}" class="keystore">interior Design</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-section">
                         <h3>Business Services</h3>
                         <ul class="footer-links">
-                            <li><a href="{{ url('patient-care-service')}}" class="keystore">Patient Care Service</a></li>
-                            <li><a href="{{ url('home-appliance-repair-training')}}" class="keystore">Home Appliances Repair</a></li>
-                            <li><a href="{{ url('wedding-organisers')}}" class="keystore">Wedding Organisers</a></li>
-                            <li><a href="{{ url('ac-repair-service')}}" class="keystore">AC Services</a></li>
-                            <li><a href="{{ url('security-guards-services')}}" class="keystore">Security Guards</a></li>
-                            <li><a href="{{ url('cleaning-services')}}" class="keystore">Cleaning Services</a></li>
-                            <li><a href="{{ url('child/repair-services') }}">Repairs Services</a></li>
-                            <li><a href="{{ url('categories/spa') }}">SPA Beauty</a></li>
-                            <li><a href="{{ url('child/loan-service') }}">Loan</a></li>
-                            <li><a href="{{ url('income-tax-consultants')}}" class="keystore">Tax Consultants</a></li>
-                            <li><a href="{{ url('interviews') }}">Interviews Question</a></li>
+                            <li><a href="{{ url('/patient-care-service')}}" class="keystore">Patient Care Service</a></li>
+                            <li><a href="{{ url('/home-appliance-repair-training')}}" class="keystore">Home Appliances Repair</a></li>
+                            <li><a href="{{ url('/wedding-organisers')}}" class="keystore">Wedding Organisers</a></li>
+                            <li><a href="{{ url('/ac-repair-service')}}" class="keystore">AC Services</a></li>
+                            <li><a href="{{ url('/security-guards-services')}}" class="keystore">Security Guards</a></li>
+                            <li><a href="{{ url('/cleaning-services')}}" class="keystore">Cleaning Services</a></li>
+                            <li><a href="{{ url('/child/repair-services') }}">Repairs Services</a></li>
+                            <li><a href="{{ url('/categories/spa') }}">SPA Beauty</a></li>
+                            <li><a href="{{ url('/child/loan-service') }}">Loan</a></li>
+                            <li><a href="{{ url('/income-tax-consultants')}}" class="keystore">Tax Consultants</a></li>
+                            <li><a href="{{ url('/interviews') }}">Interviews Question</a></li>
                             
  
                         </ul>
