@@ -2108,10 +2108,10 @@ $authClient = 0;
                     <div class="col-md-12">
 
                         <div class="col-md-6">
-                            <h3> <a href="javascript:void(0)">How Quick Dials help You to Grow your Business?</a></h3>
+                            <h3> How Quick Dials help You to Grow your Business?</h3>
                             <p>Quick Dials helps grow your business by boosting local visibility, generating quality leads,
                                 and connecting you with customers searching for your services.</p>
-                            <h3> <a href="javascript:void(0)">What is Quick Dials?</a></h3>
+                            <h3> What is Quick Dials?</h3>
                             <p>Quick Dials is a comprehensive search platform designed for students, parents, and
                                 professionals seeking reliable information across India's diverse education landscape and
                                 industrial sectors. India offers a wide spectrum of opportunities, spanning education,
@@ -2124,7 +2124,7 @@ $authClient = 0;
                                     products, crude oil, coal, cement, natural gas, and fertilizers.</li>
                             </ul>
 
-                            <h3> <a href="javascript:void(0)"> Benefits you will get after associating with us:</a></h3>
+                            <h3>  Benefits you will get after associating with us:</h3>
 
 
                             <ul>
@@ -2141,7 +2141,7 @@ $authClient = 0;
                         </div>
 
                         <div class="col-md-6">
-                            <h3> <a href="javascript:void(0)">Why choose Quick Dials for growing your business?</a></h3>
+                            <h3> Why choose Quick Dials for growing your business?</h3>
 
                             <p>There are a few aspects that make us different from others and the aim directed towards
                                 helping the users and the client to get the best opportunity because:</p>
@@ -2160,7 +2160,7 @@ $authClient = 0;
                                     provide you genuine candidates.</li>
                             </ul>
 
-                            <h3> <a href="javascript:void(0)">Contact Us :</a></h3>
+                            <h3> Contact Us :</h3>
                             <p>Contact: +91-75-5943-5943, Email: info@quickdials.com, Website: www.quickdials.com.</p>
                             <p>Other ways can be; by registering your business as a free listing, don’t worry, our marketing
                                 team is always happy to find you.</p>
@@ -2312,7 +2312,7 @@ $authClient = 0;
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="check-title">
-                                                <a data-toggle="collapse" class="" data-parent="#accordion" href="#check1">
+                                                <a data-toggle="collapse" class="" data-parent="#accordion" >
                                                     <span class="acc-icons"></span> What is Quick Dials?
                                                 </a>
                                             </h4>
@@ -2355,7 +2355,7 @@ $authClient = 0;
                                                 <a data-toggle="collapse" data-parent="#accordion" href="#check3"> <span
                                                         class="acc-icons"></span>What Happen If my leads commitment did not
                                                     get fulfilled?
-                                                </a>
+                        </a>
                                             </h4>
                                         </div>
                                         <div id="check3" class="panel-collapse collapse ">

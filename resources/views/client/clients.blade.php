@@ -38,7 +38,7 @@ QuickDials- Training in
 				<div class="col-md-3"><div class="inner-client-div">
 				<figure class="text-center"><img loading="lazy" class="" src="<?php echo url($image); ?>" alt="{{ $imagename; }}"></figure>
 				<div class="grid-info">
-					<h3><a href="#" title="{{$client->business_name}}" tabindex="0"><abbr title="{{$client->business_name}}"><b>{{$client->business_name}}</b></abbr></a>
+					<h3><span tabindex="0"><abbr title="{{$client->business_name}}"><b>{{$client->business_name}}</b></abbr></span>
 					</h3>
 					<div class="font-11"><span><i class="fa fa-mobile"></i>&nbsp;+91-{{$client->mobile or "mobile not available"}}</span></div>
 					<?php
@@ -62,7 +62,7 @@ QuickDials- Training in
 						if($addr->ispositiveresponse){
 						?>
 							<?php if($addr->issubstr): ?>
-								<div class="font-11"><span><i class="fa fa-map-marker"></i>&nbsp;{{ $addr->substr }} <a href="#" data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">read more</a></span></div>
+								<div class="font-11"><span><i class="fa fa-map-marker"></i>&nbsp;{{ $addr->substr }} <span  data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">read more</span></span></div>
 							<?php else: ?>
 								<div class="font-11"><span><i class="fa fa-map-marker"></i>&nbsp;{{ $addr->fullstr }}</span></div>
 							<?php endif;						
@@ -94,7 +94,7 @@ QuickDials- Training in
 						</a> (<span class="font-11">{{$avgRating}}/{{$client->comments_count}} reviews</span>)
 					</div>
 				 
-					<a href="{{url('business-details').'/'.$client->business_slug}}" class="get-quotes" tabindex="0">View</a>
+					<a href="{{url('business-details/'.$client->business_slug)}}" class="get-quotes" tabindex="0">View</a>
 				</div>
 				</div></div>
 			<?php endforeach; ?>

@@ -23,6 +23,8 @@ class ClientDetailController extends Controller
 	 */
 	public function index($slug)
 	{
+
+	
 		$clients = Client::where('business_slug', $slug)->get();
 		$cities = Citieslists::all();
 		$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->where('city', 'noida')->where('paid_status', '1')->limit(12)->get();

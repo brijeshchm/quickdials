@@ -65,8 +65,8 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 					<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 						<div class="client-list-first">
 							<div class="col-sm-4 col-md-4 serchlist-img "><a
-									href="{{ url('business-details') . "/" . $client->business_slug }}"
-									title="{{$client->business_name }}">
+									href="{{ url('business-details/'. $client->business_slug) }}"
+									>
 									<?php if (null != $client->logo) {
 							$profilePic = unserialize($client->logo);
 										?><img loading="lazy" src="<?php echo asset('' . $profilePic['large']['src']); ?>" alt="{{$client->business_name}}"
@@ -97,7 +97,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 									</div>
 								@endif
 								<div class="serchlist-txt">
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+									<a href="{{ url('business-details/' . $client->business_slug) }}"
 										title="{{$client->business_name }}">
 										<span class="serchlist-txt-1">
 											<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="20">
@@ -139,12 +139,12 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 										<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 										<?php if ($addr->issubstr): ?>
 										<a
-											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
+											href="{{ url('business-details/'. $client->business_slug) }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
 										<a href="#" data-toggle="tooltip" data-placement="bottom"
 											title="{{ $addr->fullstr }}">more</a>
 										<?php else: ?>
 										<a
-											href="{{ url('business-details') . "/" . $client->business_slug }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
+											href="{{ url('business-details/'. $client->business_slug) }}">{{ ucfirst(strtolower($addr->substr)) }}</a>
 										<?php endif; ?>
 									</div>
 									<?php						
@@ -155,8 +155,8 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 												<div class="serchlist-txt">
 <img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">
 													 
-													<a href="{{ url('business-details') . "/" . $client->business_slug }}"
-														title="{{$client->business_name }}"><span class="serchlist-txt">
+													<a href="{{ url('business-details/'. $client->business_slug) }}"
+														><span class="serchlist-txt">
 															<?php
 										if (!empty($client->time)) {
 											$times = json_decode($client->time);
@@ -199,20 +199,20 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 									</div>
 								</div>
 
-								<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
-										class="sms-view common_popup_form"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
+								<div class="serchlist-txt-btn"><span 
+										class="sms-view common_popup_form"><span>Enquiry Now</span></span>&nbsp;&nbsp;&nbsp;<a
 										href="https://wa.me/917559435943" title="{{$client->business_name }}" class="whatsapp-view"
 										target="_blank" rel="noopener noreferrer"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20">
 											WhatsApp</span></a> &nbsp;&nbsp;&nbsp;<a
-										href="{{ url('business-details') . "/" . $client->business_slug }}"
-										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a></div>
+										href="{{ url('business-details/'. $client->business_slug) }}"
+										  class="sms-view"><span>Vew Details</span></a></div>
 
 
 							</div>
 						</div>
 						<div class="client-list-second">
 							<div class="col-sm-2 col-md-2 btnBox">
-								<a href="{{ url('business-details') . "/" . $client->business_slug }}"><span
+								<a href="{{ url('business-details/'. $client->business_slug) }}"><span
 										class="serchlist-txt-1">User Rating</span></a>
 								<div class="serchlist-txt">
 									<?php							 
@@ -258,11 +258,11 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 							</div>
 							<div class="col-sm-12 col-md-12" style="padding-left:0;">
 								<div class="clickBlick"><a
-										href="{{ url('business-details') . '/' . $client->business_slug . '/#rewandrate' }}"
+										href="{{ url('business-details/' . $client->business_slug) . '/#rewandrate' }}"
 										title="{{$client->business_name }}"><i class="fa fa-fw fa fa-sun-o"
 											aria-hidden="true"></i></a><a
-										href="{{ url('business-details') . '/' . $client->business_slug . '' }}"
-										title="{{$client->business_name }}"><span>Click here to view your friend rating</span></a>
+										href="{{ url('business-details/'. $client->business_slug) . '' }}"
+										 ><span>Click here to view your friend rating</span></a>
 
 								</div>
 
@@ -275,6 +275,20 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 				<a href="#top" id="top"></a>
 				<ul id="pagin"></ul>
 			 
+			@else
+
+			<div class="container">
+			 
+			<div class="row">
+			<div class="col-sm-12 col-md-12 banner-details">
+			<h6 class="Oops-txt"> No Result Found result </h6>
+			<h2 class="error-txt"></h2>
+			</div>
+			</div>
+			 
+			</div>
+
+
 			@endif
 			<style>
 				.current .btn-info {
@@ -326,7 +340,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 				@foreach($onlyClients as $client)
 					<div class="col-sm-12 col-md-12 reviews-box-1">
 						<div class="col-sm-4 col-md-4 serchlist-img "><a
-								href="{{ url('business-details') . "/" . $client->business_slug }}" title="{{$client->business_name }}">
+								href="{{ url('business-details/'. $client->business_slug) }}" >
 								<?php if (!empty($client->logo)) {
 							$profilePic = unserialize($client->logo);
 										?><img loading="lazy" src="<?php echo asset($profilePic['large']['src']); ?>" alt="Logo" height="141" /><?php
@@ -336,21 +350,20 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						}
 									?>
 								@if($client->client_type != 'FreeListing')
-									<p><a href="javascript:void(0)"><i class="fa fa-fw fa fa-thumbs-up serchlist-location-icon"
-												aria-hidden="true"></i></a></p>
+									<p><span><i class="fa fa-fw fa fa-thumbs-up serchlist-location-icon"
+												aria-hidden="true"></i></span></p>
 								@endif
 							</a>
 						</div>
 						<div class="col-sm-5 col-md-5 aboutcomp">
 
 
-							<a href="{{ url('business-details') . "/" . $client->business_slug }}" title="{{$client->business_name }}">
+							<a href="{{ url('business-details/'. $client->business_slug) }}" title="{{$client->business_name }}">
 								<span class="serchlist-txt-1">
 									<img src="{{ asset('/img/office.png')}}" alt="office" loading="lazy" width="20">
 									<?php echo ucfirst(substr($client->business_name, 0, 28));?>
 								</span>
-								<!-- 						 
-										<img loading="lazy" src="<?php echo asset('client/images/preferred.png'); ?>" alt="preferred"> -->
+								 
 
 							</a>
 
@@ -380,10 +393,10 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 								<div class="serchlist-txt">
 									<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 									<?php if ($addr->issubstr): ?>
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}">{{ $addr->substr }}</a>
-									<a href="#" data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</a>
+									<a href="{{ url('business-details/'. $client->business_slug) }}">{{ $addr->substr }}</a>
+									<sapn data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</span>
 									<?php else: ?>
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}">{{ $addr->substr }}</a>
+									<a href="{{ url('business-details/'. $client->business_slug) }}">{{ $addr->substr }}</a>
 									<?php endif; ?>
 								</div>
 								<?php
@@ -393,7 +406,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 
 								<div class="serchlist-txt"> 
 								<img src="{{ asset('/img/clock.png')}}" alt="clock" loading="lazy" width="18">
-									<a href="{{ url('business-details') . "/" . $client->business_slug }}"
+									<a href="{{ url('business-details/'. $client->business_slug) }}"
 										title="{{$client->business_name }}"><span class="serchlist-txt">
 											<?php
 						if (!empty($client->time)) {
@@ -432,7 +445,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 															 ?>
 
 												<li>
-													<a href="{{url(Request::segment(1))}}/<?php echo $assignedKwd->slug; ?>"
+													<a href="{{url($assignedKwd->slug)}}"
 														><?php echo $assignedKwd->keyword; ?></a>
 												</li>
 
@@ -446,17 +459,18 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 								</div>
 							</div>
 
-							<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
+							<div class="serchlist-txt-btn"><span 
 									class="sms-view common_popup_open"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
-									href="{{ url('business-details') . "/" . $client->business_slug }}"
-									title="{{$client->business_name }}" class="sms-view"><span>View Details</span></a></div>
+									href="{{ url('business-details/'. $client->business_slug) }}"
+									 class="sms-view"><span>View Details</span></span>
+								
+								</div>
 
 
 						</div>
 
 						<div class="col-sm-2 col-md-2 btnBox">
-							<a href="{{ url('business-details') . "/" . $client->business_slug }}"
-								title="{{$client->business_name }}"><span class="serchlist-txt-1">User Rating</span></a>
+							<a href="{{ url('business-details/'. $client->business_slug) }}" ><span class="serchlist-txt-1">User Rating</span></a>
 							<div class="serchlist-txt">
 								<?php
 
@@ -468,22 +482,22 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 							$remain = 5 - $whole;
 							for ($i = 0; $i < $whole; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar fullstar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar fullstar'></a>";
 							}
 							if ($fraction > 0 && $fraction < 1) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar halfstar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar halfstar'></a>";
 								--$remain;
 							}
 							for ($i = 0; $i < $remain; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar'></a>";
 							}
 						} else {
 							$avgRating = 0.0;
 							for ($i = 0; $i < 5; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar'></a>";
 							}
 						}
 										?>
@@ -497,10 +511,10 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						</div>
 
 						<div class="col-sm-12 col-md-12" style="padding-left:0;">
-							<div class="clickBlick"><a href="{{ url('business-details') . '/' . $client->business_slug }}"><i
+							<div class="clickBlick"><a href="{{ url('business-details/'). $client->business_slug) }}"><i
 										class="fa fa-fw fa fa-sun-o" aria-hidden="true"></i></a><a
-									href="{{ url('business-details') . '/' . $client->business_slug }}"
-									title="{{$client->business_name }}"><span>Click here to view your friend rating</span></a></div>
+									href="{{ url('business-details/' . $client->business_slug) }}"
+									><span>Click here to view your friend rating</span></a></div>
 						</div>
 					</div>
 				@endforeach

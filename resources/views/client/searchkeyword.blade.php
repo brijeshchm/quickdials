@@ -128,7 +128,7 @@ echo trim($descrip);
 								</div>
 					@endif
 					<div class="keyword-cotegory-text">
-						@if(!empty($keyword))<a href="{{url('child/' . $keyword->child_slug)}}" title="<?php if (!empty($keyword->child_category)) { echo $keyword->child_category; } ?>"><?php if (!empty($keyword->child_category)) { echo $keyword->child_category; } ?></a>/ <?php if (!empty($keyword->keyword)) { echo $keyword->keyword; }  ?>@endif </div>
+						@if(!empty($keyword))<a href="{{url('child/' . $keyword->child_slug)}}" ><?php if (!empty($keyword->child_category)) { echo $keyword->child_category; } ?></a>/ <?php if (!empty($keyword->keyword)) { echo $keyword->keyword; }  ?>@endif </div>
 				</div>
 
 
@@ -194,8 +194,8 @@ echo trim($descrip);
 						}
 															?>
 									@if($client->client_type != 'FreeListing')
-										<p><a href="#"><i class="fa fa-fw fa fa-thumbs-up serchlist-location-icon"
-													aria-hidden="true"></i></a></p>
+										<p><span><i class="fa fa-fw fa fa-thumbs-up serchlist-location-icon"
+													aria-hidden="true"></i></span></p>
 									@endif
 								</a>
 							</div>
@@ -317,12 +317,12 @@ echo trim($descrip);
 									</div>
 								</div>
 
-								<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
-										class="sms-view open-popup"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
-										href="javascript:void(0);" title="{{$client->business_name }}"
-										class="whatsapp-view open-popup"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20"> WhatsApp</span></a>
+								<div class="serchlist-txt-btn"><span
+										class="sms-view open-popup">Enquiry Now</span>&nbsp;&nbsp;&nbsp;<span
+										
+										class="whatsapp-view open-popup"><span><img src="{{ asset('client/WhatsApp.svg')}}" width="20"> WhatsApp</span></span>
 									&nbsp;&nbsp;&nbsp;<a href="{{ url('business-details/'. $client->business_slug) }}"
-										title="{{$client->business_name }}" class="sms-view"><span>Vew Details</span></a></div>
+										class="sms-view"><span>Vew Details</span></a></div>
 
 
 							</div>
@@ -342,22 +342,22 @@ echo trim($descrip);
 							$remain = 5 - $whole;
 							for ($i = 0; $i < $whole; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar fullstar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar fullstar'></a>";
 							}
 							if ($fraction > 0 && $fraction < 1) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar halfstar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar halfstar'></a>";
 								--$remain;
 							}
 							for ($i = 0; $i < $remain; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar'></a>";
 							}
 						} else {
 							$avgRating = 0.0;
 							for ($i = 0; $i < 5; ++$i) {
 
-								echo "<a href='" . url('business-details') . "/" . $client->business_slug . "' class='emptystar'></a>";
+								echo "<a href='" . url('business-details/'. $client->business_slug) . "' class='emptystar'></a>";
 							}
 						}
 																?>

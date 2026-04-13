@@ -220,7 +220,7 @@ echo trim($msg); } ?>
 					<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 						<div class="client-list-first"><div class="col-sm-4 col-md-4 serchlist-img ">
 							<a href="{{ url('business-details/'. $client->business_slug) }}" title="{{$client->business_name }}"><?php if (null != $client->logo) { $profilePic = unserialize($client->logo); ?><img loading="lazy" src="<?php echo asset('' . $profilePic['large']['src']); ?>" alt="{{$client->business_name}}" title="{{$client->business_name}}" height="141" /><?php } else { ?><img loading="lazy" src="<?php echo asset('client/images/default_pp_small.png'); ?>" alt="Business Logo" title="Business Logo" height="141" style="width:100%" /><?php } ?> 
-						@if($client->client_type != 'FreeListing') <p><a href="#"><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></a></p>
+						@if($client->client_type != 'FreeListing') <p><span><i class="fa fa-fw fa fa-thumbs-up icon" aria-hidden="true"></i></span></p>
 									@endif
 								</a>
 							</div>
@@ -431,142 +431,7 @@ echo trim($msg); } ?>
 				<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 					<div class="client-list-first">
 
-						<style>
-							.abt-accordion .card {
-								border-radius: 0;
-								border: 1px solid rgba(179, 179, 179, 0.45);
-								margin-bottom: 10px;
-								max-width: 960px;
-								border-radius: 0;
-								box-shadow: 0 0 5px 3px #d4d4d466;
-							}
-							.card {
-								position: relative;
-								display: -ms-flexbox;
-								display: flex;
-								-ms-flex-direction: column;
-								flex-direction: column;
-								min-width: 0;
-								word-wrap: break-word;
-								background-color: #fff;
-								background-clip: border-box;
-								border: 1px solid rgba(0, 0, 0, .125);
-								border-radius: .25rem;
-							}
-
-							.abt-accordion .card .card-header {
-								padding: 7px;
-								background: none;
-								border: none;
-							}
-
-							.card-header:first-child {
-								border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-							}
-
-							.abt-accordion .card .card-header h2 button {
-								display: flex;
-								align-items: center;
-								justify-content: space-between;
-								width: 100%;
-								text-decoration: none;
-								border-radius: 0;
-								font-weight: 700;
-								margin-left: 3%;
-							}
-
-							.abt-accordion .card .collapse.show {
-								position: relative;
-							}
-
-							.card-body {
-								-ms-flex: 1 1 auto;
-								flex: 1 1 auto;
-								padding: 1.25rem;
-								font-weight: 400;
-								font-size: 13px !important;
-								margin-bottom: 0;
-								line-height: 1.7;
-								padding-left: 1.5em;
-								color: #212529 !important;
-							}
-
-							.about-accordian .card-body p {
-								padding-left: 0;
-								margin-bottom: 0;
-							}
-
-							.card-body p {
-								font-weight: 400;
-								font-size: 13px;
-								margin-bottom: 10px;
-								line-height: 1.7;
-								padding-left: 1.5em;
-							}
-
-							.about-accordian ul {
-								list-style: none;
-							}
-
-							.about-accordian .card-body ul li:first-child {
-								margin-top: 0;
-							}
-
-							.about-accordian .card-body ul li {
-								position: relative;
-								font-weight: 400;
-								font-size: 13px !important;
-								line-height: 1.7;
-								margin-left: 0;
-								margin-bottom: 11px;
-								margin-top: 10px;
-								text-align: justify;
-							}
-
-							.about-accordian .card-body ul ul {
-								position: relative;
-								font-weight: 400;
-								font-size: 13px !important;
-								line-height: 1.7;
-								margin-left: 22px;
-							}
-
-							.about-accordian ul {
-								list-style: none;
-							}
-
-							.abt-accordion .card .collapse.show::before {
-								content: '';
-								width: 94%;
-								height: 1px;
-								position: absolute;
-								top: 0;
-								left: 0;
-								background-color: #02b0af;
-								margin-left: 3%;
-							}
-
-							.about-accordian .card-body ul ul li {
-								margin-bottom: 0;
-								margin-top: 0;
-							}
-
-							.about-accordian ul ul p::before {
-								content: " ";
-								position: absolute;
-								top: 3px;
-								left: -16px;
-								display: inline-block;
-								-webkit-transform: rotate(45deg);
-								-ms-transform: rotate(45deg);
-								transform: rotate(45deg);
-								height: 1em;
-								width: .5em;
-								border-bottom: .2em solid #ff5f14;
-								border-right: .2em solid #ff5f14;
-							}
-						</style>
-
+						
 						<div class="about-accordian">
 							<div class="abt-accordion" id="courseAcrdMain">
 
@@ -668,144 +533,7 @@ echo trim($msg); } ?>
 
 				<div class="col-sm-12 col-md-12 reviews-box-1 line-content">
 					<div class="client-list-first">
-						<style>
-							.abt-accordion .card {
-								border-radius: 0;
-								border: 1px solid rgba(179, 179, 179, 0.45);
-								margin-bottom: 10px;
-								max-width: 960px;
-								border-radius: 0;
-								box-shadow: 0 0 5px 3px #d4d4d466;
-							}
-
-
-							.card {
-								position: relative;
-								display: -ms-flexbox;
-								display: flex;
-								-ms-flex-direction: column;
-								flex-direction: column;
-								min-width: 0;
-								word-wrap: break-word;
-								background-color: #fff;
-								background-clip: border-box;
-								border: 1px solid rgba(0, 0, 0, .125);
-								border-radius: .25rem;
-							}
-
-							.abt-accordion .card .card-header {
-								padding: 7px;
-								background: none;
-								border: none;
-							}
-
-							.card-header:first-child {
-								border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-							}
-
-							.abt-accordion .card .card-header h2 button {
-								display: flex;
-								align-items: center;
-								justify-content: space-between;
-								width: 100%;
-								text-decoration: none;
-								border-radius: 0;
-								font-weight: 700;
-								margin-left: 3%;
-							}
-
-							.abt-accordion .card .collapse.show {
-								position: relative;
-							}
-
-							.card-body {
-								-ms-flex: 1 1 auto;
-								flex: 1 1 auto;
-								padding: 1.25rem;
-								font-weight: 400;
-								font-size: 13px !important;
-								margin-bottom: 0;
-								line-height: 1.7;
-								padding-left: 1.5em;
-								color: #212529 !important;
-							}
-
-							.about-accordian .card-body p {
-								padding-left: 0;
-								margin-bottom: 0;
-							}
-
-							.card-body p {
-								font-weight: 400;
-								font-size: 13px;
-								margin-bottom: 10px;
-								line-height: 1.7;
-								padding-left: 1.5em;
-							}
-
-							.about-accordian ul {
-								list-style: none;
-							}
-
-							.about-accordian .card-body ul li:first-child {
-								margin-top: 0;
-							}
-
-							.about-accordian .card-body ul li {
-								position: relative;
-								font-weight: 400;
-								font-size: 13px !important;
-								line-height: 1.7;
-								margin-left: 0;
-								margin-bottom: 11px;
-								margin-top: 10px;
-								text-align: justify;
-							}
-
-							.about-accordian .card-body ul ul {
-								position: relative;
-								font-weight: 400;
-								font-size: 13px !important;
-								line-height: 1.7;
-								margin-left: 22px;
-							}
-
-							.about-accordian ul {
-								list-style: none;
-							}
-
-							.abt-accordion .card .collapse.show::before {
-								content: '';
-								width: 94%;
-								height: 1px;
-								position: absolute;
-								top: 0;
-								left: 0;
-								background-color: #02b0af;
-								margin-left: 3%;
-							}
-
-							.about-accordian .card-body ul ul li {
-								margin-bottom: 0;
-								margin-top: 0;
-							}
-
-							.about-accordian ul ul p::before {
-								content: " ";
-								position: absolute;
-								top: 3px;
-								left: -16px;
-								display: inline-block;
-								-webkit-transform: rotate(45deg);
-								-ms-transform: rotate(45deg);
-								transform: rotate(45deg);
-								height: 1em;
-								width: .5em;
-								border-bottom: .2em solid #ff5f14;
-								border-right: .2em solid #ff5f14;
-							}
-						</style>
-
+						
 						<div class="about-accordian">
 
 							<div class="abt-accordion" id="courseAcrdMain">
@@ -898,6 +626,20 @@ echo trim($msg); } ?>
 						</div>
 					</div>
 				</div>
+				<?php  }else{ ?>
+
+<div class="container">
+			 
+			<div class="row">
+			<div class="col-sm-12 col-md-12 banner-details">
+			<h4 class="Oops-txt"> No Result Found result </h4>
+			<h2 class="error-txt"></h2>
+			</div>
+			</div>
+			 
+			</div>
+
+
 				<?php  } ?>
 			@endif
 			<style>
@@ -960,8 +702,8 @@ echo trim($msg); } ?>
 						}
 												?>
 								@if($client->client_type != 'FreeListing')
-									<p><a href="javascript:void(0)"><i class="fa fa-fw fa fa-thumbs-up serchlist-location-icon"
-												aria-hidden="true"></i></a></p>
+									<p><span><i class="fa fa-fw fa fa-thumbs-up serchlist-location-icon"
+												aria-hidden="true"></i></span></p>
 								@endif
 							</a>
 						</div>
@@ -1006,7 +748,7 @@ echo trim($msg); } ?>
 										<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" width="18">
 									<?php if ($addr->issubstr): ?>
 									<a href="{{ url('business-details/'. $client->business_slug)}}">{{ $addr->substr }}</a>
-									<a href="#" data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</a>
+									<span data-toggle="tooltip" data-placement="bottom" title="{{ $addr->fullstr }}">more</span>
 									<?php else: ?>
 									<a href="{{ url('business-details/'. $client->business_slug) }}">{{ $addr->substr }}</a>
 									<?php endif; ?>
@@ -1072,8 +814,7 @@ echo trim($msg); } ?>
 								</div>
 							</div>
 
-							<div class="serchlist-txt-btn"><a href="javascript:void(0);" title="{{$client->business_name }}"
-									class="sms-view common_popup_open"><span>Enquiry Now</span></a>&nbsp;&nbsp;&nbsp;<a
+							<div class="serchlist-txt-btn"><span class="sms-view common_popup_open"><span>Enquiry Now</span></span>&nbsp;&nbsp;&nbsp;<a
 									href="{{ url('business-details/'.$client->business_slug) }}"
 									title="{{$client->business_name }}" class="sms-view"><span>View Details</span></a></div>
 
@@ -1082,7 +823,7 @@ echo trim($msg); } ?>
 
 						<div class="col-sm-2 col-md-2 btnBox">
 							<a href="{{ url('business-details/'. $client->business_slug) }}"
-								title="{{$client->business_name }}"><span class="serchlist-txt-1">User Rating</span></a>
+								><span class="serchlist-txt-1">User Rating</span></a>
 							<div class="serchlist-txt">
 								<?php
 
@@ -1794,8 +1535,142 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 
 	</script>
 
+<style>
+							.abt-accordion .card {
+								border-radius: 0;
+								border: 1px solid rgba(179, 179, 179, 0.45);
+								margin-bottom: 10px;
+								max-width: 960px;
+								border-radius: 0;
+								box-shadow: 0 0 5px 3px #d4d4d466;
+							}
+							.card {
+								position: relative;
+								display: -ms-flexbox;
+								display: flex;
+								-ms-flex-direction: column;
+								flex-direction: column;
+								min-width: 0;
+								word-wrap: break-word;
+								background-color: #fff;
+								background-clip: border-box;
+								border: 1px solid rgba(0, 0, 0, .125);
+								border-radius: .25rem;
+							}
 
+							.abt-accordion .card .card-header {
+								padding: 7px;
+								background: none;
+								border: none;
+							}
 
+							.card-header:first-child {
+								border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+							}
 
+							.abt-accordion .card .card-header h2 button {
+								display: flex;
+								align-items: center;
+								justify-content: space-between;
+								width: 100%;
+								text-decoration: none;
+								border-radius: 0;
+								font-weight: 700;
+								margin-left: 3%;
+							}
+
+							.abt-accordion .card .collapse.show {
+								position: relative;
+							}
+
+							.card-body {
+								-ms-flex: 1 1 auto;
+								flex: 1 1 auto;
+								padding: 1.25rem;
+								font-weight: 400;
+								font-size: 13px !important;
+								margin-bottom: 0;
+								line-height: 1.7;
+								padding-left: 1.5em;
+								color: #212529 !important;
+							}
+
+							.about-accordian .card-body p {
+								padding-left: 0;
+								margin-bottom: 0;
+							}
+
+							.card-body p {
+								font-weight: 400;
+								font-size: 13px;
+								margin-bottom: 10px;
+								line-height: 1.7;
+								padding-left: 1.5em;
+							}
+
+							.about-accordian ul {
+								list-style: none;
+							}
+
+							.about-accordian .card-body ul li:first-child {
+								margin-top: 0;
+							}
+
+							.about-accordian .card-body ul li {
+								position: relative;
+								font-weight: 400;
+								font-size: 13px !important;
+								line-height: 1.7;
+								margin-left: 0;
+								margin-bottom: 11px;
+								margin-top: 10px;
+								text-align: justify;
+							}
+
+							.about-accordian .card-body ul ul {
+								position: relative;
+								font-weight: 400;
+								font-size: 13px !important;
+								line-height: 1.7;
+								margin-left: 22px;
+							}
+
+							.about-accordian ul {
+								list-style: none;
+							}
+
+							.abt-accordion .card .collapse.show::before {
+								content: '';
+								width: 94%;
+								height: 1px;
+								position: absolute;
+								top: 0;
+								left: 0;
+								background-color: #02b0af;
+								margin-left: 3%;
+							}
+
+							.about-accordian .card-body ul ul li {
+								margin-bottom: 0;
+								margin-top: 0;
+							}
+
+							.about-accordian ul ul p::before {
+								content: " ";
+								position: absolute;
+								top: 3px;
+								left: -16px;
+								display: inline-block;
+								-webkit-transform: rotate(45deg);
+								-ms-transform: rotate(45deg);
+								transform: rotate(45deg);
+								height: 1em;
+								width: .5em;
+								border-bottom: .2em solid #ff5f14;
+								border-right: .2em solid #ff5f14;
+							}
+						</style>
+
+ 
 
 @endsection

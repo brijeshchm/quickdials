@@ -754,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (city != 'undefined') {
 				var city = $(this).find('.city').val();
 			}
-
+ 
 			// var searchKW = $(this).find('.home-search').val();
 		 	var searchKW = $(this).find('.home-search option:selected').val();
  
@@ -795,10 +795,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			searchKW = searchKW.replace(/\s+/g, '-').toLowerCase();		
 			searchKW = searchKW.trim();
 			if (city) {
-				 city = city.trim();
+				city = city.trim();
 				city = city.replace(/[_\s]+/g, '-').toLowerCase();
-				localStorage.setItem('city', city);
-				
+				localStorage.setItem('city', city);				
 				location.href = "/" + city + "/" + searchKW;
 			} else {
 				location.href = "/" + searchKW;

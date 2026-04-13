@@ -78,9 +78,7 @@ Quick Dials- Business Services POPULAR CATEGORIES, B2B & BUSINESS SERVICES
                 <div sulevent="toggleSkGroup" class="sk-group show" hasevent="true">
                     <div class="sk-label">
                         <h3 class="title">{{$parent->parent_category}}</h3>
-                        <svg class="icon down-chevron" width="12" height="7.41">
-                            <use xlink:href="#skIconDownChevron"></use>
-                        </svg>
+                       
                     </div>
                     <div class="sk-data">
                         

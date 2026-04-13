@@ -185,7 +185,7 @@ echo trim($descrip); } ?>
 		<?php  }else{ ?>
 		
 		<img loading="lazy" src="<?php echo asset('images/it-training.png'); ?>" alt="it-training" >
-		<?php  } } ?><a href="{{url('/child/'.$parent->child_slug)}}" title="<?php if(!empty($parent->child_category)){  echo $parent->child_category; } ?>" ><?php if(!empty($parent->child_category)){  echo $parent->child_category; } ?></a> </li>
+		<?php  } } ?><a href="{{url('child/'.$parent->child_slug)}}" title="<?php if(!empty($parent->child_category)){  echo $parent->child_category; } ?>" ><?php if(!empty($parent->child_category)){  echo $parent->child_category; } ?></a> </li>
 	   
 	   @endforeach
 	   @endif

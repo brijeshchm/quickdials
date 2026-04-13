@@ -83,9 +83,7 @@
                     <a class="page-scroll" href="{{url('/contact-us')}}">Contact Us</a>
                   </li>
                   
-                  <li class="<?php if(Request::segment(1) && Request::segment(1)=='sitemap'){ echo "active"; } ?>">
-                    <a class="page-scroll" href="{{url('/sitemap.xml')}}">Sitemap</a>
-                  </li>
+                  
 			 
                 </ul>
               </div>

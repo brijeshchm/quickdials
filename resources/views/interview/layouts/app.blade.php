@@ -235,11 +235,11 @@ function getStyleValue(elmnt,style) {
 <div class="col l3 m6 s12">
 <div class="top10">
 <h4>Topice</h4>
-<a href="#">Array Define</a><br>
-<a href="#">CSS Define</a><br>
-<a href="#">laravel installation</a><br>
-<a href="#">SQL Reference</a><br>
-<a href="#">Python Reference</a><br>
+<span>Array Define</span><br>
+<span>CSS Define</span><br>
+<span>laravel installation</span><br>
+<span>SQL Reference</span><br>
+<span>Python Reference</span><br>
   
  
 </div>
@@ -247,16 +247,16 @@ function getStyleValue(elmnt,style) {
 <div class="col l3 m6 s12">
 <div class="top10">
 <h4>Project</h4>
-<a href="#">PHP Insert/Update/Delete</a><br>
-<a href="#">Laravel Insert/Update/Delete</a><br>
-<a href="#">Codeigniter Insert/Update/Delete</a><br>
+<span>PHP Insert/Update/Delete</span><br>
+<span>Laravel Insert/Update/Delete</span><br>
+<span>Codeigniter Insert/Update/Delete</span><br>
  
 </div>
 </div>
 <div class="col l3 m6 s12">
 <div class="top10">
 <h4>Web Certificates</h4>
-<a href="#">HTML Certificate</a><br>
+<span>HTML Certificate</span><br>
  
  
 

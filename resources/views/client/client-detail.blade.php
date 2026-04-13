@@ -3624,8 +3624,8 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 					<?php if ($addr->ispositiveresponse) { ?>
 					<?php if ($addr->issubstr): ?>
 					{{ $addr->substr }}
-					<a href="javascript:void(0)" style="color:red" data-toggle="tooltip" data-placement="bottom" title=""
-						data-original-title="{{ $addr->fullstr }}">more</a>
+					<span style="color:red" data-toggle="tooltip" data-placement="bottom" title=""
+						data-original-title="{{ $addr->fullstr }}">more</span>
 					<?php else: ?>
 					{{ $addr->fullstr }}
 					<?php endif; ?>
@@ -3643,8 +3643,8 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 					<?php if ($addr->ispositiveresponse) { ?>
 					<?php if ($addr->issubstr): ?>
 					{{ $addr->substr }}
-					<a href="javascript:void(0)" style="color:red" data-toggle="tooltip" data-placement="bottom" title=""
-						data-original-title="{{ $addr->fullstr }}">more</a>
+					<span style="color:red" data-toggle="tooltip" data-placement="bottom" title=""
+						data-original-title="{{ $addr->fullstr }}">more</span>
 					<?php else: ?>
 					{{ $addr->fullstr }}
 					<?php endif; ?>

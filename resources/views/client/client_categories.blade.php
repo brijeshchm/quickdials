@@ -26,9 +26,9 @@ Quickdials- Institute list
 				<div class="col-md-3"><div class="inner-client-div">
 				<figure><img loading="lazy" class="" src="<?php echo url($image); ?>"></figure>
 				<div class="grid-info">
-					<h3><a href="javascript:void(0)" title="{{$clientCategory->name}}" tabindex="0"><abbr title="{{$clientCategory->name}}"><b>{{$clientCategory->name}}</b></abbr></a></h3>
+					<h3><span><abbr title="{{$clientCategory->name}}"><b>{{$clientCategory->name}}</b></abbr></span></h3>
 					<span>501 verified partners</span>
-					<a href="{{url('business-details').'/'.$clientCategory->business_slug}}" class="get-quotes" tabindex="0">View All</a>
+					<a href="{{url('business-details/'.$clientCategory->business_slug)}}" class="get-quotes" tabindex="0">View All</a>
 				</div>
 				</div></div>
 			<?php endforeach; ?>

@@ -481,7 +481,7 @@ Route::get('/wedding-pannel', [App\Http\Controllers\Client\HomePageController::c
 Route::get('/client-login', [App\Http\Controllers\ClientAuth\AuthController::class, 'clientLogin']);
 Route::post('/client-login', [App\Http\Controllers\ClientAuth\AuthController::class, 'clientLoginPost'])->name('client.login');
 
-Route::get('/client-detail/{slug}', [App\Http\Controllers\Client\ClientDetailController::class, 'index']);
+
 Route::get('/business-details/{slug}', [App\Http\Controllers\Client\ClientDetailController::class, 'index']);
 
 Route::post('/review', [App\Http\Controllers\Client\ReviewController::class, 'store']);
@@ -499,7 +499,7 @@ Route::get('/get-zones/{city_id}', [HomePageController::class, 'getZones'])->nam
 
 // City home
 Route::get('/{city}', [HomePageController::class, 'city']);
-Route::get('/{city}/{search_kw}', [SearchListController::class, 'index']);
+Route::get('/{city}/{search_kw}', [SearchListController::class, 'show']);
 
 Route::POST('/client/lead/add-lead/', [App\Http\Controllers\Client\HomePageController::class, 'store']);
 Route::POST('/client/lead/saveTwoEnquiry', [App\Http\Controllers\Client\HomePageController::class, 'saveTwoEnquiry']);

@@ -1056,9 +1056,11 @@ aria-label="Close">Done</button>
 
                     return {
                         results: $.map(data.zones, function (obj) {
+
+                        console.log(obj);
                             if (obj.zone_id) {
                                 return {
-                                    id: obj.zone_id,
+                                    id: obj.zone_id,                                
                                     text:
                                         (obj.zone ? obj.zone + ', ' : '') +
                                         (obj.city ? obj.city : '') +
@@ -1186,8 +1188,6 @@ aria-label="Close">Done</button>
                 cache: true
             }
         });
-
-
 
         $(".select2-single-state").select2({
             theme: "bootstrap",

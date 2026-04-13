@@ -633,7 +633,7 @@ echo trim($paragraph6); ?>
 			 <div class="reviews-client-box">
 					<div class="side-row-1">
 						<div class="side-data-txt-1">
-							<a href="{{ url('business-details')."/".$client->business_slug }}" title="{{$client->business_name}}"><span>{{ $client->business_name}}</span></a></div>
+							<a href="{{ url('business-details/'.$client->business_slug) }}" title="{{$client->business_name}}"><span>{{ $client->business_name}}</span></a></div>
 						<div class="side-txt">
 							<?php
 								$badge = $client->sold_on_position;
@@ -669,7 +669,7 @@ echo trim($paragraph6); ?>
 								$avgRating = 0.0;
 								for($i=0;$i<5;++$i){
 								
-									echo "<a href='".url('business-details')."/".$client->business_slug."' class='emptystar'></a>";
+									echo "<a href='".url('business-details/'.$client->business_slug)."' class='emptystar'></a>";
 								}									
 							}
 						?>
@@ -798,23 +798,7 @@ echo trim($paragraph6); ?>
 		 
 		</div>
 		@endif
-      @if(!empty($keyword))
-      <div class="container">
-	  <div class="category-box">
-	   <div class="course-program">
-	     <h4>Find <?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?> other Location</h4>
-	   	<ul class="">
-		@if(!empty($cities))
-			@foreach($cities as $citys)
-	   <li class="col-sm-3 col-md-3"><a href="{{url(generate_slug(strtolower($citys->city)))}}"  title="<?php if(!empty($city)) { echo ucwords(str_replace("-"," ",$city)); } ?> in {{$citys->city}}">@if(!empty($city)){!!ucwords(str_replace("-"," ",$city))!!}@endif in {{$citys->city}}</a></li>
-	   @endforeach
-	   @endif
-	    
-	   </ul>
-	   </div>
-	 </div>
-	 </div>
-      @endif
+      
 	  
 	  
 	   <div class="clearfix"></div>
@@ -856,9 +840,7 @@ echo trim($paragraph6); ?>
                 <div sulevent="toggleSkGroup" class="sk-group show" hasevent="true">
                     <div class="sk-label">
                         <h3 class="title">{{$parent->parent_category}}</h3>
-                        <svg class="icon down-chevron" width="12" height="7.41">
-                            <use xlink:href="#skIconDownChevron"></use>
-                        </svg>
+                         
                     </div>
                     <div class="sk-data">
                         <ul class="content-list intent">
@@ -866,7 +848,7 @@ echo trim($paragraph6); ?>
                             if(!empty($childCategories)){
                                 foreach($childCategories as $child){
                             ?>
-                        <li><a href="{{url($child->child_slug)}}" tabindex="0" target="_blank">{{$child->child_category}}</a></li> 
+                        <li><a href="{{url($child->child_slug)}}" >{{$child->child_category}}</a></li> 
                                       <?php } } ?>  
                         </ul>
                     </div>
@@ -919,10 +901,10 @@ echo trim($paragraph6); ?>
 			 
 				<figure><img loading="lazy" class="" src="<?php echo url($image); ?>"  alt="{{ $client->business_name}}" style="width:100%;"></figure>
 				<div class="grid-info">
-					<h3><a href="{{url('business-details').'/'.$client->business_slug }}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
+					<h3><a href="{{url('business-details/'.$client->business_slug) }}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
 				
 					<strong>{{ucfirst($client->city)}}</strong>
-					<a href="{{url('business-details').'/'.$client->business_slug }}" class="get-quotes" tabindex="0">View</a>
+					<a href="{{url('business-details/'.$client->business_slug) }}" class="get-quotes" tabindex="0">View</a>
 				</div>
 				</div></div>
 				
