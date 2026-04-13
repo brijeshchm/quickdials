@@ -1748,12 +1748,7 @@ display: block;
 						<li>
 						<img src="{{ asset('/img/map.png')}}" alt="office" loading="lazy" style="width:20px;height:20px">
 
-							<a target="_blank"
-								href="{{isset($client->website) && !empty($client->website) ? buildWebsiteURL($client->website) : '#'}}">
-
-
-								{{isset($client->website) && !empty($client->website) ? $client->website : 'Website Not Available'}}
-							</a>
+			 
 
 
 						</li>
@@ -1983,8 +1978,9 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 
 					<div class="top-details">
 						<aside>
-							<h2 class="details-txt"><a target="_blank"
-									href="{{isset($client->website) && !empty($client->website) ? buildWebsiteURL($client->website) : '#'}}">{{isset($client->business_name) && !empty($client->business_name) ? $client->business_name : ""}}</a>
+							<h2 class="details-txt">
+								
+							 
 
 							</h2>
 						 
@@ -3288,8 +3284,8 @@ if (isset($client->certifications) && !empty($client->certifications)) {
 															href="{{isset($client->email) && !empty($client->email) ? "mailto:" . $client->email : "#"}}">Send
 															Enquriy By Mail</a></li>
 													<li><i class="fa fa-fw fa fa-chrome location-icon-1"
-															aria-hidden="true"></i><a
-															href="{{isset($client->website) && !empty($client->website) ? $client->website : 'javascript:void(0)'}}">{{isset($client->website) && !empty($client->website) ? $client->website : 'Website Not Available'}}</a>
+															aria-hidden="true"></i>															
+															 
 													</li>
 												</ul>
 											</div>
