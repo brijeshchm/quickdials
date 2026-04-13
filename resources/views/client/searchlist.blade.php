@@ -626,21 +626,9 @@ echo trim($msg); } ?>
 						</div>
 					</div>
 				</div>
-				<?php  }else{ ?>
-
-<div class="container">
-			 
-			<div class="row">
-			<div class="col-sm-12 col-md-12 banner-details">
-			<h4 class="Oops-txt"> No Result Found result </h4>
-			<h2 class="error-txt"></h2>
-			</div>
-			</div>
-			 
-			</div>
-
-
 				<?php  } ?>
+
+
 			@endif
 			<style>
 				.current .btn-info {
