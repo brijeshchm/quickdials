@@ -1,13 +1,8 @@
 @extends('client.layouts.appError')
 @section('title')
-Quick Dials-  Oops !Page Not Found
+  Oops !Page Not Found
 @endsection 
-@section('keyword')
-Quick Dials- Oops !Page Not Found
-@endsection
-@section('description')
-Quick Dials-  Oops !Page Not Found
-@endsection 
+  
 @section('content')	
 <div class="container">
         <div class="row">

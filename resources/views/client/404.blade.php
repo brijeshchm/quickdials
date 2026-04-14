@@ -2,10 +2,7 @@
 @section('title')
 Oops !Page Not Found
 @endsection 
-  
-@section('meta_robots')
-<meta name="robots" content="noindex, follow">
-@endsection
+ 
 @section('content')	
 <div class="container">
         <div class="row">
@@ -44,10 +41,10 @@ Oops !Page Not Found
 			 
 				<figure><img loading="lazy" class="" src="<?php echo url(''.$image); ?>" style="width:100%;"></figure>
 				<div class="grid-info">
-					<h3><a href="{{url('business-details').'/'.$client->business_slug }}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
+					<h3><a href="{{url('business-details/'.$client->business_slug) }}" title="{{$client->business_name}}" tabindex="0"><div title="{{$client->business_name}}"><strong>{{$client->business_name}}</strong></div></a></h3>
 				
 					<strong>{{ucfirst($client->city)}}</strong>
-					<a href="{{url('business-details').'/'. $client->business_slug }}" class="get-quotes" tabindex="0">View</a>
+					<a href="{{url('business-details/'. $client->business_slug) }}" class="get-quotes" tabindex="0">View</a>
 				</div>
 				</div></div>
 				

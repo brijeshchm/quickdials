@@ -1,26 +1,32 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 <meta name="robots" content="noindex, follow">
-<title>@yield('title')</title>
-  
-<link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}"><script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
-<script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
-<script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" >
-</script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
+<title>Oops !Page Not Found</title> 
  
-  
- 
+<link rel="shortcut icon" href="https://www.quickdials.com/client/images/favicon.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://www.quickdials.com/vendor/select2/css/select2-combined.css">
+
+<script type="text/javascript" src="https://www.quickdials.com/client/js/jquery-1.11.2.min.js" ></script>
+<script src="https://www.quickdials.com/vendor/select2/js/select2.full.js" ></script>
+<script type="text/javascript" src="https://www.quickdials.com/client/js/bootstrap.min.js" >
+</script>
+<link rel="stylesheet" href="https://www.quickdials.com/client/css/style.css" >
+
+<link rel="stylesheet" href="https://www.quickdials.com/client/css/media.css" >
 </head>
 <body>
  
-<!-- End Google Tag Manager (noscript) -->
+ 
 <div id="spinnerBkgd"></div><div id="spinnerCntr"></div>
  
 <header id="header"><div class="container">
     <div class="head-list"><div class="logo">
-        <div title="Quick Dials"><a href="">
-            <img src="<?php echo asset('client/images/small-logo.png'); ?>" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch <?php echo (Route::getCurrentRoute()->uri() != '/') ? ' fixedform' : ''; ?>"><div class="filterForm">
+        <div title="Quick Dials"><a href="https://www.quickdials.com">
+            <img src="https://www.quickdials.com/client/images/small-logo.png" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch  fixedform"><div class="filterForm">
                 <form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city" ><option value="">Search city & pincode</option></select>
                                 <div class="search-bar">
                                     <select name="search_kw" class="serviceneed home-search searchInput"
@@ -31,145 +37,47 @@
                                     
                                     <input type="submit" class="col-md-2 submitbtn" value="GO"></div></div>
                         </form></div></div>
-                <?php 		 
-			if (!Auth::guard('clients')->check()) { ?>
-                <div class="head-right-lout">
-                    <div class="head-left"><a href="{{ url('business-owners') }}" class="freelisting">
+                                <div class="head-right-lout">
+                    <div class="head-left"><a href="https://www.quickdials.com/business-owners" class="freelisting">
                             <h6>Business</h6> <i class="fa fa-handshake-o" aria-hidden="true"></i> <span
                                 class="free_listing">Free Listing</span>
                         </a>
                     </div>
                     <div class="head-right">
-                        <a href="javascript:void(0);" id="login">Sign In</a> | <a href="{{ url('business-owners') }}"
+                        <a href="javascript:void(0);" id="login">Sign In</a> | <a href="https://www.quickdials.com/business-owners"
                             class="sign-text">Sign Up</a></div></div>
-                <?php } else { ?>
-                <div class="head-right-lout">
-                    <?php    $clientID = auth()->guard('clients')->user()->id;
-    $client = App\Models\Client\Client::find($clientID);
-	
-    if (!empty($client->logo)) {
-        $logo = unserialize($client->logo);
-
-        $image = $logo['large']['src'];
-				?>
-                    <img loading="lazy" src="<?php        echo asset('' . $image); ?>" alt="Profile" class="rounded-circle"
-                        style="max-height: 36px;border-radius: 50% !important;">
-
-                    <?php    }else{ ?>
-					
-					<img loading="lazy" src="{{asset('client/images/user.png')}}" alt="Profile" class="rounded-circle"
-                        style="max-height: 36px;border-radius: 50% !important;">
-					
-					<?php } ?>
-                    <style>
-                        .dropdown-divider {
-                            height: 0;
-                            margin: var(--bs-dropdown-divider-margin-y) 0;
-                            overflow: hidden;
-                            border-top: 1px solid var(--bs-dropdown-divider-bg);
-                            opacity: 1;
-                        }
-                        .dropdown-menu {
-                            position: absolute;
-                            top: 100%;
-                            left: 0;
-                            z-index: 1000;
-                            display: none;
-                            float: left;
-                            width: 225px;
-                            padding: 5px 0;
-                            margin: 2px 0 0;
-                            font-size: 14px;
-                            text-align: left;
-                            list-style: none;
-                            background-color: #fff;
-                            -webkit-background-clip: padding-box;
-                            background-clip: padding-box;
-                            border: 1px solid #ccc;
-                            border: 1px solid rgba(0, 0, 0, .15);
-                            border-radius: 4px;
-                            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-                            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-                        }
-                    </style>
-                    <ul class="nav navbar-top-links navbar-right">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="{{url('business/dashboard')}}"
-                                aria-expanded="true">
-                                <?php   if(!empty(auth()->guard('clients')->user()->business_name)){ echo ucfirst(auth()->guard('clients')->user()->business_name); }else{ echo "Name"; } ?>
-                                <i class="fa fa-caret-down"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center"
-                                        href="{{url('business/personal-details')}}">
-                                        <i class="bi bi-person"></i>
-                                        <span>My Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center"
-                                        href="{{url('business/account-settings')}}">
-                                        <i class="bi bi-gear"></i>
-                                        <span>Account Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center"
-                                        href="{{url('business/favorite-enquiry')}}">
-                                        <i class="bi bi-star"></i>
-                                        <span>Favorite Enquiry</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center"
-                                        href="{{url('business/manage-enquiry')}}">
-                                        <i class="bi bi-envelope"></i>
-                                        <span>Manage Enquiry</span>
-                                    </a>
-                                </li>
-                                
-                               
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center"
-                                        href="{{url('business/keywords')}}">
-                                        <i class="bi bi-book-half"></i>
-                                        <span>Service Keywords</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center"
-                                        href="{{url('business/package')}}">
-                                        <i class="bi bi-currency-rupee"></i>
-                                        <span>Package</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center"
-                                        href="{{url('business/billing-history')}}">
-                                        <i class="bi bi-currency-rupee"></i>
-                                        <span>My Transaction</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="{{url('client/logout')}}">
-                                        <i class="bi bi-currency-rupee"></i>
-                                        <span>Logout</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <a href="{{url('business/dashboard')}}"><strong></strong></a>
-                </div>
-                <?php  } ?>
-            </div>
+                            </div>
         </div>
     </header>
-    @yield('content')
+    	
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 third-add-section">
+				
+		 
+		
+		</div>
+        </div>
+</div> 
+<div class="container">		
+	<div class="row">
+		<div class="col-sm-12 col-md-12 banner-details">
+		<h1 class="Oops-txt">Oops! Page Not Found </h1>				 
+		<h2 class="error-txt"><a href="https://www.quickdials.com">Home</a></h2>
+		</div>
+	</div>
+</div>
+ <div class="clearfix"></div>
+    <div class="container">
+	 
+	  <div class="add-section">
+	   <div class="col-xs-12"> 				
+			 
+		                </div>
+                </div>
+                </div>
+               
+ 
    
     <div class="modal fade" id="showKeywordsList" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -296,7 +204,7 @@
     <footer>
         <section class="links-resp"><div class="container"><div class="copyright-box col-lg-5"><div class="row">
                         <p>Copyrights © 2025. All Rights Reserved.</p></div>
-                </div><div class="disclaimer-box col-lg-7"><div class="row"><p>The certification names and logos are the trademarks of their respective owners. <a href="{{url('/privacy-policy')}}">View Disclaimer</a></p>
+                </div><div class="disclaimer-box col-lg-7"><div class="row"><p>The certification names and logos are the trademarks of their respective owners. <a href="https://www.quickdials.com/privacy-policy">View Disclaimer</a></p>
                     </div></div></div></section>
     </footer>
     <div class="modal fade" id="msgModal" role="dialog">
@@ -474,8 +382,8 @@
 
                     <!-- Google Login -->
                     <div class="google-login">
-                        <a href="{{ url('/google-login') }}">
-                            <img loading="lazy" src="{{ asset('client/g-logo.png')}}" alt="gogole login">
+                        <a href="https://www.quickdials.com/google-login">
+                            <img loading="lazy" src="https://www.quickdials.com/client/g-logo.png" alt="gogole login">
                             Login with Google
                         </a>
                     </div>
@@ -510,8 +418,8 @@ aria-label="Close">Done</button>
 </div>
 </div>
 
-<script src="<?php echo asset('vendor/validation/validation.min.js'); ?>" ></script><script type="text/javascript" src="<?php echo asset('client/js/plugin.js'); ?>" ></script>
-<script type="text/javascript" src="<?php echo asset('client/js/script.js'); ?>" ></script>
+<script src="https://www.quickdials.com/vendor/validation/validation.min.js" ></script><script type="text/javascript" src="https://www.quickdials.com/client/js/plugin.js" ></script>
+<script type="text/javascript" src="https://www.quickdials.com/client/js/script.js" ></script>
 
 <script>
         const words = [
