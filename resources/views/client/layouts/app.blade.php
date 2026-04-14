@@ -100,13 +100,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="head-list"><div class="logo">
         <div title="Quick Dials"><a href="{{url('/')}}">
             <img src="<?php echo asset('client/images/small-logo.png'); ?>" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch <?php echo (Route::getCurrentRoute()->uri() != '/') ? ' fixedform' : ''; ?>"><div class="filterForm">
-                <form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city" ><option value="">Search city & pincode</option></select>
+                <form action="" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city" ><option value="">Search city & pincode</option></select>
                                 <div class="search-bar">
                                     <select name="search_kw" class="serviceneed home-search searchInput"
                                         id="searchInput" ><option value="">Search Service</option>                               
      
-                                    </select>
-                                    
+                                    </select>                          
                                     
                                     <input type="submit" class="col-md-2 submitbtn" value="GO"></div></div>
                         </form></div></div>
@@ -308,7 +307,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a href="{{url('categories/computer-courses')}}" >Computer Courses & Training</a></li> |
                     <li><a href="{{url('study-abroad')}}" >Study Abroad</a></li> |
                     <li><a href="{{ url('home-services')}}"  class="keystore">Home Services</a></li> |
-                    <li><a href="{{url('wedding-organizers')}}" >Parties, Special Occasions &amp; Wedding</a></li> |
+                    <li><a href="{{url('wedding-organisers')}}" >Parties, Special Occasions &amp; Wedding</a></li> |
                     <li><a href="{{url('categories/electric-services')}}" >Electric Services</a></li> |
                     <li><a href="{{url('categories/entrance-exams-coaching')}}" >Government Exam</a></li> |
                     <li><a href="{{url('web-designers')}}" >Web Designers</a></li> |
