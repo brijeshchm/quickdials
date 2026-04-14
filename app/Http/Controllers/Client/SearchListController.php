@@ -25,7 +25,7 @@ class SearchListController extends Controller
 	public function show(Request $request, $city, $search_kw)
 	{
 		try {
-
+ 
 			$city = strtolower(str_replace(' ', '-', trim($city)));
 			$search_kw = strtolower(str_replace(' ', '-', trim($search_kw)));
 			// Validate city exists

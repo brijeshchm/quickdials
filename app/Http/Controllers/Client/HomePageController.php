@@ -1492,10 +1492,9 @@ Instead of limiting learning to theory, the course takes you through:.",
 	 * @return \Illuminate\Http\Response
 	 */
 
-	public function city(Request $request, $city = null)
-	{
-		$city = strtolower(str_replace(' ', '-', trim($city)));
- 
+	public function showCity(Request $request, $city = null)
+	{		 
+		$city = strtolower(str_replace(' ', '-', trim($city))); 
 		try {
 			$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->limit(12)->get();
 
