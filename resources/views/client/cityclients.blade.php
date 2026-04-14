@@ -281,7 +281,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 			 
 			<div class="row">
 			<div class="col-sm-12 col-md-12 banner-details">
-			<h6 class="Oops-txt"> No Result Found result </h6>
+			<h6 class="Oops-txt"> No Result Found </h6>
 			<h2 class="error-txt"></h2>
 			</div>
 			</div>
