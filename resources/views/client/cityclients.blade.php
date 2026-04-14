@@ -511,7 +511,7 @@ Find Only Certified Training Institutes in {{Request::segment(1)}}, Coaching Cen
 						</div>
 
 						<div class="col-sm-12 col-md-12" style="padding-left:0;">
-							<div class="clickBlick"><a href="{{ url('business-details/'). $client->business_slug) }}"><i
+							<div class="clickBlick"><a href="{{ url('business-details/'. $client->business_slug) }}"><i
 										class="fa fa-fw fa fa-sun-o" aria-hidden="true"></i></a><a
 									href="{{ url('business-details/' . $client->business_slug) }}"
 									><span>Click here to view your friend rating</span></a></div>
