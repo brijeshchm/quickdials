@@ -1,28 +1,41 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>@yield('title')</title><meta name="keywords" content="@yield('keyword')"><meta name="description" content="@yield('description')"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="csrf-token" content="{{ csrf_token() }}">  
-@if (Request::is('/')) <link rel="canonical" href="{{url('/')}}/" />@else <link rel="canonical" href="<?php echo trim(url()->current());?>" />@endif <link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" /><meta http-equiv="content-language" content="en-IN"><meta name="classification" content="directory portal" /><meta name="distribution" content="local" /><meta content="All" name="WebCrawlers" /><meta content="All, FOLLOW" name="MSNBots" /><meta content="All" name="Googlebot-Image" /><meta content="All, FOLLOW" name="BINGBots" />
-<meta content="All, FOLLOW" name="YAHOOBots" /><meta content="All, FOLLOW" name="GoogleBots" /><meta name="copyright" content="Quick Dials"><meta name="author" content="Quick Dials" /><meta http-equiv="CACHE-CONTROL" content="PUBLIC" /><meta name="publisher" content="Quick Dials" />
-@if (Request::is('/'))
-<link name="identifier-URL" href="{{url('/')}}/" />
-@else
-<link name="identifier-URL" href="<?php echo trim(url()->current());?>" />
-@endif <meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
-<meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
-@if (Request::is('/'))
-<link name="url" href="{{url('/')}}/" />
-@else
-<link name="url" href="<?php echo trim(url()->current());?>" />
-@endif <meta name="DC.title" content="@yield('keyword')" /><meta name="distribution" content="global" /><meta name="geo.region" content="IN-UP" /><meta name="geo.placename" content="Bangalore" /><meta name="geo.position" content="28.5802;77.3181" /><meta name="ICBM" content="28.5802, 77.3181" /> 
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>@yield('title')</title>
+<meta name="keywords" content="@yield('keyword')">
+<meta name="description" content="@yield('description')">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@if (Request::is('/')) 
+<link rel="canonical" href="{{url('/')}}/" />@else 
+<link rel="canonical" href="<?php echo trim(url()->current());?>" />@endif 
 @if(View::hasSection('meta_robots'))
     @yield('meta_robots')
 @else
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="robots" content="index, follow">
 @endif
-<meta name="Revisit-after" content="7 Days" /><meta property="og:locale" content="en_IN" /><meta property="og:type" content="website" /><meta property="og:title" content="@yield('title')" /><meta property="og:description" content="@yield('description')" /><meta property="og:url" content="{{ URL::current() }}" /><meta property="og:site_name" content="Quick Dials" /><meta name="application-name" content="Quick Dials" /><meta property="fb:app_id" content="https://www.facebook.com/quickdialsofficial/" /><meta property="og:image" content="{{asset('client/images/small-logo.jpg')}}" /><meta property="og:image:secure_url" content="{{asset('client/images/quickdials-og.png')}}" /><meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="628" /><meta property="og:image:alt" content="Quick Dials" />
-<meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content="@yield('title')" /><meta name="twitter:keyword" content="@yield('keyword')" /><meta name="twitter:description" content="@yield('description')" /><meta name="twitter:image" content="{{asset('client/images/quickdials-og.png')}}" /><meta name="twitter:url" content="{{ URL::current() }}" /><meta itemprop="address" content="UNIT 101 OXFORD TOWERS, 139/88 HAL OLD AIRPORT RD, H.A.L II Stage, Bangalore North, Bangalore- 560008, Karnataka, India">
-<meta name="rating" content="general"><meta name="googlebot" content="index, follow"><meta name="bingbot" content="index, follow"><meta name="reply-to" content="info@quickdials.com"><meta name="expires" content="never">
-<link rel="alternate" href="https://www.quickdials.com/" hreflang="en-in" /><link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}"><script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
+<meta name="author" content="Quick Dials">
+<meta property="og:title" content="@yield('title', 'Quick Dials')" />
+<meta property="og:description" content="@yield('description')" />
+<meta property="og:url" content="{{ url()->current() }}" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="@yield('og_image', asset('client/images/quickdials-og.png'))" />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="@yield('title')" />
+<meta name="twitter:description" content="@yield('description')" />
+<meta name="twitter:image" content="@yield('og_image', asset('client/images/quickdials-og.png'))" />
+<!-- GEO Dynamic -->
+<meta name="geo.region" content="@yield('geo_region', 'IN')" />
+<meta name="geo.placename" content="@yield('geo_city', 'India')" />
+<meta name="geo.position" content="@yield('geo_position', '')" />
+<!-- Verification -->
+<meta name="google-site-verification" content="O8A-LG3YpW7vOcPtVP9OuNrEcLfLf1kW2tTVpFpHNxM" />
+<meta name="msvalidate.01" content="456AED0115D50D42C4F3A79DAB89D41D" />
+<!-- Favicon -->
+<link rel="shortcut icon" href="{{ asset('client/images/favicon.png') }}" type="image/png" />
+<link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}">
+<script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
 <script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
 <script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" >
 </script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >

@@ -25,14 +25,14 @@ class SearchListController extends Controller
 	public function show(Request $request, $city, $search_kw)
 	{
 		try {
- 
+
 			$city = strtolower(str_replace(' ', '-', trim($city)));
 			$search_kw = strtolower(str_replace(' ', '-', trim($search_kw)));
-			// Validate city exists
-	 
-			$checkCity = Citieslists::where('city_slug', $city)->count();
-			 
-			if (!$checkCity) {
+			// Validate city exists	  	 
+			$keywordCheck = Keyword::where('slug', $search_kw)->first();
+			$cityCheck = Citieslists::where('city_slug', $city)->first();
+
+			if ( !$keywordCheck && !$cityCheck) {
 				return response()->view('client.error410', [], 410);
 			}
 

@@ -1,9 +1,7 @@
 @extends('client.layouts.app')
 @section('title')
 <?php 
- 
-
-if (!empty($keyword->meta_title)) {
+ if (!empty($keyword->meta_title)) {
 $key =  $keyword->meta_title;
 echo trim($key);
 }  

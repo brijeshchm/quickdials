@@ -24,6 +24,7 @@ $descrip = preg_replace('/\s+/', ' ', $descrip);
 echo trim($descrip);
 } ?>
 @endsection
+
 @section('content')
 	<div class="container">
 		<div class="row">

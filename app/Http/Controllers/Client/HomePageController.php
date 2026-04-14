@@ -1493,12 +1493,23 @@ Instead of limiting learning to theory, the course takes you through:.",
 	 */
 
 	public function showCity(Request $request, $city = null)
-	{		 
-		$city = strtolower(str_replace(' ', '-', trim($city))); 
+	{
+		$city = strtolower(str_replace(' ', '-', trim($city)));
+
+
 		try {
+
+			$parent = ParentCategory::where('parent_slug', $city)->first();
+			$child = ChildCategory::where('child_slug', $city)->first();
+			$clientCheck = Client::where('city', ucwords(str_replace("-", " ", $city)))->first();
+			$keywordCheck = Keyword::where('slug', $city)->first();
+			$cityCheck = Citieslists::where('city_slug', $city)->first();
+
+			if (!$parent && !$child && !$clientCheck && !$keywordCheck && !$cityCheck) {
+				return response()->view('client.error410', [], 410);
+			}
+
 			$clientLists = Client::where('logo', '<>', '')->where('business_intro', '<>', '')->limit(12)->get();
-
-
 			$checkcity = Client::where('logo', '<>', '')
 				->where('city', ucwords(str_replace("-", " ", $city)))
 				->where('active_status', '1')
@@ -1522,7 +1533,7 @@ Instead of limiting learning to theory, the course takes you through:.",
 				->where('keyword.slug', $city)
 				->groupBy('client_id')
 				->get();
- 
+
 			$keywordlist = DB::table('keyword')
 				->join('parent_category', 'keyword.parent_category_id', '=', 'parent_category.id')
 				->join('child_category', 'keyword.child_category_id', '=', 'child_category.id')
@@ -1530,16 +1541,16 @@ Instead of limiting learning to theory, the course takes you through:.",
 				->groupBy('child_category.child_slug')
 				->where('parent_category.parent_slug', $city)->get();
 
-		 
-				$clientskeyword = DB::table('clients')
-					->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
-					->join('assigned_zones', 'clients.id', '=', 'assigned_zones.client_id')
-					->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
-					->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
-					->leftJoin(DB::raw('(SELECT SUM(rating) AS rating, comment_client_ID, COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
-					->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*', 'keyword.slug')
-					->where('keyword.slug', $city)
-					->orderByRaw("
+
+			$clientskeyword = DB::table('clients')
+				->join('assigned_kwds', 'clients.id', '=', 'assigned_kwds.client_id')
+				->join('assigned_zones', 'clients.id', '=', 'assigned_zones.client_id')
+				->join('keyword', 'assigned_kwds.kw_id', '=', 'keyword.id')
+				->join('citylists', 'assigned_zones.city_id', '=', 'citylists.id')
+				->leftJoin(DB::raw('(SELECT SUM(rating) AS rating, comment_client_ID, COUNT(comment_ID) AS comment_count FROM comments GROUP BY comment_client_ID) c'), 'c.comment_client_ID', '=', 'clients.id')
+				->select('clients.*', 'citylists.city', 'assigned_kwds.sold_on_position', 'c.rating', 'c.comment_count', 'assigned_zones.*', 'keyword.slug')
+				->where('keyword.slug', $city)
+				->orderByRaw("
 					CASE clients.client_type
 					WHEN 'platinum' THEN 1
 					WHEN 'diamond' THEN 2
@@ -1548,11 +1559,11 @@ Instead of limiting learning to theory, the course takes you through:.",
 					ELSE 5
 					END
 					")
-					->groupBy('client_id')
-					->get();
+				->groupBy('client_id')
+				->get();
 
 
- 
+
 			// --- 2. Check parent category ---
 			$parentCategories = DB::table('keyword')
 				->join('parent_category', 'keyword.parent_category_id', '=', 'parent_category.id')
@@ -1596,7 +1607,7 @@ Instead of limiting learning to theory, the course takes you through:.",
 					->orderByRaw("CASE clients.client_type WHEN 'platinum' THEN 1 WHEN 'diamond' THEN 2 WHEN 'gold' THEN 3 WHEN 'silver' THEN 4 ELSE 5 END")
 					->groupBy('client_id')
 					->get();
- 
+
 				return view('client.childKeyword', ['clientskeyword' => $clientskeyword, 'keyword' => $childCategories, 'reviewsClientsList' => $reviewsClientsList, 'city' => $city, 'keywordlist' => $keywordlist]);
 			}
 
@@ -1607,7 +1618,7 @@ Instead of limiting learning to theory, the course takes you through:.",
 				->select('keyword.*', 'child_category.*', 'parent_category.*', 'keyword.id as key_id', 'keyword.faqq1', 'keyword.faqa1', 'keyword.faqq2', 'keyword.faqa2', 'keyword.faqq3', 'keyword.faqa3', 'keyword.faqq4', 'keyword.faqa4', 'keyword.faqq5', 'keyword.faqa5', 'keyword.meta_title', 'keyword.meta_description', 'keyword.meta_keywords', 'keyword.top_description', 'keyword.bottom_description', 'keyword.ratingvalue', 'keyword.ratingcount', 'keyword.child_category_id', 'child_category.child_slug', 'keyword.heading', 'keyword.courseabout', 'keyword.paragraph1', 'keyword.paragraph2', 'keyword.paragraph3', 'keyword.paragraph4', 'keyword.paragraph5', 'keyword.paragraph6')
 				->where('keyword.slug', $city)
 				->first();
- 
+
 			if (!empty($keyword)) {
 				return view('client.searchkeyword', ['clientskeyword' => $clientskeyword, 'keyword' => $keyword, 'reviewsClientsList' => $reviewsClientsList, 'clientLists' => $clientLists, 'city' => $city]);
 			}
@@ -1653,7 +1664,7 @@ Instead of limiting learning to theory, the course takes you through:.",
 			}
 
 			// ✅ FALLBACK: nothing matched anywhere — show default clients (lic not null)
-	 		$clientBanner = ChildCategory::whereNotNull('child_banner')->where('child_banner', '!=', '')->first();
+			$clientBanner = ChildCategory::whereNotNull('child_banner')->where('child_banner', '!=', '')->first();
 			$keyword = "";
 			return view('client.cityclients', ['cityclients' => $checkcity, 'clientBanner' => $clientBanner, 'keyword' => $keyword]);
 

@@ -2,6 +2,9 @@
 @section('title')
   Oops !Page Not Found
 @endsection   
+@section('meta_robots')
+<meta name="robots" content="noindex, follow">
+@endsection
 @section('content')	
 <div class="container">
         <div class="row">

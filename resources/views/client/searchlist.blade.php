@@ -5,9 +5,7 @@ $key = preg_replace('/{{city}}/i', ucfirst($city), $keyword->meta_title);
 echo trim($key);
 } else {
 $key = preg_replace('/{{city}}/i', ucfirst($area), $keyword->keyword);
-echo trim($key);
-}
-?>
+echo trim($key); } ?>
 @endsection
 @section('description')
 <?php if (!empty($keyword->meta_description)) { $descrip = preg_replace('/{{city}}/i', ucfirst($area), $keyword->meta_description); echo trim($descrip); }   ?>
@@ -19,6 +17,14 @@ $msg = preg_replace('/\s+,/', ',', $msg);
 $msg = preg_replace('/\s+/', ' ', $msg);	
 echo trim($msg); } ?>
 @endsection
+
+@section('geo_city')
+<?php echo ucfirst($city); ?>
+@endsection
+ 
+ 
+ 
+
 
 @section('content')
 
