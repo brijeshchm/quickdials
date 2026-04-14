@@ -502,11 +502,11 @@ Route::get('/{city}', [HomePageController::class, 'showCity'])
     ->name('showCity')
     ->where(['city' => '[a-z0-9][a-z0-9\-]*']);
 
-Route::get('/{city_slug}/{service_slug}', [SearchListController::class, 'show'])->name('listing.show')
-    ->where([
-        'city_slug' => '[a-z0-9\-]+',
-        'service_slug'  => '[a-z0-9\-]+',
-    ]);
+Route::get('/{city_slug}/{service_slug}', [SearchListController::class, 'show'])->name('listing.show');
+    // ->where([
+    //     'city_slug' => '[a-z0-9\-]+',
+    //     'service_slug'  => '[a-z0-9\-]+',
+    // ]);
 
 Route::POST('/client/lead/add-lead/', [App\Http\Controllers\Client\HomePageController::class, 'store']);
 Route::POST('/client/lead/saveTwoEnquiry', [App\Http\Controllers\Client\HomePageController::class, 'saveTwoEnquiry']);
