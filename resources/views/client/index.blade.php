@@ -12,7 +12,7 @@ Find Only Certified Training Institutes, Coaching Centers near you on quickdials
       <p>Let's uncover the best service providers near you.</p>
       <div class="filterForm">      
           
-         <form action="/searchlist" method="GET" class="search-form" autocomplete="off">
+         <form method="GET" class="search-form" autocomplete="off">
       <div class="search-wrapper">
           <select name="city" class="select2_location searchcity location locationbtn city">
 							<option value="">Search city & pincode</option>

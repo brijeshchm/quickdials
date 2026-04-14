@@ -19,7 +19,7 @@
     <div class="head-list"><div class="logo">
         <div title="Quick Dials"><a href="https://www.quickdials.com">
             <img src="https://www.quickdials.com/client/images/small-logo.png" alt="Quick Dials" class="img-logo" /></a></div></div><div class="scrollheadsearch  fixedform"><div class="filterForm">
-                <form action="/searchlist" method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city" ><option value="">Search city & pincode</option></select>
+                <form method="GET" class="search-form" autocomplete="off"><div class="search-wrapper"><select name="city" class="select2_location searchcity location locationbtn city" ><option value="">Search city & pincode</option></select>
                                 <div class="search-bar">
                                     <select name="search_kw" class="serviceneed home-search searchInput"
                                         id="searchInput" ><option value="">Search Service</option>                               
