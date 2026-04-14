@@ -1,16 +1,12 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="robots" content="noindex, follow">
-<title>@yield('title')</title>
-  
+<title>@yield('title')</title>  
 <link rel="shortcut icon" href="{{asset('client/images/favicon.png')}}" type="image/png" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{{ asset('vendor/select2/css/select2-combined.css') }}"><script type="text/javascript" src="<?php echo asset('client/js/jquery-1.11.2.min.js'); ?>" ></script>
 <script src="<?php echo asset('vendor/select2/js/select2.full.js'); ?>" ></script>
 <script type="text/javascript" src="<?php echo asset('client/js/bootstrap.min.js'); ?>" >
-</script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" >
- 
-  
- 
+</script><link rel="stylesheet" href="<?php echo asset('client/css/style.css'); ?>" ><link rel="stylesheet" href="<?php echo asset('client/css/media.css'); ?>" > 
 </head>
 <body>
  

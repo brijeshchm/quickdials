@@ -1,28 +1,20 @@
 
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
 <meta name="robots" content="noindex, follow">
-<title>Oops !Page Not Found</title> 
- 
+<title>Oops !Page Not Found</title>  
 <link rel="shortcut icon" href="https://www.quickdials.com/client/images/favicon.png" type="image/png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://www.quickdials.com/vendor/select2/css/select2-combined.css">
-
 <script type="text/javascript" src="https://www.quickdials.com/client/js/jquery-1.11.2.min.js" ></script>
 <script src="https://www.quickdials.com/vendor/select2/js/select2.full.js" ></script>
 <script type="text/javascript" src="https://www.quickdials.com/client/js/bootstrap.min.js" >
 </script>
 <link rel="stylesheet" href="https://www.quickdials.com/client/css/style.css" >
-
 <link rel="stylesheet" href="https://www.quickdials.com/client/css/media.css" >
 </head>
 <body>
- 
- 
-<div id="spinnerBkgd"></div><div id="spinnerCntr"></div>
- 
+<div id="spinnerBkgd"></div><div id="spinnerCntr"></div> 
 <header id="header"><div class="container">
     <div class="head-list"><div class="logo">
         <div title="Quick Dials"><a href="https://www.quickdials.com">

@@ -1,19 +1,14 @@
 @extends('client.layouts.appError')
 @section('title')
 Oops !Page Not Found
-@endsection 
-  
+@endsection   
 @section('meta_robots')
 <meta name="robots" content="noindex, follow">
 @endsection
 @section('content')	
 <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 third-add-section">
-				
-		 
-		
-		</div>
+            <div class="col-xs-12 col-sm-12 col-md-12 third-add-section"></div>
         </div>
 </div> 
 <div class="container">		
