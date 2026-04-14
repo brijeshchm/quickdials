@@ -1423,7 +1423,7 @@ Call now: <a href="tel:917559435943">+91-75-5943-5943</a>
 								<button type="button" onclick="prevPopupStep()">Back</button>
 								<button type="submit">Submit</button>
 							<div class="loaderForm" style="display:none;">
-							<img src="/public/client/images/btn-ajax-loader.gif" width="20">
+							<img src="{{ asset('/public/client/images/btn-ajax-loader.gif')}}" width="20">
 							Processing...
 							</div>
 							</div>

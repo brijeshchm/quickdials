@@ -343,36 +343,9 @@ Quick Dials- Local search, IT Training, Playschool, overseas education
     </div>
    </div>
 
-  <!--
-  <div id="about" class="services-area area-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="section-headline services-head text-center">
-            <h2>Board</h2>
-			 <div class="single-services">   
-			 <div class="col-md-4 col-sm-4 col-xs-12">
-				    <div class="board-img" style="border-right: 5px solid #333;" ><img loading="lazy" alt="Lead Management Software" src="{{asset('public/official/img/user.jpg')}}"></div>
-					<strong>Quick Inida</strong>
-					<p>Founder and CEO</p>
-				  </div>
-				    <div class="col-md-8 col-sm-8 col-xs-12">
-					<div class="board-text">   
-                  <p>
-                    
- 
-				</div>
-          </div>
-          </div>
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-   -->
    
    
-    <!-- Start Service area -->
+  
   
   
   <div id="features" class="services-area area-padding">
