@@ -175,12 +175,10 @@ echo trim($descrip); } ?>
            
             if (!empty($data)) {
             ?>
-
-            <img loading="lazy" src="{{asset(''.$data['src'])}}" alt="{{ $data['name'] }}" >
+            <img loading="lazy" src="{{asset($data['src'])}}" alt="{{ $data['name'] }}" >
 
             <?php  }   } ?>
-            <a href="{{ url($child->slug) }}"  class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
-
+            <a href="{{ url($child->slug) }}" class="keystore"><?php if(!empty($child->keyword)) { echo $child->keyword; } ?></a> 
 
             </li>@endif
 	   

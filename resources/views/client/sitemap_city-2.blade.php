@@ -14,10 +14,6 @@
     <priority>0.80</priority>
 </url>
 @endforeach 
- 
-  
-
-
 @foreach ($keywords as $keyword)
 <url>     
       <loc>{{ url('meerut/'.$keyword->slug) }}</loc>
@@ -35,9 +31,6 @@
     <priority>0.80</priority>
 </url>
 @endforeach
-
-
-
 @foreach ($keywords as $keyword)
 <url>     
       <loc>{{ url('gorakhpur/'.$keyword->slug) }}</loc>
@@ -54,7 +47,5 @@
     
     <priority>0.80</priority>
 </url>
-@endforeach
-
- 
+@endforeach 
 </urlset>

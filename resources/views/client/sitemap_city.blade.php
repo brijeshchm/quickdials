@@ -32,8 +32,4 @@
     <priority>0.80</priority>
 </url>
 @endforeach 
-
-
- 
-    
 </urlset>
