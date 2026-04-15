@@ -1913,8 +1913,8 @@ class KeywordController extends Controller
 			return response()->json(['status' => 1, 'errors' => $danger_msg], 400);
 		}
 		$validator = Validator::make($request->all(), [
-			'top_description' => 'required',
-			'bottom_description' => 'required',
+			'top_description' => 'nullable',
+			'bottom_description' => 'nullable',
 
 
 		]);
