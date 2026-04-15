@@ -1385,7 +1385,12 @@ class KeywordController extends Controller
 			$leads = DB::table('keyword as k');
 			if ($request->input('search.value') != '') {
 				$leads = $leads->where(function ($query) use ($request) {
-					$query->orWhere('k.keyword', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('k.keyword', 'LIKE', '%' . $request->input('search.value') . '%')
+					->orWhere('k.slug', 'LIKE', '%' . $request->input('search.value') . '%')
+					->orWhere('k.meta_description', 'LIKE', '%' . $request->input('search.value') . '%')
+					->orWhere('k.top_description', 'LIKE', '%' . $request->input('search.value') . '%')
+					->orWhere('k.courseabout', 'LIKE', '%' . $request->input('search.value') . '%')
+					->orWhere('k.bottom_description', 'LIKE', '%' . $request->input('search.value') . '%');
 				});
 			}
 			$leads = $leads->select('k.keyword', 'k.id', 'k.meta_title', 'k.meta_keywords', 'k.meta_description', 'k.top_description', 'k.bottom_description');
