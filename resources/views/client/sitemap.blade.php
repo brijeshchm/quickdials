@@ -61,30 +61,28 @@
 </url>
 <url>
 <loc>https://www.quickdials.com/courses/playwright-automation-training-in-noida</loc>
-<lastmod>2026-04-03T10:30:00+00:00</lastmod>
- 
+<lastmod>2026-04-03T10:30:00+00:00</lastmod> 
 <priority>0.80</priority>
 </url> 
 @foreach ($keywords as $keyword)
 <url>
-    <loc>{{ url($keyword->slug) }}</loc>     
-    <lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>    
-    <priority>0.80</priority>
+<loc>{{ url($keyword->slug) }}</loc>     
+<lastmod>{{ \Carbon\Carbon::parse($keyword->updated_at)->toAtomString() }}</lastmod>    
+<priority>0.80</priority>
 </url>
 @endforeach 
 @foreach ($categories as $category)
 <url>     
-    <loc>{{ url('categories/'.$category->parent_slug) }}</loc>   
-    <lastmod>{{ \Carbon\Carbon::parse($category->updated_at)->toAtomString() }}</lastmod>      
-    <priority>0.80</priority>
+<loc>{{ url('categories/'.$category->parent_slug) }}</loc>   
+<lastmod>{{ \Carbon\Carbon::parse($category->updated_at)->toAtomString() }}</lastmod>      
+<priority>0.80</priority>
 </url>
 @endforeach 
 @foreach ($childCategories as $child)
 <url>     
-    <loc>{{ url('child/'.$child->child_slug) }}</loc>   
-    <lastmod>{{ \Carbon\Carbon::parse($child->updated_at)->toAtomString() }}</lastmod>     
-    <priority>0.80</priority>
+<loc>{{ url('child/'.$child->child_slug) }}</loc>   
+<lastmod>{{ \Carbon\Carbon::parse($child->updated_at)->toAtomString() }}</lastmod>     
+<priority>0.80</priority>
 </url>
-@endforeach 
-    
+@endforeach     
 </urlset>
