@@ -745,6 +745,10 @@ class BlogController extends Controller
 					$query->orWhere('name', 'LIKE', '%' . $request->input('search.value') . '%');
 					$query->orWhere('title', 'LIKE', '%' . $request->input('search.value') . '%');
 					$query->orWhere('slug', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('top_content', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('bottom_content', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('heading', 'LIKE', '%' . $request->input('search.value') . '%');
+					$query->orWhere('about_blog', 'LIKE', '%' . $request->input('search.value') . '%');
 					$query->orWhere('meta_title', 'LIKE', '%' . $request->input('search.value') . '%');
 
 				});
