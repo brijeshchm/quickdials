@@ -122,7 +122,7 @@ class HomePageController extends Controller
 			'citieslists',
 			// 			'entranceExam',
 			'studyAbroad'
-		));
+		))->header('Cache-Control', 'public, max-age=3600');
 	}
 
 	public function saveEnquiry(Request $request)
