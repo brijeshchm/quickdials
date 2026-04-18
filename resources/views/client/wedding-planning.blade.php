@@ -1,22 +1,14 @@
 @extends('client.layouts.app')
 @section('title')
- 
+ Best Wedding Organizers in Noida for Dream Events | Quick Dials
  	 
-<?php  if(!empty($keyword->meta_title)){
-$key = preg_replace('/{{city}}/i',ucfirst($city),$keyword->meta_title);
-echo trim($key); } 
-?>
  
 @endsection 
 @section('keyword')
-<?php if(!empty($keyword->meta_keywords)){
-$msg = preg_replace('/{{city}}/i',ucfirst($city),$keyword->meta_keywords);
-echo trim($msg); }  ?>
+ Wedding Organizers, Wedding Organizers in Noida, Noida Sector 16, Wedding Planners Noida, Noida Sector 16, Marriage Event near you, Wedding Management near you, Wedding Decoration, Marriage Ceremony Planners, Wedding Services
 @endsection
 @section('description')
-<?php if(!empty($keyword->meta_description)){
-$descrip = preg_replace('/{{city}}/i',ucfirst($city),$keyword->meta_description);
-echo trim($descrip); }  ?> 
+ Looking for Wedding Organizers in Noida, Noida Sector 16? Get flawless event planning with décor, catering, themes, and venue management handled by experts near you.
 @endsection
 @section('content')	 
     <div class="container">
