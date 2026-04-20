@@ -816,62 +816,62 @@ aria-label="Close">Done</button>
 <script type="text/javascript" src="<?php echo asset('client/js/script.js'); ?>" ></script>
 
 <script>
-        const words = [
-            "Search IT training",
-            "Search electrician",
-            "Find ac repair near me",
-            "Search home services",
-            "Search real estate",
-            "Search carpenters near me",
-            "Search Sport Academy",
-            "Search IT Courses",
-            "Search Wedding Planning",
-            "Search Government Exam",
-            "Search Study Abroad",
-            "Search Spa & Beauty",
-        ];
+//         const words = [
+//             "Search IT training",
+//             "Search electrician",
+//             "Find ac repair near me",
+//             "Search home services",
+//             "Search real estate",
+//             "Search carpenters near me",
+//             "Search Sport Academy",
+//             "Search IT Courses",
+//             "Search Wedding Planning",
+//             "Search Government Exam",
+//             "Search Study Abroad",
+//             "Search Spa & Beauty",
+//         ];
 
-        let wordIndex = 0;
-        let charIndex = 0;
-         let isErasing = false;
-        // let input = document.getElementById("searchInput");
-        const firstOption = document.querySelector("#searchInput option:first-child");
+//         let wordIndex = 0;
+//         let charIndex = 0;
+//          let isErasing = false;
+//         // let input = document.getElementById("searchInput");
+//         const firstOption = document.querySelector("#searchInput option:first-child");
    
-   function typeEffect() {
-        const currentWord = words[wordIndex];
+//    function typeEffect() {
+//         const currentWord = words[wordIndex];
 
-        if (!isErasing && charIndex <= currentWord.length) {
-            // ✅ Typing — update first option text
-            firstOption.text = currentWord.substring(0, charIndex);
-            charIndex++;
-            setTimeout(typeEffect, 80);
+//         if (!isErasing && charIndex <= currentWord.length) {
+//             // ✅ Typing — update first option text
+//             firstOption.text = currentWord.substring(0, charIndex);
+//             charIndex++;
+//             setTimeout(typeEffect, 80);
 
-        } else if (!isErasing && charIndex > currentWord.length) {
-            // ✅ Pause then start erasing
-            isErasing = true;
-            setTimeout(typeEffect, 1500);
+//         } else if (!isErasing && charIndex > currentWord.length) {
+//             // ✅ Pause then start erasing
+//             isErasing = true;
+//             setTimeout(typeEffect, 1500);
 
-        } else if (isErasing && charIndex > 0) {
-            // ✅ Erasing
-            firstOption.text = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(typeEffect, 40);
+//         } else if (isErasing && charIndex > 0) {
+//             // ✅ Erasing
+//             firstOption.text = currentWord.substring(0, charIndex - 1);
+//             charIndex--;
+//             setTimeout(typeEffect, 40);
 
-        } else {
-            // ✅ Move to next word
-            isErasing = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(typeEffect, 400);
-        }
-    }
+//         } else {
+//             // ✅ Move to next word
+//             isErasing = false;
+//             wordIndex = (wordIndex + 1) % words.length;
+//             setTimeout(typeEffect, 400);
+//         }
+//     }
 
-    // ✅ Stop animation when user selects an option
-    document.getElementById("searchInput").addEventListener("change", function () {
-        if (this.value === "") {
-            typeEffect(); // restart if reset to default
-        }
-    });
-         typeEffect();
+//     // ✅ Stop animation when user selects an option
+//     document.getElementById("searchInput").addEventListener("change", function () {
+//         if (this.value === "") {
+//             typeEffect(); // restart if reset to default
+//         }
+//     });
+//          typeEffect();
        
     </script>
     <script>
@@ -1047,21 +1047,23 @@ aria-label="Close">Done</button>
                             q: params.term
                         }
 
-                    } else {
+                    } 
+                    
+                    // else {
 
 
-                        var city = localStorage.getItem('city');
+                    //     var city = localStorage.getItem('city');
                         
-                        if (city !== null &&
-                            city !== undefined &&
-                            city !== '' &&
-                            city !== 'null') {
+                    //     if (city !== null &&
+                    //         city !== undefined &&
+                    //         city !== '' &&
+                    //         city !== 'null') {
 
-                            return {
-                                q: city
-                            }
-                        }
-                    }
+                    //         return {
+                    //             q: city
+                    //         }
+                    //     }
+                    // }
 
                 },
                 processResults: function (data) {
@@ -1069,7 +1071,7 @@ aria-label="Close">Done</button>
                     return {
                         results: $.map(data.zones, function (obj) {
 
-                        console.log(obj);
+                      
                             if (obj.zone_id) {
                                 return {
                                     id: obj.zone_id,                                
@@ -1239,38 +1241,40 @@ aria-label="Close">Done</button>
             containerCssClass: ":all:"
         });
         var keyword = localStorage.getItem('keyword');
-        if (keyword !== null &&
-            keyword !== undefined &&
-            keyword !== '' &&
-            keyword !== 'null') {              
+        // if (keyword !== null &&
+        //     keyword !== undefined &&
+        //     keyword !== '' &&
+        //     keyword !== 'null') {              
 
-            searchKW = keyword
-            .split('-')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' '); 
+        //     searchKW = keyword
+        //     .split('-')
+        //     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        //     .join(' '); 
            
-            var option = new Option(searchKW, keyword, true, true);          
-            $keywordSelect.append(option).trigger('change');
-            $serviceSelect.append(option).trigger('change');
+        //     var option = new Option(searchKW, keyword, true, true);          
+        //     $keywordSelect.append(option).trigger('change');
+        //     $serviceSelect.append(option).trigger('change');
 
-        }
+        // }
 
         var city = localStorage.getItem('city');
-        if (city !== null &&
-            city !== undefined &&
-            city !== '' &&
-            city !== 'null') {
-            searchCity = city
-            .split('-')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-            var option = new Option(searchCity, city, true, true);
-          
-            $citySelect.append(option).trigger('change');
-            $('.cityList').val(city);
-            $locationSelect.append(option).trigger('change');
+        // if (city !== null &&
+        //     city !== undefined &&
+        //     city !== '' &&
+        //     city !== 'null') {
+        //     searchCity = city
+        //     .split('-')
+        //     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        //     .join(' ');
 
-        } else {
+        //      console.log('localStorage',searchCity);
+        //     var option = new Option(searchCity, city, true, true);
+          
+        //     $citySelect.append(option).trigger('change');
+        //     $('.cityList').val(city);
+        //     $locationSelect.append(option).trigger('change');
+
+        // } else {
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
@@ -1288,6 +1292,8 @@ aria-label="Close">Done</button>
                         .split('-')
                         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                         .join(' ');
+
+                        
                         var option = new Option(searchCity, city, true, true);
                         $citySelect.append(option).trigger('change');
 
@@ -1295,7 +1301,7 @@ aria-label="Close">Done</button>
                     }
                 });
             }
-        }
+        // }
         function successCallback(position) {
             $.ajax({
                 url: "https://geolocation-db.com/jsonp",
@@ -1307,6 +1313,7 @@ aria-label="Close">Done</button>
                         .split('-')
                         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                         .join(' ');
+                      
                     var option = new Option(searchCity, city, true, true);
                     $citySelect.append(option).trigger('change');
 
@@ -1325,6 +1332,8 @@ aria-label="Close">Done</button>
                         .split('-')
                         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                         .join(' ');
+
+                        
                         var option = new Option(searchCity, city, true, true);
                         $citySelect.append(option).trigger('change');
 

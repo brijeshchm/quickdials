@@ -876,7 +876,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			text = text.charAt(0).toUpperCase() + text.slice(1);		
 			 	 
 			localStorage.setItem('keyword', text);
-			var city = localStorage.getItem('city');		 
+
+
+			// var city = localStorage.getItem('city');		 
+			var city = "";		 
 			if (city) {
 				window.location.href = "/" + city + "/" + slug;
 			} else {
@@ -985,48 +988,48 @@ document.addEventListener('DOMContentLoaded', () => {
 				});
 			} else {
 
-				var citiesData = JSON.parse(localStorage.getItem('cityData'));
-				if (citiesData) {
+				// var citiesData = JSON.parse(localStorage.getItem('cityData'));
+				// if (citiesData) {
 
-					let cities = citiesData;
-					let searchInput = 'id';
-					let len = searchInput.length;
-					let resultDiv = document.createElement('div');
-					resultDiv.className = 'resultCode';
+				// 	let cities = citiesData;
+				// 	let searchInput = 'id';
+				// 	let len = searchInput.length;
+				// 	let resultDiv = document.createElement('div');
+				// 	resultDiv.className = 'resultCode';
 
-					let clear = document.createElement('span');
-					clear.className = "cityCache";
-					clear.style.cssText = "cursor: pointer; margin-left: 54px; color: #0089ff;";
-					clear.textContent = "Clean All";
-					clear.addEventListener("click", function () {
-						localStorage.clear();
-						$('.city-result').html("");
-						document.getElementById("myclear").style.display = "flex";
-						setInterval(function () {						 
-						document.getElementById("myclear").style.display = "none";
-						}, 3000);
-					});
+				// 	let clear = document.createElement('span');
+				// 	clear.className = "cityCache";
+				// 	clear.style.cssText = "cursor: pointer; margin-left: 54px; color: #0089ff;";
+				// 	clear.textContent = "Clean All";
+				// 	clear.addEventListener("click", function () {
+				// 		localStorage.clear();
+				// 		$('.city-result').html("");
+				// 		document.getElementById("myclear").style.display = "flex";
+				// 		setInterval(function () {						 
+				// 		document.getElementById("myclear").style.display = "none";
+				// 		}, 3000);
+				// 	});
 
-					let ul = document.createElement('ul');
-					cities.forEach(city => {
+				// 	let ul = document.createElement('ul');
+				// 	cities.forEach(city => {
 
-						let li = document.createElement('li');
+				// 		let li = document.createElement('li');
 
 
-						let a = document.createElement('a');
-						a.setAttribute("data-city", city);
-						let pos = city.toLowerCase().indexOf(searchInput.toLowerCase());
+				// 		let a = document.createElement('a');
+				// 		a.setAttribute("data-city", city);
+				// 		let pos = city.toLowerCase().indexOf(searchInput.toLowerCase());
 
-						a.textContent = city.charAt(0).toUpperCase() + city.slice(1);
-						li.appendChild(a);
-						ul.appendChild(li);
-					});
+				// 		a.textContent = city.charAt(0).toUpperCase() + city.slice(1);
+				// 		li.appendChild(a);
+				// 		ul.appendChild(li);
+				// 	});
 
-					resultDiv.appendChild(clear);
-					resultDiv.appendChild(ul);
-					$('.city-result').html(resultDiv);
+				// 	resultDiv.appendChild(clear);
+				// 	resultDiv.appendChild(ul);
+				// 	$('.city-result').html(resultDiv);
 
-				} else {
+				// } else {
 
 					$.ajax({
 						url: "/getCityList",
@@ -1037,7 +1040,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 						}
 					});
-				}
+				// }
 
 			}
 		});
