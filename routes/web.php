@@ -230,25 +230,11 @@ Route::post('/business-owners', [App\Http\Controllers\Client\BusinessOwnerContro
 
 Route::get('/sitemap-blog.xml', function () {
 
-	$data = Cache::remember('sitemap_blog', 3600, function () {
-
-		$keywords = DB::table('keyword')
-			->select('slug', 'updated_at')
-			->where('seo_type', '1')
-			->get();
-
-		$blogs = DB::table('blogdetails')
+	$blogs = DB::table('blogdetails')
 			->select('title', 'slug', 'updated_at')
 			->get();
-
-		return [
-			'keywords' => $keywords,
-			'blogs' => $blogs
-		];
-	});
-
 	return response()
-		->view('client.sitemap_blog', $data)
+		->view('client.sitemap_blog', compact('blogs'))
 		->header('Content-Type', 'text/xml');
 
 });
@@ -257,25 +243,25 @@ Route::get('/sitemap-blog.xml', function () {
 
 Route::get('/sitemap.xml', function () {
 
-	$keywords = Cache::remember('sitemap', 3600, function () {
-		return DB::table('keyword')
+	 
+		$keywords =  DB::table('keyword')
 			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
-	});
+	 
 
-	$categories = Cache::remember('categories', 3600, function () {
-		return DB::table('parent_category')
+ 
+		$categories =  DB::table('parent_category')
 			->where('status', '1')
 			->select('parent_slug', 'updated_at')
 			->get();
-	});
-	$childCategories = Cache::remember('child_category', 3600, function () {
-		return DB::table('child_category')
+ 
+	 
+		$childCategories =  DB::table('child_category')
 			->where('status', '1')
 			->select('child_slug', 'updated_at')
 			->get();
-	});
+	 
 
 	return response()
 		->view('client.sitemap', compact('keywords','categories','childCategories'))
@@ -285,26 +271,22 @@ Route::get('/sitemap.xml', function () {
 
 Route::get('/sitemap', function () {
 
-	$keywords = Cache::remember('sitemap', 3600, function () {
-		return DB::table('keyword')
+	 
+		$keywords =  DB::table('keyword')
 			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
-	});
-
-	$categories = Cache::remember('categories', 3600, function () {
-		return DB::table('parent_category')
+	  
+		$categories =  DB::table('parent_category')
 			->where('status', '1')
 			->select('parent_slug', 'updated_at')
 			->get();
-	});
-	$childCategories = Cache::remember('child_category', 3600, function () {
-		return DB::table('child_category')
+	 	 
+		$childCategories =  DB::table('child_category')
 			->where('status', '1')
 			->select('child_slug', 'updated_at')
 			->get();
-	});
-
+	 
 	return response()
 		->view('client.sitemap', compact('keywords','categories','childCategories'))
 		->header('Content-Type', 'text/xml');
@@ -313,12 +295,12 @@ Route::get('/sitemap', function () {
 
 Route::get('/sitemap-online.xml', function () {
 
-	$keywords = Cache::remember('sitemap_online', 3600, function () {
-		return DB::table('keyword')
+ 
+		$keywords =  DB::table('keyword')
 			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
-	});
+	 
 
 	return response()
 		->view('client.sitemap_online', compact('keywords'))
@@ -328,12 +310,12 @@ Route::get('/sitemap-online.xml', function () {
 
 Route::get('/sitemap-city.xml', function () {
 
-	$keywords = Cache::remember('sitemap_city', 3600, function () {
-		return DB::table('keyword')
+	 
+		$keywords =  DB::table('keyword')
 			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
-	});
+ 
 
 	return response()
 		->view('client.sitemap_city', compact('keywords'))
@@ -343,12 +325,12 @@ Route::get('/sitemap-city.xml', function () {
 
 Route::get('/sitemap-city-1.xml', function () {
 
-	$keywords = Cache::remember('sitemap_city_1', 3600, function () {
-		return DB::table('keyword')
+	 
+		$keywords =  DB::table('keyword')
 			->where('seo_type', '1')
 			->select('slug', 'updated_at')
 			->get();
-	});
+	 
 
 	return response()
 		->view('client.sitemap_city-1', compact('keywords'))
